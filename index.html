@@ -1,107 +1,108 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Core RDK Specifications</title>
 
-    <title>Core RDK Portal</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheetnet/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback"
+    />
+    <style></style>
 
-    <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com">
-    <link rel="stylesheetnet/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
     <style>
-    </style>
+      body {
+        background-color: #00182a;
+      }
 
+      .landing-container {
+        background-image: url("./assets/header-glow.png");
+        min-height: calc(100vh - 80px);
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: 100% auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+      }
 
-    <style>
-        body {
-            background-color: #00182A;
-        }
+      .landing-panel {
+        max-width: 900px;
+        width: 100%;
+        text-align: center;
+      }
 
-        .landing-container {
-            background-image: url('./assets/header-glow.png');
-            min-height: calc(100vh - 80px);
-            background-repeat: no-repeat;
-            background-position: top center;
-            background-size: 100% auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-        }
+      .landing-panel h1 {
+        margin-bottom: 12px;
+      }
 
-        .landing-panel {
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-        }
+      .landing-panel p {
+        color: var(--muted);
+        margin-bottom: 40px;
+      }
 
-        .landing-panel h1 {
-            margin-bottom: 12px;
-        }
+      .button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
 
-        .landing-panel p {
-            color: var(--muted);
-            margin-bottom: 40px;
-        }
+      .landing-button {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease;
+      }
 
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
+      .landing-button:hover {
+        transform: translateY(-3px);
+      }
 
-        .landing-button {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            transition: transform .2s ease;
-        }
+      .landing-button .card {
+        height: 100%;
+        text-align: center;
+      }
 
-        .landing-button:hover {
-            transform: translateY(-3px);
-        }
+      .landing-button h2 {
+        color: var(--link);
+        margin-bottom: 12px;
+      }
 
-        .landing-button .card {
-            height: 100%;
-            text-align: center;
-        }
+      select {
+        width: 50%;
+        padding: 10px;
+        font-family: "Anuphan";
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
+        background: #fff;
+        margin-bottom: 20px;
+      }
 
-        .landing-button h2 {
-            color: var(--link);
-            margin-bottom: 12px;
-        }
+      select:focus {
+        border-color: #0056b3;
+      }
 
-        select {
-            width: 50%;
-            padding: 10px;
-			font-family: 'Anuphan';
-            border: 2px solid #007bff;
-            border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-            cursor: pointer;
-            background: #fff;
-            margin-bottom: 20px;
-        }
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 40px;
+      }
 
-        select:focus {
-            border-color: #0056b3;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        /* 
+      /* 
         button {
             padding: 12px 25px;
             border: none;
@@ -130,85 +131,107 @@
             background: #1f7a34;
         } */
 
-        .button-21 {
-            align-items: center;
-            appearance: none;
-            background-color: #00B9F1;
-            /* background-image: linear-gradient(1deg, #797ed7, #149BF3 99%); */
-            background-size: calc(100% + 20px) calc(100% + 20px);
-            border-radius: 100px;
-            border-width: 0;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #FFFFFF;
-            cursor: pointer;
-            display: inline-flex;
-            font-family: CircularStd, sans-serif;
-            font-size: 1rem;
-            height: auto;
-            justify-content: center;
-            line-height: 1.5;
-            padding: 6px 20px;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color .2s, background-position .2s;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            vertical-align: top;
-            white-space: nowrap;
-        }
+      .button-21 {
+        align-items: center;
+        appearance: none;
+        background-color: #00b9f1;
+        /* background-image: linear-gradient(1deg, #797ed7, #149BF3 99%); */
+        background-size: calc(100% + 20px) calc(100% + 20px);
+        border-radius: 100px;
+        border-width: 0;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: CircularStd, sans-serif;
+        font-size: 1rem;
+        height: auto;
+        justify-content: center;
+        line-height: 1.5;
+        padding: 6px 20px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition:
+          background-color 0.2s,
+          background-position 0.2s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: top;
+        white-space: nowrap;
+      }
 
-        .button-21:active,
-        .button-21:focus {
-            outline: none;
-        }
+      .button-21:active,
+      .button-21:focus {
+        outline: none;
+      }
 
-        .button-21:hover {
-            background-position: -20px -20px;
-        }
+      .button-21:hover {
+        background-position: -20px -20px;
+      }
 
-        .button-21:focus:not(:active) {
-            box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
-        }
+      .button-21:focus:not(:active) {
+        box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 0.125em;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="nav">
-        <a class="brand" href="https://rdkcentral.com/" target="_blank" rel="noopener noreferrer" title="RDK Central">
-            <img src="./assets/RDK-logo.png" alt="RDK">
-            <span style="color: white;font-size:large;">Core RDK Portal</span>
-        </a>
-        <a href="https://github.com/rdkcentral"  target="_blank" class="brand">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-github"
-                viewBox="0 0 16 16">
-                <path
-                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-            </svg>
-        </a>
+      <a
+        class="brand"
+        href="https://rdkcentral.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="RDK Central"
+      >
+        <img src="./assets/RDK-logo.png" alt="RDK" />
+        <span style="color: white; font-size: large"
+          >Core RDK Specifications</span
+        >
+      </a>
+      <a href="https://github.com/rdkcentral" target="_blank" class="brand">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="white"
+          class="bi bi-github"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+          />
+        </svg>
+      </a>
     </header>
     <main class="landing-container">
-        <div class="landing-panel">
-            <h1 style="color: white;">Core RDK Portal</h1>
-            <p style="color: #D6DCE3;">
-                Get started by selecting a Core RDK version. Then choose an RDK profile to access the corresponding Core
-                RDK specification and related artifacts
-            </p>
-            <div>
-				<!-- Default value = Core RDK8 -->
-				<select id="myDropdown" onchange="updateButtons()">
-				<option value="1">Core RDK9(draft)</option>
-				<option value="2" selected>Core RDK8</option>
-				</select>
-            </div>
+      <div class="landing-panel">
+        <h1 style="color: white">Core RDK Specifications</h1>
+        <p style="color: #d6dce3">
+          Get started by selecting a Core RDK version. Then choose an RDK
+          profile to access the corresponding Core RDK specification and related
+          artifacts
+        </p>
+        <div>
+          <!-- Default value = Core RDK8 -->
+          <select id="myDropdown" onchange="updateButtons()">
+            <option value="2" selected>RDK8</option>
+            <option value="1">RDK9 (Draft)</option>
+          </select>
+        </div>
 
-            <div class="btn-container">
-                <button id="btn1" class="button-21" role="button">Core RDK for Video</button>
-                <button id="btn2" class="button-21" role="button">Core RDK for BroadBand</button>
-            </div>
-            <!-- <div class="button-grid">
+        <div class="btn-container">
+          <button id="btn1" class="button-21" role="button">
+            Core RDK for Video
+          </button>
+          <button id="btn2" class="button-21" role="button">
+            Core RDK for BroadBand
+          </button>
+        </div>
+        <!-- <div class="button-grid">
                 <div class="card">
                     <h2>Entertainment Documentation</h2>
                     <p>Access RDK Entertainment platform documentation.</p>
@@ -221,29 +244,38 @@
                     <button class="btn2" id="btn2">Button 2</button>
                 </div>
             </div>  -->
-        </div>
+      </div>
     </main>
 
     <script>
-        105
-        function updateButtons() {
-            const value = document.getElementById("myDropdown").value;
-            const btn1 = document.getElementById("btn1");
-            const btn2 = document.getElementById("btn2");
-            if (value === "1") {
-                btn1.onclick = () => window.open('https://rdkcentral.github.io/rdk-core-specs/video/rdk9/index.html')
-                btn2.onclick = () => window.open('https://rdkcentral.github.io/rdk-core-specs/broadband/rdk9/');
-            }
-            else if (value === "2") {
-                btn1.onclick = () => window.open('https://rdkcentral.github.io/rdk-core-specs/video/rdk8/index.html');
-                btn2.onclick = () => window.open('https://rdkcentral.github.io/rdk-core-specs/broadband/rdk8/');
-            }
+      105;
+      function updateButtons() {
+        const value = document.getElementById("myDropdown").value;
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
+        if (value === "1") {
+          btn1.onclick = () =>
+            window.open(
+              "https://rdkcentral.github.io/rdk-core-specs/video/rdk9/index.html",
+            );
+          btn2.onclick = () =>
+            window.open(
+              "https://rdkcentral.github.io/rdk-core-specs/broadband/rdk9/",
+            );
+        } else if (value === "2") {
+          btn1.onclick = () =>
+            window.open(
+              "https://rdkcentral.github.io/rdk-core-specs/video/rdk8/index.html",
+            );
+          btn2.onclick = () =>
+            window.open(
+              "https://rdkcentral.github.io/rdk-core-specs/broadband/rdk8/",
+            );
         }
+      }
 
-        // Apply default selection (9) on page load
-        updateButtons();
-
+      // Apply default selection (8) on page load
+      updateButtons();
     </script>
-</body>
-
+  </body>
 </html>
