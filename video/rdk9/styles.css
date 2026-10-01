@@ -78,6 +78,7 @@
 .api-detail-method{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:2px 0 16px}
 .api-detail-method code{background:#eef2fb;padding:5px 10px;border-radius:6px;font:500 .9rem "JetBrains Mono",monospace;white-space:pre-line;line-height:1.5}
 .api-detail-meta{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.api-support{display:inline-flex;align-items:center;gap:6px}.api-support-label{font-size:.86rem;color:var(--ink)}.api-support-mark{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-weight:700;line-height:1}.api-support-mark.supported{background:#dff7ea;color:#1d6b43;border:1px solid #a8e1bd}.api-support-mark.unsupported{background:#fde3df;color:#9a2a1b;border:1px solid #f3b3a8}.api-support-mark.unknown{background:#f2f4f7;color:var(--muted);border:1px solid var(--border)}
 .api-detail-fields{display:grid;gap:12px;margin:0 0 22px;padding:0}
 .api-detail-row{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:14px 16px;background:#f7fafb;border:1px solid var(--border);border-radius:8px}
 .api-detail-row dt{margin:0;color:var(--link);font:700 .74rem/1.4 "Inter",sans-serif;letter-spacing:.04em;text-transform:uppercase}
@@ -85,6 +86,7 @@
 .api-detail-row dd p{margin:0}
 .api-detail-list{margin:0;padding-left:18px;display:grid;gap:5px}
 .api-detail-list li{color:var(--ink);font-size:.9rem;line-height:1.5}
+.api-detail-text{white-space:pre-wrap}.api-detail-sublist{margin:4px 0 0;padding-left:18px;list-style-type:circle}.api-detail-sublist li{margin:0}
 @media(max-width:560px){.api-detail-row{grid-template-columns:1fr}}
 
 .reference-card{padding:22px 24px}

@@ -202,41 +202,52 @@ def extract_error_values(pdf_name: str) -> list[dict]:
 def _mark_badge(mark: str) -> str:
     """Render a method's C++17/JS support as the same check/cross badge style used in the source PDF."""
     if mark == "check":
-        return '<span class="pill good pill-icon">&#10003; Supported</span>'
+        return '<span class="api-support-mark supported" role="img" aria-label="Supported">&#10003;</span>'
     if mark == "cross":
-        return '<span class="pill bad pill-icon">&#10007; Not supported</span>'
-    return '<span class="lede">&mdash;</span>'
+        return '<span class="api-support-mark unsupported" role="img" aria-label="Not supported">&#10007;</span>'
+    return '<span class="api-support-mark unknown" aria-label="Support unknown">&mdash;</span>'
 
 
-# A field-list cell holds one entry per physical line, e.g. "name - bool"; lines that don't
-# start a new "identifier - value" pair (including wrapped value keywords) continue the previous entry.
-_FIELD_TYPE_WORDS = {"string", "bool", "boolean", "object", "number", "unsigned", "double", "enum", "json", "optional", "true", "false", "null", "integer", "array"}
-_FIELD_START_RE = re.compile(r"^([a-zA-Z_][A-Za-z0-9_]*)\s-\s?")
+_FIELD_DECLARATION = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*\s-\s")
+_FIELD_SUBITEM = re.compile(r"^(?:[\[{(\"']|list\b|one\b|true\b|false\b|null\b|\d)", re.IGNORECASE)
 
 
-def _split_field_items(value: str) -> list[str]:
-    items: list[str] = []
-    for line in str(value or "").splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        match = _FIELD_START_RE.match(line)
-        starts_new_item = bool(match) and match.group(1) not in _FIELD_TYPE_WORDS
-        if starts_new_item or not items:
-            items.append(line)
+def _field_lines(value: str) -> list[str]:
+    lines = [line.strip() for line in str(value or "").splitlines() if line.strip()]
+    repaired: list[str] = []
+    for line in lines:
+        if repaired and re.match(r"^[A-Za-z]+\s-\s", line) and re.search(r"[A-Za-z]$", repaired[-1]):
+            repaired[-1] += line
         else:
-            items[-1] = f"{items[-1]} {line}"
-    return items
+            repaired.append(line)
+    return repaired
 
 
 def _render_field_block(value: str) -> str:
-    """Render a Parameters/Returns/Specific errors cell as a bullet list when it holds multiple entries."""
-    items = _split_field_items(value)
-    if not items:
-        return "<p>None</p>"
-    if len(items) == 1:
-        return f"<p>{escape(items[0])}</p>"
-    return '<ul class="api-detail-list">' + "".join(f"<li>{escape(item)}</li>" for item in items) + "</ul>"
+    """Render PDF field declarations as bullets with their value constraints as nested bullets."""
+    declarations: list[list[object]] = []
+    for line in _field_lines(value):
+        if _FIELD_DECLARATION.match(line):
+            declarations.append([line, []])
+        elif declarations:
+            declaration, details = declarations[-1]
+            if details and not _FIELD_SUBITEM.match(line):
+                details[-1] = f"{details[-1]} {line}"
+            elif _FIELD_SUBITEM.match(line):
+                details.append(line)
+            else:
+                declarations[-1][0] = f"{declaration} {line}"
+        else:
+            return f'<span class="api-detail-text">{escape(value or "None")}</span>'
+    if not declarations:
+        return '<span class="api-detail-text">None</span>'
+    rendered = []
+    for declaration, details in declarations:
+        detail_html = ""
+        if details:
+            detail_html = '<ul class="api-detail-sublist">' + "".join(f"<li>{escape(detail)}</li>" for detail in details) + "</ul>"
+        rendered.append(f"<li>{escape(declaration)}{detail_html}</li>")
+    return '<ul class="api-detail-list">' + "".join(rendered) + "</ul>"
 
 
 def render_northbound_templates(methods: list[dict]) -> str:
@@ -252,8 +263,8 @@ def render_northbound_templates(methods: list[dict]) -> str:
             f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>{escape(method["component"])}</h2></div>'
             f'<div class="api-detail-method"><code>{escape(method["name"])}</code></div>'
             f'<div class="api-detail-meta">{"".join(meta_pills)}'
-            f'<span class="pill">C++17: </span>{_mark_badge(method["cpp17"])}'
-            f'<span class="pill">JS: </span>{_mark_badge(method["js"])}'
+            f'<span class="api-support"><span class="api-support-label">C++17</span>{_mark_badge(method["cpp17"])}</span>'
+            f'<span class="api-support"><span class="api-support-label">JS</span>{_mark_badge(method["js"])}</span>'
             '</div>'
             '<dl class="api-detail-fields">'
             f'<div class="api-detail-row"><dt>Parameters</dt><dd>{_render_field_block(method["parameters"])}</dd></div>'
