@@ -137,6 +137,40 @@ SPEC_TOC_SCRIPT = (
 )
 
 
+APP_ACTIONS_MODAL_SCRIPT = SPEC_MODAL_SCRIPT = (
+    '<script>(function(){'
+    'var modal=document.getElementById("spec-modal");'
+    'if(!modal)return;'
+    'var body=document.getElementById("spec-modal-body");'
+    'function openModal(id){'
+    'var tmpl=document.getElementById("tmpl-"+id);'
+    'if(!tmpl)return;'
+    'body.innerHTML="";'
+    'body.appendChild(tmpl.content.cloneNode(true));'
+    'modal.classList.add("open");'
+    'modal.setAttribute("aria-hidden","false");'
+    'document.body.style.overflow="hidden"'
+    '}'
+    'function closeModal(){'
+    'modal.classList.remove("open");'
+    'modal.setAttribute("aria-hidden","true");'
+    'document.body.style.overflow=""'
+    '}'
+    'document.querySelectorAll(".spec-modal-trigger").forEach(function(el){'
+    'el.addEventListener("click",function(e){'
+    'e.preventDefault();'
+    'openModal(el.getAttribute("data-modal-target"))'
+    '})});'
+    'modal.querySelectorAll("[data-modal-close]").forEach(function(el){'
+    'el.addEventListener("click",closeModal)'
+    '});'
+    'document.addEventListener("keydown",function(e){'
+    'if(e.key==="Escape")closeModal()'
+    '})'
+    '})()</script>'
+)
+
+
 def build_app_actions() -> None:
     pdf_name = "Firebolt 9 App Actions.pdf"
     action_types = (
@@ -165,7 +199,21 @@ def build_app_actions() -> None:
                 rows.append(sliced)
         return rows
 
-    format_table = render_spec_table(headers, data_rows(page_tables[0][1]))
+    format_rows = data_rows(page_tables[0][1])
+    action_type_pills = "".join(
+        f'<a class="allowed-action spec-modal-trigger" href="#app-action-{escape(action_type)}" '
+        f'data-modal-target="app-action-{escape(action_type)}" title="Open {escape(name)}">{escape(action_type)}</a>'
+        for name, action_type in action_types
+    )
+    format_raw_cells = set()
+    for row_index, row in enumerate(format_rows):
+        if row[0] == "actionType":
+            row[4] = f'<div class="allowed-actions">{action_type_pills}</div>'
+            format_raw_cells.add((row_index, 4))
+        elif row[0] == "actionData":
+            # The PDF says "See below", but per-action fields now open in a modal rather than appearing further down the page.
+            row[4] = "Depends on actionType — click a value above to view its fields"
+    format_table = render_spec_table(headers, format_rows, raw_cells=format_raw_cells)
 
     # The "payload" field of Send App Metrics nests its own 4-column table of Firebolt-defined fields,
     # extracted from the same physical table (columns 4-7) as the main actionData table (columns 0-3).
@@ -178,7 +226,7 @@ def build_app_actions() -> None:
     ]
     payload_table = render_spec_table(["Part", "Type", "Mandatory", "Description"], payload_rows, nested=True)
     payload_row_index = next(index for index, row in enumerate(metrics_main_rows) if row[0] == "payload")
-    metrics_main_rows[payload_row_index][4] = payload_table
+    metrics_main_rows[payload_row_index][4] = f'<details class="spec-details"><summary>payload fields</summary>{payload_table}</details>'
 
     action_tables = {
         "org.rdk.app.launch": render_spec_table(headers, data_rows(page_tables[0][2])),
@@ -214,39 +262,36 @@ def build_app_actions() -> None:
         table_markup = action_tables.get(action_type, '<p class="lede">No parameters are required for this action.</p>')
         example_markup = "".join(f'<pre class="spec-example">{escape(block)}</pre>' for block in examples)
         entries.append(
-            f'<section class="spec-entry" id="app-action-{escape(action_type)}">'
+            f'<template id="tmpl-app-action-{escape(action_type)}"><section class="spec-entry">'
             f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">App action type</span><h2>{escape(heading)}</h2></div>'
             f'<p class="spec-entry-overview">{escape(overview)}</p>'
             f'<h3>Format of actionData</h3>{table_markup}'
             f'<h3>Example</h3>{example_markup or "<p class=\"lede\">No example was included in the source PDF.</p>"}'
-            f'</section>'
+            f'</section></template>'
         )
 
-    toc_links = "".join(
-        f'<a href="#app-action-{escape(action_type)}">{escape(name)}</a>'
-        for name, action_type in action_types
-    )
     body = hero(
         "Firebolt 9",
         "Firebolt App Actions Specification",
         "App actions exposed by the RDK9 video platform for application-driven device and content experiences.",
     )
     body += (
-        '<section class="section" style="padding-top:34px"><div class="spec-layout">'
-        + render_spec_toc([
-            ("Reference", '<a href="#overview">Overview</a><a href="#format">Format of Action</a>'),
-            ("App action types", toc_links),
-        ])
-        + '<div class="spec-content">'
+        '<section class="section" style="padding-top:34px"><div class="spec-content">'
         '<section class="spec-overview-card" id="overview"><div class="eyebrow">Overview</div>'
         '<h2 style="margin:8px 0 0">Firebolt 9 App Actions Specification</h2>'
         '<p>All App Actions follow the following format.</p>'
         '</section>'
         f'<section class="spec-entry" id="format"><h2>Format of Action</h2>{format_table}</section>'
+        '</div></section>'
         f'{"".join(entries)}'
-        '</div></div></section>'
+        '<div class="spec-modal" id="spec-modal" aria-hidden="true">'
+        '<div class="spec-modal-backdrop" data-modal-close></div>'
+        '<div class="spec-modal-dialog" role="dialog" aria-modal="true">'
+        '<button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button>'
+        '<div class="spec-modal-body" id="spec-modal-body"></div>'
+        '</div></div>'
     )
-    body += SPEC_TOC_SCRIPT
+    body += SPEC_MODAL_SCRIPT
     footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
     (ROOT / "firebolt-app-actions.html").write_text(shell("Firebolt App Actions Specification | RDKE", "northbound", body, footer), encoding="utf-8")
 
@@ -273,7 +318,7 @@ def build_intents() -> None:
         action_sections.append((action_types[index], text[start:end].strip()))
     constituent_rows = [
         ("action", "string", "Yes", "A string specifying the implicit action being requested to be performed", "'home' 'launch' 'pre-load' 'entity' 'playback' 'search' 'section' 'tune' 'play-entity' 'play-query' 'previous' 'next' 'repeat' 'shuffle' 'skip-ad' 'skip-recap' 'skip-intro'"),
-        ("data", "object", "No", "An optional object that contains data to be used by the application in order to fulfil the action", "See below"),
+        ("data", "object", "No", "An optional object that contains data to be used by the application in order to fulfil the action", "Depends on action — click a value above to view its fields"),
         ("context", "object", "Yes", "An object defining the source of the intent and optionally properties of that source", "Name Type Mandatory Allowed values Description"),
     ]
     context_rows = (
@@ -289,7 +334,8 @@ def build_intents() -> None:
         f'<th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody>{context_html}</tbody></table></div>'
     )
     action_values = "".join(
-        f'<a class="allowed-action" href="#intent-{escape(action.removesuffix(" action type").lower())}" title="Jump to {escape(action)}">{escape(action.removesuffix(" action type").lower())}</a>'
+        f'<a class="allowed-action spec-modal-trigger" href="#intent-{escape(action.removesuffix(" action type").lower())}" '
+        f'data-modal-target="intent-{escape(action.removesuffix(" action type").lower())}" title="Open {escape(action)}">{escape(action.removesuffix(" action type").lower())}</a>'
         for action in action_types
     )
     action_values = f'<div class="allowed-actions">{action_values}</div>'
@@ -444,18 +490,14 @@ def build_intents() -> None:
         examples_markup = "".join(f'<pre class="spec-example">{escape(block)}</pre>' for block in example_blocks)
         slug = escape(action.removesuffix(" action type").lower())
         action_entries += (
-            f'<section class="spec-entry" id="intent-{slug}">'
+            f'<template id="tmpl-intent-{slug}"><section class="spec-entry">'
             f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>{escape(action)}</h2></div>'
             f'<p class="spec-entry-overview">{escape(overview.strip())}</p>'
             f'<h3>Definition of data object</h3>{definition_markup}'
             f'<h3>{escape(example_heading)}</h3>{examples_markup}'
-            f'</section>'
+            f'</section></template>'
         )
 
-    toc_action_links = "".join(
-        f'<a href="#intent-{escape(action.removesuffix(" action type").lower())}">{escape(action.removesuffix(" action type"))}</a>'
-        for action in action_types
-    )
     example = '''{
   "action": "playback",
   "data": {
@@ -472,12 +514,7 @@ def build_intents() -> None:
         "Intent definitions for applications to request device and content experiences through the RDK9 video platform.",
     )
     body += (
-        '<section class="section" style="padding-top:34px"><div class="spec-layout">'
-        + render_spec_toc([
-            ("Reference", '<a href="#overview">Overview</a><a href="#constituent-parts">Constituent parts</a>'),
-            ("Intent action types", toc_action_links),
-        ])
-        + '<div class="spec-content">'
+        '<section class="section" style="padding-top:34px"><div class="spec-content">'
         '<section class="spec-overview-card" id="overview"><div class="eyebrow">Overview</div><h2 style="margin:8px 0 0">Firebolt 9 Intents Specification</h2>'
         '<p>An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a payment.</p>'
         '<p>An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user.</p>'
@@ -486,10 +523,16 @@ def build_intents() -> None:
         f'<div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Part</th><th>Type</th><th>Mandatory</th><th>Description</th><th>Allowed values</th></tr></thead><tbody>{constituent_html}</tbody></table></div>'
         f'<h3>Example</h3><pre class="spec-example">{escape(example)}</pre>'
         '</section>'
+        '</div></section>'
         f'{action_entries}'
-        '</div></div></section>'
+        '<div class="spec-modal" id="spec-modal" aria-hidden="true">'
+        '<div class="spec-modal-backdrop" data-modal-close></div>'
+        '<div class="spec-modal-dialog" role="dialog" aria-modal="true">'
+        '<button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button>'
+        '<div class="spec-modal-body" id="spec-modal-body"></div>'
+        '</div></div>'
     )
-    body += SPEC_TOC_SCRIPT
+    body += SPEC_MODAL_SCRIPT
     footer = f'Source file: <a href="{pdf_name}" target="_blank" rel="noopener">{pdf_name}</a>'
     (ROOT / "firebolt-intents.html").write_text(shell("Firebolt Intents Specification | RDKE", "northbound", body, footer), encoding="utf-8")
 

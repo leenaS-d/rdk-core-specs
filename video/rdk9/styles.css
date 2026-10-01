@@ -60,3 +60,13 @@
 .spec-table-wrap.nested{margin-top:8px;box-shadow:none}
 .spec-table-wrap.nested .spec-table{font-size:.78rem}
 .spec-table-wrap.nested .spec-table th{background:#e4ecf9}
+
+.spec-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
+.spec-modal.open{display:flex}
+.spec-modal-backdrop{position:absolute;inset:0;background:rgba(8,13,24,.6)}
+.spec-modal-dialog{position:relative;background:var(--card);border-radius:12px;box-shadow:0 24px 60px #0007;max-width:760px;width:100%;max-height:min(82vh,780px);overflow:auto;padding:32px 34px}
+.spec-modal-close{position:sticky;top:-10px;float:right;margin:-12px -14px 10px 10px;width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--muted);font-size:1.2rem;line-height:1;cursor:pointer;z-index:1}
+.spec-modal-close:hover{background:#eef2fb;color:var(--link);border-color:var(--blue)}
+.spec-modal-body .spec-entry{box-shadow:none;border:none;border-left:none;padding:0}
+.spec-modal-body .spec-entry-head{clear:both}
+@media(max-width:650px){.spec-modal-dialog{padding:24px 20px}}
