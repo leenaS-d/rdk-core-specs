@@ -30,7 +30,7 @@
     {
       "halInterface": "Control Manager HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/control"
+      "source": "https://github.com/rdkcentral/rdk-halif-irdb"
     },
     {
       "halInterface": "MFRLib HAL",
@@ -39,33 +39,28 @@
     },
     {
       "halInterface": "systemaudioplatform HAL",
-      "version": "",
-      "source": ""
-    },
-    {
-      "halInterface": "Crypto HAL",
-      "version": "",
-      "source": ""
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-systemaudioplatform"
     },
     {
       "halInterface": "Bluetooth HAL",
-      "version": "",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/bluetooth_vendor_document"
+    },
+    {
+      "halInterface": "Westeros Sink HAL",
+      "version": "develop",
       "source": ""
     },
     {
-      "halInterface": "Sysint HAL",
-      "version": "",
-      "source": ""
-    },
-    {
-      "halInterface": "Westeros SOC HAL",
-      "version": "",
-      "source": ""
+      "halInterface": "Westeros Graphics HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-westeros-gl"
     },
     {
       "halInterface": "Graphics & Matrix HAL",
-      "version": "",
-      "source": ""
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-hpk-documentation/doc/Media_Pipeline"
     }
   ]
 }

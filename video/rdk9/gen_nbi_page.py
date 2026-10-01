@@ -2,55 +2,368 @@
 import json
 import re
 from html import escape
-from build import build_api, hero, shell
-from import_apis import convert_excel_to_json
+from build import hero, shell, status_explainer
 from pathlib import Path
 from pypdf import PdfReader
 import pdfplumber
 
 ROOT = Path(__file__).resolve().parent
 
+# Row highlight colors used by the Firebolt 9 API Specifications PDF (see its "Key" section):
+# green = "Approved - ready for development", red = "Not approved - not ready for development".
+API_SPEC_RED = (1.0, 0.92549, 0.92157)
+API_SPEC_GREEN = (0.86275, 1.0, 0.9451)
+
+
+def _dewrap_identifier(value: str) -> str:
+    """Join a PDF table cell's hard-wrapped lines back into a single identifier (no inner spaces)."""
+    text = "".join(line.strip() for line in str(value or "").splitlines())
+    # Method cells pair a property getter with its change event, e.g. "name" + "onNameChanged".
+    return re.sub(r"(?<!^)(on[A-Z])", r"\n\1", text, count=1)
+
+
+def _row_highlight(page, bbox: tuple) -> str | None:
+    """Classify a table row's approval color by its strongest vertical overlap with a highlight rect."""
+    top, bottom = bbox[1], bbox[3]
+    best_color, best_overlap = None, 0.0
+    for rect in page.rects:
+        color = rect.get("non_stroking_color")
+        if color not in (API_SPEC_RED, API_SPEC_GREEN):
+            continue
+        overlap = max(0.0, min(rect["bottom"], bottom) - max(rect["top"], top))
+        if overlap > best_overlap:
+            best_color, best_overlap = color, overlap
+    if best_color == API_SPEC_RED:
+        return "red"
+    if best_color == API_SPEC_GREEN:
+        return "green"
+    return None
+
+
+# The C++17/JS columns use small green-check / red-cross circle icons rather than text,
+# with the C++17 icon always to the left of the JS icon within the same table row.
+_MARK_COLUMN_SPLIT_X = 390
+
+
+def _classify_mark_image(page, image: dict) -> str:
+    """Classify a small status icon image as "check" (green) or "cross" (red) by its average color."""
+    bbox = (image["x0"], image["top"], image["x1"], image["bottom"])
+    pixels = page.crop(bbox).to_image(resolution=72).original.convert("RGB")
+    width, height = pixels.size
+    center_x, center_y = width // 2, height // 2
+    samples = [
+        pixels.getpixel((center_x + dx, center_y + dy))
+        for dx in range(-2, 3) for dy in range(-2, 3)
+        if 0 <= center_x + dx < width and 0 <= center_y + dy < height
+    ]
+    red = sum(sample[0] for sample in samples) / len(samples)
+    green = sum(sample[1] for sample in samples) / len(samples)
+    blue = sum(sample[2] for sample in samples) / len(samples)
+    return "check" if green >= red and green >= blue else "cross"
+
+
+def _row_marks(page, bbox: tuple, marks: list[tuple]) -> tuple[str, str]:
+    """Find the C++17/JS status icons overlapping a table row and return their (cpp17, js) marks."""
+    top, bottom = bbox[1], bbox[3]
+    cpp17 = js = ""
+    for mark_top, mark_bottom, column, mark in marks:
+        overlap = max(0.0, min(mark_bottom, bottom) - max(mark_top, top))
+        if overlap <= 0:
+            continue
+        if column == "cpp17":
+            cpp17 = mark
+        else:
+            js = mark
+    return cpp17, js
+
+
+def extract_api_spec_methods(pdf_name: str) -> tuple[list[dict], int]:
+    """Parse the Module/Method table from the Firebolt 9 API Specifications PDF.
+
+    Rows highlighted red ("Not approved - not ready for development") are dropped; only
+    green ("Approved - ready for development") rows are returned. Returns the approved
+    entries plus a count of the red entries that were excluded.
+    """
+    entries: list[dict] = []
+    excluded_red = 0
+    current: dict | None = None
+    with pdfplumber.open(ROOT / pdf_name) as pdf:
+        for page in pdf.pages:
+            marks = [
+                (
+                    image["top"], image["bottom"],
+                    "cpp17" if image["x0"] < _MARK_COLUMN_SPLIT_X else "js",
+                    _classify_mark_image(page, image),
+                )
+                for image in page.images
+            ]
+            for table in page.find_tables():
+                rows = table.extract()
+                if not rows or len(rows[0]) != 11:
+                    continue
+                for row_index, row in enumerate(rows):
+                    cells = [cell or "" for cell in row]
+                    first = cells[0].strip()
+                    if first == "" and cells[1] == "Module":
+                        continue
+                    if re.match(r"^\d+$", first):
+                        bbox = table.rows[row_index].bbox
+                        color = _row_highlight(page, bbox)
+                        cpp17, js = _row_marks(page, bbox, marks)
+                        current = {"cells": cells, "color": color, "cpp17": cpp17, "js": js}
+                        if color == "red":
+                            excluded_red += 1
+                        else:
+                            entries.append(current)
+                    elif current is not None:
+                        for col_index, cell in enumerate(cells):
+                            cell = cell.strip()
+                            if not cell:
+                                continue
+                            previous = current["cells"][col_index]
+                            current["cells"][col_index] = f"{previous}\n{cell}" if previous else cell
+
+    methods = []
+    for entry in entries:
+        cells = entry["cells"]
+        methods.append({
+            "id": int(cells[0].strip()),
+            "component": _dewrap_identifier(cells[1]),
+            "name": _dewrap_identifier(cells[2]),
+            "parameters": clean_lines(cells[3]),
+            "returns": clean_lines(cells[4]),
+            "specificErrors": clean_lines(cells[5]),
+            "releaseTag": clean_cell(cells[6]),
+            "deprecatedReleaseTag": clean_cell(cells[7]),
+            "cpp17": entry["cpp17"],
+            "js": entry["js"],
+            "description": clean_cell(cells[10]),
+        })
+    return methods, excluded_red
+
+
+def extract_interpretation_terms(pdf_name: str) -> list[tuple[str, str]]:
+    """Parse the page 1 "Interpretation" (Term/Meaning) table used to read the API spec."""
+    with pdfplumber.open(ROOT / pdf_name) as pdf:
+        for table in pdf.pages[0].find_tables():
+            rows = table.extract()
+            if rows and [clean_cell(cell) for cell in rows[0][1:3]] == ["Term", "Meaning"]:
+                return [(clean_cell(row[1]), clean_cell(row[2])) for row in rows[1:] if (row[1] or "").strip()]
+    return []
+
+
+def extract_types(pdf_name: str) -> list[tuple[str, str]]:
+    """Parse the Types table from the Firebolt API specification's first page."""
+    with pdfplumber.open(ROOT / pdf_name) as pdf:
+        for table in pdf.pages[0].find_tables():
+            rows = table.extract()
+            if rows and [clean_cell(cell) for cell in rows[0][1:3]] == ["Type", "Definition"]:
+                return [(clean_cell(row[1]), clean_cell(row[2])) for row in rows[1:] if (row[1] or "").strip()]
+    return []
+
+
+def extract_error_values(pdf_name: str) -> list[dict]:
+    """Parse the "Errors" table (spans pages 1-2) listing generic and specific error values.
+
+    Rows highlighted red ("Not approved - not ready for development") are excluded, matching
+    the same convention used for the main Module/Method table.
+    """
+    rows_out: list[dict] = []
+    current_class = ""
+    with pdfplumber.open(ROOT / pdf_name) as pdf:
+        for page in pdf.pages[:2]:
+            for table in page.find_tables():
+                rows = table.extract()
+                if not rows or len(rows[0]) != 7:
+                    continue
+                for row_index, row in enumerate(rows):
+                    cells = [cell or "" for cell in row]
+                    if not any(cell.strip() for cell in cells):
+                        continue
+                    if clean_cell(cells[1]) == "Class":
+                        continue
+                    if not re.match(r"^\d+$", cells[0].strip()):
+                        continue
+                    if cells[1].strip():
+                        current_class = clean_cell(cells[1])
+                    if _row_highlight(page, table.rows[row_index].bbox) == "red":
+                        continue
+                    rows_out.append({
+                        "class": current_class,
+                        "value": clean_cell(cells[2]),
+                        "name": clean_cell(cells[3]),
+                        "description": clean_cell(cells[4]),
+                        "examples": clean_cell(cells[5]),
+                        "openIssues": clean_cell(cells[6]),
+                    })
+    return rows_out
+
+
+def _mark_badge(mark: str) -> str:
+    """Render a method's C++17/JS support as the same check/cross badge style used in the source PDF."""
+    if mark == "check":
+        return '<span class="pill good pill-icon">&#10003; Supported</span>'
+    if mark == "cross":
+        return '<span class="pill bad pill-icon">&#10007; Not supported</span>'
+    return '<span class="lede">&mdash;</span>'
+
+
+# A field-list cell holds one entry per physical line, e.g. "name - bool"; lines that don't
+# start a new "identifier - value" pair (including wrapped value keywords) continue the previous entry.
+_FIELD_TYPE_WORDS = {"string", "bool", "boolean", "object", "number", "unsigned", "double", "enum", "json", "optional", "true", "false", "null", "integer", "array"}
+_FIELD_START_RE = re.compile(r"^([a-zA-Z_][A-Za-z0-9_]*)\s-\s?")
+
+
+def _split_field_items(value: str) -> list[str]:
+    items: list[str] = []
+    for line in str(value or "").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        match = _FIELD_START_RE.match(line)
+        starts_new_item = bool(match) and match.group(1) not in _FIELD_TYPE_WORDS
+        if starts_new_item or not items:
+            items.append(line)
+        else:
+            items[-1] = f"{items[-1]} {line}"
+    return items
+
+
+def _render_field_block(value: str) -> str:
+    """Render a Parameters/Returns/Specific errors cell as a bullet list when it holds multiple entries."""
+    items = _split_field_items(value)
+    if not items:
+        return "<p>None</p>"
+    if len(items) == 1:
+        return f"<p>{escape(items[0])}</p>"
+    return '<ul class="api-detail-list">' + "".join(f"<li>{escape(item)}</li>" for item in items) + "</ul>"
+
+
+def render_northbound_templates(methods: list[dict]) -> str:
+    """Build the modal detail template for each method's parameters, returns, errors and description."""
+    templates_html = []
+    for method in methods:
+        slug = f"api-{method['id']}"
+        meta_pills = [f'<span class="pill">API version {escape(method["releaseTag"])}</span>']
+        if method["deprecatedReleaseTag"]:
+            meta_pills.append(f'<span class="pill warn">Deprecated in {escape(method["deprecatedReleaseTag"])}</span>')
+        templates_html.append(
+            f'<template id="tmpl-{slug}"><section class="spec-entry">'
+            f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>{escape(method["component"])}</h2></div>'
+            f'<div class="api-detail-method"><code>{escape(method["name"])}</code></div>'
+            f'<div class="api-detail-meta">{"".join(meta_pills)}'
+            f'<span class="pill">C++17: </span>{_mark_badge(method["cpp17"])}'
+            f'<span class="pill">JS: </span>{_mark_badge(method["js"])}'
+            '</div>'
+            '<dl class="api-detail-fields">'
+            f'<div class="api-detail-row"><dt>Parameters</dt><dd>{_render_field_block(method["parameters"])}</dd></div>'
+            f'<div class="api-detail-row"><dt>Returns</dt><dd>{_render_field_block(method["returns"])}</dd></div>'
+            f'<div class="api-detail-row"><dt>Specific errors</dt><dd>{_render_field_block(method["specificErrors"])}</dd></div>'
+            '</dl>'
+            f'<p class="spec-entry-overview">{escape(method["description"])}</p>'
+            '</section></template>'
+        )
+    return "".join(templates_html)
+
+
+def render_reference_section(terms: list[tuple[str, str]], types: list[tuple[str, str]], errors: list[dict]) -> str:
+    """Render compact reference triggers with centered modal tables."""
+    interpretation_table = render_spec_table(["Term", "Meaning"], [list(term) for term in terms])
+    types_table = render_spec_table(["Type", "Definition"], [list(item) for item in types])
+    error_rows = [[error["class"], error["value"], error["name"], error["description"], error["examples"], error["openIssues"]] for error in errors]
+    errors_table = render_spec_table(["Class", "Value", "Name", "Description", "Examples", "Open issues"], error_rows, code_column=1)
+    references = (
+        ("interpretation", "Interpretation", interpretation_table),
+        ("types", "Types", types_table),
+        ("error-values", "Error values", errors_table),
+    )
+    triggers = "".join(
+        f'<a class="reference-trigger spec-modal-trigger" href="#reference-{slug}" data-modal-target="reference-{slug}">{title}</a>'
+        for slug, title, _ in references
+    )
+    templates = "".join(
+        f'<template id="tmpl-reference-{slug}"><section class="spec-entry reference-modal-entry">'
+        f'<div class="spec-entry-head"><h2>{title}</h2></div>{table}</section></template>'
+        for slug, title, table in references
+    )
+    return (
+        '<div class="api-reference">'
+        '<div class="api-reference-title">References</div>'
+        f'<div class="reference-actions">{triggers}</div>'
+        f'{templates}</div>'
+    )
+
 
 def build_northbound() -> None:
-    convert_excel_to_json(
-        ROOT / "northbound-apis-rdk9-draft.xlsx",
-        ROOT / "northbound-apis.json",
-        {
-            "component": ("component", "service", "module", "modules"),
-            "name": ("api", "api name", "interface", "methods"),
-            "description": ("description", "details", "summary"),
-            "reference": ("reference", "source", "url", "repo"),
-            "releaseTag": ("release/tag version", "release", "tag", "version", "api version"),
-        },
-        optional_fields={"description", "reference"},
-    )
+    pdf_name = "Firebolt 9 API Specifications.pdf"
+    methods, excluded_red = extract_api_spec_methods(pdf_name)
     json_path = ROOT / "northbound-apis.json"
-    source = json.loads(json_path.read_text(encoding="utf-8"))
-    normalized_apis = []
-    for api in source.get("apis", []):
-        for field in ("component", "name", "releaseTag"):
-            api[field] = re.sub(r"\s+", " ", str(api.get(field, ""))).strip()
-        api["name"] = re.sub(r"\s+(?=on[A-Z])", "\n", api["name"])
-        if api["name"].startswith("on") and normalized_apis:
-            normalized_apis[-1]["name"] = f'{normalized_apis[-1]["name"]}\n{api["name"]}'
-        else:
-            normalized_apis.append(api)
-    source["apis"] = normalized_apis
-    json_path.write_text(json.dumps(source, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
-    build_api(
-        data_file="northbound-apis.json",
-        output_file="northbound-apis.html",
-        active="northbound",
-        title="Northbound API Specifications",
-        description="Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt.",
-        columns=["Modules", "Version", "Methods"],
-        fields=["component", "releaseTag", "name"],
-        link_field=None,
-        search_placeholder="Search Northbound APIs",
-        empty_message="No Northbound APIs have been loaded.",
-        sort_field="component",
-        draft_note="This page contains an evolving list of Northbound API components. The current list is a draft and will continue to be updated.",
+    json_path.write_text(json.dumps({
+        "schemaVersion": "1.0",
+        "status": "Draft: the Northbound API list is evolving and will be published.",
+        "apis": methods,
+    }, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+
+    modules = sorted({method["component"] for method in methods})
+    deprecated_count = sum(1 for method in methods if method["deprecatedReleaseTag"])
+    row_data = [
+        [
+            method["component"],
+            method["name"],
+            method["releaseTag"],
+            method["deprecatedReleaseTag"],
+            f"api-{method['id']}",
+        ]
+        for method in methods
+    ]
+
+    body = hero(
+        "Firebolt 9",
+        "Northbound API Specifications",
+        "Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt.",
+        status="Draft",
     )
+    notice = '<strong>Note</strong><br>This page contains an evolving list of Northbound API components. The current list is a draft and will continue to be updated.'
+    body += (
+        '<section class="section">'
+        f'<div class="notice" style="margin:0 0 24px">{notice}</div>'
+        '<div class="toolbar northbound-toolbar"><input id="northbound-search" type="search" placeholder="Search Northbound APIs" aria-label="Search Northbound APIs">'
+        '<select id="northbound-module"><option value="">All modules</option>'
+        f'{"".join(f"<option>{escape(module)}</option>" for module in modules)}</select></div>'
+        f'{render_reference_section(extract_interpretation_terms(pdf_name), extract_types(pdf_name), extract_error_values(pdf_name))}'
+        '<div class="table-wrap" style="margin-top:24px"><table><thead><tr>'
+        '<th>Module</th><th>Method</th><th>Version</th><th>Deprecated API</th><th>Details</th>'
+        '</tr></thead><tbody id="northbound-rows"></tbody></table></div>'
+        '</section>'
+        f'{render_northbound_templates(methods)}'
+        '<div class="spec-modal" id="spec-modal" aria-hidden="true">'
+        '<div class="spec-modal-backdrop" data-modal-close></div>'
+        '<div class="spec-modal-dialog" role="dialog" aria-modal="true">'
+        '<button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button>'
+        '<div class="spec-modal-body" id="spec-modal-body"></div>'
+        '</div></div>'
+    )
+    rows = json.dumps(row_data, ensure_ascii=True)
+    body += (
+        f"<script>const DATA={rows};"
+        "const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};"
+        "const search=document.querySelector('#northbound-search'),moduleFilter=document.querySelector('#northbound-module');"
+        "function render(){"
+        "const q=search.value.toLowerCase();"
+        "const rows=DATA.filter(c=>(!q||c.join(' ').toLowerCase().includes(q))&&(!moduleFilter.value||c[0]===moduleFilter.value));"
+        "document.querySelector('#northbound-rows').innerHTML=rows.length?rows.map(c=>"
+        "`<tr><td>${esc(c[0])}</td><td style=\"white-space:pre-line\">${esc(c[1])}</td>"
+        "<td><span class=\"pill\">${esc(c[2])}</span></td>"
+        "<td>${c[3]?`<span class=\"pill warn\">${esc(c[3])}</span>`:'<span class=\"lede\">&mdash;</span>'}</td>"
+        "<td><a class=\"pill spec-modal-trigger\" href=\"#${c[4]}\" data-modal-target=\"${c[4]}\">View details</a></td></tr>`"
+        ").join(''):'<tr><td class=\"empty\" colspan=\"5\">No matching records.</td></tr>'"
+        "}"
+        "[search,moduleFilter].forEach(e=>e.addEventListener('input',render));render()</script>"
+    )
+    body += SPEC_MODAL_SCRIPT
+    footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
+    (ROOT / "northbound-apis.html").write_text(shell("Northbound API Specifications | RDKE", "northbound", body, footer), encoding="utf-8")
+
     build_app_actions()
     build_intents()
     build_key_codes()
@@ -89,9 +402,25 @@ def clean_cell(value: object) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
+def clean_lines(value: object) -> str:
+    """Normalize whitespace within each physical line of a cell while keeping line breaks intact."""
+    lines = (re.sub(r"\s+", " ", line).strip() for line in str(value or "").splitlines())
+    return "\n".join(line for line in lines if line)
+
+
 def clean_identifier(value: object) -> str:
     """Rejoin a field name PDF-wrapped mid-word (e.g. "fireboltMeth\nod") without adding a space."""
     return re.sub(r"\s+", "", str(value or "")).strip()
+
+
+def _catalog_status_bar() -> str:
+    """The same "Catalog status" badge + legend used on the Firebolt API Spec page, for consistency."""
+    status_badge = '<span style="display:inline-flex;align-items:center;padding:9px 14px;border:1px solid #edcf7a;border-radius:5px;background:#fff4d8;color:#8a5a00;font:700 .75rem/1 JetBrains Mono,monospace;letter-spacing:.04em"><span style="color:#9a731f;font-weight:600;margin-right:6px">Catalog status:</span> Draft</span>'
+    return (
+        '<section class="section" style="padding-bottom:0">'
+        f'<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">{status_badge}{status_explainer()}</div>'
+        '</section>'
+    )
 
 
 def render_spec_table(headers: list[str], rows: list[list[str]], code_column: int = 0, raw_cells: set[tuple[int, int]] | None = None, nested: bool = False) -> str:
@@ -156,11 +485,12 @@ APP_ACTIONS_MODAL_SCRIPT = SPEC_MODAL_SCRIPT = (
     'modal.setAttribute("aria-hidden","true");'
     'document.body.style.overflow=""'
     '}'
-    'document.querySelectorAll(".spec-modal-trigger").forEach(function(el){'
-    'el.addEventListener("click",function(e){'
+    'document.addEventListener("click",function(e){'
+    'var el=e.target.closest(".spec-modal-trigger");'
+    'if(!el)return;'
     'e.preventDefault();'
     'openModal(el.getAttribute("data-modal-target"))'
-    '})});'
+    '});'
     'modal.querySelectorAll("[data-modal-close]").forEach(function(el){'
     'el.addEventListener("click",closeModal)'
     '});'
@@ -274,15 +604,15 @@ def build_app_actions() -> None:
         "Firebolt 9",
         "Firebolt App Actions Specification",
         "App actions exposed by the RDK9 video platform for application-driven device and content experiences.",
+        status="Approved",
     )
     body += (
-        '<section class="section" style="padding-top:34px"><div class="spec-content">'
-        '<section class="spec-overview-card" id="overview"><div class="eyebrow">Overview</div>'
-        '<h2 style="margin:8px 0 0">Firebolt 9 App Actions Specification</h2>'
-        '<p>All App Actions follow the following format.</p>'
+        '<section class="section spec-document" style="padding-top:34px">'
+        '<section class="spec-intro" id="format">'
+        '<h2>App action JSON Format</h2>'
+        '<p>All app actions follow the following format.</p>'
+        f'{format_table}</section>'
         '</section>'
-        f'<section class="spec-entry" id="format"><h2>Format of Action</h2>{format_table}</section>'
-        '</div></section>'
         f'{"".join(entries)}'
         '<div class="spec-modal" id="spec-modal" aria-hidden="true">'
         '<div class="spec-modal-backdrop" data-modal-close></div>'
@@ -512,18 +842,19 @@ def build_intents() -> None:
         "Firebolt 9",
         "Firebolt Intents Specification",
         "Intent definitions for applications to request device and content experiences through the RDK9 video platform.",
+        status="Approved",
     )
     body += (
-        '<section class="section" style="padding-top:34px"><div class="spec-content">'
-        '<section class="spec-overview-card" id="overview"><div class="eyebrow">Overview</div><h2 style="margin:8px 0 0">Firebolt 9 Intents Specification</h2>'
+        '<section class="section spec-document" style="padding-top:34px">'
+        '<section class="spec-intro" id="overview">'
         '<p>An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a payment.</p>'
         '<p>An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user.</p>'
         '</section>'
-        f'<section class="spec-entry" id="constituent-parts"><h2>Constituent parts of an intent</h2>'
+        f'<section class="spec-intro" id="constituent-parts"><h2>Constituent parts of an intent</h2>'
         f'<div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Part</th><th>Type</th><th>Mandatory</th><th>Description</th><th>Allowed values</th></tr></thead><tbody>{constituent_html}</tbody></table></div>'
         f'<h3>Example</h3><pre class="spec-example">{escape(example)}</pre>'
         '</section>'
-        '</div></section>'
+        '</section>'
         f'{action_entries}'
         '<div class="spec-modal" id="spec-modal" aria-hidden="true">'
         '<div class="spec-modal-backdrop" data-modal-close></div>'
@@ -554,6 +885,22 @@ def build_key_codes() -> None:
     headers = [clean_cell(cell) for cell in all_rows[0]]
     standard_rows, partner_rows, partner_intro = [], [], ""
     in_partner = False
+
+    def clean_linux_key_codes(value: object) -> str:
+        """Rejoin PDF-wrapped key-code names while retaining multiple distinct key codes."""
+        codes: list[str] = []
+        for line in str(value or "").splitlines():
+            item = clean_cell(line)
+            if not item:
+                continue
+            if item.startswith("KEY_"):
+                codes.append(item)
+            elif codes:
+                codes[-1] += item
+            else:
+                codes.append(item)
+        return " ".join(codes)
+
     for row in all_rows[1:]:
         if not any(clean_cell(cell) for cell in row):
             continue
@@ -564,34 +911,27 @@ def build_key_codes() -> None:
             partner_intro = clean_cell(body_part)
             continue
         cleaned_row = [clean_cell(cell) for cell in row]
+        cleaned_row[2] = clean_linux_key_codes(row[2])
         (partner_rows if in_partner else standard_rows).append(cleaned_row)
 
-    standard_table = render_spec_table(headers, standard_rows)
-    partner_table = render_spec_table(headers, partner_rows)
+    standard_table = f'<div class="key-codes-table">{render_spec_table(headers, standard_rows)}</div>'
+    partner_table = f'<div class="key-codes-table">{render_spec_table(headers, partner_rows)}</div>'
 
     body = hero(
         "Firebolt 9",
         "Firebolt Key Codes Specification",
         "Definition of the Key Codes made available to Firebolt Apps on the RDK9 video platform.",
+        status="Approved",
     )
     body += (
-        '<section class="section" style="padding-top:34px"><div class="spec-layout">'
-        + render_spec_toc([
-            ("Reference", '<a href="#overview">Overview</a><a href="#standard-keys">Standard RCU keys</a><a href="#partner-buttons">Partner buttons</a>'),
-        ])
-        + '<div class="spec-content">'
-        '<section class="spec-overview-card" id="overview"><div class="eyebrow">Overview</div>'
-        '<h2 style="margin:8px 0 0">Firebolt 9 Key Codes Specification</h2>'
-        f'<p>{escape(summary)}</p>'
-        '</section>'
-        f'<section class="spec-entry" id="standard-keys"><h2>Standard RCU keys</h2>{standard_table}</section>'
-        f'<section class="spec-entry" id="partner-buttons"><h2>Partner buttons</h2>'
-        f'<p class="spec-entry-overview">{escape(partner_intro)}</p>{partner_table}'
+        '<section class="section spec-document" style="padding-top:34px">'
+        f'<section class="spec-intro" id="standard-keys"><h2>Standard RCU keys</h2>{standard_table}</section>'
+        f'<section class="spec-intro" id="partner-buttons"><h2>Partner buttons</h2>'
+        f'<p>{escape(partner_intro)}</p>{partner_table}'
         f'<p class="lede" style="margin-top:16px">{escape(closing_note)}</p>'
         '</section>'
-        '</div></div></section>'
+        '</section>'
     )
-    body += SPEC_TOC_SCRIPT
     footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
     (ROOT / "firebolt-key-codes.html").write_text(shell("Firebolt Key Codes Specification | RDKE", "northbound", body, footer), encoding="utf-8")
 
