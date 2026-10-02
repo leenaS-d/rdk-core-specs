@@ -9,23 +9,20 @@ def _source_url(item: dict) -> str:
     return url[0] if isinstance(url, list) else url
 
 
-def _component_type(item: dict) -> str:
-    name = str(item.get("name") or "").casefold()
-    source = _source_url(item).casefold()
-    if name.endswith("-headers") and ("-hal-headers" in name or "rdk-halif-" in source):
-        return "core"
-    return "non-core"
-
-
 def build_components() -> None:
     core_source = load("components.json")
     non_core_source = load("rdk9-non-core-components.json")
-    records = [
-        {**item, "type": item.get("type") or "core"}
+    core_names = {
+        str(item.get("name") or "").casefold()
         for item in core_source.get("components", [])
-    ] + [
-        {**item, "type": _component_type(item)}
-        for item in non_core_source.get("components", [])
+        if item.get("name")
+    }
+    records = [
+        {
+            **item,
+            "type": "core" if str(item.get("name") or "").casefold() in core_names else "non-core",
+        }
+        for item in [*core_source.get("components", []), *non_core_source.get("components", [])]
     ]
     data = [
         [
