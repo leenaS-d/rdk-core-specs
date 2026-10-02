@@ -15,6 +15,7 @@ COMPONENT_WORKBOOKS = (
     "components.xlsx",
 )
 NON_CORE_COMPONENTS = ROOT / "rdk8-non-core-components.json"
+CORE_COMPONENT_EXCEPTIONS = {"firebolt-cpp-client", "firebolt-cpp-transport"}
 
 
 def find_component_workbook() -> Path | None:
@@ -68,6 +69,8 @@ def _source_url(item: dict) -> str:
 def _component_type(item: dict) -> str:
     name = str(item.get("name") or "").casefold()
     source = _source_url(item).casefold()
+    if name in CORE_COMPONENT_EXCEPTIONS:
+        return "core"
     if name.endswith("-headers") and ("-hal-headers" in name or "rdk-halif-" in source):
         return "core"
     return "non-core"

@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parent
 
 FIREBOLT_DOCUMENTS = (
     ("Firebolt 8 JSON-RPC spec.pdf", "firebolt-json-rpc.html", "Firebolt 8 JSON-RPC Specification", "Approved"),
-    ("Firebolt 8 Intent Spec.pdf", "firebolt-intents.html", "Firebolt 8 Intents Specification", "Approved"),
 )
 FIREBOLT_DOCUMENT_DESCRIPTIONS = {
     "firebolt-json-rpc.html": "The Firebolt JSON-RPC specification defines the request and response protocol used by RDK8 applications and platform services.",
@@ -29,9 +28,45 @@ DOCUMENT_TABLE_LAYOUTS = {
     ),
 }
 
-
 def _clean_cell(value: object) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def _render_table_cell(value: object) -> str:
+    text = str(value or "")
+    quoted_items = re.findall(r"'[^']+'", " ".join(text.splitlines()))
+    if len(quoted_items) > 1:
+        return '<ul class="spec-cell-list">' + "".join(f"<li>{escape(item)}</li>" for item in quoted_items) + "</ul>"
+    identifier_items = [line.strip() for line in text.splitlines() if line.strip()]
+    if len(identifier_items) > 1 and all(re.fullmatch(r"[A-Za-z][A-Za-z0-9]*", item) for item in identifier_items):
+        return '<ul class="spec-cell-list">' + "".join(f"<li>{escape(item)}</li>" for item in identifier_items) + "</ul>"
+    return escape(_clean_cell(value))
+
+
+def _join_wrapped_identifier_list(value: object) -> str:
+    joined = "".join(str(value or "").split())
+    profile_values = re.findall(r"(?:child|teen|adult|household)Profile", joined)
+    if profile_values:
+        return "\n".join(profile_values)
+    items: list[str] = []
+    current = ""
+    for line in (line.strip() for line in str(value or "").splitlines() if line.strip()):
+        if current and current[-1].isupper() and line[0].islower():
+            current += line
+        else:
+            if current:
+                items.append(current)
+            current = line
+    if current:
+        items.append(current)
+    return "\n".join(items)
+
+
+def _normalize_table_cell(value: object) -> str:
+    lines = [line.strip() for line in str(value or "").splitlines() if line.strip()]
+    if len(lines) > 1 and all(re.fullmatch(r"(?:[A-Za-z][A-Za-z0-9]*|'[^']+')", line) for line in lines):
+        return "\n".join(lines)
+    return _clean_cell(value)
 
 
 def _clean_field_cell(value: object) -> str:
@@ -224,18 +259,79 @@ def build_firebolt_api() -> None:
 
 
 def _render_table(rows: list[list[object]], headers_override: tuple[str, ...] | None = None) -> str:
-    normalized = [[_clean_cell(cell) for cell in row] for row in rows if any(_clean_cell(cell) for cell in row)]
+    normalized = [[_normalize_table_cell(cell) for cell in row] for row in rows if any(_clean_cell(cell) for cell in row)]
     if len(normalized) < 2:
         return ""
     if normalized[0][0].casefold() in {"document status", "author", "reviewers"}:
         return ""
     headers = list(headers_override) if headers_override else normalized[0]
     body_rows = normalized if headers_override else normalized[1:]
-    header_html = "".join(f"<th>{escape(header)}</th>" for header in headers)
+    header_html = "".join(f"<th>{_render_table_cell(header)}</th>" for header in headers)
     rows_html = "".join(
-        "<tr>" + "".join(f"<td>{escape(cell)}</td>" for cell in row) + "</tr>"
+        "<tr>" + "".join(f"<td>{_render_table_cell(cell)}</td>" for cell in row) + "</tr>"
         for row in body_rows
     )
+    return f'<div class="spec-table-wrap"><table class="spec-table"><thead><tr>{header_html}</tr></thead><tbody>{rows_html}</tbody></table></div>'
+
+
+def _render_nested_definition_table(rows: list[list[object]]) -> str:
+    headers = ["Name", "Type", "Mandatory", "Allowed values", "Description"]
+    fields: list[dict[str, object]] = []
+    current: dict[str, object] | None = None
+    nested_columns: dict[str, int] = {}
+    for row in rows[1:]:
+        raw_values = [str(cell or "") for cell in row]
+        values = [_clean_cell(cell) for cell in row]
+        if values[0]:
+            if current:
+                fields.append(current)
+            nested_columns = {
+                value.casefold(): index
+                for index, value in enumerate(values)
+                if value.casefold() in {"name", "type", "mandatory", "allowed values", "description"}
+            }
+            current = {
+                "values": [
+                    values[0], values[1], values[2],
+                    "" if nested_columns else values[3],
+                    next((value for value in reversed(values[4:]) if value), ""),
+                ],
+                "children": [],
+            }
+            continue
+        if not current or not nested_columns:
+            continue
+        name = values[nested_columns["name"]]
+        if not name:
+            continue
+        current["children"].append([
+            name,
+            values[nested_columns.get("type", 0)],
+            values[nested_columns.get("mandatory", 0)],
+            raw_values[nested_columns.get("allowed values", 0)],
+            values[nested_columns.get("description", 0)],
+        ])
+    if current:
+        fields.append(current)
+
+    header_html = "".join(f"<th>{escape(header)}</th>" for header in headers)
+    rows_html = ""
+    for field in fields:
+        values = field["values"]
+        children = field["children"]
+        allowed_markup = escape(values[3])
+        if children:
+            child_headers = headers
+            child_rows = children
+            if not any(child[4] for child in children):
+                child_headers = headers[:-1]
+                child_rows = [child[:-1] for child in children]
+            child_table = _render_table([child_headers, *child_rows])
+            allowed_markup += f'<details class="spec-details"><summary>{escape(values[0])} fields</summary>{child_table}</details>'
+        rows_html += "<tr>" + "".join(
+            f"<td>{allowed_markup if index == 3 else escape(value)}</td>"
+            for index, value in enumerate(values)
+        ) + "</tr>"
     return f'<div class="spec-table-wrap"><table class="spec-table"><thead><tr>{header_html}</tr></thead><tbody>{rows_html}</tbody></table></div>'
 
 
@@ -262,17 +358,56 @@ def _extract_document(pdf_name: str) -> tuple[str, list[str]]:
     return summary, tables
 
 
+def _extract_json_rpc_sections() -> tuple[str, list[list[object]], list[list[object]]]:
+    with pdfplumber.open(ROOT / "Firebolt 8 JSON-RPC spec.pdf") as pdf:
+        first_page_tables = pdf.pages[0].extract_tables()
+        second_page_tables = pdf.pages[1].extract_tables()
+        third_page_tables = pdf.pages[2].extract_tables()
+
+    def without_numbering(rows: list[list[object]]) -> list[list[object]]:
+        return [row[1:] for row in rows if any(_clean_cell(cell) for cell in row)]
+
+    definitions = _render_table(first_page_tables[1])
+    method_calls = [
+        *without_numbering(first_page_tables[2][1:]),
+        *without_numbering(second_page_tables[0]),
+    ]
+    notifications = [
+        *without_numbering(second_page_tables[1][1:]),
+        *without_numbering(third_page_tables[0]),
+    ]
+    return definitions, method_calls, notifications
+
+
+def _render_json_rpc_message_table(rows: list[list[object]]) -> str:
+    rows_html = []
+    for message, example, notes in rows:
+        rows_html.append(
+            '<tr>'
+            f'<td>{escape(_clean_cell(message))}</td>'
+            f'<td><pre class="json-rpc-example">{escape(_format_json_rpc_example(example))}</pre></td>'
+            f'<td>{escape(_clean_cell(notes))}</td>'
+            '</tr>'
+        )
+    return (
+        '<div class="spec-table-wrap"><table class="spec-table json-rpc-message-table">'
+        '<thead><tr><th>Message</th><th>Example</th><th>Notes</th></tr></thead>'
+        f'<tbody>{"".join(rows_html)}</tbody></table></div>'
+    )
+
+
+def _format_json_rpc_example(value: object) -> str:
+    text = _clean_cell(value)
+    try:
+        return json.dumps(json.loads(text), indent=2, ensure_ascii=False)
+    except json.JSONDecodeError:
+        return str(value or "").strip()
+
+
 def build_firebolt_documents() -> None:
     from build import hero, shell
 
     for pdf_name, output_file, title, status in FIREBOLT_DOCUMENTS:
-        summary, tables = _extract_document(pdf_name)
-        section_title, _headers_override = DOCUMENT_TABLE_LAYOUTS.get(pdf_name, ("", None))
-        first_table = f'<h2>{escape(section_title)}</h2>{tables[0]}' if section_title and tables else (tables[0] if tables else "")
-        table_sections = "".join(
-            f'<section class="spec-intro">{table}</section>'
-            for table in ([first_table] + tables[1:]) if table
-        )
         body = hero(
             "Firebolt 8",
             title,
@@ -280,17 +415,171 @@ def build_firebolt_documents() -> None:
             include_release=False,
             status=status,
         )
-        body += (
-            '<section class="section spec-document" style="padding-top:42px">'
-            '<section class="spec-intro">'
-            '<h2>Overview</h2>'
-            f'<p>{escape(summary)}</p>'
-            '</section>'
-            f'{table_sections or "<p class=\"lede\">No structured tables were extracted from this document.</p>"}'
-            '</section>'
-        )
+        if output_file == "firebolt-json-rpc.html":
+            definitions, method_calls, notifications = _extract_json_rpc_sections()
+            references = (
+                '<div class="api-reference"><div class="api-reference-title">References</div><div class="reference-actions">'
+                '<a class="reference-trigger spec-modal-trigger" href="#json-rpc-definitions" data-modal-target="json-rpc-definitions">Definitions</a>'
+                '<a class="reference-trigger" href="https://www.jsonrpc.org/specification" target="_blank" rel="noopener">JSON RPC 2.0 Spec</a>'
+                '</div><template id="tmpl-json-rpc-definitions"><section class="spec-entry reference-modal-entry">'
+                f'<div class="spec-entry-head"><h2>Definitions</h2></div>{definitions}</section></template></div>'
+            )
+            method_table = _render_json_rpc_message_table(method_calls)
+            notification_table = _render_json_rpc_message_table(notifications)
+            body += (
+                '<section class="section spec-document" style="padding-top:42px">'
+                f'<section class="spec-intro json-rpc-section">{references}</section>'
+                '<section class="spec-intro json-rpc-section"><h2>JSON-RPC 2.0 Compliance</h2>'
+                '<p>The URL used by the Firebolt Client Library to connect to the Firebolt API Gateway includes the <code>RPCv2=true</code> query parameter, confirming that the Client Library uses and accepts only compliant JSON-RPC as specified in this document.</p>'
+                '<p>All names used for matching, including method and parameter names, are case sensitive as stated in Section 2 of the JSON-RPC 2.0 Specification.</p></section>'
+                f'<section class="spec-intro json-rpc-section"><h2>Method Calls</h2>{method_table}</section>'
+                f'<section class="spec-intro json-rpc-section"><h2>Notifications</h2>{notification_table}</section>'
+                '</section><div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
+                '<script>const modal=document.querySelector("#spec-modal"),modalBody=document.querySelector("#spec-modal-body");function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(trigger){event.preventDefault();const template=document.querySelector(`#tmpl-${trigger.dataset.modalTarget}`);modalBody.innerHTML="";modalBody.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()});</script>'
+            )
+        else:
+            summary, tables = _extract_document(pdf_name)
+            section_title, _headers_override = DOCUMENT_TABLE_LAYOUTS.get(pdf_name, ("", None))
+            first_table = f'<h2>{escape(section_title)}</h2>{tables[0]}' if section_title and tables else (tables[0] if tables else "")
+            table_sections = "".join(
+                f'<section class="spec-intro">{table}</section>'
+                for table in ([first_table] + tables[1:]) if table
+            )
+            body += (
+                '<section class="section spec-document" style="padding-top:42px">'
+                '<section class="spec-intro"><h2>Overview</h2>'
+                f'<p>{escape(summary)}</p></section>'
+                f'{table_sections or "<p class=\"lede\">No structured tables were extracted from this document.</p>"}'
+                '</section>'
+            )
         footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
         (ROOT / output_file).write_text(shell(f"{title} | RDK8", "northbound", body, footer), encoding="utf-8")
+
+
+def build_firebolt_intents() -> None:
+    from build import hero, shell
+
+    pdf_name = "Firebolt 8 Intent Spec.pdf"
+    action_types = (
+        "Home action type", "Launch action type", "Pre-load action type", "Entity action type",
+        "Playback action type", "Search action type", "Section action type", "Tune action type",
+        "Play-entity action type", "Play-query action type", "Previous action type", "Next action type",
+        "Repeat action type", "Shuffle action type", "Skip-ad action type", "Skip-recap action type",
+        "Skip-intro action type",
+    )
+    text = "\n".join(page.extract_text() or "" for page in PdfReader(ROOT / pdf_name).pages)
+    with pdfplumber.open(ROOT / pdf_name) as pdf:
+        rows = pdf.pages[1].extract_tables()[0]
+        definition_tables = {
+            "Launch action type": _render_table(pdf.pages[2].extract_tables()[0]),
+            "Entity action type": _render_table(pdf.pages[3].extract_tables()[0]),
+            "Playback action type": _render_table(pdf.pages[3].extract_tables()[1]),
+            "Search action type": _render_table(pdf.pages[4].extract_tables()[0]),
+            "Section action type": _render_table(pdf.pages[4].extract_tables()[1]),
+            "Tune action type": _render_nested_definition_table(pdf.pages[5].extract_tables()[0]),
+            "Play-entity action type": _render_nested_definition_table(pdf.pages[6].extract_tables()[0]),
+            "Play-query action type": _render_nested_definition_table(pdf.pages[6].extract_tables()[1]),
+        }
+
+    action_row, data_row, context_row = rows[:3]
+    context_headers = [_clean_cell(cell) for cell in context_row[4:9]]
+    context_rows = []
+    for row in rows[3:]:
+        values = row[4:9]
+        if not any(_clean_cell(cell) for cell in values):
+            continue
+        values[0] = "".join(str(values[0] or "").split())
+        values[3] = _join_wrapped_identifier_list(values[3])
+        context_rows.append(values)
+    context_table = _render_table([context_headers, *context_rows])
+    triggers = "".join(
+        f'<a class="allowed-action spec-modal-trigger" href="#intent-{escape(action.removesuffix(" action type").lower())}" data-modal-target="intent-{escape(action.removesuffix(" action type").lower())}" title="Open {escape(action)}">{escape(action.removesuffix(" action type").lower())}</a>'
+        for action in action_types
+    )
+
+    def split_json_blocks(value: str) -> list[str]:
+        blocks, depth, start = [], 0, None
+        in_string = escaped = False
+        for index, character in enumerate(value):
+            if in_string:
+                if escaped:
+                    escaped = False
+                elif character == "\\":
+                    escaped = True
+                elif character == '"':
+                    in_string = False
+                continue
+            if character == '"':
+                in_string = True
+            elif character == "{":
+                if depth == 0:
+                    start = index
+                depth += 1
+            elif character == "}" and depth:
+                depth -= 1
+                if depth == 0 and start is not None:
+                    blocks.append(value[start:index + 1])
+                    start = None
+        return blocks
+
+    constituent_rows = (
+        '<tr>'
+        f'<td><code>{escape(_clean_cell(action_row[0]))}</code></td><td>{escape(_clean_cell(action_row[1]))}</td><td>{escape(_clean_cell(action_row[2]))}</td><td>{escape(_clean_cell(action_row[3]))}</td><td rowspan="2"><div class="allowed-actions">{triggers}</div></td></tr>'
+        '<tr>'
+        f'<td><code>{escape(_clean_cell(data_row[0]))}</code></td><td>{escape(_clean_cell(data_row[1]))}</td><td>{escape(_clean_cell(data_row[2]))}</td><td>{escape(_clean_cell(data_row[3]))}</td></tr>'
+        '<tr>'
+        f'<td><code>{escape(_clean_cell(context_row[0]))}</code></td><td>{escape(_clean_cell(context_row[1]))}</td><td>{escape(_clean_cell(context_row[2]))}</td><td>{escape(_clean_cell(context_row[3]))}</td><td><details class="spec-details"><summary>Context fields</summary>{context_table}</details></td></tr>'
+    )
+    templates = []
+    for index, action in enumerate(action_types):
+        marker = f"{action}\n"
+        first = text.find(marker)
+        start = text.find(marker, first + len(marker))
+        end = text.find(f"{action_types[index + 1]}\n", start + len(marker)) if index + 1 < len(action_types) else len(text)
+        details = text[start + len(marker):end].strip() if start >= 0 else "Definition unavailable in the RDK8 source PDF."
+        definition_marker = "Definition of data object"
+        overview, definition_and_example = details.split(definition_marker, 1) if definition_marker in details else (details, "")
+        example_match = re.search(r"\n(Examples?)\n", definition_and_example)
+        if example_match:
+            definition = definition_and_example[:example_match.start()].strip()
+            example_heading = example_match.group(1)
+            examples = definition_and_example[example_match.end():].strip()
+        else:
+            definition = definition_and_example.strip()
+            example_heading = "Example"
+            examples = ""
+        slug = escape(action.removesuffix(" action type").lower())
+        definition_markup = definition_tables.get(action, f'<pre class="spec-definition-text">{escape(definition or "No data object is required.")}</pre>')
+        example_blocks = split_json_blocks(examples)
+        examples_markup = (
+            '<div class="spec-examples">'
+            + "".join(f'<pre class="spec-example">{escape(block)}</pre>' for block in example_blocks)
+            + "</div>"
+            if example_blocks
+            else ""
+        )
+        templates.append(
+            f'<template id="tmpl-intent-{slug}"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>{escape(action)}</h2></div>'
+            f'<p class="spec-entry-overview">{escape(overview.strip())}</p>'
+            f'<h3>Definition of data object</h3>{definition_markup}'
+            f'<h3>{escape(example_heading)}</h3>{examples_markup or "<p class=\"lede\">No example was included in the source PDF.</p>"}'
+            '</section></template>'
+        )
+
+    body = hero("Firebolt 8", "Firebolt 8 Intents Specification", FIREBOLT_DOCUMENT_DESCRIPTIONS["firebolt-intents.html"], include_release=False, status="Approved")
+    body += (
+        '<section class="section spec-document" style="padding-top:42px">'
+        '<section class="spec-intro intent-overview" id="overview">'
+        '<p>An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a payment.</p>'
+        '<p>An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user.</p></section>'
+        '<section class="spec-intro" id="constituent-parts"><h2>Constituent parts of an intent</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Part</th><th>Type</th><th>Mandatory</th><th>Description</th><th>Allowed values</th></tr></thead>'
+        f'<tbody>{constituent_rows}</tbody></table></div></section></section>'
+        f'{"".join(templates)}'
+        '<div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
+        '<script>const modal=document.querySelector("#spec-modal"),modalBody=document.querySelector("#spec-modal-body");function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(trigger){event.preventDefault();const template=document.querySelector(`#tmpl-${trigger.dataset.modalTarget}`);modalBody.innerHTML="";modalBody.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()});</script>'
+    )
+    footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
+    (ROOT / "firebolt-intents.html").write_text(shell("Firebolt 8 Intents Specification | RDK8", "northbound", body, footer), encoding="utf-8")
 
 
 def _clean_linux_key_codes(value: object) -> str:
@@ -401,6 +690,7 @@ def build_northbound() -> None:
     )
     build_firebolt_api()
     build_firebolt_documents()
+    build_firebolt_intents()
     build_firebolt_key_codes()
 
 if __name__ == "__main__":
