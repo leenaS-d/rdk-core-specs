@@ -13,8 +13,9 @@ def build_home() -> None:
     content = load("home-content.json")
     components = load("components.json")
     non_core_components = load("rdk9-non-core-components.json")
-    northbound = load("northbound-apis.json")
     southbound = load("southbound-apis.json")
+    from gen_nbi_page import extract_api_spec_methods
+    northbound_count = len(extract_api_spec_methods("Firebolt 9 API Specifications.pdf")[0])
 
     body = hero("", content["title"], content["description"], content["badges"])
     title_html = '<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">' + esc(content["title"]) + '</h1>'
@@ -28,7 +29,7 @@ def build_home() -> None:
     body += f'<section class="section alt home-release"><div class="eyebrow">Upcoming Release</div><h2 style="font-family:Space Grotesk,Inter,sans-serif;letter-spacing:0">RDK9 release</h2><p class="lede">{esc(content["release_overview"])}</p></section>'
 
     links = ["component-registry.html", "northbound-apis.html", "southbound-apis.html"]
-    metrics = [len(components.get("components", [])) + len(non_core_components.get("components", [])), len(northbound.get("apis", [])), len(southbound.get("apis", []))]
+    metrics = [len(components.get("components", [])) + len(non_core_components.get("components", [])), northbound_count, len(southbound.get("apis", []))]
     body += f'<section class="section"><div class="eyebrow">RDK9 platform</div><h2>Explore the RDK9 platform</h2><p class="lede">Explore the RDK9 core and non-core components alongside standardized interfaces connecting applications, middleware, and vendor-layer implementations.</p>{platform_metric_cards(content["architecture"]["cards"][:3], links, metrics)}</section>'
 
     footer = "Copyright © 2026 RDK Management, LLC"

@@ -30,8 +30,8 @@ def load(name: str) -> dict:
 NORTHBOUND_MENU = [
     ("northbound-apis.html", "Firebolt Core API Specification"),
     ("firebolt-app-actions.html", "Firebolt App Actions Specification"),
-    ("firebolt-intents.html", "Firebolt Intents Spec"),
-    ("firebolt-key-codes.html", "Firebolt Key Codes Spec"),
+    ("firebolt-intents.html", "Firebolt Intents Specification"),
+    ("firebolt-key-codes.html", "Firebolt Key Codes Specification"),
 ]
 
 NORTHBOUND_KEYS = {"northbound"}
@@ -200,7 +200,7 @@ def check() -> None:
     missing = [name for name in required if not (ROOT / name).exists()]
     if missing:
         raise SystemExit("Missing generated pages: " + ", ".join(missing))
-    for name in ("home-content.json", "components.json", "northbound-apis.json", "southbound-apis.json", "hardware-spec.json"):
+    for name in ("home-content.json", "components.json", "southbound-apis.json", "hardware-spec.json"):
         load(name)
     print(f"RDKE build check passed: {len(load('components.json')['components'])} components")
 

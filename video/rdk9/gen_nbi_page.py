@@ -84,7 +84,17 @@ def _classify_mark_image(page, image: dict) -> str:
                 if 0 <= center_x + dx < width and 0 <= center_y + dy < height
             ]
     except OSError:
-        return ""
+        try:
+            pixels = page.crop((image["x0"], image["top"], image["x1"], image["bottom"])).to_image(resolution=144).original.convert("RGB")
+            width, height = pixels.size
+            center_x, center_y = width // 2, height // 2
+            samples = [
+                pixels.getpixel((center_x + dx, center_y + dy))
+                for dx in range(-4, 5) for dy in range(-4, 5)
+                if 0 <= center_x + dx < width and 0 <= center_y + dy < height
+            ]
+        except (OSError, ValueError):
+            return ""
     red = sum(sample[0] for sample in samples) / len(samples)
     green = sum(sample[1] for sample in samples) / len(samples)
     blue = sum(sample[2] for sample in samples) / len(samples)
@@ -117,12 +127,7 @@ def extract_api_spec_methods(pdf_name: str) -> tuple[list[dict], int]:
     excluded_red = 0
     current: dict | None = None
     existing_marks = {}
-    existing_data = ROOT / "northbound-apis.json"
-    if existing_data.exists():
-        existing_marks = {
-            api["id"]: (api.get("cpp17", ""), api.get("js", ""))
-            for api in json.loads(existing_data.read_text(encoding="utf-8")).get("apis", [])
-        }
+    existing_marks = {}
     with pdfplumber.open(ROOT / pdf_name) as pdf:
         for page in pdf.pages:
             marks = [
@@ -428,7 +433,7 @@ def render_northbound_templates(methods: list[dict]) -> str:
         slug = f"api-{method['id']}"
         meta_pills = [f'<span class="pill">API version {escape(method["releaseTag"])}</span>']
         if method["deprecatedReleaseTag"]:
-            meta_pills.append(f'<span class="pill warn">Deprecated in {escape(method["deprecatedReleaseTag"])}</span>')
+            meta_pills.append(f'<span class="pill warn">To be deprecated (post RDK9): {escape(method["deprecatedReleaseTag"])}</span>')
         templates_html.append(
             f'<template id="tmpl-{slug}"><section class="spec-entry">'
             f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>{escape(method["component"])}</h2></div>'
@@ -476,16 +481,37 @@ def render_reference_section(terms: list[tuple[str, str]], types: list[tuple[str
     )
 
 
+def _render_key_code_table(headers: list[str], rows: list[list[str]], template_prefix: str) -> str:
+    visible_headers = headers[:3] + ["View details"]
+    rows_html = []
+    templates = []
+    for index, values in enumerate(rows):
+        template_id = f"{template_prefix}-{index}"
+        detail_rows = "".join(
+            f"<tr><th>{escape(header)}</th><td>{escape(value)}</td></tr>"
+            for header, value in zip(headers, values)
+        )
+        rows_html.append(
+            "<tr>"
+            + "".join(f"<td>{escape(value)}</td>" for value in values[:3])
+            + f'<td><a class="pill allowed-action spec-modal-trigger" href="#{template_id}" data-modal-target="{template_id}">View details</a></td></tr>'
+        )
+        templates.append(
+            f'<template id="{template_id}"><section class="spec-entry"><div class="spec-entry-head">'
+            f'<span class="spec-entry-eyebrow">Key code details</span><h2>{escape(values[0])}</h2></div>'
+            f'<div class="spec-table-wrap key-code-detail-table"><table class="spec-table"><tbody>{detail_rows}</tbody></table></div>'
+            "</section></template>"
+        )
+    header_html = "".join(f"<th>{escape(header)}</th>" for header in visible_headers)
+    return (
+        f'<div class="key-codes-table"><div class="spec-table-wrap"><table class="spec-table"><thead><tr>{header_html}</tr></thead>'
+        f'<tbody>{"".join(rows_html)}</tbody></table></div></div>{"".join(templates)}'
+    )
+
+
 def build_northbound() -> None:
     pdf_name = "Firebolt 9 API Specifications.pdf"
     methods, excluded_red = extract_api_spec_methods(pdf_name)
-    json_path = ROOT / "northbound-apis.json"
-    json_path.write_text(json.dumps({
-        "schemaVersion": "1.0",
-        "status": "Draft: the Northbound API list is evolving and will be published.",
-        "apis": methods,
-    }, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
-
     modules = sorted({method["component"] for method in methods})
     deprecated_count = sum(1 for method in methods if method["deprecatedReleaseTag"])
     row_data = [
@@ -503,9 +529,9 @@ def build_northbound() -> None:
         "Firebolt 9",
         "Firebolt Core API Specification",
         "Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt.",
-        status="Published",
+        status="Draft",
     )
-    notice = '<strong>Note</strong><br>This page contains an evolving list of Northbound API components. The current list is a draft and will continue to be updated.'
+    notice = '<strong>Note</strong><br>This page contains an evolving list of Firebolt Core API components for RDK9.'
     body += (
         '<section class="section">'
         f'<div class="notice" style="margin:0 0 24px">{notice}</div>'
@@ -514,7 +540,7 @@ def build_northbound() -> None:
         f'{"".join(f"<option>{escape(module)}</option>" for module in modules)}</select></div>'
         f'{render_reference_section(extract_interpretation_terms(pdf_name), extract_types(pdf_name), extract_error_values(pdf_name))}'
         '<div class="table-wrap" style="margin-top:24px"><table><thead><tr>'
-        '<th>Module</th><th>Method</th><th>Version</th><th>Deprecated API</th><th>Details</th>'
+        '<th>Module</th><th>Method</th><th>Version</th><th>To be deprecated (post RDK9)</th><th>Details</th>'
         '</tr></thead><tbody id="northbound-rows"></tbody></table></div>'
         '</section>'
         f'{render_northbound_templates(methods)}'
@@ -712,7 +738,7 @@ def build_app_actions() -> None:
 
     format_rows = data_rows(page_tables[0][1])
     action_type_pills = "".join(
-        f'<a class="allowed-action spec-modal-trigger" href="#app-action-{escape(action_type)}" '
+        f'<a class="pill allowed-action spec-modal-trigger" href="#app-action-{escape(action_type)}" '
         f'data-modal-target="app-action-{escape(action_type)}" title="Open {escape(name)}">{escape(action_type)}</a>'
         for name, action_type in action_types
     )
@@ -785,7 +811,7 @@ def build_app_actions() -> None:
         "Firebolt 9",
         "Firebolt App Actions Specification",
         "App actions exposed by the RDK9 video platform for application-driven device and content experiences.",
-        status="Published",
+        status="Approved",
     )
     body += (
         '<section class="section spec-document" style="padding-top:34px">'
@@ -845,7 +871,7 @@ def build_intents() -> None:
         f'<th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody>{context_html}</tbody></table></div>'
     )
     action_values = "".join(
-        f'<a class="allowed-action spec-modal-trigger" href="#intent-{escape(action.removesuffix(" action type").lower())}" '
+        f'<a class="pill allowed-action spec-modal-trigger" href="#intent-{escape(action.removesuffix(" action type").lower())}" '
         f'data-modal-target="intent-{escape(action.removesuffix(" action type").lower())}" title="Open {escape(action)}">{escape(action.removesuffix(" action type").lower())}</a>'
         for action in action_types
     )
@@ -1023,7 +1049,7 @@ def build_intents() -> None:
         "Firebolt 9",
         "Firebolt Intents Specification",
         "Intent definitions for applications to request device and content experiences through the RDK9 video platform.",
-        status="Published",
+        status="Approved",
     )
     body += (
         '<section class="section spec-document" style="padding-top:34px">'
@@ -1095,14 +1121,14 @@ def build_key_codes() -> None:
         cleaned_row[2] = clean_linux_key_codes(row[2])
         (partner_rows if in_partner else standard_rows).append(cleaned_row)
 
-    standard_table = f'<div class="key-codes-table">{render_spec_table(headers, standard_rows)}</div>'
-    partner_table = f'<div class="key-codes-table">{render_spec_table(headers, partner_rows)}</div>'
+    standard_table = _render_key_code_table(headers, standard_rows, "standard-key")
+    partner_table = _render_key_code_table(headers, partner_rows, "partner-key")
 
     body = hero(
         "Firebolt 9",
         "Firebolt Key Codes Specification",
         "Definition of the Key Codes made available to Firebolt Apps on the RDK9 video platform.",
-        status="Published",
+        status="Approved",
     )
     body += (
         '<section class="section spec-document" style="padding-top:34px">'
@@ -1111,6 +1137,8 @@ def build_key_codes() -> None:
         f'<p>{escape(partner_intro)}</p>{partner_table}'
         f'<p class="lede" style="margin-top:16px">{escape(closing_note)}</p>'
         '</section>'
+        '<div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
+        '<script>(function(){const modal=document.getElementById("spec-modal"),body=document.getElementById("spec-modal-body");if(!modal)return;function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(!trigger)return;event.preventDefault();const template=document.getElementById(trigger.dataset.modalTarget);if(!template)return;body.innerHTML="";body.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()})})()</script>'
         '</section>'
     )
     footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'

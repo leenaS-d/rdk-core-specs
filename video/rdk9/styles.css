@@ -119,8 +119,14 @@
 .catalog-search-toolbar input{width:100%;min-width:0}
 .component-catalog-table th:nth-child(4),.component-catalog-table td:nth-child(4){min-width:104px;white-space:nowrap}
 .key-codes-table .spec-table-wrap{overflow-x:scroll}
-.key-codes-table .spec-table{min-width:1600px;table-layout:auto}
+.key-codes-table .spec-table{width:100%;min-width:100%;table-layout:fixed}
 .key-codes-table .spec-table th,.key-codes-table .spec-table td{white-space:normal;overflow-wrap:anywhere}
+.key-codes-table .spec-table th:nth-child(1),.key-codes-table .spec-table td:nth-child(1){width:24%}
+.key-codes-table .spec-table th:nth-child(2),.key-codes-table .spec-table td:nth-child(2){width:24%}
+.key-codes-table .spec-table th:nth-child(3),.key-codes-table .spec-table td:nth-child(3){width:32%}
+.key-codes-table .spec-table th:nth-child(4),.key-codes-table .spec-table td:nth-child(4){width:20%}
+.key-code-detail-table th{width:34%;white-space:normal;overflow-wrap:anywhere}
+.key-code-detail-table td{white-space:normal;overflow-wrap:anywhere}
 @media(max-width:760px){.reference-trigger{width:calc((100vw - 56px) / 3);padding-inline:6px;font-size:.75rem}.northbound-toolbar{grid-template-columns:1fr}}
 
 .spec-document{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}.spec-document>*{min-width:0}
@@ -147,3 +153,5 @@
 #partner-buttons{max-width:none}
 .spec-intro#format{max-width:none}
 .hero .wrap{width:100%;text-align:left}.hero .wrap h1,.hero .wrap p,.home-release .lede{max-width:none}.hero-tagline,.badges{justify-content:flex-start}
+.pill{font-weight:700;text-decoration:none}
+.allowed-action{display:inline-block;background:#eaf2ff;color:#2249a2;border-radius:15px;padding:2px 9px;font-size:.8rem;font-weight:700;text-decoration:none}
