@@ -1,7 +1,7 @@
 {
   "eyebrow": "RDK9 for Video",
-  "title": "Core RDK Entertainment Platform",
-  "description": "RDKV is an open, modular and scalable software platform for entertainment devices and streaming ecosystems. It provides a common software foundation for rapid innovation, simplified platform integration, secure content delivery and fleet-scale operations across diverse hardware platforms.",
+  "title": "Core RDK Video Platform",
+  "description": "Core RDK Video (RDK-V) defines the common platform foundation for RDK-based video solutions through governed capabilities, standardized interfaces, lifecycle policies, and conformance requirements. It enables ecosystem-wide interoperability and portability while preserving flexibility for innovation and differentiation.",
   "badges": ["Apache-2.0 / LGPL-2.1", "Open-source platform", "Firebolt enabled", "Thunder powered"],
   "release_overview": "RDK9 is under active development, with the release being prepared to build on the Core RDK platform. Its specifications and interfaces are evolving toward an upcoming release for broader ecosystem adoption.",
   "why": {

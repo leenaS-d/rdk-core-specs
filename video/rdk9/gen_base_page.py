@@ -19,12 +19,13 @@ def build_home() -> None:
     body = hero("", content["title"], content["description"], content["badges"])
     title_html = '<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">' + esc(content["title"]) + '</h1>'
     badge_style = 'display:inline-flex;align-items:center;padding:5px 12px;border:1px solid #b8df63;border-radius:999px;color:#b8df63;font:700 .72rem/1 JetBrains Mono,monospace;letter-spacing:.08em'
-    intro_html = '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;line-height:1">'
-    intro_html += f'<div style="{badge_style}">RDK9 for Video</div><div style="{badge_style}">Powering Next-Generation Entertainment Experiences</div></div>'
+    tagline_parts = ["RDK-V", "RDK9 for Video", "Powering Next-Generation Video Experiences"]
+    tagline_html = "".join(f'<div style="{badge_style}">{part}</div>' for part in tagline_parts)
+    intro_html = f'<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;line-height:1">{tagline_html}</div>'
     body = body.replace(title_html, intro_html + title_html, 1)
 
     architecture = content["architecture"]
-    body += f'<section class="section alt"><div class="eyebrow">Upcoming Release</div><h2 style="font-family:Space Grotesk,Inter,sans-serif;letter-spacing:0">RDK9 release</h2><p class="lede">{esc(content["release_overview"])}</p></section>'
+    body += f'<section class="section alt home-release"><div class="eyebrow">Upcoming Release</div><h2 style="font-family:Space Grotesk,Inter,sans-serif;letter-spacing:0">RDK9 release</h2><p class="lede">{esc(content["release_overview"])}</p></section>'
 
     links = ["component-registry.html", "northbound-apis.html", "southbound-apis.html"]
     metrics = [len(components.get("components", [])) + len(non_core_components.get("components", [])), len(northbound.get("apis", [])), len(southbound.get("apis", []))]

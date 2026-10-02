@@ -34,7 +34,7 @@
       "name": "cjwt",
       "category": "Remote Device Management",
       "layer": "middleware",
-      "releaseTag": "2586a5ea4594",
+      "releaseTag": "N/A",
       "url": "https://github.com/xmidt-org/cjwt"
     },
     {
@@ -55,7 +55,7 @@
       "name": "cpuprocanalyzer",
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
-      "releaseTag": "8fb410c46154",
+      "releaseTag": "N/A",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/cpuprocanalyzer"
     },
     {
@@ -63,7 +63,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
       "releaseTag": "2.1.3",
-      "url": null
+      "url": "https://github.com/rdkcentral/crashupload"
     },
     {
       "name": "dca",
@@ -363,7 +363,7 @@
       "name": "ermgr",
       "category": "Core Device Control Protocols",
       "layer": "middleware",
-      "releaseTag": "125b87e9dd63",
+      "releaseTag": "N/A",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/ermgr"
     },
     {
@@ -371,20 +371,20 @@
       "category": "App Framework",
       "layer": "middleware",
       "releaseTag": "0.7.0",
-      "url": null
+      "url": "https://github.com/rdkcentral/firebolt-cpp-client"
     },
     {
       "name": "firebolt-cpp-transport",
       "category": "App Framework",
       "layer": "middleware",
       "releaseTag": "1.1.12",
-      "url": null
+      "url": "https://github.com/rdkcentral/firebolt-cpp-transport"
     },
     {
       "name": "gn-native",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "middleware",
-      "releaseTag": "39a87c0b3631",
+      "releaseTag": "N/A",
       "url": "https://gn.googlesource.com/gn"
     },
     {
@@ -419,14 +419,14 @@
       "name": "javascriptcore",
       "category": "Thunder",
       "layer": "middleware",
-      "releaseTag": "fc1703ed6900",
+      "releaseTag": "N/A",
       "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit"
     },
     {
       "name": "libbinderrdk",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "middleware",
-      "releaseTag": "0f7a23b6b879",
+      "releaseTag": "N/A",
       "url": "https://github.com/rdkcentral/linux_binder_idl"
     },
     {
@@ -440,7 +440,7 @@
       "name": "libparodus",
       "category": "Core Device Control Protocols",
       "layer": "middleware",
-      "releaseTag": "8263bb06c8c1",
+      "releaseTag": "N/A",
       "url": "https://github.com/Comcast/libparodus"
     },
     {
@@ -496,7 +496,7 @@
       "name": "parodus",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "middleware",
-      "releaseTag": "8d4c61a16fae",
+      "releaseTag": "N/A",
       "url": "https://github.com/xmidt-org/parodus"
     },
     {
@@ -507,17 +507,10 @@
       "url": "https://github.com/rdkcentral/middleware-player-interface"
     },
     {
-      "name": "power-manager-headers",
-      "category": "Entertainment Services",
-      "layer": "middleware",
-      "releaseTag": "N/A",
-      "url": "https://github.com/rdkcentral/rdk-halif-power_manager"
-    },
-    {
       "name": "ralf-utils",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "middleware",
-      "releaseTag": "2eda857fd887",
+      "releaseTag": "N/A",
       "url": "https://github.com/rdkcentral/ralf-utils"
     },
     {
@@ -526,13 +519,6 @@
       "layer": "middleware",
       "releaseTag": "2.0.3",
       "url": "https://github.com/rdkcentral/gstreamer-netflix-platform"
-    },
-    {
-      "name": "rdk-halif-aidl-mw",
-      "category": "Entertainment Services",
-      "layer": "middleware",
-      "releaseTag": "4a2ef3990089",
-      "url": "https://github.com/rdkcentral/rdk-halif-aidl"
     },
     {
       "name": "rdkat",
@@ -560,7 +546,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
       "releaseTag": "N/A",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "rdkversion",
@@ -574,7 +560,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "middleware",
       "releaseTag": "1.0.0",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "rdmagent",
@@ -601,7 +587,7 @@
       "name": "residentui",
       "category": "App Framework",
       "layer": "middleware",
-      "releaseTag": "e43f3cc668c2",
+      "releaseTag": "N/A",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/RDK_apps"
     },
     {
@@ -629,7 +615,7 @@
       "name": "streamfs",
       "category": "VIDEO",
       "layer": "middleware",
-      "releaseTag": "90914ec0a6a3",
+      "releaseTag": "N/A",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs"
     },
     {
@@ -706,7 +692,7 @@
       "name": "uwebsockets",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "middleware",
-      "releaseTag": "c7aa984726e4",
+      "releaseTag": "N/A ",
       "url": "https://github.com/uNetworking/uWebSockets"
     },
     {
@@ -720,7 +706,7 @@
       "name": "waymetric",
       "category": "Video",
       "layer": "middleware",
-      "releaseTag": "66b10fa71cb4",
+      "releaseTag": "N/A",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/waymetric"
     },
     {
@@ -749,14 +735,14 @@
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
       "releaseTag": "1.0.1",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "wpe-backend-rdk",
       "category": "Thunder",
       "layer": "middleware",
       "releaseTag": "6f53fce68d8e",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "wpeframework-extensions",
@@ -769,7 +755,7 @@
       "name": "wpeframework-ocdm-clearkey",
       "category": "Thunder",
       "layer": "middleware",
-      "releaseTag": "ddda85542097",
+      "releaseTag": "1.0.0",
       "url": "https://git@github.com/rdkcentral/OCDM-Clearkey"
     },
     {
@@ -797,7 +783,7 @@
       "name": "wrp-c",
       "category": "Remote Device Management",
       "layer": "middleware",
-      "releaseTag": "9587e8db33db",
+      "releaseTag": "N/A",
       "url": "https://github.com/xmidt-org/wrp-c"
     },
     {
@@ -806,13 +792,6 @@
       "layer": "middleware",
       "releaseTag": "1.0.5",
       "url": "https://github.com/rdkcentral/xdialserver"
-    },
-    {
-      "name": "xmidt-agent",
-      "category": "Device Management & Diagnostics",
-      "layer": "middleware",
-      "releaseTag": "1.0.0",
-      "url": null
     },
     {
       "name": "xr-voice-sdk",

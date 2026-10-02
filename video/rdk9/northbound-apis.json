@@ -26,7 +26,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns captions settings: enabled, and a list of zero or more languages in order of decreasing preference"
+      "description": "Returns captions settings: enabled, and a list of zero or more\nlanguages in order of decreasing preference"
     },
     {
       "id": 3,
@@ -65,7 +65,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Send an intent to the platform Argument is a JSON document"
+      "description": "Send an intent to the platform\nArgument is a JSON document"
     },
     {
       "id": 6,
@@ -78,7 +78,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the intent that was most recently received from the platform, as a JSON document. Getter is typically called by an app after transitioning to the active lifecycle state"
+      "description": "Returns the intent that was most recently received from the\nplatform, as a JSON document. Getter is typically called by\nan app after transitioning to the active lifecycle state"
     },
     {
       "id": 7,
@@ -104,7 +104,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns a persistent unique UUID for the current app and device. The UUID is reset when the app or device is reset"
+      "description": "Returns a persistent unique UUID for the current app and\ndevice. The UUID is reset when the app or device is reset"
     },
     {
       "id": 9,
@@ -130,7 +130,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the number of seconds since most recent device boot, including any time spent during deep sleep"
+      "description": "Returns the number of seconds since most recent device\nboot, including any time spent during deep sleep"
     },
     {
       "id": 11,
@@ -143,7 +143,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the number of seconds since the device transitioned to the ON power state"
+      "description": "Returns the number of seconds since the device transitioned\nto the ON power state"
     },
     {
       "id": 12,
@@ -169,7 +169,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the HDR standards that are suported by the attached TV or the integral display OTT/STB device: supported by the device and indicated by the EDID of the attached TV TV: supported by the device"
+      "description": "Returns the HDR standards that are suported by the\nattached TV or the integral display\nOTT/STB device: supported by the device and\nindicated by the EDID of the attached TV\nTV: supported by the device"
     },
     {
       "id": 14,
@@ -182,7 +182,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns whether the user would get a Dolby Atmos experience if a Dolby Atmos track were to be played at this time"
+      "description": "Returns whether the user would get a Dolby Atmos\nexperience if a Dolby Atmos track were to be played at this\ntime"
     },
     {
       "id": 15,
@@ -195,7 +195,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the manufacturer responsible for building the hardware"
+      "description": "Returns the manufacturer responsible for building the\nhardware"
     },
     {
       "id": 16,
@@ -208,7 +208,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the brand name under which the device was marketed to consumers. Typically also shown on the TV bezel, device label or remote"
+      "description": "Returns the brand name under which the device was\nmarketed to consumers. Typically also shown on the TV\nbezel, device label or remote"
     },
     {
       "id": 17,
@@ -221,7 +221,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the model identifier assigned to the device hardware. Typically also shown on the device label or UI"
+      "description": "Returns the model identifier assigned to the device\nhardware. Typically also shown on the device label or UI"
     },
     {
       "id": 18,
@@ -234,7 +234,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the operating system name as defined by the operator"
+      "description": "Returns the operating system name as defined by the\noperator"
     },
     {
       "id": 19,
@@ -247,7 +247,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the operating system version as defined by the operator"
+      "description": "Returns the operating system version as defined by the\noperator"
     },
     {
       "id": 20,
@@ -260,7 +260,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns a string that identifies the firmware image of the device"
+      "description": "Returns a string that identifies the firmware image of the\ndevice"
     },
     {
       "id": 21,
@@ -273,7 +273,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the device friendly name. Used by network services (DIAL, Miracast, AirPlay) so that other devices can more easily identify this device during device discovery"
+      "description": "Returns the device friendly name. Used by network services\n(DIAL, Miracast, AirPlay) so that other devices can more\neasily identify this device during device discovery"
     },
     {
       "id": 22,
@@ -286,7 +286,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Notify the platform that content has been partially or completely watched progress: VOD: 0 to 0.99, live: number of seconds watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\" agePolicy: app:adult, app:child, app:teen"
+      "description": "Notify the platform that content has been partially or\ncompletely watched\nprogress: VOD: 0 to 0.99, live: number of seconds\nwatchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\"\nagePolicy: app:adult, app:child, app:teen"
     },
     {
       "id": 23,
@@ -299,7 +299,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the physical dimensions of the connected or integral display, in centimeters Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI Typical values 43\" - 97, 56 55\" - 123, 71 65\" - 145, 83"
+      "description": "Returns the physical dimensions of the connected or integral\ndisplay, in centimeters\nReturns 0, 0 on a OTT/STB device when a display is not\nconnected over HDMI\nTypical values\n43\" - 97, 56\n55\" - 123, 71\n65\" - 145, 83"
     },
     {
       "id": 24,
@@ -312,7 +312,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the physical/native resolution of the connected or integral display, in pixels Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI Typical values HD Ready - 1280, 720 Full HD - 1920, 1080 UHD - 3840, 2160"
+      "description": "Returns the physical/native resolution of the connected or\nintegral display, in pixels\nReturns 0, 0 on a OTT/STB device when a display is not\nconnected over HDMI\nTypical values\nHD Ready - 1280, 720\nFull HD - 1920, 1080\nUHD - 3840, 2160"
     },
     {
       "id": 25,
@@ -325,7 +325,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the EDID (and extensions) of the connected or integral display, as a Base64 encoded string Returns an empty string, \"\", on a OTT/STB device when a display is not connected over HDMI"
+      "description": "Returns the EDID (and extensions) of the connected or\nintegral display, as a Base64 encoded string\nReturns an empty string, \"\", on a OTT/STB device when a\ndisplay is not connected over HDMI"
     },
     {
       "id": 26,
@@ -338,7 +338,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "cross",
       "js": "check",
-      "description": "Returns an unordered list of colorimetry values supported by the attached TV or integral display. Returns an empty list if no TV is attached"
+      "description": "Returns an unordered list of colorimetry values supported by\nthe attached TV or integral display. Returns an empty list if\nno TV is attached"
     },
     {
       "id": 27,
@@ -351,7 +351,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "cross",
       "js": "check",
-      "description": "Returns an unordered list of HD video resolutions and frame rates supported by the attached TV or integral display. Returns an empty list if no TV is attached"
+      "description": "Returns an unordered list of HD video resolutions and frame\nrates supported by the attached TV or integral\ndisplay. Returns an empty list if no TV is attached"
     },
     {
       "id": 28,
@@ -364,7 +364,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns whether the device is currently connected to an external or integrated display Most apps should instead use VideoOutput.hdcp for display connectivity OTT/STB device: returns true if a TV is connected over HDMI (by hot plug detect pin 19), otherwise returns false TV device: returns true"
+      "description": "Returns whether the device is currently connected to an\nexternal or integrated display\nMost apps should instead use VideoOutput.hdcp for display\nconnectivity\nOTT/STB device: returns true if a TV is connected over\nHDMI (by hot plug detect pin 19), otherwise returns false\nTV device: returns true"
     },
     {
       "id": 30,
@@ -377,7 +377,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Request the platform to deactivate the app, and possibly take further action type deactivate - app is deactivated (if active) - typically a user closing an app unload - app is deactivated (if active) and terminated - typically an app has detected an error killReload - app is killed, then reloaded to paused or suspended (by policy) killReactivate - app is killed, reloaded, then activated window.close() maps to unload window.minimize() maps to deactivate Module is named Lifecycle in C++ Client Library"
+      "description": "Request the platform to deactivate the app, and possibly take\nfurther action\ntype\ndeactivate - app is deactivated (if active) - typically a\nuser closing an app\nunload - app is deactivated (if active) and terminated -\ntypically an app has detected an error\nkillReload - app is killed, then reloaded to paused or\nsuspended (by policy)\nkillReactivate - app is killed, reloaded, then activated\nwindow.close() maps to unload\nwindow.minimize() maps to deactivate\nModule is named Lifecycle in C++ Client Library"
     },
     {
       "id": 31,
@@ -390,7 +390,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state Apps/runtimes should ordinarily use state change notifications rather than this method"
+      "description": "Returns the current lifecycle state of the app. The first\nlifecycle state that can be observed by an app/runtime is the\ninitializing state\nApps/runtimes should ordinarily use state change\nnotifications rather than this method"
     },
     {
       "id": 32,
@@ -403,7 +403,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform Notification of lifecycle state change, raised after the platform has transitioned the app/runtime to the new lifecycle state Note: the list always carries exactly one lifecycle state change Valid transitions 1. initializing to paused 2. initializing to suspended 3. paused to active 4. active to paused 5. paused to suspended 6. suspended to paused 7. suspended to hibernated 8. hibernated to suspended 9. any to terminating"
+      "description": "Subscribe to/unsubscribe from lifecycle state changes. The\napp/runtime remains in the initializing state until the\nsubscribe call is made to the platform\nNotification of lifecycle state change, raised after the platform\nhas transitioned the app/runtime to the new lifecycle state\nNote: the list always carries exactly one lifecycle state change\nValid transitions\n1. initializing to paused\n2. initializing to suspended\n3. paused to active\n4. active to paused\n5. paused to suspended\n6. suspended to paused\n7. suspended to hibernated\n8. hibernated to suspended\n9. any to terminating"
     },
     {
       "id": 33,
@@ -429,7 +429,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "A list of zero or more languages in order of decreasing preference. Typically two languages are present. A language may be repeated in the list"
+      "description": "A list of zero or more languages in order of decreasing\npreference. Typically two languages are present. A\nlanguage may be repeated in the list"
     },
     {
       "id": 35,
@@ -455,7 +455,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the current time zone in IANA format, e.g. America /New_York"
+      "description": "Returns the current time zone in IANA format, e.g. America\n/New_York"
     },
     {
       "id": 37,
@@ -533,7 +533,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Inform the platform that your user has navigated to a page or view"
+      "description": "Inform the platform that your user has navigated to a page or\nview"
     },
     {
       "id": 43,
@@ -559,7 +559,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when setting the URL of a media asset to play, in order to infer load time"
+      "description": "Called when setting the URL of a media asset to play, in\norder to infer load time"
     },
     {
       "id": 45,
@@ -572,7 +572,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when media playback should start due to autoplay, user-initiated play, or unpausing"
+      "description": "Called when media playback should start due to autoplay,\nuser-initiated play, or unpausing"
     },
     {
       "id": 46,
@@ -585,7 +585,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interruption"
+      "description": "Called when media playback actually starts due to autoplay,\nuser-initiated play, unpausing, or recovering from a buffering\ninterruption"
     },
     {
       "id": 47,
@@ -598,7 +598,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when media playback will pause due to an intentional pause operation"
+      "description": "Called when media playback will pause due to an intentional\npause operation"
     },
     {
       "id": 48,
@@ -611,7 +611,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when media playback will halt due to a network, buffer, or other unintentional constraint"
+      "description": "Called when media playback will halt due to a network,\nbuffer, or other unintentional constraint"
     },
     {
       "id": 49,
@@ -655,7 +655,7 @@
     {
       "id": 52,
       "component": "Metrics",
-      "name": "mediaRenditi\nonChanged",
+      "name": "mediaRenditionChanged",
       "parameters": "entityId -\nstring\nbitrate -\nunsigned\nwidth -\nunsigned\nheight -\nunsigned\nprofile -\nstring -\noptional\nagePolicy\n- string -\noptional",
       "returns": "None",
       "specificErrors": "None",
@@ -663,7 +663,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed"
+      "description": "Called when the playback rendition (e.g. bitrate, dimensions,\nprofile, etc) is changed"
     },
     {
       "id": 53,
@@ -676,7 +676,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Called when playback has stopped because the end of the media was reached"
+      "description": "Called when playback has stopped because the end of the\nmedia was reached"
     },
     {
       "id": 54,
@@ -689,7 +689,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Inform the platform of 1st party distributor metrics data parameter is a JSON document"
+      "description": "Inform the platform of 1st party distributor metrics\ndata parameter is a JSON document"
     },
     {
       "id": 55,
@@ -728,7 +728,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns information about all physical network interfaces of the device name - e.g. wlan0 protocol - physical layer protocol supported by the interface, set to unknown by default connected - the link link layer status preferred - true if the interface is used for network traffic"
+      "description": "Returns information about all physical network interfaces of\nthe device\nname - e.g. wlan0\nprotocol - physical layer protocol supported by the interface,\nset to unknown by default\nconnected - the link link layer status\npreferred - true if the interface is used for network traffic"
     },
     {
       "id": 58,
@@ -767,7 +767,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns statistics for a network interface interfaceStats - present when an interface is connected. Attributes are set to null if not available wirelessStats - present when an interface of type wifi is connected. Attributes are set to null if not available wirelessFrequency - MHz wirelessSignal - dBm, -96 (weakest) to 0 (strongest) inclusive wirelessQuality - current SNR in dB, 0 to 96 inclusive wirelessTxBitrate - Tx rate in Mbps wirelessRxBitrate - Rx rate in Mbps wirelessInactiveTime - time in milliseconds since last activity"
+      "description": "Returns statistics for a network interface\ninterfaceStats - present when an interface is\nconnected. Attributes are set to null if not available\nwirelessStats - present when an interface of type wifi is\nconnected. Attributes are set to null if not available\nwirelessFrequency - MHz\nwirelessSignal - dBm, -96 (weakest) to 0 (strongest) inclusive\nwirelessQuality - current SNR in dB, 0 to 96 inclusive\nwirelessTxBitrate - Tx rate in Mbps\nwirelessRxBitrate - Rx rate in Mbps\nwirelessInactiveTime - time in milliseconds since last activity"
     },
     {
       "id": 61,
@@ -780,7 +780,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns detailed information of a network interface Used to convey information which may be sensitive e.g perso nally identifiable information ssid - the SSID of the access point, provided for wifi interface type if connected bssid - the BSSID of the access point, provided for wifi interface type if connected"
+      "description": "Returns detailed information of a network interface\nUsed to convey information which may be sensitive e.g perso\nnally identifiable information\nssid - the SSID of the access point, provided for wifi interface\ntype if connected\nbssid - the BSSID of the access point, provided for wifi\ninterface type if connected"
     },
     {
       "id": 65,
@@ -793,7 +793,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Whether the app is in focus, i.e. receiving key presses. Provided for those apps/runtimes that cannot use Wayland"
+      "description": "Whether the app is in focus, i.e. receiving key\npresses. Provided for those apps/runtimes that cannot use\nWayland"
     },
     {
       "id": 66,
@@ -806,20 +806,20 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns a list of available voices name - name of the voice as a human-readable string lang - the language of the voice in BCP 47 default - true if the voice is the default for the language An empty list is returned if a speech synthesis engine is not available, or the engine rejected the request A particular voice can be repeated in the list, and a language can be repeated in the list At most one voice is the default for each language"
+      "description": "Returns a list of available voices\nname - name of the voice as a human-readable string\nlang - the language of the voice in BCP 47\ndefault - true if the voice is the default for the language\nAn empty list is returned if a speech synthesis engine is not\navailable, or the engine rejected the request\nA particular voice can be repeated in the list, and a language\ncan be repeated in the list\nAt most one voice is the default for each language"
     },
     {
       "id": 67,
       "component": "SpeechSynthesis",
       "name": "speak",
-      "parameters": "text -\nstring\nlang -\nstring -\nBCP 47 -\noptional\nvoice -\nstring -\noptional\nvolume -\ndouble -\noptional\nrate - dou\nble -\noptional\npitch - do\nuble -\noptional\npii - bool -\noptional",
+      "parameters": "text - string\nlang - string - BCP 47 - optional\nvoice - string - optional\nvolume - double - optional\nrate - double - optional\npitch - double - optional\npii - bool - optional",
       "returns": "unsigned",
       "specificErrors": "-xxxxx / Spee\nch synthesis\nengine error",
       "releaseTag": "9.0.0",
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Requests the system to speak an utterance. Returns an utteranceId if the request is accepted, otherwise an error is returned. A successful new request is processed asynchronously: any utterance that is currently being spoken is interrupted and notified by onUtteranceEvent( interrupted ), and events for the new request are raised using onUtteranceEvent text - plain text or a well-formed SSML document lang - the language of the text in BCP 47 voice - as returned by the voices method volume - the speaking volume, 0 (lowest) to 1 (highest) inclusive rate - the speaking rate, 0.1 (slowest) to 10 (fastest) inclusive pitch - the speaking pitch, 0 (lowest) to 2 (highest) inclusive pii - true if the text contains personally identifiable information, indicating that functionality such as logging and telemetry should be restricted, false if not set For Voice Guidance, the app SHOULD either supply the text parameter as plain text and the lang parameter, or supply text as a well-formed SSML document. If text is plain text and lang is not supplied then the default speech synthesis language is used - this is not recommended usage"
+      "description": "Requests the system to speak an utterance. Returns an\nutteranceId if the request is accepted, otherwise an error is\nreturned. A successful new request is processed\nasynchronously: any utterance that is currently being spoken\nis interrupted and notified by onUtteranceEvent( interrupted ),\nand events for the new request are raised using\nonUtteranceEvent\ntext - plain text or a well-formed SSML document\nlang - the language of the text in BCP 47\nvoice - as returned by the voices method\nvolume - the speaking volume, 0 (lowest) to 1\n(highest) inclusive\nrate - the speaking rate, 0.1 (slowest) to 10 (fastest)\ninclusive\npitch - the speaking pitch, 0 (lowest) to 2 (highest)\ninclusive\npii - true if the text contains personally identifiable\ninformation, indicating that functionality such as\nlogging and telemetry should be restricted, false if not\nset\nFor Voice Guidance, the app SHOULD either supply the text\nparameter as plain text and the lang parameter, or supply\ntext as a well-formed SSML document. If text is plain text\nand lang is not supplied then the default speech synthesis\nlanguage is used - this is not recommended usage"
     },
     {
       "id": 68,
@@ -832,7 +832,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Stop the utterance. If playing, audio is stopped. If synthesizing or paused, the utterance will not be played Raises onUtteranceEvent( interrupted ) if the utterance was s ynthesizing, playing or paused Returns without error in all utterance states, or if the utterance has finished"
+      "description": "Stop the utterance. If playing, audio is stopped. If\nsynthesizing or paused, the utterance will not be played\nRaises onUtteranceEvent( interrupted ) if the utterance was s\nynthesizing, playing or paused\nReturns without error in all utterance states, or if the\nutterance has finished"
     },
     {
       "id": 69,
@@ -845,7 +845,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Pause the utterance. If playing, audio is stopped. If the utterance was synthesizing, playback will be prevented Raises onUtteranceEvent( paused ) if the utterance was synthesizing or playing Returns without error in all utterance states, or if the utterance has finished"
+      "description": "Pause the utterance. If playing, audio is stopped. If the\nutterance was synthesizing, playback will be prevented\nRaises onUtteranceEvent( paused ) if the utterance was\nsynthesizing or playing\nReturns without error in all utterance states, or if the\nutterance has finished"
     },
     {
       "id": 70,
@@ -858,20 +858,20 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Resume an utterance. If paused, audio is resumed. If synthesizing the utterance will be played. If playing no action is taken Raises onUtteranceEvent( resumed ) if the utterance had previously been paused while playing Returns without error in all utterance states, or if the utterance has finished"
+      "description": "Resume an utterance. If paused, audio is resumed. If\nsynthesizing the utterance will be played. If playing no action\nis taken\nRaises onUtteranceEvent( resumed ) if the utterance had\npreviously been paused while playing\nReturns without error in all utterance states, or if the\nutterance has finished"
     },
     {
       "id": 71,
       "component": "SpeechSynthesis",
       "name": "onUtteranceEvent",
-      "parameters": "utteranceI\nd -\nunsigned\nevent -\nenum\nsy\nnt\nhe\nsis\nSt\nart\ning\npl\nay\nba\nck\nSt\nart\ning\npa\nus\ned\nre\nsu\nm\ned\nco\nm\npl\net\ned\nint\nerr\nup\nted\nne\ntw\nor\nkF\nail\ned\nsy\nnt\nhe\nsis\nFa\niled\npl\nay\nba\nck\nFa\niled",
+      "parameters": "utteranceId - unsigned\nevent - enum\n- synthesisStarting\n- playbackStarting\n- paused\n- resumed\n- completed\n- interrupted\n- networkFailed\n- synthesisFailed\n- playbackFailed",
       "returns": "N/A",
       "specificErrors": "N/A",
       "releaseTag": "9.0.0",
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Notifies events related to an utterance Progress events synthesisStarting - text to audio conversion is being started playbackStarting - audio playback is being started paused - utterance has been paused while playing resumed - an utterance that had previously been paused while playing has resumed playing completed - the utterance has completed successfully interrupted - the utterance has been stopped due to a call to either the speak or cancel methods Failure events networkFailed - the system was unable to contact the voice synthesis backend synthesisFailed - the system was unable to synthesize some or all of the utterance playbackFailed - the system was unable to play some or all of the utterance"
+      "description": "Notifies events related to an utterance\nProgress events\nsynthesisStarting - text to audio conversion is being\nstarted\nplaybackStarting - audio playback is being started\npaused - utterance has been paused while playing\nresumed - an utterance that had previously been\npaused while playing has resumed playing\ncompleted - the utterance has completed successfully\ninterrupted - the utterance has been stopped due to a\ncall to either the speak or cancel methods\nFailure events\nnetworkFailed - the system was unable to contact the\nvoice synthesis backend\nsynthesisFailed - the system was unable to\nsynthesize some or all of the utterance\nplaybackFailed - the system was unable to play some\nor all of the utterance"
     },
     {
       "id": 72,
@@ -897,7 +897,7 @@
       "deprecatedReleaseTag": "9.0.0",
       "cpp17": "check",
       "js": "cross",
-      "description": "Speak the utterance immediately. Any ongoing speech is interrupted Text argument is either plain text or a well-formed SSML document TTS_Status, not success attribute, to be used by caller to indicate success of call 0 OK, 1 Fail, 2 not enabled, 3 invalid configuration Raises onSpeechInterrupted if speaking is interrupted"
+      "description": "Speak the utterance immediately. Any ongoing speech is\ninterrupted\nText argument is either plain text or a well-formed SSML\ndocument\nTTS_Status, not success attribute, to be used by caller to\nindicate success of call\n0 OK, 1 Fail, 2 not enabled, 3 invalid configuration\nRaises onSpeechInterrupted if speaking is interrupted"
     },
     {
       "id": 74,
@@ -910,7 +910,7 @@
       "deprecatedReleaseTag": "9.0.0",
       "cpp17": "check",
       "js": "cross",
-      "description": "Pauses the utterance Raises onSpeechPause if ongoing speech is paused Does nothing if utterance is already paused"
+      "description": "Pauses the utterance\nRaises onSpeechPause if ongoing speech is paused\nDoes nothing if utterance is already paused"
     },
     {
       "id": 75,
@@ -923,7 +923,7 @@
       "deprecatedReleaseTag": "9.0.0",
       "cpp17": "check",
       "js": "cross",
-      "description": "Continue the paused utterance Raises onSpeechResume if paused speech is resumed Does nothing if the utterance is not paused"
+      "description": "Continue the paused utterance\nRaises onSpeechResume if paused speech is resumed\nDoes nothing if the utterance is not paused"
     },
     {
       "id": 76,
@@ -936,7 +936,7 @@
       "deprecatedReleaseTag": "9.0.0",
       "cpp17": "check",
       "js": "cross",
-      "description": "Stop speaking if utterance is currently being spoken Raises onSpeechInterrupted if speaking was interrupted"
+      "description": "Stop speaking if utterance is currently being spoken\nRaises onSpeechInterrupted if speaking was interrupted"
     },
     {
       "id": 77,
@@ -1066,7 +1066,7 @@
       "deprecatedReleaseTag": "9.0.0",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the list of available voices as human-readable strings, e.g. \"ava\", \"amelie\", \"angelica\""
+      "description": "Returns the list of available voices as human-readable\nstrings, e.g. \"ava\", \"amelie\", \"angelica\""
     },
     {
       "id": 87,
@@ -1079,7 +1079,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the width and height of the video signal on the video output, in pixels. Typically used by a streaming app to determine the highest resolution of video to select OTT/STB device: returns the video resolution over HDMI TV device: returns the resolution of the panel"
+      "description": "Returns the width and height of the video signal on the video\noutput, in pixels. Typically used by a streaming app to\ndetermine the highest resolution of video to select\nOTT/STB device: returns the video resolution over HDMI\nTV device: returns the resolution of the panel"
     },
     {
       "id": 88,
@@ -1092,7 +1092,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "check",
-      "description": "Returns the current state of output protection on the video output OTT/STB device: returns the negotiated HDCP version on the video output, or none if an encrypted connection has not been made between the OTT/STB device and any attached TV TV device: returns direct"
+      "description": "Returns the current state of output protection on the video\noutput\nOTT/STB device: returns the negotiated HDCP version on\nthe video output, or none if an encrypted connection has not\nbeen made between the OTT/STB device and any attached\nTV\nTV device: returns direct"
     },
     {
       "id": 89,
@@ -1105,7 +1105,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns whether the output of the OTT/STB device is actively being displayed on the TV OTT/STB device: returns the current state of the HDMI CEC connection active - the TV is on and the OTT/STB device is the active source inactive - the TV is off or the OTT/STB device is not the active source unsupported - CEC is not enabled on the TV TV device: returns Wrong device class error"
+      "description": "Returns whether the output of the OTT/STB device is actively\nbeing displayed on the TV\nOTT/STB device: returns the current state of the HDMI CEC\nconnection\nactive - the TV is on and the OTT/STB device is the\nactive source\ninactive - the TV is off or the OTT/STB device is not\nthe active source\nunsupported - CEC is not enabled on the TV\nTV device: returns Wrong device class error"
     },
     {
       "id": 90,
@@ -1118,7 +1118,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the refresh rate of the video signal on the video output, in Hz OTT/STB device: returns the refresh rate, or 0 if no TV is attached TV device: returns the compositor refresh rate currently used to output content to the integrated display"
+      "description": "Returns the refresh rate of the video signal on the video\noutput, in Hz\nOTT/STB device: returns the refresh rate, or 0 if no TV is\nattached\nTV device: returns the compositor refresh rate currently used\nto output content to the integrated display"
     },
     {
       "id": 91,
@@ -1131,7 +1131,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the video color depth being used on the video output, in bits OTT/STB device: in addition, returns 0 when a display is not connected over HDMI TV device: does not return 0"
+      "description": "Returns the video color depth being used on the video\noutput, in bits\nOTT/STB device: in addition, returns 0 when a display is not\nconnected over HDMI\nTV device: does not return 0"
     },
     {
       "id": 92,
@@ -1144,7 +1144,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the current color format of the video signal on the active video output port or integrated display OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none"
+      "description": "Returns the current color format of the video signal on the\nactive video output port or integrated display\nOTT/STB device: in addition, returns none when a display is\nnot connected over HDMI\nTV device: does not return none"
     },
     {
       "id": 93,
@@ -1157,7 +1157,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the current colorimetry value of the video signal on the active video output port or integrated display OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none"
+      "description": "Returns the current colorimetry value of the video signal on\nthe active video output port or integrated display\nOTT/STB device: in addition, returns none when a display is\nnot connected over HDMI\nTV device: does not return none"
     },
     {
       "id": 94,
@@ -1170,7 +1170,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the current dynamic range format of the video signal on the video output OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none"
+      "description": "Returns the current dynamic range format of the video signal\non the video output\nOTT/STB device: in addition, returns none when a display is\nnot connected over HDMI\nTV device: does not return none"
     },
     {
       "id": 95,
@@ -1183,7 +1183,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "check",
       "js": "cross",
-      "description": "Returns the quantization range used on the video output OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none"
+      "description": "Returns the quantization range used on the video output\nOTT/STB device: in addition, returns none when a display is\nnot connected over HDMI\nTV device: does not return none"
     },
     {
       "id": 96,
@@ -1196,7 +1196,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "cross",
       "js": "check",
-      "description": "Adds the supplied list of keys to the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification"
+      "description": "Adds the supplied list of keys to the set of keys that are\nreceived by this app when it is in the Active lifecycle state but\nnot in focus. The key is represented by the JS event.key\nattribute defined in the Firebolt Key Codes Specification"
     },
     {
       "id": 97,
@@ -1209,7 +1209,7 @@
       "deprecatedReleaseTag": "",
       "cpp17": "cross",
       "js": "check",
-      "description": "Removes the supplied list of keys from the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification"
+      "description": "Removes the supplied list of keys from the set of keys that\nare received by this app when it is in the Active lifecycle state\nbut not in focus. The key is represented by the JS event.key\nattribute defined in the Firebolt Key Codes Specification"
     }
   ]
 }
