@@ -118,7 +118,7 @@ def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = 
         f'<div class="hero-catalog-status"><span class="hero-status-badge{status_class}"><span>Catalog status:</span> '
         f'{esc(status)}</span>{status_explainer()}</div>'
     )
-    return f'''<section class="hero" style="height:clamp(360px,32vw,440px);min-height:360px;padding:52px 5vw 42px;display:flex;align-items:center;overflow:visible"><div class="wrap" style="width:100%">{eyebrow_html}{title_block}<p>{esc(description)}</p>{badge_html}{status_html}{release_html}</div></section>'''
+    return f'''<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center"><div class="wrap" style="width:100%">{eyebrow_html}{title_block}<p>{esc(description)}</p>{badge_html}{status_html}{release_html}</div></section>'''
 
 
 def release_panel(label: str, state: dict | None = None, show_version: bool = True) -> str:

@@ -35,13 +35,18 @@ def build_home() -> None:
     southbound = load("southbound-apis.json")
     body = hero("", content["title"], content["description"], content["badges"], include_release=False)
     title_html = '<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">' + esc(content["title"]) + '</h1>'
-    badge_style = 'display:inline-flex;align-items:center;padding:5px 12px;border:1px solid #b8df63;border-radius:999px;color:#b8df63;font:700 .72rem/1 JetBrains Mono,monospace;letter-spacing:.08em'
-    intro_html = f'<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;line-height:1"><div style="{badge_style}">RDK8 for Video</div><div style="{badge_style}">Powering Next-Generation Entertainment Experiences</div></div>'
+    tagline_parts = ["RDK-V", "RDK8 for Video", "Powering Next-Generation Video Experiences"]
+    tagline_html = "".join(f'<div class="hero-tagline-badge">{part}</div>' for part in tagline_parts)
+    intro_html = f'<div class="hero-tagline">{tagline_html}</div>'
     body = body.replace(title_html, intro_html + title_html, 1)
+    if content.get("descriptionAddendum"):
+        description_html = f'<p>{esc(content["description"])}</p>'
+        addendum_html = description_html + f'<p>{esc(content["descriptionAddendum"])}</p>'
+        body = body.replace(description_html, addendum_html, 1)
     architecture = content["architecture"]
     architecture_links = ["component-catalog.html", "northbound-api-spec.html", "southbound-api-spec.html"]
     architecture_metrics = [len(components.get("components", [])) + len(non_core_components.get("components", [])), len(northbound.get("apis", [])), len(southbound.get("apis", []))]
-    body += f'''<section class="section alt"><div class="eyebrow">Current release</div><h2>RDK8 Release Overview</h2><p class="lede">{esc(content["release_overview"])}</p></section>'''
+    body += f'''<section class="section alt home-release"><div class="eyebrow">Current release</div><h2>RDK8 Release Overview</h2><p class="lede">{esc(content["release_overview"])}</p></section>'''
     body += f'''<section class="section"><div class="eyebrow">Components and interfaces</div><h2>Explore the Core RDK platform</h2>{linked_metric_cards(architecture["cards"][:3], architecture_links, architecture_metrics)}</section>'''
     benefits = content["benefits"]
     body += f'''<section class="section alt"><div class="eyebrow">RDK8 benefits</div><h2>{esc(benefits["title"])}</h2>{benefit_cards(benefits["cards"])}</section>'''
