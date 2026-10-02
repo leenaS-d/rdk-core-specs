@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 FIREBOLT_DOCUMENTS = (
-    ("Firebolt 8 JSON-RPC spec.pdf", "firebolt-json-rpc.html", "Firebolt 8 JSON-RPC Specification", "Approved"),
+    ("Firebolt 8 JSON-RPC spec.pdf", "firebolt-json-rpc.html", "Firebolt 8 JSON-RPC Specification", "Published"),
 )
 FIREBOLT_DOCUMENT_DESCRIPTIONS = {
     "firebolt-json-rpc.html": "The Firebolt JSON-RPC specification defines the request and response protocol used by RDK8 applications and platform services.",
@@ -70,15 +70,32 @@ def _normalize_table_cell(value: object) -> str:
 
 
 def _clean_field_cell(value: object) -> str:
-    return "\n".join(line.rstrip() for line in str(value or "").splitlines() if line.strip())
+    lines = []
+    for raw_line in str(value or "").splitlines():
+        line = " ".join(raw_line.split())
+        if not line:
+            continue
+        line = re.sub(
+            r"(?<![A-Za-z])((?:[A-Za-z_]\s+){2,}[A-Za-z_])\s+-",
+            lambda match: re.sub(r"\s+", "", match.group(1)) + " -",
+            line,
+        )
+        lines.append(line)
+    return "\n".join(lines)
 
 
 _FIELD_DECLARATION = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*\s-\s")
 _FIELD_SUBITEM = re.compile(r"^(?:[\[{(\"']|list\b|one\b|true\b|false\b|null\b|\d)", re.IGNORECASE)
+_FIELD_DECLARATION_START = re.compile(r"(?<=\s)(?=[A-Za-z_][A-Za-z0-9_]*\s-\s)")
+_LIST_MARKER = re.compile(r"^\s*(?:[-*]|\u2022|\d+\.)\s+(.+)$")
 
 
 def _render_field(value: str) -> str:
-    lines = [line.strip() for line in value.splitlines() if line.strip()]
+    lines = []
+    for raw_line in value.splitlines():
+        line = " ".join(raw_line.split())
+        if line:
+            lines.extend(part.strip() for part in _FIELD_DECLARATION_START.split(line) if part.strip())
     declarations: list[list[object]] = []
     for line in lines:
         if _FIELD_DECLARATION.match(line):
@@ -92,7 +109,7 @@ def _render_field(value: str) -> str:
             else:
                 declarations[-1][0] = f"{declaration} {line}"
         else:
-            return f'<span class="api-detail-text">{escape(value)}</span>'
+            return f'<span class="api-detail-text">{escape(" ".join(lines))}</span>'
     if not declarations:
         return '<span class="api-detail-text">None</span>'
     rendered = []
@@ -102,6 +119,35 @@ def _render_field(value: str) -> str:
             detail_html = '<ul class="api-detail-sublist">' + "".join(f"<li>{escape(detail)}</li>" for detail in details) + "</ul>"
         rendered.append(f"<li>{escape(declaration)}{detail_html}</li>")
     return '<ul class="api-detail-list">' + "".join(rendered) + "</ul>"
+
+
+def _render_description(value: str) -> str:
+    """Join PDF-wrapped description lines, preserving only explicit bullet items."""
+    paragraphs: list[str] = []
+    bullets: list[str] = []
+    current = ""
+    for raw_line in value.splitlines():
+        line = " ".join(raw_line.split())
+        if not line:
+            continue
+        marker = _LIST_MARKER.match(line)
+        if marker:
+            if current:
+                paragraphs.append(current)
+                current = ""
+            bullets.append(marker.group(1))
+        elif bullets:
+            bullets[-1] = f"{bullets[-1]} {line}"
+        else:
+            current = f"{current} {line}".strip()
+    if current:
+        paragraphs.append(current)
+    rendered = [f'<p class="spec-entry-overview">{escape(text)}</p>' for text in paragraphs]
+    if bullets:
+        rendered.append('<ul class="api-detail-list">' + "".join(f"<li>{escape(item)}</li>" for item in bullets) + "</ul>")
+    if not rendered:
+        return '<span class="api-detail-text">None</span>'
+    return "".join(rendered)
 
 
 def _row_highlight(page, bbox: tuple) -> str | None:
@@ -140,6 +186,8 @@ def _support_mark(label: str, value: str) -> str:
 
 def _join_identifier(value: object) -> str:
     text = "".join(str(value or "").split())
+    if text == "mediaRenditionChanged":
+        return text
     return re.sub(r"(?<!^)(on[A-Z])", r"\n\1", text, count=1)
 
 
@@ -215,7 +263,7 @@ def _render_api_references(types: list[list[str]], errors: list[list[str]]) -> s
 def build_firebolt_api() -> None:
     from build import hero, shell
 
-    methods = _extract_api_methods()
+    methods = [method for method in _extract_api_methods() if method["version"] != "???"]
     for index, method in enumerate(methods):
         method["id"] = f"api-{index}"
     types, errors = _extract_api_references()
@@ -231,15 +279,15 @@ def build_firebolt_api() -> None:
                 <div class="api-detail-row"><dt>Returns</dt><dd>{_render_field(method["returns"])}</dd></div>
                 <div class="api-detail-row"><dt>Specific errors</dt><dd>{_render_field(method["errors"])}</dd></div>
             </dl>
-            <p class="spec-entry-overview">{escape(method["description"])}</p></section></template>'''
+            {_render_description(method["description"])}</section></template>'''
         for method in methods
     )
     body = hero(
         "Firebolt 8",
-        "Firebolt 8 API Specification",
+        "Firebolt 8 Core API Specification",
         "Standardized APIs that give RDK8 applications consistent access to device and platform capabilities through Firebolt.",
         include_release=False,
-        status="Approved",
+        status="Published",
     )
     body += (
         '<section class="section spec-document" style="padding-top:42px">'
@@ -248,14 +296,14 @@ def build_firebolt_api() -> None:
         '<select id="api-module"><option value="">All modules</option>'
         f'{"".join(f"<option>{escape(module)}</option>" for module in modules)}</select></div>'
         f'{_render_api_references(types, errors)}'
-        '<div class="table-wrap"><table><thead><tr><th>Module</th><th>Methods</th><th>API version</th><th>Details</th></tr></thead><tbody id="api-rows"></tbody></table></div></section>'
+        '<div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Module</th><th>Methods</th><th>API version</th><th>Details</th></tr></thead><tbody id="api-rows"></tbody></table></div></section>'
         '</section>'
         f'{detail_templates}'
         '<div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
         f'''<script>const DATA={rows};const esc=s=>{{const d=document.createElement('div');d.textContent=s;return d.innerHTML}};const search=document.querySelector('#api-search'),moduleFilter=document.querySelector('#api-module'),modal=document.querySelector('#spec-modal'),modalBody=document.querySelector('#spec-modal-body');function render(){{const q=search.value.toLowerCase();const rows=DATA.filter(item=>(!q||Object.values(item).join(' ').toLowerCase().includes(q))&&(!moduleFilter.value||item.module===moduleFilter.value));document.querySelector('#api-rows').innerHTML=rows.length?rows.map(item=>`<tr><td>${{esc(item.module)}}</td><td style="white-space:pre-line">${{esc(item.method)}}</td><td><span class="pill">${{esc(item.version)}}</span></td><td><a class="pill spec-modal-trigger" href="#${{item.id}}" data-modal-target="${{item.id}}">View details</a></td></tr>`).join(''):'<tr><td class="empty" colspan="4">No matching APIs.</td></tr>'}}function closeModal(){{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}}document.addEventListener('click',event=>{{const trigger=event.target.closest('.spec-modal-trigger');if(trigger){{event.preventDefault();const template=document.querySelector(`#tmpl-${{trigger.dataset.modalTarget}}`);modalBody.innerHTML='';modalBody.appendChild(template.content.cloneNode(true));modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}}}});modal.querySelectorAll('[data-modal-close]').forEach(element=>element.addEventListener('click',closeModal));document.addEventListener('keydown',event=>{{if(event.key==='Escape')closeModal()}});[search,moduleFilter].forEach(element=>element.addEventListener('input',render));render()</script>'''
     )
     footer = 'Source file: <a href="Firebolt 8 API Spec.pdf" target="_blank" rel="noopener">Firebolt 8 API Spec.pdf</a>'
-    (ROOT / "firebolt-api-spec.html").write_text(shell("Firebolt 8 API Specification | RDK8", "northbound", body, footer), encoding="utf-8")
+    (ROOT / "firebolt-api-spec.html").write_text(shell("Firebolt 8 Core API Specification | RDK8", "northbound", body, footer), encoding="utf-8")
 
 
 def _render_table(rows: list[list[object]], headers_override: tuple[str, ...] | None = None) -> str:
@@ -367,32 +415,54 @@ def _extract_json_rpc_sections() -> tuple[str, list[list[object]], list[list[obj
     def without_numbering(rows: list[list[object]]) -> list[list[object]]:
         return [row[1:] for row in rows if any(_clean_cell(cell) for cell in row)]
 
+    def classify(rows: list[list[object]]) -> list[list[object]]:
+        classified = []
+        for description, example, notes in rows:
+            try:
+                payload = json.loads(_clean_cell(example))
+                message_type = "Method" if "method" in payload else "Response"
+            except json.JSONDecodeError:
+                message_type = "Method" if '"method"' in str(example) else "Response"
+            classified.append([message_type, description, example, notes])
+        return classified
+
     definitions = _render_table(first_page_tables[1])
-    method_calls = [
+    method_calls = classify([
         *without_numbering(first_page_tables[2][1:]),
         *without_numbering(second_page_tables[0]),
-    ]
-    notifications = [
+    ])
+    notifications = classify([
         *without_numbering(second_page_tables[1][1:]),
         *without_numbering(third_page_tables[0]),
-    ]
+    ])
     return definitions, method_calls, notifications
 
 
-def _render_json_rpc_message_table(rows: list[list[object]]) -> str:
+def _render_json_rpc_message_table(rows: list[list[object]], template_prefix: str) -> str:
     rows_html = []
-    for message, example, notes in rows:
+    templates = []
+    for index, (message_type, description, example, notes) in enumerate(rows):
+        template_id = f"{template_prefix}-{index}"
         rows_html.append(
             '<tr>'
-            f'<td>{escape(_clean_cell(message))}</td>'
-            f'<td><pre class="json-rpc-example">{escape(_format_json_rpc_example(example))}</pre></td>'
+            f'<td>{escape(message_type)}</td>'
+            f'<td>{escape(_clean_cell(description))}</td>'
             f'<td>{escape(_clean_cell(notes))}</td>'
+            f'<td><a class="pill spec-modal-trigger" href="#{template_id}" data-modal-target="{template_id}">View example</a></td>'
             '</tr>'
+            )
+        templates.append(
+            f'<template id="{template_id}"><section class="spec-entry">'
+            f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">{escape(message_type)}</span><h2>{escape(_clean_cell(description))}</h2></div>'
+            f'<p class="spec-entry-overview"><strong>Message</strong>: {escape(message_type)}</p>'
+            f'<h3>Example</h3><pre class="spec-example">{escape(_format_json_rpc_example(example))}</pre>'
+            f'<h3>Notes</h3><p class="spec-entry-overview">{escape(_clean_cell(notes) or "No notes provided.")}</p>'
+            '</section></template>'
         )
     return (
         '<div class="spec-table-wrap"><table class="spec-table json-rpc-message-table">'
-        '<thead><tr><th>Message</th><th>Example</th><th>Notes</th></tr></thead>'
-        f'<tbody>{"".join(rows_html)}</tbody></table></div>'
+        '<thead><tr><th>Message</th><th>Description</th><th>Notes</th><th>Example</th></tr></thead>'
+        f'<tbody>{"".join(rows_html)}</tbody></table></div>{"".join(templates)}'
     )
 
 
@@ -424,8 +494,8 @@ def build_firebolt_documents() -> None:
                 '</div><template id="tmpl-json-rpc-definitions"><section class="spec-entry reference-modal-entry">'
                 f'<div class="spec-entry-head"><h2>Definitions</h2></div>{definitions}</section></template></div>'
             )
-            method_table = _render_json_rpc_message_table(method_calls)
-            notification_table = _render_json_rpc_message_table(notifications)
+            method_table = _render_json_rpc_message_table(method_calls, "json-rpc-method")
+            notification_table = _render_json_rpc_message_table(notifications, "json-rpc-notification")
             body += (
                 '<section class="section spec-document" style="padding-top:42px">'
                 f'<section class="spec-intro json-rpc-section">{references}</section>'
@@ -434,8 +504,9 @@ def build_firebolt_documents() -> None:
                 '<p>All names used for matching, including method and parameter names, are case sensitive as stated in Section 2 of the JSON-RPC 2.0 Specification.</p></section>'
                 f'<section class="spec-intro json-rpc-section"><h2>Method Calls</h2>{method_table}</section>'
                 f'<section class="spec-intro json-rpc-section"><h2>Notifications</h2>{notification_table}</section>'
-                '</section><div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
-                '<script>const modal=document.querySelector("#spec-modal"),modalBody=document.querySelector("#spec-modal-body");function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(trigger){event.preventDefault();const template=document.querySelector(`#tmpl-${trigger.dataset.modalTarget}`);modalBody.innerHTML="";modalBody.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()});</script>'
+                '</section>'
+                '<div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
+                '<script>(function(){const modal=document.getElementById("spec-modal"),body=document.getElementById("spec-modal-body");if(!modal)return;function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(!trigger)return;event.preventDefault();const template=document.getElementById(trigger.dataset.modalTarget);if(!template)return;body.innerHTML="";body.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()})})()</script>'
             )
         else:
             summary, tables = _extract_document(pdf_name)
@@ -493,7 +564,7 @@ def build_firebolt_intents() -> None:
         context_rows.append(values)
     context_table = _render_table([context_headers, *context_rows])
     triggers = "".join(
-        f'<a class="allowed-action spec-modal-trigger" href="#intent-{escape(action.removesuffix(" action type").lower())}" data-modal-target="intent-{escape(action.removesuffix(" action type").lower())}" title="Open {escape(action)}">{escape(action.removesuffix(" action type").lower())}</a>'
+        f'<a class="pill allowed-action spec-modal-trigger" href="#intent-{escape(action.removesuffix(" action type").lower())}" data-modal-target="intent-{escape(action.removesuffix(" action type").lower())}" title="Open {escape(action)}">{escape(action.removesuffix(" action type").lower())}</a>'
         for action in action_types
     )
 
@@ -566,7 +637,7 @@ def build_firebolt_intents() -> None:
             '</section></template>'
         )
 
-    body = hero("Firebolt 8", "Firebolt 8 Intents Specification", FIREBOLT_DOCUMENT_DESCRIPTIONS["firebolt-intents.html"], include_release=False, status="Approved")
+    body = hero("Firebolt 8", "Firebolt 8 Intents Specification", FIREBOLT_DOCUMENT_DESCRIPTIONS["firebolt-intents.html"], include_release=False, status="Published")
     body += (
         '<section class="section spec-document" style="padding-top:42px">'
         '<section class="spec-intro intent-overview" id="overview">'
@@ -597,6 +668,34 @@ def _clean_linux_key_codes(value: object) -> str:
     return " ".join(codes)
 
 
+def _render_key_code_table(headers: list[str], rows: list[list[str]], template_prefix: str) -> str:
+    visible_headers = headers[:3] + ["View details"]
+    rows_html = []
+    templates = []
+    for index, values in enumerate(rows):
+        template_id = f"{template_prefix}-{index}"
+        detail_rows = "".join(
+            f"<tr><th>{escape(header)}</th><td>{escape(value)}</td></tr>"
+            for header, value in zip(headers, values)
+        )
+        rows_html.append(
+            "<tr>"
+            + "".join(f"<td>{escape(value)}</td>" for value in values[:3])
+            + f'<td><a class="pill allowed-action spec-modal-trigger" href="#{template_id}" data-modal-target="{template_id}">View details</a></td></tr>'
+        )
+        templates.append(
+            f'<template id="{template_id}"><section class="spec-entry"><div class="spec-entry-head">'
+            f'<span class="spec-entry-eyebrow">Key code details</span><h2>{escape(values[0])}</h2></div>'
+            f'<div class="spec-table-wrap key-code-detail-table"><table class="spec-table"><tbody>{detail_rows}</tbody></table></div>'
+            "</section></template>"
+        )
+    header_html = "".join(f"<th>{escape(header)}</th>" for header in visible_headers)
+    return (
+        f'<div class="key-codes-table"><div class="spec-table-wrap"><table class="spec-table"><thead><tr>{header_html}</tr></thead>'
+        f'<tbody>{"".join(rows_html)}</tbody></table></div></div>{"".join(templates)}'
+    )
+
+
 def build_firebolt_key_codes() -> None:
     from build import hero, shell
 
@@ -611,6 +710,8 @@ def build_firebolt_key_codes() -> None:
     def normalize_rows(rows: list[list[object]]) -> list[list[str]]:
         normalized = []
         for row in rows:
+            if not any(_clean_cell(cell) for cell in row):
+                continue
             values = [_clean_cell(cell) for cell in row]
             values[2] = _clean_linux_key_codes(row[2])
             normalized.append(values)
@@ -628,21 +729,23 @@ def build_firebolt_key_codes() -> None:
     partners = normalize_rows(partner_rows)
     note_match = re.search(r"(All Linux Function key codes.*)$", text.strip())
     closing_note = _clean_cell(note_match.group(1)) if note_match else ""
-    standard_markup = f'<div class="key-codes-table">{_render_table([headers, *standard_rows])}</div>'
-    partner_markup = f'<div class="key-codes-table">{_render_table([headers, *partners])}</div>'
+    standard_markup = _render_key_code_table(headers, standard_rows, "standard-key")
+    partner_markup = _render_key_code_table(headers, partners, "partner-key")
 
     body = hero(
         "Firebolt 8",
         "Firebolt 8 Key Codes Specification",
         FIREBOLT_DOCUMENT_DESCRIPTIONS["firebolt-key-codes.html"],
         include_release=False,
-        status="Approved",
+        status="Published",
     )
     body += (
         '<section class="section spec-document" style="padding-top:42px">'
         f'<section class="spec-intro" id="standard-keys"><h2>Standard RCU keys</h2>{standard_markup}</section>'
         f'<section class="spec-intro" id="partner-buttons"><h2>Partner buttons</h2>'
         f'<p>{escape(_clean_cell(partner_intro))}</p>{partner_markup}'
+        '<div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
+        '<script>(function(){const modal=document.getElementById("spec-modal"),body=document.getElementById("spec-modal-body");if(!modal)return;function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(!trigger)return;event.preventDefault();const template=document.getElementById(trigger.dataset.modalTarget);if(!template)return;body.innerHTML="";body.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()})})()</script>'
         f'<p class="lede" style="margin-top:16px">{escape(closing_note)}</p></section>'
         '</section>'
     )
@@ -676,7 +779,7 @@ def build_northbound() -> None:
         data_file="northbound-apis.json",
         output_file="northbound-api-spec.html",
         active="northbound",
-        title="Northbound API Specifications",
+        title="Firebolt Core API Specification",
         description="The RDK8 Northbound API Specifications provide a consistent app-facing layer for web and native applications to access RDK8 platform services through Firebolt.",
         columns=["Modules", "Version", "Methods"],
         fields=["component", "releaseTag", "name"],

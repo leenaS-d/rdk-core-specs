@@ -357,7 +357,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
       "releaseTag": "1.0",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk"
     },
     {
       "name": "memstress",
@@ -371,7 +371,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
       "releaseTag": "N/A",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk"
     },
     {
       "name": "packager-headers",
@@ -455,7 +455,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
       "releaseTag": "N/A",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk"
     },
     {
       "name": "rdkversion",
@@ -490,7 +490,7 @@
       "category": "Entertainment Services",
       "layer": "middleware",
       "releaseTag": "N/A",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "rtcore",
@@ -567,7 +567,7 @@
       "category": "Thunder",
       "layer": "middleware",
       "releaseTag": "1.0.0",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "thunder-plugin-activator",
@@ -623,13 +623,13 @@
       "category": "Thunder",
       "layer": "middleware",
       "releaseTag": "N/A",
-      "url": null
+      "url": "https://github.com/rdkcentral/meta-rdk-video"
     },
     {
       "name": "wpeframework-ocdm-clearkey",
       "category": "Thunder",
       "layer": "middleware",
-      "releaseTag": "ddda85542097",
+      "releaseTag": "1.0.0",
       "url": "https://git@github.com/rdkcentral/OCDM-Clearkey"
     },
     {
@@ -664,8 +664,8 @@
       "name": "xmidt-agent",
       "category": "Device Management & Diagnostics",
       "layer": "middleware",
-      "releaseTag": "1.0.0",
-      "url": null
+      "releaseTag": "0.5.15",
+      "url": "https://github.com/xmidt-org/xmidt-agent"
     },
     {
       "name": "xr-voice-sdk",
