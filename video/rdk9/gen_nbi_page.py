@@ -19,6 +19,8 @@ API_SPEC_GREEN = (0.86275, 1.0, 0.9451)
 # These two narrow PDF cells split field names and enum values across individual
 # syllables, so their extracted lines cannot be reconstructed reliably.
 PARAMETER_OVERRIDES = {
+    5: """intent - json
+handlerAppId - string - optional""",
     67: """text - string
 lang - string - BCP 47 - optional
 voice - string - optional
@@ -37,6 +39,41 @@ event - enum
 - networkFailed
 - synthesisFailed
 - playbackFailed""",
+}
+
+RETURN_OVERRIDES = {
+    60: """interfaceStats - object - optional
+txPackets - unsigned | null
+txError - unsigned | null
+txDropped - unsigned | null
+txFifoErrors - unsigned | null
+txCarrierErrors - unsigned | null
+rxPackets - unsigned | null
+rxError - unsigned | null
+rxDropped - unsigned | null
+rxFifoErrors - unsigned | null
+rxFrameErrors - unsigned | null
+linkTxBitRate - unsigned | null
+linkRxBitRate - unsigned | null
+wirelessStats - object - optional
+wirelessFrequency - unsigned | null
+wirelessQuality - unsigned | null
+wirelessSignal - integer | null
+wirelessTxBitrate - unsigned | null
+wirelessRxBitrate - unsigned | null
+wirelessInactiveTime - unsigned | null
+wirelessRxBytes - unsigned | null
+wirelessRxPackets - unsigned | null
+wirelessRxDropped - unsigned | null
+wirelessTxBytes - unsigned | null
+wirelessTxPackets - unsigned | null
+wirelessTxRetries - unsigned | null
+wirelessTxFailed - unsigned | null
+wirelessExpectedThroughput - unsigned | null""",
+    72: """userMemoryUsed - unsigned
+userMemoryLimit - unsigned
+gpuMemoryUsed - unsigned
+gpuMemoryLimit - unsigned""",
 }
 
 
@@ -176,7 +213,7 @@ def extract_api_spec_methods(pdf_name: str) -> tuple[list[dict], int]:
             "component": _dewrap_identifier(cells[1]),
             "name": _dewrap_identifier(cells[2]),
             "parameters": PARAMETER_OVERRIDES.get(method_id, clean_lines(cells[3])),
-            "returns": clean_lines(cells[4]),
+            "returns": RETURN_OVERRIDES.get(method_id, clean_lines(cells[4])),
             "specificErrors": clean_lines(cells[5]),
             "releaseTag": clean_cell(cells[6]),
             "deprecatedReleaseTag": clean_cell(cells[7]),
@@ -253,8 +290,11 @@ def _mark_badge(mark: str) -> str:
     return '<span class="api-support-mark unknown" aria-label="Support unknown">&mdash;</span>'
 
 
-_FIELD_DECLARATION = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*\s-\s")
-_FIELD_SUBITEM = re.compile(r"^(?:[\[{(\"']|list\b|one\b|true\b|false\b|null\b|\d)", re.IGNORECASE)
+_FIELD_DECLARATION = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*\s-\s*")
+_FIELD_TYPE_DECLARATION = re.compile(r"^(?:bool|double|string|unsigned|integer|object|json|enum)\s-\s", re.IGNORECASE)
+_FIELD_VALUE_DECLARATION = re.compile(r"^(?:list|one|zero|arg|UTC)\s-\s", re.IGNORECASE)
+_FIELD_DECLARATION_SPLIT = re.compile(r"(?<=\s)(?=[A-Za-z_][A-Za-z0-9_]*\s-\s)")
+_FIELD_SUBITEM = re.compile(r"^(?:[\[{(\"']|list\b|one\b|true\b|false\b|null\b)", re.IGNORECASE)
 _FIELD_BULLET = re.compile(r"^\s*(?:[-*]|\u2022)\s*(.+)$")
 _LIST_MARKER = re.compile(r"^(?P<indent>\s*)(?P<marker>[-*]|\u2022|\d+\.)\s+(?P<text>.+)$")
 _DESCRIPTION_NUMBERED_ITEM = re.compile(r"^(\d+)\.\s+(.+)$")
@@ -262,15 +302,43 @@ _DESCRIPTION_KEYED_ITEM = re.compile(r"^(.+?)\s-\s(.+)$")
 
 
 def _field_lines(value: str) -> list[str]:
-    lines = [line.rstrip() for line in str(value or "").splitlines() if line.strip()]
+    text = str(value or "")
+    text = re.sub(r"([A-Za-z_][A-Za-z0-9_]*)\s*\n\s*-\s*\n?\s*(bool|double|string|unsigned|integer|object|json|enum)\b", r"\1 - \2", text, flags=re.IGNORECASE)
+    text = re.sub(r"([A-Za-z_][A-Za-z0-9_]*\s-\s(?:bool|double|string|unsigned|integer|object|json|enum))\s*\n\s*-\s*optional", r"\1 - optional", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bwatched\s*\n\s*On\b", "watchedOn", text)
+    for broken, repaired in {
+        "complete\nd": "completed",
+        "descriptio\nn": "description",
+        "paramete\nrs": "parameters",
+        "ne\ntw\nork": "network",
+        "m\ned\nia": "media",
+        "re\nstr\nicti\non": "restriction",
+        "en\ntitl\ne\nm\nent": "entitlement",
+        "ot\nher": "other",
+        "killReacti\nvate": "killReactivate",
+        "100base_\ntx": "100base_tx",
+        "1000base\n_t": "1000base_t",
+        "SPEECH\n_PENDING": "SPEECH_PENDING",
+        "SPEECH\n_PAUSED": "SPEECH_PAUSED",
+        "SPEECH\n_NOT_F\nOUND": "SPEECH_NOT_FOUND",
+        "SPEECH\n_IN_PRO\nGRESS": "SPEECH_IN_PROGRESS",
+    }.items():
+        text = text.replace(broken, repaired)
+    lines = [line.rstrip() for line in text.splitlines() if line.strip()]
     repaired: list[str] = []
     for raw_line in lines:
         line = raw_line.strip()
         previous = repaired[-1] if repaired else ""
         joined = f"{previous}{line}"
-        if previous.endswith("-"):
+        type_join = re.match(r"^(bool|double|string|unsigned|integer|object|json|enum)([A-Za-z_][A-Za-z0-9_]*)\s-\s(.+)$", line, re.IGNORECASE)
+        if previous.endswith("-") and type_join:
+            repaired[-1] = f"{previous} {type_join.group(1)}"
+            repaired.append(f"{type_join.group(2)} - {type_join.group(3)}")
+        elif line == "-" and previous and not _FIELD_DECLARATION.match(previous):
+            repaired[-1] = f"{previous} -"
+        elif previous.endswith("-"):
             repaired[-1] = f"{previous} {line}"
-        elif previous and not _FIELD_DECLARATION.match(previous) and (len(previous) >= 8 or any(char.isupper() for char in previous[1:])) and re.match(r"^[A-Za-z_][A-Za-z0-9_]*\s-", joined):
+        elif previous and "_" not in previous and not _FIELD_DECLARATION.match(previous) and line[:1].isupper() and re.match(r"^[A-Za-z_][A-Za-z0-9_]*\s-", joined):
             repaired[-1] = joined
         elif previous and not _FIELD_DECLARATION.match(previous) and line.startswith("-") and not _FIELD_BULLET.match(line):
             repaired[-1] = f"{previous} {line}"
@@ -280,7 +348,36 @@ def _field_lines(value: str) -> list[str]:
             repaired[-1] = f"{previous}{line}"
         else:
             repaired.append(raw_line if _FIELD_BULLET.match(raw_line) else line)
-    return repaired
+    split_lines: list[str] = []
+    for line in repaired:
+        split_lines.extend(part.strip() for part in _FIELD_DECLARATION_SPLIT.split(line) if part.strip())
+    normalized: list[str] = []
+    index = 0
+    while index < len(split_lines):
+        if (
+            index + 1 < len(split_lines)
+            and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", split_lines[index])
+            and re.match(r"^-\s+(?:bool|double|string|unsigned|integer|object|json|enum)\b", split_lines[index + 1], re.IGNORECASE)
+        ):
+            value = split_lines[index + 1]
+            if index + 2 < len(split_lines) and re.match(r"^-\s+optional\b", split_lines[index + 2], re.IGNORECASE):
+                value = f"{value} optional"
+                index += 1
+            normalized.append(f"{split_lines[index]} {value}")
+            index += 2
+            continue
+        if (
+            index + 2 < len(split_lines)
+            and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", split_lines[index])
+            and split_lines[index + 1] == "-"
+            and _FIELD_TYPE_DECLARATION.match(split_lines[index + 2])
+        ):
+            normalized.append(f"{split_lines[index]} - {split_lines[index + 2]}")
+            index += 3
+            continue
+        normalized.append(split_lines[index])
+        index += 1
+    return normalized
 
 
 def _list_item(line: str) -> tuple[int, str] | None:
@@ -320,10 +417,23 @@ def _render_field_block(value: str) -> str:
     while index < len(lines):
         line = lines[index]
         bullet = _list_item(line)
-        if _FIELD_DECLARATION.match(line):
+        if declarations and _FIELD_VALUE_DECLARATION.match(line):
+            declarations[-1][0] = f"{declarations[-1][0]} {line}"
+        elif declarations and re.search(r"\s-\s+enum$", declarations[-1][0], re.IGNORECASE) and not _FIELD_DECLARATION.match(line):
+            declarations[-1][1].append((0, line))
+        elif (
+            _FIELD_DECLARATION.match(line)
+            and declarations
+            and declarations[-1][0].rstrip().endswith("-")
+            and _FIELD_TYPE_DECLARATION.match(line)
+        ):
+            declarations[-1][0] = f"{declarations[-1][0]} {line}"
+        elif _FIELD_DECLARATION.match(line):
             declarations.append([line, []])
         elif bullet and declarations:
             declarations[-1][1].append(bullet)
+        elif declarations and _FIELD_SUBITEM.match(line):
+            declarations[-1][1].append((0, line))
         elif index + 1 < len(lines) and _FIELD_BULLET.match(lines[index + 1]):
             declarations.append([f"{line} {lines[index + 1]}", []])
             index += 1

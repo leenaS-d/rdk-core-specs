@@ -28,6 +28,92 @@ DOCUMENT_TABLE_LAYOUTS = {
     ),
 }
 
+PARAMETER_OVERRIDES = {
+    "watched": """entityId - string
+progress - double - optional
+completed - bool - optional
+watchedOn - ISO 8601 date and time in UTC - optional
+agePolicy - string - optional""",
+    "close": """type - enum
+- deactivate
+- unload
+- killReload
+- killReactivate""",
+    "onStateChanged": """change - list of one lifecycle state change
+oldState - enum
+newState - enum""",
+    "startContent": "entityId - string - optional\nagePolicy - string - optional",
+    "stopContent": "entityId - string - optional\nagePolicy - string - optional",
+    "page": "pageId - string\nagePolicy - string - optional",
+    "error": """type - enum
+- network
+- media
+- restriction
+- entitlement
+- other
+code - string
+description - string
+visible - bool
+parameters - arg list - optional
+agePolicy - string - optional""",
+    "mediaLoadStart": "entityId - string\nagePolicy - string - optional",
+    "mediaPlay": "entityId - string\nagePolicy - string - optional",
+    "mediaPlaying": "entityId - string\nagePolicy - string - optional",
+    "mediaPause": "entityId - string\nagePolicy - string - optional",
+    "mediaWaiting": "entityId - string\nagePolicy - string - optional",
+    "mediaEnded": "entityId - string\nagePolicy - string - optional",
+    "mediaSeeking": "entityId - string\ntarget - double\nagePolicy - string - optional",
+    "mediaSeeked": "entityId - string\nposition - double\nagePolicy - string - optional",
+    "mediaRateChanged": "entityId - string\nrate - double\nagePolicy - string - optional",
+    "mediaRenditionChanged": """entityId - string
+bitrate - unsigned
+width - unsigned
+height - unsigned
+profile - string - optional
+agePolicy - string - optional""",
+    "event": "schema - uri\ndata - string\nagePolicy - string - optional",
+}
+
+RETURN_OVERRIDES = {
+    "advertisingId": """ifa - string - a UUID
+ifa_type - string, one of
+- \"dpid\" - device provided ID
+- \"sspid\" - SSP provided ID
+- \"sessionid\" - session / synthetic ID
+lmt - string, one of
+- \"0\"
+- \"1\"""",
+    "uid": "value - string - a UUID",
+    "deviceClass": """deviceClass - enum
+- ott - no tuner / demod, no integrated display
+- stb - with tuner / demod, no integrated display
+- tv - possibly tuner / demod, with integrated display""",
+    "chipsetId": "chipsetId - string - see Chipset Id in Devices table",
+    "state": """state - enum
+- initializing
+- active
+- paused
+- suspended
+- hibernated
+- terminating""",
+    "getspeechstate": """speechstate - enum
+- SPEECH_PENDING
+- SPEECH_IN_PROGRESS
+- SPEECH_PAUSED
+- SPEECH_NOT_FOUND
+TTS_Status - 0...3
+success - bool""",
+    "country\nonCountryChanged": """value - string, either
+- \"\" (if not initialized)
+- ISO 3166-1 alpha-2 (see Country in Devices table)""",
+    "preferredAudioLanguages\nonPreferredAudioLanguagesChanged": """value - list of strings, either
+- [] (if not initialized)
+- list of one or more ISO 639-2/B (see Secondary Audio Language in Devices table)""",
+    "presentationLanguage\nonPresentationLanguageChanged": """value - string, either
+- \"\" (if not initialized)
+- BCP 47 (see Presentation Languages in Devices table)""",
+}
+
 def _clean_cell(value: object) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
@@ -91,14 +177,13 @@ _LIST_MARKER = re.compile(r"^\s*(?:[-*]|\u2022|\d+\.)\s+(.+)$")
 
 
 def _render_field(value: str) -> str:
-    lines = []
-    for raw_line in value.splitlines():
-        line = " ".join(raw_line.split())
-        if line:
-            lines.extend(part.strip() for part in _FIELD_DECLARATION_START.split(line) if part.strip())
+    lines = [" ".join(raw_line.split()) for raw_line in value.splitlines() if raw_line.strip()]
     declarations: list[list[object]] = []
     for line in lines:
-        if _FIELD_DECLARATION.match(line):
+        marker = _LIST_MARKER.match(line)
+        if marker and declarations:
+            declarations[-1][1].append(marker.group(1))
+        elif _FIELD_DECLARATION.match(line):
             declarations.append([line, []])
         elif declarations:
             declaration, details = declarations[-1]
@@ -188,6 +273,8 @@ def _join_identifier(value: object) -> str:
     text = "".join(str(value or "").split())
     if text == "mediaRenditionChanged":
         return text
+    if text == "presentationLanguageonPresentationLanguageChanged":
+        return "presentationLanguage\nonPresentationLanguageChanged"
     return re.sub(r"(?<!^)(on[A-Z])", r"\n\1", text, count=1)
 
 
@@ -214,7 +301,7 @@ def _extract_api_methods() -> list[dict]:
                                 current["cells"][index] = f'{current["cells"][index]}\n{cell}' if current["cells"][index] else cell
                 if current and current["color"] != "red":
                     methods.append(current)
-    return [
+    extracted = [
         {
             "module": _join_identifier(item["cells"][1]),
             "method": _join_identifier(item["cells"][2]),
@@ -228,6 +315,10 @@ def _extract_api_methods() -> list[dict]:
         }
         for item in methods
     ]
+    for method in extracted:
+        method["parameters"] = PARAMETER_OVERRIDES.get(method["method"], method["parameters"])
+        method["returns"] = RETURN_OVERRIDES.get(method["method"], method["returns"])
+    return extracted
 
 
 def _extract_api_references() -> tuple[list[list[str]], list[list[str]]]:
