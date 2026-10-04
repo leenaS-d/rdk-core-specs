@@ -121,6 +121,7 @@
 .key-codes-table .spec-table-wrap{overflow-x:scroll}
 .key-codes-table .spec-table{width:100%;min-width:100%;table-layout:fixed}
 .key-codes-table .spec-table th,.key-codes-table .spec-table td{white-space:normal;overflow-wrap:anywhere}
+.key-codes-table .spec-table th{white-space:normal!important;overflow-wrap:anywhere;word-break:normal;line-height:1.25}
 .key-codes-table .spec-table th:nth-child(1),.key-codes-table .spec-table td:nth-child(1){width:24%}
 .key-codes-table .spec-table th:nth-child(2),.key-codes-table .spec-table td:nth-child(2){width:24%}
 .key-codes-table .spec-table th:nth-child(3),.key-codes-table .spec-table td:nth-child(3){width:32%}
@@ -155,3 +156,16 @@
 .hero .wrap{width:100%;text-align:left}.hero .wrap h1,.hero .wrap p,.home-release .lede{max-width:none}.hero-tagline,.badges{justify-content:flex-start}
 .pill{font-weight:700;text-decoration:none}
 .allowed-action{display:inline-block;background:#eaf2ff;color:#2249a2;border-radius:15px;padding:2px 9px;font-size:.8rem;font-weight:700;text-decoration:none}
+.app-actions-document .spec-table code,.app-action-entry .spec-table code,.intents-document .spec-table code,.intent-entry .spec-table code{background:transparent;padding:0;border-radius:0;color:inherit}
+.spec-table-label{font-size:.82rem;font-weight:500}
+.app-services-document .spec-intro{max-width:none}
+.app-services-document .spec-table{width:100%;min-width:760px;table-layout:fixed}
+.app-services-document .spec-table th,.app-services-document .spec-table td{white-space:normal;overflow-wrap:anywhere}
+.app-services-document .spec-table th:nth-child(1),.app-services-document .spec-table td:nth-child(1){width:24%}
+.app-services-document .spec-table th:nth-child(2),.app-services-document .spec-table td:nth-child(2){width:14%}
+.app-services-document .spec-table th:nth-child(3),.app-services-document .spec-table td:nth-child(3){width:44%}
+.app-services-document .spec-table th:nth-child(4),.app-services-document .spec-table td:nth-child(4){width:18%}
+.api-draft-marker{display:block;width:max-content;margin-top:5px}
+.draft-api-row td{background:#fff8e8}
+.draft-api-row td:first-child{box-shadow:inset 3px 0 #d69e2e}
+.draft-api-row:hover td{background:#fff3cf}

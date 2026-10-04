@@ -156,9 +156,8 @@ def _row_marks(page, bbox: tuple, marks: list[tuple]) -> tuple[str, str]:
 def extract_api_spec_methods(pdf_name: str) -> tuple[list[dict], int]:
     """Parse the Module/Method table from the Firebolt 9 API Specifications PDF.
 
-    Rows highlighted red ("Not approved - not ready for development") are dropped; only
-    green ("Approved - ready for development") rows are returned. Returns the approved
-    entries plus a count of the red entries that were excluded.
+    Green rows are returned as Approved and red rows as Draft. Returns all entries
+    plus the number of Draft entries.
     """
     entries: list[dict] = []
     excluded_red = 0
@@ -194,8 +193,7 @@ def extract_api_spec_methods(pdf_name: str) -> tuple[list[dict], int]:
                         current = {"cells": cells, "color": color, "cpp17": cpp17, "js": js}
                         if color == "red":
                             excluded_red += 1
-                        else:
-                            entries.append(current)
+                        entries.append(current)
                     elif current is not None:
                         for col_index, cell in enumerate(cells):
                             cell = cell.strip()
@@ -217,6 +215,7 @@ def extract_api_spec_methods(pdf_name: str) -> tuple[list[dict], int]:
             "specificErrors": clean_lines(cells[5]),
             "releaseTag": clean_cell(cells[6]),
             "deprecatedReleaseTag": clean_cell(cells[7]),
+            "status": "Draft" if entry["color"] == "red" else "Approved",
             "cpp17": entry["cpp17"],
             "js": entry["js"],
             "description": clean_lines(cells[10]),
@@ -247,8 +246,7 @@ def extract_types(pdf_name: str) -> list[tuple[str, str]]:
 def extract_error_values(pdf_name: str) -> list[dict]:
     """Parse the "Errors" table (spans pages 1-2) listing generic and specific error values.
 
-    Rows highlighted red ("Not approved - not ready for development") are excluded, matching
-    the same convention used for the main Module/Method table.
+    Red rows are retained as Draft so Specific errors remain visible.
     """
     rows_out: list[dict] = []
     current_class = ""
@@ -268,8 +266,7 @@ def extract_error_values(pdf_name: str) -> list[dict]:
                         continue
                     if cells[1].strip():
                         current_class = clean_cell(cells[1])
-                    if _row_highlight(page, table.rows[row_index].bbox) == "red":
-                        continue
+                    status = "Draft" if _row_highlight(page, table.rows[row_index].bbox) == "red" else "Approved"
                     rows_out.append({
                         "class": current_class,
                         "value": clean_cell(cells[2]),
@@ -277,6 +274,7 @@ def extract_error_values(pdf_name: str) -> list[dict]:
                         "description": clean_cell(cells[4]),
                         "examples": clean_cell(cells[5]),
                         "openIssues": clean_cell(cells[6]),
+                        "status": status,
                     })
     return rows_out
 
@@ -542,6 +540,8 @@ def render_northbound_templates(methods: list[dict]) -> str:
     for method in methods:
         slug = f"api-{method['id']}"
         meta_pills = [f'<span class="pill">API version {escape(method["releaseTag"])}</span>']
+        if method["status"] == "Draft":
+            meta_pills.append('<span class="pill warn">Draft</span>')
         if method["deprecatedReleaseTag"]:
             meta_pills.append(f'<span class="pill warn">To be deprecated (post RDK9): {escape(method["deprecatedReleaseTag"])}</span>')
         templates_html.append(
@@ -596,12 +596,11 @@ def build_app_services() -> None:
             api_version = clean_cell(raw_row[5])
             description_text = clean_cell(raw_row[6])
             detail_id = f"app-service-{service_index}-{row_index}"
-            status_label = {
-                "green": '<span class="spec-status-text" aria-label="Approved">&#10003; Approved</span>',
-                "red": '<span class="spec-status-text" aria-label="Not approved">! Not approved</span>',
-            }.get(approval, "")
+            is_draft = approval == "red"
+            status_label = '<span class="pill warn api-draft-marker">Draft</span>' if is_draft else ""
+            row_class = ' class="draft-api-row"' if is_draft else ""
             rows_html.append(
-                f'<tr><td><code>{escape(method)}</code>{status_label}</td><td><span class="pill">{escape(api_version)}</span></td>'
+                f'<tr{row_class}><td><span class="mono spec-table-label">{escape(method)}</span>{status_label}</td><td><span class="pill">{escape(api_version)}</span></td>'
                 f'<td>{escape(description_text) if description_text else "<span class=\"lede\">&mdash;</span>"}</td>'
                 f'<td><a class="pill spec-modal-trigger" href="#{detail_id}" data-modal-target="{detail_id}">View details</a></td></tr>'
             )
@@ -617,7 +616,8 @@ def build_app_services() -> None:
             templates.append(
                 f'<template id="tmpl-{detail_id}"><section class="spec-entry">'
                 f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">{escape(heading.split(" - ")[0])}</span>'
-                f'<h2>{escape(method)}</h2></div><div class="api-detail-meta"><span class="pill">API version {escape(api_version)}</span></div>'
+                f'<h2>{escape(method)}</h2></div><div class="api-detail-meta"><span class="pill">API version {escape(api_version)}</span>'
+                f'{"<span class=\"pill warn\">Draft</span>" if is_draft else ""}</div>'
                 f'<dl class="api-detail-fields">{detail_rows}</dl>'
                 f'<p class="spec-entry-overview">{escape(description_text)}</p></section></template>'
             )
@@ -637,7 +637,7 @@ def build_app_services() -> None:
         status="Draft",
     )
     body += (
-        '<section class="section spec-document" style="padding-top:34px">'
+        '<section class="section spec-document app-services-document" style="padding-top:34px">'
         '<style>.spec-status-text{display:block;width:max-content;max-width:100%;margin-top:6px;padding:2px 6px;border:1px solid #68717d;border-radius:3px;color:#303943;font-size:.72rem;font-weight:700;line-height:1.4;white-space:normal}</style>'
         + "".join(service_sections)
         + '</section><div class="spec-modal" id="spec-modal" aria-hidden="true">'
@@ -690,8 +690,20 @@ def render_reference_section(terms: list[tuple[str, str]], types: list[tuple[str
     """Render compact reference triggers with centered modal tables."""
     interpretation_table = render_spec_table(["Term", "Meaning"], [list(term) for term in terms])
     types_table = render_spec_table(["Type", "Definition"], [list(item) for item in types])
-    error_rows = [[error["class"], error["value"], error["name"], error["description"], error["examples"], error["openIssues"]] for error in errors]
-    errors_table = render_spec_table(["Class", "Value", "Name", "Description", "Examples", "Open issues"], error_rows, code_column=1)
+    error_rows = []
+    error_raw_cells = set()
+    for row_index, error in enumerate(errors):
+        name = escape(error["name"])
+        if error["status"] == "Draft":
+            name += '<span class="pill warn api-draft-marker">Draft</span>'
+            error_raw_cells.add((row_index, 2))
+        error_rows.append([error["class"], error["value"], name, error["description"], error["examples"], error["openIssues"]])
+    errors_table = render_spec_table(
+        ["Class", "Value", "Name", "Description", "Examples", "Open issues"],
+        error_rows,
+        code_column=1,
+        raw_cells=error_raw_cells,
+    )
     references = (
         ("interpretation", "Interpretation", interpretation_table),
         ("types", "Types", types_table),
@@ -752,6 +764,7 @@ def build_northbound() -> None:
             method["component"],
             method["name"],
             method["releaseTag"],
+            method["status"],
             method["deprecatedReleaseTag"],
             f"api-{method['id']}",
         ]
@@ -770,7 +783,8 @@ def build_northbound() -> None:
         f'<div class="notice" style="margin:0 0 24px">{notice}</div>'
         '<div class="toolbar northbound-toolbar"><input id="northbound-search" type="search" placeholder="Search Northbound APIs" aria-label="Search Northbound APIs">'
         '<select id="northbound-module"><option value="">All modules</option>'
-        f'{"".join(f"<option>{escape(module)}</option>" for module in modules)}</select></div>'
+        f'{"".join(f"<option>{escape(module)}</option>" for module in modules)}</select>'
+        '<select id="northbound-status"><option value="">All statuses</option><option>Approved</option><option>Draft</option></select></div>'
         f'{render_reference_section(extract_interpretation_terms(pdf_name), extract_types(pdf_name), extract_error_values(pdf_name))}'
         '<div class="table-wrap" style="margin-top:24px"><table><thead><tr>'
         '<th>Module</th><th>Method</th><th>Version</th><th>To be deprecated (post RDK9)</th><th>Details</th>'
@@ -788,18 +802,18 @@ def build_northbound() -> None:
     body += (
         f"<script>const DATA={rows};"
         "const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};"
-        "const search=document.querySelector('#northbound-search'),moduleFilter=document.querySelector('#northbound-module');"
+        "const search=document.querySelector('#northbound-search'),moduleFilter=document.querySelector('#northbound-module'),statusFilter=document.querySelector('#northbound-status');"
         "function render(){"
         "const q=search.value.toLowerCase();"
-        "const rows=DATA.filter(c=>(!q||c.join(' ').toLowerCase().includes(q))&&(!moduleFilter.value||c[0]===moduleFilter.value));"
+        "const rows=DATA.filter(c=>(!q||c.join(' ').toLowerCase().includes(q))&&(!moduleFilter.value||c[0]===moduleFilter.value)&&(!statusFilter.value||c[3]===statusFilter.value));"
         "document.querySelector('#northbound-rows').innerHTML=rows.length?rows.map(c=>"
-        "`<tr><td>${esc(c[0])}</td><td style=\"white-space:pre-line\">${esc(c[1])}</td>"
+        "`<tr class=\"${c[3]===\"Draft\"?\"draft-api-row\":\"\"}\"><td>${esc(c[0])}</td><td style=\"white-space:pre-line\">${esc(c[1])}${c[3]===\"Draft\"?' <span class=\"pill warn api-draft-marker\">Draft</span>':''}</td>"
         "<td><span class=\"pill\">${esc(c[2])}</span></td>"
-        "<td>${c[3]?`<span class=\"pill warn\">${esc(c[3])}</span>`:'<span class=\"lede\">&mdash;</span>'}</td>"
-        "<td><a class=\"pill spec-modal-trigger\" href=\"#${c[4]}\" data-modal-target=\"${c[4]}\">View details</a></td></tr>`"
+        "<td>${c[4]?`<span class=\"pill warn\">${esc(c[4])}</span>`:'<span class=\"lede\">&mdash;</span>'}</td>"
+        "<td><a class=\"pill spec-modal-trigger\" href=\"#${c[5]}\" data-modal-target=\"${c[5]}\">View details</a></td></tr>`"
         ").join(''):'<tr><td class=\"empty\" colspan=\"5\">No matching records.</td></tr>'"
         "}"
-        "[search,moduleFilter].forEach(e=>e.addEventListener('input',render));render()</script>"
+        "[search,moduleFilter,statusFilter].forEach(e=>e.addEventListener('input',render));render()</script>"
     )
     body += SPEC_MODAL_SCRIPT
     footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
@@ -1033,7 +1047,7 @@ def build_app_actions() -> None:
         table_markup = action_tables.get(action_type, '<p class="lede">No parameters are required for this action.</p>')
         example_markup = "".join(f'<pre class="spec-example">{escape(block)}</pre>' for block in examples)
         entries.append(
-            f'<template id="tmpl-app-action-{escape(action_type)}"><section class="spec-entry">'
+            f'<template id="tmpl-app-action-{escape(action_type)}"><section class="spec-entry app-action-entry">'
             f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">App action type</span><h2>{escape(heading)}</h2></div>'
             f'<p class="spec-entry-overview">{escape(overview)}</p>'
             f'<h3>Format of actionData</h3>{table_markup}'
@@ -1048,7 +1062,7 @@ def build_app_actions() -> None:
         status="Approved",
     )
     body += (
-        '<section class="section spec-document" style="padding-top:34px">'
+        '<section class="section spec-document app-actions-document" style="padding-top:34px">'
         '<section class="spec-intro" id="format">'
         '<h2>App action JSON Format</h2>'
         '<p>All app actions follow the following format.</p>'
@@ -1261,7 +1275,7 @@ def build_intents() -> None:
         examples_markup = "".join(f'<pre class="spec-example">{escape(block)}</pre>' for block in example_blocks)
         slug = escape(action.removesuffix(" action type").lower())
         action_entries += (
-            f'<template id="tmpl-intent-{slug}"><section class="spec-entry">'
+            f'<template id="tmpl-intent-{slug}"><section class="spec-entry intent-entry">'
             f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>{escape(action)}</h2></div>'
             f'<p class="spec-entry-overview">{escape(overview.strip())}</p>'
             f'<h3>Definition of data object</h3>{definition_markup}'
@@ -1286,7 +1300,7 @@ def build_intents() -> None:
         status="Approved",
     )
     body += (
-        '<section class="section spec-document" style="padding-top:34px">'
+        '<section class="section spec-document intents-document" style="padding-top:34px">'
         '<section class="spec-intro" id="overview">'
         '<p>An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a payment.</p>'
         '<p>An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user.</p>'
