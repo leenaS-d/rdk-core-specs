@@ -563,6 +563,129 @@ def render_northbound_templates(methods: list[dict]) -> str:
     return "".join(templates_html)
 
 
+def build_app_services() -> None:
+    pdf_name = "Firebolt App Services Specifications.pdf"
+    text = "\n".join(page.extract_text() or "" for page in PdfReader(ROOT / pdf_name).pages)
+    service_headings = []
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if re.match(r"^.+ App Service - org\.rdk\.[\w.]+$", line.strip()):
+            description = next((item.strip() for item in lines[index + 1:] if item.strip()), "")
+            service_headings.append((line.strip(), description))
+
+    tables = []
+    with pdfplumber.open(ROOT / pdf_name) as pdf:
+        for page in pdf.pages:
+            for table in page.find_tables():
+                rows = table.extract()
+                if rows and len(rows[0]) == 8 and clean_cell(rows[0][1]) == "Method":
+                    tables.append([
+                        (row, _row_highlight(page, table.rows[row_index].bbox))
+                        for row_index, row in enumerate(rows[1:], start=1)
+                    ])
+
+    service_sections = []
+    for service_index, (heading, description) in enumerate(service_headings):
+        table_rows = tables[service_index] if service_index < len(tables) else []
+        rows_html = []
+        templates = []
+        for row_index, (raw_row, approval) in enumerate(table_rows):
+            if not raw_row or not clean_cell(raw_row[1]):
+                continue
+            method = re.sub(r"\s*/\s*", " / ", re.sub(r"\s+", "", str(raw_row[1] or "")))
+            api_version = clean_cell(raw_row[5])
+            description_text = clean_cell(raw_row[6])
+            detail_id = f"app-service-{service_index}-{row_index}"
+            status_label = {
+                "green": '<span class="spec-status-text" aria-label="Approved">&#10003; Approved</span>',
+                "red": '<span class="spec-status-text" aria-label="Not approved">! Not approved</span>',
+            }.get(approval, "")
+            rows_html.append(
+                f'<tr><td><code>{escape(method)}</code>{status_label}</td><td><span class="pill">{escape(api_version)}</span></td>'
+                f'<td>{escape(description_text) if description_text else "<span class=\"lede\">&mdash;</span>"}</td>'
+                f'<td><a class="pill spec-modal-trigger" href="#{detail_id}" data-modal-target="{detail_id}">View details</a></td></tr>'
+            )
+            detail_fields = [
+                ("Parameters", _render_app_service_field(raw_row[2])),
+                ("Returns", _render_app_service_field(raw_row[3])),
+                ("Specific errors", _render_app_service_errors(raw_row[4])),
+            ]
+            detail_rows = "".join(
+                f'<div class="api-detail-row"><dt>{escape(label)}</dt><dd>{markup}</dd></div>'
+                for label, markup in detail_fields
+            )
+            templates.append(
+                f'<template id="tmpl-{detail_id}"><section class="spec-entry">'
+                f'<div class="spec-entry-head"><span class="spec-entry-eyebrow">{escape(heading.split(" - ")[0])}</span>'
+                f'<h2>{escape(method)}</h2></div><div class="api-detail-meta"><span class="pill">API version {escape(api_version)}</span></div>'
+                f'<dl class="api-detail-fields">{detail_rows}</dl>'
+                f'<p class="spec-entry-overview">{escape(description_text)}</p></section></template>'
+            )
+        title = heading.split(" - ")[0]
+        service_sections.append(
+            f'<section class="spec-intro"><h2>{escape(title)}</h2><p>{escape(description)}</p>'
+            '<div class="spec-table-wrap"><table class="spec-table"><thead><tr>'
+            '<th>Method</th><th>API Version</th><th>Description</th><th>View details</th>'
+            f'</tr></thead><tbody>{"".join(rows_html)}</tbody></table></div></section>'
+            + "".join(templates)
+        )
+
+    body = hero(
+        "Firebolt 9",
+        "Firebolt App Services Specification",
+        "Application services provided by the RDK9 video platform for portable Firebolt applications.",
+        status="Draft",
+    )
+    body += (
+        '<section class="section spec-document" style="padding-top:34px">'
+        '<style>.spec-status-text{display:block;width:max-content;max-width:100%;margin-top:6px;padding:2px 6px;border:1px solid #68717d;border-radius:3px;color:#303943;font-size:.72rem;font-weight:700;line-height:1.4;white-space:normal}</style>'
+        + "".join(service_sections)
+        + '</section><div class="spec-modal" id="spec-modal" aria-hidden="true">'
+        '<div class="spec-modal-backdrop" data-modal-close></div>'
+        '<div class="spec-modal-dialog" role="dialog" aria-modal="true">'
+        '<button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button>'
+        '<div class="spec-modal-body" id="spec-modal-body"></div></div></div>'
+        + SPEC_MODAL_SCRIPT
+    )
+    footer = f'Source file: <a href="{escape(pdf_name)}" target="_blank" rel="noopener">{escape(pdf_name)}</a>'
+    (ROOT / "firebolt-app-services.html").write_text(
+        shell("Firebolt App Services Specification | RDKE", "northbound", body, footer), encoding="utf-8"
+    )
+
+
+def _render_app_service_field(value: object) -> str:
+    lines = _field_lines(str(value or ""))
+    if not lines or lines == ["None"]:
+        return '<span class="api-detail-text">None</span>'
+
+    normalized = []
+    enum_values = False
+    for line in lines:
+        if _FIELD_DECLARATION.match(line):
+            normalized.append(line)
+            enum_values = line.rsplit(" - ", 1)[-1].strip().casefold() == "enum"
+        elif enum_values and not _list_item(line):
+            normalized.append(f"- {line.strip()}")
+        elif normalized and not _list_item(line):
+            normalized[-1] = f"{normalized[-1]} {line.strip()}"
+        else:
+            normalized.append(line)
+    return _render_field_block("\n".join(normalized))
+
+
+def _render_app_service_errors(value: object) -> str:
+    lines = _field_lines(str(value or ""))
+    if not lines or lines == ["None"]:
+        return '<span class="api-detail-text">None</span>'
+    if lines == ["no", "service", "service", "failed", "app not", "active"]:
+        lines = ["no service", "service failed", "app not active"]
+    items = []
+    for line in lines:
+        bullet = _list_item(line)
+        items.append((bullet[0], escape(bullet[1])) if bullet else (0, escape(line)))
+    return _render_nested_list(items, "api-detail-list")
+
+
 def render_reference_section(terms: list[tuple[str, str]], types: list[tuple[str, str]], errors: list[dict]) -> str:
     """Render compact reference triggers with centered modal tables."""
     interpretation_table = render_spec_table(["Term", "Meaning"], [list(term) for term in terms])
@@ -683,6 +806,7 @@ def build_northbound() -> None:
     (ROOT / "northbound-apis.html").write_text(shell("Firebolt Core API Specification | RDKE", "northbound", body, footer), encoding="utf-8")
 
     build_app_actions()
+    build_app_services()
     build_intents()
     build_key_codes()
 

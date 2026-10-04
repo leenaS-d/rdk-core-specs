@@ -1,0 +1,61 @@
+Firebolt App Services Specification
+
+   Document status        DRAFT
+
+   Author           Andrew Bennett
+
+   Reviewers        Timothy Dibben
+                    Yuri Pasquali
+
+                    Farhan Mahmood
+
+                    Jan Pedersen
+
+Overview
+
+This document describes the Firebolt app services, which can be used by portable Firebolt apps.
+
+Native Player App Service - org.rdk.nativeplayer
+
+This app service offers functionality to play live IP native channels.
+
+   Method                 Parameters       Returns                                                     Specific errors  API version  Description          Open issues
+                                                                                                     None
+1  playLive                                                 None                                                        1.0.0        Play a live channel
+                                  channelId - string
+
+2  stop             None                   None                                                      None               1.0.0
+                                                                                                                        1.0.0
+3  status / onStatusChanged None                                                                     None
+
+                                                                  state - enum
+                                                                          idle
+                                                                          pending
+                                                                          playing
+                                                                          blocked
+                                                                          failed
+
+                                                                  blockedReason - enum
+                                                                          parental
+                                                                          other
+
+                                                                  channelId - string
+                                                                  currentPositionSeconds - unsigned
+                                                                  endPositionSeconds - unsigned
+
+Parental App Service - org.rdk.parental
+
+This app service offers PIN and parental control functionality.
+
+   Method     Parameters          Returns  Specific                 API    Description                                                                           Open
+                                           errors                 version                                                                                        issues
+
+1  pinChallen None                                                1.0.0    Requests to raise a PIN prompt to the user, verify any PIN supplied by the user, and
+                                                                           return whether to proceed or not
+   ge                             proceed  no
+                                  - bool   service
+                                           service
+                                           failed
+                                           app not
+                                           active
+

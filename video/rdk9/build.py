@@ -29,6 +29,7 @@ def load(name: str) -> dict:
 
 NORTHBOUND_MENU = [
     ("northbound-apis.html", "Firebolt Core API Specification"),
+    ("firebolt-app-services.html", "Firebolt App Services Specification"),
     ("firebolt-app-actions.html", "Firebolt App Actions Specification"),
     ("firebolt-intents.html", "Firebolt Intents Specification"),
     ("firebolt-key-codes.html", "Firebolt Key Codes Specification"),
