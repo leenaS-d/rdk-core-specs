@@ -516,7 +516,7 @@ def esc(s) -> str:
 # needs to change — render_hero() picks it up automatically, and pages
 # without an entry simply render without a hero image, exactly as now.
 HERO_IMAGES: dict[str, str] = {
-    "about": "rdz.png",
+    # "about": "rdz.png",
     # "architecture-standards": "images/architecture-standards-hero.png",
     # "technical-governance": "images/technical-governance-hero.png",
     # "nbi": "images/nbi-hero.png",
