@@ -27,17 +27,37 @@ def load(name: str) -> dict:
     return json.loads((ROOT / name).read_text(encoding="utf-8"))
 
 
+NORTHBOUND_MENU = [
+    ("northbound-apis.html", "Firebolt Core API Specification"),
+    ("firebolt-app-actions.html", "Firebolt App Actions Specification"),
+    ("firebolt-intents.html", "Firebolt Intents Specification"),
+    ("firebolt-key-codes.html", "Firebolt Key Codes Specification"),
+]
+
+NORTHBOUND_KEYS = {"northbound"}
+
+
 def nav(active: str) -> str:
     links = [
         ("index.html", "Home", "home"),
         ("component-registry.html", "Components Catalog", "components"),
-        ("northbound-apis.html", "Northbound API Spec", "northbound"),
         ("southbound-apis.html", "Southbound API Spec", "southbound"),
         ("hardware-specifications.html", "Hardware specifications", "hardware"),
     ]
     items = "".join(
         f'<a class="{"active" if key == active else ""}" href="{href}">{label}</a>'
-        for href, label, key in links
+        for href, label, key in links[:2]
+    )
+    menu_items = "".join(f'<a href="{href}">{label}</a>' for href, label in NORTHBOUND_MENU)
+    dropdown_active = "active" if active in NORTHBOUND_KEYS else ""
+    dropdown = (
+        f'<details class="nav-dropdown"><summary class="nav-dropdown-summary {dropdown_active}">Northbound API Spec</summary>'
+        f'<div class="nav-dropdown-menu">{menu_items}</div></details>'
+    )
+    items += dropdown
+    items += "".join(
+        f'<a class="{"active" if key == active else ""}" href="{href}">{label}</a>'
+        for href, label, key in links[2:]
     )
     return f'''<div class="accent"></div>
 <header class="nav"><a class="brand" href="index.html"><img src="RDK-logo.png" alt="RDK"></a><nav class="navlinks">{items}</nav></header>'''
@@ -75,13 +95,18 @@ def status_explainer() -> str:
     return '''<details style="position:relative;min-width:150px"><summary style="cursor:pointer;color:#2457d6;font-size:.84rem;font-weight:700">Status legend</summary><dl style="position:absolute;z-index:2;left:0;right:auto;top:calc(100% + 8px);width:min(420px,calc(100vw - 40px));margin:0;padding:16px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;line-height:1.45"><dt style="font-weight:700;color:var(--ink)">Draft</dt><dd style="margin:2px 0 10px;color:var(--muted)">Specifications drafted and undergoing internal reviews and RTAB Approval</dd><dt style="font-weight:700;color:var(--ink)">Approved</dt><dd style="margin:2px 0 10px;color:var(--muted)">All review feedback has been addressed; RTAB has voted and approved the spec</dd><dt style="font-weight:700;color:var(--ink)">Published</dt><dd style="margin:2px 0 0;color:var(--muted)">Tagged and versioned against an official RDK release</dd></dl></details>'''
 
 
-def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = None, subtitle: str = "") -> str:
+def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = None, subtitle: str = "", status: str | None = None) -> str:
     badge_html = "" if not badges else '<div class="badges">' + "".join(
         f'<span class="badge">{esc(item)}</span>' for item in badges
     ) + "</div>"
     eyebrow_html = f'<div class="eyebrow" style="font-size:1.1rem;letter-spacing:.08em">{esc(eyebrow)}</div>' if eyebrow else ""
     subtitle_html = f'<div class="hero-subtitle" style="font-size:.95rem;font-weight:600;color:#b8df63;margin:-4px 0 18px">{esc(subtitle)}</div>' if subtitle else ""
-    return f'''<section class="hero" style="height:clamp(360px,32vw,440px);min-height:360px;padding:52px 5vw 42px;display:flex;align-items:center;overflow:visible"><div class="wrap" style="width:100%">{eyebrow_html}<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">{esc(title)}</h1>{subtitle_html}<p>{esc(description)}</p>{badge_html}</div></section>'''
+    status_class = " approved" if (status or "").casefold() == "approved" else ""
+    status_html = "" if status is None else (
+        f'<div class="hero-catalog-status"><span class="hero-status-badge{status_class}"><span>Catalog status:</span> '
+        f'{esc(status)}</span>{status_explainer()}</div>'
+    )
+    return f'''<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center;overflow:visible"><div class="wrap" style="width:100%">{eyebrow_html}<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">{esc(title)}</h1>{subtitle_html}<p>{esc(description)}</p>{badge_html}{status_html}</div></section>'''
 
 
 def cards(items: list[list[str]]) -> str:
@@ -126,7 +151,7 @@ def build_api(
     table_id = f"{active}-rows"
     if search_placeholder:
         search_id = f"{active}-search"
-        search = f'<div class="toolbar"><input id="{search_id}" type="search" placeholder="{esc(search_placeholder)}" aria-label="{esc(search_placeholder)}"></div>'
+        search = f'<div class="toolbar catalog-search-toolbar"><input id="{search_id}" type="search" placeholder="{esc(search_placeholder)}" aria-label="{esc(search_placeholder)}"></div>'
         script_data = json.dumps(row_data, ensure_ascii=True)
         link_index = fields.index(link_field) if link_field else -1
         cells = "".join(
@@ -146,7 +171,7 @@ def build_api(
         )
     table_body = f'''<div class="table-wrap" style="margin-top:24px"><table><thead><tr>{column_html}</tr></thead><tbody id="{table_id}">{rows}</tbody></table></div>'''
     status_badge = '<span style="display:inline-flex;align-items:center;padding:9px 14px;border:1px solid #edcf7a;border-radius:5px;background:#fff4d8;color:#8a5a00;font:700 .75rem/1 JetBrains Mono,monospace;letter-spacing:.04em"><span style="color:#9a731f;font-weight:600;margin-right:6px">Catalog status:</span> Draft</span>'
-    body = hero("Interface catalog", title, description) + f'''<section class="section"><div class="api-controls"><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">{status_badge}{status_explainer()}</div>{search}</div><div class="notice" style="margin:0 0 24px"><strong>Note</strong><br>{esc(draft_note)}</div>{table_body}</section>'''
+    body = hero("Interface catalog", title, description, status="Draft") + f'''<section class="section"><div class="notice" style="margin:0 0 24px"><strong>Note</strong><br>{esc(draft_note)}</div><div class="api-controls">{search}</div>{table_body}</section>'''
     body += script
     (ROOT / output_file).write_text(shell(f"{title} | RDKE", active, body), encoding="utf-8")
 
@@ -175,7 +200,7 @@ def check() -> None:
     missing = [name for name in required if not (ROOT / name).exists()]
     if missing:
         raise SystemExit("Missing generated pages: " + ", ".join(missing))
-    for name in ("home-content.json", "components.json", "northbound-apis.json", "southbound-apis.json", "hardware-spec.json"):
+    for name in ("home-content.json", "components.json", "southbound-apis.json", "hardware-spec.json"):
         load(name)
     print(f"RDKE build check passed: {len(load('components.json')['components'])} components")
 

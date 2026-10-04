@@ -37,16 +37,16 @@ COMPONENTS_URL = "components/"
 # external items get an "external link" arrow and open the components site
 # rather than a local page in this repo.
 NAV_LINKS = [
-    ("link", "about", "About Core RDK Broadband", "index.html", False),
+    ("link", "about", "Home", "index.html", False),
 
-    ("group", "nbi-group", "RDK8 North Bound APIs", [
-        ("link", "nbi", "RDK8 List of North Bound High Level APIs", "north-bound-apis.html", False),
-        ("link", "nbi-lowlevel", "RDK8 List of North Bound Low Level APIs", "north-bound-lowlevel-apis.html", False),
+    ("group", "nbi-group", "North Bound APIs", [
+        ("link", "nbi", "List of North Bound High Level APIs", "north-bound-apis.html", False),
+        ("link", "nbi-lowlevel", "List of North Bound Low Level APIs", "north-bound-lowlevel-apis.html", False),
     ]),
-    ("group", "sbi-group", "RDK8 South Bound APIs", [
-        ("link", "sbi", "RDK8 List of South Bound APIs", "south-bound-apis.html", False),
+    ("group", "sbi-group", "South Bound APIs", [
+        ("link", "sbi", "List of South Bound APIs", "south-bound-apis.html", False),
     ]),
-    ("link", "hwcompat", "RDK8 Hardware Compatibility", "hardware-compatibility.html", False),
+    ("link", "hwcompat", "Hardware Compatibility", "hardware-compatibility.html", False),
     ("link", "components", "Core RDK Components", COMPONENTS_URL, True),
 ]
 
@@ -93,25 +93,21 @@ SHARED_CSS = """
      this one pill style so the whole bar reads as one consistent design
      echoing the "Core RDK Components" CTA's blue, instead of a mix of plain
      text and boxes. */
-  .topnav > nav > a, .nav-group-toggle {
-    display: flex; align-items: center; gap: 5px; cursor: pointer;
-    background: linear-gradient(90deg, var(--rdk-blue), #7c3aed); border: none;
-    font-family: inherit; color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 500;
+  .topnav > nav > a, .topnav > nav > a.cta, .nav-group-toggle {
+    display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+    background: #2a2d3a; border: none;
+    font-family: inherit; color: #d1d5e0; text-decoration: none; font-size: 0.82rem; font-weight: 500;
     line-height: 1.6; box-sizing: border-box; appearance: none; -webkit-appearance: none;
-    padding: 7px 13px; border-radius: 999px; white-space: nowrap; transition: all 0.12s; outline: none;
+    padding: 7px 16px; border-radius: 999px; white-space: nowrap; transition: background 0.15s, color 0.15s; outline: none;
   }
-  .topnav > nav > a:hover, .nav-group-toggle:hover { filter: brightness(1.12); }
-  .topnav > nav > a.active, .nav-group.open .nav-group-toggle, .nav-group-toggle.active {
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.6) inset; font-weight: 700;
+  .topnav > nav > a:hover, .topnav > nav > a.cta:hover, .nav-group-toggle:hover {
+    background: #38bdf8; color: #04121f;
   }
-  .topnav > nav > a .ext-arrow { font-size: 0.78em; color: #e6ebff; }
-  .topnav > nav > a:focus-visible, .nav-group-toggle:focus-visible {
-    outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,0.55); color: #fff;
+  .topnav > nav > a.active, .topnav > nav > a.cta.active, .nav-group.open .nav-group-toggle, .nav-group-toggle.active {
+    background: #38bdf8; color: #04121f; font-weight: 700;
   }
-  .topnav .cta {
-    flex: 0 0 auto; background: linear-gradient(90deg, var(--rdk-blue), #7c3aed); color: #fff;
-    font-size: 0.76rem; font-weight: 600; padding: 7px 14px; border-radius: 999px;
-    text-decoration: none; white-space: nowrap; border: none;
+  .topnav > nav > a:focus-visible, .topnav > nav > a.cta:focus-visible, .nav-group-toggle:focus-visible {
+    outline: 2px solid #38bdf8; outline-offset: 2px;
   }
 
   /* ---- nav dropdown groups (Standards, North Bound APIs) ---- */
@@ -150,9 +146,9 @@ SHARED_CSS = """
   /* ---- hero ---- */
   .hero {
     background:
-      radial-gradient(ellipse 480px 320px at 12% 10%, rgba(41,182,232,0.35), transparent 60%),
-      radial-gradient(ellipse 420px 320px at 92% 85%, rgba(122,201,67,0.18), transparent 60%),
-      linear-gradient(120deg, #0a1a3d 0%, #17246a 40%, #2b1a5e 75%, #3a1a4c 100%);
+      radial-gradient(ellipse 600px 380px at 8% 30%, rgba(52,130,255,0.28), transparent 65%),
+      radial-gradient(ellipse 380px 300px at 95% 80%, rgba(70,30,130,0.12), transparent 60%),
+      linear-gradient(120deg, #1e3878 0%, #1d2870 40%, #211868 75%, #2a1858 100%);
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
@@ -162,9 +158,9 @@ SHARED_CSS = """
   @media (max-width: 1300px) { .hero-visual { flex-basis: 420px; max-width: 420px; } .hero-visual img { max-width: 420px; } }
   @media (max-width: 1000px) { .hero-visual { display: none; } }
 
-  .eyebrow { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: #7ec4f2; border: 1px solid rgba(126,196,242,0.35); background: rgba(126,196,242,0.06); border-radius: 999px; padding: 5px 13px; margin-bottom: 20px; }
-  .hero h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.06; font-weight: 800; letter-spacing: -0.03em; color: #fff; max-width: 820px; }
-  .hero .lede { color: #a9b8d6; font-size: 1.08rem; max-width: 640px; margin-top: 16px; }
+  .eyebrow { display: inline-block; font-family: "Inter", "Segoe UI", sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #4ab8f5; border: none; background: none; border-radius: 0; padding: 0; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(2.0rem, 4vw, 3.0rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em; color: #fff; max-width: 820px; }
+  .hero .lede { color: #dce6f5; font-size: 1.08rem; max-width: 640px; margin-top: 16px; }
   .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
   .badge { display: inline-block; margin: 0 10px 10px 0; font-size: 0.8rem; font-weight: 600; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,0.07); color: #dbe4f3; border: 1px solid rgba(255,255,255,0.12); }
   .stats {
@@ -287,28 +283,47 @@ SHARED_CSS = """
     font-size: 0.92rem; border: 1px solid var(--border); border-radius: 12px;
     overflow: hidden; box-shadow: var(--shadow-sm);
   }
-  table.def-table th, table.def-table td { text-align: left; padding: 14px 18px; vertical-align: top; }
+  table.def-table th, table.def-table td { text-align: left; padding: 13px 18px; vertical-align: middle; }
+  table.def-table thead tr {
+    background: #1a2540;
+  }
   table.def-table th {
-    font-family: "Space Grotesk", sans-serif; font-size: 0.78rem; text-transform: uppercase;
-    letter-spacing: 0.06em; font-weight: 700; color: #fff;
-    background: linear-gradient(90deg, var(--hal), var(--middleware));
+    font-family: "Inter", "Segoe UI", sans-serif; font-size: 0.74rem; text-transform: uppercase;
+    letter-spacing: 0.07em; font-weight: 700; color: #fff;
+    background: transparent;
     border-bottom: none;
   }
   table.def-table th:first-child { border-top-left-radius: 12px; }
   table.def-table th:last-child { border-top-right-radius: 12px; }
   table.def-table tbody tr { border-bottom: 1px solid var(--border); }
   table.def-table tbody tr:last-child { border-bottom: none; }
-  table.def-table tbody tr:nth-child(odd) { background: #fbfcff; }
+  table.def-table tbody tr:nth-child(odd) { background: #fafbff; }
   table.def-table tbody tr:nth-child(even) { background: #fff; }
-  table.def-table tbody tr:hover { background: var(--cloud-bg); }
-  table.def-table td { color: var(--muted); line-height: 1.65; border-right: 1px solid var(--border); }
+  table.def-table tbody tr:hover { background: #f0f4ff; }
+  table.def-table td { color: var(--ink); line-height: 1.6; border-right: 1px solid var(--border); }
   table.def-table td:last-child { border-right: none; }
   table.def-table td:first-child {
-    color: var(--ink); font-weight: 700; font-family: "Space Grotesk", sans-serif;
-    font-size: 0.94rem; border-left: 3px solid var(--rdk-blue); background: rgba(41,182,232,0.04);
-    width: 26%; min-width: 200px;
+    color: var(--ink); font-weight: 700; font-family: "Inter", "Segoe UI", sans-serif;
+    font-size: 0.92rem; width: 26%; min-width: 180px;
   }
-  table.def-table td.mono { color: var(--ink); font-weight: 600; }
+  table.def-table td.mono { font-family: "JetBrains Mono", monospace; font-size: 0.84rem; color: var(--muted); font-weight: 400; }
+  /* action button inside table cells */
+  .def-table .tbl-btn {
+    display: inline-block; padding: 7px 20px; border-radius: 999px; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; border: none; white-space: nowrap;
+    background: #e8eef8; color: #2d4eb5; text-decoration: none;
+  }
+  .def-table .tbl-btn:hover { background: #d5e0f3; color: #1e3fa0; }
+  /* category / status pill inside table cells */
+  .def-table .tbl-pill {
+    display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.78rem;
+    font-weight: 500; background: #fff; color: var(--ink); border: 1px solid #d1d9e6;
+  }
+  /* version badge */
+  .def-table .tbl-version {
+    display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem;
+    font-weight: 600; background: #dbeafe; color: #1d4ed8;
+  }
 
   /* ---- governance process sections (§7.2 / §7.3 narrative content) ---- */
   .gov-section.level-2 { padding-top: 22px; margin-top: 22px; border-top: 1px solid var(--border); }
@@ -501,7 +516,7 @@ def esc(s) -> str:
 # needs to change — render_hero() picks it up automatically, and pages
 # without an entry simply render without a hero image, exactly as now.
 HERO_IMAGES: dict[str, str] = {
-    "about": "rdz.png",
+    # "about": "rdz.png",
     # "architecture-standards": "images/architecture-standards-hero.png",
     # "technical-governance": "images/technical-governance-hero.png",
     # "nbi": "images/nbi-hero.png",
@@ -519,13 +534,14 @@ def render_hero(eyebrow: str, title: str, lede: str, badges_html: str = "", comp
     pad = "48px 40px 40px" if compact else "64px 40px 48px"
     title_style = ""  # font-size controlled by CSS .hero h1 for all pages
     badges = f'<div class="badge-row">{badges_html}</div>' if badges_html else ""
+    eyebrow_html = f'<span class="eyebrow">{esc(eyebrow)}</span>' if eyebrow else ""
     image_path = HERO_IMAGES.get(visual_key)
     visual = f'<div class="hero-visual"><img src="{esc(image_path)}" alt=""></div>' if image_path else ""
     return f'''
 <div class="hero" style="padding:{pad};">
   <div class="hero-flex">
     <div class="hero-inner">
-      <span class="eyebrow">{esc(eyebrow)}</span>
+      {eyebrow_html}
       <h1{title_style}>{esc(title)}</h1>
       <p class="lede">{esc(lede)}</p>
       {badges}
@@ -633,7 +649,8 @@ def render_topnav(active_id: str, path_prefix: str = "") -> str:
                 # When we ARE the components page, link to self ("."); otherwise
                 # link down into components/ from wherever we are.
                 cta_href = "." if active_id == "components" else path_prefix + COMPONENTS_URL
-                links_html.append(f'<a class="cta" href="{esc(cta_href)}">Core RDK Components ↗</a>')
+                cta_cls = "cta active" if active_id == "components" else "cta"
+                links_html.append(f'<a class="{cta_cls}" href="{esc(cta_href)}">Core RDK Components ↗</a>')
         else:  # "group"
             _, group_id, group_label, children = entry
             child_ids = {c[1] for c in children}

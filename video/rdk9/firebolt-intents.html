@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firebolt Intents Specification | RDKE</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}h1,h2,h3{font-family:"Space Grotesk","Inter",sans-serif}code,.mono,.release-pill{font-family:"JetBrains Mono",ui-monospace,monospace!important}</style>
+<style>.hero .wrap{max-width:none}</style>
+<style>@media(max-width:650px){.hero{height:auto!important;min-height:0!important;padding:48px 20px 44px!important}.hero h1{font-size:clamp(1.9rem,9vw,2.8rem)!important}.hero p{font-size:1rem!important;line-height:1.5}.hero .badges{margin-top:18px}}</style><style>.api-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,auto);align-items:center;gap:20px;margin-bottom:24px}.api-controls>.toolbar{justify-self:end;min-width:260px}@media(max-width:760px){.api-controls{grid-template-columns:1fr}.api-controls>.toolbar{justify-self:stretch;min-width:0}}</style>
+</head>
+<body>
+<div class="accent"></div>
+<header class="nav"><a class="brand" href="index.html"><img src="RDK-logo.png" alt="RDK"></a><nav class="navlinks"><a class="" href="index.html">Home</a><a class="" href="component-registry.html">Components Catalog</a><details class="nav-dropdown"><summary class="nav-dropdown-summary active">Northbound API Spec</summary><div class="nav-dropdown-menu"><a href="northbound-apis.html">Firebolt Core API Specification</a><a href="firebolt-app-actions.html">Firebolt App Actions Specification</a><a href="firebolt-intents.html">Firebolt Intents Specification</a><a href="firebolt-key-codes.html">Firebolt Key Codes Specification</a></div></details><a class="" href="southbound-apis.html">Southbound API Spec</a><a class="" href="hardware-specifications.html">Hardware specifications</a></nav></header>
+<main>
+<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center;overflow:visible"><div class="wrap" style="width:100%"><div class="eyebrow" style="font-size:1.1rem;letter-spacing:.08em">Firebolt 9</div><h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">Firebolt Intents Specification</h1><p>Intent definitions for applications to request device and content experiences through the RDK9 video platform.</p><div class="hero-catalog-status"><span class="hero-status-badge approved"><span>Catalog status:</span> Approved</span><details style="position:relative;min-width:150px"><summary style="cursor:pointer;color:#2457d6;font-size:.84rem;font-weight:700">Status legend</summary><dl style="position:absolute;z-index:2;left:0;right:auto;top:calc(100% + 8px);width:min(420px,calc(100vw - 40px));margin:0;padding:16px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;line-height:1.45"><dt style="font-weight:700;color:var(--ink)">Draft</dt><dd style="margin:2px 0 10px;color:var(--muted)">Specifications drafted and undergoing internal reviews and RTAB Approval</dd><dt style="font-weight:700;color:var(--ink)">Approved</dt><dd style="margin:2px 0 10px;color:var(--muted)">All review feedback has been addressed; RTAB has voted and approved the spec</dd><dt style="font-weight:700;color:var(--ink)">Published</dt><dd style="margin:2px 0 0;color:var(--muted)">Tagged and versioned against an official RDK release</dd></dl></details></div></div></section><section class="section spec-document" style="padding-top:34px"><section class="spec-intro" id="overview"><p>An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a payment.</p><p>An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user.</p></section><section class="spec-intro" id="constituent-parts"><h2>Constituent parts of an intent</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Part</th><th>Type</th><th>Mandatory</th><th>Description</th><th>Allowed values</th></tr></thead><tbody><tr><td><code>action</code></td><td>string</td><td>Yes</td><td>A string specifying the implicit action being requested to be performed</td><td rowspan="2"><div class="allowed-actions"><a class="pill allowed-action spec-modal-trigger" href="#intent-home" data-modal-target="intent-home" title="Open Home action type">home</a><a class="pill allowed-action spec-modal-trigger" href="#intent-launch" data-modal-target="intent-launch" title="Open Launch action type">launch</a><a class="pill allowed-action spec-modal-trigger" href="#intent-pre-load" data-modal-target="intent-pre-load" title="Open Pre-load action type">pre-load</a><a class="pill allowed-action spec-modal-trigger" href="#intent-entity" data-modal-target="intent-entity" title="Open Entity action type">entity</a><a class="pill allowed-action spec-modal-trigger" href="#intent-playback" data-modal-target="intent-playback" title="Open Playback action type">playback</a><a class="pill allowed-action spec-modal-trigger" href="#intent-search" data-modal-target="intent-search" title="Open Search action type">search</a><a class="pill allowed-action spec-modal-trigger" href="#intent-section" data-modal-target="intent-section" title="Open Section action type">section</a><a class="pill allowed-action spec-modal-trigger" href="#intent-tune" data-modal-target="intent-tune" title="Open Tune action type">tune</a><a class="pill allowed-action spec-modal-trigger" href="#intent-play-entity" data-modal-target="intent-play-entity" title="Open Play-entity action type">play-entity</a><a class="pill allowed-action spec-modal-trigger" href="#intent-play-query" data-modal-target="intent-play-query" title="Open Play-query action type">play-query</a><a class="pill allowed-action spec-modal-trigger" href="#intent-previous" data-modal-target="intent-previous" title="Open Previous action type">previous</a><a class="pill allowed-action spec-modal-trigger" href="#intent-next" data-modal-target="intent-next" title="Open Next action type">next</a><a class="pill allowed-action spec-modal-trigger" href="#intent-repeat" data-modal-target="intent-repeat" title="Open Repeat action type">repeat</a><a class="pill allowed-action spec-modal-trigger" href="#intent-shuffle" data-modal-target="intent-shuffle" title="Open Shuffle action type">shuffle</a><a class="pill allowed-action spec-modal-trigger" href="#intent-skip-ad" data-modal-target="intent-skip-ad" title="Open Skip-ad action type">skip-ad</a><a class="pill allowed-action spec-modal-trigger" href="#intent-skip-recap" data-modal-target="intent-skip-recap" title="Open Skip-recap action type">skip-recap</a><a class="pill allowed-action spec-modal-trigger" href="#intent-skip-intro" data-modal-target="intent-skip-intro" title="Open Skip-intro action type">skip-intro</a></div></td></tr><tr><td><code>data</code></td><td>object</td><td>No</td><td>An optional object that contains data to be used by the application in order to fulfil the action</td></tr><tr><td><code>context</code></td><td>object</td><td>Yes</td><td>An object defining the source of the intent and optionally properties of that source</td><td><details class="spec-details"><summary>Context fields</summary><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>source</code></td><td>string</td><td>Yes</td><td>Any</td><td>An undefined string indicating the source of the intent eg &quot;voice&quot;</td></tr><tr><td><code>agePolicy</code></td><td>string</td><td>No</td><td>&#x27;app: child&#x27; &#x27;app: teen&#x27; &#x27;app: adult&#x27;</td><td>An optional string indicating an age group that the intent is targeting</td></tr></tbody></table></div></details></td></tr></tbody></table></div><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;playback&quot;,
+  &quot;data&quot;: {
+    &quot;entityId&quot;: &quot;ABC123&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;top_10_this_week&quot;,
+    &quot;agePolicy&quot;: &quot;app:child&quot;
+  }
+}</pre></section></section><template id="tmpl-intent-home"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Home action type</h2></div><p class="spec-entry-overview">A request to action a transition to the home page of the application</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Home action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;home&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;apps_rail&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-launch"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Launch action type</h2></div><p class="spec-entry-overview">A request to show the page the app was previously on (or Home page if it&#x27;s a cold launch) of the application</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>dialPayload</code></td><td>URL encoded string</td><td>No</td><td>Any</td><td>The optional DIAL payload</td></tr><tr><td><code>additionalDataUrl</code></td><td>URL encoded string</td><td>No</td><td>Any</td><td>The optional DIAL URL which allows the first screen application to POST data back to the second screen application</td></tr></tbody></table></div><h3>Examples</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;launch&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;apps_rail&quot;
+  }
+}</pre><pre class="spec-example">{
+  &quot;action&quot;: &quot;launch&quot;,
+  &quot;data&quot;{
+    &quot;dialPayload&quot;: &quot;param1%3Dvalue1%26param2%3Dvalue2&quot;,
+    &quot;additionalDataUrl&quot;: &quot;http%3A%2F%2F127.0.0.1%3A8009%2Fapps%2FmyDialApp%2Fdial_data&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;DIAL&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-pre-load"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Pre-load action type</h2></div><p class="spec-entry-overview">A request to pre load the application, but indicates that it will not immediately be activated and is likely to be transitioned into the suspended/hibernated 
+states</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Pre-load action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;pre-load&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;system&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-entity"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Entity action type</h2></div><p class="spec-entry-overview">A request to action a transition to the entity/show page of the specified entity</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>entityId</code></td><td>string</td><td>Yes</td><td>Any</td><td>The identifier of the entity, in the target App&#x27;s scope.</td></tr><tr><td><code>assetId</code></td><td>string</td><td>No</td><td>Any</td><td>The identifier of the asset, in the target App&#x27;s scope.</td></tr><tr><td><code>seasonId</code></td><td>string</td><td>No</td><td>Any</td><td>The identifier of the season, in the target App&#x27;s scope.</td></tr><tr><td><code>seriesId</code></td><td>string</td><td>No</td><td>Any</td><td>The identifier of the series, in the target App&#x27;s scope.</td></tr><tr><td><code>appContentData</code></td><td>string</td><td>No</td><td>Any</td><td>Any extra information required to load the entity page, in the target App&#x27;s scope.</td></tr><tr><td><code>programType</code></td><td>string</td><td>No</td><td>Any</td><td>An optional indicator of the type of the programme eg &#x27;movie&#x27;</td></tr><tr><td><code>entityType</code></td><td>string</td><td>No</td><td>program</td><td>An indicator of the entity type</td></tr></tbody></table></div><h3>Examples</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;entity&quot;,
+  &quot;data&quot;: {
+    &quot;entityId&quot;: &quot;ABC123&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;continue_watching&quot;
+  }
+}</pre><pre class="spec-example">{
+  &quot;action&quot;: &quot;entity&quot;,
+  &quot;data&quot;: {
+     &quot;entityId&quot;: &quot;ABC123&quot;,
+     &quot;assetId&quot;: &quot;asdfsa73546&quot;,
+     &quot;seasonId&quot;: &quot;dasfasfhj786876&quot;,
+     &quot;seriesId&quot;: &quot;dsfsf2345&quot;,
+     &quot;appContentData&quot;: &quot;externalId_23456&quot;,
+     &quot;programType&quot;: &quot;series&quot;
+   },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;continue_watching&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-playback"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Playback action type</h2></div><p class="spec-entry-overview">A request to action a transition into the playback of the specified entity</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>entityId</code></td><td>string</td><td>Yes</td><td>Any</td><td>The identifier of the entity, in the target App&#x27;s scope.</td></tr><tr><td><code>assetId</code></td><td>string</td><td>No</td><td>Any</td><td>The identifier of the asset, in the target App&#x27;s scope.</td></tr><tr><td><code>seasonId</code></td><td>string</td><td>No</td><td>Any</td><td>The identifier of the season, in the target App&#x27;s scope.</td></tr><tr><td><code>seriesId</code></td><td>string</td><td>No</td><td>Any</td><td>The identifier of the series, in the target App&#x27;s scope.</td></tr><tr><td><code>appContentData</code></td><td>string</td><td>No</td><td>Any</td><td>Any extra information required by the app to play the asset, in the target App&#x27;s scope.</td></tr><tr><td><code>programType</code></td><td>string</td><td>No</td><td>Any</td><td>An optional indicator of the type of the programme eg &#x27;movie&#x27;</td></tr><tr><td><code>entityType</code></td><td>string</td><td>No</td><td>program</td><td>An indicator of the entity type</td></tr></tbody></table></div><h3>Examples</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;playback&quot;,
+  &quot;data&quot;: {
+    &quot;entityId&quot;: &quot;ABC123&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;continue_watching&quot;
+  }
+}</pre><pre class="spec-example">{
+  &quot;action&quot;: &quot;playback&quot;,
+  &quot;data&quot;: {
+     &quot;entityId&quot;: &quot;ABC123&quot;,
+     &quot;assetId&quot;: &quot;asdfsa73546&quot;,
+     &quot;seasonId&quot;: &quot;dasfasfhj786876&quot;,
+     &quot;seriesId&quot;: &quot;dsfsf2345&quot;,
+     &quot;appContentData&quot;: &quot;externalId_23456&quot;,
+     &quot;programType&quot;: &quot;series&quot;,
+     &quot;entityType&quot;: &quot;program&quot;
+    },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;continue_watching&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-search"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Search action type</h2></div><p class="spec-entry-overview">A request to action a transition to search page of the application, prefill the search box with the supplied query string and initiate the search</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>query</code></td><td>string</td><td>Yes</td><td>Any</td><td>The query string to be seeded in the search box</td></tr></tbody></table></div><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;search&quot;,
+  &quot;data&quot;: {
+    &quot;query&quot;: &quot;die hard&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-section"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Section action type</h2></div><p class="spec-entry-overview">A request to action a transition to the specified section of the app using the additional data if supplied</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>sectionName</code></td><td>string</td><td>Yes</td><td>Any</td><td>The section name, in the target App&#x27;s scope.</td></tr><tr><td><code>appContentData</code></td><td>string</td><td>No</td><td>Any</td><td>Additional information for the app to present the correct content</td></tr></tbody></table></div><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;section&quot;,
+  &quot;data&quot;: {
+    &quot;sectionName&quot;: &quot;app:subscribe&quot;,
+    &quot;appContentData&quot;: &quot;Monthly&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;app:GreatVideoApp&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-tune"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Tune action type</h2></div><p class="spec-entry-overview">A request to action a tune to the specified linear channel, with optional offset options from the live point</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>entity</code></td><td>object</td><td>Yes</td><td><details class="spec-details"><summary>entity fields</summary><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>entityType</code></td><td>string</td><td>Yes</td><td>&#x27;channel&#x27;</td><td></td></tr><tr><td><code>channelType</code></td><td>string</td><td>Yes</td><td>&#x27;streaming&#x27; &#x27;overTheAir&#x27;</td><td></td></tr><tr><td><code>entityId</code></td><td>string</td><td>Yes</td><td>Any</td><td>ID of the channel, in the target App&#x27;s scope.</td></tr><tr><td><code>appContentData</code></td><td>string</td><td>No</td><td>Any</td><td></td></tr></tbody></table></div></details></td><td></td></tr><tr><td><code>options</code></td><td>object</td><td>No</td><td><details class="spec-details"><summary>options fields</summary><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>assetId</code></td><td>string</td><td>No</td><td>Any</td><td>The ID of a specific &#x27;listing&#x27;, as scoped by the target App&#x27;s ID-space, which the App should begin playback from.</td></tr><tr><td><code>restartCurrentProgram</code></td><td>boolean</td><td>No</td><td>true false</td><td>Denotes that the App should start playback at the most recent program boundary, rather than &#x27;live.&#x27;</td></tr><tr><td><code>time</code></td><td>string</td><td>No</td><td>ISO 8601 Date/Time</td><td>ISO 8601 Date/Time where the App should begin playback from.</td></tr></tbody></table></div></details></td><td></td></tr></tbody></table></div><h3>Example</h3><pre class="spec-example">{
+   &quot;action&quot;: &quot;tune&quot;,
+   &quot;data&quot;: {
+       &quot;entity&quot;: {
+           &quot;entityType&quot;: &quot;channel&quot;,
+           &quot;channelType&quot;: &quot;streaming&quot;,
+           &quot;entityId&quot;: &quot;SkyMovies1&quot;
+        },
+        &quot;options&quot;: {
+           &quot;restartCurrentProgram&quot;: true
+        }
+   },
+   &quot;context&quot;: {
+    &quot;source&quot;: &quot;linear_channel&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-play-entity"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Play-entity action type</h2></div><p class="spec-entry-overview">A request to start playback of the specified playlist, optionally starting from a specific track</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>entity</code></td><td>object</td><td>Yes</td><td><details class="spec-details"><summary>entity fields</summary><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>entityType</code></td><td>string</td><td>Yes</td><td>&#x27;playlist&#x27;</td><td></td></tr><tr><td><code>entityId</code></td><td>string</td><td>Yes</td><td>Any</td><td>ID of the playlist, in the target App&#x27;s scope.</td></tr></tbody></table></div></details></td><td></td></tr><tr><td><code>options</code></td><td>object</td><td>No</td><td><details class="spec-details"><summary>options fields</summary><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>playFirstId</code></td><td>string</td><td>No</td><td>Any</td><td>The Id of the asset in the playlist to play first, in the target App&#x27;s scope.</td></tr><tr><td><code>playFirstTrack</code></td><td>number</td><td>No</td><td>Any</td><td>The track number in the playlist to play first</td></tr></tbody></table></div></details></td><td></td></tr></tbody></table></div><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;play-entity&quot;,
+  &quot;data&quot;: {
+        &quot;entity&quot;: {
+            &quot;entityType&quot;: &quot;playlist&quot;,
+        &quot;entityId&quot;: &quot;BestOf80s&quot;
+    },
+    &quot;options&quot;: {
+            &quot;playFirstTrack&quot;: 3
+    }
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;playlist_selector&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-play-query"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Play-query action type</h2></div><p class="spec-entry-overview">A request to start playback of a playlist created by a search</p><h3>Definition of data object</h3><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>query</code></td><td>string</td><td>Yes</td><td>Any</td><td>The query to be used to select the content to be played</td></tr><tr><td><code>options</code></td><td>object</td><td>No</td><td><details class="spec-details"><summary>options fields</summary><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Type</th><th>Mandatory</th><th>Allowed values</th><th>Description</th></tr></thead><tbody><tr><td><code>programTypes</code></td><td>string array</td><td>No</td><td></td><td></td></tr><tr><td><code>musicTypes</code></td><td>string array</td><td>No</td><td></td><td></td></tr></tbody></table></div></details></td><td></td></tr></tbody></table></div><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;play-query&quot;,
+  &quot;data&quot;: {
+    &quot;query&quot;:&quot;Queen&quot;
+  },
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;music_bands&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-previous"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Previous action type</h2></div><p class="spec-entry-overview">A request to action a transition to the previous media asset in a playlist or series</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Previous action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;previous&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-next"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Next action type</h2></div><p class="spec-entry-overview">A request to action a transition to the next media asset in a playlist or series</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Next action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;next&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-repeat"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Repeat action type</h2></div><p class="spec-entry-overview">A request to replay the current media asset</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Repeat action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;repeat&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-shuffle"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Shuffle action type</h2></div><p class="spec-entry-overview">A request to start playing randomly another media asset in a playlist or series</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Repeat action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;shuffle&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-skip-ad"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Skip-ad action type</h2></div><p class="spec-entry-overview">A request to skip the current advertisement block</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Skip-ad action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;skip-ad&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-skip-recap"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Skip-recap action type</h2></div><p class="spec-entry-overview">A request to skip the current recap block</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Skip-recap action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;skip-recap&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><template id="tmpl-intent-skip-intro"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Intent action</span><h2>Skip-intro action type</h2></div><p class="spec-entry-overview">A request to skip the current intro block</p><h3>Definition of data object</h3><pre class="spec-definition-text">The Skip-intro action intent does not require a data object</pre><h3>Example</h3><pre class="spec-example">{
+  &quot;action&quot;: &quot;skip-intro&quot;,
+  &quot;context&quot;: {
+    &quot;source&quot;: &quot;voice&quot;
+  }
+}</pre></section></template><div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div><script>(function(){var modal=document.getElementById("spec-modal");if(!modal)return;var body=document.getElementById("spec-modal-body");function openModal(id){var tmpl=document.getElementById("tmpl-"+id);if(!tmpl)return;body.innerHTML="";body.appendChild(tmpl.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",function(e){var el=e.target.closest(".spec-modal-trigger");if(!el)return;e.preventDefault();openModal(el.getAttribute("data-modal-target"))});modal.querySelectorAll("[data-modal-close]").forEach(function(el){el.addEventListener("click",closeModal)});document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal()})})()</script>
+</main>
+<footer class="footer"><div class="wrap">Source file: <a href="Firebolt 9 Intents Specification.pdf" target="_blank" rel="noopener">Firebolt 9 Intents Specification.pdf</a></div></footer>
+</body>
+</html>

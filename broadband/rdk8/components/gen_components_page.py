@@ -56,14 +56,7 @@ TIER_COLORS = {
     "green": {"bg": "#d1fae5", "fg": "#065f46"},
 }
 CATEGORY_PALETTE = [
-    {"bg": "#d1fae5", "fg": "#065f46"},
-    {"bg": "#fde2e2", "fg": "#991b1b"},
-    {"bg": "#fef3c7", "fg": "#92400e"},
-    {"bg": "#dbeafe", "fg": "#1e40af"},
-    {"bg": "#ede9fe", "fg": "#5b21b6"},
-    {"bg": "#e0f2fe", "fg": "#075985"},
-    {"bg": "#fce7f3", "fg": "#9d174d"},
-    {"bg": "#e5e7eb", "fg": "#374151"},
+    {"bg": "#e8eaf6", "fg": "#1e3a5f"},
 ]
 
 
@@ -95,6 +88,8 @@ def build_body(data: dict) -> str:
     # Unique categories and tier labels for filter dropdowns
     categories  = sorted({c["category"] or "Uncategorized" for c in components})
     tier_labels = sorted({tiers.get(c["tier"], {"label": c["tier"]})["label"] for c in components})
+    # Layer is always Middleware for all RDK-B components
+    layers = ["Middleware"]
 
     rows_html = []
     for c in components:
@@ -111,24 +106,29 @@ def build_body(data: dict) -> str:
         else:
             url_cell = '<span class="muted">—</span>'
         # data-* attrs drive JS filtering; layer is always Middleware
-        rows_html.append(f'''<tr data-name="{esc(c["name"].lower())}" data-category="{esc(c["category"] or "Uncategorized")}" data-type="{esc(tier["label"])}">
-          <td>{esc(c["name"])}</td>
-          <td><span class="pill" style="background:{cat_style["bg"]};color:{cat_style["fg"]};border-radius:8px;line-height:1.5;">{esc(c["category"] or "Uncategorized")}</span></td>
-          <td><span class="pill" style="background:{LAYER_STYLE["bg"]};color:{LAYER_STYLE["fg"]};border-radius:8px;line-height:1.5;">Middleware</span></td>
-          <td><span class="pill" style="background:{tier_style["bg"]};color:{tier_style["fg"]}">{esc(tier["label"])}</span></td>
+        version = esc(c.get("version") or "rdk8")
+        rows_html.append(f'''<tr data-name="{esc(c["name"].lower())}" data-category="{esc(c["category"] or "Uncategorized")}" data-layer="Middleware" data-type="{esc(tier["label"])}">
+          <td style="font-weight:400;">{esc(c["name"])}</td>
+          <td><span class="pill" style="background:#e8eef8;color:#2d4eb5;border:none;border-radius:999px;line-height:1.5;font-weight:700;">{esc(c["category"] or "Uncategorized")}</span></td>
+          <td style="color:var(--muted);font-size:0.88rem;">middleware</td>
+          <td><span class="type-pill" style="border-color:{tier_style["bg"]};color:{tier_style["fg"]};">{esc(tier["label"])}</span></td>
+          <td style="font-family:monospace;font-size:0.85rem;color:var(--ink);">{version}</td>
           <td>{url_cell}</td>
         </tr>''')
 
     # Dropdown options
-    cat_options  = '<option value="">All categories</option>' + "".join(
+    cat_options   = '<option value="">All categories</option>' + "".join(
         f'<option value="{esc(c)}">{esc(c)}</option>' for c in categories)
-    type_options = '<option value="">All types</option>' + "".join(
+    layer_options = '<option value="">All layers</option>' + "".join(
+        f'<option value="{esc(l)}">{esc(l)}</option>' for l in layers)
+    type_options  = '<option value="">All types</option>' + "".join(
         f'<option value="{esc(t)}">{esc(t)}</option>' for t in tier_labels)
 
     filter_bar = f"""
   <div class="comp-filter-bar">
     <input id="comp-search" type="text" placeholder="Search components" autocomplete="off">
     <select id="comp-cat">{cat_options}</select>
+    <select id="comp-layer">{layer_options}</select>
     <select id="comp-type">{type_options}</select>
     <span id="comp-count" class="comp-count"></span>
   </div>"""
@@ -136,25 +136,31 @@ def build_body(data: dict) -> str:
     filter_css = """
 <style>
   .comp-filter-bar {
-    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px; width: 100%;
   }
   .comp-filter-bar input {
-    padding: 9px 14px; border: 2px solid var(--border); border-radius: 8px;
-    font-family: inherit; font-size: 0.9rem; min-width: 200px;
+    flex: 2; min-width: 0;
+    padding: 9px 14px; border: 1px solid var(--border); border-radius: 6px;
+    font-family: inherit; font-size: 0.9rem;
     transition: border-color 0.15s;
   }
   .comp-filter-bar input:focus { outline: none; border-color: var(--middleware); }
   .comp-filter-bar select {
-    padding: 9px 32px 9px 14px; border: 2px solid var(--border); border-radius: 8px;
+    flex: 1; min-width: 0;
+    padding: 9px 28px 9px 12px; border: 1px solid var(--border); border-radius: 6px;
     font-family: inherit; font-size: 0.9rem; background: #fff;
     appearance: none; -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b6472' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 12px center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b6472' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center;
     cursor: pointer; transition: border-color 0.15s;
   }
   .comp-filter-bar select:focus { outline: none; border-color: var(--middleware); }
-  .comp-count { font-size: 0.84rem; color: var(--muted); margin-left: 4px; }
+  .comp-count { font-size: 0.84rem; color: var(--muted); white-space: nowrap; margin-left: 4px; }
+  .type-pill {
+    display: inline-block; padding: 3px 11px; border-radius: 999px; font-size: 0.82rem;
+    font-weight: 600; background: transparent; border: 1.5px solid; line-height: 1.5;
+  }
 </style>"""
 
     filter_script = """
@@ -162,19 +168,22 @@ def build_body(data: dict) -> str:
 (function () {
   const searchEl = document.getElementById('comp-search');
   const catEl    = document.getElementById('comp-cat');
+  const layerEl  = document.getElementById('comp-layer');
   const typeEl   = document.getElementById('comp-type');
   const countEl  = document.getElementById('comp-count');
   const rows     = Array.from(document.querySelectorAll('#comp-tbody tr'));
 
   function filter() {
-    const q    = searchEl.value.trim().toLowerCase();
-    const cat  = catEl.value;
-    const type = typeEl.value;
+    const q     = searchEl.value.trim().toLowerCase();
+    const cat   = catEl.value;
+    const layer = layerEl.value;
+    const type  = typeEl.value;
     let visible = 0;
     rows.forEach(tr => {
-      const show = (!q    || tr.dataset.name.includes(q))
-                && (!cat  || tr.dataset.category === cat)
-                && (!type || tr.dataset.type === type);
+      const show = (!q     || tr.dataset.name.includes(q))
+                && (!cat   || tr.dataset.category === cat)
+                && (!layer || tr.dataset.layer === layer)
+                && (!type  || tr.dataset.type === type);
       tr.style.display = show ? '' : 'none';
       if (show) visible++;
     });
@@ -183,6 +192,7 @@ def build_body(data: dict) -> str:
 
   searchEl.addEventListener('input', filter);
   catEl.addEventListener('change', filter);
+  layerEl.addEventListener('change', filter);
   typeEl.addEventListener('change', filter);
   filter();
 })();
@@ -201,7 +211,7 @@ def build_body(data: dict) -> str:
   <div style="margin-bottom:18px;">{legend_html}</div>
   {filter_bar}
   <table class="def-table">
-    <thead><tr><th>Name</th><th>Category</th><th>Layer</th><th>Type</th><th>Repositories</th></tr></thead>
+    <thead><tr><th>Name</th><th>Category</th><th>Layer</th><th>Type</th><th>Version</th><th>Repositories</th></tr></thead>
     <tbody id="comp-tbody">{"".join(rows_html)}</tbody>
   </table>
   <p style="margin-top:18px; font-size:0.86rem;">

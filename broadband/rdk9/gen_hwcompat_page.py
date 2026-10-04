@@ -42,12 +42,11 @@ def build_page(profiles_dir: Path, repo_root: Path | None = None) -> str:
     del profiles_dir, repo_root
 
     body = render_hero(
-        "Hardware Compatibility",
-        "Hardware Compatibility Spec",
+        "",
+        "Hardware specifications",
         (
             "Minimum CPU, RAM, flash, and required peripheral hardware per "
-            "RDK-B device profile, validated against a BPI-R4 "
-            "(MT7988/Filogic) reference platform."
+            "RDK-B device profile (Work In Progress)"
         ),
         compact=True,
         visual_key="hwcompat",

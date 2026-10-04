@@ -81,7 +81,8 @@
   },
   "WiFi HAL": {
     "repo": "rdkb-halif-wifi",
-    "file": "wifi.json"
+    "file": "wifi.json",
+    "branch": "develop"
   },
   "xDSL HAL": {
     "repo": "rdkb-halif-xdsl",

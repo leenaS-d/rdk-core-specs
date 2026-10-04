@@ -36,6 +36,14 @@ def load(name: str) -> dict:
     return json.loads((ROOT / name).read_text(encoding="utf-8"))
 
 
+NORTHBOUND_MENU = [
+    ("firebolt-api-spec.html", "Firebolt Core API Specification"),
+    ("firebolt-json-rpc.html", "Firebolt JSON-RPC Specification"),
+    ("firebolt-intents.html", "Firebolt Intents Specification"),
+    ("firebolt-key-codes.html", "Firebolt Key Codes Specification"),
+]
+
+
 def nav(active: str) -> str:
     links = [
         ("index.html", "Home", "home"),
@@ -45,7 +53,17 @@ def nav(active: str) -> str:
     ]
     items = "".join(
         f'<a class="{"active" if key == active else ""}" href="{href}">{label}</a>'
-        for href, label, key in links
+        for href, label, key in links[:2]
+    )
+    menu_items = "".join(f'<a href="{href}">{label}</a>' for href, label in NORTHBOUND_MENU)
+    dropdown_active = "active" if active == "northbound" else ""
+    items += (
+        f'<details class="nav-dropdown"><summary class="nav-dropdown-summary {dropdown_active}">Northbound API Spec</summary>'
+        f'<div class="nav-dropdown-menu">{menu_items}</div></details>'
+    )
+    items += "".join(
+        f'<a class="{"active" if key == active else ""}" href="{href}">{label}</a>'
+        for href, label, key in links[3:]
     )
     return f'''<div class="accent"></div>
 <header class="nav"><a class="brand" href="index.html"><img src="RDK-logo.png" alt="RDK"></a><nav class="navlinks">{items}</nav></header>'''
@@ -64,10 +82,10 @@ def shell(title: str, active: str, body: str, footer: str = "") -> str:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>body{{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}}h1,h2,h3{{font-family:"Space Grotesk","Inter",sans-serif}}code,.mono,.release-pill{{font-family:"JetBrains Mono",ui-monospace,monospace!important}}</style>
-<style>.hero .wrap{{max-width:none}}.api-controls{{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}}.api-controls .release-panel{{margin-bottom:0}}.api-controls .toolbar{{margin:0 0 0 auto}}.api-controls input{{min-width:260px}}.release-panel{{display:flex;gap:12px;flex-wrap:wrap}}.release-pill{{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--border);border-radius:5px;color:var(--ink);background:#fff;box-shadow:var(--shadow);font:700 .75rem/1 Consolas,monospace;letter-spacing:.04em}}.release-pill span{{color:var(--muted);font-weight:600}}.table-wrap{{overflow-x:auto;border:1px solid var(--border);border-radius:4px;background:#fff}}table{{width:100%;border-collapse:collapse;table-layout:auto}}td,th{{vertical-align:top;padding:14px 16px;line-height:1.45}}th{{white-space:nowrap}}td{{min-width:120px;white-space:pre-line}}td:first-child{{min-width:220px}}td a{{overflow-wrap:anywhere}}.pill{{display:inline-block;padding:4px 10px;border-radius:999px;background:#eaf2ff;color:#2249a2;font-size:.8rem;font-weight:700}}.pill.core{{background:#dff7ea;color:#1d6b43;border:1px solid #a8e1bd}}@media(max-width:650px){{.api-controls{{align-items:flex-start;flex-direction:column}}.api-controls .toolbar{{width:100%;margin:0}}.api-controls input{{width:100%;min-width:0}}}}</style>
+<style>.hero .wrap{{max-width:none}}.api-controls{{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}}.api-controls .release-panel{{margin-bottom:0}}.api-controls .toolbar{{margin:0 0 0 auto}}.api-controls input{{min-width:260px}}.release-panel{{display:flex;gap:12px;flex-wrap:wrap}}.release-pill{{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--border);border-radius:5px;color:var(--ink);background:#fff;box-shadow:var(--shadow);font:700 .75rem/1 Consolas,monospace;letter-spacing:.04em}}.release-pill span{{color:var(--muted);font-weight:600}}.table-wrap{{overflow-x:auto;border:1px solid var(--border);border-radius:4px;background:#fff}}table{{width:100%;border-collapse:collapse;table-layout:auto}}td,th{{vertical-align:top;padding:14px 16px;line-height:1.45}}th{{white-space:nowrap}}td{{min-width:120px;white-space:pre-line}}td:first-child{{min-width:220px}}td a{{overflow-wrap:anywhere}}.pill{{display:inline-block;padding:4px 10px;border-radius:999px;background:#eaf2ff;color:#2249a2;font-size:.8rem;font-weight:700;text-decoration:none}}.pill.core{{background:#dff7ea;color:#1d6b43;border:1px solid #a8e1bd}}@media(max-width:650px){{.api-controls{{align-items:flex-start;flex-direction:column}}.api-controls .toolbar{{width:100%;margin:0}}.api-controls input{{width:100%;min-width:0}}}}</style>
 <style>@media(max-width:650px){{.hero{{height:auto!important;min-height:0!important;padding:48px 20px 44px!important}}.hero h1{{font-size:clamp(1.9rem,9vw,2.8rem)!important}}.hero p{{font-size:1rem!important;line-height:1.5}}.hero .badges{{margin-top:18px}}}}</style>
 <style>.status-published{{background:#e5f6eb;border-color:#9bd4aa;color:#1d6b43}}.status-published span{{color:#397a4d}}.status-draft{{background:#fff4d8;border-color:#edcf7a;color:#8a5a00}}.status-draft span{{color:#9a731f}}.version-pill{{background:#edf3ff;border-color:#b8c9ef;color:#2457d6}}.version-pill span{{color:#5873af}}</style>
-<style>.api-controls{{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,auto);align-items:center;gap:20px}}.api-controls>.release-panel{{min-width:0}}.api-controls>.toolbar{{justify-self:end;margin:0;min-width:260px}}@media(max-width:650px){{.api-controls{{grid-template-columns:1fr;gap:14px}}.api-controls>.toolbar{{justify-self:stretch;width:100%;min-width:0}}}}</style>
+<style>.api-controls{{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,auto);align-items:center;gap:20px}}.api-controls>.release-panel{{min-width:0}}.api-controls>.toolbar{{justify-self:end;margin:0;min-width:260px}}.api-controls>.catalog-search-toolbar{{grid-column:1/-1;justify-self:stretch;width:100%;min-width:0}}.catalog-search-toolbar input{{width:100%;min-width:0}}@media(max-width:650px){{.api-controls{{grid-template-columns:1fr;gap:14px}}.api-controls>.toolbar{{justify-self:stretch;width:100%;min-width:0}}}}</style>
 </head>
 <body>
 {nav(active)}
@@ -85,7 +103,7 @@ def status_explainer() -> str:
     return '''<details style="position:relative;min-width:150px"><summary style="cursor:pointer;color:#2457d6;font-size:.84rem;font-weight:700">Status legend</summary><dl style="position:absolute;z-index:2;left:0;right:auto;top:calc(100% + 8px);width:min(420px,calc(100vw - 40px));margin:0;padding:16px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;line-height:1.45"><dt style="font-weight:700;color:var(--ink)">Draft</dt><dd style="margin:2px 0 10px;color:var(--muted)">Specifications drafted and undergoing internal reviews and RTAB Approval</dd><dt style="font-weight:700;color:var(--ink)">Approved</dt><dd style="margin:2px 0 10px;color:var(--muted)">All review feedback has been addressed; RTAB has voted and approved the spec</dd><dt style="font-weight:700;color:var(--ink)">Published</dt><dd style="margin:2px 0 0;color:var(--muted)">Tagged and versioned against an official RDK release</dd></dl></details>'''
 
 
-def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = None, subtitle: str = "", subtitle_before_title: bool = False, include_release: bool = True) -> str:
+def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = None, subtitle: str = "", subtitle_before_title: bool = False, include_release: bool = True, status: str | None = None) -> str:
     badge_html = "" if not badges else '<div class="badges">' + "".join(
         f'<span class="badge">{esc(item)}</span>' for item in badges
     ) + "</div>"
@@ -95,7 +113,12 @@ def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = 
     title_block = f"{subtitle_html}{title_html}" if subtitle_before_title else f"{title_html}{subtitle_html}"
     state = release_state() if include_release else {}
     release_html = f'<div class="release"><span>STATE: {esc(state.get("state", "Draft"))}</span><span>VERSION: {esc(state.get("version", "RDK8"))}</span><span>UPDATED: {esc(state.get("updated", "TBD"))}</span></div>' if include_release else ""
-    return f'''<section class="hero" style="height:clamp(360px,32vw,440px);min-height:360px;padding:52px 5vw 42px;display:flex;align-items:center;overflow:visible"><div class="wrap" style="width:100%">{eyebrow_html}{title_block}<p>{esc(description)}</p>{badge_html}{release_html}</div></section>'''
+    status_class = " approved" if (status or "").casefold() in {"approved", "published"} else ""
+    status_html = "" if status is None else (
+        f'<div class="hero-catalog-status"><span class="hero-status-badge{status_class}"><span>Catalog status:</span> '
+        f'{esc(status)}</span>{status_explainer()}</div>'
+    )
+    return f'''<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center"><div class="wrap" style="width:100%">{eyebrow_html}{title_block}<p>{esc(description)}</p>{badge_html}{status_html}{release_html}</div></section>'''
 
 
 def release_panel(label: str, state: dict | None = None, show_version: bool = True) -> str:
@@ -159,6 +182,7 @@ def build_api(
     strip_release_path: bool = False,
     show_version: bool = True,
     show_status_explainer: bool = True,
+    hero_status: str | None = None,
 ) -> None:
     data = load(data_file)
     records = data.get("apis", [])
@@ -171,7 +195,7 @@ def build_api(
     table_id = f"{active}-rows"
     if search_placeholder:
         search_id = f"{active}-search"
-        search = f'<div class="toolbar"><input id="{search_id}" type="search" placeholder="{esc(search_placeholder)}" aria-label="{esc(search_placeholder)}"></div>'
+        search = f'<div class="toolbar catalog-search-toolbar"><input id="{search_id}" type="search" placeholder="{esc(search_placeholder)}" aria-label="{esc(search_placeholder)}"></div>'
         script_data = json.dumps(row_data, ensure_ascii=True)
         link_index = fields.index(link_field) if link_field else -1
         pill_indexes = {fields.index(field) for field in (pill_fields or []) if field in fields}
@@ -194,8 +218,8 @@ def build_api(
     table_body = f'''<div class="table-wrap" style="margin-top:24px"><table><thead><tr>{column_html}</tr></thead><tbody id="{table_id}">{rows}</tbody></table></div>'''
     note = f'<aside role="note" aria-label="Note" style="width:100%;margin:0 0 20px;padding:14px 18px;border:1px solid #edcf7a;border-left:4px solid #b45309;border-radius:8px;background:#fff4d8;color:#8a5a00;font-size:.92rem;line-height:1.5;box-shadow:var(--shadow);"><strong style="display:block;margin-bottom:4px;color:#8a5a00;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;">Note</strong><span style="display:block;max-width:900px;">{esc(draft_note)}</span></aside>' if draft_note else ""
     status_html = status_explainer() if show_status_explainer else ""
-    status_block = f'<div class="api-status" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">{release_panel("RDK8 list state", data, show_version)}{status_html}</div>'
-    body = hero("Interface catalog", title, description, include_release=False) + f'''<section class="section"><div class="api-controls">{status_block}{search}</div>{note}{table_body}</section>'''
+    status_block = "" if hero_status is not None else f'<div class="api-status" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">{release_panel("RDK8 list state", data, show_version)}{status_html}</div>'
+    body = hero("Interface catalog", title, description, include_release=False, status=hero_status) + f'''<section class="section"><div class="api-controls">{status_block}{search}</div>{note}{table_body}</section>'''
     body += script
     (ROOT / output_file).write_text(shell(f"{title} | RDK8", active, body), encoding="utf-8")
 
@@ -217,7 +241,10 @@ def build(page: str) -> None:
 
 
 def check() -> None:
-    required = ["index.html", "component-catalog.html", "northbound-api-spec.html", "southbound-api-spec.html"]
+    required = [
+        "index.html", "component-catalog.html", "northbound-api-spec.html", "southbound-api-spec.html",
+        *(href for href, _ in NORTHBOUND_MENU),
+    ]
     missing = [name for name in required if not (ROOT / name).exists()]
     if missing:
         raise SystemExit("Missing generated pages: " + ", ".join(missing))

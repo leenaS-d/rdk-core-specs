@@ -1,7 +1,8 @@
 {
   "eyebrow": "RDK8 for Video",
-  "title": "Core RDK Entertainment Platform",
-  "description": "RDKE is an open, modular foundation for entertainment platforms, built on reusable components, consistent APIs, and hardware abstraction. RDK8 advances app infrastructure through Firebolt Connect, supporting standardized, scalable delivery for web and native apps across RDK-powered devices.",
+  "title": "Core RDK Video Platform",
+  "description": "Core RDK Video (RDK-V) defines the common platform foundation for RDK-based video solutions through governed capabilities, standardized interfaces, lifecycle policies, and conformance requirements. It enables ecosystem-wide interoperability and portability while preserving flexibility for innovation and differentiation.",
+  "descriptionAddendum": "RDK8 advances application infrastructure through Firebolt Connect, enabling standardized and scalable delivery of video services, web applications, and native applications across RDK-powered devices.",
   "badges": ["Development Preview", "Firebolt Connect", "Thunder powered", "Apache-2.0/LGPL-2.1"],
   "release_overview": "Released as a Development Preview, RDK8 enables early validation of key capabilities, accelerates ecosystem readiness, and reduces integration risk. It also provides a clear signal of platform direction, helping operators and partners plan product roadmaps and investments with greater confidence.",
   "why": {
@@ -35,7 +36,7 @@
       ["Vendor Layer", "BSP, device drivers, HAL implementations, SoC adaptations and Linux OS integration — abstracting hardware differences behind the vendor layer."]
     ],
     "cards": [
-      ["Core RDK components", "The middleware-layer components that deliver a single, consistent implementation of core RDK-E device functionality."],
+      ["Components Catalog", "Explore the RDK8 Components Catalog, connecting application-facing capabilities with middleware and vendor-layer implementations."],
       ["Northbound APIs", "Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt."],
       ["Southbound APIs", "The Hardware Abstraction Layer (HAL) between middleware and the platform layer — standardized interfaces that abstract hardware differences."],
       ["Hardware specification", "Reference hardware requirements and device specifications defined for the Entertainment OS platform."]

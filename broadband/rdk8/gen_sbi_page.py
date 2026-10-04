@@ -169,12 +169,17 @@ let repoMap = {};
 
 function halRowHtml(name) {
   const repoEntry = repoMap[name];
-  const action = repoEntry
+  const isTbd = !repoEntry || repoEntry.repo === 'TBD';
+  const version = isTbd ? 'TBD' : (repoEntry.branch || 'main');
+  const versionPill = isTbd
+    ? `<span class="ver-pill ver-pill-tbd">${esc(version)}</span>`
+    : `<span class="ver-pill">${esc(version)}</span>`;
+  const action = !isTbd
     ? `<button class="dml-btn" data-name="${esc(name)}">View HAL APIs</button>`
     : `<span class="muted" style="font-size:0.85rem;">Not available yet</span>`;
   return `<tr>
     <td>${esc(name)}</td>
-    <td class="mono" style="font-size:0.82rem;color:var(--muted);">${esc(repoEntry ? (repoEntry.repo || repoEntry) : '')}</td>
+    <td>${versionPill}</td>
     <td>${action}</td>
   </tr>`;
 }
@@ -242,17 +247,22 @@ fetch(REPO_MAP_JSON, { cache: 'no-store' })
 
 EXTRA_CSS = """
 <style>
-  .search-row { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .search-row { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; width: 100%; }
   .search-row input {
-    flex: 1; max-width: 320px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 8px;
+    flex: 1; min-width: 0; padding: 9px 14px; border: 1px solid var(--border); border-radius: 6px;
     font-family: inherit; font-size: 0.9rem;
   }
-  .search-row #hal-count { font-size: 0.85rem; color: var(--muted); }
-  .dml-btn {
-    background: var(--hal); color: #fff; border: none; border-radius: 6px;
-    padding: 6px 14px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  .search-row #hal-count { font-size: 0.85rem; color: var(--muted); white-space: nowrap; margin-left: 4px; }
+  .ver-pill {
+    display: inline-block; padding: 3px 10px; border-radius: 8px; font-size: 0.82rem;
+    font-family: monospace; background: #f0f9ff; color: #0369a1; line-height: 1.5;
   }
-  .dml-btn:hover { filter: brightness(1.15); }
+  .ver-pill-tbd { background: #f3f4f6; color: #9ca3af; }
+  .dml-btn {
+    display: inline-block; padding: 7px 20px; border-radius: 999px; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; border: none; background: #e8eef8; color: #2d4eb5;
+  }
+  .dml-btn:hover { background: #d5e0f3; color: #1e3fa0; }
   #hal-panel { margin-top: 20px; }
 
   /* ---- HAL API card rendering (emit_hal_spec_json.py shape) ---- */
@@ -310,7 +320,7 @@ def build_page() -> str:
       <span id="hal-count" class="mono"></span>
     </div>
     <table class="def-table">
-      <thead><tr><th>HAL Interface</th><th>Repo</th><th>APIs</th></tr></thead>
+      <thead><tr><th>HAL Interface</th><th>Version</th><th>APIs</th></tr></thead>
       <tbody id="hal-table-body">
         <tr><td colspan="3">Loading HAL interfaces…</td></tr>
       </tbody>

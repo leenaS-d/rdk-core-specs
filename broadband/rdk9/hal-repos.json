@@ -98,7 +98,7 @@
   "WiFi HAL": {
     "repo": "rdk9-corerdkbroadband-tools",
     "file": "llapis/rdkb-halif-wifi/wifi.json",
-    "branch": "main"
+    "branch": "develop"
   },
   "xDSL HAL": {
     "repo": "rdkb-halif-xdsl",
