@@ -39,14 +39,14 @@ COMPONENTS_URL = "components/"
 NAV_LINKS = [
     ("link", "about", "Home", "index.html", False),
 
-    ("group", "nbi-group", "North Bound APIs", [
-        ("link", "nbi", "List of North Bound High Level APIs", "north-bound-apis.html", False),
-        ("link", "nbi-lowlevel", "List of North Bound Low Level APIs", "north-bound-lowlevel-apis.html", False),
+    ("group", "nbi-group", "RDK9 North Bound APIs", [
+        ("link", "nbi", "RDK9 List of North Bound High Level APIs", "north-bound-apis.html", False),
+        ("link", "nbi-lowlevel", "RDK9 List of North Bound Low Level APIs", "north-bound-lowlevel-apis.html", False),
     ]),
-    ("group", "sbi-group", "South Bound APIs", [
-        ("link", "sbi", "List of South Bound APIs", "south-bound-apis.html", False),
+    ("group", "sbi-group", "RDK9 South Bound APIs", [
+        ("link", "sbi", "RDK9 List of South Bound APIs", "south-bound-apis.html", False),
     ]),
-    ("link", "hwcompat", "Hardware Compatibility", "hardware-compatibility.html", False),
+    ("link", "hwcompat", "RDK9 Hardware Compatibility", "hardware-compatibility.html", False),
     ("link", "components", "Core RDK Components", COMPONENTS_URL, True),
 ]
 
@@ -516,7 +516,7 @@ def esc(s) -> str:
 # needs to change — render_hero() picks it up automatically, and pages
 # without an entry simply render without a hero image, exactly as now.
 HERO_IMAGES: dict[str, str] = {
-    # "about": "rdz.png",
+    "about": "rdz.png",
     # "architecture-standards": "images/architecture-standards-hero.png",
     # "technical-governance": "images/technical-governance-hero.png",
     # "nbi": "images/nbi-hero.png",
@@ -525,14 +525,16 @@ HERO_IMAGES: dict[str, str] = {
 }
 
 
-def render_hero(eyebrow: str, title: str, lede: str, badges_html: str = "", compact: bool = False, visual_key: str = "about") -> str:
+def render_hero(eyebrow: str, title: str, lede: str, badges_html: str = "", compact: bool = False, visual_key: str = "about", title_size: str = "") -> str:
     """Shared hero markup: eyebrow, heading, lede paragraph, optional badge
     row, and — only if one is registered in HERO_IMAGES for this page — an
     image on wide screens. Used by every page so any future hero image
     change applies everywhere consistently.
-    title/lede are escaped here — pass plain text, not pre-escaped HTML."""
+    title/lede are escaped here — pass plain text, not pre-escaped HTML.
+    title_size: optional CSS font-size value (e.g. 'clamp(1.55rem,3.1vw,2.4rem)')
+    to override the default .hero h1 size for pages with longer titles."""
     pad = "48px 40px 40px" if compact else "64px 40px 48px"
-    title_style = ""  # font-size controlled by CSS .hero h1 for all pages
+    title_style = f' style="font-size:{title_size}"' if title_size else ""
     badges = f'<div class="badge-row">{badges_html}</div>' if badges_html else ""
     eyebrow_html = f'<span class="eyebrow">{esc(eyebrow)}</span>' if eyebrow else ""
     image_path = HERO_IMAGES.get(visual_key)
