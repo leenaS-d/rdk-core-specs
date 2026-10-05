@@ -1253,8 +1253,17 @@
           "value": "None"
         }
       ],
-      "overview": "Returns the HDR standards that are suported by the attached TV or the integral display OTT/STB device: supported by the device and indicated by the EDID of the attached TV TV: supported by the device",
-      "trailing": []
+      "overview": "Returns the HDR standards that are suported by the attached TV or the integral display",
+       "trailing": [
+        {
+          "type": "list",
+          "variant": "api-detail-list",
+          "items": [
+            "OTT/STB device: supported by the device and indicated by the EDID of the attached TV",
+            "TV: supported by the device"
+          ]
+        }
+      ]
     },
     "api-7": {
       "type": "apiMethod",
@@ -1295,8 +1304,21 @@
           "value": "None"
         }
       ],
-      "overview": "Notify the platform that content has been partially or completely watched progress: VOD: 0 to 0.99, live: number of seconds watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\" agePolicy: app:adult, app:child, app:teen",
-      "trailing": []
+      "overview": "Notify the platform that content has been partially or completely watched",
+      "trailing": [
+	{
+	  "type": "prose",
+	  "body": "progress: VOD: 0 to 0.99, live: number of seconds"
+	},
+	{
+          "type": "prose",
+          "body": "watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\""
+        },
+	{
+          "type": "prose",
+          "body": "agePolicy: app:adult, app:child, app:teen"
+        }
+      ]
     },
     "api-8": {
       "type": "apiMethod",
@@ -1341,8 +1363,27 @@
           "value": "None"
         }
       ],
-      "overview": "Request the platform to deactivate the app, and possibly take further action type deactivate - app is deactivated (if active) - typically a user closing an app unload - app is deactivated (if active) and terminated - typically an app has detected an error killReload - app is killed, then reloaded to paused or suspended (by policy) killReactivate - app is killed, reloaded, then activated window.close() maps to unload window.minimize() maps to deactivate Module is named Lifecycle in C++ Client Library",
-      "trailing": []
+      "overview": "Request the platform to deactivate the app, and possibly take further actiontype",
+      "trailing":[
+        {
+	  "type": "list",
+          "variant": "api-detail-list",
+          "items": [
+            "deactivate - app is deactivated (if active) - typically a user closing an app",
+            "unload - app is deactivated (if active) and terminated - typically an app has detected an error",
+	    "killReload - app is killed, then reloaded to paused or suspended (by policy)",
+	    "killReactivate - app is killed, reloaded, then activated"
+          ]
+        },
+	{
+          "type": "prose",
+	  "body": "window.minimize() maps to deactivate"
+	},
+	{
+          "type": "prose",
+	  "body": "Module is named Lifecycle in C++ Client Library"
+	}
+      ]
     },
     "api-9": {
       "type": "apiMethod",
@@ -1389,8 +1430,13 @@
           "value": "None"
         }
       ],
-      "overview": "Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state Apps/runtimes should ordinarily use state change notifications rather than this method",
-      "trailing": []
+      "overview": "Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state",
+      "trailing": [
+	{
+	  "type": "prose",
+	  "body": "Apps/runtimes should ordinarily use state change notifications rather than this method"
+	}
+      ]
     },
     "api-10": {
       "type": "apiMethod",
@@ -1429,8 +1475,20 @@
           "value": "N/A"
         }
       ],
-      "overview": "Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform Notification of lifecycle state change, raised after the platform has transitioned the app /runtime to the new lifecycle state Note: the list always carries exactly one lifecycle state change Valid transitions",
+      "overview": "Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform",
       "trailing": [
+	{
+	  "type": "prose",
+	  "body": "Notification of lifecycle state change, raised after the platform has transitioned the app /runtime to the new lifecycle state"
+	},
+	{
+	  "type": "prose",
+	  "body": "Note: the list always carries exactly one lifecycle state change"
+	},
+	{
+	  "type": "prose",
+	  "body": "Valid transitions"
+	},
         {
           "type": "list",
           "variant": "api-detail-list",
@@ -2431,8 +2489,25 @@
           "value": "None"
         }
       ],
-      "overview": "Speak the utterance immediately. Any ongoing speech is interrupted Text argument is either plain text or a well- formed SSML document TTS_Status, not success attribute, to be used by caller to indicate success of call 0 OK, 1 Fail, 2 not enabled, 3 invalid configuration Raises onSpeechinterrupted if speaking is interrupted",
-      "trailing": []
+      "overview": "Speak the utterance immediately. Any ongoing speech is interrupted",
+      "trailing": [
+        {
+	  "type": "prose",
+	  "body": "Text argument is either plain text or a well- formed SSML document"
+	},
+	{
+	  "type": "prose",
+	  "body": "TTS_Status, not success attribute, to be used by caller to indicate success of call"
+	},
+	{
+	  "type": "prose",
+	  "body": "0 OK, 1 Fail, 2 not enabled, 3 invalid configuration"
+	},
+	{
+	 "type": "prose",
+	 "body": "Raises onSpeechinterrupted if speaking is interrupted"
+	}
+      ]
     },
     "api-36": {
       "type": "apiMethod",
@@ -2475,8 +2550,17 @@
           "value": "None"
         }
       ],
-      "overview": "Pauses the utterance Raises onSpeechpause if ongoing speech is paused Does nothing if utterance is already paused",
-      "trailing": []
+      "overview": "Pauses the utterance",
+      "trailing": [
+        {
+	  "type": "prose",
+	  "bdody": "Raises onSpeechpause if ongoing speech is paused"
+        },
+	{
+	  "type": "prose",
+	  "body": "Does nothing if utterance is already paused"
+	}
+      ]
     },
     "api-37": {
       "type": "apiMethod",
@@ -2519,8 +2603,13 @@
           "value": "None"
         }
       ],
-      "overview": "Continue the paused utterance Raises onSpeechresume if paused speech is resumed Does nothing if the utterance is not paused",
-      "trailing": []
+      "overview": "Continue the paused utterance",
+      "trailing": [
+        {
+	  "type": "prose",
+	  "body": "Raises onSpeechresume if paused speech is resumed Does nothing if the utterance is not paused"
+	}
+      ]
     },
     "api-38": {
       "type": "apiMethod",
