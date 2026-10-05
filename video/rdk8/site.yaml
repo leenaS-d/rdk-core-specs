@@ -22,8 +22,8 @@ stylesheets:
   - assets/css/overrides.css
   - assets/css/site.css
 
-# `northbound-api-spec.html` is deliberately absent from the nav, matching the
-# legacy site: it is reached from the home page cards only.
+# The Northbound entry is a dropdown only; the Firebolt Core API Specification
+# is also reached from the home page cards.
 nav:
   - key: home
     label: Home

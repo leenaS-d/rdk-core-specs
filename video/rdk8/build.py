@@ -29,7 +29,7 @@ DATA = ROOT / "assets" / "data"
 EXPECTED_PAGES = [
     "index.html",
     "component-catalog.html",
-    "northbound-api-spec.html",
+    "firebolt-api-spec.html",
     "southbound-api-spec.html",
 ]
 
@@ -123,12 +123,28 @@ def table_rows(config: dict[str, Any]) -> tuple[list[list[str]], dict[str, Any]]
     return rows, {"status": data.get("status", "Draft"), "version": data.get("version", "")}
 
 
+def firebolt_method_count() -> int:
+    """Rows in the Firebolt API spec method table."""
+    doc = load_json("assets/data/firebolt-api-spec.json")
+
+    def walk(blocks: list[dict[str, Any]]) -> int:
+        for block in blocks:
+            if block.get("type") == "table":
+                return len(block.get("rows", []))
+            found = walk(block.get("blocks", []) or [])
+            if found:
+                return found
+        return 0
+
+    return walk(doc.get("blocks", []))
+
+
 def metric_value(token: str) -> int:
     kind = token.split(":", 1)[1]
     if kind == "components":
         return len(catalog_rows())
-    if kind == "northbound":
-        return len(load_json("assets/data/northbound-apis.json").get("apis", []))
+    if kind == "firebolt":
+        return firebolt_method_count()
     if kind == "southbound":
         return len(load_json("assets/data/southbound-apis.json").get("apis", []))
     raise ValueError(f"unknown metric {token!r}")
@@ -303,7 +319,6 @@ def build() -> None:
 DATA_RULES = [
     ("assets/data/components.json", "components", ["name", "category", "layer"]),
     ("assets/data/rdk8-non-core-components.json", "components", ["name", "category", "layer"]),
-    ("assets/data/northbound-apis.json", "apis", ["component", "name", "releaseTag"]),
     ("assets/data/southbound-apis.json", "apis", ["halInterface", "releaseTag", "source"]),
 ]
 

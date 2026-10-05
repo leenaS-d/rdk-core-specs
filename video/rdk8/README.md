@@ -52,7 +52,6 @@ It will not catch wording mistakes or broken external URLs.
 |---|---|
 | `index.md` | Home page: hero, release overview, 3 metric cards, 8 benefit cards |
 | `component-catalog.md` | Catalog page furniture: title, columns, filters |
-| `northbound-api-spec.md` | Northbound table furniture and the amber Note callout |
 | `southbound-api-spec.md` | Southbound table furniture |
 | `firebolt-api-spec.md` | Points at `firebolt-api-spec.json` |
 | `firebolt-intents.md` | Points at `firebolt-intents.json` |
@@ -78,7 +77,6 @@ Add a ninth benefit card by appending another `###` block. Nothing else changes.
 |---|---|---|
 | `assets/data/components.json` | 81 core components | `status` / `version` are hand-edited and never overwritten |
 | `assets/data/rdk8-non-core-components.json` | 96 non-core components | Merged with the above to make the 177-row catalog |
-| `assets/data/northbound-apis.json` | 56 northbound APIs | |
 | `assets/data/southbound-apis.json` | 5 HAL interfaces | |
 | `assets/data/firebolt-*.json` | The four Firebolt spec documents | Use the block schema below |
 

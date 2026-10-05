@@ -25,8 +25,8 @@ sections:
     cards:
       - href: component-catalog.html
         metric: count:components
-      - href: northbound-api-spec.html
-        metric: count:northbound
+      - href: firebolt-api-spec.html
+        metric: count:firebolt
       - href: southbound-api-spec.html
         metric: count:southbound
   - style: alt
