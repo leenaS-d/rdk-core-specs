@@ -31,6 +31,7 @@ def build_southbound() -> None:
         sort_field="halInterface",
         strip_release_path=True,
         show_version=False,
+        hero_status="Published",
     )
 
 if __name__ == "__main__":

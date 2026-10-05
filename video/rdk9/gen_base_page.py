@@ -1,5 +1,5 @@
 """RDKE RDK9 home-page generator."""
-from build import ROOT, cards, esc, hero, load, shell
+from build import ROOT, esc, hero, load, shell
 
 
 def platform_metric_cards(items: list[list[str]], links: list[str], metrics: list[int]) -> str:
@@ -12,23 +12,25 @@ def platform_metric_cards(items: list[list[str]], links: list[str], metrics: lis
 def build_home() -> None:
     content = load("home-content.json")
     components = load("components.json")
-    northbound = load("northbound-apis.json")
+    non_core_components = load("rdk9-non-core-components.json")
     southbound = load("southbound-apis.json")
+    from gen_nbi_page import extract_api_spec_methods
+    northbound_count = len(extract_api_spec_methods("Firebolt 9 API Specifications.pdf")[0])
 
     body = hero("", content["title"], content["description"], content["badges"])
     title_html = '<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">' + esc(content["title"]) + '</h1>'
-    subtitle_html = '<div class="hero-subtitle" style="font-size:.95rem;font-weight:600;line-height:1;color:#b8df63;margin:0">Powering Next-Generation Entertainment Experiences</div>'
-    intro_html = '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;line-height:1"><div style="display:inline-flex;align-items:center;padding:5px 12px;border:1px solid #b8df63;border-radius:999px;color:#b8df63;font:700 .72rem/1 JetBrains Mono,monospace;letter-spacing:.14em">RDKE</div><div style="font-size:.95rem;font-weight:600;line-height:1;color:#b8df63">RDK9 for Video</div>' + subtitle_html + '</div>'
+    badge_style = 'display:inline-flex;align-items:center;padding:5px 12px;border:1px solid #b8df63;border-radius:999px;color:#b8df63;font:700 .72rem/1 JetBrains Mono,monospace;letter-spacing:.08em'
+    tagline_parts = ["RDK-V", "RDK9 for Video", "Powering Next-Generation Video Experiences"]
+    tagline_html = "".join(f'<div style="{badge_style}">{part}</div>' for part in tagline_parts)
+    intro_html = f'<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;line-height:1">{tagline_html}</div>'
     body = body.replace(title_html, intro_html + title_html, 1)
 
-    why = content["why"]
-    body += f'<section class="section"><div class="eyebrow">RDKE overview</div><h2>Why choose RDK-E?</h2><p class="lede">{esc(why["description"])}</p>{cards(why["cards"])}</section>'
-    body += f'<section class="section alt"><div class="eyebrow">Architecture</div><h2>RDKE architecture</h2><div style="display:grid;gap:0;max-width:1000px">{"".join(f"<article class=\"card\" style=\"border-left-color:{color};border-radius:0\"><h3>{esc(layer[0])}</h3><p>{esc(layer[1])}</p></article>" for layer, color in zip(why["cards"][:3], ("#29b6e8", "#7ac943", "#f5a623")))}</div></section>'
-    body += f'<section class="section alt"><div class="eyebrow">Upcoming Release</div><h2 style="font-family:Space Grotesk,Inter,sans-serif;letter-spacing:0">RDK9 release</h2><p class="lede">{esc(content["release_overview"])}</p></section>'
+    architecture = content["architecture"]
+    body += f'<section class="section alt home-release"><div class="eyebrow">Upcoming Release</div><h2 style="font-family:Space Grotesk,Inter,sans-serif;letter-spacing:0">RDK9 release</h2><p class="lede">{esc(content["release_overview"])}</p></section>'
 
     links = ["component-registry.html", "northbound-apis.html", "southbound-apis.html"]
-    metrics = [len(components.get("components", [])), len(northbound.get("apis", [])), len(southbound.get("apis", []))]
-    body += f'<section class="section"><div class="eyebrow">Core RDK platform</div><h2>Explore the Core RDK platform</h2><p class="lede">Explore the RDK9 platform building blocks and standardized interfaces connecting applications, middleware, and the vendor layer.</p>{platform_metric_cards(content["architecture"]["cards"][:3], links, metrics)}</section>'
+    metrics = [len(components.get("components", [])) + len(non_core_components.get("components", [])), northbound_count, len(southbound.get("apis", []))]
+    body += f'<section class="section"><div class="eyebrow">RDK9 platform</div><h2>Explore the RDK9 platform</h2><p class="lede">Explore the RDK9 core and non-core components alongside standardized interfaces connecting applications, middleware, and vendor-layer implementations.</p>{platform_metric_cards(content["architecture"]["cards"][:3], links, metrics)}</section>'
 
     footer = "Copyright © 2026 RDK Management, LLC"
     (ROOT / "index.html").write_text(shell("RDKE. Core RDK Entertainment Platform", "home", body, footer), encoding="utf-8")
