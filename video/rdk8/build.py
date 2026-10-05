@@ -288,6 +288,11 @@ def build() -> None:
     )
     env.filters["inline"] = render_inline
     for path in sorted(ROOT.glob("*.md")):
+        meta, _ = split_front_matter(path.read_text(encoding="utf-8"))
+        # A Markdown file without a layout is documentation (e.g. README), not a page.
+        if not meta.get("layout"):
+            print(f"skipped {path.name} (no layout)")
+            continue
         output = ROOT / f"{path.stem}.html"
         output.write_text(build_page(env, site, path), encoding="utf-8")
         print(f"built {output.name}")
