@@ -1253,8 +1253,17 @@
           "value": "None"
         }
       ],
-      "overview": "Returns the HDR standards that are suported by the attached TV or the integral display OTT/STB device: supported by the device and indicated by the EDID of the attached TV TV: supported by the device",
-      "trailing": []
+      "overview": "Returns the HDR standards that are suported by the attached TV or the integral display",
+       "trailing": [
+        {
+          "type": "list",
+          "variant": "api-detail-list",
+          "items": [
+            "OTT/STB device: supported by the device and indicated by the EDID of the attached TV",
+            "TV: supported by the device"
+          ]
+        }
+      ]
     },
     "api-7": {
       "type": "apiMethod",
