@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "status": "Published",
+  "version": "RDK8-1.0.0",
+  "apis": [
+    {
+      "halInterface": "RMF Audio Capture HAL",
+      "source": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture/releases/tag/1.0.6",
+      "type": "core",
+      "releaseTag": "1.0.6"
+    },
+    {
+      "halInterface": "HDMI CEC HAL",
+      "source": "https://github.com/rdkcentral/rdk-halif-hdmi_cec/releases/tag/1.4.0",
+      "type": "core",
+      "releaseTag": "1.4.0"
+    },
+    {
+      "halInterface": "DeepSleep Manager HAL",
+      "source": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager/releases/tag/1.0.5",
+      "type": "core",
+      "releaseTag": "1.0.5"
+    },
+    {
+      "halInterface": "Power Manager HAL",
+      "source": "https://github.com/rdkcentral/rdk-halif-power_manager/releases/tag/1.0.4",
+      "type": "core",
+      "releaseTag": "1.0.4"
+    },
+    {
+      "halInterface": "Device Settings HAL",
+      "source": "https://github.com/rdkcentral/rdk-halif-device_settings/releases/tag/6.0.1",
+      "type": "core",
+      "releaseTag": "6.0.1"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{#
+  Renders one content block. Dispatches on block.type and recurses, so nesting
+  depth is driven entirely by the JSON.
+
+  Block types
+    section  - heading plus nested blocks
+    prose    - a paragraph; optional `variant` becomes its class
+    heading  - a sub-heading inside an entry
+    table    - columns/rows. A cell value may be a string or another block
+    fields   - label/value pairs
+    entry    - a titled spec panel (eyebrow + heading + nested blocks)
+    code     - preformatted text; `variant` selects the style
+    examples - a group of code blocks
+    actions  - pills; an item with `ref` opens that definition in the dialog
+#}
+{%- if block.type == 'section' %}
+<section class="spec-intro{% if block.classes %} {{ block.classes }}{% endif %}"{% if block.id %} id="{{ block.id }}"{% endif %}>
+  {%- if block.heading %}
+  <h2>{{ block.heading }}</h2>
+  {%- endif %}
+  {%- for child in block.blocks %}
+  {%- with block = child %}{% include "partials/block.html" %}{% endwith %}
+  {%- endfor %}
+</section>
+
+{%- elif block.type == 'prose' %}
+<p{% if block.variant %} class="{{ block.variant }}"{% endif %}>{{ block.body | inline }}</p>
+
+{%- elif block.type == 'details' %}
+<details class="spec-details">
+  <summary>{{ block.summary }}</summary>
+  {%- for child in block.blocks %}
+  {%- with block = child %}{% include "partials/block.html" %}{% endwith %}
+  {%- endfor %}
+</details>
+
+{%- elif block.type == 'reference' %}
+<div class="api-reference">
+  {%- if block.title %}<div class="api-reference-title">{{ block.title }}</div>{% endif %}
+  <div class="reference-actions">
+    {%- for item in block['items'] %}
+    {%- if item.ref %}
+    <a class="reference-trigger spec-modal-trigger" href="#{{ item.ref }}" data-modal-target="{{ item.ref }}">{{ item.label }}</a>
+    {%- elif item.href %}
+    <a class="reference-trigger" href="{{ item.href }}" target="_blank" rel="noopener">{{ item.label }}</a>
+    {%- else %}
+    <span class="reference-trigger">{{ item.label }}</span>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</div>
+
+{%- elif block.type == 'heading' %}
+<h3>{{ block.body }}</h3>
+
+{%- elif block.type == 'list' %}
+<ul class="{{ block.variant or 'spec-cell-list' }}">
+  {%- for item in block['items'] recursive %}
+  <li>{{ item.text if item is mapping else item }}
+    {%- if item is mapping and item['items'] -%}
+    <ul class="api-detail-sublist">{{ loop(item['items']) }}</ul>
+    {%- endif -%}
+  </li>
+  {%- endfor %}
+</ul>
+
+{%- elif block.type == 'code' %}
+<pre class="{{ block.variant or 'spec-definition-text' }}">{{ block.body }}</pre>
+
+{%- elif block.type == 'examples' %}
+<div class="spec-examples">
+  {%- for child in block.blocks %}
+  {%- with block = child %}{% include "partials/block.html" %}{% endwith %}
+  {%- endfor %}
+</div>
+
+{%- elif block.type == 'actions' %}
+{%- set pill = 'pill' if block.plain else 'pill allowed-action' %}
+<div class="{{ 'spec-actions' if block.plain else 'allowed-actions' }}">
+  {#- subscript, not dot: `block.items` would resolve to dict.items -#}
+  {%- for item in block['items'] %}
+  {%- if item.ref %}
+  <a class="{{ pill }} spec-modal-trigger" href="#{{ item.ref }}" data-modal-target="{{ item.ref }}">{{ item.label }}</a>
+  {%- elif item.href %}
+  <a class="{{ pill }}" href="{{ item.href }}" target="_blank" rel="noopener">{{ item.label }}</a>
+  {%- else %}
+  <span class="{{ pill }}">{{ item.label }}</span>
+  {%- endif %}
+  {%- endfor %}
+</div>
+
+{%- elif block.type == 'badge' %}
+<span class="pill">{{ block.label }}</span>
+
+{%- elif block.type == 'toolbar' %}
+<div class="toolbar{% if block.classes %} {{ block.classes }}{% endif %}" data-filter-for="{{ block.target }}">
+  {%- if block.search %}
+  <input type="search" data-filter-search placeholder="{{ block.search.placeholder }}" aria-label="{{ block.search.placeholder }}">
+  {%- endif %}
+  {%- for filter in block.filters %}
+  <select data-filter-column="{{ filter.column }}">
+    <option value="">{{ filter.allLabel }}</option>
+    {%- for option in filter['options'] %}
+    <option>{{ option }}</option>
+    {%- endfor %}
+  </select>
+  {%- endfor %}
+</div>
+
+{%- elif block.type == 'apiMethod' %}
+<section class="spec-entry">
+  <div class="spec-entry-head">
+    {%- if block.eyebrow %}<span class="spec-entry-eyebrow">{{ block.eyebrow }}</span>{% endif %}
+    <h2>{{ block.module }}</h2>
+  </div>
+  <div class="api-detail-method"><code>{{ block.method }}</code></div>
+  <div class="api-detail-meta">
+    <span class="pill">API version {{ block.version }}</span>
+    {%- for item in block.support %}
+    {%- set spoken = 'not supported' if item.state == 'unsupported' else item.state %}
+    <span class="api-support"><span class="api-support-label">{{ item.label }}</span><span class="api-support-mark {{ item.state }}" role="img" aria-label="{{ item.label }} {{ spoken }}">{{ '\u2713' if item.state == 'supported' else '\u2717' }}</span></span>
+    {%- endfor %}
+  </div>
+  <dl class="api-detail-fields">
+    {%- for field in block.fields %}
+    <div class="api-detail-row"><dt>{{ field.label }}</dt><dd>
+      {%- if field.value is mapping and field.value.type == 'list' -%}
+      <ul class="api-detail-list">
+        {%- for item in field.value['items'] recursive %}
+        <li>{{ item.text if item is mapping else item }}
+          {%- if item is mapping and item['items'] -%}
+          <ul class="api-detail-sublist">{{ loop(item['items']) }}</ul>
+          {%- endif -%}
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- else -%}
+      <span class="api-detail-text">{{ field.value }}</span>
+      {%- endif -%}
+    </dd></div>
+    {%- endfor %}
+  </dl>
+  {%- if block.overview %}
+  <p class="spec-entry-overview">{{ block.overview }}</p>
+  {%- endif %}
+  {%- for child in block.trailing %}
+  {%- with block = child %}{% include "partials/block.html" %}{% endwith %}
+  {%- endfor %}
+</section>
+
+{%- elif block.type == 'entry' %}
+<section class="spec-entry">
+  {%- if block.heading or block.eyebrow %}
+  <div class="spec-entry-head">
+    {%- if block.eyebrow %}<span class="spec-entry-eyebrow">{{ block.eyebrow }}</span>{% endif %}
+    {%- if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  </div>
+  {%- endif %}
+  {%- if block.overview %}
+  <p class="spec-entry-overview">{{ block.overview }}</p>
+  {%- endif %}
+  {%- for child in block.blocks %}
+  {%- with block = child %}{% include "partials/block.html" %}{% endwith %}
+  {%- endfor %}
+</section>
+
+{%- elif block.type == 'fields' %}
+<section class="spec-entry">
+  {%- if block.heading or block.eyebrow %}
+  <div class="spec-entry-head">
+    {%- if block.eyebrow %}<span class="spec-entry-eyebrow">{{ block.eyebrow }}</span>{% endif %}
+    {%- if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  </div>
+  {%- endif %}
+  <div class="spec-table-wrap">
+    <table class="spec-table key-code-detail-table">
+      <tbody>
+        {%- for field in block.fields %}
+        <tr><th>{{ field.label }}</th><td>{{ field.value }}</td></tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{%- elif block.type == 'table' %}
+{#- The outer wrapper carries the page-specific class; CSS targets the inner
+    .spec-table-wrap and .spec-table as descendants of it. #}
+<div{% if block.classes %} class="{{ block.classes }}"{% endif %}>
+  <div class="spec-table-wrap{% if block.nested %} nested{% endif %}">
+    <table class="spec-table{% if block.tableClasses %} {{ block.tableClasses }}{% endif %}"{% if block.id %} id="{{ block.id }}"{% endif %}>
+      {%- if block.columns %}
+      <thead>
+        <tr>{% for column in block.columns %}<th>{{ column.label }}</th>{% endfor %}</tr>
+      </thead>
+      {%- endif %}
+      <tbody>
+        {%- for row in block.rows %}
+        <tr>
+          {%- for column in block.columns %}
+          {%- set value = row[column.key] %}
+          {%- if value is mapping %}
+          <td{% if column.wrap %} class="cell--{{ column.wrap }}"{% endif %}>{% with block = value %}{% include "partials/block.html" %}{% endwith %}</td>
+          {%- else %}
+          <td{% if column.wrap %} class="cell--{{ column.wrap }}"{% endif %}>{{ value }}</td>
+          {%- endif %}
+          {%- endfor %}
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{%- endif %}

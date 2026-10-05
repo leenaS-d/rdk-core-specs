@@ -1,0 +1,455 @@
+{
+  "schemaVersion": "1.0",
+  "status": "Published",
+  "version": "8.0.0",
+  "apis": [
+    {
+      "component": "Accessibility",
+      "name": "audioDescription\nonAudioDescriptionChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Accessibility",
+      "name": "closedCaptionsSettings\nonClosedCaptionsSettingsChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Accessibility",
+      "name": "highContrastUI\nonHighContrastUIChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Accessibility",
+      "name": "voiceGuidanceSettings\nonVoiceGuidanceSettingsChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Advertising",
+      "name": "advertisingId",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Device",
+      "name": "uid",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Device",
+      "name": "deviceClass",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Device",
+      "name": "uptime",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Device",
+      "name": "timeInActiveState",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Device",
+      "name": "chipsetId",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Device",
+      "name": "hdr\nonHdrChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Discovery",
+      "name": "watched",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Display",
+      "name": "size",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Display",
+      "name": "maxResolution",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Display",
+      "name": "edid",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Lifecycle2",
+      "name": "close",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Lifecycle2",
+      "name": "state",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Lifecycle2",
+      "name": "onStateChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Localization",
+      "name": "country\nonCountryChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Localization",
+      "name": "preferredAudioLanguages\nonPreferredAudioLanguagesChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Localization",
+      "name": "presentationLanguage\nonPresentationLanguageChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "ready",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "signIn",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "signOut",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "startContent",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "stopContent",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "page",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "error",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaLoadStart",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaPlay",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaPlaying",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaPause",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaWaiting",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaSeeking",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaSeeked",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaRateChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaRenditionChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "mediaEnded",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "event",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Metrics",
+      "name": "appInfo",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Network",
+      "name": "connected\nonConnectedChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "Presentation",
+      "name": "focused\nonFocusedChanged",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "speak",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "pause",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "resume",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "cancel",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "getspeechstate",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onWillspeak",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onSpeechstart",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onSpeechpause",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onSpeechresume",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onSpeechcomplete",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onSpeechinterrupted",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onNetworkerror",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "onPlaybackerror",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    },
+    {
+      "component": "TextToSpeech",
+      "name": "listvoices",
+      "description": "",
+      "reference": "",
+      "type": "",
+      "releaseTag": "8.0.0"
+    }
+  ]
+}

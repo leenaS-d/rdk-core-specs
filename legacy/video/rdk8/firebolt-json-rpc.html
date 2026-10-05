@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firebolt 8 JSON-RPC Specification | RDK8</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}h1,h2,h3{font-family:"Space Grotesk","Inter",sans-serif}code,.mono,.release-pill{font-family:"JetBrains Mono",ui-monospace,monospace!important}</style>
+<style>.hero .wrap{max-width:none}.api-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}.api-controls .release-panel{margin-bottom:0}.api-controls .toolbar{margin:0 0 0 auto}.api-controls input{min-width:260px}.release-panel{display:flex;gap:12px;flex-wrap:wrap}.release-pill{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--border);border-radius:5px;color:var(--ink);background:#fff;box-shadow:var(--shadow);font:700 .75rem/1 Consolas,monospace;letter-spacing:.04em}.release-pill span{color:var(--muted);font-weight:600}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:4px;background:#fff}table{width:100%;border-collapse:collapse;table-layout:auto}td,th{vertical-align:top;padding:14px 16px;line-height:1.45}th{white-space:nowrap}td{min-width:120px;white-space:pre-line}td:first-child{min-width:220px}td a{overflow-wrap:anywhere}.pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#eaf2ff;color:#2249a2;font-size:.8rem;font-weight:700;text-decoration:none}.pill.core{background:#dff7ea;color:#1d6b43;border:1px solid #a8e1bd}@media(max-width:650px){.api-controls{align-items:flex-start;flex-direction:column}.api-controls .toolbar{width:100%;margin:0}.api-controls input{width:100%;min-width:0}}</style>
+<style>@media(max-width:650px){.hero{height:auto!important;min-height:0!important;padding:48px 20px 44px!important}.hero h1{font-size:clamp(1.9rem,9vw,2.8rem)!important}.hero p{font-size:1rem!important;line-height:1.5}.hero .badges{margin-top:18px}}</style>
+<style>.status-published{background:#e5f6eb;border-color:#9bd4aa;color:#1d6b43}.status-published span{color:#397a4d}.status-draft{background:#fff4d8;border-color:#edcf7a;color:#8a5a00}.status-draft span{color:#9a731f}.version-pill{background:#edf3ff;border-color:#b8c9ef;color:#2457d6}.version-pill span{color:#5873af}</style>
+<style>.api-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,auto);align-items:center;gap:20px}.api-controls>.release-panel{min-width:0}.api-controls>.toolbar{justify-self:end;margin:0;min-width:260px}.api-controls>.catalog-search-toolbar{grid-column:1/-1;justify-self:stretch;width:100%;min-width:0}.catalog-search-toolbar input{width:100%;min-width:0}@media(max-width:650px){.api-controls{grid-template-columns:1fr;gap:14px}.api-controls>.toolbar{justify-self:stretch;width:100%;min-width:0}}</style>
+</head>
+<body>
+<div class="accent"></div>
+<header class="nav"><a class="brand" href="index.html"><img src="RDK-logo.png" alt="RDK"></a><nav class="navlinks"><a class="" href="index.html">Home</a><a class="" href="component-catalog.html">Components Catalog</a><details class="nav-dropdown"><summary class="nav-dropdown-summary active">Northbound API Spec</summary><div class="nav-dropdown-menu"><a href="firebolt-api-spec.html">Firebolt Core API Specification</a><a href="firebolt-json-rpc.html">Firebolt JSON-RPC Specification</a><a href="firebolt-intents.html">Firebolt Intents Specification</a><a href="firebolt-key-codes.html">Firebolt Key Codes Specification</a></div></details><a class="" href="southbound-api-spec.html">Southbound API Spec</a></nav></header>
+<main>
+<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center"><div class="wrap" style="width:100%"><div class="eyebrow" style="font-size:1.1rem;letter-spacing:.08em">Firebolt 8</div><h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">Firebolt 8 JSON-RPC Specification</h1><p>The Firebolt JSON-RPC specification defines the request and response protocol used by RDK8 applications and platform services.</p><div class="hero-catalog-status"><span class="hero-status-badge approved"><span>Catalog status:</span> Published</span><details style="position:relative;min-width:150px"><summary style="cursor:pointer;color:#2457d6;font-size:.84rem;font-weight:700">Status legend</summary><dl style="position:absolute;z-index:2;left:0;right:auto;top:calc(100% + 8px);width:min(420px,calc(100vw - 40px));margin:0;padding:16px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;line-height:1.45"><dt style="font-weight:700;color:var(--ink)">Draft</dt><dd style="margin:2px 0 10px;color:var(--muted)">Specifications drafted and undergoing internal reviews and RTAB Approval</dd><dt style="font-weight:700;color:var(--ink)">Approved</dt><dd style="margin:2px 0 10px;color:var(--muted)">All review feedback has been addressed; RTAB has voted and approved the spec</dd><dt style="font-weight:700;color:var(--ink)">Published</dt><dd style="margin:2px 0 0;color:var(--muted)">Tagged and versioned against an official RDK release</dd></dl></details></div></div></section><section class="section spec-document" style="padding-top:42px"><section class="spec-intro json-rpc-section"><div class="api-reference"><div class="api-reference-title">References</div><div class="reference-actions"><a class="reference-trigger spec-modal-trigger" href="#json-rpc-definitions" data-modal-target="json-rpc-definitions">Definitions</a><a class="reference-trigger" href="https://www.jsonrpc.org/specification" target="_blank" rel="noopener">JSON RPC 2.0 Spec</a></div><template id="tmpl-json-rpc-definitions"><section class="spec-entry reference-modal-entry"><div class="spec-entry-head"><h2>Definitions</h2></div><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Name</th><th>Meaning</th></tr></thead><tbody><tr><td>Primitive type</td><td>NULL, Boolean, Number or String</td></tr></tbody></table></div></section></template></div></section><section class="spec-intro json-rpc-section"><h2>JSON-RPC 2.0 Compliance</h2><p>The URL used by the Firebolt Client Library to connect to the Firebolt API Gateway includes the <code>RPCv2=true</code> query parameter, confirming that the Client Library uses and accepts only compliant JSON-RPC as specified in this document.</p><p>All names used for matching, including method and parameter names, are case sensitive as stated in Section 2 of the JSON-RPC 2.0 Specification.</p></section><section class="spec-intro json-rpc-section"><h2>Method Calls</h2><div class="spec-table-wrap"><table class="spec-table json-rpc-message-table"><thead><tr><th>Message</th><th>Description</th><th>Notes</th><th>Example</th></tr></thead><tbody><tr><td>Method</td><td>Method call with no parameters</td><td>Params is not provided</td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-0" data-modal-target="json-rpc-method-0">View example</a></td></tr><tr><td>Method</td><td>Method call with one or more parameters</td><td>Params is an object. Arrays are not used</td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-1" data-modal-target="json-rpc-method-1">View example</a></td></tr><tr><td>Response</td><td>Error response</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-2" data-modal-target="json-rpc-method-2">View example</a></td></tr><tr><td>Response</td><td>Success with no return value</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-3" data-modal-target="json-rpc-method-3">View example</a></td></tr><tr><td>Response</td><td>Success returning a single primitive value</td><td>result is a primitive type</td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-4" data-modal-target="json-rpc-method-4">View example</a></td></tr><tr><td>Response</td><td>Success returning a single attribute that is an array of values of the same primitive type</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-5" data-modal-target="json-rpc-method-5">View example</a></td></tr><tr><td>Response</td><td>Success returning more than one value</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-method-6" data-modal-target="json-rpc-method-6">View example</a></td></tr></tbody></table></div><template id="json-rpc-method-0"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Method call with no parameters</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;method&quot;: &quot;Module.method&quot;
+}</pre><h3>Notes</h3><p class="spec-entry-overview">Params is not provided</p></section></template><template id="json-rpc-method-1"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Method call with one or more parameters</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;method&quot;: &quot;Module.method&quot;,
+  &quot;params&quot;: {
+    &quot;attr1&quot;: 1,
+    &quot;attr2&quot;: &quot;value2&quot;
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">Params is an object. Arrays are not used</p></section></template><template id="json-rpc-method-2"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Error response</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;error&quot;: {
+    &quot;code&quot;: -40300,
+    &quot;message&quot;: &quot;Method not permitted&quot;
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-method-3"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success with no return value</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: null
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-method-4"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning a single primitive value</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: 42
+}</pre><h3>Notes</h3><p class="spec-entry-overview">result is a primitive type</p></section></template><template id="json-rpc-method-5"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning a single attribute that is an array of values of the same primitive type</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: [
+    &quot;spa&quot;,
+    &quot;eng&quot;
+  ]
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-method-6"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning more than one value</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 1,
+  &quot;result&quot;: {
+    &quot;attr1&quot;: 1,
+    &quot;attr2&quot;: &quot;value2&quot;
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template></section><section class="spec-intro json-rpc-section"><h2>Notifications</h2><div class="spec-table-wrap"><table class="spec-table json-rpc-message-table"><thead><tr><th>Message</th><th>Description</th><th>Notes</th><th>Example</th></tr></thead><tbody><tr><td>Method</td><td>Subscribe for notification</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-0" data-modal-target="json-rpc-notification-0">View example</a></td></tr><tr><td>Method</td><td>Unsubscribe from notification</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-1" data-modal-target="json-rpc-notification-1">View example</a></td></tr><tr><td>Response</td><td>Subscription request failed</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-2" data-modal-target="json-rpc-notification-2">View example</a></td></tr><tr><td>Response</td><td>Subscription request succeeded</td><td></td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-3" data-modal-target="json-rpc-notification-3">View example</a></td></tr><tr><td>Method</td><td>Notification of a primitive type</td><td>The params object has a single member that is always called &quot;value&quot;</td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-4" data-modal-target="json-rpc-notification-4">View example</a></td></tr><tr><td>Method</td><td>Notification of a single attribute that is an array of values of the same primitive type</td><td>Params is an array that represents one attribute, not positional parameters in this case C++ example: void onSomething( std::vector&lt;std::string&gt; bar )</td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-5" data-modal-target="json-rpc-notification-5">View example</a></td></tr><tr><td>Method</td><td>Notification of an object</td><td>params contains all the attributes of the object</td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-6" data-modal-target="json-rpc-notification-6">View example</a></td></tr><tr><td>Method</td><td>Notification of a list of objects</td><td>Params is an array that represents one attribute, not positional parameters in this case. Rarely used</td><td><a class="pill spec-modal-trigger" href="#json-rpc-notification-7" data-modal-target="json-rpc-notification-7">View example</a></td></tr></tbody></table></div><template id="json-rpc-notification-0"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Subscribe for notification</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 2,
+  &quot;method&quot;: &quot;Module. onSomething&quot;,
+  &quot;params&quot;: {
+    &quot;listen&quot;: true
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-notification-1"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Unsubscribe from notification</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 2,
+  &quot;method&quot;: &quot;Module. onSomething&quot;,
+  &quot;params&quot;: {
+    &quot;listen&quot;: false
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-notification-2"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Subscription request failed</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 2,
+  &quot;error&quot;: {
+    &quot;code&quot;: -12345,
+    &quot;message&quot;: &quot;Subscription request failed&quot;
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-notification-3"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Subscription request succeeded</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Response</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 2,
+  &quot;result&quot;: null
+}</pre><h3>Notes</h3><p class="spec-entry-overview">No notes provided.</p></section></template><template id="json-rpc-notification-4"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a primitive type</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;Module. onSomething&quot;,
+  &quot;params&quot;: {
+    &quot;value&quot;: 42
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">The params object has a single member that is always called &quot;value&quot;</p></section></template><template id="json-rpc-notification-5"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a single attribute that is an array of values of the same primitive type</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;Module. onSomething&quot;,
+  &quot;params&quot;: [
+    &quot;spa&quot;,
+    &quot;eng&quot;
+  ]
+}</pre><h3>Notes</h3><p class="spec-entry-overview">Params is an array that represents one attribute, not positional parameters in this case C++ example: void onSomething( std::vector&lt;std::string&gt; bar )</p></section></template><template id="json-rpc-notification-6"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of an object</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;Module. onSomething&quot;,
+  &quot;params&quot;: {
+    &quot;attr1&quot;: 1,
+    &quot;attr2&quot;: &quot;value2&quot;
+  }
+}</pre><h3>Notes</h3><p class="spec-entry-overview">params contains all the attributes of the object</p></section></template><template id="json-rpc-notification-7"><section class="spec-entry"><div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a list of objects</h2></div><p class="spec-entry-overview"><strong>Message</strong>: Method</p><h3>Example</h3><pre class="spec-example">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;Module. onSomething&quot;,
+  &quot;params&quot;: [
+    {
+      &quot;attr1&quot;: 1,
+      &quot;attr2&quot;: &quot;value2&quot;
+    },
+    {
+      &quot;attr1&quot;: 2,
+      &quot;attr2&quot;: &quot;value4&quot;
+    }
+  ]
+}</pre><h3>Notes</h3><p class="spec-entry-overview">Params is an array that represents one attribute, not positional parameters in this case. Rarely used</p></section></template></section></section><div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div><script>(function(){const modal=document.getElementById("spec-modal"),body=document.getElementById("spec-modal-body");if(!modal)return;function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}document.addEventListener("click",event=>{const trigger=event.target.closest(".spec-modal-trigger");if(!trigger)return;event.preventDefault();const template=document.getElementById(trigger.dataset.modalTarget);if(!template)return;body.innerHTML="";body.appendChild(template.content.cloneNode(true));modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"});modal.querySelectorAll("[data-modal-close]").forEach(element=>element.addEventListener("click",closeModal));document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal()})})()</script>
+</main>
+<footer class="footer"><div class="wrap">Source file: <a href="Firebolt 8 JSON-RPC spec.pdf" target="_blank" rel="noopener">Firebolt 8 JSON-RPC spec.pdf</a></div></footer>
+
+</body>
+</html>

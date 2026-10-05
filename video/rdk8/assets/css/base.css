@@ -1,0 +1,21 @@
+/* base.css - generated from legacy sources, do not hand-merge */
+html {
+  scroll-behavior:smooth;
+}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  line-height:1.6;
+}
+h1,
+h2,
+h3 {
+  font-family:Georgia,serif;
+  line-height:1.15;
+  margin:0 0 12px;
+}
+a {
+  color:var(--link);
+}

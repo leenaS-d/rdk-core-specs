@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firebolt 8 Core API Specification | RDK8</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}h1,h2,h3{font-family:"Space Grotesk","Inter",sans-serif}code,.mono,.release-pill{font-family:"JetBrains Mono",ui-monospace,monospace!important}</style>
+<style>.hero .wrap{max-width:none}.api-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}.api-controls .release-panel{margin-bottom:0}.api-controls .toolbar{margin:0 0 0 auto}.api-controls input{min-width:260px}.release-panel{display:flex;gap:12px;flex-wrap:wrap}.release-pill{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--border);border-radius:5px;color:var(--ink);background:#fff;box-shadow:var(--shadow);font:700 .75rem/1 Consolas,monospace;letter-spacing:.04em}.release-pill span{color:var(--muted);font-weight:600}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:4px;background:#fff}table{width:100%;border-collapse:collapse;table-layout:auto}td,th{vertical-align:top;padding:14px 16px;line-height:1.45}th{white-space:nowrap}td{min-width:120px;white-space:pre-line}td:first-child{min-width:220px}td a{overflow-wrap:anywhere}.pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#eaf2ff;color:#2249a2;font-size:.8rem;font-weight:700;text-decoration:none}.pill.core{background:#dff7ea;color:#1d6b43;border:1px solid #a8e1bd}@media(max-width:650px){.api-controls{align-items:flex-start;flex-direction:column}.api-controls .toolbar{width:100%;margin:0}.api-controls input{width:100%;min-width:0}}</style>
+<style>@media(max-width:650px){.hero{height:auto!important;min-height:0!important;padding:48px 20px 44px!important}.hero h1{font-size:clamp(1.9rem,9vw,2.8rem)!important}.hero p{font-size:1rem!important;line-height:1.5}.hero .badges{margin-top:18px}}</style>
+<style>.status-published{background:#e5f6eb;border-color:#9bd4aa;color:#1d6b43}.status-published span{color:#397a4d}.status-draft{background:#fff4d8;border-color:#edcf7a;color:#8a5a00}.status-draft span{color:#9a731f}.version-pill{background:#edf3ff;border-color:#b8c9ef;color:#2457d6}.version-pill span{color:#5873af}</style>
+<style>.api-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,auto);align-items:center;gap:20px}.api-controls>.release-panel{min-width:0}.api-controls>.toolbar{justify-self:end;margin:0;min-width:260px}.api-controls>.catalog-search-toolbar{grid-column:1/-1;justify-self:stretch;width:100%;min-width:0}.catalog-search-toolbar input{width:100%;min-width:0}@media(max-width:650px){.api-controls{grid-template-columns:1fr;gap:14px}.api-controls>.toolbar{justify-self:stretch;width:100%;min-width:0}}</style>
+</head>
+<body>
+<div class="accent"></div>
+<header class="nav"><a class="brand" href="index.html"><img src="RDK-logo.png" alt="RDK"></a><nav class="navlinks"><a class="" href="index.html">Home</a><a class="" href="component-catalog.html">Components Catalog</a><details class="nav-dropdown"><summary class="nav-dropdown-summary active">Northbound API Spec</summary><div class="nav-dropdown-menu"><a href="firebolt-api-spec.html">Firebolt Core API Specification</a><a href="firebolt-json-rpc.html">Firebolt JSON-RPC Specification</a><a href="firebolt-intents.html">Firebolt Intents Specification</a><a href="firebolt-key-codes.html">Firebolt Key Codes Specification</a></div></details><a class="" href="southbound-api-spec.html">Southbound API Spec</a></nav></header>
+<main>
+<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center"><div class="wrap" style="width:100%"><div class="eyebrow" style="font-size:1.1rem;letter-spacing:.08em">Firebolt 8</div><h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">Firebolt 8 Core API Specification</h1><p>Standardized APIs that give RDK8 applications consistent access to device and platform capabilities through Firebolt.</p><div class="hero-catalog-status"><span class="hero-status-badge approved"><span>Catalog status:</span> Published</span><details style="position:relative;min-width:150px"><summary style="cursor:pointer;color:#2457d6;font-size:.84rem;font-weight:700">Status legend</summary><dl style="position:absolute;z-index:2;left:0;right:auto;top:calc(100% + 8px);width:min(420px,calc(100vw - 40px));margin:0;padding:16px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;line-height:1.45"><dt style="font-weight:700;color:var(--ink)">Draft</dt><dd style="margin:2px 0 10px;color:var(--muted)">Specifications drafted and undergoing internal reviews and RTAB Approval</dd><dt style="font-weight:700;color:var(--ink)">Approved</dt><dd style="margin:2px 0 10px;color:var(--muted)">All review feedback has been addressed; RTAB has voted and approved the spec</dd><dt style="font-weight:700;color:var(--ink)">Published</dt><dd style="margin:2px 0 0;color:var(--muted)">Tagged and versioned against an official RDK release</dd></dl></details></div></div></section><section class="section spec-document" style="padding-top:42px"><section class="spec-intro api-spec-content"><div class="toolbar northbound-toolbar"><input id="api-search" type="search" placeholder="Search APIs" aria-label="Search APIs"><select id="api-module"><option value="">All modules</option><option>Accessibility</option><option>Advertising</option><option>Device</option><option>Discovery</option><option>Lifecycle2</option><option>Localization</option><option>Metrics</option><option>Network</option><option>Presentation</option><option>TextToSpeech</option></select></div><div class="api-reference"><div class="api-reference-title">References</div><div class="reference-actions"><a class="reference-trigger spec-modal-trigger" href="#reference-types" data-modal-target="reference-types">Types</a><a class="reference-trigger spec-modal-trigger" href="#reference-error-values" data-modal-target="reference-error-values">Error values</a></div><template id="tmpl-reference-types"><section class="spec-entry reference-modal-entry"><div class="spec-entry-head"><h2>Types</h2></div><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Type</th><th>Definition</th></tr></thead><tbody><tr><td>unsigned</td><td>32-bit unsigned integer</td></tr><tr><td>double</td><td>64-bit double-precision floating point number</td></tr></tbody></table></div></section></template><template id="tmpl-reference-error-values"><section class="spec-entry reference-modal-entry"><div class="spec-entry-head"><h2>Error values</h2></div><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Class</th><th>Value</th><th>Name</th><th>Description</th><th>Examples</th><th>Open issues</th></tr></thead><tbody><tr><td>Generic</td><td>-32601</td><td>Method not known</td><td>The method is not known to the version of Firebolt on this device</td><td>Device.foo</td><td></td></tr><tr><td>Generic</td><td>-40300</td><td>Method not permitted</td><td>The app does not have permission to call this method</td><td></td><td></td></tr><tr><td>Generic</td><td>-32602</td><td>Arguments invalid</td><td>The set of arguments is not valid</td><td></td><td></td></tr><tr><td>Generic</td><td>-32100</td><td>Unspecified error</td><td>Any unexpected error</td><td>Memory allocation failure, transport failure</td><td></td></tr><tr><td>Specific</td><td>-50100</td><td>Method not supported</td><td>A non-mandatory method that is not implemented on this device</td><td>SecureStorage.get on a non-Comcast device</td><td></td></tr><tr><td>Specific</td><td></td><td>App state invalid</td><td>The app is not in an appropriate lifecycle state to call this method</td><td></td><td></td></tr></tbody></table></div></section></template></div><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Module</th><th>Methods</th><th>API version</th><th>Details</th></tr></thead><tbody id="api-rows"></tbody></table></div></section></section><template id="tmpl-api-0"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Accessibility</h2></div>
+            <div class="api-detail-method"><code>audioDescription
+onAudioDescriptionChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">bool</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the audio description setting of the device</p></section></template><template id="tmpl-api-1"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Accessibility</h2></div>
+            <div class="api-detail-method"><code>closedCaptionsSettings
+onClosedCaptionsSettingsChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>enabled - bool</li><li>preferredLanguages - list of strings<ul class="api-detail-sublist"><li>[] (if not initialized)</li><li>list of one or more ISO 639-2/B</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns captions settings: enabled, and a list of zero or more languages in order of decreasing preference</p></section></template><template id="tmpl-api-2"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Accessibility</h2></div>
+            <div class="api-detail-method"><code>highContrastUI
+onHighContrastUIChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">bool</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the high contrast UI device setting</p></section></template><template id="tmpl-api-3"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Accessibility</h2></div>
+            <div class="api-detail-method"><code>voiceGuidanceSettings
+onVoiceGuidanceSettingsChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>enabled - bool</li><li>rate - double<ul class="api-detail-sublist"><li>1 (normal rate)</li><li>0.1 to 10 inclusive</li></ul></li><li>navigationHints - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns voice guidance settings: enabled, rate, and verbosity</p></section></template><template id="tmpl-api-4"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Advertising</h2></div>
+            <div class="api-detail-method"><code>advertisingId</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>ifa - string - a UUID</li><li>ifa_type - string, one of<ul class="api-detail-sublist"><li>&quot;dpid&quot; - device provided ID</li><li>&quot;sspid&quot; - SSP provided ID</li><li>&quot;sessionid&quot; - session / synthetic ID</li></ul></li><li>lmt - string, one of<ul class="api-detail-sublist"><li>&quot;0&quot;</li><li>&quot;1&quot;</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the IFA</p></section></template><template id="tmpl-api-5"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Device</h2></div>
+            <div class="api-detail-method"><code>uid</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>value - string - a UUID</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns a persistent unique UUID for the current app and device. The UUID is reset when the app or device is reset</p></section></template><template id="tmpl-api-6"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Device</h2></div>
+            <div class="api-detail-method"><code>hdr
+onHdrChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>hdr10 - bool</li><li>hdr10Plus - bool</li><li>dolbyVision - bool</li><li>hlg - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the HDR standards that are suported by the attached TV or the integral display OTT/STB device: supported by the device and indicated by the EDID of the attached TV TV: supported by the device</p></section></template><template id="tmpl-api-7"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Discovery</h2></div>
+            <div class="api-detail-method"><code>watched</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>progress - double - optional</li><li>completed - bool - optional</li><li>watchedOn - ISO 8601 date and time in UTC - optional</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Notify the platform that content has been partially or completely watched progress: VOD: 0 to 0.99, live: number of seconds watchedOn: &quot;YYYY-MM-DDThh:mm:ss.sssZ&quot; agePolicy: app:adult, app:child, app:teen</p></section></template><template id="tmpl-api-8"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Lifecycle2</h2></div>
+            <div class="api-detail-method"><code>close</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>type - enum<ul class="api-detail-sublist"><li>deactivate</li><li>unload</li><li>killReload</li><li>killReactivate</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Request the platform to deactivate the app, and possibly take further action type deactivate - app is deactivated (if active) - typically a user closing an app unload - app is deactivated (if active) and terminated - typically an app has detected an error killReload - app is killed, then reloaded to paused or suspended (by policy) killReactivate - app is killed, reloaded, then activated window.close() maps to unload window.minimize() maps to deactivate Module is named Lifecycle in C++ Client Library</p></section></template><template id="tmpl-api-9"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Lifecycle2</h2></div>
+            <div class="api-detail-method"><code>state</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>state - enum<ul class="api-detail-sublist"><li>initializing</li><li>active</li><li>paused</li><li>suspended</li><li>hibernated</li><li>terminating</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state Apps/runtimes should ordinarily use state change notifications rather than this method</p></section></template><template id="tmpl-api-10"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Lifecycle2</h2></div>
+            <div class="api-detail-method"><code>onStateChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>change - list of one lifecycle state change</li><li>oldState - enum</li><li>newState - enum</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform Notification of lifecycle state change, raised after the platform has transitioned the app /runtime to the new lifecycle state Note: the list always carries exactly one lifecycle state change Valid transitions</p><ul class="api-detail-list"><li>initializing to paused</li><li>initializing to suspended</li><li>paused to active</li><li>active to paused</li><li>paused to suspended</li><li>suspended to paused</li><li>suspended to hibernated</li><li>hibernated to suspended</li><li>any to terminating</li></ul></section></template><template id="tmpl-api-11"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Localization</h2></div>
+            <div class="api-detail-method"><code>country
+onCountryChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>value - string, either<ul class="api-detail-sublist"><li>&quot;&quot; (if not initialized)</li><li>ISO 3166-1 alpha-2 (see Country in Devices table)</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Return the country, e.g. US, CA, GB, BE</p></section></template><template id="tmpl-api-12"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Localization</h2></div>
+            <div class="api-detail-method"><code>preferredAudioLanguages
+onPreferredAudioLanguagesChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>value - list of strings, either<ul class="api-detail-sublist"><li>[] (if not initialized)</li><li>list of one or more ISO 639-2/B (see Secondary Audio Language in Devices table)</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">A list of zero or more languages in order of decreasing preference. Typically two languages are present. A language may be repeated in the list</p></section></template><template id="tmpl-api-13"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Localization</h2></div>
+            <div class="api-detail-method"><code>presentationLanguage
+onPresentationLanguageChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>value - string, either<ul class="api-detail-sublist"><li>&quot;&quot; (if not initialized)</li><li>BCP 47 (see Presentation Languages in Devices table)</li></ul></li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">The presentation language of the device, e.g. en-US</p></section></template><template id="tmpl-api-14"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>ready</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform that the app is minimally usable. This method is called automatically by Lifecycle.ready()</p></section></template><template id="tmpl-api-15"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>signIn</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Log a sign in event, called by Discovery. signIn()</p></section></template><template id="tmpl-api-16"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>signOut</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Log a sign out event, called by Discovery. signOut()</p></section></template><template id="tmpl-api-17"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>startContent</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string - optional</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform that your user has started content</p></section></template><template id="tmpl-api-18"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>stopContent</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string - optional</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform that your user has stopped content</p></section></template><template id="tmpl-api-19"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>page</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>pageId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform that your user has navigated to a page or view</p></section></template><template id="tmpl-api-20"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>error</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>type - enum<ul class="api-detail-sublist"><li>network</li><li>media</li><li>restriction</li><li>entitlement</li><li>other</li></ul></li><li>code - string</li><li>description - string</li><li>visible - bool</li><li>parameters - arg list - optional</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform of an error that has occurred in your app</p></section></template><template id="tmpl-api-21"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaLoadStart</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when setting the URL of a media asset to play, in order to infer load time</p></section></template><template id="tmpl-api-22"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaPlay</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when media playback should start due to autoplay, user-initiated play, or unpausing</p></section></template><template id="tmpl-api-23"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaPlaying</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interruption</p></section></template><template id="tmpl-api-24"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaPause</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when media playback will pause due to an intentional pause operation</p></section></template><template id="tmpl-api-25"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaWaiting</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when media playback will halt due to a network, buffer, or other unintentional constraint</p></section></template><template id="tmpl-api-26"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaSeeking</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>target - double</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when a seek is initiated during media playback</p></section></template><template id="tmpl-api-27"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaSeeked</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>position - double</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when a seek is completed during media playback</p></section></template><template id="tmpl-api-28"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaRateChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>rate - double</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when the playback rate of media is changed</p></section></template><template id="tmpl-api-29"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaRenditionChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>bitrate - unsigned</li><li>width - unsigned</li><li>height - unsigned</li><li>profile - string - optional</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed</p></section></template><template id="tmpl-api-30"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>mediaEnded</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>entityId - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Called when playback has stopped because the end of the media was reached</p></section></template><template id="tmpl-api-31"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>event</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>schema - uri</li><li>data - string</li><li>agePolicy - string - optional</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform of 1st party distributor metrics data parameter is a JSON document</p></section></template><template id="tmpl-api-32"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Metrics</h2></div>
+            <div class="api-detail-method"><code>appInfo</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>build - string</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Inform the platform about an app&#x27;s build info</p></section></template><template id="tmpl-api-33"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Network</h2></div>
+            <div class="api-detail-method"><code>connected
+onConnectedChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark supported" role="img" aria-label="JS supported">&#10003;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">bool</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns whether the device has a useable network connection</p></section></template><template id="tmpl-api-34"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>Presentation</h2></div>
+            <div class="api-detail-method"><code>focused
+onFocusedChanged</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">bool</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Whether the app is in focus, i.e. receiving key presses. Provided for those apps/runtimes that cannot use Wayland</p></section></template><template id="tmpl-api-35"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>speak</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>text - string</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li><li>TTS_Status - 0...3</li><li>success - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Speak the utterance immediately. Any ongoing speech is interrupted Text argument is either plain text or a well- formed SSML document TTS_Status, not success attribute, to be used by caller to indicate success of call 0 OK, 1 Fail, 2 not enabled, 3 invalid configuration Raises onSpeechinterrupted if speaking is interrupted</p></section></template><template id="tmpl-api-36"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>pause</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>TTS_Status - 0...3</li><li>success - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Pauses the utterance Raises onSpeechpause if ongoing speech is paused Does nothing if utterance is already paused</p></section></template><template id="tmpl-api-37"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>resume</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>TTS_Status - 0...3</li><li>success - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Continue the paused utterance Raises onSpeechresume if paused speech is resumed Does nothing if the utterance is not paused</p></section></template><template id="tmpl-api-38"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>cancel</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>TTS_Status - 0...3</li><li>success - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Stop speaking if utterance is currently being spoken Raises onSpeechinterrupted if speaking was interrupted</p></section></template><template id="tmpl-api-39"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>getspeechstate</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>speechstate - enum<ul class="api-detail-sublist"><li>SPEECH_PENDING</li><li>SPEECH_IN_PROGRESS</li><li>SPEECH_PAUSED</li><li>SPEECH_NOT_FOUND</li></ul></li><li>TTS_Status - 0...3</li><li>success - bool</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the state of the utterance</p></section></template><template id="tmpl-api-40"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onWillspeak</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Text to speech conversion is about to start</p></section></template><template id="tmpl-api-41"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onSpeechstart</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Utterance is about to be spoken</p></section></template><template id="tmpl-api-42"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onSpeechpause</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Ongoing speech was paused</p></section></template><template id="tmpl-api-43"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onSpeechresume</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Paused speech was resumed</p></section></template><template id="tmpl-api-44"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onSpeechcomplete</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Speech completed successfully</p></section></template><template id="tmpl-api-45"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onSpeechinterrupted</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Speech was stopped, due to another call to speak or cancel</p></section></template><template id="tmpl-api-46"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onNetworkerror</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Utterance failed due to network</p></section></template><template id="tmpl-api-47"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>onPlaybackerror</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>speechid - unsigned</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">N/A</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Utterance failed during playback</p></section></template><template id="tmpl-api-48"><section class="spec-entry">
+            <div class="spec-entry-head"><span class="spec-entry-eyebrow">Module</span><h2>TextToSpeech</h2></div>
+            <div class="api-detail-method"><code>listvoices</code></div>
+            <div class="api-detail-meta"><span class="pill">API version 8.0.0</span><span class="api-support"><span class="api-support-label">C++</span><span class="api-support-mark supported" role="img" aria-label="C++ supported">&#10003;</span></span><span class="api-support"><span class="api-support-label">JS</span><span class="api-support-mark unsupported" role="img" aria-label="JS not supported">&#10007;</span></span></div>
+            <dl class="api-detail-fields">
+                <div class="api-detail-row"><dt>Parameters</dt><dd><ul class="api-detail-list"><li>language - string - BCP 47</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list"><li>TTS_Status - 0...3</li><li>voices - list of one or more strings</li></ul></dd></div>
+                <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>
+            </dl>
+            <p class="spec-entry-overview">Returns the list of available voices as human- readable strings, e.g. &quot;ava&quot;, &quot;amelie&quot;, &quot;angelica&quot;</p></section></template><div class="spec-modal" id="spec-modal" aria-hidden="true"><div class="spec-modal-backdrop" data-modal-close></div><div class="spec-modal-dialog" role="dialog" aria-modal="true"><button type="button" class="spec-modal-close" data-modal-close aria-label="Close">&times;</button><div class="spec-modal-body" id="spec-modal-body"></div></div></div><script>const DATA=[{"module": "Accessibility", "method": "audioDescription\nonAudioDescriptionChanged", "parameters": "None", "returns": "bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns the audio description setting of the\ndevice", "id": "api-0"}, {"module": "Accessibility", "method": "closedCaptionsSettings\nonClosedCaptionsSettingsChanged", "parameters": "None", "returns": "enabled - bool\npreferredLanguages - list\nof strings\n[] (if not initialized)\nlist of one or more\nISO 639-2/B", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns captions settings: enabled, and a list\nof zero or more languages in order of\ndecreasing preference", "id": "api-1"}, {"module": "Accessibility", "method": "highContrastUI\nonHighContrastUIChanged", "parameters": "None", "returns": "bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns the high contrast UI device setting", "id": "api-2"}, {"module": "Accessibility", "method": "voiceGuidanceSettings\nonVoiceGuidanceSettingsChanged", "parameters": "None", "returns": "enabled - bool\nrate - double\n1 (normal rate)\n0.1 to 10 inclusive\nnavigationHints - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns voice guidance settings: enabled,\nrate, and verbosity", "id": "api-3"}, {"module": "Advertising", "method": "advertisingId", "parameters": "None", "returns": "ifa - string - a UUID\nifa_type - string, one of\n- \"dpid\" - device provided ID\n- \"sspid\" - SSP provided ID\n- \"sessionid\" - session / synthetic ID\nlmt - string, one of\n- \"0\"\n- \"1\"", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns the IFA", "id": "api-4"}, {"module": "Device", "method": "uid", "parameters": "None", "returns": "value - string - a UUID", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns a persistent unique UUID for the\ncurrent app and device. The UUID is reset\nwhen the app or device is reset", "id": "api-5"}, {"module": "Device", "method": "hdr\nonHdrChanged", "parameters": "None", "returns": "hdr10 - bool\nhdr10Plus - bool\ndolbyVision - bool\nhlg - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns the HDR standards that are suported\nby the attached TV or the integral display\nOTT/STB device: supported by the\ndevice and indicated by the EDID of\nthe attached TV\nTV: supported by the device", "id": "api-6"}, {"module": "Discovery", "method": "watched", "parameters": "entityId - string\nprogress - double - optional\ncompleted - bool - optional\nwatchedOn - ISO 8601 date and time in UTC - optional\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Notify the platform that content has been\npartially or completely watched\nprogress: VOD: 0 to 0.99, live: number of\nseconds\nwatchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\"\nagePolicy: app:adult, app:child, app:teen", "id": "api-7"}, {"module": "Lifecycle2", "method": "close", "parameters": "type - enum\n- deactivate\n- unload\n- killReload\n- killReactivate", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Request the platform to deactivate the app,\nand possibly take further action\ntype\ndeactivate - app is deactivated (if\nactive) - typically a user closing an app\nunload - app is deactivated (if active)\nand terminated - typically an app has\ndetected an error\nkillReload - app is killed, then reloaded\nto paused or suspended (by policy)\nkillReactivate - app is killed, reloaded,\nthen activated\nwindow.close() maps to unload\nwindow.minimize() maps to deactivate\nModule is named Lifecycle in C++ Client\nLibrary", "id": "api-8"}, {"module": "Lifecycle2", "method": "state", "parameters": "None", "returns": "state - enum\n- initializing\n- active\n- paused\n- suspended\n- hibernated\n- terminating", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Returns the current lifecycle state of the\napp. The first lifecycle state that can be\nobserved by an app/runtime is the initializing\nstate\nApps/runtimes should ordinarily use state\nchange notifications rather than this method", "id": "api-9"}, {"module": "Lifecycle2", "method": "onStateChanged", "parameters": "change - list of one lifecycle state change\noldState - enum\nnewState - enum", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Subscribe to/unsubscribe from lifecycle state\nchanges. The app/runtime remains in the\ninitializing state until the subscribe call is\nmade to the platform\nNotification of lifecycle state change, raised\nafter the platform has transitioned the app\n/runtime to the new lifecycle state\nNote: the list always carries exactly one\nlifecycle state change\nValid transitions\n1. initializing to paused\n2. initializing to suspended\n3. paused to active\n4. active to paused\n5. paused to suspended\n6. suspended to paused\n7. suspended to hibernated\n8. hibernated to suspended\n9. any to terminating", "id": "api-10"}, {"module": "Localization", "method": "country\nonCountryChanged", "parameters": "None", "returns": "value - string, either\n- \"\" (if not initialized)\n- ISO 3166-1 alpha-2 (see Country in Devices table)", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Return the country, e.g. US, CA, GB, BE", "id": "api-11"}, {"module": "Localization", "method": "preferredAudioLanguages\nonPreferredAudioLanguagesChanged", "parameters": "None", "returns": "value - list of strings, either\n- [] (if not initialized)\n- list of one or more ISO 639-2/B (see Secondary Audio Language in Devices table)", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "A list of zero or more languages in order of\ndecreasing preference. Typically two\nlanguages are present. A language may be\nrepeated in the list", "id": "api-12"}, {"module": "Localization", "method": "presentationLanguage\nonPresentationLanguageChanged", "parameters": "None", "returns": "value - string, either\n- \"\" (if not initialized)\n- BCP 47 (see Presentation Languages in Devices table)", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "The presentation language of the device, e.g.\nen-US", "id": "api-13"}, {"module": "Metrics", "method": "ready", "parameters": "None", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform that the app is minimally\nusable. This method is called automatically\nby Lifecycle.ready()", "id": "api-14"}, {"module": "Metrics", "method": "signIn", "parameters": "None", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Log a sign in event, called by Discovery.\nsignIn()", "id": "api-15"}, {"module": "Metrics", "method": "signOut", "parameters": "None", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Log a sign out event, called by Discovery.\nsignOut()", "id": "api-16"}, {"module": "Metrics", "method": "startContent", "parameters": "entityId - string - optional\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform that your user has started\ncontent", "id": "api-17"}, {"module": "Metrics", "method": "stopContent", "parameters": "entityId - string - optional\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform that your user has\nstopped content", "id": "api-18"}, {"module": "Metrics", "method": "page", "parameters": "pageId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform that your user has\nnavigated to a page or view", "id": "api-19"}, {"module": "Metrics", "method": "error", "parameters": "type - enum\n- network\n- media\n- restriction\n- entitlement\n- other\ncode - string\ndescription - string\nvisible - bool\nparameters - arg list - optional\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform of an error that has\noccurred in your app", "id": "api-20"}, {"module": "Metrics", "method": "mediaLoadStart", "parameters": "entityId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when setting the URL of a media\nasset to play, in order to infer load time", "id": "api-21"}, {"module": "Metrics", "method": "mediaPlay", "parameters": "entityId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when media playback should start due\nto autoplay, user-initiated play, or unpausing", "id": "api-22"}, {"module": "Metrics", "method": "mediaPlaying", "parameters": "entityId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when media playback actually starts\ndue to autoplay, user-initiated play,\nunpausing, or recovering from a buffering\ninterruption", "id": "api-23"}, {"module": "Metrics", "method": "mediaPause", "parameters": "entityId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when media playback will pause due\nto an intentional pause operation", "id": "api-24"}, {"module": "Metrics", "method": "mediaWaiting", "parameters": "entityId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when media playback will halt due to a\nnetwork, buffer, or other unintentional\nconstraint", "id": "api-25"}, {"module": "Metrics", "method": "mediaSeeking", "parameters": "entityId - string\ntarget - double\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when a seek is initiated during media\nplayback", "id": "api-26"}, {"module": "Metrics", "method": "mediaSeeked", "parameters": "entityId - string\nposition - double\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when a seek is completed during\nmedia playback", "id": "api-27"}, {"module": "Metrics", "method": "mediaRateChanged", "parameters": "entityId - string\nrate - double\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when the playback rate of media is\nchanged", "id": "api-28"}, {"module": "Metrics", "method": "mediaRenditionChanged", "parameters": "entityId - string\nbitrate - unsigned\nwidth - unsigned\nheight - unsigned\nprofile - string - optional\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when the playback rendition (e.g.\nbitrate, dimensions, profile, etc) is changed", "id": "api-29"}, {"module": "Metrics", "method": "mediaEnded", "parameters": "entityId - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Called when playback has stopped because\nthe end of the media was reached", "id": "api-30"}, {"module": "Metrics", "method": "event", "parameters": "schema - uri\ndata - string\nagePolicy - string - optional", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform of 1st party distributor\nmetrics\ndata parameter is a JSON document", "id": "api-31"}, {"module": "Metrics", "method": "appInfo", "parameters": "build - string", "returns": "None", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Inform the platform about an app's build info", "id": "api-32"}, {"module": "Network", "method": "connected\nonConnectedChanged", "parameters": "None", "returns": "bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "supported", "description": "Returns whether the device has a useable\nnetwork connection", "id": "api-33"}, {"module": "Presentation", "method": "focused\nonFocusedChanged", "parameters": "None", "returns": "bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Whether the app is in focus, i.e. receiving key\npresses. Provided for those apps/runtimes\nthat cannot use Wayland", "id": "api-34"}, {"module": "TextToSpeech", "method": "speak", "parameters": "text - string", "returns": "speechid - unsigned\nTTS_Status - 0...3\nsuccess - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Speak the utterance immediately. Any\nongoing speech is interrupted\nText argument is either plain text or a well-\nformed SSML document\nTTS_Status, not success attribute, to be\nused by caller to indicate success of call\n0 OK, 1 Fail, 2 not enabled, 3 invalid\nconfiguration\nRaises onSpeechinterrupted if speaking is\ninterrupted", "id": "api-35"}, {"module": "TextToSpeech", "method": "pause", "parameters": "speechid - unsigned", "returns": "TTS_Status - 0...3\nsuccess - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Pauses the utterance\nRaises onSpeechpause if ongoing speech is\npaused\nDoes nothing if utterance is already paused", "id": "api-36"}, {"module": "TextToSpeech", "method": "resume", "parameters": "speechid - unsigned", "returns": "TTS_Status - 0...3\nsuccess - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Continue the paused utterance\nRaises onSpeechresume if paused speech is\nresumed\nDoes nothing if the utterance is not paused", "id": "api-37"}, {"module": "TextToSpeech", "method": "cancel", "parameters": "speechid - unsigned", "returns": "TTS_Status - 0...3\nsuccess - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Stop speaking if utterance is currently being\nspoken\nRaises onSpeechinterrupted if speaking was\ninterrupted", "id": "api-38"}, {"module": "TextToSpeech", "method": "getspeechstate", "parameters": "speechid - unsigned", "returns": "speechstate - enum\n- SPEECH_PENDING\n- SPEECH_IN_PROGRESS\n- SPEECH_PAUSED\n- SPEECH_NOT_FOUND\nTTS_Status - 0...3\nsuccess - bool", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Returns the state of the utterance", "id": "api-39"}, {"module": "TextToSpeech", "method": "onWillspeak", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Text to speech conversion is about to start", "id": "api-40"}, {"module": "TextToSpeech", "method": "onSpeechstart", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Utterance is about to be spoken", "id": "api-41"}, {"module": "TextToSpeech", "method": "onSpeechpause", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Ongoing speech was paused", "id": "api-42"}, {"module": "TextToSpeech", "method": "onSpeechresume", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Paused speech was resumed", "id": "api-43"}, {"module": "TextToSpeech", "method": "onSpeechcomplete", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Speech completed successfully", "id": "api-44"}, {"module": "TextToSpeech", "method": "onSpeechinterrupted", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Speech was stopped, due to another call to\nspeak or cancel", "id": "api-45"}, {"module": "TextToSpeech", "method": "onNetworkerror", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Utterance failed due to network", "id": "api-46"}, {"module": "TextToSpeech", "method": "onPlaybackerror", "parameters": "speechid - unsigned", "returns": "N/A", "errors": "N/A", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Utterance failed during playback", "id": "api-47"}, {"module": "TextToSpeech", "method": "listvoices", "parameters": "language - string -\nBCP 47", "returns": "TTS_Status - 0...3\nvoices - list of one or\nmore strings", "errors": "None", "version": "8.0.0", "cpp": "supported", "js": "not supported", "description": "Returns the list of available voices as human-\nreadable strings, e.g. \"ava\", \"amelie\",\n\"angelica\"", "id": "api-48"}];const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};const search=document.querySelector('#api-search'),moduleFilter=document.querySelector('#api-module'),modal=document.querySelector('#spec-modal'),modalBody=document.querySelector('#spec-modal-body');function render(){const q=search.value.toLowerCase();const rows=DATA.filter(item=>(!q||Object.values(item).join(' ').toLowerCase().includes(q))&&(!moduleFilter.value||item.module===moduleFilter.value));document.querySelector('#api-rows').innerHTML=rows.length?rows.map(item=>`<tr><td>${esc(item.module)}</td><td style="white-space:pre-line">${esc(item.method)}</td><td><span class="pill">${esc(item.version)}</span></td><td><a class="pill spec-modal-trigger" href="#${item.id}" data-modal-target="${item.id}">View details</a></td></tr>`).join(''):'<tr><td class="empty" colspan="4">No matching APIs.</td></tr>'}function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}document.addEventListener('click',event=>{const trigger=event.target.closest('.spec-modal-trigger');if(trigger){event.preventDefault();const template=document.querySelector(`#tmpl-${trigger.dataset.modalTarget}`);modalBody.innerHTML='';modalBody.appendChild(template.content.cloneNode(true));modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}});modal.querySelectorAll('[data-modal-close]').forEach(element=>element.addEventListener('click',closeModal));document.addEventListener('keydown',event=>{if(event.key==='Escape')closeModal()});[search,moduleFilter].forEach(element=>element.addEventListener('input',render));render()</script>
+</main>
+<footer class="footer"><div class="wrap">Source file: <a href="Firebolt 8 API Spec.pdf" target="_blank" rel="noopener">Firebolt 8 API Spec.pdf</a></div></footer>
+
+</body>
+</html>
