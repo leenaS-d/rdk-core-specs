@@ -27,7 +27,7 @@
 #constituent-parts .spec-table{min-width:0}
 #constituent-parts .allowed-actions{flex-direction:column;align-items:flex-start}
 #constituent-parts .allowed-action{white-space:nowrap}
-.key-codes-table th{white-space:normal!important;overflow-wrap:anywhere;line-height:1.25}
+.key-codes-table th{white-space:normal!important;overflow-wrap:anywhere;word-break:normal;line-height:1.25}
 .key-code-detail-table th{width:34%;white-space:normal!important;overflow-wrap:anywhere}
 .key-code-detail-table td{white-space:normal;overflow-wrap:anywhere}
 .spec-intro.intent-overview{max-width:none}

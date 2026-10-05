@@ -5,7 +5,7 @@
     {
       "name": "AppGateway",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-appgateway"
       ]
@@ -13,7 +13,7 @@
     {
       "name": "AvOutput",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-avoutput"
       ]
@@ -21,7 +21,7 @@
     {
       "name": "Bluetooth Manager",
       "category": "Device Control Protocols",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/bluetooth_mgr"
       ]
@@ -29,7 +29,7 @@
     {
       "name": "bluetooth-core",
       "category": "Device Control Protocols",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/bluetooth"
       ]
@@ -37,7 +37,7 @@
     {
       "name": "BlueZ",
       "category": "Device Control Protocols",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://www.bluez.org"
       ]
@@ -53,7 +53,7 @@
     {
       "name": "Casting",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-casting"
       ]
@@ -61,7 +61,7 @@
     {
       "name": "cimplog",
       "category": "Data Collection, Test and Diagnostic",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/xmidt-org/cimplog"
       ]
@@ -69,7 +69,7 @@
     {
       "name": "Common Utilities",
       "category": "System Start, Platform Management and misc utilities",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/common_utilities"
       ]
@@ -77,7 +77,7 @@
     {
       "name": "Connectivity",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-connectivity"
       ]
@@ -85,7 +85,7 @@
     {
       "name": "Control Manager (video)",
       "category": "WPEFramework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/control"
       ]
@@ -101,7 +101,7 @@
     {
       "name": "Device Settings",
       "category": "Remote Device Management",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/devicesettings"
       ]
@@ -109,7 +109,7 @@
     {
       "name": "DeviceAndDisplay",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-deviceanddisplay"
       ]
@@ -117,7 +117,7 @@
     {
       "name": "Dobby",
       "category": "App Framework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/Dobby"
       ]
@@ -125,7 +125,7 @@
     {
       "name": "Dobby Thunder Plugin",
       "category": "App Framework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/Dobby"
       ]
@@ -133,7 +133,7 @@
     {
       "name": "Entservices APIs",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-apis"
       ]
@@ -141,7 +141,7 @@
     {
       "name": "FirmwareDownload",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-firmwaredownload"
       ]
@@ -149,7 +149,7 @@
     {
       "name": "FirmwareUpdate",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-firmwareupdate"
       ]
@@ -157,7 +157,7 @@
     {
       "name": "Gstreamer Rialto Plugin",
       "category": "Video",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rialto-gstreamer"
       ]
@@ -165,7 +165,7 @@
     {
       "name": "HDMI CEC Header",
       "category": "Device Control Protocols",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
       ]
@@ -173,7 +173,7 @@
     {
       "name": "HDMICec",
       "category": "Device Control Protocols",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/hdmicec"
       ]
@@ -181,7 +181,7 @@
     {
       "name": "iarmbus",
       "category": "InterProcess Communications",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/iarmbus"
       ]
@@ -189,7 +189,7 @@
     {
       "name": "Infrastructure Services",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-infra"
       ]
@@ -197,7 +197,7 @@
     {
       "name": "InputOutput",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-inputoutput"
       ]
@@ -205,7 +205,7 @@
     {
       "name": "libSysCallWrapper",
       "category": "Security",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/libSyscallWrapper"
       ]
@@ -213,7 +213,7 @@
     {
       "name": "libunpriv",
       "category": "Security",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rdk-libunpriv"
       ]
@@ -221,7 +221,7 @@
     {
       "name": "MediaAndDrm",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-mediaanddrm"
       ]
@@ -229,7 +229,7 @@
     {
       "name": "memcr",
       "category": "System Start, Platform Management and misc utilities",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/LibertyGlobal/memcr"
       ]
@@ -237,7 +237,7 @@
     {
       "name": "new RDK AppManagers components",
       "category": "App Framework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-appmanagers"
       ]
@@ -245,7 +245,7 @@
     {
       "name": "OpenSSL",
       "category": "Security",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://www.openssl.org"
       ]
@@ -253,7 +253,7 @@
     {
       "name": "PackageManager",
       "category": "Thunder",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/PackageManager"
       ]
@@ -261,7 +261,7 @@
     {
       "name": "Peripherals",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-peripherals"
       ]
@@ -277,7 +277,7 @@
     {
       "name": "RBUS",
       "category": "InterProcess Communications",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rbus"
       ]
@@ -293,7 +293,7 @@
     {
       "name": "RDK V Firmware Upgrader",
       "category": "Device Control Protocols",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rdkfwupdater"
       ]
@@ -301,7 +301,7 @@
     {
       "name": "RDK Window Manager",
       "category": "System Start, Platform Management and misc utilities",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rdk-window-manager"
       ]
@@ -309,7 +309,7 @@
     {
       "name": "rdkcertconfig",
       "category": "Security",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rdk-cert-config"
       ]
@@ -317,7 +317,7 @@
     {
       "name": "Remote Feature control",
       "category": "Remote Device Management",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rfc"
       ]
@@ -325,7 +325,7 @@
     {
       "name": "Rialto",
       "category": "Video",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rialto"
       ]
@@ -333,7 +333,7 @@
     {
       "name": "Rialto OCDM",
       "category": "Video",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rialto-ocdm"
       ]
@@ -341,7 +341,7 @@
     {
       "name": "Rialto Server",
       "category": "Video Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/rialto"
       ]
@@ -349,7 +349,7 @@
     {
       "name": "RunTime",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-runtime"
       ]
@@ -357,7 +357,7 @@
     {
       "name": "SoftwareUpdate",
       "category": "Entertainment Services",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-maintenancemanager"
       ]
@@ -365,7 +365,7 @@
     {
       "name": "sysint",
       "category": "System Start, Platform Management and misc utilities",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/sysint"
       ]
@@ -373,7 +373,7 @@
     {
       "name": "System Time Manager",
       "category": "System Start, Platform Management and misc utilities",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/systemtimemgr"
       ]
@@ -389,7 +389,7 @@
     {
       "name": "telemetry",
       "category": "Data Collection, Test and Diagnostic",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/telemetry"
       ]
@@ -397,7 +397,7 @@
     {
       "name": "ThunderJS",
       "category": "Thunder",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/ThunderJS"
       ]
@@ -421,7 +421,7 @@
     {
       "name": "wdmp-c (WebPA Data model parser)",
       "category": "Remote Device Management",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/xmidt-org/wdmp-c"
       ]
@@ -437,7 +437,7 @@
     {
       "name": "WPE Client Libraries",
       "category": "WPEFramework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/WebPlatformForEmbedded/libwpe"
       ]
@@ -445,7 +445,7 @@
     {
       "name": "WPE WebKit",
       "category": "WPEFramework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/WebPlatformForEmbedded/WPEWebKit"
       ]
@@ -453,7 +453,7 @@
     {
       "name": "WPEFramework",
       "category": "Video",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/Thunder"
       ]
@@ -461,7 +461,7 @@
     {
       "name": "WPEFramework UI",
       "category": "WPEFramework",
-      "layer": "middleware",
+      "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/ThunderUI"
       ]
