@@ -78,6 +78,9 @@
   font-size:.94rem;
   line-height:1.65;
 }
+.spec-entry > p {
+  color:var(--muted);
+}
 .api-detail-method {
   display:flex;
   align-items:center;
