@@ -1,4 +1,4 @@
-/* overrides.css - generated from legacy sources, do not hand-merge */
+/* overrides.css - hand-maintained. Derived once from the pre-migration site. */
 @media(max-width:650px) {
   .api-spec-content .northbound-toolbar {
     grid-template-columns:1fr;

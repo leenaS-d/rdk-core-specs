@@ -1,5 +1,5 @@
-/* site.css - hand-written. Replaces the inline style attributes that the
-   legacy generators emitted on nearly every element. Loaded last. */
+/* site.css - hand-written. Holds the rules that replaced per-element style
+   attributes, plus overrides. Loaded last, so it wins. */
 
 /* ---- hero ------------------------------------------------------------ */
 .hero h1 {
@@ -120,8 +120,8 @@
   max-width: 900px;
 }
 
-/* Catalog toolbar rules live in components.css, generated from the legacy
-   page-specific <style> block and scoped onto .catalog-controls. */
+/* Catalog toolbar rules live in components.css, scoped onto .catalog-controls
+   so they apply only to the components catalog page. */
 
 /* ---- spec documents -------------------------------------------------- */
 /* Element-qualified so it outranks `.spec-table td { white-space: normal }`. */
