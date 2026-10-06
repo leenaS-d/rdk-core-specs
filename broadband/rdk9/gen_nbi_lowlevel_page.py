@@ -55,10 +55,11 @@ EXTRA_CSS = """
     border: 1px solid var(--border); border-radius: 12px;
     overflow: hidden; box-shadow: var(--shadow-sm);
   }
+  table.ipc-table thead tr { background: #1a2540; }
   table.ipc-table th {
-    font-family: "Space Grotesk", sans-serif; font-size: 0.78rem;
-    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: #fff;
-    background: linear-gradient(90deg, var(--hal), var(--middleware));
+    font-family: "Inter", "Segoe UI", sans-serif; font-size: 0.74rem;
+    text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: #fff;
+    background: transparent;
     padding: 14px 18px; text-align: left; border-bottom: none;
   }
   table.ipc-table th:first-child { border-top-left-radius: 12px; }
@@ -234,7 +235,7 @@ def build_page() -> str:
 
 </section>
 """
-    head_extra = "<title>North Bound Low Level APIs \u2014 RDK-B Core Broadband</title>\n" + EXTRA_CSS
+    head_extra = "<title>North Bound Low Level APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS
     return render_page("nbi-lowlevel", head_extra, body)
 
 

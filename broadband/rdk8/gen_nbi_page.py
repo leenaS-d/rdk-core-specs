@@ -270,16 +270,16 @@ function componentRowHtml(c) {
     : `<span class="muted" style="font-size:0.85rem;">Not available yet</span>`;
   return `<tr>
     <td>${esc(c.name)}</td>
-    <td><span class="pill" style="background:#f1f5f9;">${esc(c.category || 'Uncategorized')}</span></td>
+    <td><span class="tbl-pill">${esc(c.category || 'Uncategorized')}</span></td>
     <td>${action}</td>
   </tr>`;
 }
 
 function renderComponentTable(filterText) {
   const q = (filterText || '').trim().toLowerCase();
-  const rows = allComponents.filter(c => !q || c.name.toLowerCase().includes(q) || (c.category || '').toLowerCase().includes(q));
+  const rows = allComponents.filter(c => repoMap[c.name] && (!q || c.name.toLowerCase().includes(q) || (c.category || '').toLowerCase().includes(q)));
   document.getElementById('component-table-body').innerHTML = rows.map(componentRowHtml).join('');
-  document.getElementById('component-count').textContent = `${rows.length} of ${allComponents.length} components`;
+  document.getElementById('component-count').textContent = `${rows.length} of ${allComponents.filter(c => repoMap[c.name]).length} components`;
   document.querySelectorAll('.dml-btn').forEach(btn => {
     btn.addEventListener('click', () => loadDml(btn.dataset.name));
   });
@@ -288,10 +288,10 @@ function renderComponentTable(filterText) {
 function loadDml(name) {
   const { repo, file, branch } = resolveRepoEntry(repoMap[name]);
   const panel = document.getElementById('dml-panel');
-  const url = LOCAL_BASE + repo + '/' + file; // served from docs/hlapis/<repo>/<file>
+  const url = LOCAL_BASE + repo + '/' + file;
   panel.innerHTML = `
     <div class="subhead" style="margin-top:0;">${esc(name)} <span class="mono" style="font-weight:400;font-size:0.8rem;color:var(--muted);">// ${esc(repo)}</span></div>
-    <p>Loading <code>${esc(url)}</code>…</p>`;
+    <p>Loading <code>${esc(url)}</code>&hellip;</p>`;
   panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   fetch(url, { cache: 'no-store' })
@@ -335,17 +335,17 @@ Promise.all([
 
 EXTRA_CSS = """
 <style>
-  .search-row { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .search-row { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; width: 100%; }
   .search-row input {
-    flex: 1; max-width: 320px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 8px;
+    flex: 1; min-width: 0; padding: 9px 14px; border: 1px solid var(--border); border-radius: 6px;
     font-family: inherit; font-size: 0.9rem;
   }
-  .search-row #component-count { font-size: 0.85rem; color: var(--muted); }
+  .search-row #component-count { font-size: 0.85rem; color: var(--muted); white-space: nowrap; margin-left: 4px; }
   .dml-btn {
-    background: var(--middleware); color: #fff; border: none; border-radius: 6px;
-    padding: 6px 14px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    display: inline-block; padding: 7px 20px; border-radius: 999px; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; border: none; background: #e8eef8; color: #2d4eb5;
   }
-  .dml-btn:hover { background: #1442ad; }
+  .dml-btn:hover { background: #d5e0f3; color: #1e3fa0; }
   #dml-panel { margin-top: 20px; }
 
   /* ---- BBF-inspired DML tree styling ---- */
@@ -398,8 +398,8 @@ EXTRA_CSS = """
 
 def build_page() -> str:
     body = f'''
-{render_hero("North Bound High Level APIs", "North Bound High Level APIs",
-    "The operator- and cloud-facing data model each component exposes upward. Click a component below to load its DML definition.",
+{render_hero("North-bound APIs", "North-bound APIs",
+    "APIs that can be used by applications to access system services and resources.",
     compact=True, visual_key="nbi")}
 
 <section class="tight-top">
@@ -419,7 +419,7 @@ def build_page() -> str:
   <div id="dml-panel"></div>
 </section>
 '''
-    head_extra = "<title>North Bound High Level APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS + SCRIPT
+    head_extra = "<title>North-bound APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS + SCRIPT
     return render_page("nbi", head_extra, body)
 
 
