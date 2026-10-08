@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Firebolt 8 JSON-RPC Specification | RDK8</title><link rel="stylesheet" href="assets/css/tokens.css"><link rel="stylesheet" href="assets/css/base.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/tables.css"><link rel="stylesheet" href="assets/css/spec.css"><link rel="stylesheet" href="assets/css/overrides.css"><link rel="stylesheet" href="assets/css/site.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Firebolt 8 JSON-RPC Specification | RDK8</title><link rel="stylesheet" href="assets/css/tokens.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/base.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/layout.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/components.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/tables.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/spec.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/overrides.css?v=rdk8-20261007-1"><link rel="stylesheet" href="assets/css/site.css?v=rdk8-20261007-1"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
@@ -53,7 +53,7 @@
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;method&#34;: &#34;Module.method&#34;
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-method-1"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Method call with one or more parameters</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-method-1"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Method call with one or more parameters</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;method&#34;: &#34;Module.method&#34;,
@@ -61,81 +61,81 @@
  &#34;attr1&#34;: 1,
  &#34;attr2&#34;: &#34;value2&#34;
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-method-2"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Error response</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-method-2"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Error response</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;error&#34;: {
  &#34;code&#34;: -40300,
  &#34;message&#34;: &#34;Method not permitted&#34;
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-method-3"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success with no return value</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-method-3"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success with no return value</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;result&#34;: null
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-method-4"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning a single primitive value</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-method-4"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning a single primitive value</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;result&#34;: 42
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-method-5"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning a single attribute that is an array of values of the same primitive type</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-method-5"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning a single attribute that is an array of values of the same primitive type</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;result&#34;: [
  &#34;spa&#34;,
  &#34;eng&#34;
  ]
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-method-6"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning more than one value</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-method-6"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Success returning more than one value</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 1,
  &#34;result&#34;: {
  &#34;attr1&#34;: 1,
  &#34;attr2&#34;: &#34;value2&#34;
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-0"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Subscribe for notification</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-0"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Subscribe for notification</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 2,
  &#34;method&#34;: &#34;Module. onSomething&#34;,
  &#34;params&#34;: {
  &#34;listen&#34;: true
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-1"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Unsubscribe from notification</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-1"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Unsubscribe from notification</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 2,
  &#34;method&#34;: &#34;Module. onSomething&#34;,
  &#34;params&#34;: {
  &#34;listen&#34;: false
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-2"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Subscription request failed</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-2"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Subscription request failed</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 2,
  &#34;error&#34;: {
  &#34;code&#34;: -12345,
  &#34;message&#34;: &#34;Subscription request failed&#34;
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-3"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Subscription request succeeded</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-3"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Response</span><h2>Subscription request succeeded</h2>  </div>  <p class="spec-entry-overview">Message: Response</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;id&#34;: 2,
  &#34;result&#34;: null
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-4"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a primitive type</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-4"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a primitive type</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;method&#34;: &#34;Module. onSomething&#34;,
  &#34;params&#34;: {
  &#34;value&#34;: 42
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-5"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a single attribute that is an array of values of the same primitive type</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-5"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a single attribute that is an array of values of the same primitive type</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;method&#34;: &#34;Module. onSomething&#34;,
  &#34;params&#34;: [
  &#34;spa&#34;,
  &#34;eng&#34;
  ]
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-6"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of an object</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-6"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of an object</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;method&#34;: &#34;Module. onSomething&#34;,
  &#34;params&#34;: {
  &#34;attr1&#34;: 1,
  &#34;attr2&#34;: &#34;value2&#34;
  }
-}</pre><h3>Notes</h3></section></template><template id="json-rpc-notification-7"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a list of objects</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
+}</pre></section></template><template id="json-rpc-notification-7"><section class="spec-entry">  <div class="spec-entry-head"><span class="spec-entry-eyebrow">Method</span><h2>Notification of a list of objects</h2>  </div>  <p class="spec-entry-overview">Message: Method</p><h3>Example</h3><pre class="spec-example">{
  &#34;jsonrpc&#34;: &#34;2.0&#34;,
  &#34;method&#34;: &#34;Module. onSomething&#34;,
  &#34;params&#34;: [
@@ -148,7 +148,8 @@
  &#34;attr2&#34;: &#34;value4&#34;
  }
  ]
-}</pre><h3>Notes</h3></section></template></main><footer class="footer"><div class="wrap">Copyright © 2026 RDK Management, LLC</div></footer><div class="spec-modal" id="spec-modal" hidden>
+}</pre></section></template></main><footer class="footer"><div class="wrap">Copyright © 2026 RDK Management, LLC</div></footer><script src="assets/js/nav-dropdown.js" defer></script>
+<div class="spec-modal" id="spec-modal" hidden>
   <div class="spec-modal-backdrop" data-modal-close></div>
   <div class="spec-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="spec-modal-title">
     <button class="spec-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>

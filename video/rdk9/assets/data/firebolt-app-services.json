@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "1.0",
+  "hero": {
+    "eyebrow": "Firebolt 9",
+    "title": "Firebolt 9 App Services Specification",
+    "description": "Application services provided by the RDK9 video platform for portable Firebolt applications",
+    "status": "Draft"
+  },
+  "source": {
+    "label": "Firebolt App Services Specifications.pdf",
+    "href": "assets/pdf/Firebolt App Services Specifications.pdf"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "classes": "api-spec-content",
+      "heading": "Native Player App Service - org.rdk.nativeplayer",
+      "blocks": [
+        {
+          "type": "prose",
+          "body": "This app service offers functionality to play live IP native channels."
+        },
+        {
+          "type": "table",
+          "id": "app-services-1",
+          "columns": [
+            {
+              "key": "methods",
+              "label": "Methods",
+              "wrap": "preline"
+            },
+            {
+              "key": "version",
+              "label": "API version"
+            },
+            {
+              "key": "details",
+              "label": "View Details"
+            }
+          ],
+          "rows": [
+            {
+              "methods": "playLive",
+              "version": "1.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "app-service-0"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            },
+            {
+              "methods": "stop",
+              "version": "1.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "app-service-1"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            },
+            {
+              "methods": "status\nonStatusChanged",
+              "version": "1.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "app-service-2"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "classes": "api-spec-content",
+      "heading": "Parental App Service - org.rdk.parental",
+      "blocks": [
+        {
+          "type": "prose",
+          "body": "This app service offers PIN and parental control functionality."
+        },
+        {
+          "type": "table",
+          "id": "app-services-2",
+          "columns": [
+            {
+              "key": "methods",
+              "label": "Methods",
+              "wrap": "preline"
+            },
+            {
+              "key": "version",
+              "label": "API version"
+            },
+            {
+              "key": "details",
+              "label": "View Details"
+            }
+          ],
+          "rows": [
+            {
+              "methods": "pinChallenge",
+              "version": "1.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "app-service-3"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "app-service-0": {
+      "type": "apiMethod",
+      "eyebrow": "App Service",
+      "module": "Native Player App Service - org.rdk.nativeplayer",
+      "method": "playLive",
+      "version": "1.0.0",
+      "support": [],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "channelId - string"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Play a live channel",
+      "trailing": []
+    },
+    "app-service-1": {
+      "type": "apiMethod",
+      "eyebrow": "App Service",
+      "module": "Native Player App Service - org.rdk.nativeplayer",
+      "method": "stop",
+      "version": "1.0.0",
+      "support": [],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "",
+      "trailing": []
+    },
+    "app-service-2": {
+      "type": "apiMethod",
+      "eyebrow": "App Service",
+      "module": "Native Player App Service - org.rdk.nativeplayer",
+      "method": "status\nonStatusChanged",
+      "version": "1.0.0",
+      "support": [],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "state - enum",
+                "items": [
+                  "idle",
+                  "pending",
+                  "playing",
+                  "blocked",
+                  "failed"
+                ]
+              },
+              {
+                "text": "blockedReason - enum",
+                "items": [
+                  "parental",
+                  "other"
+                ]
+              },
+              "channelId - string",
+              "currentPositionSeconds - unsigned",
+              "endPositionSeconds - unsigned"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "",
+      "trailing": []
+    },
+    "app-service-3": {
+      "type": "apiMethod",
+      "eyebrow": "App Service",
+      "module": "Parental App Service - org.rdk.parental",
+      "method": "pinChallenge",
+      "version": "1.0.0",
+      "support": [],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "proceed - bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "no service service failed app not active"
+            ]
+          }
+        }
+      ],
+      "overview": "Requests to raise a PIN prompt to the user, verify any PIN supplied by the user, and return whether to proceed or not",
+      "trailing": []
+    }
+  },
+  "generator": {
+    "name": "firebolt-converter",
+    "mode": "reference-or-new-candidate",
+    "source": {
+      "pdf": "Firebolt App Services Specifications.pdf",
+      "sha256": "baa409cb271c8929f81a94d29e1adbd9176a1331d6b35c08910080c57bf61fdc",
+      "pageCount": 1,
+      "extractedAt": "2026-10-06T16:27:23.324530+00:00"
+    },
+    "note": "Review PDF-derived content before replacing the curated file."
+  }
+}

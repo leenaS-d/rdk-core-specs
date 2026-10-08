@@ -1,0 +1,5951 @@
+{
+  "schemaVersion": "1.0",
+  "hero": {
+    "eyebrow": "Firebolt 9",
+    "title": "Firebolt 9 Core API Specification",
+    "description": "Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt",
+    "status": "Draft"
+  },
+  "source": {
+    "label": "Firebolt 9 API Specifications.pdf",
+    "href": "assets/pdf/Firebolt 9 API Specifications.pdf"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "classes": "api-spec-content",
+      "blocks": [
+        {
+          "type": "toolbar",
+          "target": "api-methods",
+          "classes": "northbound-toolbar",
+          "search": {
+            "placeholder": "Search APIs"
+          },
+          "filters": [
+            {
+              "key": "module",
+              "column": 0,
+              "allLabel": "All modules",
+              "options": [
+                "Accessibility",
+                "Actions",
+                "Advertising",
+                "Audio",
+                "Device",
+                "Discovery",
+                "Display",
+                "Lifecycle2",
+                "Localization",
+                "Metrics",
+                "Network",
+                "ParentalControl",
+                "Presentation",
+                "SpeechSynthesis",
+                "Stats",
+                "TextToSpeech",
+                "VideoOutput",
+                "Window"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "reference",
+          "title": "References",
+          "items": [
+            {
+              "label": "Interpretation",
+              "ref": "reference-interpretation"
+            },
+            {
+              "label": "Types",
+              "ref": "reference-types"
+            },
+            {
+              "label": "Error values",
+              "ref": "reference-error-values"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "api-methods",
+          "columns": [
+            {
+              "key": "module",
+              "label": "Module"
+            },
+            {
+              "key": "methods",
+              "label": "Methods",
+              "wrap": "preline"
+            },
+            {
+              "key": "version",
+              "label": "API version"
+            },
+            {
+              "key": "deprecated",
+              "label": "To be deprecated (post RDK9)"
+            },
+            {
+              "key": "details",
+              "label": "View Details"
+            }
+          ],
+          "rows": [
+            {
+              "module": "Accessibility",
+              "methods": "audioDescription\nonAudioDescriptionChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-0"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Accessibility",
+              "methods": "closedCaptionsSettings\nonClosedCaptionsSettingsChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-1"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Accessibility",
+              "methods": "highContrastUI\nonHighContrastUIChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-2"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Accessibility",
+              "methods": "voiceGuidanceSettings\nonVoiceGuidanceSettingsChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-3"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Actions",
+              "methods": "start",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-4"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Actions",
+              "methods": "intent\nonIntent",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-5"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Advertising",
+              "methods": "advertisingId",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-6"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Audio",
+              "methods": "volume\nonVolumeChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-7"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Audio",
+              "methods": "mute\nonMuteChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-8"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "uid",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-9"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "deviceClass",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-10"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "uptime",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-11"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "timeInActiveState",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-12"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "chipsetId",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-13"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "hdr\nonHdrChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-14"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "dolbyAtmosExperienceAvailable\nonDolbyAtmosExperienceAvailableChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-15"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "manufacturer",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-16"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "brandName",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-17"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "modelId",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-18"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "osName",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-19"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "osVersion",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-20"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "firmware",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-21"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Device",
+              "methods": "name\nonNameChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-22"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Discovery",
+              "methods": "watched",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-23"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Display",
+              "methods": "size",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-24"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Display",
+              "methods": "maxResolution",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-25"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Display",
+              "methods": "edid",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-26"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Display",
+              "methods": "colorimetry",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-27"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Display",
+              "methods": "videoResolutions",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-28"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Display",
+              "methods": "connected\nonConnectedChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-29"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Lifecycle2",
+              "methods": "close",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-30"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Lifecycle2",
+              "methods": "state",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-31"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Lifecycle2",
+              "methods": "onStateChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-32"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Localization",
+              "methods": "country\nonCountryChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-33"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Localization",
+              "methods": "preferredAudioLanguages\nonPreferredAudioLanguagesChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-34"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Localization",
+              "methods": "presentationLanguage\nonPresentati\nonLanguageChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-35"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Localization",
+              "methods": "timeZone\nonTimeZoneChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-36"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "ready",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-37"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "signIn",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-38"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "signOut",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-39"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "startContent",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-40"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "stopContent",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-41"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "page",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-42"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "error",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-43"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaLoadStart",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-44"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaPlay",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-45"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaPlaying",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-46"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaPause",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-47"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaWaiting",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-48"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaSeeking",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-49"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaSeeked",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-50"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaRateChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-51"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaRenditionChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-52"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "mediaEnded",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-53"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "event",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-54"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Metrics",
+              "methods": "appInfo",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-55"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Network",
+              "methods": "connected\nonConnectedChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-56"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Network",
+              "methods": "interfaces",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-57"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Network",
+              "methods": "interfaceStatus\nonInterfaceStatusChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-58"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Network",
+              "methods": "interfaceConfig\nonInterfaceConfigChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-59"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Network",
+              "methods": "interfaceStatistics",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-60"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Network",
+              "methods": "interfaceDetails\nonInterfaceDetailsChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-61"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "ParentalControl",
+              "methods": "pinControl",
+              "version": "???",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-62"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            },
+            {
+              "module": "ParentalControl",
+              "methods": "blockNotRatedContent",
+              "version": "???",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-63"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            },
+            {
+              "module": "ParentalControl",
+              "methods": "viewingRestrictions",
+              "version": "???",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-64"
+                  }
+                ]
+              },
+              "classes": "pdf-red-row"
+            },
+            {
+              "module": "Presentation",
+              "methods": "focused\nonFocusedChanged",
+              "version": "8.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-65"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "voices\nonVoicesChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-66"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "speak",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-67"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "cancel",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-68"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "pause",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-69"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "resume",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-70"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "onUtteranceEvent",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-71"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Stats",
+              "methods": "memoryUsage",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-72"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "speak",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-73"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "pause",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-74"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "resume",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-75"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "cancel",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-76"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "getSpeechState",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-77"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onWillSpeak",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-78"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onSpeechStart",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-79"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onSpeechPause",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-80"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onSpeechResume",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-81"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onSpeechComplete",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-82"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onSpeechInterrupted",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-83"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onNetworkError",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-84"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "onPlaybackError",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-85"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "TextToSpeech",
+              "methods": "listVoices",
+              "version": "8.0.0",
+              "deprecated": "9.0.0",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-86"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "resolution\nonResolutionChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-87"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "hdcp\nonHdcpChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-88"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "cecState\nonCecStateChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-89"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "refreshRate\nonRefreshRateChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-90"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "colorDepth",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-91"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "colorFormat",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-92"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "colorimetry",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-93"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "dynamicRange",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-94"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "VideoOutput",
+              "methods": "quantizationRange",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-95"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Window",
+              "methods": "addKeyIntercepts",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-96"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "Window",
+              "methods": "removeKeyIntercepts",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-97"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "reference-interpretation": {
+      "type": "entry",
+      "heading": "Interpretation",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "term",
+              "label": "Term"
+            },
+            {
+              "key": "meaning",
+              "label": "Meaning"
+            }
+          ],
+          "rows": [
+            {
+              "term": "enum",
+              "meaning": "an instance of a type that can have one of a pre-defined set of values. Typically represented by a string in JSON-RPC, but an integer in C++"
+            },
+            {
+              "term": "list of",
+              "meaning": "an ordered collection of values"
+            },
+            {
+              "term": "list of... unordered",
+              "meaning": "an unordered collection of values"
+            },
+            {
+              "term": "one of",
+              "meaning": "an instance of a primitive type, such as unsigned or string, that can have one of a pre-defined set of values. Not an enum"
+            },
+            {
+              "term": "monotonic",
+              "meaning": "a numeric value that is greater than the last instance of that attribute"
+            },
+            {
+              "term": "generic error",
+              "meaning": "an error that can be returned by any method call, documented in the Errors section"
+            },
+            {
+              "term": "specific error",
+              "meaning": "an error that can be returned by specific methods, documented along with the method"
+            }
+          ]
+        }
+      ]
+    },
+    "reference-types": {
+      "type": "entry",
+      "heading": "Types",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "definition",
+              "label": "Definition"
+            }
+          ],
+          "rows": [
+            {
+              "type": "unsigned",
+              "definition": "32-bit unsigned integer"
+            },
+            {
+              "type": "double",
+              "definition": "64-bit double-precision floating point number"
+            }
+          ]
+        }
+      ]
+    },
+    "reference-error-values": {
+      "type": "entry",
+      "heading": "Error values",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "class",
+              "label": "Class"
+            },
+            {
+              "key": "value",
+              "label": "Value"
+            },
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            },
+            {
+              "key": "examples",
+              "label": "Examples"
+            },
+            {
+              "key": "openIssues",
+              "label": "Open issues"
+            }
+          ],
+          "rows": [
+            {
+              "class": "Generic",
+              "value": "-32601",
+              "name": "Method not known",
+              "description": "The method is not known to the version of Firebolt on this device",
+              "examples": "Device.foo",
+              "openIssues": ""
+            },
+            {
+              "class": "Generic",
+              "value": "-40300",
+              "name": "Method not permitted",
+              "description": "The app does not have permission to call this method",
+              "examples": "",
+              "openIssues": ""
+            },
+            {
+              "class": "Generic",
+              "value": "-32602",
+              "name": "Arguments invalid",
+              "description": "The set of arguments is not valid",
+              "examples": "",
+              "openIssues": ""
+            },
+            {
+              "class": "Generic",
+              "value": "-32100",
+              "name": "Unspecified error",
+              "description": "Any unexpected error",
+              "examples": "Memory allocation failure, transport failure",
+              "openIssues": ""
+            },
+            {
+              "class": "Specific",
+              "value": "-50100",
+              "name": "Method not supported",
+              "description": "A non-mandatory method that is not implemented on this device",
+              "examples": "SecureStorage.get on a non-Comcast device",
+              "openIssues": "",
+              "classes": "pdf-red-row"
+            },
+            {
+              "class": "Specific",
+              "value": "-xxxxx",
+              "name": "App state invalid",
+              "description": "The app is not in an appropriate lifecycle state to call this method",
+              "examples": "",
+              "openIssues": "Sathish to assign the error value",
+              "classes": "pdf-red-row"
+            },
+            {
+              "class": "Specific",
+              "value": "-xxxxx",
+              "name": "Speech synthesis engine error",
+              "description": "No speech synthesis engine is available or the engine rejected the request",
+              "examples": "",
+              "openIssues": "Sathish to assign the error value",
+              "classes": "pdf-red-row"
+            },
+            {
+              "class": "Specific",
+              "value": "-xxxxx",
+              "name": "Wrong device class",
+              "description": "The method is not appropriate for this class of device",
+              "examples": "App is incorrectly calling VideoOutput. cecState on a TV device",
+              "openIssues": "Sathish to assign the error value",
+              "classes": "pdf-red-row"
+            }
+          ]
+        }
+      ]
+    },
+    "api-0": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Accessibility",
+      "method": "audioDescription\nonAudioDescriptionChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the audio description setting of the device",
+      "trailing": []
+    },
+    "api-1": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Accessibility",
+      "method": "closedCaptionsSettings\nonClosedCaptionsSettingsChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "enabled - bool preferredLangua",
+              {
+                "text": "ges - list of strings",
+                "items": [
+                  "[] (if not initialized)",
+                  "list of one or more ISO 639-2/B"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns captions settings: enabled, and a list of zero or more languages in order of decreasing preference",
+      "trailing": []
+    },
+    "api-2": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Accessibility",
+      "method": "highContrastUI\nonHighContrastUIChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the high contrast UI device setting",
+      "trailing": []
+    },
+    "api-3": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Accessibility",
+      "method": "voiceGuidanceSettings\nonVoiceGuidanceSettingsChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "enabled - bool",
+              {
+                "text": "rate - double",
+                "items": [
+                  "1 (normal rate)",
+                  "0.1 to 10 inclusive"
+                ]
+              },
+              "navigationHints - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns voice guidance settings: enabled, rate, and verbosity",
+      "trailing": []
+    },
+    "api-4": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Actions",
+      "method": "start",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "intent - json",
+              "handlerAppId - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Send an intent to the platform Argument is a JSON document",
+      "trailing": []
+    },
+    "api-5": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Actions",
+      "method": "intent\nonIntent",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "intentId - unsigned - monotonic",
+              "intent - json"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the intent that was most recently received from the platform, as a JSON document. Getter is typically called by an app after transitioning to the active lifecycle state",
+      "trailing": []
+    },
+    "api-6": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Advertising",
+      "method": "advertisingId",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "ifa - string - a UUID",
+              {
+                "text": "ifa_type - string, one of",
+                "items": [
+                  "\"dpid\" - device provided ID",
+                  "\"sspid\" - SSP provided ID",
+                  "\"sessionid\" - session/synthetic ID"
+                ]
+              },
+              {
+                "text": "lmt - string, one of",
+                "items": [
+                  "\"0\"",
+                  "\"1\""
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the IFA",
+      "trailing": []
+    },
+    "api-7": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Audio",
+      "method": "volume\nonVolumeChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "unsigned"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Wrong device class"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns the current volume level of the device or HDMI- connected audio output device. Range is 0 to 100 inclusive OTT/STB device: returns Wrong device class error",
+      "trailing": []
+    },
+    "api-8": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Audio",
+      "method": "mute\nonMuteChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Wrong device class"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns the current mute state of the device or HDMI- connected audio output device. Mute is independent of current volume OTT/STB device: returns Wrong device class error",
+      "trailing": []
+    },
+    "api-9": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "uid",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string - a UUID"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns a persistent unique UUID for the current app and device. The UUID is reset when the app or device is reset",
+      "trailing": []
+    },
+    "api-10": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "deviceClass",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "ott - no tuner/demod, no integrated display",
+                  "stb - with tuner/demod, no integrated display",
+                  "tv - possibly tuner/demod, with integrated display"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the class of the device",
+      "trailing": []
+    },
+    "api-11": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "uptime",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "unsigned"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the number of seconds since most recent device boot, including any time spent during deep sleep",
+      "trailing": []
+    },
+    "api-12": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "timeInActiveState",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "unsigned"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "App state invalid"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns the number of seconds since the device transitioned to the ON power state",
+      "trailing": []
+    },
+    "api-13": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "chipsetId",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string - (see Chipset Id in Devices table)"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns chipset ID as a printable string, e.g. \"BCM72180\"",
+      "trailing": []
+    },
+    "api-14": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "hdr\nonHdrChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "hdr10 - bool",
+              "hdr10Plus - booldolbyVision - bool",
+              "hlg - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the HDR standards that are suported by the attached TV or the integral display OTT/STB device: supported by the device and indicated by the EDID of the attached TV TV: supported by the device",
+      "trailing": []
+    },
+    "api-15": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "dolbyAtmosExperienceAvailable\nonDolbyAtmosExperienceAvailableChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns whether the user would get a Dolby Atmos experience if a Dolby Atmos track were to be played at this time",
+      "trailing": []
+    },
+    "api-16": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "manufacturer",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the manufacturer responsible for building the hardware",
+      "trailing": []
+    },
+    "api-17": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "brandName",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "string, either",
+                "items": [
+                  "\"\" (if not initialized)",
+                  "1 or more characters"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the brand name under which the device was marketed to consumers. Typically also shown on the TV bezel, device label or remote",
+      "trailing": []
+    },
+    "api-18": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "modelId",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the model identifier assigned to the device hardware. Typically also shown on the device label or UI",
+      "trailing": []
+    },
+    "api-19": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "osName",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the operating system name as defined by the operator",
+      "trailing": []
+    },
+    "api-20": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "osVersion",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the operating system version as defined by the operator",
+      "trailing": []
+    },
+    "api-21": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "firmware",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns a string that identifies the firmware image of the device",
+      "trailing": []
+    },
+    "api-22": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Device",
+      "method": "name\nonNameChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the device friendly name. Used by network services (DIAL, Miracast, AirPlay) so that other devices can more easily identify this device during device discovery",
+      "trailing": []
+    },
+    "api-23": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Discovery",
+      "method": "watched",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "progress - double - optional",
+              "completed - bool - optional",
+              "watchedOn - ISO 8601 date and time in UTC - optional",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Notify the platform that content has been partially or completely watched progress: VOD: 0 to 0.99, live: number of seconds watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\" agePolicy: app:adult, app:child, app:teen",
+      "trailing": []
+    },
+    "api-24": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Display",
+      "method": "size",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "width - unsigned",
+              "height - unsigned"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the physical dimensions of the connected or integral display, in centimeters Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI Typical values 43\" - 97, 56 55\" - 123, 71 65\" - 145, 83",
+      "trailing": []
+    },
+    "api-25": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Display",
+      "method": "maxResolution",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "width - unsigned",
+              "height - unsigned"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the physical/native resolution of the connected or integral display, in pixels Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI Typical values HD Ready - 1280, 720 Full HD - 1920, 1080 UHD - 3840, 2160",
+      "trailing": []
+    },
+    "api-26": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Display",
+      "method": "edid",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string - Base64"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the EDID (and extensions) of the connected or integral display, as a Base64 encoded string Returns an empty string, \"\", on a OTT/STB device when a display is not connected over HDMI",
+      "trailing": []
+    },
+    "api-27": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Display",
+      "method": "colorimetry",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "unsupported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "list of enum, unordered",
+                "items": [
+                  "bt709",
+                  "bt2020"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns an unordered list of colorimetry values supported by the attached TV or integral display. Returns an empty list if no TV is attached",
+      "trailing": []
+    },
+    "api-28": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Display",
+      "method": "videoResolutions",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "unsupported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "list of enum, unordered",
+                "items": [
+                  "720p50",
+                  "720p60",
+                  "1080p50",
+                  "1080p60",
+                  "2160p50",
+                  "2160p60"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns an unordered list of HD video resolutions and frame rates supported by the attached TV or integral display. Returns an empty list if no TV is attached",
+      "trailing": []
+    },
+    "api-29": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Display",
+      "method": "connected\nonConnectedChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns whether the device is currently connected to an external or integrated display Most apps should instead use VideoOutput.hdcp for display connectivity OTT/STB device: returns true if a TV is connected over HDMI (by hot plug detect pin 19), otherwise returns false TV device: returns true",
+      "trailing": []
+    },
+    "api-30": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Lifecycle2",
+      "method": "close",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "type - enum",
+                "items": [
+                  "deactivate",
+                  "unload",
+                  "killReload",
+                  "killReactivate"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Request the platform to deactivate the app, and possibly take further action type deactivate - app is deactivated (if active) - typically a user closing an app unload - app is deactivated (if active) and terminated - typically an app has detected an error killReload - app is killed, then reloaded to paused or suspended (by policy) killReactivate - app is killed, reloaded, then activated window.close() maps to unload window.minimize() maps to deactivate Module is named Lifecycle in C++ Client Library",
+      "trailing": []
+    },
+    "api-31": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Lifecycle2",
+      "method": "state",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "initializing",
+                  "active",
+                  "paused",
+                  "suspended",
+                  "hibernated",
+                  "terminating"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state Apps/runtimes should ordinarily use state change notifications rather than this method",
+      "trailing": []
+    },
+    "api-32": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Lifecycle2",
+      "method": "onStateChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "change - list of one lifecycle state change",
+              "oldState - enum",
+              "newState - enum"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform Notification of lifecycle state change, raised after the platform has transitioned the app/runtime to the new lifecycle state Note: the list always carries exactly one lifecycle state change Valid transitions 1. initializing to paused 2. initializing to suspended 3. paused to active 4. active to paused 5. paused to suspended 6. suspended to paused 7. suspended to hibernated 8. hibernated to suspended 9. any to terminating",
+      "trailing": []
+    },
+    "api-33": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Localization",
+      "method": "country\nonCountryChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "string, either",
+                "items": [
+                  "\"\" (if not initialized)",
+                  "ISO 3166-1 alpha-2 (see Country in Devices table)"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Return the country, e.g. US, CA, GB, BE",
+      "trailing": []
+    },
+    "api-34": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Localization",
+      "method": "preferredAudioLanguages\nonPreferredAudioLanguagesChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "list of strings, either",
+                "items": [
+                  "[] (if not initialized)",
+                  "list of one or more ISO 639-2/B (see Secondary Audio Language in Devices table)"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "A list of zero or more languages in order of decreasing preference. Typically two languages are present. A language may be repeated in the list",
+      "trailing": []
+    },
+    "api-35": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Localization",
+      "method": "presentationLanguage\nonPresentati\nonLanguageChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "string, either",
+                "items": [
+                  "\"\" (if not initialized)",
+                  "BCP 47 (see Presentation Languages in Devices table)"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "The presentation language of the device, e.g. en-US",
+      "trailing": []
+    },
+    "api-36": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Localization",
+      "method": "timeZone\nonTimeZoneChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the current time zone in IANA format, e.g. America /New_York",
+      "trailing": []
+    },
+    "api-37": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "ready",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform that the app is minimally usable",
+      "trailing": []
+    },
+    "api-38": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "signIn",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Log a sign in event",
+      "trailing": []
+    },
+    "api-39": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "signOut",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Log a sign out event",
+      "trailing": []
+    },
+    "api-40": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "startContent",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string - optional",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform that your user has started content",
+      "trailing": []
+    },
+    "api-41": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "stopContent",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string - optional",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform that your user has stopped content",
+      "trailing": []
+    },
+    "api-42": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "page",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "pageId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform that your user has navigated to a page or view",
+      "trailing": []
+    },
+    "api-43": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "error",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "type - enum",
+                "items": [
+                  "ne",
+                  "tw",
+                  "ork",
+                  "m",
+                  "ed",
+                  "ia",
+                  "re",
+                  "str",
+                  "icti",
+                  "on",
+                  "en",
+                  "titl",
+                  "e",
+                  "m",
+                  "ent",
+                  "ot",
+                  "her",
+                  "code -",
+                  "string",
+                  "descriptio"
+                ]
+              },
+              "n - string",
+              "visible - bool paramete",
+              "rs - arglist - optional",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform of an error that has occurred in your app",
+      "trailing": []
+    },
+    "api-44": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaLoadStart",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when setting the URL of a media asset to play, in order to infer load time",
+      "trailing": []
+    },
+    "api-45": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaPlay",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when media playback should start due to autoplay, user-initiated play, or unpausing",
+      "trailing": []
+    },
+    "api-46": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaPlaying",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interruption",
+      "trailing": []
+    },
+    "api-47": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaPause",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when media playback will pause due to an intentional pause operation",
+      "trailing": []
+    },
+    "api-48": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaWaiting",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when media playback will halt due to a network, buffer, or other unintentional constraint",
+      "trailing": []
+    },
+    "api-49": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaSeeking",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "target - double",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when a seek is initiated during media playback",
+      "trailing": []
+    },
+    "api-50": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaSeeked",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "position - double",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when a seek is completed during media playback",
+      "trailing": []
+    },
+    "api-51": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaRateChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "rate - double",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when the playback rate of media is changed",
+      "trailing": []
+    },
+    "api-52": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaRenditionChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "bitrate - unsigned",
+              "width - unsigned",
+              "height - unsigned",
+              "profile - string - optional",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed",
+      "trailing": []
+    },
+    "api-53": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "mediaEnded",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "entityId - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Called when playback has stopped because the end of the media was reached",
+      "trailing": []
+    },
+    "api-54": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "event",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "schema - uridata - string",
+              "agePolicy - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform of 1st party distributor metrics data parameter is a JSON document",
+      "trailing": []
+    },
+    "api-55": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Metrics",
+      "method": "appInfo",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "build - string"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Inform the platform about an app's build info",
+      "trailing": []
+    },
+    "api-56": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Network",
+      "method": "connected\nonConnectedChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns whether the device has a usable network connection",
+      "trailing": []
+    },
+    "api-57": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Network",
+      "method": "interfaces",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "List of one or more objects, unordered",
+                "items": [
+                  "name - string",
+                  {
+                    "text": "type - enum",
+                    "items": [
+                      "wired",
+                      "wifi"
+                    ]
+                  },
+                  {
+                    "text": "protocol - enum",
+                    "items": [
+                      "unknown",
+                      "100base_tx",
+                      "1000base_t",
+                      "802_11ac",
+                      "802_11ax",
+                      "802_11be"
+                    ]
+                  },
+                  "enabled - bool",
+                  "connected - bool",
+                  "preferred - bool"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns information about all physical network interfaces of the device name - e.g. wlan0 protocol - physical layer protocol supported by the interface, set to unknown by default connected - the link link layer status preferred - true if the interface is used for network traffic",
+      "trailing": []
+    },
+    "api-58": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Network",
+      "method": "interfaceStatus\nonInterfaceStatusChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "interfaceName - string"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "name - string",
+              "enabled - bool",
+              "connected - bool",
+              "preferred - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Not found"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns basic information about a network interface",
+      "trailing": []
+    },
+    "api-59": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Network",
+      "method": "interfaceConfig\nonInterfaceConfigChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "interfaceName - string"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "List of one or more objects, unordered",
+                "items": [
+                  {
+                    "text": "ipv4Address - string",
+                    "items": [
+                      "ipv4DNSAddress"
+                    ]
+                  },
+                  "es - list of zero or more strings",
+                  {
+                    "text": "ipv6Addresses - list of zero or more strings",
+                    "items": [
+                      "ipv6DNSAddress"
+                    ]
+                  },
+                  "es - list of zero or more strings"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Not found"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns the IP configuration of an interface",
+      "trailing": []
+    },
+    "api-60": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Network",
+      "method": "interfaceStatistics",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "interfaceName - string"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "interfaceStats - object - optional",
+                "items": [
+                  "txPackets - unsigned | null",
+                  "txError - unsigned | null",
+                  "txDropped - unsigned | null",
+                  "txFifoErrors - unsigned | null",
+                  "txCarrierErrors - unsigned | null",
+                  "rxPackets - unsigned | null",
+                  "rxError - unsigned | null",
+                  "rxDropped - unsigned | null",
+                  "rxFifoErrors - unsigned | null",
+                  "rxFrameErrors - unsigned | null",
+                  "linkTxBitRate - unsigned | null",
+                  "linkRxBitRate - unsigned | null"
+                ]
+              },
+              {
+                "text": "wirelessStats - object - optional",
+                "items": [
+                  "wirelessFrequency - unsigned | null",
+                  "wirelessQuality - unsigned | null",
+                  "wirelessSignal - integer | null",
+                  "wirelessTxBitrate - unsigned | null",
+                  "wirelessRxBitrate - unsigned | null",
+                  "wirelessInactiveTime - unsigned | null",
+                  "wirelessRxBytes - unsigned | null",
+                  "wirelessRxPackets - unsigned | null",
+                  "wirelessRxDropped - unsigned | null",
+                  "wirelessTxBytes - unsigned | null",
+                  "wirelessTxPackets - unsigned | null",
+                  "wirelessTxRetries - unsigned | null",
+                  "wirelessTxFailed - unsigned | null",
+                  "wirelessExpectedThroughput - unsigned | null"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Not found"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns statistics for a network interface interfaceStats - present when an interface is connected. Attributes are set to null if not available wirelessStats - present when an interface of type wifi is connected. Attributes are set to null if not available wirelessFrequency - MHz wirelessSignal - dBm, -96 (weakest) to 0 (strongest) inclusive wirelessQuality - current SNR in dB, 0 to 96 inclusive wirelessTxBitrate - Tx rate in Mbps wirelessRxBitrate - Rx rate in Mbps wirelessInactiveTime - time in milliseconds since last activity",
+      "trailing": []
+    },
+    "api-61": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Network",
+      "method": "interfaceDetails\nonInterfaceDetailsChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "interfaceName - string"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "name - string",
+              "ssid - string - optional",
+              "bssid - string - optional"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Not found"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns detailed information of a network interface Used to convey information which may be sensitive e.g perso nally identifiable information ssid - the SSID of the access point, provided for wifi interface type if connected bssid - the BSSID of the access point, provided for wifi interface type if connected",
+      "trailing": []
+    },
+    "api-62": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "ParentalControl",
+      "method": "pinControl",
+      "version": "???",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-50100 / Not supported"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns whether PIN blocking is enabled, or an error if this setting is not exposed to apps",
+      "trailing": []
+    },
+    "api-63": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "ParentalControl",
+      "method": "blockNotRatedContent",
+      "version": "???",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-50100 / Not supported"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns whether content that is not rated should be blocked, or an error if this setting is not exposed to apps",
+      "trailing": []
+    },
+    "api-64": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "ParentalControl",
+      "method": "viewingRestrictions",
+      "version": "???",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "string"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-50100 / Not supported"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns a JSON document describing the ratings schemes configured for the device and any ratings that are blocked for that scheme, or an error if this setting is not exposed to apps",
+      "trailing": []
+    },
+    "api-65": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Presentation",
+      "method": "focused\nonFocusedChanged",
+      "version": "8.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": "bool"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Whether the app is in focus, i.e. receiving key presses. Provided for those apps/runtimes that cannot use Wayland",
+      "trailing": []
+    },
+    "api-66": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "SpeechSynthesis",
+      "method": "voices\nonVoicesChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "List of zero or more,",
+                "items": [
+                  "name - string",
+                  "lang - string - BCP 47",
+                  "default - bool"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns a list of available voices name - name of the voice as a human-readable string lang - the language of the voice in BCP 47 default - true if the voice is the default for the language An empty list is returned if a speech synthesis engine is not available, or the engine rejected the request A particular voice can be repeated in the list, and a language can be repeated in the list At most one voice is the default for each language",
+      "trailing": []
+    },
+    "api-67": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "SpeechSynthesis",
+      "method": "speak",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "text - string",
+              "lang - string - BCP 47 - optional",
+              "voice - string - optional",
+              "volume - double - optional",
+              "rate - double - optional",
+              "pitch - double - optional",
+              "pii - bool - optional"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "unsigned"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Spee ch synthesis engine error"
+            ]
+          }
+        }
+      ],
+      "overview": "Requests the system to speak an utterance. Returns an utteranceId if the request is accepted, otherwise an error is returned. A successful new request is processed asynchronously: any utterance that is currently being spoken is interrupted and notified by onUtteranceEvent( interrupted ), and events for the new request are raised using onUtteranceEvent text - plain text or a well-formed SSML document lang - the language of the text in BCP 47 voice - as returned by the voices method volume - the speaking volume, 0 (lowest) to 1 (highest) inclusive rate - the speaking rate, 0.1 (slowest) to 10 (fastest) inclusive pitch - the speaking pitch, 0 (lowest) to 2 (highest) inclusive pii - true if the text contains personally identifiable information, indicating that functionality such as logging and telemetry should be restricted, false if not set For Voice Guidance, the app SHOULD either supply the text parameter as plain text and the lang parameter, or supply text as a well-formed SSML document. If text is plain text and lang is not supplied then the default speech synthesis language is used - this is not recommended usage",
+      "trailing": []
+    },
+    "api-68": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "SpeechSynthesis",
+      "method": "cancel",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "utteranceId - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Spee ch synthesis engine error"
+            ]
+          }
+        }
+      ],
+      "overview": "Stop the utterance. If playing, audio is stopped. If synthesizing or paused, the utterance will not be played Raises onUtteranceEvent( interrupted ) if the utterance was s ynthesizing, playing or paused Returns without error in all utterance states, or if the utterance has finished",
+      "trailing": []
+    },
+    "api-69": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "SpeechSynthesis",
+      "method": "pause",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "utteranceId - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Spee ch synthesis engine error"
+            ]
+          }
+        }
+      ],
+      "overview": "Pause the utterance. If playing, audio is stopped. If the utterance was synthesizing, playback will be prevented Raises onUtteranceEvent( paused ) if the utterance was synthesizing or playing Returns without error in all utterance states, or if the utterance has finished",
+      "trailing": []
+    },
+    "api-70": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "SpeechSynthesis",
+      "method": "resume",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "utteranceId - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Spee ch synthesis engine error"
+            ]
+          }
+        }
+      ],
+      "overview": "Resume an utterance. If paused, audio is resumed. If synthesizing the utterance will be played. If playing no action is taken Raises onUtteranceEvent( resumed ) if the utterance had previously been paused while playing Returns without error in all utterance states, or if the utterance has finished",
+      "trailing": []
+    },
+    "api-71": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "SpeechSynthesis",
+      "method": "onUtteranceEvent",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "utteranceId - unsigned",
+              {
+                "text": "event - enum",
+                "items": [
+                  "synthesisStarting",
+                  "playbackStarting",
+                  "paused",
+                  "resumed",
+                  "completed",
+                  "interrupted",
+                  "networkFailed",
+                  "synthesisFailed",
+                  "playbackFailed"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Notifies events related to an utterance Progress events synthesisStarting - text to audio conversion is being started playbackStarting - audio playback is being started paused - utterance has been paused while playing resumed - an utterance that had previously been paused while playing has resumed playing completed - the utterance has completed successfully interrupted - the utterance has been stopped due to a call to either the speak or cancel methods Failure events networkFailed - the system was unable to contact the voice synthesis backend synthesisFailed - the system was unable to synthesize some or all of the utterance playbackFailed - the system was unable to play some or all of the utterance",
+      "trailing": []
+    },
+    "api-72": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Stats",
+      "method": "memoryUsage",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "userMemoryUse",
+              "d - unsigned",
+              "userMemoryLimit - unsigned",
+              "gpuMemoryUsed - unsigned",
+              "gpuMemoryLimit - unsigned"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns information about container memory usage, in bytes",
+      "trailing": []
+    },
+    "api-73": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "speak",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "text - string"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "speechid - unsigned",
+              "TTS_Status - 0... 3",
+              "success - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Speak the utterance immediately. Any ongoing speech is interrupted Text argument is either plain text or a well-formed SSML document TTS_Status, not success attribute, to be used by caller to indicate success of call 0 OK, 1 Fail, 2 not enabled, 3 invalid configuration Raises onSpeechInterrupted if speaking is interrupted",
+      "trailing": []
+    },
+    "api-74": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "pause",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "TTS_Status - 0... 3",
+              "success - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Pauses the utterance Raises onSpeechPause if ongoing speech is paused Does nothing if utterance is already paused",
+      "trailing": []
+    },
+    "api-75": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "resume",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "TTS_Status - 0... 3",
+              "success - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Continue the paused utterance Raises onSpeechResume if paused speech is resumed Does nothing if the utterance is not paused",
+      "trailing": []
+    },
+    "api-76": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "cancel",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "TTS_Status - 0... 3",
+              "success - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Stop speaking if utterance is currently being spoken Raises onSpeechInterrupted if speaking was interrupted",
+      "trailing": []
+    },
+    "api-77": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "getSpeechState",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "speechstate - enum",
+                "items": [
+                  "SPEECH",
+                  "_PENDING",
+                  "SPEECH",
+                  "_IN_PRO",
+                  "GRESS",
+                  "SPEECH",
+                  "_PAUSED",
+                  "SPEECH",
+                  "_NOT_F",
+                  "OUND"
+                ]
+              },
+              "TTS_Status - 0... 3",
+              "success - bool"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the state of the utterance",
+      "trailing": []
+    },
+    "api-78": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onWillSpeak",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Text to speech conversion is about to start",
+      "trailing": []
+    },
+    "api-79": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onSpeechStart",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Utterance is about to be spoken",
+      "trailing": []
+    },
+    "api-80": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onSpeechPause",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Ongoing speech was paused",
+      "trailing": []
+    },
+    "api-81": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onSpeechResume",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Paused speech was resumed",
+      "trailing": []
+    },
+    "api-82": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onSpeechComplete",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Speech completed successfully",
+      "trailing": []
+    },
+    "api-83": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onSpeechInterrupted",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Speech was stopped, due to another call to speak or cancel",
+      "trailing": []
+    },
+    "api-84": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onNetworkError",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Utterance failed due to network",
+      "trailing": []
+    },
+    "api-85": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "onPlaybackError",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "speechid - unsigned"
+        },
+        {
+          "label": "Returns",
+          "value": "N/A"
+        },
+        {
+          "label": "Specific errors",
+          "value": "N/A"
+        }
+      ],
+      "overview": "Utterance failed during playback",
+      "trailing": []
+    },
+    "api-86": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "TextToSpeech",
+      "method": "listVoices",
+      "version": "8.0.0",
+      "deprecated": "9.0.0",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "language - string - BCP 47"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "TTS_Status - 0... 3",
+              "voices - list of one or more strings"
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the list of available voices as human-readable strings, e.g. \"ava\", \"amelie\", \"angelica\"",
+      "trailing": []
+    },
+    "api-87": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "resolution\nonResolutionChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              "width - unsigned",
+              {
+                "text": "height - unsigned",
+                "items": [
+                  "One of 720, 480",
+                  "720, 576",
+                  "1280, 720",
+                  "1920, 1080",
+                  "3840, 2160"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the width and height of the video signal on the video output, in pixels. Typically used by a streaming app to determine the highest resolution of video to select OTT/STB device: returns the video resolution over HDMI TV device: returns the resolution of the panel",
+      "trailing": []
+    },
+    "api-88": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "hdcp\nonHdcpChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "hdcp1.4",
+                  "hdcp2.2",
+                  "none",
+                  "direct"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the current state of output protection on the video output OTT/STB device: returns the negotiated HDCP version on the video output, or none if an encrypted connection has not been made between the OTT/STB device and any attached TV TV device: returns direct",
+      "trailing": []
+    },
+    "api-89": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "cecState\nonCecStateChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "active",
+                  "inactive",
+                  "unsupported"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": {
+            "type": "list",
+            "items": [
+              "-xxxxx / Wrong device class"
+            ]
+          }
+        }
+      ],
+      "overview": "Returns whether the output of the OTT/STB device is actively being displayed on the TV OTT/STB device: returns the current state of the HDMI CEC connection active - the TV is on and the OTT/STB device is the active source inactive - the TV is off or the OTT/STB device is not the active source unsupported - CEC is not enabled on the TV TV device: returns Wrong device class error",
+      "trailing": []
+    },
+    "api-90": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "refreshRate\nonRefreshRateChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "0",
+                  "23.976",
+                  "24",
+                  "25",
+                  "29.97",
+                  "30",
+                  "50",
+                  "59.94",
+                  "60"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the refresh rate of the video signal on the video output, in Hz OTT/STB device: returns the refresh rate, or 0 if no TV is attached TV device: returns the compositor refresh rate currently used to output content to the integrated display",
+      "trailing": []
+    },
+    "api-91": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "colorDepth",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "0",
+                  "8",
+                  "10",
+                  "12"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the video color depth being used on the video output, in bits OTT/STB device: in addition, returns 0 when a display is not connected over HDMI TV device: does not return 0",
+      "trailing": []
+    },
+    "api-92": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "colorFormat",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "ycbcr420",
+                  "ycbcr422",
+                  "ycbcr444",
+                  "rgb444",
+                  "none"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the current color format of the video signal on the active video output port or integrated display OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
+      "trailing": []
+    },
+    "api-93": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "colorimetry",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "bt2020rgb",
+                  "bt2020ycc",
+                  "bt709",
+                  "oprgb",
+                  "none"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the current colorimetry value of the video signal on the active video output port or integrated display OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
+      "trailing": []
+    },
+    "api-94": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "dynamicRange",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "hdr10",
+                  "hdr10plus",
+                  "dolbyVision",
+                  "hlg",
+                  "sdr",
+                  "none"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the current dynamic range format of the video signal on the video output OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
+      "trailing": []
+    },
+    "api-95": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "VideoOutput",
+      "method": "quantizationRange",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "enum",
+                "items": [
+                  "limited",
+                  "full",
+                  "none"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the quantization range used on the video output OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
+      "trailing": []
+    },
+    "api-96": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Window",
+      "method": "addKeyIntercepts",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "unsupported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "keys - list of one or more strings, unordered"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Adds the supplied list of keys to the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification",
+      "trailing": []
+    },
+    "api-97": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
+      "module": "Window",
+      "method": "removeKeyIntercepts",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "unsupported"
+        },
+        {
+          "label": "JS",
+          "state": "supported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": {
+            "type": "list",
+            "items": [
+              "keys - list of one or more strings, unordered"
+            ]
+          }
+        },
+        {
+          "label": "Returns",
+          "value": "None"
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Removes the supplied list of keys from the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification",
+      "trailing": []
+    }
+  },
+  "generator": {
+    "name": "firebolt-converter",
+    "mode": "reference-or-new-candidate",
+    "source": {
+      "pdf": "Firebolt 9 API Specifications.pdf",
+      "sha256": "8fde64f796a393013fe4bed659b8cf74d3b746e9b693b55071db078cd164990e",
+      "pageCount": 11,
+      "extractedAt": "2026-10-07T15:15:16.771367+00:00"
+    },
+    "note": "Review PDF-derived content before replacing the curated file."
+  }
+}

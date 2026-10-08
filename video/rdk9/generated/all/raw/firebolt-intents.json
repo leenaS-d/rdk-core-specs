@@ -1,0 +1,591 @@
+{
+  "schemaVersion": "pdf-extract-1.0",
+  "document": "firebolt-intents",
+  "source": "Firebolt 9 Intents Specification.pdf",
+  "sha256": "8b0192c8d5efb1f32b172587dd844e11923c3440cac522a575ca80830240592c",
+  "extractedAt": "2026-10-06T16:27:22.476354+00:00",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Firebolt 9 Intents  Specification                                            \n                                                                                    \n        Document status APPROVED                                                    \n                                                                                    \n        Author    Timothy Dibben                                                    \n                                                                                    \n           Constituent parts of an intent                                           \n           Intent Action Types                                                      \n               Home action type                                                     \n               Launch action type                                                   \n               Pre-load action type                                                 \n               Entity action type                                                   \n               Playback action type                                                 \n               Search action type                                                   \n               Section action type                                                  \n               Tune action type                                                     \n               Play-entity action type                                              \n               Play-query action type                                               \n               Previous action type                                                 \n               Next action type                                                     \n               Repeat action type                                                   \n               Shuffle action type                                                  \n               Skip-ad action type                                                  \n               Skip-recap action type                                               \n               Skip-intro action type                                               \n       An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is\n       already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of\n       what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a\n       payment.                                                                     \n       An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not\n       contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user.\n       Constituent parts of an intent                                               \n        Part Type Mandatory Description        Allowed values                       \n       action string Yes A string specifying the implicit action being requested to \n                      be performed               'home'                             \n                                                 'launch'                           \n                                                 'pre-load'                         \n                                                 'entity'                           \n                                                 'playback'                         \n                                                 'search'                           \n                                                 'section'                          \n                                                 'tune'                             \n                                                 'play-entity'                      \n                                                 'play-query'                       \n                                                 'previous'                         \n                                                 'next'                             \n                                                 'repeat'                           \n                                                 'shuffle'                          \n                                                 'skip-ad'                          \n                                                 'skip-recap'                       \n                                                 'skip-intro'                       \n       data object No An optional object that contains data to be used by the See below\n                      application in order to fulfil the action                     \n       context object Yes An object defining the source of the intent and optionally\n                      properties of that source Name Type Mandatory Allowed Description\n                                                               values               \n                                               source string Yes Any An undefined string\n                                                                    indicating the source of\n                                                                    the intent eg \"voice\"\n                                               agePolicy string No  An optional string\n                                                                'app: indicating an age group\n                                                                child' that the intent is\n                                                                'app: targeting     \n                                                                teen'               \n                                                                'app:               \n                                                                adult'",
+      "tables": [
+        [
+          [
+            "Document status",
+            "APPROVED"
+          ],
+          [
+            "Author",
+            "Timothy Dibben"
+          ]
+        ],
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values",
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "action",
+            "string",
+            "Yes",
+            "A string specifying the implicit action being requested to\nbe performed",
+            "'home'\n'launch'\n'pre-load'\n'entity'\n'playback'\n'search'\n'section'\n'tune'\n'play-entity'\n'play-query'\n'previous'\n'next'\n'repeat'\n'shuffle'\n'skip-ad'\n'skip-recap'\n'skip-intro'",
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "data",
+            "object",
+            "No",
+            "An optional object that contains data to be used by the\napplication in order to fulfil the action",
+            "See below",
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "context",
+            "object",
+            "Yes",
+            "An object defining the source of the intent and optionally\nproperties of that source",
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed\nvalues",
+            "Description"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "source",
+            "string",
+            "Yes",
+            "Any",
+            "An undefined string\nindicating the source of\nthe intent eg \"voice\""
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "agePolicy",
+            "string",
+            "No",
+            "'app:\nchild'\n'app:\nteen'\n'app:\nadult'",
+            "An optional string\nindicating an age group\nthat the intent is\ntargeting"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "text": "Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"playback\",                                                      \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\"                                                      \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"top_10_this_week\",                                             \n          \"agePolicy\": \"app:child\"                                                  \n         }                                                                          \n       }                                                                            \n       Intent Action Types                                                          \n                                                                                    \n       Home action type                                                             \n       A request to action a transition to the home page of the application         \n                                                                                    \n       Definition of data object                                                    \n       The Home action intent does not require a data object                        \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"home\",                                                          \n         \"context\": {                                                               \n          \"source\": \"apps_rail\"                                                     \n         }                                                                          \n       }                                                                            \n       Launch action type                                                           \n                                                                                    \n       A request to show the page the app was previously on (or Home page if it's a cold launch) of the application\n       Definition of data object                                                    \n                                                                                    \n        Name   Type    Mandatory Allowed Description                                \n                              values                                                \n       dialPayload URL encoded No Any The optional DIAL payload                     \n              string                                                                \n       additionalData URL encoded No Any The optional DIAL URL which allows the first screen application to POST data back to the second\n       Url    string                 screen application                             \n       Examples                                                                     \n                                                                                    \n       {                                                                            \n         \"action\": \"launch\",                                                        \n         \"context\": {                                                               \n          \"source\": \"apps_rail\"                                                     \n         }                                                                          \n       }",
+      "tables": [
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed\nvalues",
+            "Description"
+          ],
+          [
+            "dialPayload",
+            "URL encoded\nstring",
+            "No",
+            "Any",
+            "The optional DIAL payload"
+          ],
+          [
+            "additionalData\nUrl",
+            "URL encoded\nstring",
+            "No",
+            "Any",
+            "The optional DIAL URL which allows the first screen application to POST data back to the second\nscreen application"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "text": "{                                                                            \n         \"action\": \"launch\",                                                        \n         \"data\"{                                                                    \n          \"dialPayload\": \"param1%3Dvalue1%26param2%3Dvalue2\",                       \n          \"additionalDataUrl\": \"http%3A%2F%2F127.0.0.1%3A8009%2Fapps%2FmyDialApp%2Fdial_data\"\n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"DIAL\"                                                          \n         }                                                                          \n       }                                                                            \n       Pre-load action type                                                         \n       A request to pre load the application, but indicates that it will not immediately be activated and is likely to be transitioned into the suspended/hibernated\n       states                                                                       \n       Definition of data object                                                    \n       The Pre-load action intent does not require a data object                    \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"pre-load\",                                                      \n         \"context\": {                                                               \n          \"source\": \"system\"                                                        \n         }                                                                          \n       }                                                                            \n                                                                                    \n       Entity action type                                                           \n                                                                                    \n       A request to action a transition to the entity/show page of the specified entity\n                                                                                    \n       Definition of data object                                                    \n        Name   Type Mandatory Allowed values Description                            \n                                                                                    \n       entityId string Yes Any     The identifier of the entity, in the target App's scope.\n       assetId string No  Any      The identifier of the asset, in the target App's scope.\n       seasonId string No Any      The identifier of the season, in the target App's scope.\n       seriesId string No Any      The identifier of the series, in the target App's scope.\n       appContentData string No Any Any extra information required to load the entity page, in the target App's scope.\n       programType string No Any   An optional indicator of the type of the programme eg 'movie'\n       entityType string No        An indicator of the entity type                  \n                            program                                                 \n                                                                                    \n       Examples                                                                     \n                                                                                    \n       {                                                                            \n         \"action\": \"entity\",                                                        \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\"                                                      \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }",
+      "tables": [
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            "Description"
+          ],
+          [
+            "entityId",
+            "string",
+            "Yes",
+            "Any",
+            "The identifier of the entity, in the target App's scope."
+          ],
+          [
+            "assetId",
+            "string",
+            "No",
+            "Any",
+            "The identifier of the asset, in the target App's scope."
+          ],
+          [
+            "seasonId",
+            "string",
+            "No",
+            "Any",
+            "The identifier of the season, in the target App's scope."
+          ],
+          [
+            "seriesId",
+            "string",
+            "No",
+            "Any",
+            "The identifier of the series, in the target App's scope."
+          ],
+          [
+            "appContentData",
+            "string",
+            "No",
+            "Any",
+            "Any extra information required to load the entity page, in the target App's scope."
+          ],
+          [
+            "programType",
+            "string",
+            "No",
+            "Any",
+            "An optional indicator of the type of the programme eg 'movie'"
+          ],
+          [
+            "entityType",
+            "string",
+            "No",
+            "program",
+            "An indicator of the entity type"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "text": "{                                                                            \n         \"action\": \"entity\",                                                        \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\",                                                     \n          \"assetId\": \"asdfsa73546\",                                                 \n          \"seasonId\": \"dasfasfhj786876\",                                            \n          \"seriesId\": \"dsfsf2345\",                                                  \n          \"appContentData\": \"externalId_23456\",                                     \n          \"programType\": \"series\"                                                   \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }                                                                            \n       Playback action type                                                         \n       A request to action a transition into the playback of the specified entity   \n                                                                                    \n       Definition of data object                                                    \n        Name   Type Mandatory Allowed values Description                            \n                                                                                    \n       entityId string Yes Any     The identifier of the entity, in the target App's scope.\n       assetId string No  Any      The identifier of the asset, in the target App's scope.\n       seasonId string No Any      The identifier of the season, in the target App's scope.\n       seriesId string No Any      The identifier of the series, in the target App's scope.\n       appContentData string No Any Any extra information required by the app to play the asset, in the target App's scope.\n       programType string No Any   An optional indicator of the type of the programme eg 'movie'\n       entityType string No        An indicator of the entity type                  \n                            program                                                 \n                                                                                    \n       Examples                                                                     \n                                                                                    \n       {                                                                            \n         \"action\": \"playback\",                                                      \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\"                                                      \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }                                                                            \n       {                                                                            \n         \"action\": \"playback\",                                                      \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\",                                                     \n          \"assetId\": \"asdfsa73546\",                                                 \n          \"seasonId\": \"dasfasfhj786876\",                                            \n          \"seriesId\": \"dsfsf2345\",                                                  \n          \"appContentData\": \"externalId_23456\",                                     \n          \"programType\": \"series\",                                                  \n          \"entityType\": \"program\"                                                   \n          },                                                                        \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }",
+      "tables": [
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            "Description"
+          ],
+          [
+            "entityId",
+            "string",
+            "Yes",
+            "Any",
+            "The identifier of the entity, in the target App's scope."
+          ],
+          [
+            "assetId",
+            "string",
+            "No",
+            "Any",
+            "The identifier of the asset, in the target App's scope."
+          ],
+          [
+            "seasonId",
+            "string",
+            "No",
+            "Any",
+            "The identifier of the season, in the target App's scope."
+          ],
+          [
+            "seriesId",
+            "string",
+            "No",
+            "Any",
+            "The identifier of the series, in the target App's scope."
+          ],
+          [
+            "appContentData",
+            "string",
+            "No",
+            "Any",
+            "Any extra information required by the app to play the asset, in the target App's scope."
+          ],
+          [
+            "programType",
+            "string",
+            "No",
+            "Any",
+            "An optional indicator of the type of the programme eg 'movie'"
+          ],
+          [
+            "entityType",
+            "string",
+            "No",
+            "program",
+            "An indicator of the entity type"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "text": "Search action type                                                           \n                                                                                    \n       A request to action a transition to search page of the application, prefill the search box with the supplied query string and initiate the search\n       Definition of data object                                                    \n                                                                                    \n        Name Type Mandatory Allowed values Description                              \n       query string Yes Any     The query string to be seeded in the search box     \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"search\",                                                        \n         \"data\": {                                                                  \n          \"query\": \"die hard\"                                                       \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }                                                                            \n                                                                                    \n       Section action type                                                          \n       A request to action a transition to the specified section of the app using the additional data if supplied\n                                                                                    \n       Definition of data object                                                    \n                                                                                    \n        Name   Type Mandatory Allowed values Description                            \n       sectionName string Yes Any  The section name, in the target App's scope.     \n       appContentData string No Any Additional information for the app to present the correct content\n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"section\",                                                       \n         \"data\": {                                                                  \n          \"sectionName\": \"app:subscribe\",                                           \n          \"appContentData\": \"Monthly\"                                               \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"app:GreatVideoApp\"                                             \n         }                                                                          \n       }                                                                            \n       Tune action type                                                             \n                                                                                    \n       A request to action a tune to the specified linear channel, with optional offset options from the live point\n       Definition of data object                                                    \n                                                                                    \n        Name Type Mandatory Allowed values                              Description",
+      "tables": [
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            "Description"
+          ],
+          [
+            "query",
+            "string",
+            "Yes",
+            "Any",
+            "The query string to be seeded in the search box"
+          ]
+        ],
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            "Description"
+          ],
+          [
+            "sectionName",
+            "string",
+            "Yes",
+            "Any",
+            "The section name, in the target App's scope."
+          ],
+          [
+            "appContentData",
+            "string",
+            "No",
+            "Any",
+            "Additional information for the app to present the correct content"
+          ]
+        ],
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            "Description"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "text": "entity object Yes                                                            \n                        Name   Type Mandatory Allowed values Description            \n                       entityType string Yes                                        \n                                           'channel'                                \n                       channelType string Yes                                       \n                                           'streaming'                              \n                                           'overTheAir'                             \n                       entityId string Yes Any   ID of the channel, in the target App's scope.\n                       appContentData string No Any                                 \n       options object No                                                            \n                        Name  Type Mandatory Allowed Description                    \n                                         values                                     \n                       assetId string No Any  The ID of a specific 'listing', as scoped by the target App's ID-\n                                              space, which the App should begin playback from.\n                       restartCurrent boolean No Denotes that the App should start playback at the most recent\n                       Program            true program boundary, rather than 'live.'\n                                          false                                     \n                       time   string No ISO 8601 ISO 8601 Date/Time where the App should begin playback\n                                        Date/Time from.                             \n       Example                                                                      \n       {                                                                            \n         \"action\": \"tune\",                                                          \n         \"data\": {                                                                  \n            \"entity\": {                                                             \n              \"entityType\": \"channel\",                                              \n              \"channelType\": \"streaming\",                                           \n              \"entityId\": \"SkyMovies1\"                                              \n            },                                                                      \n            \"options\": {                                                            \n              \"restartCurrentProgram\": true                                         \n            }                                                                       \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"linear_channel\"                                                \n         }                                                                          \n       }                                                                            \n       Play-entity action type                                                      \n       A request to start playback of the specified playlist, optionally starting from a specific track\n       Definition of data object                                                    \n        Name Type Mandatory Allowed values                              Description \n                                                                                    \n       entity object Yes                                                            \n                        Name Type Mandatory Allowed values Description              \n                       entityType string Yes                                        \n                                         'playlist'                                 \n                       entityId string Yes Any ID of the playlist, in the target App's scope.\n       options object No                                                            \n                        Name  Type Mandatory Allowed Description                    \n                                        values                                      \n                       playFirstId string No Any The Id of the asset in the playlist to play first, in the target\n                                               App's scope.                         \n                       playFirstTra number No Any The track number in the playlist to play first\n                       ck                                                           \n       Example",
+      "tables": [
+        [
+          [
+            "entity",
+            "object",
+            "Yes",
+            "Name",
+            null,
+            "Type",
+            null,
+            "Mandatory",
+            null,
+            "Allowed values",
+            null,
+            "Description",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "entityType",
+            null,
+            "string",
+            null,
+            "Yes",
+            null,
+            "'channel'",
+            null,
+            "",
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            "channelType",
+            null,
+            "string",
+            null,
+            "Yes",
+            null,
+            "'streaming'\n'overTheAir'",
+            null,
+            "",
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            "entityId",
+            null,
+            "string",
+            null,
+            "Yes",
+            null,
+            "Any",
+            null,
+            "ID of the channel, in the target App's scope.",
+            null
+          ],
+          [
+            "options",
+            "object",
+            "No",
+            "Name",
+            "Type",
+            null,
+            "Mandatory",
+            null,
+            "Allowed\nvalues",
+            null,
+            "Description",
+            null,
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "assetId",
+            "string",
+            null,
+            "No",
+            null,
+            "Any",
+            null,
+            "The ID of a specific 'listing', as scoped by the target App's ID-\nspace, which the App should begin playback from.",
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            "restartCurrent\nProgram",
+            "boolean",
+            null,
+            "No",
+            null,
+            "true\nfalse",
+            null,
+            "Denotes that the App should start playback at the most recent\nprogram boundary, rather than 'live.'",
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            "time",
+            "string",
+            null,
+            "No",
+            null,
+            "ISO 8601\nDate/Time",
+            null,
+            "ISO 8601 Date/Time where the App should begin playback\nfrom.",
+            null,
+            null
+          ]
+        ],
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Description"
+          ],
+          [
+            "entity",
+            "object",
+            "Yes",
+            "Name",
+            "Type",
+            null,
+            "Mandatory",
+            null,
+            "Allowed values",
+            null,
+            "Description",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "entityType",
+            "string",
+            null,
+            "Yes",
+            null,
+            "'playlist'",
+            null,
+            "",
+            null
+          ],
+          [
+            "options",
+            "object",
+            "No",
+            "Name",
+            null,
+            "Type",
+            null,
+            "Mandatory",
+            null,
+            "Allowed\nvalues",
+            "Description",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "playFirstId",
+            null,
+            "string",
+            null,
+            "No",
+            null,
+            "Any",
+            "The Id of the asset in the playlist to play first, in the target\nApp's scope.",
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            "playFirstTra\nck",
+            null,
+            "number",
+            null,
+            "No",
+            null,
+            "Any",
+            "The track number in the playlist to play first",
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "text": "{                                                                            \n         \"action\": \"play-entity\",                                                   \n         \"data\": {                                                                  \n            \"entity\": {                                                             \n               \"entityType\": \"playlist\",                                            \n            \"entityId\": \"BestOf80s\"                                                 \n          },                                                                        \n          \"options\": {                                                              \n               \"playFirstTrack\": 3                                                  \n          }                                                                         \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"playlist_selector\"                                             \n         }                                                                          \n       }                                                                            \n       Play-query action type                                                       \n       A request to start playback of a playlist created by a search                \n       Definition of data object                                                    \n                                                                                    \n        Name Type Mandatory Allowed values              Description                 \n       query string Yes Any                            The query to be used to select the content to be\n                                                       played                       \n       options object No                                                            \n                        Name  Type Mandatory Allowed Description                    \n                                         values                                     \n                       programTypes string No                                       \n                             array                                                  \n                       musicTypes string No                                         \n                             array                                                  \n       Example                                                                      \n       {                                                                            \n         \"action\": \"play-query\",                                                    \n         \"data\": {                                                                  \n          \"query\":\"Queen\"                                                           \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"music_bands\"                                                   \n         }                                                                          \n       }                                                                            \n       Previous action type                                                         \n       A request to action a transition to the previous media asset in a playlist or series\n                                                                                    \n       Definition of data object                                                    \n       The Previous action intent does not require a data object                    \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"previous\",                                                      \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+      "tables": [
+        [
+          [
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed values",
+            null,
+            null,
+            null,
+            null,
+            "Description"
+          ],
+          [
+            "query",
+            "string",
+            "Yes",
+            "Any",
+            null,
+            null,
+            null,
+            null,
+            "The query to be used to select the content to be\nplayed"
+          ],
+          [
+            "options",
+            "object",
+            "No",
+            "Name",
+            "Type",
+            "Mandatory",
+            "Allowed\nvalues",
+            "Description",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "programTypes",
+            "string\narray",
+            "No",
+            "",
+            "",
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            "musicTypes",
+            "string\narray",
+            "No",
+            "",
+            "",
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 8,
+      "text": "Next action type                                                             \n       A request to action a transition to the next media asset in a playlist or series\n                                                                                    \n       Definition of data object                                                    \n       The Next action intent does not require a data object                        \n                                                                                    \n       Example                                                                      \n       {                                                                            \n         \"action\": \"next\",                                                          \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }                                                                            \n                                                                                    \n       Repeat action type                                                           \n       A request to replay the current media asset                                  \n                                                                                    \n       Definition of data object                                                    \n       The Repeat action intent does not require a data object                      \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"repeat\",                                                        \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }                                                                            \n       Shuffle action type                                                          \n                                                                                    \n       A request to start playing randomly another media asset in a playlist or series\n       Definition of data object                                                    \n                                                                                    \n       The Repeat action intent does not require a data object                      \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"shuffle\",                                                       \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }                                                                            \n       Skip-ad action type                                                          \n                                                                                    \n       A request to skip the current advertisement block                            \n       Definition of data object                                                    \n                                                                                    \n       The Skip-ad action intent does not require a data object                     \n       Example",
+      "tables": []
+    },
+    {
+      "page": 9,
+      "text": "{                                                                            \n         \"action\": \"skip-ad\",                                                       \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }                                                                            \n       Skip-recap action type                                                       \n                                                                                    \n       A request to skip the current recap block                                    \n       Definition of data object                                                    \n                                                                                    \n       The Skip-recap action intent does not require a data object                  \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"skip-recap\",                                                    \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }                                                                            \n       Skip-intro action type                                                       \n                                                                                    \n       A request to skip the current intro block                                    \n                                                                                    \n       Definition of data object                                                    \n       The Skip-intro action intent does not require a data object                  \n       Example                                                                      \n                                                                                    \n       {                                                                            \n         \"action\": \"skip-intro\",                                                    \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+      "tables": []
+    }
+  ]
+}

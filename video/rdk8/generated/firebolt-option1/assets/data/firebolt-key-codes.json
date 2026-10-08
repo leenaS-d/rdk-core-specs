@@ -1,0 +1,1808 @@
+{
+  "schemaVersion": "1.0",
+  "status": "Published",
+  "hero": {
+    "eyebrow": "Firebolt 8",
+    "title": "Firebolt 8 Key Codes Specification",
+    "description": "Definition of the Key Codes made available to Firebolt Apps on the RDK8 video platform.",
+    "status": "Published"
+  },
+  "source": {
+    "label": "Firebolt 8 key code Spec.pdf",
+    "href": "assets/pdf/Firebolt 8 key code Spec.pdf"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "id": "standard-keys",
+      "heading": "Standard RCU keys",
+      "blocks": [
+        {
+          "type": "table",
+          "classes": "key-codes-table",
+          "columns": [
+            {
+              "key": "button",
+              "label": "RCU Button"
+            },
+            {
+              "key": "mandatory",
+              "label": "Key is mandatorily supported on a remote"
+            },
+            {
+              "key": "linuxCode",
+              "label": "Linux Key code (Sent via Wayland)"
+            },
+            {
+              "key": "details",
+              "label": "View details"
+            }
+          ],
+          "rows": [
+            {
+              "button": "Number keys (0 9)",
+              "mandatory": "No",
+              "linuxCode": "KEY_0 KEY_9",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-0"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Dismiss",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_ESC",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-1"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Voice",
+              "mandatory": "No",
+              "linuxCode": "KEY_F8",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-2"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Option (4 coloured dots)",
+              "mandatory": "No",
+              "linuxCode": "KEY_F13",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-3"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Select",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_ENTER",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-4"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Down",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_DOWN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-5"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Up",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_UP",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-6"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Left",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_LEFT",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-7"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Right",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_RIGHT",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-8"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Red",
+              "mandatory": "No",
+              "linuxCode": "KEY_RED",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-9"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Green",
+              "mandatory": "No",
+              "linuxCode": "KEY_GREEN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-10"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Yellow",
+              "mandatory": "No",
+              "linuxCode": "KEY_YELLOW",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-11"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Blue",
+              "mandatory": "No",
+              "linuxCode": "KEY_BLUE",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-12"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Rewind",
+              "mandatory": "No",
+              "linuxCode": "KEY_REWIND",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-13"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Ffwd",
+              "mandatory": "No",
+              "linuxCode": "KEY_FASTFORWARD",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-14"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "PlayPause",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_PLAYPAUSE",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-15"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Mute",
+              "mandatory": "No",
+              "linuxCode": "KEY_MUTE",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-16"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Volume+",
+              "mandatory": "No",
+              "linuxCode": "KEY_VOLUMEUP",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-17"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Volume-",
+              "mandatory": "No",
+              "linuxCode": "KEY_VOLUMEDOWN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "standard-key-18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "partner-buttons",
+      "heading": "Partner buttons",
+      "blocks": [
+        {
+          "type": "prose",
+          "body": "These are buttons on some RCU that are labelled \"Netflix\", \"YouTube\", etc. The key codes for these buttons are artificially generated within the window manager, based on the RCU type and the physical button pressed."
+        },
+        {
+          "type": "table",
+          "classes": "key-codes-table",
+          "columns": [
+            {
+              "key": "button",
+              "label": "RCU Button"
+            },
+            {
+              "key": "mandatory",
+              "label": "Key is mandatorily supported on a remote"
+            },
+            {
+              "key": "linuxCode",
+              "label": "Linux Key code (Sent via Wayland)"
+            },
+            {
+              "key": "details",
+              "label": "View details"
+            }
+          ],
+          "rows": [
+            {
+              "button": "YouTube Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_KPLEFTPAREN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-0"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Netflix Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_KPRIGHTPAREN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-1"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Disney+ Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F1",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-2"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Prime Video Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F2",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-3"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Peacock Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F3",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-4"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Kayo Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F4",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-5"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Binge Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F5",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-6"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Xumo Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F6",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-7"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "AMC+ Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F7",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View details",
+                    "ref": "partner-key-8"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "prose",
+          "body": "All Linux Function key codes (KEY_FN_F?) are reserved for RDK usage",
+          "variant": "lede"
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "standard-key-0": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Number keys (0 9)",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Number keys (0 9)"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_0 KEY_9"
+        },
+        {
+          "label": "JS event. key",
+          "value": "0 9"
+        },
+        {
+          "label": "JS event. code",
+          "value": "Digit0 Digit9"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "48 57"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.digit0-9"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x30-39"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "0 9"
+        }
+      ]
+    },
+    "standard-key-1": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Dismiss",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Dismiss"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_ESC"
+        },
+        {
+          "label": "JS event. key",
+          "value": "Escape"
+        },
+        {
+          "label": "JS event. code",
+          "value": "Escape"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "27"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.escape"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x10000001b"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "dismiss"
+        }
+      ]
+    },
+    "standard-key-2": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Voice",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Voice"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_F8"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "voice"
+        }
+      ]
+    },
+    "standard-key-3": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Option (4 coloured dots)",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Option (4 coloured dots)"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_F13"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ColorF0R ed"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ColorF0R ed"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "403"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.colorF3Red"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100000d0c"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "option"
+        }
+      ]
+    },
+    "standard-key-4": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Select",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Select"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_ENTER"
+        },
+        {
+          "label": "JS event. key",
+          "value": "Enter"
+        },
+        {
+          "label": "JS event. code",
+          "value": "Enter"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "13"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.enter"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100070028"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "select"
+        }
+      ]
+    },
+    "standard-key-5": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Down",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Down"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_DOWN"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ArrowDo wn"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ArrowDo wn"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "40"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.arrowDown"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100070051"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "down"
+        }
+      ]
+    },
+    "standard-key-6": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Up",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Up"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_UP"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ArrowUp"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ArrowUp"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "38"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.arrowUp"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100070052"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "up"
+        }
+      ]
+    },
+    "standard-key-7": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Left",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Left"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_LEFT"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ArrowLeft"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ArrowLeft"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "37"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.arrowLeft"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100070050"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "left"
+        }
+      ]
+    },
+    "standard-key-8": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Right",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Right"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_RIGHT"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ArrowRig ht"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ArrowRig ht"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "39"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.arrowRight"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x10007004F"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "right"
+        }
+      ]
+    },
+    "standard-key-9": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Red",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Red"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_RED"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ColorF0R ed"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ColorF0R ed"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "403"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.colorF3Red"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100000d0c"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "red"
+        }
+      ]
+    },
+    "standard-key-10": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Green",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Green"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_GREEN"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ColorF1G reen"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ColorF1G reen"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "404"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.colorF1Green"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100000d0d"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "green"
+        }
+      ]
+    },
+    "standard-key-11": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Yellow",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Yellow"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_YELLOW"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ColorF2Y ellow"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ColorF2Y ellow"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "405"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.colorF2Yellow"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100000d0e"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "yellow"
+        }
+      ]
+    },
+    "standard-key-12": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Blue",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Blue"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_BLUE"
+        },
+        {
+          "label": "JS event. key",
+          "value": "ColorF3Bl ue"
+        },
+        {
+          "label": "JS event. code",
+          "value": "ColorF3Bl ue"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "406"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.colorF3Blue"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100000d0f"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "blue"
+        }
+      ]
+    },
+    "standard-key-13": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Rewind",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Rewind"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_REWIND"
+        },
+        {
+          "label": "JS event. key",
+          "value": "MediaRe wind"
+        },
+        {
+          "label": "JS event. code",
+          "value": "Unidentifi ed"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "227"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.mediaRewind"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x1000c00b4"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "rewind"
+        }
+      ]
+    },
+    "standard-key-14": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Ffwd",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Ffwd"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FASTFORWARD"
+        },
+        {
+          "label": "JS event. key",
+          "value": "MediaFas tForward"
+        },
+        {
+          "label": "JS event. code",
+          "value": "Unidentifi ed"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "228"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y. mediaFastForward"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x1000c00b3"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "ffwd"
+        }
+      ]
+    },
+    "standard-key-15": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "PlayPause",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "PlayPause"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_PLAYPAUSE"
+        },
+        {
+          "label": "JS event. key",
+          "value": "MediaPla yPause"
+        },
+        {
+          "label": "JS event. code",
+          "value": "MediaPla yPause"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "179"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "LogicalKeyboardKe y.mediaPlayPause"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "0x100000a05"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "no"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "play"
+        }
+      ]
+    },
+    "standard-key-16": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Mute",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Mute"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_MUTE"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "n/a"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "mute"
+        }
+      ]
+    },
+    "standard-key-17": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Volume+",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Volume+"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_VOLUMEUP"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "n/a"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "volume+"
+        }
+      ]
+    },
+    "standard-key-18": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Volume-",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Volume-"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_VOLUMEDOWN"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": "n/a"
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "volume-"
+        }
+      ]
+    },
+    "partner-key-0": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "YouTube Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "YouTube Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_KPLEFTPAREN"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "youtube"
+        }
+      ]
+    },
+    "partner-key-1": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Netflix Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Netflix Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_KPRIGHTPAREN"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "netflix"
+        }
+      ]
+    },
+    "partner-key-2": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Disney+ Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Disney+ Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F1"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "disney+"
+        }
+      ]
+    },
+    "partner-key-3": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Prime Video Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Prime Video Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F2"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "primevideo"
+        }
+      ]
+    },
+    "partner-key-4": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Peacock Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Peacock Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F3"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "peacock"
+        }
+      ]
+    },
+    "partner-key-5": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Kayo Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Kayo Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F4"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "kayo"
+        }
+      ]
+    },
+    "partner-key-6": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Binge Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Binge Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F5"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "binge"
+        }
+      ]
+    },
+    "partner-key-7": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "Xumo Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Xumo Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F6"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "xumo"
+        }
+      ]
+    },
+    "partner-key-8": {
+      "type": "fields",
+      "eyebrow": "Key code details",
+      "heading": "AMC+ Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "AMC+ Button"
+        },
+        {
+          "label": "Key is mandatorily supported on a remote",
+          "value": "No"
+        },
+        {
+          "label": "Linux Key code (Sent via Wayland)",
+          "value": "KEY_FN_F7"
+        },
+        {
+          "label": "JS event. key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. code",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event. keyCode /which (Deprecated)",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key mapping",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key mapping (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key (may be made available to an app)",
+          "value": "yes"
+        },
+        {
+          "label": "Name (as used in App Manifest File)",
+          "value": "amc+"
+        }
+      ]
+    }
+  },
+  "generator": {
+    "name": "firebolt-converter",
+    "mode": "reference-preserving-candidate",
+    "source": {
+      "pdf": "Firebolt 8 key code Spec.pdf",
+      "sha256": "912ae6b7828dd7c31aef6873cc52a9a892730480a903229b1d3f30537b27e679",
+      "pageCount": 2,
+      "extractedAt": "2026-10-06T15:46:07.049576+00:00"
+    },
+    "note": "Review PDF-derived content before replacing the curated file."
+  }
+}

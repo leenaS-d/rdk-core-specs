@@ -51,7 +51,9 @@
 </div>
 
 {%- elif block.type == 'heading' %}
+{%- if not (page.data == 'assets/data/firebolt-json-rpc.json' and block.body == 'Notes') %}
 <h3>{{ block.body }}</h3>
+{%- endif %}
 
 {%- elif block.type == 'list' %}
 <ul class="{{ block.variant or 'spec-cell-list' }}">
@@ -115,7 +117,7 @@
   </div>
   <div class="api-detail-method"><code>{{ block.method }}</code></div>
   <div class="api-detail-meta">
-    <span class="pill">API version {{ block.version }}</span>
+    <span{% if page.data != 'assets/data/firebolt-api-spec.json' %} class="pill"{% endif %}>API version {{ block.version }}</span>
     {%- for item in block.support %}
     {%- set spoken = 'not supported' if item.state == 'unsupported' else item.state %}
     <span class="api-support"><span class="api-support-label">{{ item.label }}</span><span class="api-support-mark {{ item.state }}" role="img" aria-label="{{ item.label }} {{ spoken }}">{{ '\u2713' if item.state == 'supported' else '\u2717' }}</span></span>
@@ -200,7 +202,11 @@
           {%- for column in block.columns %}
           {%- set value = row[column.key] %}
           {%- if value is mapping %}
+          {%- if page.data == 'assets/data/firebolt-api-spec.json' and column.key == 'version' and value.type == 'badge' %}
+          <td{% if column.wrap %} class="cell--{{ column.wrap }}"{% endif %}>{{ value.label }}</td>
+          {%- else %}
           <td{% if column.wrap %} class="cell--{{ column.wrap }}"{% endif %}>{% with block = value %}{% include "partials/block.html" %}{% endwith %}</td>
+          {%- endif %}
           {%- else %}
           <td{% if column.wrap %} class="cell--{{ column.wrap }}"{% endif %}>{{ value }}</td>
           {%- endif %}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "pdf-extract-1.0",
+  "document": "firebolt-app-services",
+  "source": "Firebolt App Services Specifications.pdf",
+  "sha256": "baa409cb271c8929f81a94d29e1adbd9176a1331d6b35c08910080c57bf61fdc",
+  "extractedAt": "2026-10-06T16:27:23.324530+00:00",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Firebolt App   Services   Specification                                      \n                                                                                    \n        Document status DRAFT                                                       \n                                                                                    \n        Author    Andrew Bennett                                                    \n                                                                                    \n        Reviewers Timothy Dibben                                                    \n                  Yuri Pasquali                                                     \n                  Farhan Mahmood                                                    \n                  Jan Pedersen                                                      \n                                                                                    \n                                                                                    \n       Overview                                                                     \n                                                                                    \n       This document describes the Firebolt app services, which can be used by portable Firebolt apps.\n                                                                                    \n       Native Player App Service - org.rdk.nativeplayer                             \n                                                                                    \n       This app service offers functionality to play live IP native channels.       \n           Method    Parameters Returns       Specific errors API version Description Open issues\n                                                                                    \n       1  playLive            None            None      1.0.0 Play a live channel   \n                       channelId - string                                           \n       2  stop      None      None            None      1.0.0                       \n       3  status / onStatusChanged None       None      1.0.0                       \n                                state - enum                                        \n                                  idle                                              \n                                  pending                                           \n                                  playing                                           \n                                  blocked                                           \n                                  failed                                            \n                                blockedReason - enum                                \n                                  parental                                          \n                                  other                                             \n                                channelId - string                                  \n                                currentPositionSeconds - unsigned                   \n                                endPositionSeconds - unsigned                       \n       Parental App Service - org.rdk.parental                                      \n       This app service offers PIN and parental control functionality.              \n           Method Parameters Returns Specific API Description            Open       \n                             errors version                              issues     \n       1  pinChallen None           1.0.0 Requests to raise a PIN prompt to the user, verify any PIN supplied by the user, and\n          ge            proceed no      return whether to proceed or not            \n                        - bool service                                              \n                              service                                               \n                              failed                                                \n                              app not                                               \n                              active",
+      "tables": [
+        [
+          [
+            "Document status",
+            "DRAFT"
+          ],
+          [
+            "Author",
+            "Andrew Bennett"
+          ],
+          [
+            "Reviewers",
+            "Timothy Dibben\nYuri Pasquali\nFarhan Mahmood\nJan Pedersen"
+          ]
+        ],
+        [
+          [
+            "",
+            "Method",
+            "Parameters",
+            "Returns",
+            "Specific errors",
+            "API version",
+            "Description",
+            "Open issues"
+          ],
+          [
+            "1",
+            "playLive",
+            "channelId - string",
+            "None",
+            "None",
+            "1.0.0",
+            "Play a live channel",
+            ""
+          ],
+          [
+            "2",
+            "stop",
+            "None",
+            "None",
+            "None",
+            "1.0.0",
+            "",
+            ""
+          ],
+          [
+            "3",
+            "status / onStatusChanged",
+            "None",
+            "state - enum\nidle\npending\nplaying\nblocked\nfailed\nblockedReason - enum\nparental\nother\nchannelId - string\ncurrentPositionSeconds - unsigned\nendPositionSeconds - unsigned",
+            "None",
+            "1.0.0",
+            "",
+            ""
+          ]
+        ],
+        [
+          [
+            "",
+            "Method",
+            "Parameters",
+            "Returns",
+            "Specific\nerrors",
+            "API\nversion",
+            "Description",
+            "Open\nissues"
+          ],
+          [
+            "1",
+            "pinChallen\nge",
+            "None",
+            "proceed\n- bool",
+            "no\nservice\nservice\nfailed\napp not\nactive",
+            "1.0.0",
+            "Requests to raise a PIN prompt to the user, verify any PIN supplied by the user, and\nreturn whether to proceed or not",
+            ""
+          ]
+        ]
+      ]
+    }
+  ]
+}

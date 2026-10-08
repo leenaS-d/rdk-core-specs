@@ -26,10 +26,29 @@ those files directly; there is no CI build step.
 ### Dependencies
 
 ```powershell
-python -m pip install markdown PyYAML Jinja2
+python -m pip install markdown PyYAML Jinja2 pdfplumber
 ```
 
 Tested with markdown 3.11, PyYAML 6.0.3, Jinja2 3.1.6 on Python 3.14.
+
+### Refreshing content from PDFs
+
+The three Firebolt PDFs can be extracted into review files with:
+
+```powershell
+py tools/extract_firebolt_specs.py all
+```
+
+This writes raw page JSON and readable Markdown under `generated/firebolt-pdf/`.
+Use `api`, `intents`, or `key-codes` instead of `all` to refresh one document.
+Each run records the PDF SHA-256 in `manifest.json`, making it clear which PDF
+version produced the candidates.
+
+The extractor does not overwrite `assets/data/firebolt-*.json`. Those files use
+the site's curated block schema and may contain manual corrections, nested lists,
+or presentation details that a PDF parser cannot infer safely. Review the
+generated Markdown/JSON, merge approved changes into the matching curated JSON,
+then run `py build.py --check` and commit the JSON and generated HTML together.
 
 ### What `--check` catches
 
