@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import re
+import warnings
 from io import BytesIO
 from pathlib import Path
 from typing import Any, Callable
@@ -517,13 +518,26 @@ def _crypto_normalize_raw(raw: Any) -> dict[str, Any]:
 
 
 def _crypto_pdf_path(raw: dict[str, Any]) -> Path | None:
-    """ROOT/assets/pdf/<source>; if that exact file is missing, the only *crypto*.pdf in that folder."""
+    """ROOT/assets/pdf/<source>. If that exact file is missing (e.g. an updated PDF with a new filename and
+    no "source" in the JSON), use the most recently modified *crypto*.pdf in that folder. Always warns when
+    it does not use the exact file, so a silent fallback to the old text parsing cannot go unnoticed."""
     folder = ROOT / "assets" / "pdf"
-    exact = folder / str(raw.get("source", ""))
-    if exact.is_file():
+    source = str(raw.get("source", ""))
+    exact = folder / source
+    if source and exact.is_file():
         return exact
-    matches = sorted(path for path in folder.glob("*.pdf") if "crypto" in path.name.casefold())
-    return matches[0] if len(matches) == 1 else None
+    matches = sorted(
+        (path for path in folder.glob("*.pdf") if "crypto" in path.name.casefold()),
+        key=lambda path: path.stat().st_mtime,
+        reverse=True,
+    )
+    if matches:
+        warnings.warn(f"crypto: '{source}' not found in {folder}; using the newest crypto PDF '{matches[0].name}'. "
+                      f"Set CRYPTO_SOURCE_PDF (or add \"source\" to the JSON) to the exact filename.")
+        return matches[0]
+    warnings.warn(f"crypto: no crypto PDF found in {folder}; falling back to text-only parsing, so bullets and "
+                  f"words split across lines will NOT be repaired.")
+    return None
 
 
 def _crypto_error_id(value: Any) -> str:
@@ -845,7 +859,9 @@ def _crypto_document(name: str, title: str, raw: Any) -> dict[str, Any]:
             parameters = _crypto_render(cells["parameters"])
             returns = _crypto_render(cells["returns"])
             errors = _crypto_render(cells["errors"])
-        else:  # PDF not available: best effort from the raw table text
+        else:  # PDF not available / method not found in it: best effort from the raw table text
+            if pdf_cells:
+                warnings.warn(f"crypto: method {method_id} ({method}) was not found in the PDF; using text-only parsing for it.")
             parameters = _value(row[3], nested=bool(re.search(r"\b(enum|list|object)\b", str(row[3]), re.I)))
             returns = _value(row[4])
             errors = _value(row[5], nested=False)
@@ -881,18 +897,48 @@ def _crypto_document(name: str, title: str, raw: Any) -> dict[str, Any]:
     }
 
 
+def _key_cell(value: Any) -> str:
+    """Code cells are wrapped by the PDF, sometimes in the middle of a value ("ArrowDo" / "wn").
+    Re-join those fragments; two real values on separate lines ("KEY_0" / "KEY_9") stay separate."""
+    parts = [part.strip() for part in str(value or "").split("\n") if part.strip()]
+    text = ""
+    for part in parts:
+        if not text:
+            text = part
+            continue
+        previous = text.split(" ")[-1]
+        same_kind = part[:3] == previous[:3]  # "KEY_0"/"KEY_9", "Digit0"/"Digit9": a second value
+        if part[:1].islower() or previous.endswith(".") or not same_kind:
+            text += part
+        else:
+            text += " " + part
+    return _clean(text)
+
+
 def _key_sections(raw: dict[str, Any]) -> tuple[list[list[Any]], list[list[Any]]]:
+    """Split the key rows into standard keys and partner buttons.
+
+    The "Partner Buttons" heading is a row *inside* the main table (the YouTube row follows it), and the
+    partner table continues on the next page without a header row. So the heading row switches the
+    target list, and a table only loses its first row when that row is the "RCU Button" header."""
     standard: list[list[Any]] = []
     partner: list[list[Any]] = []
+    target = standard
     for table in _tables(raw):
-        if not table:
+        if not table or len(table[0]) < 8:
             continue
-        if "RCU" in _clean(table[0][0]) and len(table[0]) >= 8:
-            for row in table[1:]:
-                if _clean(row[0]) and not _clean(row[0]).casefold().startswith("partner buttons"):
-                    standard.append(row)
-        elif len(table[0]) >= 8 and _clean(table[0][0]) and _clean(table[0][0]).casefold() not in {"document status", "author"}:
-            partner.extend(row for row in table[1:] if _clean(row[0]))
+        first = _clean(table[0][0])
+        if first.casefold() in {"document status", "author"}:
+            continue
+        rows = table[1:] if "RCU" in first else table
+        for row in rows:
+            label = _clean(row[0])
+            if not label:
+                continue
+            if label.casefold().startswith("partner buttons"):
+                target = partner
+                continue
+            target.append(row)
     return standard, partner
 
 
@@ -905,9 +951,9 @@ def _key_document(name: str, title: str, raw: dict[str, Any]) -> dict[str, Any]:
       for index, row in enumerate(source_rows):
         reference = f"{prefix}-{index}"
         button = _clean(row[0])
-        target_rows.append({"button": button, "mandatory": _clean(row[1]), "linuxCode": _clean(row[2]), "details": {"type": "actions", "items": [{"label": "View Details", "ref": reference}]}})
+        target_rows.append({"button": button, "mandatory": _clean(row[1]), "linuxCode": _key_cell(row[2]), "details": {"type": "actions", "items": [{"label": "View Details", "ref": reference}]}})
         labels = ["RCU Button", "Mandatory", "Linux key code", "JS event key", "JS event code", "Deprecated keyCode/which", "Flutter logical key", "Flutter logical key (Hex)", "System Key", "Manifest name"]
-        definitions[reference] = {"type": "fields", "eyebrow": "Key code", "heading": button, "fields": [{"label": label, "value": _clean(row[pos]) if pos < len(row) else ""} for pos, label in enumerate(labels)]}
+        definitions[reference] = {"type": "fields", "eyebrow": "Key code", "heading": button, "fields": [{"label": label, "value": (_key_cell(row[pos]) if 2 <= pos <= 8 else _clean(row[pos])) if pos < len(row) else ""} for pos, label in enumerate(labels)]}
     convert_rows(standard_rows, "standard-key", rows)
     convert_rows(partner_rows, "partner-key", partner_table_rows)
     columns = [{"key": "button", "label": "RCU Button"}, {"key": "mandatory", "label": "Key is mandatorily supported on a remote"}, {"key": "linuxCode", "label": "Linux Key code (Sent via Wayland)"}, {"key": "details", "label": "View Details"}]
