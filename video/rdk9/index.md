@@ -7,13 +7,7 @@ hero:
   tagline:
     - RDK-V
     - RDK9 for Video
-    - Powering Next-Generation Video Experiences
   title: Core RDK Video Platform
-  badges:
-    - Apache-2.0 / LGPL-2.1
-    - Open-source platform
-    - Firebolt enabled
-    - Thunder powered
 sections:
   - style: alt
     classes: home-release

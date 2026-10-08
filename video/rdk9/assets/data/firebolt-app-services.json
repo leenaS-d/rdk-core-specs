@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 App Services Specification",
-    "description": "App Services available to Firebolt applications.",
+    "description": "Application services provided by the RDK9 video platform for portable Firebolt applications",
     "status": "Draft"
   },
   "source": {

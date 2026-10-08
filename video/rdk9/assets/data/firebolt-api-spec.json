@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Core API Specification",
-    "description": "Standardized Firebolt 9 APIs.",
+    "description": "Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt",
     "status": "Draft"
   },
   "source": {

@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 App Actions Specification",
-    "description": "App Actions available to Firebolt applications.",
+    "description": "App actions exposed by the RDK9 video platform for application-driven device and content experiences",
     "status": "Approved"
   },
   "source": {

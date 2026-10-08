@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Key Codes Specification",
-    "description": "Key Codes made available to Firebolt applications.",
+    "description": "Definition of the Key Codes made available to Firebolt Apps on the RDK9 video platform",
     "status": "Approved"
   },
   "source": {

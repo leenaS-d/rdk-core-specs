@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Intents Specification",
-    "description": "Intent definitions for Firebolt 9 applications.",
+    "description": "Intent definitions for applications to request device and content experiences through the RDK9 video platform",
     "status": "Approved"
   },
   "source": {
