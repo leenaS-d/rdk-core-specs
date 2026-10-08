@@ -229,9 +229,6 @@ def build_body(data: dict) -> str:
     <thead><tr><th>Name</th><th>Category</th><th>Layer</th><th>Type</th><th>Version</th><th>Repositories</th></tr></thead>
     <tbody id="comp-tbody">{"".join(rows_html)}</tbody>
   </table>
-  <p style="margin-top:18px; font-size:0.86rem;">
-    For the full interactive workbook view, see the <a href="{FULL_DETAILS_URL}">detailed version</a>.
-  </p>
 </section>
 {filter_script}
 '''
