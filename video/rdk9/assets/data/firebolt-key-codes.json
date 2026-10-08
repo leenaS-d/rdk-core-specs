@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Key Codes Specification",
-    "description": "Definition of the Key Codes made available to Firebolt Apps on the RDK9 video platform",
+    "description": "Key Codes made available to Firebolt applications.",
     "status": "Approved"
   },
   "source": {
@@ -237,7 +237,7 @@
             {
               "button": "Ffwd",
               "mandatory": "No",
-              "linuxCode": "KEY_FASTFO RWARD",
+              "linuxCode": "KEY_FASTFORWARD",
               "details": {
                 "type": "actions",
                 "items": [
@@ -251,7 +251,7 @@
             {
               "button": "PlayPause",
               "mandatory": "Yes",
-              "linuxCode": "KEY_PLAYPA USE",
+              "linuxCode": "KEY_PLAYPAUSE",
               "details": {
                 "type": "actions",
                 "items": [
@@ -279,7 +279,7 @@
             {
               "button": "Volume+",
               "mandatory": "No",
-              "linuxCode": "KEY_VOLUME UP",
+              "linuxCode": "KEY_VOLUMEUP",
               "details": {
                 "type": "actions",
                 "items": [
@@ -293,27 +293,13 @@
             {
               "button": "Volume-",
               "mandatory": "No",
-              "linuxCode": "KEY_VOLUME DOWN",
+              "linuxCode": "KEY_VOLUMEDOWN",
               "details": {
                 "type": "actions",
                 "items": [
                   {
                     "label": "View Details",
                     "ref": "standard-key-18"
-                  }
-                ]
-              }
-            },
-            {
-              "button": "YouTube Button",
-              "mandatory": "No",
-              "linuxCode": "KEY_KPLEFT PAREN",
-              "details": {
-                "type": "actions",
-                "items": [
-                  {
-                    "label": "View Details",
-                    "ref": "standard-key-19"
                   }
                 ]
               }
@@ -354,6 +340,34 @@
           ],
           "rows": [
             {
+              "button": "YouTube Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_KPLEFTPAREN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-0"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Netflix Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_KPRIGHTPAREN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-1"
+                  }
+                ]
+              }
+            },
+            {
               "button": "Disney+ Button",
               "mandatory": "No",
               "linuxCode": "KEY_FN_F1",
@@ -362,7 +376,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-0"
+                    "ref": "partner-key-2"
                   }
                 ]
               }
@@ -376,7 +390,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-1"
+                    "ref": "partner-key-3"
                   }
                 ]
               }
@@ -390,7 +404,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-2"
+                    "ref": "partner-key-4"
                   }
                 ]
               }
@@ -404,7 +418,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-3"
+                    "ref": "partner-key-5"
                   }
                 ]
               }
@@ -418,7 +432,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-4"
+                    "ref": "partner-key-6"
                   }
                 ]
               }
@@ -432,7 +446,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-5"
+                    "ref": "partner-key-7"
                   }
                 ]
               }
@@ -446,7 +460,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "partner-key-6"
+                    "ref": "partner-key-8"
                   }
                 ]
               }
@@ -488,7 +502,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.digit0-9"
+          "value": "LogicalKeyboardKey.digit0-9"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -535,7 +549,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.escape"
+          "value": "LogicalKeyboardKey.escape"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -617,11 +631,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ColorF0R ed"
+          "value": "ColorF0Red"
         },
         {
           "label": "JS event code",
-          "value": "ColorF0R ed"
+          "value": "ColorF0Red"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -629,7 +643,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.colorF3Red"
+          "value": "LogicalKeyboardKey.colorF3Red"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -676,7 +690,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.enter"
+          "value": "LogicalKeyboardKey.enter"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -711,11 +725,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ArrowDo wn"
+          "value": "ArrowDown"
         },
         {
           "label": "JS event code",
-          "value": "ArrowDo wn"
+          "value": "ArrowDown"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -723,7 +737,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.arrowDown"
+          "value": "LogicalKeyboardKey.arrowDown"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -770,7 +784,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.arrowUp"
+          "value": "LogicalKeyboardKey.arrowUp"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -817,7 +831,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.arrowLeft"
+          "value": "LogicalKeyboardKey.arrowLeft"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -852,11 +866,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ArrowRig ht"
+          "value": "ArrowRight"
         },
         {
           "label": "JS event code",
-          "value": "ArrowRig ht"
+          "value": "ArrowRight"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -864,7 +878,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.arrowRight"
+          "value": "LogicalKeyboardKey.arrowRight"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -899,11 +913,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ColorF0R ed"
+          "value": "ColorF0Red"
         },
         {
           "label": "JS event code",
-          "value": "ColorF0R ed"
+          "value": "ColorF0Red"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -911,7 +925,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.colorF3Red"
+          "value": "LogicalKeyboardKey.colorF3Red"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -946,11 +960,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ColorF1G reen"
+          "value": "ColorF1Green"
         },
         {
           "label": "JS event code",
-          "value": "ColorF1G reen"
+          "value": "ColorF1Green"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -958,7 +972,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.colorF1Green"
+          "value": "LogicalKeyboardKey.colorF1Green"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -993,11 +1007,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ColorF2Y ellow"
+          "value": "ColorF2Yellow"
         },
         {
           "label": "JS event code",
-          "value": "ColorF2Y ellow"
+          "value": "ColorF2Yellow"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -1005,7 +1019,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.colorF2Yellow"
+          "value": "LogicalKeyboardKey.colorF2Yellow"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -1040,11 +1054,11 @@
         },
         {
           "label": "JS event key",
-          "value": "ColorF3Bl ue"
+          "value": "ColorF3Blue"
         },
         {
           "label": "JS event code",
-          "value": "ColorF3Bl ue"
+          "value": "ColorF3Blue"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -1052,7 +1066,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.colorF3Blue"
+          "value": "LogicalKeyboardKey.colorF3Blue"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -1087,11 +1101,11 @@
         },
         {
           "label": "JS event key",
-          "value": "MediaRe wind"
+          "value": "MediaRewind"
         },
         {
           "label": "JS event code",
-          "value": "Unidentifi ed"
+          "value": "Unidentified"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -1099,7 +1113,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.mediaRewind"
+          "value": "LogicalKeyboardKey.mediaRewind"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -1130,15 +1144,15 @@
         },
         {
           "label": "Linux key code",
-          "value": "KEY_FASTFO RWARD"
+          "value": "KEY_FASTFORWARD"
         },
         {
           "label": "JS event key",
-          "value": "MediaFas tForward"
+          "value": "MediaFastForward"
         },
         {
           "label": "JS event code",
-          "value": "Unidentifi ed"
+          "value": "Unidentified"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -1146,7 +1160,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y. mediaFastForward"
+          "value": "LogicalKeyboardKey.mediaFastForward"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -1177,15 +1191,15 @@
         },
         {
           "label": "Linux key code",
-          "value": "KEY_PLAYPA USE"
+          "value": "KEY_PLAYPAUSE"
         },
         {
           "label": "JS event key",
-          "value": "MediaPla yPause"
+          "value": "MediaPlayPause"
         },
         {
           "label": "JS event code",
-          "value": "MediaPla yPause"
+          "value": "MediaPlayPause"
         },
         {
           "label": "Deprecated keyCode/which",
@@ -1193,7 +1207,7 @@
         },
         {
           "label": "Flutter logical key",
-          "value": "LogicalKeyboardKe y.mediaPlayPause"
+          "value": "LogicalKeyboardKey.mediaPlayPause"
         },
         {
           "label": "Flutter logical key (Hex)",
@@ -1271,7 +1285,7 @@
         },
         {
           "label": "Linux key code",
-          "value": "KEY_VOLUME UP"
+          "value": "KEY_VOLUMEUP"
         },
         {
           "label": "JS event key",
@@ -1318,7 +1332,7 @@
         },
         {
           "label": "Linux key code",
-          "value": "KEY_VOLUME DOWN"
+          "value": "KEY_VOLUMEDOWN"
         },
         {
           "label": "JS event key",
@@ -1350,7 +1364,7 @@
         }
       ]
     },
-    "standard-key-19": {
+    "partner-key-0": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "YouTube Button",
@@ -1365,7 +1379,7 @@
         },
         {
           "label": "Linux key code",
-          "value": "KEY_KPLEFT PAREN"
+          "value": "KEY_KPLEFTPAREN"
         },
         {
           "label": "JS event key",
@@ -1397,7 +1411,54 @@
         }
       ]
     },
-    "partner-key-0": {
+    "partner-key-1": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Netflix Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Netflix Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_KPRIGHTPAREN"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "netflix"
+        }
+      ]
+    },
+    "partner-key-2": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "Disney+ Button",
@@ -1444,7 +1505,7 @@
         }
       ]
     },
-    "partner-key-1": {
+    "partner-key-3": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "Prime Video Button",
@@ -1491,7 +1552,7 @@
         }
       ]
     },
-    "partner-key-2": {
+    "partner-key-4": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "Peacock Button",
@@ -1538,7 +1599,7 @@
         }
       ]
     },
-    "partner-key-3": {
+    "partner-key-5": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "Kayo Button",
@@ -1585,7 +1646,7 @@
         }
       ]
     },
-    "partner-key-4": {
+    "partner-key-6": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "Binge Button",
@@ -1632,7 +1693,7 @@
         }
       ]
     },
-    "partner-key-5": {
+    "partner-key-7": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "Xumo Button",
@@ -1679,7 +1740,7 @@
         }
       ]
     },
-    "partner-key-6": {
+    "partner-key-8": {
       "type": "fields",
       "eyebrow": "Key code",
       "heading": "AMC+ Button",
