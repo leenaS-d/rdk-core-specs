@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "pdf-extract-manifest-1.0",
+  "documents": [
+    {
+      "document": "firebolt-api-spec",
+      "source": "Firebolt 8 API Spec.pdf",
+      "sha256": "cd97b2e5df8e85cf2aad43804346b189a22382422cb0d4ebf375f5785a20f578"
+    }
+  ]
+}

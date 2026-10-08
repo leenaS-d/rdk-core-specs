@@ -74,12 +74,12 @@
 }
 .spec-entry-overview {
   margin:0 0 20px;
-  color:var(--muted);
+  color:var(--ink);
   font-size:.94rem;
   line-height:1.65;
 }
 .spec-entry > p {
-  color:var(--muted);
+  color:var(--ink);
 }
 .api-detail-method {
   display:flex;

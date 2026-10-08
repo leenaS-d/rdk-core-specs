@@ -121,7 +121,15 @@
 }
 .accent {
   height:5px;
-  background:linear-gradient(90deg,var(--blue) 25%,var(--green) 25% 50%,var(--amber) 50% 75%,var(--orange) 75%);
+  background:linear-gradient(
+    90deg,
+    var(--blue) 0%,
+    var(--blue) 18%,
+    var(--amber) 38%,
+    var(--green) 62%,
+    var(--orange) 82%,
+    var(--orange) 100%
+  );
   position:fixed;
   top:0;
   left:0;

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "status": "Draft: the Southbound API list is evolving and will be published.",
+  "apis": [
+    {
+      "halInterface": "DeepSleep Manager HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager"
+    },
+    {
+      "halInterface": "Power Manager HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-power_manager"
+    },
+    {
+      "halInterface": "Device Settings HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-device_settings"
+    },
+    {
+      "halInterface": "HDMI CEC HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
+    },
+    {
+      "halInterface": "RMF Audio Capture HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture"
+    },
+    {
+      "halInterface": "Control Manager HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-irdb"
+    },
+    {
+      "halInterface": "MFRLib HAL",
+      "version": "",
+      "source": ""
+    },
+    {
+      "halInterface": "systemaudioplatform HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-systemaudioplatform"
+    },
+    {
+      "halInterface": "Bluetooth HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/bluetooth_vendor_document"
+    },
+    {
+      "halInterface": "Westeros Sink HAL",
+      "version": "develop",
+      "source": ""
+    },
+    {
+      "halInterface": "Westeros Graphics HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-westeros-gl"
+    },
+    {
+      "halInterface": "Graphics & Matrix HAL",
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-hpk-documentation/doc/Media_Pipeline"
+    }
+  ]
+}

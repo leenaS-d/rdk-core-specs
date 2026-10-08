@@ -1,0 +1,1330 @@
+{
+  "schemaVersion": "1.0",
+  "hero": {
+    "eyebrow": "Firebolt 9",
+    "title": "Firebolt 9 Intents Specification",
+    "description": "Intent definitions for Firebolt 9 applications.",
+    "status": "Approved"
+  },
+  "source": {
+    "label": "Firebolt 9 Intents Specification.pdf",
+    "href": "assets/pdf/Firebolt 9 Intents Specification.pdf"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "id": "overview",
+      "classes": "intent-overview",
+      "blocks": [
+        {
+          "type": "prose",
+          "body": "An Intent is a message object sent to an application requesting a specific action. This may occur as part of the launch of the application or when it is already loaded. The application shall treat the receipt of an intent as an explicit request to carry out the intent and immediately action it, irrespective of what the application is currently doing. The only exception to this if the application is carrying out some process that can not be interrupted eg processing a payment."
+        },
+        {
+          "type": "prose",
+          "body": "An application may support multiple intent action types or none, however if an application receives an intent that it does not support, or one that does not contain enough data for an application to fulfil it, it shall ignore it and not present any error to the user."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "classes": "intent-actions-section",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "part",
+              "label": "Part"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            }
+          ],
+          "rows": [
+            {
+              "part": "action",
+              "type": "string",
+              "mandatory": "Yes",
+              "description": "A string specifying the implicit action being requested to be performed",
+              "allowedValues": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "home",
+                    "ref": "intent-home"
+                  },
+                  {
+                    "label": "launch",
+                    "ref": "intent-launch"
+                  },
+                  {
+                    "label": "pre-load",
+                    "ref": "intent-pre-load"
+                  },
+                  {
+                    "label": "entity",
+                    "ref": "intent-entity"
+                  },
+                  {
+                    "label": "playback",
+                    "ref": "intent-playback"
+                  },
+                  {
+                    "label": "search",
+                    "ref": "intent-search"
+                  },
+                  {
+                    "label": "section",
+                    "ref": "intent-section"
+                  },
+                  {
+                    "label": "tune",
+                    "ref": "intent-tune"
+                  },
+                  {
+                    "label": "play-entity",
+                    "ref": "intent-play-entity"
+                  },
+                  {
+                    "label": "play-query",
+                    "ref": "intent-play-query"
+                  },
+                  {
+                    "label": "previous",
+                    "ref": "intent-previous"
+                  },
+                  {
+                    "label": "next",
+                    "ref": "intent-next"
+                  },
+                  {
+                    "label": "repeat",
+                    "ref": "intent-repeat"
+                  },
+                  {
+                    "label": "shuffle",
+                    "ref": "intent-shuffle"
+                  },
+                  {
+                    "label": "skip-ad",
+                    "ref": "intent-skip-ad"
+                  },
+                  {
+                    "label": "skip-recap",
+                    "ref": "intent-skip-recap"
+                  },
+                  {
+                    "label": "skip-intro",
+                    "ref": "intent-skip-intro"
+                  }
+                ]
+              }
+            },
+            {
+              "part": "data",
+              "type": "object",
+              "mandatory": "No",
+              "description": "An optional object that contains data to be used by the application in order to fulfil the action",
+              "allowedValues": "Click an action type above for more details."
+            },
+            {
+              "part": "context",
+              "type": "object",
+              "mandatory": "Yes",
+              "description": "An object defining the source of the intent and optionally properties of that source",
+              "allowedValues": {
+                "type": "details",
+                "summary": "Context fields",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "columns": [
+                      {
+                        "key": "name",
+                        "label": "Name"
+                      },
+                      {
+                        "key": "type",
+                        "label": "Type"
+                      },
+                      {
+                        "key": "mandatory",
+                        "label": "Mandatory"
+                      },
+                      {
+                        "key": "allowedValues",
+                        "label": "Allowed values"
+                      },
+                      {
+                        "key": "description",
+                        "label": "Description"
+                      }
+                    ],
+                    "rows": [
+                      {
+                        "name": "dialPayload",
+                        "type": "URL encoded string",
+                        "mandatory": "No",
+                        "allowedValues": "Any",
+                        "description": "The optional DIAL payload"
+                      },
+                      {
+                        "name": "additionalData Url",
+                        "type": "URL encoded string",
+                        "mandatory": "No",
+                        "allowedValues": "Any",
+                        "description": "The optional DIAL URL which allows the first screen application to POST data back to the second screen application"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "intent-home": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Home action type",
+      "overview": "A request to action a transition to the home page of the application",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Home action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"home\",                                                          \n         \"context\": {                                                               \n          \"source\": \"apps_rail\"                                                     \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-launch": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Launch action type",
+      "overview": "A request to show the page the app was previously on (or Home page if it's a cold launch) of the application",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "dialPayload",
+              "type": "URL encoded string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The optional DIAL payload"
+            },
+            {
+              "name": "additionalData Url",
+              "type": "URL encoded string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The optional DIAL URL which allows the first screen application to POST data back to the second screen application"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"launch\",                                                        \n         \"context\": {                                                               \n          \"source\": \"apps_rail\"                                                     \n         }                                                                          \n       }\n{                                                                            \n         \"action\": \"launch\",                                                        \n         \"data\"{                                                                    \n          \"dialPayload\": \"param1%3Dvalue1%26param2%3Dvalue2\",                       \n          \"additionalDataUrl\": \"http%3A%2F%2F127.0.0.1%3A8009%2Fapps%2FmyDialApp%2Fdial_data\"\n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"DIAL\"                                                          \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-pre-load": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Pre-Load action type",
+      "overview": "A request to pre load the application, but indicates that it will not immediately be activated and is likely to be transitioned into the suspended/hibernated",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Pre-load action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"pre-load\",                                                      \n         \"context\": {                                                               \n          \"source\": \"system\"                                                        \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-entity": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Entity action type",
+      "overview": "A request to action a transition to the entity/show page of the specified entity",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "entityId",
+              "type": "string",
+              "mandatory": "Yes",
+              "allowedValues": "Any",
+              "description": "The identifier of the entity, in the target App's scope."
+            },
+            {
+              "name": "assetId",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The identifier of the asset, in the target App's scope."
+            },
+            {
+              "name": "seasonId",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The identifier of the season, in the target App's scope."
+            },
+            {
+              "name": "seriesId",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The identifier of the series, in the target App's scope."
+            },
+            {
+              "name": "appContentData",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "Any extra information required to load the entity page, in the target App's scope."
+            },
+            {
+              "name": "programType",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "An optional indicator of the type of the programme eg 'movie'"
+            },
+            {
+              "name": "entityType",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "program",
+              "description": "An indicator of the entity type"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"entity\",                                                        \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\"                                                      \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }\n{                                                                            \n         \"action\": \"entity\",                                                        \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\",                                                     \n          \"assetId\": \"asdfsa73546\",                                                 \n          \"seasonId\": \"dasfasfhj786876\",                                            \n          \"seriesId\": \"dsfsf2345\",                                                  \n          \"appContentData\": \"externalId_23456\",                                     \n          \"programType\": \"series\"                                                   \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-playback": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Playback action type",
+      "overview": "A request to action a transition into the playback of the specified entity",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "entityId",
+              "type": "string",
+              "mandatory": "Yes",
+              "allowedValues": "Any",
+              "description": "The identifier of the entity, in the target App's scope."
+            },
+            {
+              "name": "assetId",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The identifier of the asset, in the target App's scope."
+            },
+            {
+              "name": "seasonId",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The identifier of the season, in the target App's scope."
+            },
+            {
+              "name": "seriesId",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "The identifier of the series, in the target App's scope."
+            },
+            {
+              "name": "appContentData",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "Any extra information required to load the entity page, in the target App's scope."
+            },
+            {
+              "name": "programType",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "An optional indicator of the type of the programme eg 'movie'"
+            },
+            {
+              "name": "entityType",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "program",
+              "description": "An indicator of the entity type"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"playback\",                                                      \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\"                                                      \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }                                                                            \n       {                                                                            \n         \"action\": \"playback\",                                                      \n         \"data\": {                                                                  \n          \"entityId\": \"ABC123\",                                                     \n          \"assetId\": \"asdfsa73546\",                                                 \n          \"seasonId\": \"dasfasfhj786876\",                                            \n          \"seriesId\": \"dsfsf2345\",                                                  \n          \"appContentData\": \"externalId_23456\",                                     \n          \"programType\": \"series\",                                                  \n          \"entityType\": \"program\"                                                   \n          },                                                                        \n         \"context\": {                                                               \n          \"source\": \"continue_watching\"                                             \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-search": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Search action type",
+      "overview": "A request to action a transition to search page of the application, prefill the search box with the supplied query string and initiate the search",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "query",
+              "type": "string",
+              "mandatory": "Yes",
+              "allowedValues": "Any",
+              "description": "The query string to be seeded in the search box"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"search\",                                                        \n         \"data\": {                                                                  \n          \"query\": \"die hard\"                                                       \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-section": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Section action type",
+      "overview": "A request to action a transition to the specified section of the app using the additional data if supplied",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "sectionName",
+              "type": "string",
+              "mandatory": "Yes",
+              "allowedValues": "Any",
+              "description": "The section name, in the target App's scope."
+            },
+            {
+              "name": "appContentData",
+              "type": "string",
+              "mandatory": "No",
+              "allowedValues": "Any",
+              "description": "Additional information for the app to present the correct content"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"section\",                                                       \n         \"data\": {                                                                  \n          \"sectionName\": \"app:subscribe\",                                           \n          \"appContentData\": \"Monthly\"                                               \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"app:GreatVideoApp\"                                             \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-tune": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Tune action type",
+      "overview": "A request to action a tune to the specified linear channel, with optional offset options from the live point",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "entity",
+              "type": "object",
+              "mandatory": "Yes",
+              "allowedValues": {
+                "type": "details",
+                "summary": "entity fields",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "columns": [
+                      {
+                        "key": "name",
+                        "label": "Name"
+                      },
+                      {
+                        "key": "type",
+                        "label": "Type"
+                      },
+                      {
+                        "key": "mandatory",
+                        "label": "Mandatory"
+                      },
+                      {
+                        "key": "allowedValues",
+                        "label": "Allowed values"
+                      },
+                      {
+                        "key": "description",
+                        "label": "Description"
+                      }
+                    ],
+                    "rows": [
+                      {
+                        "name": "entityType",
+                        "type": "string",
+                        "mandatory": "Yes",
+                        "allowedValues": "'channel'",
+                        "description": ""
+                      },
+                      {
+                        "name": "channelType",
+                        "type": "string",
+                        "mandatory": "Yes",
+                        "allowedValues": "'streaming' 'overTheAir'",
+                        "description": ""
+                      },
+                      {
+                        "name": "entityId",
+                        "type": "string",
+                        "mandatory": "Yes",
+                        "allowedValues": "Any",
+                        "description": "ID of the channel, in the target App's scope."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "description": ""
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "mandatory": "No",
+              "allowedValues": {
+                "type": "details",
+                "summary": "options fields",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "columns": [
+                      {
+                        "key": "name",
+                        "label": "Name"
+                      },
+                      {
+                        "key": "type",
+                        "label": "Type"
+                      },
+                      {
+                        "key": "mandatory",
+                        "label": "Mandatory"
+                      },
+                      {
+                        "key": "allowedValues",
+                        "label": "Allowed values"
+                      },
+                      {
+                        "key": "description",
+                        "label": "Description"
+                      }
+                    ],
+                    "rows": [
+                      {
+                        "name": "assetId",
+                        "type": "string",
+                        "mandatory": "No",
+                        "allowedValues": "Any",
+                        "description": "The ID of a specific 'listing', as scoped by the target App's ID- space, which the App should begin playback from."
+                      },
+                      {
+                        "name": "restartCurrentProgram",
+                        "type": "boolean",
+                        "mandatory": "No",
+                        "allowedValues": "true false",
+                        "description": "Denotes that the App should start playback at the most recent program boundary, rather than 'live.'"
+                      },
+                      {
+                        "name": "time",
+                        "type": "string",
+                        "mandatory": "No",
+                        "allowedValues": "ISO 8601 Date/Time",
+                        "description": "ISO 8601 Date/Time where the App should begin playback from."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "description": ""
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"tune\",                                                          \n         \"data\": {                                                                  \n            \"entity\": {                                                             \n              \"entityType\": \"channel\",                                              \n              \"channelType\": \"streaming\",                                           \n              \"entityId\": \"SkyMovies1\"                                              \n            },                                                                      \n            \"options\": {                                                            \n              \"restartCurrentProgram\": true                                         \n            }                                                                       \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"linear_channel\"                                                \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-play-entity": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Play-Entity action type",
+      "overview": "A request to start playback of the specified playlist, optionally starting from a specific track",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "entity",
+              "type": "object",
+              "mandatory": "Yes",
+              "allowedValues": {
+                "type": "details",
+                "summary": "entity fields",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "columns": [
+                      {
+                        "key": "name",
+                        "label": "Name"
+                      },
+                      {
+                        "key": "type",
+                        "label": "Type"
+                      },
+                      {
+                        "key": "mandatory",
+                        "label": "Mandatory"
+                      },
+                      {
+                        "key": "allowedValues",
+                        "label": "Allowed values"
+                      },
+                      {
+                        "key": "description",
+                        "label": "Description"
+                      }
+                    ],
+                    "rows": [
+                      {
+                        "name": "entityType",
+                        "type": "string",
+                        "mandatory": "Yes",
+                        "allowedValues": "'playlist'",
+                        "description": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              "description": ""
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "mandatory": "No",
+              "allowedValues": {
+                "type": "details",
+                "summary": "options fields",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "columns": [
+                      {
+                        "key": "name",
+                        "label": "Name"
+                      },
+                      {
+                        "key": "type",
+                        "label": "Type"
+                      },
+                      {
+                        "key": "mandatory",
+                        "label": "Mandatory"
+                      },
+                      {
+                        "key": "allowedValues",
+                        "label": "Allowed values"
+                      },
+                      {
+                        "key": "description",
+                        "label": "Description"
+                      }
+                    ],
+                    "rows": [
+                      {
+                        "name": "playFirstId",
+                        "type": "string",
+                        "mandatory": "No",
+                        "allowedValues": "Any",
+                        "description": "The Id of the asset in the playlist to play first, in the target App's scope."
+                      },
+                      {
+                        "name": "playFirstTrack",
+                        "type": "number",
+                        "mandatory": "No",
+                        "allowedValues": "Any",
+                        "description": "The track number in the playlist to play first"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "description": ""
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"play-entity\",                                                   \n         \"data\": {                                                                  \n            \"entity\": {                                                             \n               \"entityType\": \"playlist\",                                            \n            \"entityId\": \"BestOf80s\"                                                 \n          },                                                                        \n          \"options\": {                                                              \n               \"playFirstTrack\": 3                                                  \n          }                                                                         \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"playlist_selector\"                                             \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-play-query": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Play-Query action type",
+      "overview": "A request to start playback of a playlist created by a search",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "mandatory",
+              "label": "Mandatory"
+            },
+            {
+              "key": "allowedValues",
+              "label": "Allowed values"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            }
+          ],
+          "rows": [
+            {
+              "name": "query",
+              "type": "string",
+              "mandatory": "Yes",
+              "allowedValues": "Any",
+              "description": "The query to be used to select the content to be played"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "mandatory": "No",
+              "allowedValues": {
+                "type": "details",
+                "summary": "options fields",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "columns": [
+                      {
+                        "key": "name",
+                        "label": "Name"
+                      },
+                      {
+                        "key": "type",
+                        "label": "Type"
+                      },
+                      {
+                        "key": "mandatory",
+                        "label": "Mandatory"
+                      },
+                      {
+                        "key": "allowedValues",
+                        "label": "Allowed values"
+                      },
+                      {
+                        "key": "description",
+                        "label": "Description"
+                      }
+                    ],
+                    "rows": [
+                      {
+                        "name": "programTypes",
+                        "type": "string array",
+                        "mandatory": "No",
+                        "allowedValues": "",
+                        "description": ""
+                      },
+                      {
+                        "name": "musicTypes",
+                        "type": "string array",
+                        "mandatory": "No",
+                        "allowedValues": "",
+                        "description": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              "description": ""
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"play-query\",                                                    \n         \"data\": {                                                                  \n          \"query\":\"Queen\"                                                           \n         },                                                                         \n         \"context\": {                                                               \n          \"source\": \"music_bands\"                                                   \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-previous": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Previous action type",
+      "overview": "A request to action a transition to the previous media asset in a playlist or series",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Previous action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"previous\",                                                      \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-next": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Next action type",
+      "overview": "A request to action a transition to the next media asset in a playlist or series",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Next action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"next\",                                                          \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-repeat": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Repeat action type",
+      "overview": "A request to replay the current media asset",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Repeat action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"repeat\",                                                        \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-shuffle": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Shuffle action type",
+      "overview": "A request to start playing randomly another media asset in a playlist or series",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Repeat action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"shuffle\",                                                       \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-skip-ad": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Skip-Ad action type",
+      "overview": "A request to skip the current advertisement block",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Skip-ad action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"skip-ad\",                                                       \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-skip-recap": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Skip-Recap action type",
+      "overview": "A request to skip the current recap block",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Skip-recap action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"skip-recap\",                                                    \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    },
+    "intent-skip-intro": {
+      "type": "entry",
+      "eyebrow": "Intent action",
+      "heading": "Skip-Intro action type",
+      "overview": "A request to skip the current intro block",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Definition of data object"
+        },
+        {
+          "type": "code",
+          "body": "The Skip-intro action intent does not require a data object",
+          "variant": "spec-definition-text"
+        },
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "examples",
+          "blocks": [
+            {
+              "type": "code",
+              "body": "{                                                                            \n         \"action\": \"skip-intro\",                                                    \n         \"context\": {                                                               \n          \"source\": \"voice\"                                                         \n         }                                                                          \n       }",
+              "variant": "spec-example"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "generator": {
+    "name": "firebolt-converter",
+    "mode": "reference-or-new-candidate",
+    "source": {
+      "pdf": "Firebolt 9 Intents Specification.pdf",
+      "sha256": "8b0192c8d5efb1f32b172587dd844e11923c3440cac522a575ca80830240592c",
+      "pageCount": 9,
+      "extractedAt": "2026-10-06T16:27:22.476354+00:00"
+    },
+    "note": "Review PDF-derived content before replacing the curated file."
+  }
+}

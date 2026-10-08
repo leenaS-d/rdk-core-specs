@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "pdf-extract-manifest-1.0",
+  "documents": [
+    {
+      "document": "firebolt-api-spec",
+      "source": "Firebolt 8 API Spec.pdf",
+      "sha256": "cd97b2e5df8e85cf2aad43804346b189a22382422cb0d4ebf375f5785a20f578"
+    },
+    {
+      "document": "firebolt-intents",
+      "source": "Firebolt 8 Intent Spec.pdf",
+      "sha256": "155092f60f7dce39648e38338aba903545d2fed8fdc746a7e0274332bccc7dd9"
+    },
+    {
+      "document": "firebolt-key-codes",
+      "source": "Firebolt 8 key code Spec.pdf",
+      "sha256": "912ae6b7828dd7c31aef6873cc52a9a892730480a903229b1d3f30537b27e679"
+    }
+  ]
+}

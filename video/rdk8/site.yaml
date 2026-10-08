@@ -22,6 +22,8 @@ stylesheets:
   - assets/css/overrides.css
   - assets/css/site.css
 
+asset_version: rdk8-20261007-1
+
 # The Northbound entry is a dropdown only; the Firebolt Core API Specification
 # is also reached from the home page cards.
 nav:

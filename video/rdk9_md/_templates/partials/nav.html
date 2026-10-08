@@ -1,0 +1,20 @@
+<div class="accent"></div>
+<header class="nav">
+  <a class="brand" href="{{ site.brand.href }}"><img src="{{ site.brand.logo }}" alt="{{ site.brand.alt }}"></a>
+  <nav class="navlinks">
+    {%- for item in site.nav %}
+    {%- if item.dropdown %}
+    <details class="nav-dropdown">
+      <summary class="nav-dropdown-summary{% if page.nav == item.key %} active{% endif %}">{{ item.label }}</summary>
+      <div class="nav-dropdown-menu">
+        {%- for link in item.dropdown %}
+        <a href="{{ link.href }}">{{ link.label }}</a>
+        {%- endfor %}
+      </div>
+    </details>
+    {%- else %}
+    <a class="{% if page.nav == item.key %}active{% endif %}" href="{{ item.href }}">{{ item.label }}</a>
+    {%- endif %}
+    {%- endfor %}
+  </nav>
+</header>

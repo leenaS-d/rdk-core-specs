@@ -311,13 +311,6 @@
       "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit"
     },
     {
-      "name": "libparodus",
-      "category": "Core Device Control Protocols",
-      "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://github.com/Comcast/libparodus"
-    },
-    {
       "name": "libunpriv",
       "category": "Core Utilities",
       "layer": "RDK",
@@ -540,13 +533,6 @@
       "layer": "RDK",
       "releaseTag": "4.5.2v2",
       "url": "https://github.com/rdkcentral/sysint"
-    },
-    {
-      "name": "systimemgr",
-      "category": "Device Management & Diagnostics",
-      "layer": "RDK",
-      "releaseTag": "1.4.0",
-      "url": "https://github.com/rdkcentral/systemtimemgr"
     },
     {
       "name": "tdk",

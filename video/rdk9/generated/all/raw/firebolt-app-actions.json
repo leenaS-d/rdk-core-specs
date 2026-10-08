@@ -1,0 +1,453 @@
+{
+  "schemaVersion": "pdf-extract-1.0",
+  "document": "firebolt-app-actions",
+  "source": "Firebolt 9 App Actions.pdf",
+  "sha256": "7172a45034a143fa537730f35ed8af4be28b6e3902896002d083b39e5cad5c1e",
+  "extractedAt": "2026-10-06T16:27:23.231630+00:00",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Firebolt 9 App   Actions   Specification                                     \n                                                                                    \n        Document status APPROVED                                                    \n                                                                                    \n        Author    Timothy Dibben                                                    \n                                                                                    \n           App Action JSON format                                                   \n               Format of Action                                                     \n           App Action Types                                                         \n               Launch App (org.rdk.app.launch)                                      \n               Send App Metrics (org.rdk.app.metrics.send)                          \n               Send App WatchHistory (org.rdk.app.watchhistory.send)                \n               Send DAB Request (org.rdk.dab.request)                               \n               Set App API Token (org.rdk.app.apitoken.set)                         \n               Set App Identifier (org.rdk.app.identifier.set)                      \n       App Action JSON format                                                       \n       All App Actions follow the following format                                  \n       Format of Action                                                             \n                                                                                    \n        Part  Type Mandatory Description                     Allowed values         \n       actionType string Yes A string specifying the implicit action type being requested to be performed org.rdk.app.launch\n                                                            org.rdk.app.metrics.send\n                                                                                    \n                                                            org.rdk.app.watchhistory.send\n                                                            org.rdk.dab.request     \n                                                            org.rdk.app.apitoken.set\n                                                            org.rdk.app.identifier.set\n       actionData object No An optional object that contains data to be used by the Home App to fulfil the action See below\n       actionContext string No An optional opaque string providing some context for use with reporting Any - max length 1000 chars\n                                                                                    \n                                                                                    \n                                                                                    \n       App Action Types                                                             \n                                                                                    \n       Launch App (org.rdk.app.launch)                                              \n       This Action Type requests the Home App to launch an App                      \n                                                                                    \n       Format of actionData                                                         \n                                                                                    \n        Part Type Mandatory Description        Allowed values                       \n       appId string yes The AppId of the app to launch Any                          \n       intent object yes The intent to send to the App without the \"context\" object A valid intent object without the \"context\" object\n                                                                                    \n       Example",
+      "tables": [
+        [
+          [
+            "Document status",
+            "APPROVED"
+          ],
+          [
+            "Author",
+            "Timothy Dibben"
+          ]
+        ],
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values"
+          ],
+          [
+            "actionType",
+            "string",
+            "Yes",
+            "A string specifying the implicit action type being requested to be performed",
+            "org.rdk.app.launch\norg.rdk.app.metrics.send\norg.rdk.app.watchhistory.send\norg.rdk.dab.request\norg.rdk.app.apitoken.set\norg.rdk.app.identifier.set"
+          ],
+          [
+            "actionData",
+            "object",
+            "No",
+            "An optional object that contains data to be used by the Home App to fulfil the action",
+            "See below"
+          ],
+          [
+            "actionContext",
+            "string",
+            "No",
+            "An optional opaque string providing some context for use with reporting",
+            "Any - max length 1000 chars"
+          ]
+        ],
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values"
+          ],
+          [
+            "appId",
+            "string",
+            "yes",
+            "The AppId of the app to launch",
+            "Any"
+          ],
+          [
+            "intent",
+            "object",
+            "yes",
+            "The intent to send to the App without the \"context\" object",
+            "A valid intent object without the \"context\" object"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "text": "{                                                                            \n          \"actionType\": \"org.rdk.app.launch\",                                       \n          \"actionData\": {                                                           \n            \"appId\": \"BBCSounds\",                                                   \n                 \"intent\": {                                                        \n               \"action\": \"entity\",                                                  \n               \"data\": {                                                            \n                 \"entityId\": \"ABC123\"                                               \n               }                                                                    \n            }                                                                       \n          },                                                                        \n          \"actionContext\": \"{\\\"schema\\\":\\\"campaign/1.0\\\",\\\"payload\\\":{\\\"campaign_id\\\":\\\"123456\\\",\\\"placement_id\\\":\\\"\n       12390113146247302414\\\",\\\"asset_id\\\":\\\"12049621954250482415\\\"}}\"              \n       }                                                                            \n       Send App Metrics (org.rdk.app.metrics.send)                                  \n       This Action Type requests the Home App to send an metrics to the back office for a particular app\n       Format of actionData                                                         \n        Part Type Mandatory Description                   Allowed values            \n       appId string yes The App Id of the App associated with the Metrics Any       \n       fireboltMeth string yes The Firebolt Metrics method Any Firebolt Metrics method name\n       od                                                                           \n       environment string no The type of environment the metrics originated from    \n                                                           \"prod\"                   \n                                                           \"test\"                   \n                                                           \"dev\"                    \n       timestamp integer yes The UTC time stamp in milliseconds since Unix epoch (January 1, 1970 midnight) when > 0\n                       the event is generated.                                      \n       payload object yes A payload object containing the Firebolt Metrics payload  \n                                                          Part Type Mandatory Description\n                                                         category Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         type Defined no Defined by \n                                                             by Firebolt Firebolt   \n                                                         paramet Defined no Defined by\n                                                         ers by Firebolt Firebolt   \n                                                         code Defined no Defined by \n                                                             by Firebolt Firebolt   \n                                                         descripti Defined no Defined by\n                                                         on  by Firebolt Firebolt   \n                                                         visible Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         entityId Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         progress Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         rate Defined no Defined by \n                                                             by Firebolt Firebolt   \n                                                         bitrate Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         width Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         height Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         profile Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         position Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         pageId Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         target Defined no Defined by\n                                                             by Firebolt Firebolt   \n                                                         entitlem Defined no Defined by\n                                                         ents by Firebolt Firebolt  \n       Example",
+      "tables": [
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values",
+            null,
+            null,
+            null
+          ],
+          [
+            "appId",
+            "string",
+            "yes",
+            "The App Id of the App associated with the Metrics",
+            "Any",
+            null,
+            null,
+            null
+          ],
+          [
+            "fireboltMeth\nod",
+            "string",
+            "yes",
+            "The Firebolt Metrics method",
+            "Any Firebolt Metrics method name",
+            null,
+            null,
+            null
+          ],
+          [
+            "environment",
+            "string",
+            "no",
+            "The type of environment the metrics originated from",
+            "\"prod\"\n\"test\"\n\"dev\"",
+            null,
+            null,
+            null
+          ],
+          [
+            "timestamp",
+            "integer",
+            "yes",
+            "The UTC time stamp in milliseconds since Unix epoch (January 1, 1970 midnight) when\nthe event is generated.",
+            "> 0",
+            null,
+            null,
+            null
+          ],
+          [
+            "payload",
+            "object",
+            "yes",
+            "A payload object containing the Firebolt Metrics payload",
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "category",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "type",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "paramet\ners",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "code",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "descripti\non",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "visible",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "entityId",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "progress",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "rate",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "bitrate",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "width",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "height",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "profile",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "position",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "pageId",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "target",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "entitlem\nents",
+            "Defined\nby Firebolt",
+            "no",
+            "Defined by\nFirebolt"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "text": "{                                                                            \n          \"actionType\": \"org.rdk.app.metrics.send\",                                 \n          \"actionData\": {                                                           \n                 \"appId\": \"hayu\",                                                   \n                 \"fireboltMethod\": \"Metrics.error\",                                 \n                 \"environment\": \"prod\",                                             \n                 \"timestamp\": 1785308400011,                                        \n                  \"payload\": {                                                      \n                       \"type\":\"media\",                                              \n                       \"code\":\"17904\",                                              \n                       \"description\": \"Media not found\",                            \n                       \"visible\": true,                                             \n                       \"agePolicy\": \"app:child\"                                     \n                 }                                                                  \n          }                                                                         \n       }                                                                            \n       Send App WatchHistory (org.rdk.app.watchhistory.send)                        \n       This Action Type requests the Home App to send a watch history from an App to the back office\n       Format of actionData                                                         \n        Part Type Mandatory Description                               Allowed values\n       appId string yes The App Id of the App associated with the watched history Any\n       entityId string yes The entity Id of the watched content.     Any            \n       progress number no How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live) Any\n                        minumum: 0                                                  \n       completed boolean no Whether or not this viewing is considered “complete,” per the app’s definition thereof Any\n       watchedOn string no Whether or not this viewing is considered “complete,” per the app’s definition thereof Any\n       agePolicy string no An age policy of the user watching the content app:child \n                                                                     app:teen       \n                                                                     app:adult      \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n          \"actionType\": \"org.rdk.app.watchhistory.send\",                            \n          \"actionData\": {                                                           \n                 \"appId\": \"iPlayer\",                                                \n                   \"entityId\": \"abc1234xzy\",                                        \n                   \"progress\": 0.95,                                                \n                   \"completed\": true,                                               \n                   \"watchedOn\": \"2026-06-23T18:25:43.511Z\",                         \n                   \"agePolicy\": \"app:child\"                                         \n            }                                                                       \n       }                                                                            \n       Send DAB Request (org.rdk.dab.request)                                       \n       This Action Type requests the Home App to process a DAB Request Operation    \n       Format of actionData                                                         \n                                                                                    \n        Part   Type Mandatory Description      Allowed values                       \n       topic  string yes  The DAB topic of the request Any                          \n       correlationData string yes The DAB correlation data from the DAB Request Any \n                                                                                    \n       payload object yes The DAB Request payload Any",
+      "tables": [
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values"
+          ],
+          [
+            "appId",
+            "string",
+            "yes",
+            "The App Id of the App associated with the watched history",
+            "Any"
+          ],
+          [
+            "entityId",
+            "string",
+            "yes",
+            "The entity Id of the watched content.",
+            "Any"
+          ],
+          [
+            "progress",
+            "number",
+            "no",
+            "How much of the content has been watched (percentage as (0-0.999) for VOD, number of seconds for live)\nminumum: 0",
+            "Any"
+          ],
+          [
+            "completed",
+            "boolean",
+            "no",
+            "Whether or not this viewing is considered “complete,” per the app’s definition thereof",
+            "Any"
+          ],
+          [
+            "watchedOn",
+            "string",
+            "no",
+            "Whether or not this viewing is considered “complete,” per the app’s definition thereof",
+            "Any"
+          ],
+          [
+            "agePolicy",
+            "string",
+            "no",
+            "An age policy of the user watching the content",
+            "app:child\napp:teen\napp:adult"
+          ]
+        ],
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values"
+          ],
+          [
+            "topic",
+            "string",
+            "yes",
+            "The DAB topic of the request",
+            "Any"
+          ],
+          [
+            "correlationData",
+            "string",
+            "yes",
+            "The DAB correlation data from the DAB Request",
+            "Any"
+          ],
+          [
+            "payload",
+            "object",
+            "yes",
+            "The DAB Request payload",
+            "Any"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "text": "Example                                                                      \n                                                                                    \n       {                                                                            \n          \"actionType\": \"org.rdk.dab.request\",                                      \n          \"actionData\": {                                                           \n                   \"topic\": \"applications/install\",                                 \n                   \"correlationData\": \"abc123\",                                     \n                   \"payload\": {                                                     \n                        \"appId\": \"YouTube\",                                         \n                        \"url\": \"http://192.168.2.108/app/youtube\",                  \n                        \"format\": \"wgt\"                                             \n                 }                                                                  \n          }                                                                         \n       }                                                                            \n       {                                                                            \n          \"actionType\": \"org.rdk.dab.request\",                                      \n          \"actionData\": {                                                           \n                   \"topic\": \"power-mode/set\",                                       \n                   \"correlationData\": \"abc987\",                                     \n                   \"payload\": {                                                     \n                        \"powerMode\": \"Standby\"                                      \n                 }                                                                  \n          }                                                                         \n       }                                                                            \n       Set App API Token (org.rdk.app.apitoken.set)                                 \n       This Action Type requests the Home App to store the token provided by the initiator app for future API usage\n       Format of actionData                                                         \n        Part Type Mandatory Description Allowed values                              \n       token string yes The token required for API calls Any                        \n                                                                                    \n       Example                                                                      \n                                                                                    \n       {                                                                            \n          \"actionType\": \"org.rdk.app.apitoken.set\",                                 \n          \"actionData\": {                                                           \n            \"token\": \"<token>\"                                                      \n          }                                                                         \n       }                                                                            \n       Set App Identifier (org.rdk.app.identifier.set)                              \n                                                                                    \n       This Action Type requests the Home App to store the apps own device identifier and internal version provided by the initiator app for undefined usage by\n       the Home App (eg Store the Netflix ESN to display in the setting screen)     \n       Format of actionData                                                         \n                                                                                    \n        Part Type Mandatory Description   Allowed values                            \n       deviceId string no The device identifier as defined by the App Any           \n       version string no The internal version of the App Any                        \n                                                                                    \n       Example",
+      "tables": [
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values"
+          ],
+          [
+            "token",
+            "string",
+            "yes",
+            "The token required for API calls",
+            "Any"
+          ]
+        ],
+        [
+          [
+            "Part",
+            "Type",
+            "Mandatory",
+            "Description",
+            "Allowed values"
+          ],
+          [
+            "deviceId",
+            "string",
+            "no",
+            "The device identifier as defined by the App",
+            "Any"
+          ],
+          [
+            "version",
+            "string",
+            "no",
+            "The internal version of the App",
+            "Any"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "text": "{                                                                            \n          \"actionType\": \"org.rdk.app.identifier.set\",                               \n          \"actionData\": {                                                           \n            \"deviceId\": \"<id>\",                                                     \n                 \"version\": \"<version>\"                                             \n          }                                                                         \n       }",
+      "tables": []
+    }
+  ]
+}
