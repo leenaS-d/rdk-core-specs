@@ -6,7 +6,7 @@
       "name": "AppGateway",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "1.6.0.0.rc1",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-appgateway"
       ]
@@ -15,7 +15,7 @@
       "name": "AvOutput",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "2.1.3",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-avoutput"
       ]
@@ -24,7 +24,7 @@
       "name": "Bluetooth Manager",
       "category": "Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "1.0.11",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/bluetooth_mgr"
       ]
@@ -33,7 +33,7 @@
       "name": "bluetooth-core",
       "category": "Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "1.0.11",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/bluetooth"
       ]
@@ -42,7 +42,7 @@
       "name": "BlueZ",
       "category": "Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "5.48",
+      "releaseTag": "develop",
       "url": [
         "https://www.bluez.org"
       ]
@@ -51,7 +51,7 @@
       "name": "BreakPad",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "oss",
-      "releaseTag": "1.0-r0",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/google/breakpad"
       ]
@@ -60,7 +60,7 @@
       "name": "Casting",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "2.1.0",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-casting"
       ]
@@ -69,7 +69,7 @@
       "name": "cimplog",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/xmidt-org/cimplog"
       ]
@@ -78,7 +78,7 @@
       "name": "Common Utilities",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
-      "releaseTag": "1.5.5",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/common_utilities"
       ]
@@ -87,7 +87,7 @@
       "name": "Connectivity",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "1.7.7",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-connectivity"
       ]
@@ -96,7 +96,7 @@
       "name": "Control Manager (video)",
       "category": "WPEFramework",
       "layer": "RDK",
-      "releaseTag": "1.1.20",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/control"
       ]
@@ -105,7 +105,7 @@
       "name": "DBUS",
       "category": "InterProcess Communications",
       "layer": "oss",
-      "releaseTag": "1.0.0",
+      "releaseTag": "develop",
       "url": [
         "https://www.freedesktop.org/wiki/Software/dbus"
       ]
@@ -114,7 +114,7 @@
       "name": "Device Settings",
       "category": "Remote Device Management",
       "layer": "RDK",
-      "releaseTag": "1.0.39",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/devicesettings"
       ]
@@ -132,7 +132,7 @@
       "name": "Dobby",
       "category": "App Framework",
       "layer": "RDK",
-      "releaseTag": "3.20.0",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/Dobby"
       ]
@@ -141,7 +141,7 @@
       "name": "Dobby Thunder Plugin",
       "category": "App Framework",
       "layer": "RDK",
-      "releaseTag": "3.20.0",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/Dobby"
       ]
@@ -150,7 +150,7 @@
       "name": "Entservices APIs",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "4.1.8",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-apis"
       ]
@@ -159,7 +159,7 @@
       "name": "FirmwareDownload",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "1.0.3",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-firmwaredownload"
       ]
@@ -168,7 +168,7 @@
       "name": "FirmwareUpdate",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "1.2.5",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-firmwareupdate"
       ]
@@ -177,7 +177,7 @@
       "name": "Gstreamer Rialto Plugin",
       "category": "Video",
       "layer": "RDK",
-      "releaseTag": "v0.22.1",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/rialto-gstreamer"
       ]
@@ -186,7 +186,7 @@
       "name": "HDMI CEC Header",
       "category": "Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "1.4.0",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
       ]
@@ -195,7 +195,7 @@
       "name": "HDMICec",
       "category": "Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "1.0.11",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/hdmicec"
       ]
@@ -204,7 +204,7 @@
       "name": "iarmbus",
       "category": "InterProcess Communications",
       "layer": "RDK",
-      "releaseTag": "1.0.6",
+      "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/iarmbus"
       ]
@@ -216,7 +216,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-infra"
       ],
-      "releaseTag": "3.24.4"
+      "releaseTag": "develop"
     },
     {
       "name": "InputOutput",
@@ -234,7 +234,7 @@
       "url": [
         "https://github.com/rdkcentral/libSyscallWrapper"
       ],
-      "releaseTag": "1.3.3"
+      "releaseTag": "develop"
     },
     {
       "name": "libunpriv",
@@ -243,7 +243,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk-libunpriv"
       ],
-      "releaseTag": "1.0.2"
+      "releaseTag": "develop"
     },
     {
       "name": "MediaAndDrm",
@@ -252,7 +252,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-mediaanddrm"
       ],
-      "releaseTag": "1.9.2"
+      "releaseTag": "develop"
     },
     {
       "name": "memcr",
@@ -261,16 +261,16 @@
       "url": [
         "https://github.com/LibertyGlobal/memcr"
       ],
-      "releaseTag": "1.0.3"
+      "releaseTag": "develop"
     },
     {
-      "name": "new RDK AppManagers components",
+      "name": "entservices-appmanagers",
       "category": "App Framework",
       "layer": "RDK",
       "url": [
         "https://github.com/rdkcentral/entservices-appmanagers"
       ],
-      "releaseTag": "1.0.0.0"
+      "releaseTag": "develop"
     },
     {
       "name": "OpenSSL",
@@ -279,7 +279,7 @@
       "url": [
         "https://www.openssl.org"
       ],
-      "releaseTag": "3.0.15"
+      "releaseTag": "develop"
     },
     {
       "name": "PackageManager",
@@ -288,7 +288,7 @@
       "url": [
         "https://github.com/rdkcentral/PackageManager"
       ],
-      "releaseTag": "4.4.1"
+      "releaseTag": "develop"
     },
     {
       "name": "Peripherals",
@@ -297,7 +297,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-peripherals"
       ],
-      "releaseTag": "1.6.0"
+      "releaseTag": "develop"
     },
     {
       "name": "Protobuf",
@@ -306,7 +306,7 @@
       "url": [
         "https://github.com/protocolbuffers/protobuf"
       ],
-      "releaseTag": ""
+      "releaseTag": "develop"
     },
     {
       "name": "RBUS",
@@ -315,7 +315,7 @@
       "url": [
         "https://github.com/rdkcentral/rbus"
       ],
-      "releaseTag": "2.12.0"
+      "releaseTag": "develop"
     },
     {
       "name": "RDK Logger",
@@ -324,7 +324,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk_logger"
       ],
-      "releaseTag": "3.1.0"
+      "releaseTag": "develop"
     },
     {
       "name": "RDK V Firmware Upgrader",
@@ -333,7 +333,7 @@
       "url": [
         "https://github.com/rdkcentral/rdkfwupdater"
       ],
-      "releaseTag": "1.8.4"
+      "releaseTag": "develop"
     },
     {
       "name": "RDK Window Manager",
@@ -342,7 +342,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk-window-manager"
       ],
-      "releaseTag": "1.3.2"
+      "releaseTag": "develop"
     },
     {
       "name": "rdkcertconfig",
@@ -351,7 +351,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk-cert-config"
       ],
-      "releaseTag": "1.0.5"
+      "releaseTag": "develop"
     },
     {
       "name": "Remote Feature control",
@@ -360,7 +360,7 @@
       "url": [
         "https://github.com/rdkcentral/rfc"
       ],
-      "releaseTag": "1.2.6"
+      "releaseTag": "develop"
     },
     {
       "name": "Rialto",
@@ -369,7 +369,7 @@
       "url": [
         "https://github.com/rdkcentral/rialto"
       ],
-      "releaseTag": "v0.24.1"
+      "releaseTag": "develop"
     },
     {
       "name": "Rialto OCDM",
@@ -378,7 +378,7 @@
       "url": [
         "https://github.com/rdkcentral/rialto-ocdm"
       ],
-      "releaseTag": "v0.11.0"
+      "releaseTag": "develop"
     },
     {
       "name": "Rialto Server",
@@ -387,7 +387,7 @@
       "url": [
         "https://github.com/rdkcentral/rialto"
       ],
-      "releaseTag": "v0.24.1"
+      "releaseTag": "develop"
     },
     {
       "name": "RunTime",
@@ -396,7 +396,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-runtime"
       ],
-      "releaseTag": "1.2.3"
+      "releaseTag": "develop"
     },
     {
       "name": "SoftwareUpdate",
@@ -405,7 +405,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-maintenancemanager"
       ],
-      "releaseTag": "1.16.0"
+      "releaseTag": "develop"
     },
     {
       "name": "sysint",
@@ -414,7 +414,7 @@
       "url": [
         "https://github.com/rdkcentral/sysint"
       ],
-      "releaseTag": "6.0.3"
+      "releaseTag": "develop"
     },
     {
       "name": "System Time Manager",
@@ -423,7 +423,7 @@
       "url": [
         "https://github.com/rdkcentral/systemtimemgr"
       ],
-      "releaseTag": "1.7.0"
+      "releaseTag": "develop"
     },
     {
       "name": "Systemd",
@@ -432,7 +432,7 @@
       "url": [
         "https://systemd.io"
       ],
-      "releaseTag": "230"
+      "releaseTag": "develop"
     },
     {
       "name": "telemetry",
@@ -441,7 +441,7 @@
       "url": [
         "https://github.com/rdkcentral/telemetry"
       ],
-      "releaseTag": "1.9.6"
+      "releaseTag": "develop"
     },
     {
       "name": "ThunderJS",
@@ -450,7 +450,7 @@
       "url": [
         "https://github.com/rdkcentral/ThunderJS"
       ],
-      "releaseTag": "1.0.0"
+      "releaseTag": "develop"
     },
     {
       "name": "trower-base64",
@@ -459,7 +459,7 @@
       "url": [
         "https://github.com/Comcast/trower-base64"
       ],
-      "releaseTag": "1.0.0"
+      "releaseTag": "develop"
     },
     {
       "name": "Wayland",
@@ -468,7 +468,7 @@
       "url": [
         "https://wayland.freedesktop.org"
       ],
-      "releaseTag": "1.20.0"
+      "releaseTag": "develop"
     },
     {
       "name": "wdmp-c (WebPA Data model parser)",
@@ -477,7 +477,7 @@
       "url": [
         "https://github.com/xmidt-org/wdmp-c"
       ],
-      "releaseTag": "1.0.0"
+      "releaseTag": "develop"
     },
     {
       "name": "Westeros",
@@ -486,7 +486,7 @@
       "url": [
         "https://github.com/rdkcentral/westeros"
       ],
-      "releaseTag": "2.1.3"
+      "releaseTag": "develop"
     },
     {
       "name": "WPE Client Libraries",
@@ -495,7 +495,7 @@
       "url": [
         "https://github.com/WebPlatformForEmbedded/libwpe"
       ],
-      "releaseTag": "5.3.0"
+      "releaseTag": "develop"
     },
     {
       "name": "WPE WebKit",
@@ -504,7 +504,7 @@
       "url": [
         "https://github.com/WebPlatformForEmbedded/WPEWebKit"
       ],
-      "releaseTag": "2.46.2"
+      "releaseTag": "develop"
     },
     {
       "name": "WPEFramework",
@@ -513,7 +513,7 @@
       "url": [
         "https://github.com/rdkcentral/Thunder"
       ],
-      "releaseTag": "5.3.0-r2"
+      "releaseTag": "develop"
     },
     {
       "name": "WPEFramework UI",
@@ -522,7 +522,7 @@
       "url": [
         "https://github.com/rdkcentral/ThunderUI"
       ],
-      "releaseTag": "4.4.6"
+      "releaseTag": "develop"
     }
   ]
 }

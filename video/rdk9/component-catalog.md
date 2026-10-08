@@ -5,7 +5,7 @@ nav: components
 hero:
   eyebrow: Core and non-core components
   title: Components Catalog
-  status: Published
+  status: Draft
 table:
   id: catalog
   source: catalog
