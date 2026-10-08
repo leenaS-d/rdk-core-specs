@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-09-23T21:03:46Z",
+  "generatedAt": "2026-10-08T13:35:31Z",
   "title": "RDK-B EXT OpenSync Components",
   "subtitle": "Components for the EXT OpenSync device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -32,9 +32,10 @@
       "name": "Web PA\n\nincluding:\n- parodus\n- parodus2ccsp\n- start-parodus\n- wdmp-c",
       "category": "Remote Device Management",
       "tier": "optional",
-      "url": "https://github.com/rdkcentral/start-parodus",
+      "url": "https://github.com/xmidt-org/parodus2ccsp",
       "supportingUrls": [
-        "https://github.com/xmidt-org"
+        "https://github.com/xmidt-org/parodus",
+        "https://github.com/rdkcentral/start-parodus"
       ]
     },
     {
@@ -75,20 +76,6 @@
       "supportingUrls": []
     },
     {
-      "name": "RFC",
-      "category": "Remote Device Management",
-      "tier": "optional",
-      "url": "https://github.com/rdkcentral/rfc",
-      "supportingUrls": []
-    },
-    {
-      "name": "RDK OVS Agent",
-      "category": "Remote Device Management",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/open-virtual-switch-agent",
-      "supportingUrls": []
-    },
-    {
       "name": "Ethernet Agent (used for LAN)",
       "category": "LAN Interface Components",
       "tier": "optional",
@@ -100,7 +87,9 @@
       "category": "LAN Interface Components",
       "tier": "required",
       "url": "https://github.com/rdkcentral/OneWifi",
-      "supportingUrls": []
+      "supportingUrls": [
+        "https://github.com/rdkcentral/broadband-utils/tree/main/rdk-wps-monitor"
+      ]
     },
     {
       "name": "Mesh Agent\n(Integrates with OpenSync v2.4)",
@@ -204,8 +193,10 @@
       "name": "remote_debugger",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "common-core",
-      "url": null,
-      "supportingUrls": []
+      "url": "https://github.com/rdkcentral/remote_debugger",
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdm-agent"
+      ]
     },
     {
       "name": "T2 Telemetry",
@@ -219,7 +210,9 @@
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/test-and-diagnostic",
-      "supportingUrls": []
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdk-speedtest-cli"
+      ]
     },
     {
       "name": "cpuprocanalyzer",
@@ -268,13 +261,6 @@
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/data-model-cli",
-      "supportingUrls": []
-    },
-    {
-      "name": "PSM",
-      "category": "Non-Vol Storage",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/persistent-storage-manager",
       "supportingUrls": []
     },
     {

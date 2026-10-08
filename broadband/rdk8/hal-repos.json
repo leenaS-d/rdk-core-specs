@@ -4,11 +4,6 @@
     "repo": "rdkb-halif-bridge-util",
     "file": "bridge-util.json"
   },
-  "Cellular HAL": {
-    "repo": "rdkb-halif-cellular",
-    "file": "cellular.json",
-    "branch": "develop"
-  },
   "Cellular Modem HAL": {
     "repo": "rdkb-halif-cellular-modem",
     "file": "cellular-modem.json"
@@ -41,11 +36,6 @@
     "repo": "rdkb-halif-fwupgrade",
     "file": "fwupgrade.json"
   },
-  "GPON HAL": {
-    "repo": "rdkb-halif-gpon",
-    "file": "gpon.json",
-    "branch": "develop"
-  },
   "LPA (eSIM) HAL": {
     "repo": "rdkb-halif-lpa",
     "file": "lpa.json"
@@ -70,22 +60,13 @@
     "repo": "rdkb-halif-vlan",
     "file": "vlan.json"
   },
-  "Voice HAL": {
-    "repo": "rdkb-halif-voice",
-    "file": "voice.json",
-    "branch": "develop"
-  },
   "WAN HAL": {
     "repo": "rdkb-halif-wan",
     "file": "wan.json"
   },
   "WiFi HAL": {
     "repo": "rdkb-halif-wifi",
-    "file": "wifi.json"
-  },
-  "xDSL HAL": {
-    "repo": "rdkb-halif-xdsl",
-    "file": "xdsl.json",
+    "file": "wifi.json",
     "branch": "develop"
   },
   "Bluetooth": {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-09-23T21:03:33Z",
+  "generatedAt": "2026-10-08T13:35:44Z",
   "title": "RDK-B EXT EasyMesh Components",
   "subtitle": "Components for the EXT EasyMesh device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -36,25 +36,13 @@
       "supportingUrls": []
     },
     {
-      "name": "RFC",
-      "category": "Remote Device Management",
-      "tier": "optional",
-      "url": "https://github.com/rdkcentral/rfc",
-      "supportingUrls": []
-    },
-    {
       "name": "OneWiFi",
       "category": "LAN Interface Components",
       "tier": "required",
       "url": "https://github.com/rdkcentral/OneWifi",
-      "supportingUrls": []
-    },
-    {
-      "name": "unified-wifi-mesh\n(EasyMesh)",
-      "category": "LAN Interface Components",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/unified-wifi-mesh",
-      "supportingUrls": []
+      "supportingUrls": [
+        "https://github.com/rdkcentral/broadband-utils/tree/main/rdk-wps-monitor"
+      ]
     },
     {
       "name": "ieee1905-rs",
@@ -158,8 +146,10 @@
       "name": "remote_debugger",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "common-core",
-      "url": null,
-      "supportingUrls": []
+      "url": "https://github.com/rdkcentral/remote_debugger",
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdm-agent"
+      ]
     },
     {
       "name": "T2 Telemetry",
@@ -173,7 +163,9 @@
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/test-and-diagnostic",
-      "supportingUrls": []
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdk-speedtest-cli"
+      ]
     },
     {
       "name": "cpuprocanalyzer",
@@ -222,13 +214,6 @@
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/data-model-cli",
-      "supportingUrls": []
-    },
-    {
-      "name": "PSM",
-      "category": "Non-Vol Storage",
-      "tier": "optional",
-      "url": "https://github.com/rdkcentral/persistent-storage-manager",
       "supportingUrls": []
     },
     {

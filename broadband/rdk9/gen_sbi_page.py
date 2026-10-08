@@ -52,7 +52,7 @@ from layout import render_hero, render_page
 SCRIPT = r"""
 <script>
 const REPO_MAP_JSON = 'hal-repos.json';
-const RAW_BASE = 'https://raw.githubusercontent.com/cpokuru/';
+const LOCAL_BASE = 'docs/llapis/'; // local mirror — docs/llapis/<repo>/<file>
 
 function esc(s) {
   const d = document.createElement('div');
@@ -169,21 +169,27 @@ let repoMap = {};
 
 function halRowHtml(name) {
   const repoEntry = repoMap[name];
-  const action = repoEntry
+  const isTbd = !repoEntry || repoEntry.repo === 'TBD';
+  const version = isTbd ? 'TBD' : (repoEntry.branch || 'main');
+  const versionPill = isTbd
+    ? `<span class="ver-pill ver-pill-tbd">${esc(version)}</span>`
+    : `<span class="ver-pill">${esc(version)}</span>`;
+  const action = !isTbd
     ? `<button class="dml-btn" data-name="${esc(name)}">View HAL APIs</button>`
     : `<span class="muted" style="font-size:0.85rem;">Not available yet</span>`;
   return `<tr>
     <td>${esc(name)}</td>
-    <td class="mono" style="font-size:0.82rem;color:var(--muted);">${esc(repoEntry ? (repoEntry.repo || repoEntry) : '')}</td>
+    <td>${versionPill}</td>
     <td>${action}</td>
   </tr>`;
 }
 
 function renderHalTable(filterText) {
   const q = (filterText || '').trim().toLowerCase();
-  const rows = halNames.filter(n => !q || n.toLowerCase().includes(q));
+  const available = halNames.filter(n => repoMap[n] && repoMap[n].repo !== 'TBD');
+  const rows = available.filter(n => !q || n.toLowerCase().includes(q));
   document.getElementById('hal-table-body').innerHTML = rows.map(halRowHtml).join('');
-  document.getElementById('hal-count').textContent = `${rows.length} of ${halNames.length} HAL interfaces`;
+  document.getElementById('hal-count').textContent = `${rows.length} of ${available.length} HAL interfaces`;
   document.querySelectorAll('.dml-btn').forEach(btn => {
     btn.addEventListener('click', () => loadHal(btn.dataset.name));
   });
@@ -194,7 +200,7 @@ function loadHal(name) {
   const repoSlug = typeof raw === 'string' ? raw : raw.repo;
   const { repo, file, branch } = resolveRepoEntry(raw, repoSlug);
   const panel = document.getElementById('hal-panel');
-  const url = RAW_BASE + repo + '/' + branch + '/' + file;
+  const url = LOCAL_BASE + repo + '/' + file; // served from docs/llapis/<repo>/<file>
   panel.innerHTML = `
     <div class="subhead" style="margin-top:0;">${esc(name)} <span class="mono" style="font-weight:400;font-size:0.8rem;color:var(--muted);">// ${esc(repo)}</span></div>
     <p>Loading <code>${esc(url)}</code>…</p>`;
@@ -242,17 +248,22 @@ fetch(REPO_MAP_JSON, { cache: 'no-store' })
 
 EXTRA_CSS = """
 <style>
-  .search-row { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .search-row { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; width: 100%; }
   .search-row input {
-    flex: 1; max-width: 320px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 8px;
+    flex: 1; min-width: 0; padding: 9px 14px; border: 1px solid var(--border); border-radius: 6px;
     font-family: inherit; font-size: 0.9rem;
   }
-  .search-row #hal-count { font-size: 0.85rem; color: var(--muted); }
-  .dml-btn {
-    background: var(--hal); color: #fff; border: none; border-radius: 6px;
-    padding: 6px 14px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  .search-row #hal-count { font-size: 0.85rem; color: var(--muted); white-space: nowrap; margin-left: 4px; }
+  .ver-pill {
+    display: inline-block; padding: 3px 10px; border-radius: 8px; font-size: 0.82rem;
+    font-family: monospace; background: #f0f9ff; color: #0369a1; line-height: 1.5;
   }
-  .dml-btn:hover { filter: brightness(1.15); }
+  .ver-pill-tbd { background: #f3f4f6; color: #9ca3af; }
+  .dml-btn {
+    display: inline-block; padding: 7px 20px; border-radius: 999px; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; border: none; background: #e8eef8; color: #2d4eb5;
+  }
+  .dml-btn:hover { background: #d5e0f3; color: #1e3fa0; }
   #hal-panel { margin-top: 20px; }
 
   /* ---- HAL API card rendering (emit_hal_spec_json.py shape) ---- */
@@ -298,9 +309,8 @@ EXTRA_CSS = """
 
 def build_page() -> str:
     body = f'''
-{render_hero("South Bound APIs", "South Bound APIs",
-    "The HAL and vendor-facing interfaces RDK-B exposes downward — the rdkb-halif-* "
-    "contracts between middleware and SoC/BSP. Click a HAL interface below to load its API spec.",
+{render_hero("South-bound APIs", "South-bound APIs",
+    "Hardware Abstraction Layer (HAL) specifications to aid silicon platform porting.",
     compact=True, visual_key="sbi")}
 
 <section class="tight-top">
@@ -310,7 +320,7 @@ def build_page() -> str:
       <span id="hal-count" class="mono"></span>
     </div>
     <table class="def-table">
-      <thead><tr><th>HAL Interface</th><th>Repo</th><th>APIs</th></tr></thead>
+      <thead><tr><th>HAL Interface</th><th>Version</th><th>APIs</th></tr></thead>
       <tbody id="hal-table-body">
         <tr><td colspan="3">Loading HAL interfaces…</td></tr>
       </tbody>
@@ -320,7 +330,7 @@ def build_page() -> str:
   <div id="hal-panel"></div>
 </section>
 '''
-    head_extra = "<title>South Bound APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS + SCRIPT
+    head_extra = "<title>South-bound APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS + SCRIPT
     return render_page("sbi", head_extra, body)
 
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-09-23T21:03:32Z",
+  "generatedAt": "2026-10-08T13:35:44Z",
   "title": "RDK-B GW OpenSync Components",
   "subtitle": "Components for the GW OpenSync device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -46,9 +46,10 @@
       "name": "Web PA\n\nincluding:\n- parodus\n- parodus2ccsp\n- start-parodus\n- wdmp-c",
       "category": "Remote Device Management",
       "tier": "optional",
-      "url": "https://github.com/rdkcentral/start-parodus",
+      "url": "https://github.com/xmidt-org/parodus2ccsp",
       "supportingUrls": [
-        "https://github.com/xmidt-org"
+        "https://github.com/xmidt-org/parodus",
+        "https://github.com/rdkcentral/start-parodus"
       ]
     },
     {
@@ -89,20 +90,6 @@
       "supportingUrls": []
     },
     {
-      "name": "RFC",
-      "category": "Remote Device Management",
-      "tier": "optional",
-      "url": "https://github.com/rdkcentral/rfc",
-      "supportingUrls": []
-    },
-    {
-      "name": "RDK OVS Agent",
-      "category": "Remote Device Management",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/open-virtual-switch-agent",
-      "supportingUrls": []
-    },
-    {
       "name": "Ethernet Agent (used for LAN)",
       "category": "LAN Interface Components",
       "tier": "optional",
@@ -114,7 +101,9 @@
       "category": "LAN Interface Components",
       "tier": "required",
       "url": "https://github.com/rdkcentral/OneWifi",
-      "supportingUrls": []
+      "supportingUrls": [
+        "https://github.com/rdkcentral/broadband-utils/tree/main/rdk-wps-monitor"
+      ]
     },
     {
       "name": "Mesh Agent\n(Integrates with OpenSync v2.4)",
@@ -218,25 +207,6 @@
       "supportingUrls": []
     },
     {
-      "name": "dhcp-manager (recipe for DHCP client and Server)",
-      "category": "DHCP",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/dhcp-manager",
-      "supportingUrls": [
-        "https://github.com/rdkcentral/rdkb-halif-dhcp",
-        "https://github.com/rdkcentral/rdkb-halif-dhcp6c",
-        "https://github.com/rdkcentral/rdkb-halif-test-dhcp",
-        "https://github.com/rdkcentral/rdkb-halif-test-dhcp6c"
-      ]
-    },
-    {
-      "name": "P&M",
-      "category": "Routing, parental control and WAN Management Components",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/provisioning-and-management",
-      "supportingUrls": []
-    },
-    {
       "name": "WAN Manager",
       "category": "Routing, parental control and WAN Management Components",
       "tier": "required",
@@ -255,13 +225,6 @@
       "category": "Routing, parental control and WAN Management Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/secure-upnp",
-      "supportingUrls": []
-    },
-    {
-      "name": "ccsp-xdns",
-      "category": "Routing, parental control and WAN Management Components",
-      "tier": "optional",
-      "url": "https://github.com/rdkcentral/xdns",
       "supportingUrls": []
     },
     {
@@ -335,15 +298,6 @@
       "supportingUrls": []
     },
     {
-      "name": "MTA Agent",
-      "category": "Voice Related Components",
-      "tier": "optional",
-      "url": "https://github.com/rdkcentral/media-terminal-adapter-agent",
-      "supportingUrls": [
-        "https://github.com/rdkcentral/rdkb-halif-test-mta"
-      ]
-    },
-    {
       "name": "rdkb-halif-mta",
       "category": "Voice Related Components",
       "tier": "optional",
@@ -406,8 +360,10 @@
       "name": "remote_debugger",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "common-core",
-      "url": null,
-      "supportingUrls": []
+      "url": "https://github.com/rdkcentral/remote_debugger",
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdm-agent"
+      ]
     },
     {
       "name": "T2 Telemetry",
@@ -421,7 +377,9 @@
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/test-and-diagnostic",
-      "supportingUrls": []
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdk-speedtest-cli"
+      ]
     },
     {
       "name": "ipoe-health-check",
@@ -491,13 +449,6 @@
       "category": "InterProcess Communications Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/notify-component",
-      "supportingUrls": []
-    },
-    {
-      "name": "PSM",
-      "category": "Non-Vol Storage",
-      "tier": "required",
-      "url": "https://github.com/rdkcentral/persistent-storage-manager",
       "supportingUrls": []
     },
     {

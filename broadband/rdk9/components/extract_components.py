@@ -195,13 +195,18 @@ def _all_profiles_classification(wb) -> dict[str, dict[str, str]]:
 def _split_urls(cell) -> list[str]:
     """Split a Github Link cell into one or more URLs. Most cells hold a
     single URL; a handful list several -- one per line, sometimes comma-
-    or semicolon-separated on one line (see module docstring). Any
-    resulting fragment that doesn't look like a URL is dropped rather than
-    surfaced as a broken link -- some of these cells mix in plain-text
-    notes alongside the real links."""
+    or semicolon-separated on one line, sometimes space-separated, and
+    occasionally concatenated directly (e.g. "url1https://url2" with no
+    separator at all). Any resulting fragment that doesn't look like a URL
+    is dropped rather than surfaced as a broken link -- some of these cells
+    mix in plain-text notes alongside the real links."""
     if not isinstance(cell, str):
         return []
-    parts = re.split(r"[\n,;]+", cell)
+    # Insert a newline before any https:// that is directly preceded by a
+    # non-separator character (handles the concatenated case, e.g.
+    # "rdkcentral/foohttps://rdkcentral/bar").
+    cell = re.sub(r"(?<=[^\n,;\s])(https?://)", r"\n\1", cell)
+    parts = re.split(r"[\n,;\s]+", cell)
     return [p.strip() for p in parts if p.strip().lower().startswith("http")]
 
 
@@ -224,12 +229,13 @@ def _rows(wb):
 
     cur_subsys = None
     seen_names = set()
-    for row in ws.iter_rows(min_row=3, values_only=True):
-        if row[name_idx] is None and row[subsys_idx] is None:
+    for row in ws.iter_rows(min_row=3):
+        raw = [c.value for c in row]
+        if raw[name_idx] is None and raw[subsys_idx] is None:
             continue
-        if row[subsys_idx]:
-            cur_subsys = row[subsys_idx]
-        name = row[name_idx]
+        if raw[subsys_idx]:
+            cur_subsys = raw[subsys_idx]
+        name = raw[name_idx]
         if name is None:
             continue
         if isinstance(name, str):
@@ -241,7 +247,14 @@ def _rows(wb):
         if name in seen_names:
             continue
         seen_names.add(name)
-        urls = _split_urls(row[url_idx])
+        # Cell value may be None if URLs are stored only as hyperlinks in
+        # Excel (openpyxl values_only=True misses hyperlinks entirely).
+        cell_val = raw[url_idx]
+        if cell_val is None:
+            url_cell = row[url_idx]
+            if url_cell.hyperlink:
+                cell_val = url_cell.hyperlink.target
+        urls = _split_urls(cell_val)
         url = urls[0] if urls else None
         supporting_urls = urls[1:]
 
@@ -262,7 +275,7 @@ def _rows(wb):
             "name": name,
             "url": url,
             "supporting_urls": supporting_urls,
-            "is_core": row[core_idx] == "CORE",
+            "is_core": raw[core_idx] == "CORE",
             "profile_values": profile_values,
         }
 
