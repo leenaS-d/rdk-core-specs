@@ -1,0 +1,946 @@
+{
+  "schemaVersion": "pdf-extract-1.0",
+  "document": "firebolt-api-spec",
+  "source": "Firebolt 8 API Spec.pdf",
+  "sha256": "cd97b2e5df8e85cf2aad43804346b189a22382422cb0d4ebf375f5785a20f578",
+  "extractedAt": "2026-10-06T14:58:23.711203+00:00",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Firebolt®  8.0 API  Specification                                            \n                                                                                    \n        Document status ARCHIVED                                                    \n                                                                                    \n        Author    Andrew Bennett                                                    \n                                                                                    \n                                                                                    \n       Note: this is an archived version - please refer to the latest version of this\n       page at Firebolt 9 API Specification                                         \n                                                                                    \n                                                                                    \n                                                                                    \n        API version Link Summary                                                    \n       8.0.1   213     Device.hdr - fixed typo: hd10Plus should be hdr10Plus        \n       8.0.0   180     8.0.0                                                        \n                                                                                    \n                           This is the approved version for RDK8                    \n                                                                                    \n                                                                                    \n                                                                                    \n       Key                                                                          \n                                                                                    \n                                                                                    \n        Color Meaning                                                               \n       Green Approved - ready for development                                       \n       Red  Not approved - not ready for development                                \n                                                                                    \n                                                                                    \n       Types                                                                        \n                                                                                    \n           Type Definition                                                          \n       1  unsigned 32-bit unsigned integer                                          \n                                                                                    \n       2  double 64-bit double-precision floating point number                      \n                                                                                    \n       Errors                                                                       \n                                                                                    \n           Class Value Name  Description              Examples          Open        \n                                                                        issues      \n       1  Generic -32601 Method not known The method is not known to the version of Firebolt on this Device.foo\n                            device                                                  \n       2       -40300 Method not The app does not have permission to call this method\n                   permitted                                                        \n       3       -32602 Arguments invalid The set of arguments is not valid           \n       4       -32100 Unspecified error Any unexpected error Memory allocation failure, transport\n                                                      failure                       \n       5  Specific -50100 Method not A non-mandatory method that is not implemented on this SecureStorage.get on a non-Comcast\n                   supported device                   device                        \n       6           App state invalid The app is not in an appropriate lifecycle state to call this\n                            method                                                  \n       Methods",
+      "tables": [
+        [
+          [
+            "Document status",
+            "ARCHIVED"
+          ],
+          [
+            "Author",
+            "Andrew Bennett"
+          ]
+        ],
+        [
+          [
+            "API version",
+            "Link",
+            "Summary"
+          ],
+          [
+            "8.0.1",
+            "213",
+            "Device.hdr - fixed typo: hd10Plus should be hdr10Plus"
+          ],
+          [
+            "8.0.0",
+            "180",
+            "8.0.0\nThis is the approved version for RDK8"
+          ]
+        ],
+        [
+          [
+            "Color",
+            "Meaning"
+          ],
+          [
+            "Green",
+            "Approved - ready for development"
+          ],
+          [
+            "Red",
+            "Not approved - not ready for development"
+          ]
+        ],
+        [
+          [
+            "",
+            "Type",
+            "Definition"
+          ],
+          [
+            "1",
+            "unsigned",
+            "32-bit unsigned integer"
+          ],
+          [
+            "2",
+            "double",
+            "64-bit double-precision floating point number"
+          ]
+        ],
+        [
+          [
+            "",
+            "Class",
+            "Value",
+            "Name",
+            "Description",
+            "Examples",
+            "Open\nissues"
+          ],
+          [
+            "1",
+            "Generic",
+            "-32601",
+            "Method not known",
+            "The method is not known to the version of Firebolt on this\ndevice",
+            "Device.foo",
+            ""
+          ],
+          [
+            "2",
+            null,
+            "-40300",
+            "Method not\npermitted",
+            "The app does not have permission to call this method",
+            "",
+            ""
+          ],
+          [
+            "3",
+            null,
+            "-32602",
+            "Arguments invalid",
+            "The set of arguments is not valid",
+            "",
+            ""
+          ],
+          [
+            "4",
+            null,
+            "-32100",
+            "Unspecified error",
+            "Any unexpected error",
+            "Memory allocation failure, transport\nfailure",
+            ""
+          ],
+          [
+            "5",
+            "Specific",
+            "-50100",
+            "Method not\nsupported",
+            "A non-mandatory method that is not implemented on this\ndevice",
+            "SecureStorage.get on a non-Comcast\ndevice",
+            ""
+          ],
+          [
+            "6",
+            null,
+            "",
+            "App state invalid",
+            "The app is not in an appropriate lifecycle state to call this\nmethod",
+            "",
+            ""
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "text": "Module Method Parameters Returns Specific API C++ JS Description         \n                                            errors version                          \n       1  Accessibility audioDescrip None bool None 8.0.0   Returns the audio description setting of the\n               tion                                         device                  \n               onAudioDesc                                                          \n               riptionChang                                                         \n               ed                                                                   \n       2  Accessibility closedCaptio None  None   8.0.0     Returns captions settings: enabled, and a list\n               nsSettings       enabled - bool              of zero or more languages in order of\n                                preferredLanguages - list   decreasing preference   \n               onClosedCa       of strings                                          \n               ptionsSetting      [] (if not initialized)                           \n               sChanged           list of one or more                               \n                                  ISO 639-2/B                                       \n       3  Accessibility highContrast None bool None 8.0.0   Returns the high contrast UI device setting\n               UI                                                                   \n               onHighContr                                                          \n               astUIChanged                                                         \n       4  Accessibility voiceGuidan None   None   8.0.0     Returns voice guidance settings: enabled,\n               ceSettings       enabled - bool              rate, and verbosity     \n                                rate - double                                       \n               onVoiceGuid        1 (normal rate)                                   \n               anceSettings       0.1 to 10 inclusive                               \n               Changed          navigationHints - bool                              \n       5  Actions start intent - string None None ???       Send an intent to the platform\n                                                            Argument is a JSON document\n       6  Actions intent None string       None   ???       Returns the intent that was most recently\n                                                            received from the platform, as a JSON\n               onIntent                                     document. Getter is typically called by an\n                                                            app after transitioning to the active lifecycle\n                                                            state                   \n       7  Advertising advertisingId None   None   8.0.0     Returns the IFA         \n                                ifa - string - a UUID                               \n                                ifa_type - string, one of                           \n                                  \"dpid\" - device                                   \n                                  provided ID                                       \n                                  \"sspid\" - SSP                                     \n                                  provided ID                                       \n                                  \"sessionid\" - session                             \n                                  /synthetic ID                                     \n                                lmt - string, one of                                \n                                  \"0\"                                               \n                                  \"1\"                                               \n       8  Device uid None     string - a UUID None 8.0.0    Returns a persistent unique UUID for the\n                                                            current app and device. The UUID is reset\n                                                            when the app or device is reset\n       9  Device deviceClass None enum     None   ???       Returns the class of the device\n                                ott - no tuner/demod, no                            \n                                integrated display                                  \n                                stb - with tuner/demod, no                          \n                                integrated display                                  \n                                tv - possibly tuner/demod,                          \n                                with integrated display                             \n       10 Device uptime None  unsigned     None   ???       Returns the number of seconds since most\n                                                            recent device boot, including any time spent\n                                                            during deep sleep       \n       11 Device timeInActive None unsigned App state ???   Returns the number of seconds since the\n               State                       invalid          device transitioned to the ON power state\n       12 Device chipsetId None string - (see Chipset Id in None ??? Returns chipset ID as a printable string, e.g.\n                              Devices table)                \"BCM72180\"              \n       13 Device hdr None                  None   8.0.0     Returns the HDR standards that are suported\n                                hdr10 - bool                by the attached TV or the integral display\n               onHdrChang       hdr10Plus - bool                                    \n               ed               dolbyVision - bool             OTT/STB device: supported by the\n                                hlg - bool                     device and indicated by the EDID of\n                                                               the attached TV      \n                                                               TV: supported by the device",
+      "tables": [
+        [
+          [
+            "",
+            "Module",
+            "Method",
+            "Parameters",
+            "Returns",
+            "Specific\nerrors",
+            "API\nversion",
+            "C++",
+            "JS",
+            "Description"
+          ],
+          [
+            "1",
+            "Accessibility",
+            "audioDescrip\ntion\nonAudioDesc\nriptionChang\ned",
+            "None",
+            "bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the audio description setting of the\ndevice"
+          ],
+          [
+            "2",
+            "Accessibility",
+            "closedCaptio\nnsSettings\nonClosedCa\nptionsSetting\nsChanged",
+            "None",
+            "enabled - bool\npreferredLanguages - list\nof strings\n[] (if not initialized)\nlist of one or more\nISO 639-2/B",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns captions settings: enabled, and a list\nof zero or more languages in order of\ndecreasing preference"
+          ],
+          [
+            "3",
+            "Accessibility",
+            "highContrast\nUI\nonHighContr\nastUIChanged",
+            "None",
+            "bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the high contrast UI device setting"
+          ],
+          [
+            "4",
+            "Accessibility",
+            "voiceGuidan\nceSettings\nonVoiceGuid\nanceSettings\nChanged",
+            "None",
+            "enabled - bool\nrate - double\n1 (normal rate)\n0.1 to 10 inclusive\nnavigationHints - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns voice guidance settings: enabled,\nrate, and verbosity"
+          ],
+          [
+            "5",
+            "Actions",
+            "start",
+            "intent - string",
+            "None",
+            "None",
+            "???",
+            "",
+            "",
+            "Send an intent to the platform\nArgument is a JSON document"
+          ],
+          [
+            "6",
+            "Actions",
+            "intent\nonIntent",
+            "None",
+            "string",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the intent that was most recently\nreceived from the platform, as a JSON\ndocument. Getter is typically called by an\napp after transitioning to the active lifecycle\nstate"
+          ],
+          [
+            "7",
+            "Advertising",
+            "advertisingId",
+            "None",
+            "ifa - string - a UUID\nifa_type - string, one of\n\"dpid\" - device\nprovided ID\n\"sspid\" - SSP\nprovided ID\n\"sessionid\" - session\n/synthetic ID\nlmt - string, one of\n\"0\"\n\"1\"",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the IFA"
+          ],
+          [
+            "8",
+            "Device",
+            "uid",
+            "None",
+            "string - a UUID",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns a persistent unique UUID for the\ncurrent app and device. The UUID is reset\nwhen the app or device is reset"
+          ],
+          [
+            "9",
+            "Device",
+            "deviceClass",
+            "None",
+            "enum\nott - no tuner/demod, no\nintegrated display\nstb - with tuner/demod, no\nintegrated display\ntv - possibly tuner/demod,\nwith integrated display",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the class of the device"
+          ],
+          [
+            "10",
+            "Device",
+            "uptime",
+            "None",
+            "unsigned",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the number of seconds since most\nrecent device boot, including any time spent\nduring deep sleep"
+          ],
+          [
+            "11",
+            "Device",
+            "timeInActive\nState",
+            "None",
+            "unsigned",
+            "App state\ninvalid",
+            "???",
+            "",
+            "",
+            "Returns the number of seconds since the\ndevice transitioned to the ON power state"
+          ],
+          [
+            "12",
+            "Device",
+            "chipsetId",
+            "None",
+            "string - (see Chipset Id in\nDevices table)",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns chipset ID as a printable string, e.g.\n\"BCM72180\""
+          ],
+          [
+            "13",
+            "Device",
+            "hdr\nonHdrChang\ned",
+            "None",
+            "hdr10 - bool\nhdr10Plus - bool\ndolbyVision - bool\nhlg - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the HDR standards that are suported\nby the attached TV or the integral display\nOTT/STB device: supported by the\ndevice and indicated by the EDID of\nthe attached TV\nTV: supported by the device"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "text": "14 Discovery watched   None         None   8.0.0     Notify the platform that content has been\n                       entityId - string                    partially or completely watched\n                       progress -                                                   \n                       double -                             progress: VOD: 0 to 0.99, live: number of\n                       optional                             seconds                 \n                       completed -                                                  \n                       bool - optional                      watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\"\n                       watchedOn -                                                  \n                       ISO 8601 date                        agePolicy: app:adult, app:child, app:teen\n                       and time in                                                  \n                       UTC - optional                                               \n                       agePolicy -                                                  \n                       string - optional                                            \n       15 Display size None                None   ???       Returns the physical dimensions of the\n                                width - unsigned            connected or integral display, in centimeters\n                                height - unsigned                                   \n                                                            Returns 0, 0 on a OTT/STB device when a\n                                                            display is not connected over HDMI\n                                                            Typical values          \n                                                               43\" - 97, 56         \n                                                               55\" - 123, 71        \n                                                               65\" - 145, 83        \n       16 Display maxResoluti None         None   ???       Returns the physical/native resolution of the\n               on               width - unsigned            connected or integral display, in pixels\n                                height - unsigned                                   \n                                                            Returns 0, 0 on a OTT/STB device when a\n                                                            display is not connected over HDMI\n                                                            Typical values          \n                                                               HD Ready - 1280, 720 \n                                                               Full HD - 1920, 1080 \n                                                               UHD - 3840, 2160     \n       17 Display edid None   string - Base64 None ???      Returns the EDID (and extensions) of the\n                                                            connected or integral display, as a Base64\n                                                            encoded string          \n                                                            Returns an empty string, \"\", on a OTT/STB\n                                                            device when a display is not connected over\n                                                            HDMI                    \n       18 Firebolt apiVersion None         None   ???       Returns the Firebolt API version of the client\n                                version - string            library as a semantic versioning string, and\n                                major - unsigned            unsigned numbers representing the same\n                                minor - unsigned            version                 \n                                patch - unsigned                                    \n                                                            Note: the version returned is of the client\n                                                            library, not the platform\n       19 Lifecycle2 close type - enum None None  8.0.0     Request the platform to deactivate the app,\n                                                            and possibly take further action\n                       deactivate                                                   \n                       unload                               type                    \n                       killReload                                                   \n                       killReactivate                          deactivate - app is deactivated (if\n                                                               active) - typically a user closing an app\n                                                               unload - app is deactivated (if active)\n                                                               and terminated - typically an app has\n                                                               detected an error    \n                                                               killReload - app is killed, then reloaded\n                                                               to paused or suspended (by policy)\n                                                               killReactivate - app is killed, reloaded,\n                                                               then activated       \n                                                            window.close() maps to unload\n                                                            window.minimize() maps to deactivate\n                                                            Module is named Lifecycle in C++ Client\n                                                            Library                 \n       20 Lifecycle2 state None enum       None   8.0.0     Returns the current lifecycle state of the\n                                                            app. The first lifecycle state that can be\n                                initializing                observed by an app/runtime is the initializing\n                                active                      state                   \n                                paused                                              \n                                suspended                   Apps/runtimes should ordinarily use state\n                                hibernated                  change notifications rather than this method\n                                terminating",
+      "tables": [
+        [
+          [
+            "14",
+            "Discovery",
+            "watched",
+            "entityId - string\nprogress -\ndouble -\noptional\ncompleted -\nbool - optional\nwatchedOn -\nISO 8601 date\nand time in\nUTC - optional\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Notify the platform that content has been\npartially or completely watched\nprogress: VOD: 0 to 0.99, live: number of\nseconds\nwatchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\"\nagePolicy: app:adult, app:child, app:teen"
+          ],
+          [
+            "15",
+            "Display",
+            "size",
+            "None",
+            "width - unsigned\nheight - unsigned",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the physical dimensions of the\nconnected or integral display, in centimeters\nReturns 0, 0 on a OTT/STB device when a\ndisplay is not connected over HDMI\nTypical values\n43\" - 97, 56\n55\" - 123, 71\n65\" - 145, 83"
+          ],
+          [
+            "16",
+            "Display",
+            "maxResoluti\non",
+            "None",
+            "width - unsigned\nheight - unsigned",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the physical/native resolution of the\nconnected or integral display, in pixels\nReturns 0, 0 on a OTT/STB device when a\ndisplay is not connected over HDMI\nTypical values\nHD Ready - 1280, 720\nFull HD - 1920, 1080\nUHD - 3840, 2160"
+          ],
+          [
+            "17",
+            "Display",
+            "edid",
+            "None",
+            "string - Base64",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the EDID (and extensions) of the\nconnected or integral display, as a Base64\nencoded string\nReturns an empty string, \"\", on a OTT/STB\ndevice when a display is not connected over\nHDMI"
+          ],
+          [
+            "18",
+            "Firebolt",
+            "apiVersion",
+            "None",
+            "version - string\nmajor - unsigned\nminor - unsigned\npatch - unsigned",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns the Firebolt API version of the client\nlibrary as a semantic versioning string, and\nunsigned numbers representing the same\nversion\nNote: the version returned is of the client\nlibrary, not the platform"
+          ],
+          [
+            "19",
+            "Lifecycle2",
+            "close",
+            "type - enum\ndeactivate\nunload\nkillReload\nkillReactivate",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Request the platform to deactivate the app,\nand possibly take further action\ntype\ndeactivate - app is deactivated (if\nactive) - typically a user closing an app\nunload - app is deactivated (if active)\nand terminated - typically an app has\ndetected an error\nkillReload - app is killed, then reloaded\nto paused or suspended (by policy)\nkillReactivate - app is killed, reloaded,\nthen activated\nwindow.close() maps to unload\nwindow.minimize() maps to deactivate\nModule is named Lifecycle in C++ Client\nLibrary"
+          ],
+          [
+            "20",
+            "Lifecycle2",
+            "state",
+            "None",
+            "enum\ninitializing\nactive\npaused\nsuspended\nhibernated\nterminating",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the current lifecycle state of the\napp. The first lifecycle state that can be\nobserved by an app/runtime is the initializing\nstate\nApps/runtimes should ordinarily use state\nchange notifications rather than this method"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "text": "21 Lifecycle2 onStateChan List, of length one, of N/A N/A 8.0.0 Subscribe to/unsubscribe from lifecycle state\n               ged   the lifecycle state                    changes. The app/runtime remains in the\n                     change                                 initializing state until the subscribe call is\n                                                            made to the platform    \n                       oldState - enum                                              \n                       newState -                           Notification of lifecycle state change, raised\n                       enum                                 after the platform has transitioned the app\n                                                            /runtime to the new lifecycle state\n                                                            Note: the list always carries exactly one\n                                                            lifecycle state change  \n                                                            Valid transitions       \n                                                              1. initializing to paused\n                                                              2. initializing to suspended\n                                                              3. paused to active   \n                                                              4. active to paused   \n                                                              5. paused to suspended\n                                                              6. suspended to paused\n                                                              7. suspended to hibernated\n                                                              8. hibernated to suspended\n                                                              9. any to terminating \n       22 Localization country None string, either None 8.0.0 Return the country, e.g. US, CA, GB, BE\n               onCountryCh      \"\" (if not initialized)                             \n               anged            ISO 3166-1 alpha-2 (see                             \n                                Country in Devices table)                           \n       23 Localization preferredAud None list of strings, either None 8.0.0 A list of zero or more languages in order of\n               ioLanguages                                  decreasing preference. Typically two\n                                [] (if not initialized)     languages are present. A language may be\n               onPreferredA     list of one or more ISO     repeated in the list    \n               udioLanguag      639-2/B (see Secondary                              \n               esChanged        Audio Language in                                   \n                                Devices table)                                      \n       24 Localization presentation None string, either None 8.0.0 The presentation language of the device, e.g.\n               Language                                     en-US                   \n                                \"\" (if not initialized)                             \n               onPresentati     BCP 47 (see Presentation                            \n               onLanguage       Languages in Devices                                \n               Changed          table)                                              \n       25 Metrics ready None  None         None   8.0.0     Inform the platform that the app is minimally\n                                                            usable. This method is called automatically\n                                                            by Lifecycle.ready()    \n       26 Metrics signIn None None         None   8.0.0     Log a sign in event, called by Discovery.\n                                                            signIn()                \n       27 Metrics signOut None None        None   8.0.0     Log a sign out event, called by Discovery.\n                                                            signOut()               \n       28 Metrics startContent None        None   8.0.0     Inform the platform that your user has started\n                       entityId - string                    content                 \n                       - optional                                                   \n                       agePolicy -                                                  \n                       string - optional                                            \n       29 Metrics stopContent None         None   8.0.0     Inform the platform that your user has\n                       entityId - string                    stopped content         \n                       - optional                                                   \n                       agePolicy -                                                  \n                       string - optional                                            \n       30 Metrics page        None         None   8.0.0     Inform the platform that your user has\n                       pageId - string                      navigated to a page or view\n                       agePolicy -                                                  \n                       string - optional                                            \n       31 Metrics error       None         None   8.0.0     Inform the platform of an error that has\n                       type - enum                          occurred in your app    \n                         network                                                    \n                         media                                                      \n                         restriction                                                \n                         entitleme                                                  \n                         nt                                                         \n                         other                                                      \n                       code - string                                                \n                       description -                                                \n                       string                                                       \n                       visible - bool                                               \n                       parameters -                                                 \n                       arg list -                                                   \n                       optional                                                     \n                       agePolicy -                                                  \n                       string - optional",
+      "tables": [
+        [
+          [
+            "21",
+            "Lifecycle2",
+            "onStateChan\nged",
+            "List, of length one, of\nthe lifecycle state\nchange\noldState - enum\nnewState -\nenum",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Subscribe to/unsubscribe from lifecycle state\nchanges. The app/runtime remains in the\ninitializing state until the subscribe call is\nmade to the platform\nNotification of lifecycle state change, raised\nafter the platform has transitioned the app\n/runtime to the new lifecycle state\nNote: the list always carries exactly one\nlifecycle state change\nValid transitions\n1. initializing to paused\n2. initializing to suspended\n3. paused to active\n4. active to paused\n5. paused to suspended\n6. suspended to paused\n7. suspended to hibernated\n8. hibernated to suspended\n9. any to terminating"
+          ],
+          [
+            "22",
+            "Localization",
+            "country\nonCountryCh\nanged",
+            "None",
+            "string, either\n\"\" (if not initialized)\nISO 3166-1 alpha-2 (see\nCountry in Devices table)",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Return the country, e.g. US, CA, GB, BE"
+          ],
+          [
+            "23",
+            "Localization",
+            "preferredAud\nioLanguages\nonPreferredA\nudioLanguag\nesChanged",
+            "None",
+            "list of strings, either\n[] (if not initialized)\nlist of one or more ISO\n639-2/B (see Secondary\nAudio Language in\nDevices table)",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "A list of zero or more languages in order of\ndecreasing preference. Typically two\nlanguages are present. A language may be\nrepeated in the list"
+          ],
+          [
+            "24",
+            "Localization",
+            "presentation\nLanguage\nonPresentati\nonLanguage\nChanged",
+            "None",
+            "string, either\n\"\" (if not initialized)\nBCP 47 (see Presentation\nLanguages in Devices\ntable)",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "The presentation language of the device, e.g.\nen-US"
+          ],
+          [
+            "25",
+            "Metrics",
+            "ready",
+            "None",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform that the app is minimally\nusable. This method is called automatically\nby Lifecycle.ready()"
+          ],
+          [
+            "26",
+            "Metrics",
+            "signIn",
+            "None",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Log a sign in event, called by Discovery.\nsignIn()"
+          ],
+          [
+            "27",
+            "Metrics",
+            "signOut",
+            "None",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Log a sign out event, called by Discovery.\nsignOut()"
+          ],
+          [
+            "28",
+            "Metrics",
+            "startContent",
+            "entityId - string\n- optional\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform that your user has started\ncontent"
+          ],
+          [
+            "29",
+            "Metrics",
+            "stopContent",
+            "entityId - string\n- optional\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform that your user has\nstopped content"
+          ],
+          [
+            "30",
+            "Metrics",
+            "page",
+            "pageId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform that your user has\nnavigated to a page or view"
+          ],
+          [
+            "31",
+            "Metrics",
+            "error",
+            "type - enum\nnetwork\nmedia\nrestriction\nentitleme\nnt\nother\ncode - string\ndescription -\nstring\nvisible - bool\nparameters -\narg list -\noptional\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform of an error that has\noccurred in your app"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "text": "32 Metrics mediaLoadSt None         None   8.0.0     Called when setting the URL of a media\n               art     entityId - string                    asset to play, in order to infer load time\n                       agePolicy -                                                  \n                       string - optional                                            \n       33 Metrics mediaPlay   None         None   8.0.0     Called when media playback should start due\n                       entityId - string                    to autoplay, user-initiated play, or unpausing\n                       agePolicy -                                                  \n                       string - optional                                            \n       34 Metrics mediaPlaying None        None   8.0.0     Called when media playback actually starts\n                       entityId - string                    due to autoplay, user-initiated play,\n                       agePolicy -                          unpausing, or recovering from a buffering\n                       string - optional                    interruption            \n       35 Metrics mediaPause  None         None   8.0.0     Called when media playback will pause due\n                       entityId - string                    to an intentional pause operation\n                       agePolicy -                                                  \n                       string - optional                                            \n       36 Metrics mediaWaiting None        None   8.0.0     Called when media playback will halt due to a\n                       entityId - string                    network, buffer, or other unintentional\n                       agePolicy -                          constraint              \n                       string - optional                                            \n       37 Metrics mediaSeeking None        None   8.0.0     Called when a seek is initiated during media\n                       entityId - string                    playback                \n                       target - double                                              \n                       agePolicy -                                                  \n                       string - optional                                            \n       38 Metrics mediaSeeked None         None   8.0.0     Called when a seek is completed during\n                       entityId - string                    media playback          \n                       position -                                                   \n                       double                                                       \n                       agePolicy -                                                  \n                       string - optional                                            \n       39 Metrics mediaRateC  None         None   8.0.0     Called when the playback rate of media is\n               hanged  entityId - string                    changed                 \n                       rate - double                                                \n                       agePolicy -                                                  \n                       string - optional                                            \n       40 Metrics mediaRenditi None        None   8.0.0     Called when the playback rendition (e.g.\n               onChanged entityId - string                  bitrate, dimensions, profile, etc) is changed\n                       bitrate -                                                    \n                       unsigned                                                     \n                       width -                                                      \n                       unsigned                                                     \n                       height -                                                     \n                       unsigned                                                     \n                       profile - string -                                           \n                       optional                                                     \n                       agePolicy -                                                  \n                       string - optional                                            \n       41 Metrics mediaEnded  None         None   8.0.0     Called when playback has stopped because\n                       entityId - string                    the end of the media was reached\n                       agePolicy -                                                  \n                       string - optional                                            \n       42 Metrics event       None         None   8.0.0     Inform the platform of 1st party distributor\n                       schema - uri                         metrics                 \n                       data - string                                                \n                       agePolicy -                          data parameter is a JSON document\n                       string - optional                                            \n       43 Metrics appInfo     None         None   8.0.0     Inform the platform about an app's build info\n                       build - string                                               \n       44 Network connected None bool      None   8.0.0     Returns whether the device has a useable\n                                                            network connection      \n               onConnected                                                          \n               Changed                                                              \n       45 ParentalCo pinControl None bool  -50100 / Not ??? Returns whether PIN blocking is enabled, or\n          ntrol                            supported        an error if this setting is not exposed to apps\n       46 ParentalC blockNotRate None bool -50100 / Not ??? Returns whether content that is not rated\n          ontrol dContent                  supported        should be blocked, or an error if this setting is\n                                                            not exposed to apps     \n       47 ParentalC viewingRestri None string -50100 / Not ??? Returns a JSON document describing the\n          ontrol ctions                    supported        ratings schemes configured for the device\n                                                            and any ratings that are blocked for that\n                                                            scheme, or an error if this setting is not\n                                                            exposed to apps",
+      "tables": [
+        [
+          [
+            "32",
+            "Metrics",
+            "mediaLoadSt\nart",
+            "entityId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when setting the URL of a media\nasset to play, in order to infer load time"
+          ],
+          [
+            "33",
+            "Metrics",
+            "mediaPlay",
+            "entityId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when media playback should start due\nto autoplay, user-initiated play, or unpausing"
+          ],
+          [
+            "34",
+            "Metrics",
+            "mediaPlaying",
+            "entityId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when media playback actually starts\ndue to autoplay, user-initiated play,\nunpausing, or recovering from a buffering\ninterruption"
+          ],
+          [
+            "35",
+            "Metrics",
+            "mediaPause",
+            "entityId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when media playback will pause due\nto an intentional pause operation"
+          ],
+          [
+            "36",
+            "Metrics",
+            "mediaWaiting",
+            "entityId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when media playback will halt due to a\nnetwork, buffer, or other unintentional\nconstraint"
+          ],
+          [
+            "37",
+            "Metrics",
+            "mediaSeeking",
+            "entityId - string\ntarget - double\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when a seek is initiated during media\nplayback"
+          ],
+          [
+            "38",
+            "Metrics",
+            "mediaSeeked",
+            "entityId - string\nposition -\ndouble\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when a seek is completed during\nmedia playback"
+          ],
+          [
+            "39",
+            "Metrics",
+            "mediaRateC\nhanged",
+            "entityId - string\nrate - double\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when the playback rate of media is\nchanged"
+          ],
+          [
+            "40",
+            "Metrics",
+            "mediaRenditi\nonChanged",
+            "entityId - string\nbitrate -\nunsigned\nwidth -\nunsigned\nheight -\nunsigned\nprofile - string -\noptional\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when the playback rendition (e.g.\nbitrate, dimensions, profile, etc) is changed"
+          ],
+          [
+            "41",
+            "Metrics",
+            "mediaEnded",
+            "entityId - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Called when playback has stopped because\nthe end of the media was reached"
+          ],
+          [
+            "42",
+            "Metrics",
+            "event",
+            "schema - uri\ndata - string\nagePolicy -\nstring - optional",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform of 1st party distributor\nmetrics\ndata parameter is a JSON document"
+          ],
+          [
+            "43",
+            "Metrics",
+            "appInfo",
+            "build - string",
+            "None",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Inform the platform about an app's build info"
+          ],
+          [
+            "44",
+            "Network",
+            "connected\nonConnected\nChanged",
+            "None",
+            "bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns whether the device has a useable\nnetwork connection"
+          ],
+          [
+            "45",
+            "ParentalCo\nntrol",
+            "pinControl",
+            "None",
+            "bool",
+            "-50100 / Not\nsupported",
+            "???",
+            "",
+            "",
+            "Returns whether PIN blocking is enabled, or\nan error if this setting is not exposed to apps"
+          ],
+          [
+            "46",
+            "ParentalC\nontrol",
+            "blockNotRate\ndContent",
+            "None",
+            "bool",
+            "-50100 / Not\nsupported",
+            "???",
+            "",
+            "",
+            "Returns whether content that is not rated\nshould be blocked, or an error if this setting is\nnot exposed to apps"
+          ],
+          [
+            "47",
+            "ParentalC\nontrol",
+            "viewingRestri\nctions",
+            "None",
+            "string",
+            "-50100 / Not\nsupported",
+            "???",
+            "",
+            "",
+            "Returns a JSON document describing the\nratings schemes configured for the device\nand any ratings that are blocked for that\nscheme, or an error if this setting is not\nexposed to apps"
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "text": "48 Presentation focused None bool   None   8.0.0     Whether the app is in focus, i.e. receiving key\n                                                            presses. Provided for those apps/runtimes\n               onFocusedC                                   that cannot use Wayland \n               hanged                                                               \n       49 Stats memoryUsageNone            None   ???       Returns information about container memory\n                                userMemoryUsed -            usage, in bytes         \n                                unsigned                                            \n                                userMemoryLimit -                                   \n                                unsigned                                            \n                                gpuMemoryUsed -                                     \n                                unsigned                                            \n                                gpuMemoryLimit -                                    \n                                unsigned                                            \n       50 TextToSpe speak text - string    None   8.0.0     Speak the utterance immediately. Any\n          ech                   speechid - unsigned         ongoing speech is interrupted\n                                TTS_Status - 0...3                                  \n                                success - bool              Text argument is either plain text or a well-\n                                                            formed SSML document    \n                                                            TTS_Status, not success attribute, to be\n                                                            used by caller to indicate success of call\n                                                            0 OK, 1 Fail, 2 not enabled, 3 invalid\n                                                            configuration           \n                                                            Raises onSpeechinterrupted if speaking is\n                                                            interrupted             \n       51 TextToSpe pause speechid - unsigned None 8.0.0    Pauses the utterance    \n          ech                   TTS_Status - 0...3                                  \n                                success - bool              Raises onSpeechpause if ongoing speech is\n                                                            paused                  \n                                                            Does nothing if utterance is already paused\n       52 TextToSpe resume speechid - unsigned None 8.0.0   Continue the paused utterance\n          ech                   TTS_Status - 0...3                                  \n                                success - bool              Raises onSpeechresume if paused speech is\n                                                            resumed                 \n                                                            Does nothing if the utterance is not paused\n       53 TextToSpe cancel speechid - unsigned None 8.0.0   Stop speaking if utterance is currently being\n          ech                   TTS_Status - 0...3          spoken                  \n                                success - bool                                      \n                                                            Raises onSpeechinterrupted if speaking was\n                                                            interrupted             \n       54 TextToSpe getspeechsta speechid - unsigned None 8.0.0 Returns the state of the utterance\n          ech  te               speechstate - enum                                  \n                                  SPEECH_PENDING                                    \n                                  SPEECH_IN_PROG                                    \n                                  RESS                                              \n                                  SPEECH_PAUSED                                     \n                                  SPEECH_NOT_FO                                     \n                                  UND                                               \n                                TTS_Status - 0...3                                  \n                                success - bool                                      \n       55 TextToSpe onWillspeak speechid - unsigned N/A N/A 8.0.0 Text to speech conversion is about to start\n          ech                                                                       \n       56 TextToSpe onSpeechsta speechid - unsigned N/A N/A 8.0.0 Utterance is about to be spoken\n          ech  rt                                                                   \n       57 TextToSpe onSpeechpa speechid - unsigned N/A N/A 8.0.0 Ongoing speech was paused\n          ech  use                                                                  \n       58 TextToSpe onSpeechres speechid - unsigned N/A N/A 8.0.0 Paused speech was resumed\n          ech  ume                                                                  \n       59 TextToSpe onSpeechco speechid - unsigned N/A N/A 8.0.0 Speech completed successfully\n          ech  mplete                                                               \n       60 TextToSpe onSpeechint speechid - unsigned N/A N/A 8.0.0 Speech was stopped, due to another call to\n          ech  errupted                                     speak or cancel         \n       61 TextToSpe onNetworker speechid - unsigned N/A N/A 8.0.0 Utterance failed due to network\n          ech  ror                                                                  \n       62 TextToSpe onPlaybacke speechid - unsigned N/A N/A 8.0.0 Utterance failed during playback\n          ech  rror                                                                 \n       63 TextToSpe listvoices language - string - None 8.0.0 Returns the list of available voices as human-\n          ech        BCP 47     TTS_Status - 0...3          readable strings, e.g. \"ava\", \"amelie\",\n                                voices - list of one or     \"angelica\"              \n                                more strings",
+      "tables": [
+        [
+          [
+            "48",
+            "Presentation",
+            "focused\nonFocusedC\nhanged",
+            "None",
+            "bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Whether the app is in focus, i.e. receiving key\npresses. Provided for those apps/runtimes\nthat cannot use Wayland"
+          ],
+          [
+            "49",
+            "Stats",
+            "memoryUsage",
+            "None",
+            "userMemoryUsed -\nunsigned\nuserMemoryLimit -\nunsigned\ngpuMemoryUsed -\nunsigned\ngpuMemoryLimit -\nunsigned",
+            "None",
+            "???",
+            "",
+            "",
+            "Returns information about container memory\nusage, in bytes"
+          ],
+          [
+            "50",
+            "TextToSpe\nech",
+            "speak",
+            "text - string",
+            "speechid - unsigned\nTTS_Status - 0...3\nsuccess - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Speak the utterance immediately. Any\nongoing speech is interrupted\nText argument is either plain text or a well-\nformed SSML document\nTTS_Status, not success attribute, to be\nused by caller to indicate success of call\n0 OK, 1 Fail, 2 not enabled, 3 invalid\nconfiguration\nRaises onSpeechinterrupted if speaking is\ninterrupted"
+          ],
+          [
+            "51",
+            "TextToSpe\nech",
+            "pause",
+            "speechid - unsigned",
+            "TTS_Status - 0...3\nsuccess - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Pauses the utterance\nRaises onSpeechpause if ongoing speech is\npaused\nDoes nothing if utterance is already paused"
+          ],
+          [
+            "52",
+            "TextToSpe\nech",
+            "resume",
+            "speechid - unsigned",
+            "TTS_Status - 0...3\nsuccess - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Continue the paused utterance\nRaises onSpeechresume if paused speech is\nresumed\nDoes nothing if the utterance is not paused"
+          ],
+          [
+            "53",
+            "TextToSpe\nech",
+            "cancel",
+            "speechid - unsigned",
+            "TTS_Status - 0...3\nsuccess - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Stop speaking if utterance is currently being\nspoken\nRaises onSpeechinterrupted if speaking was\ninterrupted"
+          ],
+          [
+            "54",
+            "TextToSpe\nech",
+            "getspeechsta\nte",
+            "speechid - unsigned",
+            "speechstate - enum\nSPEECH_PENDING\nSPEECH_IN_PROG\nRESS\nSPEECH_PAUSED\nSPEECH_NOT_FO\nUND\nTTS_Status - 0...3\nsuccess - bool",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the state of the utterance"
+          ],
+          [
+            "55",
+            "TextToSpe\nech",
+            "onWillspeak",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Text to speech conversion is about to start"
+          ],
+          [
+            "56",
+            "TextToSpe\nech",
+            "onSpeechsta\nrt",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Utterance is about to be spoken"
+          ],
+          [
+            "57",
+            "TextToSpe\nech",
+            "onSpeechpa\nuse",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Ongoing speech was paused"
+          ],
+          [
+            "58",
+            "TextToSpe\nech",
+            "onSpeechres\nume",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Paused speech was resumed"
+          ],
+          [
+            "59",
+            "TextToSpe\nech",
+            "onSpeechco\nmplete",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Speech completed successfully"
+          ],
+          [
+            "60",
+            "TextToSpe\nech",
+            "onSpeechint\nerrupted",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Speech was stopped, due to another call to\nspeak or cancel"
+          ],
+          [
+            "61",
+            "TextToSpe\nech",
+            "onNetworker\nror",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Utterance failed due to network"
+          ],
+          [
+            "62",
+            "TextToSpe\nech",
+            "onPlaybacke\nrror",
+            "speechid - unsigned",
+            "N/A",
+            "N/A",
+            "8.0.0",
+            "",
+            "",
+            "Utterance failed during playback"
+          ],
+          [
+            "63",
+            "TextToSpe\nech",
+            "listvoices",
+            "language - string -\nBCP 47",
+            "TTS_Status - 0...3\nvoices - list of one or\nmore strings",
+            "None",
+            "8.0.0",
+            "",
+            "",
+            "Returns the list of available voices as human-\nreadable strings, e.g. \"ava\", \"amelie\",\n\"angelica\""
+          ]
+        ]
+      ]
+    }
+  ]
+}

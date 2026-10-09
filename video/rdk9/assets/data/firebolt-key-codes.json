@@ -1,0 +1,1802 @@
+{
+  "schemaVersion": "1.0",
+  "hero": {
+    "eyebrow": "Firebolt 9",
+    "title": "Firebolt 9 Key Codes Specification",
+    "description": "Key Codes made available to Firebolt applications.",
+    "status": "Approved"
+  },
+  "source": {
+    "label": "Firebolt 9 Key Codes Specification.pdf",
+    "href": "assets/pdf/Firebolt 9 Key Codes Specification.pdf"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "id": "standard-keys",
+      "heading": "Standard RCU keys",
+      "blocks": [
+        {
+          "type": "table",
+          "classes": "key-codes-table",
+          "columns": [
+            {
+              "key": "button",
+              "label": "RCU Button"
+            },
+            {
+              "key": "mandatory",
+              "label": "Key is mandatorily supported on a remote"
+            },
+            {
+              "key": "linuxCode",
+              "label": "Linux Key code (Sent via Wayland)"
+            },
+            {
+              "key": "details",
+              "label": "View Details"
+            }
+          ],
+          "rows": [
+            {
+              "button": "Number keys (0 9)",
+              "mandatory": "No",
+              "linuxCode": "KEY_0 KEY_9",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-0"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Dismiss",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_ESC",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-1"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Voice",
+              "mandatory": "No",
+              "linuxCode": "KEY_F8",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-2"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Option (4 coloured dots)",
+              "mandatory": "No",
+              "linuxCode": "KEY_F13",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-3"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Select",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_ENTER",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-4"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Down",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_DOWN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-5"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Up",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_UP",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-6"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Left",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_LEFT",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-7"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Right",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_RIGHT",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-8"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Red",
+              "mandatory": "No",
+              "linuxCode": "KEY_RED",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-9"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Green",
+              "mandatory": "No",
+              "linuxCode": "KEY_GREEN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-10"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Yellow",
+              "mandatory": "No",
+              "linuxCode": "KEY_YELLOW",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-11"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Blue",
+              "mandatory": "No",
+              "linuxCode": "KEY_BLUE",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-12"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Rewind",
+              "mandatory": "No",
+              "linuxCode": "KEY_REWIND",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-13"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Ffwd",
+              "mandatory": "No",
+              "linuxCode": "KEY_FASTFORWARD",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-14"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "PlayPause",
+              "mandatory": "Yes",
+              "linuxCode": "KEY_PLAYPAUSE",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-15"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Mute",
+              "mandatory": "No",
+              "linuxCode": "KEY_MUTE",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-16"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Volume+",
+              "mandatory": "No",
+              "linuxCode": "KEY_VOLUMEUP",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-17"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Volume-",
+              "mandatory": "No",
+              "linuxCode": "KEY_VOLUMEDOWN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "standard-key-18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "partner-keys",
+      "heading": "Partner Buttons",
+      "blocks": [
+        {
+          "type": "prose",
+          "body": "These are buttons on some RCU that are labelled Netflix, YouTube, etc. The key codes for these buttons are artificially generated within the window manager, based on the RCU type and the physical button pressed."
+        },
+        {
+          "type": "table",
+          "classes": "key-codes-table",
+          "columns": [
+            {
+              "key": "button",
+              "label": "RCU Button"
+            },
+            {
+              "key": "mandatory",
+              "label": "Key is mandatorily supported on a remote"
+            },
+            {
+              "key": "linuxCode",
+              "label": "Linux Key code (Sent via Wayland)"
+            },
+            {
+              "key": "details",
+              "label": "View Details"
+            }
+          ],
+          "rows": [
+            {
+              "button": "YouTube Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_KPLEFTPAREN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-0"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Netflix Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_KPRIGHTPAREN",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-1"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Disney+ Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F1",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-2"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Prime Video Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F2",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-3"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Peacock Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F3",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-4"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Kayo Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F4",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-5"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Binge Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F5",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-6"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "Xumo Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F6",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-7"
+                  }
+                ]
+              }
+            },
+            {
+              "button": "AMC+ Button",
+              "mandatory": "No",
+              "linuxCode": "KEY_FN_F7",
+              "details": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "partner-key-8"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "standard-key-0": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Number keys (0 9)",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Number keys (0 9)"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_0 KEY_9"
+        },
+        {
+          "label": "JS event key",
+          "value": "0 9"
+        },
+        {
+          "label": "JS event code",
+          "value": "Digit0 Digit9"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "48 57"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.digit0-9"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x30-39"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "0 9"
+        }
+      ]
+    },
+    "standard-key-1": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Dismiss",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Dismiss"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_ESC"
+        },
+        {
+          "label": "JS event key",
+          "value": "Escape"
+        },
+        {
+          "label": "JS event code",
+          "value": "Escape"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "27"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.escape"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x10000001b"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "dismiss"
+        }
+      ]
+    },
+    "standard-key-2": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Voice",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Voice"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_F8"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "voice"
+        }
+      ]
+    },
+    "standard-key-3": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Option (4 coloured dots)",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Option (4 coloured dots)"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_F13"
+        },
+        {
+          "label": "JS event key",
+          "value": "ColorF0Red"
+        },
+        {
+          "label": "JS event code",
+          "value": "ColorF0Red"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "403"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.colorF3Red"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100000d0c"
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "option"
+        }
+      ]
+    },
+    "standard-key-4": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Select",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Select"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_ENTER"
+        },
+        {
+          "label": "JS event key",
+          "value": "Enter"
+        },
+        {
+          "label": "JS event code",
+          "value": "Enter"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "13"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.enter"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100070028"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "select"
+        }
+      ]
+    },
+    "standard-key-5": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Down",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Down"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_DOWN"
+        },
+        {
+          "label": "JS event key",
+          "value": "ArrowDown"
+        },
+        {
+          "label": "JS event code",
+          "value": "ArrowDown"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "40"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.arrowDown"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100070051"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "down"
+        }
+      ]
+    },
+    "standard-key-6": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Up",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Up"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_UP"
+        },
+        {
+          "label": "JS event key",
+          "value": "ArrowUp"
+        },
+        {
+          "label": "JS event code",
+          "value": "ArrowUp"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "38"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.arrowUp"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100070052"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "up"
+        }
+      ]
+    },
+    "standard-key-7": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Left",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Left"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_LEFT"
+        },
+        {
+          "label": "JS event key",
+          "value": "ArrowLeft"
+        },
+        {
+          "label": "JS event code",
+          "value": "ArrowLeft"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "37"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.arrowLeft"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100070050"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "left"
+        }
+      ]
+    },
+    "standard-key-8": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Right",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Right"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_RIGHT"
+        },
+        {
+          "label": "JS event key",
+          "value": "ArrowRight"
+        },
+        {
+          "label": "JS event code",
+          "value": "ArrowRight"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "39"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.arrowRight"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x10007004F"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "right"
+        }
+      ]
+    },
+    "standard-key-9": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Red",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Red"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_RED"
+        },
+        {
+          "label": "JS event key",
+          "value": "ColorF0Red"
+        },
+        {
+          "label": "JS event code",
+          "value": "ColorF0Red"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "403"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.colorF3Red"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100000d0c"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "red"
+        }
+      ]
+    },
+    "standard-key-10": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Green",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Green"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_GREEN"
+        },
+        {
+          "label": "JS event key",
+          "value": "ColorF1Green"
+        },
+        {
+          "label": "JS event code",
+          "value": "ColorF1Green"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "404"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.colorF1Green"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100000d0d"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "green"
+        }
+      ]
+    },
+    "standard-key-11": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Yellow",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Yellow"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_YELLOW"
+        },
+        {
+          "label": "JS event key",
+          "value": "ColorF2Yellow"
+        },
+        {
+          "label": "JS event code",
+          "value": "ColorF2Yellow"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "405"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.colorF2Yellow"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100000d0e"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "yellow"
+        }
+      ]
+    },
+    "standard-key-12": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Blue",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Blue"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_BLUE"
+        },
+        {
+          "label": "JS event key",
+          "value": "ColorF3Blue"
+        },
+        {
+          "label": "JS event code",
+          "value": "ColorF3Blue"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "406"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.colorF3Blue"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100000d0f"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "blue"
+        }
+      ]
+    },
+    "standard-key-13": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Rewind",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Rewind"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_REWIND"
+        },
+        {
+          "label": "JS event key",
+          "value": "MediaRewind"
+        },
+        {
+          "label": "JS event code",
+          "value": "Unidentified"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "227"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.mediaRewind"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x1000c00b4"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "rewind"
+        }
+      ]
+    },
+    "standard-key-14": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Ffwd",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Ffwd"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FASTFORWARD"
+        },
+        {
+          "label": "JS event key",
+          "value": "MediaFastForward"
+        },
+        {
+          "label": "JS event code",
+          "value": "Unidentified"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "228"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.mediaFastForward"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x1000c00b3"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "ffwd"
+        }
+      ]
+    },
+    "standard-key-15": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "PlayPause",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "PlayPause"
+        },
+        {
+          "label": "Mandatory",
+          "value": "Yes"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_PLAYPAUSE"
+        },
+        {
+          "label": "JS event key",
+          "value": "MediaPlayPause"
+        },
+        {
+          "label": "JS event code",
+          "value": "MediaPlayPause"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "179"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "LogicalKeyboardKey.mediaPlayPause"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "0x100000a05"
+        },
+        {
+          "label": "System Key",
+          "value": "no"
+        },
+        {
+          "label": "Manifest name",
+          "value": "play"
+        }
+      ]
+    },
+    "standard-key-16": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Mute",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Mute"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_MUTE"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "n/a"
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "mute"
+        }
+      ]
+    },
+    "standard-key-17": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Volume+",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Volume+"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_VOLUMEUP"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "n/a"
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "volume+"
+        }
+      ]
+    },
+    "standard-key-18": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Volume-",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Volume-"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_VOLUMEDOWN"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": "n/a"
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "volume-"
+        }
+      ]
+    },
+    "partner-key-0": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "YouTube Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "YouTube Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_KPLEFTPAREN"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "youtube"
+        }
+      ]
+    },
+    "partner-key-1": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Netflix Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Netflix Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_KPRIGHTPAREN"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "netflix"
+        }
+      ]
+    },
+    "partner-key-2": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Disney+ Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Disney+ Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F1"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "disney+"
+        }
+      ]
+    },
+    "partner-key-3": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Prime Video Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Prime Video Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F2"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "primevideo"
+        }
+      ]
+    },
+    "partner-key-4": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Peacock Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Peacock Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F3"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "peacock"
+        }
+      ]
+    },
+    "partner-key-5": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Kayo Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Kayo Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F4"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "kayo"
+        }
+      ]
+    },
+    "partner-key-6": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Binge Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Binge Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F5"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "binge"
+        }
+      ]
+    },
+    "partner-key-7": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "Xumo Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "Xumo Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F6"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "xumo"
+        }
+      ]
+    },
+    "partner-key-8": {
+      "type": "fields",
+      "eyebrow": "Key code",
+      "heading": "AMC+ Button",
+      "fields": [
+        {
+          "label": "RCU Button",
+          "value": "AMC+ Button"
+        },
+        {
+          "label": "Mandatory",
+          "value": "No"
+        },
+        {
+          "label": "Linux key code",
+          "value": "KEY_FN_F7"
+        },
+        {
+          "label": "JS event key",
+          "value": "n/a"
+        },
+        {
+          "label": "JS event code",
+          "value": "n/a"
+        },
+        {
+          "label": "Deprecated keyCode/which",
+          "value": "n/a"
+        },
+        {
+          "label": "Flutter logical key",
+          "value": ""
+        },
+        {
+          "label": "Flutter logical key (Hex)",
+          "value": ""
+        },
+        {
+          "label": "System Key",
+          "value": "yes"
+        },
+        {
+          "label": "Manifest name",
+          "value": "amc+"
+        }
+      ]
+    }
+  },
+  "generator": {
+    "name": "firebolt-converter",
+    "mode": "reference-or-new-candidate",
+    "source": {
+      "pdf": "Firebolt 9 Key Codes Specification.pdf",
+      "sha256": "079c5d96c9a1e460aeb62b151e337e33a929d6bded2e150cee3dc727e75a9809",
+      "pageCount": 2,
+      "extractedAt": "2026-10-06T16:27:22.794306+00:00"
+    },
+    "note": "Review PDF-derived content before replacing the curated file."
+  }
+}

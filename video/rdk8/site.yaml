@@ -1,0 +1,57 @@
+# Site-level configuration for the RDK8 Video specification site.
+# Content lives in the sibling .md files; styling lives in assets/css.
+
+title: RDKV. Core RDK Entertainment Platform
+footer: "Copyright \xA9 2026 RDK Management, LLC"
+
+brand:
+  href: index.html
+  logo: assets/img/RDK-logo.png
+  alt: RDK
+
+fonts: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+
+# Link order is load-bearing: later files intentionally override earlier ones.
+stylesheets:
+  - assets/css/tokens.css
+  - assets/css/base.css
+  - assets/css/layout.css
+  - assets/css/components.css
+  - assets/css/tables.css
+  - assets/css/spec.css
+  - assets/css/overrides.css
+  - assets/css/site.css
+
+asset_version: rdk8-20261008
+
+# The Northbound entry is a dropdown only; the Firebolt Core API Specification
+# is also reached from the home page cards.
+nav:
+  - key: home
+    label: Home
+    href: index.html
+  - key: components
+    label: Components Catalog
+    href: component-catalog.html
+  - key: northbound
+    label: Northbound API Spec
+    dropdown:
+      - label: Firebolt Core API Specification
+        href: firebolt-api-spec.html
+      - label: Firebolt JSON-RPC Specification
+        href: firebolt-json-rpc.html
+      - label: Firebolt Intents Specification
+        href: firebolt-intents.html
+      - label: Firebolt Key Codes Specification
+        href: firebolt-key-codes.html
+  - key: southbound
+    label: Southbound API Spec
+    href: southbound-api-spec.html
+
+status_legend:
+  - term: Draft
+    definition: Specifications drafted and undergoing internal reviews and RTAB Approval
+  - term: Approved
+    definition: All review feedback has been addressed; RTAB has voted and approved the spec
+  - term: Published
+    definition: Tagged and versioned against an official RDK release

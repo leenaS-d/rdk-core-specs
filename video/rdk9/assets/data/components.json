@@ -1,0 +1,528 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-09-10T05:16:19.091172-04:00",
+  "components": [
+    {
+      "name": "AppGateway",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-appgateway"
+      ]
+    },
+    {
+      "name": "AvOutput",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-avoutput"
+      ]
+    },
+    {
+      "name": "Bluetooth Manager",
+      "category": "Device Control Protocols",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/bluetooth_mgr"
+      ]
+    },
+    {
+      "name": "bluetooth-core",
+      "category": "Device Control Protocols",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/bluetooth"
+      ]
+    },
+    {
+      "name": "BlueZ",
+      "category": "Device Control Protocols",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://www.bluez.org"
+      ]
+    },
+    {
+      "name": "BreakPad",
+      "category": "Data Collection, Test and Diagnostic",
+      "layer": "oss",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/google/breakpad"
+      ]
+    },
+    {
+      "name": "Casting",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-casting"
+      ]
+    },
+    {
+      "name": "cimplog",
+      "category": "Data Collection, Test and Diagnostic",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/xmidt-org/cimplog"
+      ]
+    },
+    {
+      "name": "Common Utilities",
+      "category": "System Start, Platform Management and misc utilities",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/common_utilities"
+      ]
+    },
+    {
+      "name": "Connectivity",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-connectivity"
+      ]
+    },
+    {
+      "name": "Control Manager (video)",
+      "category": "WPEFramework",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/control"
+      ]
+    },
+    {
+      "name": "DBUS",
+      "category": "InterProcess Communications",
+      "layer": "oss",
+      "releaseTag": "develop",
+      "url": [
+        "https://www.freedesktop.org/wiki/Software/dbus"
+      ]
+    },
+    {
+      "name": "Device Settings",
+      "category": "Remote Device Management",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/devicesettings"
+      ]
+    },
+    {
+      "name": "DeviceAndDisplay",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-deviceanddisplay"
+      ]
+    },
+    {
+      "name": "Dobby",
+      "category": "App Framework",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/Dobby"
+      ]
+    },
+    {
+      "name": "Dobby Thunder Plugin",
+      "category": "App Framework",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/Dobby"
+      ]
+    },
+    {
+      "name": "Entservices APIs",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-apis"
+      ]
+    },
+    {
+      "name": "FirmwareDownload",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-firmwaredownload"
+      ]
+    },
+    {
+      "name": "FirmwareUpdate",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/entservices-firmwareupdate"
+      ]
+    },
+    {
+      "name": "Gstreamer Rialto Plugin",
+      "category": "Video",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/rialto-gstreamer"
+      ]
+    },
+    {
+      "name": "HDMI CEC Header",
+      "category": "Device Control Protocols",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
+      ]
+    },
+    {
+      "name": "HDMICec",
+      "category": "Device Control Protocols",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/hdmicec"
+      ]
+    },
+    {
+      "name": "iarmbus",
+      "category": "InterProcess Communications",
+      "layer": "RDK",
+      "releaseTag": "develop",
+      "url": [
+        "https://github.com/rdkcentral/iarmbus"
+      ]
+    },
+    {
+      "name": "Infrastructure Services",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-infra"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "InputOutput",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-inputoutput"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "libSysCallWrapper",
+      "category": "Security",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/libSyscallWrapper"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "libunpriv",
+      "category": "Security",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rdk-libunpriv"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "MediaAndDrm",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-mediaanddrm"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "memcr",
+      "category": "System Start, Platform Management and misc utilities",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/LibertyGlobal/memcr"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "entservices-appmanagers",
+      "category": "App Framework",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-appmanagers"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "OpenSSL",
+      "category": "Security",
+      "layer": "RDK",
+      "url": [
+        "https://www.openssl.org"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "PackageManager",
+      "category": "Thunder",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/PackageManager"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Peripherals",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-peripherals"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Protobuf",
+      "category": "InterProcess Communications",
+      "layer": "oss",
+      "url": [
+        "https://github.com/protocolbuffers/protobuf"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "RBUS",
+      "category": "InterProcess Communications",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rbus"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "RDK Logger",
+      "category": "Data Collection, Test and Diagnostic",
+      "layer": "oss",
+      "url": [
+        "https://github.com/rdkcentral/rdk_logger"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "RDK V Firmware Upgrader",
+      "category": "Device Control Protocols",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rdkfwupdater"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "RDK Window Manager",
+      "category": "System Start, Platform Management and misc utilities",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rdk-window-manager"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "rdkcertconfig",
+      "category": "Security",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rdk-cert-config"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Remote Feature control",
+      "category": "Remote Device Management",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rfc"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Rialto",
+      "category": "Video",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rialto"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Rialto OCDM",
+      "category": "Video",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rialto-ocdm"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Rialto Server",
+      "category": "Video Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/rialto"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "RunTime",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-runtime"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "SoftwareUpdate",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/entservices-maintenancemanager"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "sysint",
+      "category": "System Start, Platform Management and misc utilities",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/sysint"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "System Time Manager",
+      "category": "System Start, Platform Management and misc utilities",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/systemtimemgr"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Systemd",
+      "category": "App Framework",
+      "layer": "oss",
+      "url": [
+        "https://systemd.io"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "telemetry",
+      "category": "Data Collection, Test and Diagnostic",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/telemetry"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "ThunderJS",
+      "category": "Thunder",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/ThunderJS"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "trower-base64",
+      "category": "System Start, Platform Management and misc utilities",
+      "layer": "oss",
+      "url": [
+        "https://github.com/Comcast/trower-base64"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Wayland",
+      "category": "Display/Graphics",
+      "layer": "oss",
+      "url": [
+        "https://wayland.freedesktop.org"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "wdmp-c (WebPA Data model parser)",
+      "category": "Remote Device Management",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/xmidt-org/wdmp-c"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "Westeros",
+      "category": "Display/Graphics",
+      "layer": "vendor",
+      "url": [
+        "https://github.com/rdkcentral/westeros"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "WPE Client Libraries",
+      "category": "WPEFramework",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/WebPlatformForEmbedded/libwpe"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "WPE WebKit",
+      "category": "WPEFramework",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/WebPlatformForEmbedded/WPEWebKit"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "WPEFramework",
+      "category": "Video",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/Thunder"
+      ],
+      "releaseTag": "develop"
+    },
+    {
+      "name": "WPEFramework UI",
+      "category": "WPEFramework",
+      "layer": "RDK",
+      "url": [
+        "https://github.com/rdkcentral/ThunderUI"
+      ],
+      "releaseTag": "develop"
+    }
+  ]
+}

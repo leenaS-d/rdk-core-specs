@@ -1,263 +1,366 @@
-"""Build the self-contained RDKE static reference site.
+"""Build the RDK8 Video specification site from Markdown + JSON.
+
+Content lives in the sibling `.md` files (YAML front matter + Markdown body),
+shared chrome in `_templates/`, styling in `assets/css/`, and tabular data in
+`assets/data/`. Output is plain `.html` written next to the sources so GitHub
+Pages can serve it directly with no CI step.
 
 Usage:
-    python build.py
-    python build.py --page components
-    python build.py --page all --check
-
-All inputs and outputs are kept inside this directory. The northbound,
-southbound, and hardware pages intentionally support empty datasets until
-their source workbook and profiles are provided.
+    python build.py            # build every page
+    python build.py --check    # build, then verify expected pages exist
 """
 from __future__ import annotations
 
 import argparse
-import html
 import json
+import re
 from pathlib import Path
+from typing import Any
+
+import markdown
+import yaml
+from jinja2 import ChainableUndefined, Environment, FileSystemLoader
+from markupsafe import Markup
 
 ROOT = Path(__file__).resolve().parent
-CONTACT_EMAIL = "LeenaSunthari_DhanapalRaju@comcast.com"
+TEMPLATES = ROOT / "_templates"
+DATA = ROOT / "assets" / "data"
+
+EXPECTED_PAGES = [
+    "index.html",
+    "component-catalog.html",
+    "firebolt-api-spec.html",
+    "southbound-api-spec.html",
+]
+
+MD = markdown.Markdown(extensions=["tables", "attr_list", "sane_lists"])
 
 
-CONTACT_WIDGET = f'''<style>.site-contact-toggle{{position:fixed;right:22px;bottom:22px;z-index:20;display:grid;place-items:center;width:52px;height:52px;border:0;border-radius:50%;background:#2457d6;color:#fff;box-shadow:0 8px 22px #0b122044;cursor:pointer}}.site-contact-toggle svg{{width:23px;height:23px}}.site-contact-panel{{display:none;position:fixed;right:22px;bottom:86px;z-index:21;width:min(360px,calc(100vw - 32px));background:#fff;border:1px solid #e2e7f0;border-radius:10px;box-shadow:0 14px 36px #0b122044;overflow:hidden}}.site-contact-panel.open{{display:block}}.site-contact-head{{padding:14px 16px;background:#080d18;color:#fff}}.site-contact-head-row{{display:flex;align-items:center;justify-content:space-between}}.site-contact-note{{margin:3px 0 0;color:#9fb2cf;font-size:.72rem}}.site-contact-close{{border:0;background:none;color:#fff;font-size:1.2rem;cursor:pointer}}.site-contact-form{{display:grid;gap:10px;padding:16px}}.site-contact-form label{{display:grid;gap:4px;color:#0b1220;font-size:.78rem;font-weight:700}}.site-contact-form input,.site-contact-form textarea{{width:100%;border:1px solid #e2e7f0;border-radius:6px;padding:9px 10px;font:inherit;font-size:.85rem}}.site-contact-form textarea{{min-height:100px;resize:vertical}}.site-contact-submit{{border:0;border-radius:6px;padding:10px;background:#0aa66e;color:#fff;font-weight:700;cursor:pointer}}.site-contact-fallback{{display:none;color:#2457d6;font-size:.78rem;text-align:center}}.site-contact-status{{min-height:1.2em;margin:0;text-align:center;font-size:.78rem;color:#5b6472}}</style><button class="site-contact-toggle" id="site-contact-toggle" type="button" aria-label="Open contact form" title="Contact us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></button><section class="site-contact-panel" id="site-contact-panel" aria-label="Contact form"><div class="site-contact-head"><div class="site-contact-head-row"><strong>Contact us</strong><button class="site-contact-close" id="site-contact-close" type="button" aria-label="Close contact form">&times;</button></div><p class="site-contact-note">Send a message - we'll get it by email</p></div><form class="site-contact-form" id="site-contact-form"><label>Name<input name="name" type="text" required></label><label>Email<input name="email" type="email" required></label><label>Message<textarea name="message" required></textarea></label><button class="site-contact-submit" type="submit">Send message</button><p class="site-contact-status" id="site-contact-status" role="status"></p><a class="site-contact-fallback" id="site-contact-fallback" href="#">Open email app</a></form></section><script>(function(){{const t=document.querySelector('#site-contact-toggle'),p=document.querySelector('#site-contact-panel'),c=document.querySelector('#site-contact-close'),f=document.querySelector('#site-contact-form'),s=document.querySelector('#site-contact-status'),a=document.querySelector('#site-contact-fallback');if(!t||!p||!c||!f)return;t.addEventListener('click',()=>p.classList.toggle('open'));c.addEventListener('click',()=>p.classList.remove('open'));f.addEventListener('submit',e=>{{e.preventDefault();const b=f.querySelector('button[type=submit]'),v=Object.fromEntries(new FormData(f));b.disabled=true;s.textContent='Sending...';fetch('https://formsubmit.co/ajax/{CONTACT_EMAIL}',{{method:'POST',headers:{{'Content-Type':'application/json','Accept':'application/json'}},body:JSON.stringify({{...v,_subject:'New message from RDK8 website',_captcha:'false'}})}}).then(r=>{{if(!r.ok)throw Error();return r.json()}}).then(()=>{{s.textContent='Message sent successfully.';f.reset()}}).catch(()=>{{s.textContent='Unable to send. Use the email app option below.';a.href='mailto:{CONTACT_EMAIL}?subject='+encodeURIComponent('New message from RDK8 website')+'&body='+encodeURIComponent('Name: '+v.name+' | Email: '+v.email+' | Message: '+v.message);a.style.display='block'}}).finally(()=>b.disabled=false)}})}})();</script>'''
-CONTACT_WIDGET = ""
+def render_markdown(text: str) -> str:
+    MD.reset()
+    return MD.convert(text.strip()) if text.strip() else ""
 
 
-def release_state() -> dict:
-    return load("release-state.json")
+def split_front_matter(text: str) -> tuple[dict[str, Any], str]:
+    if not text.startswith("---"):
+        return {}, text
+    _, _, remainder = text.partition("---\n")
+    raw, _, body = remainder.partition("\n---")
+    return yaml.safe_load(raw) or {}, body.lstrip("\n")
 
 
-def esc(value: object) -> str:
-    return html.escape(str(value if value is not None else ""), quote=True)
+def parse_sections(body: str) -> tuple[list[str], list[dict[str, Any]]]:
+    """Split a Markdown body into leading paragraphs and `##` sections.
+
+    Within a section, `###` headings become cards; text before the first `###`
+    becomes the section's prose.
+    """
+    chunks = re.split(r"^## ", body, flags=re.M)
+    intro = [p.strip() for p in chunks[0].strip().split("\n\n") if p.strip()]
+
+    sections: list[dict[str, Any]] = []
+    for chunk in chunks[1:]:
+        heading, _, rest = chunk.partition("\n")
+        card_parts = re.split(r"^### ", rest, flags=re.M)
+        prose = card_parts[0].strip()
+        cards = []
+        for card in card_parts[1:]:
+            card_title, _, card_body = card.partition("\n")
+            cards.append({"title": card_title.strip(), "body": card_body.strip()})
+        sections.append({"heading": heading.strip(), "prose": prose, "cards": cards})
+    return intro, sections
 
 
-def load(name: str) -> dict:
+def load_json(name: str) -> dict[str, Any]:
     return json.loads((ROOT / name).read_text(encoding="utf-8"))
 
 
-NORTHBOUND_MENU = [
-    ("firebolt-api-spec.html", "Firebolt Core API Specification"),
-    ("firebolt-json-rpc.html", "Firebolt JSON-RPC Specification"),
-    ("firebolt-intents.html", "Firebolt Intents Specification"),
-    ("firebolt-key-codes.html", "Firebolt Key Codes Specification"),
+def source_url(item: dict[str, Any]) -> str:
+    url = item.get("url") or ""
+    return url[0] if isinstance(url, list) else url
+
+
+def catalog_rows() -> list[list[str]]:
+    """Merge core and non-core components, tagging each with its type."""
+    core = load_json("assets/data/components.json")
+    non_core = load_json("assets/data/rdk8-non-core-components.json")
+    core_names = {
+        str(item.get("name") or "").casefold()
+        for item in core.get("components", [])
+        if item.get("name")
+    }
+    rows = []
+    for item in [*core.get("components", []), *non_core.get("components", [])]:
+        name = str(item.get("name") or "")
+        category = item.get("category", "")
+        rows.append([
+            name,
+            "video" if str(category).casefold() == "video" else category,
+            item.get("layer", ""),
+            "core" if name.casefold() in core_names else "non-core",
+            item.get("releaseTag") or "",
+            source_url(item),
+        ])
+    rows.sort(key=lambda row: str(row[0]).casefold())
+    return rows
+
+
+def table_rows(config: dict[str, Any]) -> tuple[list[list[str]], dict[str, Any]]:
+    if config.get("source") == "catalog":
+        core = load_json("assets/data/components.json")
+        return catalog_rows(), {"status": core.get("status", "Published"), "version": core.get("version", "")}
+
+    data = load_json(config["source"])
+    records = data.get("apis", [])
+    if config.get("sort_field"):
+        records = sorted(records, key=lambda item: str(item.get(config["sort_field"], "")).casefold())
+    fields = config["fields"]
+    rows = [[str(item.get(field, "") or "") for field in fields] for item in records]
+    if config.get("strip_release_path") and config.get("link_column") is not None:
+        index = config["link_column"]
+        for row in rows:
+            row[index] = re.sub(r"/releases/tag/[^/]+/?$", "", row[index])
+    return rows, {"status": data.get("status", "Draft"), "version": data.get("version", "")}
+
+
+def firebolt_method_count() -> int:
+    """Rows in the Firebolt API spec method table."""
+    doc = load_json("assets/data/firebolt-api-spec.json")
+
+    def walk(blocks: list[dict[str, Any]]) -> int:
+        for block in blocks:
+            if block.get("type") == "table":
+                return len(block.get("rows", []))
+            found = walk(block.get("blocks", []) or [])
+            if found:
+                return found
+        return 0
+
+    return walk(doc.get("blocks", []))
+
+
+def metric_value(token: str) -> int:
+    kind = token.split(":", 1)[1]
+    if kind == "components":
+        return len(catalog_rows())
+    if kind == "firebolt":
+        return firebolt_method_count()
+    if kind == "southbound":
+        return len(load_json("assets/data/southbound-apis.json").get("apis", []))
+    raise ValueError(f"unknown metric {token!r}")
+
+
+BLOCK_TYPES = {
+    "section", "prose", "heading", "table", "fields", "entry", "code", "examples",
+    "actions", "list", "details", "reference", "badge", "toolbar", "apiMethod",
+}
+
+
+def render_inline(text: str) -> Markup:
+    """Render the inline Markdown allowed inside prose bodies."""
+    if not text:
+        return Markup("")
+    MD.reset()
+    html = MD.convert(str(text)).strip()
+    if html.startswith("<p>") and html.endswith("</p>"):
+        html = html[3:-4]
+    return Markup(html)
+
+
+def walk_blocks(blocks: list[dict[str, Any]], path: str, definitions: set[str], problems: list[str]) -> None:
+    """Validate block types, column/row agreement and definition references."""
+    for index, block in enumerate(blocks):
+        where = f"{path}[{index}]"
+        kind = block.get("type")
+        if kind not in BLOCK_TYPES:
+            problems.append(f"{where}: unknown block type {kind!r}")
+            continue
+
+        if kind == "actions":
+            for item in block.get("items", []):
+                if item.get("ref") and item["ref"] not in definitions:
+                    problems.append(f"{where}: ref {item['ref']!r} has no matching definition")
+
+        if kind == "table":
+            known = {column["key"] for column in block.get("columns", [])}
+            for row_index, row in enumerate(block.get("rows", [])):
+                unknown = set(row) - known
+                if unknown:
+                    problems.append(f"{where}: row {row_index} has keys not in columns: {sorted(unknown)}")
+                for value in row.values():
+                    if isinstance(value, dict):
+                        walk_blocks([value], f"{where}.cell", definitions, problems)
+
+        for key in ("blocks",):
+            if isinstance(block.get(key), list):
+                walk_blocks(block[key], f"{where}.{key}", definitions, problems)
+
+
+def validate_doc(doc: dict[str, Any], label: str) -> list[str]:
+    problems: list[str] = []
+    definitions = set(doc.get("definitions", {}))
+    walk_blocks(doc.get("blocks", []), f"{label}.blocks", definitions, problems)
+    for key, definition in doc.get("definitions", {}).items():
+        walk_blocks([definition], f"{label}.definitions[{key}]", definitions, problems)
+    return problems
+
+
+def build_page(env: Environment, site: dict[str, Any], path: Path) -> str:
+    meta, body = split_front_matter(path.read_text(encoding="utf-8"))
+    intro, sections = parse_sections(body)
+
+    hero = meta.setdefault("hero", {})
+    hero["description"] = intro
+    # Every legacy page rendered the compact hero; keep that the default.
+    hero.setdefault("compact", True)
+
+    if meta.get("data"):
+        doc = load_json(meta["data"])
+        problems = validate_doc(doc, path.stem)
+        if problems:
+            raise SystemExit(f"{path.name} data invalid:\n  " + "\n  ".join(problems))
+        meta["doc"] = doc
+        for field in ("eyebrow", "title", "status"):
+            if doc.get("hero", {}).get(field):
+                hero.setdefault(field, doc["hero"][field])
+        if not hero["description"] and doc.get("hero", {}).get("description"):
+            hero["description"] = [doc["hero"]["description"]]
+
+    if meta.get("layout") == "home":
+        configured = meta.get("sections", [])
+        merged = []
+        for index, section in enumerate(sections):
+            config = dict(configured[index]) if index < len(configured) else {}
+            config["heading"] = section["heading"]
+            if config.get("layout") == "prose":
+                css = "lede" if config.pop("lede", False) else ""
+                html = render_markdown(section["prose"])
+                if css:
+                    html = html.replace("<p>", f'<p class="{css}">', 1)
+                config["html"] = Markup(html)
+            else:
+                cards = []
+                for card_index, card in enumerate(section["cards"]):
+                    entry = dict(config.get("cards", [])[card_index]) if card_index < len(config.get("cards", [])) else {}
+                    entry["title"] = card["title"]
+                    entry["body"] = card["body"]
+                    if isinstance(entry.get("metric"), str) and entry["metric"].startswith("count:"):
+                        entry["metric"] = metric_value(entry["metric"])
+                    cards.append(entry)
+                config["cards"] = cards
+            merged.append(config)
+        meta["sections"] = merged
+    else:
+        meta["body_html"] = Markup("")
+
+    if "table" in meta:
+        rows, state = table_rows(meta["table"])
+        meta["table"].setdefault("status", state["status"])
+        if meta["table"].get("show_version") is False:
+            meta["table"]["version"] = ""
+        else:
+            meta["table"].setdefault("version", state["version"])
+        config = meta["table"]
+        link_column = config.get("link_column")
+        pill_columns = set(config.get("pill_columns", []))
+        variant_columns = set(config.get("pill_variant_columns", []))
+        columns = []
+        for index in range(len(config["columns"])):
+            if index == link_column:
+                columns.append({"kind": "link", "strip": False})
+            elif index in variant_columns:
+                columns.append({"kind": "pill-variant"})
+            elif index in pill_columns:
+                columns.append({"kind": "pill"})
+            else:
+                columns.append({"kind": "text"})
+        payload = json.dumps(
+            {
+                "id": config["id"],
+                "columns": columns,
+                "rows": rows,
+                "empty": config.get("empty_message", "No matching records."),
+            },
+            ensure_ascii=True,
+        )
+        # Escape `<` so the payload can never terminate the enclosing <script>.
+        meta["table"]["payload"] = Markup(payload.replace("<", "\\u003c"))
+        for filter_config in meta["table"].get("filters", []):
+            column = filter_config["column"]
+            filter_config["options"] = sorted({str(row[column]) for row in rows if str(row[column])})
+
+    template = env.get_template(f"layouts/{meta['layout']}.html")
+    return template.render(site=site, page=meta)
+
+
+def build() -> None:
+    site = yaml.safe_load((ROOT / "site.yaml").read_text(encoding="utf-8"))
+    env = Environment(
+        loader=FileSystemLoader(TEMPLATES),
+        undefined=ChainableUndefined,
+        trim_blocks=True,
+        lstrip_blocks=False,
+        autoescape=True,
+    )
+    env.filters["inline"] = render_inline
+    for path in sorted(ROOT.glob("*.md")):
+        meta, _ = split_front_matter(path.read_text(encoding="utf-8"))
+        # A Markdown file without a layout is documentation (e.g. README), not a page.
+        if not meta.get("layout"):
+            print(f"skipped {path.name} (no layout)")
+            continue
+        output = ROOT / f"{path.stem}.html"
+        output.write_text(build_page(env, site, path), encoding="utf-8")
+        print(f"built {output.name}")
+
+
+# Hand-edited JSON is now the source of truth for most datasets, so validate
+# the fields each page renders rather than letting blanks reach the page.
+DATA_RULES = [
+    ("assets/data/components.json", "components", ["name", "category", "layer"]),
+    ("assets/data/rdk8-non-core-components.json", "components", ["name", "category", "layer"]),
+    ("assets/data/southbound-apis.json", "apis", ["halInterface", "releaseTag", "source"]),
 ]
 
 
-def nav(active: str) -> str:
-    links = [
-        ("index.html", "Home", "home"),
-        ("component-catalog.html", "Components Catalog", "components"),
-        ("northbound-api-spec.html", "Northbound API Spec", "northbound"),
-        ("southbound-api-spec.html", "Southbound API Spec", "southbound"),
-    ]
-    items = "".join(
-        f'<a class="{"active" if key == active else ""}" href="{href}">{label}</a>'
-        for href, label, key in links[:2]
-    )
-    menu_items = "".join(f'<a href="{href}">{label}</a>' for href, label in NORTHBOUND_MENU)
-    dropdown_active = "active" if active == "northbound" else ""
-    items += (
-        f'<details class="nav-dropdown"><summary class="nav-dropdown-summary {dropdown_active}">Northbound API Spec</summary>'
-        f'<div class="nav-dropdown-menu">{menu_items}</div></details>'
-    )
-    items += "".join(
-        f'<a class="{"active" if key == active else ""}" href="{href}">{label}</a>'
-        for href, label, key in links[3:]
-    )
-    return f'''<div class="accent"></div>
-<header class="nav"><a class="brand" href="index.html"><img src="RDK-logo.png" alt="RDK"></a><nav class="navlinks">{items}</nav></header>'''
-
-
-def shell(title: str, active: str, body: str, footer: str = "") -> str:
-    footer_html = f'<footer class="footer"><div class="wrap">{footer}</div></footer>' if footer else ""
-    return f'''<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)}</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>body{{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}}h1,h2,h3{{font-family:"Space Grotesk","Inter",sans-serif}}code,.mono,.release-pill{{font-family:"JetBrains Mono",ui-monospace,monospace!important}}</style>
-<style>.hero .wrap{{max-width:none}}.api-controls{{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}}.api-controls .release-panel{{margin-bottom:0}}.api-controls .toolbar{{margin:0 0 0 auto}}.api-controls input{{min-width:260px}}.release-panel{{display:flex;gap:12px;flex-wrap:wrap}}.release-pill{{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--border);border-radius:5px;color:var(--ink);background:#fff;box-shadow:var(--shadow);font:700 .75rem/1 Consolas,monospace;letter-spacing:.04em}}.release-pill span{{color:var(--muted);font-weight:600}}.table-wrap{{overflow-x:auto;border:1px solid var(--border);border-radius:4px;background:#fff}}table{{width:100%;border-collapse:collapse;table-layout:auto}}td,th{{vertical-align:top;padding:14px 16px;line-height:1.45}}th{{white-space:nowrap}}td{{min-width:120px;white-space:pre-line}}td:first-child{{min-width:220px}}td a{{overflow-wrap:anywhere}}.pill{{display:inline-block;padding:4px 10px;border-radius:999px;background:#eaf2ff;color:#2249a2;font-size:.8rem;font-weight:700;text-decoration:none}}.pill.core{{background:#dff7ea;color:#1d6b43;border:1px solid #a8e1bd}}@media(max-width:650px){{.api-controls{{align-items:flex-start;flex-direction:column}}.api-controls .toolbar{{width:100%;margin:0}}.api-controls input{{width:100%;min-width:0}}}}</style>
-<style>@media(max-width:650px){{.hero{{height:auto!important;min-height:0!important;padding:48px 20px 44px!important}}.hero h1{{font-size:clamp(1.9rem,9vw,2.8rem)!important}}.hero p{{font-size:1rem!important;line-height:1.5}}.hero .badges{{margin-top:18px}}}}</style>
-<style>.status-published{{background:#e5f6eb;border-color:#9bd4aa;color:#1d6b43}}.status-published span{{color:#397a4d}}.status-draft{{background:#fff4d8;border-color:#edcf7a;color:#8a5a00}}.status-draft span{{color:#9a731f}}.version-pill{{background:#edf3ff;border-color:#b8c9ef;color:#2457d6}}.version-pill span{{color:#5873af}}</style>
-<style>.api-controls{{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,auto);align-items:center;gap:20px}}.api-controls>.release-panel{{min-width:0}}.api-controls>.toolbar{{justify-self:end;margin:0;min-width:260px}}.api-controls>.catalog-search-toolbar{{grid-column:1/-1;justify-self:stretch;width:100%;min-width:0}}.catalog-search-toolbar input{{width:100%;min-width:0}}@media(max-width:650px){{.api-controls{{grid-template-columns:1fr;gap:14px}}.api-controls>.toolbar{{justify-self:stretch;width:100%;min-width:0}}}}</style>
-</head>
-<body>
-{nav(active)}
-<main>
-{body}
-</main>
-{footer_html}
-{CONTACT_WIDGET}
-</body>
-</html>
-'''
-
-
-def status_explainer() -> str:
-    return '''<details style="position:relative;min-width:150px"><summary style="cursor:pointer;color:#2457d6;font-size:.84rem;font-weight:700">Status legend</summary><dl style="position:absolute;z-index:2;left:0;right:auto;top:calc(100% + 8px);width:min(420px,calc(100vw - 40px));margin:0;padding:16px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;line-height:1.45"><dt style="font-weight:700;color:var(--ink)">Draft</dt><dd style="margin:2px 0 10px;color:var(--muted)">Specifications drafted and undergoing internal reviews and RTAB Approval</dd><dt style="font-weight:700;color:var(--ink)">Approved</dt><dd style="margin:2px 0 10px;color:var(--muted)">All review feedback has been addressed; RTAB has voted and approved the spec</dd><dt style="font-weight:700;color:var(--ink)">Published</dt><dd style="margin:2px 0 0;color:var(--muted)">Tagged and versioned against an official RDK release</dd></dl></details>'''
-
-
-def hero(eyebrow: str, title: str, description: str, badges: list[str] | None = None, subtitle: str = "", subtitle_before_title: bool = False, include_release: bool = True, status: str | None = None) -> str:
-    badge_html = "" if not badges else '<div class="badges">' + "".join(
-        f'<span class="badge">{esc(item)}</span>' for item in badges
-    ) + "</div>"
-    eyebrow_html = f'<div class="eyebrow" style="font-size:1.1rem;letter-spacing:.08em">{esc(eyebrow)}</div>' if eyebrow else ""
-    subtitle_html = f'<div class="hero-subtitle" style="font-size:.95rem;font-weight:600;color:#b8df63;margin:-4px 0 18px">{esc(subtitle)}</div>' if subtitle else ""
-    title_html = f'<h1 style="font-size:clamp(1.9rem,3.6vw,3.5rem)">{esc(title)}</h1>'
-    title_block = f"{subtitle_html}{title_html}" if subtitle_before_title else f"{title_html}{subtitle_html}"
-    state = release_state() if include_release else {}
-    release_html = f'<div class="release"><span>STATE: {esc(state.get("state", "Draft"))}</span><span>VERSION: {esc(state.get("version", "RDK8"))}</span><span>UPDATED: {esc(state.get("updated", "TBD"))}</span></div>' if include_release else ""
-    status_class = " approved" if (status or "").casefold() in {"approved", "published"} else ""
-    status_html = "" if status is None else (
-        f'<div class="hero-catalog-status"><span class="hero-status-badge{status_class}"><span>Catalog status:</span> '
-        f'{esc(status)}</span>{status_explainer()}</div>'
-    )
-    return f'''<section class="hero" style="min-height:clamp(360px,32vw,440px);padding:52px 5vw 42px;display:flex;align-items:center"><div class="wrap" style="width:100%">{eyebrow_html}{title_block}<p>{esc(description)}</p>{badge_html}{status_html}{release_html}</div></section>'''
-
-
-def release_panel(label: str, state: dict | None = None, show_version: bool = True) -> str:
-    state = state or release_state()
-    status = state.get("state", state.get("status", "Draft"))
-    status_class = "published" if str(status).casefold() == "published" else "draft"
-    version_html = f'<span class="release-pill version-pill"><span>Version:</span> {esc(state.get("version", "RDK8"))}</span>' if show_version else ""
-    return f'''<div class="release-panel"><span class="release-pill status-{status_class}"><span>Catalog status:</span> {esc(status)}</span>{version_html}</div>'''
-def cards(items: list[list[str]]) -> str:
-    return '<div class="grid">' + "".join(
-        f'<article class="card"><h3>{esc(item[0])}</h3><p>{esc(item[1])}</p></article>'
-        for item in items
-    ) + "</div>"
-
-
-def linked_cards(items: list[list[str]], links: list[str]) -> str:
-    return '<div class="grid">' + "".join(
-        f'<a class="card" style="display:block;text-decoration:none;color:inherit" href="{esc(links[index])}"><h3>{esc(item[0])}</h3><p>{esc(item[1])}</p></a>'
-        for index, item in enumerate(items)
-    ) + "</div>"
-
-
-def linked_metric_cards(items: list[list[str]], links: list[str], metrics: list[object]) -> str:
-    return '<div class="grid">' + "".join(
-        f'<a class="card" style="display:block;text-decoration:none;color:inherit" href="{esc(links[index])}"><strong style="display:block;min-height:44px;font-size:2.4rem;color:#2457d6">{esc(metrics[index]) if metrics[index] is not None else "&nbsp;"}</strong><h3>{esc(item[0])}</h3><p>{esc(item[1])}</p></a>'
-        for index, item in enumerate(items)
-    ) + "</div>"
-
-
-def stacked_cards(items: list[list[str]]) -> str:
-    return '<div class="grid" style="max-width:980px">' + "".join(
-        f'<article class="card"><h3>{esc(item[0])}</h3><p>{esc(item[1])}</p></article>'
-        for item in items
-    ) + "</div>"
-
-
-def grouped_cards(groups: list[dict]) -> str:
-    rendered = []
-    for group in groups:
-        description = f'<p>{esc(group["description"])}</p>' if group.get("description") else ""
-        items = "".join(f'<li>{esc(item)}</li>' for item in group.get("items", []))
-        rendered.append(f'<article class="card"><h3>{esc(group["title"])}</h3>{description}<ul>{items}</ul></article>')
-    return '<div class="grid">' + "".join(rendered) + "</div>"
-
-
-def build_api(
-    *,
-    data_file: str,
-    output_file: str,
-    active: str,
-    title: str,
-    description: str,
-    columns: list[str],
-    fields: list[str],
-    link_field: str | None = None,
-    search_placeholder: str | None = None,
-    empty_message: str | None = None,
-    sort_field: str | None = None,
-    draft_note: str | None = None,
-    pill_fields: list[str] | None = None,
-    strip_release_path: bool = False,
-    show_version: bool = True,
-    show_status_explainer: bool = True,
-    hero_status: str | None = None,
-) -> None:
-    data = load(data_file)
-    records = data.get("apis", [])
-    column_html = "".join(f"<th>{esc(column)}</th>" for column in columns)
-    ordered_records = sorted(records, key=lambda item: str(item.get(sort_field, "")).casefold()) if sort_field else records
-    row_data = [[item.get(field, "") for field in fields] for item in ordered_records]
-    rows = f'<tr><td class="empty" colspan="{len(fields)}">{esc(empty_message or f"No {title.lower()} have been loaded.")}</td></tr>' if not records else ""
-    script = ""
-    search = ""
-    table_id = f"{active}-rows"
-    if search_placeholder:
-        search_id = f"{active}-search"
-        search = f'<div class="toolbar catalog-search-toolbar"><input id="{search_id}" type="search" placeholder="{esc(search_placeholder)}" aria-label="{esc(search_placeholder)}"></div>'
-        script_data = json.dumps(row_data, ensure_ascii=True)
-        link_index = fields.index(link_field) if link_field else -1
-        pill_indexes = {fields.index(field) for field in (pill_fields or []) if field in fields}
-        link_value = f'String(item[{link_index}]).replace(/\\/releases\\/tag\\/[^/]+\\/?$/, "")' if strip_release_path and link_index >= 0 else f'item[{link_index}]'
-        cells = "".join(
-            f'''<td style="white-space:pre-line"><a href="${{esc({link_value})}}" target="_blank" rel="noopener">${{esc({link_value})}}</a></td>'''
-            if index == link_index else f'''<td style="white-space:pre-line">{'<span class="pill${item[' + str(index) + '].toLowerCase()==="core" ? " core" : ""}">${esc(item[' + str(index) + '])}</span>' if index in pill_indexes else '${esc(item[' + str(index) + '])}'}</td>'''
-            for index in range(len(fields))
-        )
-        script = f'''<script>const DATA={script_data};const esc=s=>{{const d=document.createElement('div');d.textContent=s;return d.innerHTML}};const search=document.querySelector('#{search_id}');const render=()=>{{const q=search.value.toLowerCase();const rows=DATA.filter(item=>item.join(' ').toLowerCase().includes(q));document.querySelector('#{table_id}').innerHTML=rows.length?rows.map(item=>`<tr>{cells}</tr>`).join(''):'<tr><td class="empty" colspan="{len(fields)}">No matching records.</td></tr>'}};search.addEventListener('input',render);render()</script>'''
-    else:
-        rows = "".join(
-            "<tr>" + "".join(
-                f'<td><a href="{esc(item.get(field, ""))}" target="_blank" rel="noopener">{esc(item.get(field, ""))}</a></td>'
-                if field == link_field else f'<td>{esc(item.get(field, ""))}</td>'
-                for field in fields
-            ) + "</tr>"
-            for item in ordered_records
-        )
-    table_body = f'''<div class="table-wrap" style="margin-top:24px"><table><thead><tr>{column_html}</tr></thead><tbody id="{table_id}">{rows}</tbody></table></div>'''
-    note = f'<aside role="note" aria-label="Note" style="width:100%;margin:0 0 20px;padding:14px 18px;border:1px solid #edcf7a;border-left:4px solid #b45309;border-radius:8px;background:#fff4d8;color:#8a5a00;font-size:.92rem;line-height:1.5;box-shadow:var(--shadow);"><strong style="display:block;margin-bottom:4px;color:#8a5a00;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;">Note</strong><span style="display:block;max-width:900px;">{esc(draft_note)}</span></aside>' if draft_note else ""
-    status_html = status_explainer() if show_status_explainer else ""
-    status_block = "" if hero_status is not None else f'<div class="api-status" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">{release_panel("RDK8 list state", data, show_version)}{status_html}</div>'
-    body = hero("Interface catalog", title, description, include_release=False, status=hero_status) + f'''<section class="section"><div class="api-controls">{status_block}{search}</div>{note}{table_body}</section>'''
-    body += script
-    (ROOT / output_file).write_text(shell(f"{title} | RDK8", active, body), encoding="utf-8")
-
-
-def build(page: str) -> None:
-    from gen_base_page import build_home
-    from gen_component_registry_page import build_components
-    from gen_nbi_page import build_northbound
-    from gen_sbi_page import build_southbound
-
-    if page in ("all", "home"):
-        build_home()
-    if page in ("all", "components"):
-        build_components()
-    if page in ("all", "northbound"):
-        build_northbound()
-    if page in ("all", "southbound"):
-        build_southbound()
+def validate_data() -> list[str]:
+    problems: list[str] = []
+    for name, collection, required in DATA_RULES:
+        path = ROOT / name
+        if not path.exists():
+            problems.append(f"{name}: missing")
+            continue
+        data = load_json(name)
+        records = data.get(collection)
+        if not isinstance(records, list):
+            problems.append(f"{name}: expected a '{collection}' array")
+            continue
+        for index, record in enumerate(records):
+            for field in required:
+                if not str(record.get(field, "") or "").strip():
+                    label = record.get("name") or record.get("halInterface") or f"index {index}"
+                    problems.append(f"{name}: '{label}' is missing {field}")
+        labels = [str(r.get("name") or r.get("halInterface") or "").casefold() for r in records]
+        duplicates = {label for label in labels if label and labels.count(label) > 1}
+        for label in sorted(duplicates):
+            problems.append(f"{name}: duplicate entry '{label}'")
+    return problems
 
 
 def check() -> None:
-    required = [
-        "index.html", "component-catalog.html", "northbound-api-spec.html", "southbound-api-spec.html",
-        *(href for href, _ in NORTHBOUND_MENU),
-    ]
-    missing = [name for name in required if not (ROOT / name).exists()]
+    missing = [name for name in EXPECTED_PAGES if not (ROOT / name).exists()]
     if missing:
-        raise SystemExit("Missing generated pages: " + ", ".join(missing))
-    for name in ("home-content.json", "components.json", "northbound-apis.json", "southbound-apis.json"):
-        load(name)
-    print(f"RDKE build check passed: {len(load('components.json')['components'])} components")
+        raise SystemExit("missing generated pages: " + ", ".join(missing))
+    problems = validate_data()
+    if problems:
+        raise SystemExit("data validation failed:\n  " + "\n  ".join(problems))
+    print(f"check passed: {len(catalog_rows())} components, data valid")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--page", choices=["all", "home", "components", "northbound", "southbound"], default="all")
-    parser.add_argument("--check", action="store_true", help="Validate inputs and generated page presence")
+    parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    build(args.page)
+    build()
     if args.check:
         check()

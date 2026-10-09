@@ -1,0 +1,126 @@
+/* components.css - hand-maintained. Derived once from the pre-migration site. */
+#constituent-parts {
+  max-width:none;
+}
+#standard-keys,
+#partner-buttons {
+  max-width:none;
+}
+* {
+  box-sizing:border-box;
+}
+.badges {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+.badge {
+  border:1px solid #fff3;
+  border-radius:20px;
+  padding:6px 12px;
+  color:#eaf5ff;
+  background:#fff1;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-left:4px solid var(--blue);
+  padding:22px;
+  border-radius:8px;
+  box-shadow:0 1px 2px #0000000d;
+}
+.card:nth-child(2n) {
+  border-left-color:var(--green);
+}
+.card:nth-child(3n) {
+  border-left-color:var(--amber);
+}
+.card p,
+.card li {
+  color:var(--muted);
+}
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.stat {
+  padding:22px;
+  text-align:center;
+  border-top:4px solid var(--blue);
+}
+.stat:nth-child(2) {
+  border-color:var(--green);
+}
+.stat:nth-child(3) {
+  border-color:var(--amber);
+}
+.stat:nth-child(4) {
+  border-color:var(--orange);
+}
+.stat strong {
+  display:block;
+  font-size:1.8rem;
+}
+.stat span {
+  color:var(--muted);
+  font-size:.78rem;
+  text-transform:uppercase;
+}
+.toolbar {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+.toolbar input,
+.toolbar select {
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:10px 12px;
+  background:#fff;
+  font:inherit;
+}
+.pill {
+  display:inline-block;
+  background:#eaf2ff;
+  color:#2249a2;
+  border-radius:15px;
+  padding:2px 9px;
+  font-size:.8rem;
+}
+.empty {
+  padding:45px;
+  text-align:center;
+  color:var(--muted);
+  background:#fff;
+}
+.notice {
+  border-left:4px solid var(--amber);
+  background:#fff8e8;
+  padding:18px 20px;
+  color:#62420c;
+}
+.pdf-sections {
+  display:grid;
+  gap:18px;
+  margin-top:16px;
+}
+.pdf-section {
+  max-width:none;
+}
+.pdf-section p {
+  margin-bottom:8px;
+}
+.pdf-table {
+  margin-top:14px;
+  box-shadow:none;
+}

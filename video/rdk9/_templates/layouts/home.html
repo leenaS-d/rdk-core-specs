@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "partials/hero.html" %}
+{%- for section in page.sections %}
+<section class="section{% if section.style == 'alt' %} alt{% endif %}{% if section.classes %} {{ section.classes }}{% endif %}">
+  {%- if section.eyebrow %}
+  <div class="eyebrow">{{ section.eyebrow }}</div>
+  {%- endif %}
+  <h2>{{ section.heading }}</h2>
+  {%- if section.layout == 'metric-cards' %}
+  <div class="grid">
+    {%- for card in section.cards %}
+    <a class="card card--link" href="{{ card.href }}"><strong class="card-metric">{{ card.metric }}</strong><h3>{{ card.title }}</h3><p>{{ card.body }}</p></a>
+    {%- endfor %}
+  </div>
+  {%- elif section.layout == 'cards' %}
+  <div class="grid{% if section.grid %} {{ section.grid }}{% endif %}">
+    {%- for card in section.cards %}
+    <article class="card"><h3>{{ card.title }}</h3><p>{{ card.body }}</p></article>
+    {%- endfor %}
+  </div>
+  {%- else %}
+  {{ section.html }}
+  {%- endif %}
+</section>
+{%- endfor %}
+{% endblock %}

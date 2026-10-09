@@ -1,0 +1,680 @@
+{
+  "schemaVersion": "1.0",
+  "hero": {
+    "eyebrow": "Firebolt 8",
+    "title": "Firebolt 8 JSON-RPC Specification",
+    "description": "The Firebolt JSON-RPC specification defines the request and response protocol used by RDK8 applications and platform services.",
+    "status": "Published"
+  },
+  "source": {
+    "label": "Firebolt 8 JSON-RPC spec.pdf",
+    "href": "assets/pdf/Firebolt 8 JSON-RPC spec.pdf"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "blocks": [
+        {
+          "type": "reference",
+          "title": "References",
+          "items": [
+            {
+              "label": "Definitions",
+              "ref": "json-rpc-definitions"
+            },
+            {
+              "label": "JSON RPC 2.0 Spec",
+              "href": "https://www.jsonrpc.org/specification"
+            }
+          ]
+        }
+      ],
+      "classes": "json-rpc-section"
+    },
+    {
+      "type": "section",
+      "blocks": [
+        {
+          "type": "prose",
+          "body": "The URL used by the Firebolt Client Library to connect to the Firebolt API Gateway includes the `RPCv2=true` query parameter, confirming that the Client Library uses and accepts only compliant JSON-RPC as specified in this document."
+        },
+        {
+          "type": "prose",
+          "body": "All names used for matching, including method and parameter names, are case sensitive as stated in Section 2 of the JSON-RPC 2.0 Specification."
+        }
+      ],
+      "heading": "JSON-RPC 2.0 Compliance",
+      "classes": "json-rpc-section"
+    },
+    {
+      "type": "section",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "message",
+              "label": "Message"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            },
+            {
+              "key": "notes",
+              "label": "Notes"
+            },
+            {
+              "key": "example",
+              "label": "Example"
+            }
+          ],
+          "rows": [
+            {
+              "message": "Method",
+              "description": "Method call with no parameters",
+              "notes": "Params is not provided",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-0"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Method",
+              "description": "Method call with one or more parameters",
+              "notes": "Params is an object. Arrays are not used",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-1"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Error response",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-2"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Success with no return value",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-3"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Success returning a single primitive value",
+              "notes": "result is a primitive type",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-4"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Success returning a single attribute that is an array of values of the same primitive type",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-5"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Success returning more than one value",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-method-6"
+                  }
+                ],
+                "plain": true
+              }
+            }
+          ],
+          "tableClasses": "json-rpc-message-table"
+        }
+      ],
+      "heading": "Method Calls",
+      "classes": "json-rpc-section"
+    },
+    {
+      "type": "section",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "message",
+              "label": "Message"
+            },
+            {
+              "key": "description",
+              "label": "Description"
+            },
+            {
+              "key": "notes",
+              "label": "Notes"
+            },
+            {
+              "key": "example",
+              "label": "Example"
+            }
+          ],
+          "rows": [
+            {
+              "message": "Method",
+              "description": "Subscribe for notification",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-0"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Method",
+              "description": "Unsubscribe from notification",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-1"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Subscription request failed",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-2"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Response",
+              "description": "Subscription request succeeded",
+              "notes": "",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-3"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Method",
+              "description": "Notification of a primitive type",
+              "notes": "The params object has a single member that is always called \"value\"",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-4"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Method",
+              "description": "Notification of a single attribute that is an array of values of the same primitive type",
+              "notes": "Params is an array that represents one attribute, not positional parameters in this case C++ example: void onSomething( std::vector<std::string> bar )",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-5"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Method",
+              "description": "Notification of an object",
+              "notes": "params contains all the attributes of the object",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-6"
+                  }
+                ],
+                "plain": true
+              }
+            },
+            {
+              "message": "Method",
+              "description": "Notification of a list of objects",
+              "notes": "Params is an array that represents one attribute, not positional parameters in this case. Rarely used",
+              "example": {
+                "type": "actions",
+                "items": [
+                  {
+                    "label": "View example",
+                    "ref": "json-rpc-notification-7"
+                  }
+                ],
+                "plain": true
+              }
+            }
+          ],
+          "tableClasses": "json-rpc-message-table"
+        }
+      ],
+      "heading": "Notifications",
+      "classes": "json-rpc-section"
+    }
+  ],
+  "definitions": {
+    "json-rpc-definitions": {
+      "type": "entry",
+      "heading": "Definitions",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name"
+            },
+            {
+              "key": "meaning",
+              "label": "Meaning"
+            }
+          ],
+          "rows": [
+            {
+              "name": "Primitive type",
+              "meaning": "NULL, Boolean, Number or String"
+            }
+          ]
+        }
+      ]
+    },
+    "json-rpc-method-0": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Method call with no parameters",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"method\": \"Module.method\"\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-method-1": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Method call with one or more parameters",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"method\": \"Module.method\",\n \"params\": {\n \"attr1\": 1,\n \"attr2\": \"value2\"\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-method-2": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Error response",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"error\": {\n \"code\": -40300,\n \"message\": \"Method not permitted\"\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-method-3": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Success with no return value",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"result\": null\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-method-4": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Success returning a single primitive value",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"result\": 42\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-method-5": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Success returning a single attribute that is an array of values of the same primitive type",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"result\": [\n \"spa\",\n \"eng\"\n ]\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-method-6": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Success returning more than one value",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 1,\n \"result\": {\n \"attr1\": 1,\n \"attr2\": \"value2\"\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-0": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Subscribe for notification",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 2,\n \"method\": \"Module. onSomething\",\n \"params\": {\n \"listen\": true\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-1": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Unsubscribe from notification",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 2,\n \"method\": \"Module. onSomething\",\n \"params\": {\n \"listen\": false\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-2": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Subscription request failed",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 2,\n \"error\": {\n \"code\": -12345,\n \"message\": \"Subscription request failed\"\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-3": {
+      "type": "entry",
+      "eyebrow": "Response",
+      "heading": "Subscription request succeeded",
+      "overview": "Message: Response",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"id\": 2,\n \"result\": null\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-4": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Notification of a primitive type",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"method\": \"Module. onSomething\",\n \"params\": {\n \"value\": 42\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-5": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Notification of a single attribute that is an array of values of the same primitive type",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"method\": \"Module. onSomething\",\n \"params\": [\n \"spa\",\n \"eng\"\n ]\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-6": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Notification of an object",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"method\": \"Module. onSomething\",\n \"params\": {\n \"attr1\": 1,\n \"attr2\": \"value2\"\n }\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    },
+    "json-rpc-notification-7": {
+      "type": "entry",
+      "eyebrow": "Method",
+      "heading": "Notification of a list of objects",
+      "overview": "Message: Method",
+      "blocks": [
+        {
+          "type": "heading",
+          "body": "Example"
+        },
+        {
+          "type": "code",
+          "body": "{\n \"jsonrpc\": \"2.0\",\n \"method\": \"Module. onSomething\",\n \"params\": [\n {\n \"attr1\": 1,\n \"attr2\": \"value2\"\n },\n {\n \"attr1\": 2,\n \"attr2\": \"value4\"\n }\n ]\n}",
+          "variant": "spec-example"
+        },
+        {
+          "type": "heading",
+          "body": "Notes"
+        }
+      ]
+    }
+  },
+  "status": "Published"
+}
