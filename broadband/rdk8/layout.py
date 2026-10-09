@@ -62,11 +62,20 @@ SHARED_CSS = """
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: "Anuphan", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--page-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; font-family: "Roboto", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.5; color: var(--ink); background: var(--page-bg); -webkit-font-smoothing: antialiased; }
   code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
   a { color: var(--middleware); }
-  h1, h2, h3, h4 { font-family: "Anuphan", sans-serif; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--ink); }
-  p { margin: 0 0 12px; color: var(--muted); }
+  h1 { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 54px; line-height: 1.2; letter-spacing: 0; margin: 0; color: var(--ink); }
+  h2 { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 40px; line-height: 1.2; letter-spacing: 0; margin: 0; color: var(--ink); }
+  h3 { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 32px; line-height: 1.2; letter-spacing: 0; margin: 0; color: var(--ink); }
+  h4 { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 28px; line-height: 1.2; letter-spacing: 0; margin: 0; color: var(--ink); }
+  h5 { font-family: "Anuphan", sans-serif; font-weight: 400; font-size: 24px; line-height: 1.5; letter-spacing: 0; margin: 0; color: var(--ink); }
+  p { margin: 0 0 12px; font-family: "Roboto", sans-serif; font-size: 16px; line-height: 1.5; color: var(--muted); }
+  @media (max-width: 768px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 20px; line-height: 1.5; }
+  }
 
   /* ---- top accent bar, echoes the RDK mark's four bars ---- */
   .accent-bar {
@@ -251,7 +260,7 @@ SHARED_CSS = """
   }
   .tabs-inner { max-width: 1520px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 44px; overflow-x: auto; scrollbar-width: none; }
   .tabs-inner::-webkit-scrollbar { display: none; }
-  .tab-btn { flex: 0 0 auto; background: none; border: none; border-radius: 10px; padding: 12px 18px; font: 600 0.95rem/1 "Anuphan", sans-serif; color: rgba(255,255,255,0.72); cursor: pointer; white-space: nowrap; transition: background 0.15s, color 0.15s; }
+  .tab-btn { flex: 0 0 auto; background: none; border: none; border-radius: 10px; padding: 12px 18px; font: 600 0.95rem/1 "Roboto", sans-serif; color: rgba(255,255,255,0.72); cursor: pointer; white-space: nowrap; transition: background 0.15s, color 0.15s; }
   /* each tab gets its own accent, echoing the 5-color stripe used in .stats / the overview cards */
   .tab-btn:nth-child(1) { --tab-color: var(--rdk-blue); }
   .tab-btn:nth-child(2) { --tab-color: var(--rdk-green); }
@@ -287,7 +296,7 @@ SHARED_CSS = """
     background: #1a2540;
   }
   table.def-table th {
-    font-family: "Anuphan", sans-serif; font-size: 0.74rem; text-transform: uppercase;
+    font-family: "Roboto", sans-serif; font-size: 0.74rem; text-transform: uppercase;
     letter-spacing: 0.07em; font-weight: 700; color: #fff;
     background: transparent;
     border-bottom: none;
@@ -302,7 +311,7 @@ SHARED_CSS = """
   table.def-table td { color: var(--ink); line-height: 1.6; border-right: 1px solid var(--border); }
   table.def-table td:last-child { border-right: none; }
   table.def-table td:first-child {
-    color: var(--ink); font-weight: 400; font-family: "Anuphan", sans-serif;
+    color: var(--ink); font-weight: 400; font-family: "Roboto", sans-serif;
     font-size: 0.92rem; width: 26%; min-width: 180px;
   }
   table.def-table td.mono { font-family: "JetBrains Mono", monospace; font-size: 0.84rem; color: var(--muted); font-weight: 400; }
@@ -328,7 +337,7 @@ SHARED_CSS = """
   .gov-section.level-2 { padding-top: 22px; margin-top: 22px; border-top: 1px solid var(--border); }
   .gov-section.level-2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
   .gov-section h3, .gov-section h4, .gov-section h5 {
-    display: flex; align-items: baseline; gap: 10px; font-family: "Anuphan", sans-serif;
+    display: flex; align-items: baseline; gap: 10px; font-family: "Roboto", sans-serif;
   }
   .gov-section h3 { font-size: 1.12rem; }
   .gov-section h4 { font-size: 1.0rem; margin-top: 14px; }
@@ -929,7 +938,7 @@ def render_page(active_id: str, head_extra: str, body_html: str, script: str = "
 <meta http-equiv="Expires" content="0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600&family=Roboto:wght@400;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>{SHARED_CSS}</style>
 <style>:root {{ --glow-img: url("{path_prefix}header-glow.png"); }}</style>
 {head_extra}
