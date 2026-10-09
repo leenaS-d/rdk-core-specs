@@ -31,7 +31,7 @@
   /* ---- top accent bar, echoes the RDK mark's four bars ---- */
   .accent-bar {
     height: 5px; width: 100%;
-    background: linear-gradient(90deg, var(--rdk-blue) 0%, var(--rdk-blue) 25%, var(--rdk-green) 25%, var(--rdk-green) 50%, var(--rdk-amber) 50%, var(--rdk-amber) 75%, var(--rdk-orange) 75%, var(--rdk-orange) 100%);
+    background: var(--glow-img, linear-gradient(90deg,#29b6e8,#7ac943,#f5a623,#f0653e)) center/cover no-repeat;
     position: fixed; top: 0; left: 0; z-index: 60;
   }
 
@@ -105,9 +105,9 @@
   /* ---- hero ---- */
   .hero {
     background:
-      radial-gradient(ellipse 600px 380px at 8% 30%, rgba(52,130,255,0.28), transparent 65%),
-      radial-gradient(ellipse 380px 300px at 95% 80%, rgba(70,30,130,0.12), transparent 60%),
-      linear-gradient(120deg, #1e3878 0%, #1d2870 40%, #211868 75%, #2a1858 100%);
+      linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.28) 100%),
+      var(--glow-img, linear-gradient(120deg,#1e3878,#2a1858)) no-repeat top center/100% auto,
+      #00182a;
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
@@ -443,6 +443,7 @@
   .contact-status.err { color: #b91c1c; }
   .contact-mailto { display: block; text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 10px; }
 </style>
+<style>:root { --glow-img: url("header-glow.png"); }</style>
 <title>Industry Conformance Standards — RDK-B Core Broadband</title>
 
 <script>
@@ -596,7 +597,7 @@ TABLES.forEach(loadTable);
     </div><div class="nav-group ">
       <button type="button" class="nav-group-toggle ">South-bound APIs <span class="caret">&#9662;</span></button>
       <div class="nav-dropdown"><div class="nav-dropdown-inner"><a class="" href="south-bound-apis.html">South Bound APIs</a></div></div>
-    </div><a class="" href="hardware-compatibility.html">Compatibility Specifications</a>
+    </div>
   </nav>
 </div>
 <script>
