@@ -55,7 +55,7 @@
   border-radius:5px;
   background:#fff4d8;
   color:#8a5a00;
-  font:700 .75rem/1 "JetBrains Mono",monospace;
+  font:700 .75rem/1 "Anuphan",sans-serif;
   letter-spacing:.04em;
 }
 .hero-status-badge span {
@@ -113,7 +113,7 @@
   border-radius:999px;
   background:transparent;
   color:#d8f596;
-  font:700 .82rem/1 "JetBrains Mono",monospace;
+  font:700 .82rem/1 "Anuphan",sans-serif;
   letter-spacing:.08em;
   overflow-wrap:anywhere;
   text-align:center;
@@ -184,7 +184,11 @@
 }
 .hero {
   padding:80px 5vw 76px;
-  background:radial-gradient(circle at 10% 20%,#29b6e855,transparent 32%),linear-gradient(120deg,#0a1a3d,#202a70 55%,#381b52);
+  background-color:#00182a;
+  background-image:url("../../../../assets/header-glow.png");
+  background-position:top center;
+  background-size:100% auto;
+  background-repeat:no-repeat;
   color:#fff;
 }
 .hero h1 {

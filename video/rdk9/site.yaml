@@ -9,7 +9,7 @@ brand:
   logo: assets/img/RDK-logo.png
   alt: RDK
 
-fonts: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+fonts: "https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap"
 
 # Link order is load-bearing: later files intentionally override earlier ones.
 stylesheets:

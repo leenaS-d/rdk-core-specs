@@ -63,14 +63,14 @@
 }
 .spec-entry-eyebrow {
   color:var(--link);
-  font:700 .72rem/1 "Inter",sans-serif;
+  font:700 .72rem/1 "Anuphan",sans-serif;
   letter-spacing:.08em;
   text-transform:uppercase;
 }
 .spec-entry h2 {
   margin:0;
   font-size:1.3rem;
-  font-family:"Space Grotesk","Inter",sans-serif;
+  font-family:"Anuphan",sans-serif;
 }
 .spec-entry-overview {
   margin:0 0 20px;
@@ -92,7 +92,7 @@
   background:#eef2fb;
   padding:5px 10px;
   border-radius:6px;
-  font:500 .9rem "JetBrains Mono",monospace;
+  font:500 .9rem ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
   white-space:pre-line;
   line-height:1.5;
 }
@@ -154,7 +154,7 @@
 .api-detail-row dt {
   margin:0;
   color:var(--link);
-  font:700 .74rem/1.4 "Inter",sans-serif;
+  font:700 .74rem/1.4 "Anuphan",sans-serif;
   letter-spacing:.04em;
   text-transform:uppercase;
 }
@@ -191,7 +191,7 @@
   border:1px solid var(--border);
   border-radius:8px;
   color:var(--ink);
-  font:400 .84rem/1.55 "Inter",sans-serif;
+  font:400 .84rem/1.55 "Anuphan",sans-serif;
 }
 .allowed-actions {
   display:flex;
@@ -204,7 +204,7 @@
   border-radius:20px;
   background:#eef2fb;
   color:var(--link);
-  font:500 .78rem "JetBrains Mono",monospace;
+  font:500 .78rem "Anuphan",sans-serif;
   text-decoration:none;
 }
 .allowed-action:hover {
@@ -256,7 +256,7 @@
   color:#f4f7fa;
   border-radius:8px;
   box-shadow:0 10px 24px #07101d26;
-  font:400 .84rem/1.6 "JetBrains Mono",monospace;
+  font:400 .84rem/1.6 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
 }
 .spec-intro.json-rpc-section {
   max-width:none;
@@ -299,7 +299,7 @@
   overflow:auto;
   background:#172333;
   color:#f4f7fa;
-  font:400 .84rem/1.6 "JetBrains Mono",monospace;
+  font:400 .84rem/1.6 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
   white-space:pre;
 }
 .spec-details {
@@ -483,7 +483,7 @@
 .api-reference-title {
   margin-bottom:10px;
   color:var(--ink);
-  font:700 1rem/1.2 "Space Grotesk","Inter",sans-serif;
+  font:700 1rem/1.2 "Anuphan",sans-serif;
 }
 .reference-actions {
   display:flex;
@@ -501,7 +501,7 @@
   border-radius:5px;
   background:var(--card);
   color:var(--link);
-  font:700 .82rem/1.2 "Space Grotesk","Inter",sans-serif;
+  font:700 .82rem/1.2 "Anuphan",sans-serif;
   text-decoration:none;
 }
 .reference-trigger::after {

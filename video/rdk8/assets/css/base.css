@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap');
+
 /* base.css - hand-maintained. Derived once from the pre-migration site. */
 html {
   scroll-behavior:smooth;
@@ -6,13 +8,13 @@ body {
   margin:0;
   background:var(--bg);
   color:var(--ink);
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+  font-family:"Anuphan",sans-serif;
   line-height:1.6;
 }
 h1,
 h2,
 h3 {
-  font-family:Georgia,serif;
+  font-family:"Anuphan",sans-serif;
   line-height:1.15;
   margin:0 0 12px;
 }

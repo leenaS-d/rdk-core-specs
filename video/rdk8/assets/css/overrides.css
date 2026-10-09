@@ -47,17 +47,16 @@
   }
 }
 body {
-  font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family:"Anuphan",sans-serif;
 }
 h1,
 h2,
 h3 {
-  font-family:"Space Grotesk","Inter",sans-serif;
+  font-family:"Anuphan",sans-serif;
 }
 code,
-.mono,
-.release-pill {
-  font-family:"JetBrains Mono",ui-monospace,monospace!important;
+.mono {
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace!important;
 }
 .hero .wrap {
   max-width:none;
@@ -94,7 +93,7 @@ code,
   color:var(--ink);
   background:#fff;
   box-shadow:var(--shadow);
-  font:700 .75rem/1 Consolas,monospace;
+  font:700 .75rem/1 "Anuphan",sans-serif;
   letter-spacing:.04em;
 }
 .release-pill span {
