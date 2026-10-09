@@ -8,7 +8,7 @@
 <meta http-equiv="Expires" content="0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bedrock: #080d18; --hal: #16305a; --middleware: #2a5cf0; --mgmt: #0aa66e;
@@ -22,10 +22,10 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--page-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; font-family: "Anuphan", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--page-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
   code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
   a { color: var(--middleware); }
-  h1, h2, h3, h4 { font-family: "Space Grotesk", "Inter", sans-serif; font-weight: 800; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
+  h1, h2, h3, h4 { font-family: "Anuphan", sans-serif; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--ink); }
   p { margin: 0 0 12px; color: var(--muted); }
 
   /* ---- top accent bar, echoes the RDK mark's four bars ---- */
@@ -45,7 +45,7 @@
   }
   .topnav .brand { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
   .topnav .brand img { height: 26px; width: auto; display: block; }
-  .topnav .brand-text { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 0.86rem; color: #fff; white-space: nowrap; }
+  .topnav .brand-text { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 0.86rem; color: #fff; white-space: nowrap; }
   .topnav nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; row-gap: 8px; flex: 1 1 auto; min-width: 0; }
 
   /* Every nav control — plain links, dropdown toggles, all of it — shares
@@ -117,7 +117,7 @@
   @media (max-width: 1300px) { .hero-visual { flex-basis: 420px; max-width: 420px; } .hero-visual img { max-width: 420px; } }
   @media (max-width: 1000px) { .hero-visual { display: none; } }
 
-  .eyebrow { display: inline-block; font-family: "Inter", "Segoe UI", sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #4ab8f5; border: none; background: none; border-radius: 0; padding: 0; margin-bottom: 14px; }
+  .eyebrow { display: inline-block; font-family: "Anuphan", sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #4ab8f5; border: none; background: none; border-radius: 0; padding: 0; margin-bottom: 14px; }
   .hero h1 { font-size: clamp(2.0rem, 4vw, 3.0rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em; color: #fff; max-width: 820px; }
   .hero .lede { color: #dce6f5; font-size: 1.08rem; max-width: 1100px; margin-top: 16px; }
   .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -141,7 +141,7 @@
   .stat:nth-child(3) .stat-icon { color: var(--rdk-amber); }
   .stat:nth-child(4) .stat-icon { color: var(--rdk-orange); }
   .stat:nth-child(5) .stat-icon { color: var(--middleware); }
-  .stat .num { font-family: "Space Grotesk", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+  .stat .num { font-family: "Anuphan", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); }
   .stat .lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; font-weight: 500; }
   @media (max-width: 760px) { .stats { flex-wrap: wrap; margin: -20px 16px 0; } .stat { flex: 1 1 40%; border-right: none; border-bottom: 1px solid var(--border); } .hero { padding: 48px 20px 40px; } }
 
@@ -150,11 +150,11 @@
   section.tight-top { padding-top: 52px; }
   @media (max-width: 760px) { section { padding: 40px 20px; } }
   .section-head { margin-bottom: 34px; }
-  .section-head .eyebrow-lt { font-family: "Inter", "Segoe UI", sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--middleware); font-weight: 700; margin-bottom: 9px; display: block; white-space: nowrap; }
+  .section-head .eyebrow-lt { font-family: "Anuphan", sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--middleware); font-weight: 700; margin-bottom: 9px; display: block; white-space: nowrap; }
   .section-head h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.025em; }
   .section-head p { margin-top: 11px; font-size: 1.02rem; max-width: 680px; }
   .callout { max-width: 820px; background: linear-gradient(135deg, #eef2ff 0%, #f3f0ff 100%); border: 1px solid #d3dbfb; border-left: 4px solid var(--middleware); border-radius: 10px; padding: 22px 26px; margin: 18px 0; }
-  .callout strong { color: var(--ink); display: block; margin-bottom: 5px; font-size: 0.95rem; font-family: "Space Grotesk", sans-serif; }
+  .callout strong { color: var(--ink); display: block; margin-bottom: 5px; font-size: 0.95rem; font-family: "Anuphan", sans-serif; }
   .callout p { margin: 0; font-size: 0.95rem; }
   .two-col { display: flex; gap: 28px; }
   .two-col > * { flex: 1; min-width: 0; }
@@ -211,7 +211,7 @@
   }
   .tabs-inner { max-width: 1520px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 44px; overflow-x: auto; scrollbar-width: none; }
   .tabs-inner::-webkit-scrollbar { display: none; }
-  .tab-btn { flex: 0 0 auto; background: none; border: none; border-radius: 10px; padding: 12px 18px; font: 600 0.95rem/1 "Inter", sans-serif; color: rgba(255,255,255,0.72); cursor: pointer; white-space: nowrap; transition: background 0.15s, color 0.15s; }
+  .tab-btn { flex: 0 0 auto; background: none; border: none; border-radius: 10px; padding: 12px 18px; font: 600 0.95rem/1 "Anuphan", sans-serif; color: rgba(255,255,255,0.72); cursor: pointer; white-space: nowrap; transition: background 0.15s, color 0.15s; }
   /* each tab gets its own accent, echoing the 5-color stripe used in .stats / the overview cards */
   .tab-btn:nth-child(1) { --tab-color: var(--rdk-blue); }
   .tab-btn:nth-child(2) { --tab-color: var(--rdk-green); }
@@ -247,7 +247,7 @@
     background: #1a2540;
   }
   table.def-table th {
-    font-family: "Inter", "Segoe UI", sans-serif; font-size: 0.74rem; text-transform: uppercase;
+    font-family: "Anuphan", sans-serif; font-size: 0.74rem; text-transform: uppercase;
     letter-spacing: 0.07em; font-weight: 700; color: #fff;
     background: transparent;
     border-bottom: none;
@@ -262,7 +262,7 @@
   table.def-table td { color: var(--ink); line-height: 1.6; border-right: 1px solid var(--border); }
   table.def-table td:last-child { border-right: none; }
   table.def-table td:first-child {
-    color: var(--ink); font-weight: 400; font-family: "Inter", "Segoe UI", sans-serif;
+    color: var(--ink); font-weight: 400; font-family: "Anuphan", sans-serif;
     font-size: 0.92rem; width: 26%; min-width: 180px;
   }
   table.def-table td.mono { font-family: "JetBrains Mono", monospace; font-size: 0.84rem; color: var(--muted); font-weight: 400; }
@@ -288,7 +288,7 @@
   .gov-section.level-2 { padding-top: 22px; margin-top: 22px; border-top: 1px solid var(--border); }
   .gov-section.level-2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
   .gov-section h3, .gov-section h4, .gov-section h5 {
-    display: flex; align-items: baseline; gap: 10px; font-family: "Space Grotesk", sans-serif;
+    display: flex; align-items: baseline; gap: 10px; font-family: "Anuphan", sans-serif;
   }
   .gov-section h3 { font-size: 1.12rem; }
   .gov-section h4 { font-size: 1.0rem; margin-top: 14px; }
@@ -308,7 +308,7 @@
     line-height: 1.55; margin: 10px 0 18px; white-space: pre;
   }
   .gov-section h5.gov-subhead {
-    font-family: "Space Grotesk", sans-serif; font-size: 0.82rem; font-weight: 700;
+    font-family: "Anuphan", sans-serif; font-size: 0.82rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.04em; color: var(--middleware);
     margin: 18px 0 6px; display: block;
   }
@@ -320,7 +320,7 @@
   .tier-diagram { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-md); }
   .tier { display: flex; align-items: stretch; border-bottom: 1px solid rgba(255,255,255,0.12); }
   .tier:last-child { border-bottom: none; }
-  .tier .num { flex: 0 0 64px; display: flex; align-items: center; justify-content: center; font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.15rem; }
+  .tier .num { flex: 0 0 64px; display: flex; align-items: center; justify-content: center; font-family: "Anuphan", sans-serif; font-weight: 700; font-size: 1.15rem; }
   .tier .body { flex: 1; padding: 19px 24px; }
   .tier .body h4 { margin: 0 0 4px; font-size: 1.02rem; }
   .tier .body p { margin: 0; font-size: 0.88rem; }
@@ -352,7 +352,7 @@
   .layer-box.top { background: var(--middleware); color: #fff; }
   .layer-box.mid { background: var(--hal); color: #fff; }
   .layer-box.bot { background: #e2e8f0; color: var(--ink); }
-  .subhead { font-family: "Space Grotesk", sans-serif; font-size: 1.2rem; font-weight: 700; margin: 36px 0 14px; }
+  .subhead { font-family: "Anuphan", sans-serif; font-size: 1.2rem; font-weight: 700; margin: 36px 0 14px; }
   .subhead:first-of-type { margin-top: 8px; }
   footer { background: var(--bedrock); color: #9fb2cf; padding: 44px 44px 30px; }
   .footer-links { display: flex; flex-wrap: wrap; gap: 28px; margin-bottom: 22px; max-width: 900px; }
@@ -389,7 +389,7 @@
     background: var(--bedrock); color: #fff; padding: 14px 16px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .chatbox-header .title { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 0.9rem; }
+  .chatbox-header .title { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 0.9rem; }
   .chatbox-header .subtitle { font-size: 0.72rem; color: #9fb2cf; margin-top: 2px; }
   .chatbox-close { background: none; border: none; color: #9fb2cf; cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 4px; }
   .chatbox-body { flex: 1; overflow-y: auto; padding: 14px 16px; background: #f8fafc; }
@@ -423,7 +423,7 @@
   }
   .contact-panel.open { display: flex; }
   .contact-header { background: var(--bedrock); color: #fff; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; }
-  .contact-header .title { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 0.9rem; }
+  .contact-header .title { font-family: "Anuphan", sans-serif; font-weight: 600; font-size: 0.9rem; }
   .contact-header .subtitle { font-size: 0.72rem; color: #9fb2cf; margin-top: 2px; }
   .contact-close { background: none; border: none; color: #9fb2cf; cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 4px; }
   .contact-body { padding: 16px; }
@@ -447,7 +447,6 @@
 <title>Core RDK Broadband</title>
 </head>
 <body>
-<div class="accent-bar"></div>
 <div class="topnav">
   <div class="brand">
     <img src="RDK-logo.png" alt="RDK-B Core Broadband logo" onerror="this.style.display='none'">
