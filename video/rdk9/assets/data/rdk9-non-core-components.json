@@ -799,5 +799,6 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/xr-voice-sdk"
+    }  
   ]
 }
