@@ -22,7 +22,7 @@ stylesheets:
   - assets/css/overrides.css
   - assets/css/site.css
 
-asset_version: rdk9-20261008
+asset_version: rdk9-20261010
 
 # The Northbound entry is a dropdown only; the Firebolt Core API Specification
 # is also reached from the home page cards.
