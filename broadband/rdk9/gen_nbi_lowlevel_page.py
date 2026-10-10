@@ -82,7 +82,7 @@ EXTRA_CSS = """
     display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 4px 11px;
     border-radius: 999px; margin: 2px 3px 2px 0; border: none;
   }
-  .ipc-pill-rbus  { background: #e0e7ff; color: #3730a3; }
+  .ipc-pill-rbus  { background: #d0eef9; color: #0a6fa8; }
   .ipc-pill-usp   { background: #d1fae5; color: #065f46; }
   /* ---- reference cards ---- */
   .ref-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin-top: 4px; }
@@ -99,7 +99,7 @@ EXTRA_CSS = """
     width: 40px; height: 40px; border-radius: 10px; display: flex;
     align-items: center; justify-content: center; flex: 0 0 auto;
   }
-  .ref-card-icon.rbus { background: linear-gradient(135deg,#e0e7ff,#c7d2fe); }
+  .ref-card-icon.rbus { background: linear-gradient(135deg,#cff0fc,#a0dcf5); }
   .ref-card-icon.usp  { background: linear-gradient(135deg,#d1fae5,#a7f3d0); }
   .ref-card h3 { font-size: 1rem; margin-bottom: 2px; }
   .ref-card .ref-sub { font-size: 0.78rem; color: var(--muted); margin: 0; }
@@ -109,7 +109,7 @@ EXTRA_CSS = """
     padding: 8px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
     text-decoration: none; color: #fff;
   }
-  .ref-btn.rbus { background: linear-gradient(90deg, var(--rdk-blue), #7c3aed); }
+  .ref-btn.rbus { background: var(--rdk-blue); }
   .ref-btn.usp  { background: linear-gradient(90deg, var(--rdk-green), #0ea5e9); }
   .ref-meta {
     font-size: 0.75rem; color: var(--muted); margin-top: 10px; margin-bottom: 0;
@@ -190,7 +190,7 @@ def build_page() -> str:
 
     <div class="ref-card rbus">
       <div class="ref-card-header">
-        <div class="ref-card-icon rbus">{_ICON_CODE.format(color="#3730a3")}</div>
+        <div class="ref-card-icon rbus">{_ICON_CODE.format(color="#29b6e8")}</div>
         <div>
           <h3>rbus</h3>
           <p class="ref-sub">RDK Message Bus &mdash; component-to-component IPC</p>
