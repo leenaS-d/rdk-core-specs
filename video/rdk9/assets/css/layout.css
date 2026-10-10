@@ -176,7 +176,11 @@
 }
 .hero {
   padding:80px 5vw 76px;
-  background:radial-gradient(circle at 10% 20%,#29b6e855,transparent 32%),linear-gradient(120deg,#0a1a3d,#202a70 55%,#381b52);
+  background-color:#00182a;
+  background-image:url("../../../../assets/header-glow.png");
+  background-position:top center;
+  background-size:100% auto;
+  background-repeat:no-repeat;
   color:#fff;
 }
 .hero h1 {

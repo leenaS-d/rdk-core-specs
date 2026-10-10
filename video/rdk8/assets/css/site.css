@@ -1,5 +1,7 @@
 /* site.css - hand-written. Holds the rules that replaced per-element style
    attributes, plus overrides. Loaded last, so it wins. */
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
 
 /* ---- hero ------------------------------------------------------------ */
 .hero h1 {
@@ -35,7 +37,10 @@
   display: block;
   min-height: 44px;
   color: var(--link);
-  font-size: 2.4rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
 }
 .grid--narrow {
   max-width: 980px;
@@ -135,4 +140,122 @@ td.cell--preline {
   margin: 8px 0 0;
   color: var(--muted);
   font-size: .85rem;
+}
+
+label,
+.eyebrow,
+.hero .eyebrow,
+.hero-tagline-badge,
+.hero-status-badge,
+.status-legend > summary,
+.spec-entry-eyebrow,
+.api-detail-row dt {
+  font: 700 14px/1.5 "Roboto", sans-serif;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+  margin: 0;
+}
+
+p,
+.spec-entry-overview,
+.spec-intro p,
+.api-detail-row dd {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+}
+
+p.small,
+.p-small,
+.spec-source {
+  font-size: 14px;
+}
+
+p.large,
+.p-large,
+.hero p,
+.lede {
+  font-size: 20px;
+}
+
+.p-mobile-small {
+  font-size: 12px;
+}
+
+.p-mobile {
+  font-size: 14px;
+}
+
+.p-mobile-large {
+  font-size: 16px;
+}
+
+.page-number,
+.page-numbers,
+.pagination a,
+.pagination span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+}
+
+h1, .hero h1, .spec-intro h1,
+h2, .section h2, .spec-entry h2,
+h3, .spec-entry h3,
+h4 {
+  font-family: "Anuphan", sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+}
+h5 {
+  font-family: "Anuphan", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+}
+h1, .hero h1, .spec-intro h1 { font-size: 54px; }
+h2, .section h2, .spec-entry h2 { font-size: 40px; }
+h3, .spec-entry h3 { font-size: 32px; }
+h4 { font-size: 28px; }
+
+@media (max-width: 650px) {
+  p,
+  .spec-entry-overview,
+  .spec-intro p,
+  .api-detail-row dd {
+    font-size: 14px;
+  }
+  p.small,
+  .p-small,
+  .spec-source {
+    font-size: 12px;
+  }
+  p.large,
+  .p-large,
+  .hero p,
+  .lede {
+    font-size: 16px;
+  }
+  h1, .hero h1, .spec-intro h1 { font-size: 36px !important; }
+  h2, .section h2, .spec-entry h2 { font-size: 24px; }
+  h3, .spec-entry h3 {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  h4 { font-size: 22px; }
 }
