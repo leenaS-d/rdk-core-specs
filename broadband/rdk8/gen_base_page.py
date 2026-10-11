@@ -175,12 +175,8 @@ STATS_SECTION = """
     <div><div class="num" id="stat-nb">&mdash;</div><div class="lbl">North-bound APIs</div></div>
   </div>
   <div class="stat">
-    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3l-4 9h8l-4-9z" opacity="0"/><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
     <div><div class="num" id="stat-sb">&mdash;</div><div class="lbl">South-bound APIs</div></div>
-  </div>
-  <div class="stat">
-    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-    <div><div class="num" id="stat-specs">1</div><div class="lbl">Compatibility Specs</div></div>
   </div>
 </div>
 <script>
@@ -225,11 +221,6 @@ EXPLORE_SECTION = """
       <span class="ql-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
       <div class="ql-title">South-bound APIs</div>
       <div class="ql-desc">Hardware Abstraction Layer (HAL) specifications to aid silicon platform porting.</div>
-    </a>
-    <a class="quicklink-card" href="hardware-compatibility.html" style="--ql-color:var(--rdk-orange);">
-      <span class="ql-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-      <div class="ql-title">Compatibility Specifications</div>
-      <div class="ql-desc">Specifications that outline the minimal hardware configurations to run Core RDK.</div>
     </a>
   </div>
 </section>
