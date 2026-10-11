@@ -14,7 +14,7 @@ sections:
     eyebrow: Current release
     layout: prose
     lede: true
-  - eyebrow: RDK9 platform
+  - eyebrow: Components and Interfaces
     layout: metric-cards
     cards:
       - href: component-catalog.html
