@@ -39,7 +39,7 @@ Released as a Development Preview, RDK8 enables early validation of key capabili
 
 ### Components Catalog
 
-Explore the RDK8 Components Catalog, connecting application-facing capabilities with middleware and vendor-layer implementations.
+List of RDK8 Components connecting application-facing capabilities with middleware and vendor-layer implementations.
 
 ### Northbound APIs
 

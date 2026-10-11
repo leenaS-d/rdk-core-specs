@@ -33,17 +33,37 @@
   color: inherit;
   text-decoration: none;
 }
+.section .grid:has(.card-metric) {
+  max-width: 1080px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid .card--link {
+  padding: 18px;
+}
+.grid .card--link h3 {
+  font-size: 24px;
+  line-height: 1.2;
+}
+.grid .card--link p {
+  font-size: 14px;
+  line-height: 1.5;
+}
 .card-metric {
   display: block;
-  min-height: 44px;
   color: var(--link);
   font-family: "Roboto", sans-serif;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 36px;
+  line-height: 1.2;
 }
 .grid--narrow {
   max-width: 980px;
+}
+
+@media (max-width: 760px) {
+  .section .grid:has(.card-metric) {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  }
 }
 
 /* ---- status legend --------------------------------------------------- */
