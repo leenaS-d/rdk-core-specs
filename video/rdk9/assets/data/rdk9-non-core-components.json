@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "description": "RDK9 recipes NOT in the published RDKE Components Catalog (https://rdkcentral.github.io/rdk-core-specs/video/rdk9/component-registry.html), but reachable via DEPENDS/RDEPENDS/RRECOMMENDS/IMAGE_INSTALL/consumed-virtual in bcm-mw-rdk9/bcm-vendor-rdk9/rtk-vendor-rdk9",
+  "description": "RDK9 recipes NOT in the published RDKE Components Catalog (https://rdkcentral.github.io/rdk-core-specs/video/rdk9/component-registry.html), but reachable via DEPENDS/RDEPENDS/RRECOMMENDS/IMAGE_INSTALL/consumed-virtual",
   "components": [
     {
       "name": "aamp",

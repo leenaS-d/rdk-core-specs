@@ -51,8 +51,8 @@
 .card-metric {
   display: block;
   color: var(--link);
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Anuphan", sans-serif;
+  font-weight: 700;
   font-size: 36px;
   line-height: 1.2;
 }
@@ -252,6 +252,23 @@ h1, .hero h1, .spec-intro h1 { font-size: 54px; }
 h2, .section h2, .spec-entry h2 { font-size: 40px; }
 h3, .spec-entry h3 { font-size: 32px; }
 h4 { font-size: 28px; }
+.hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
+.hero p { font-size: 1.08rem; }
+.section:has(.card-metric) > .eyebrow {
+  margin-bottom: 9px;
+  font-family: "Anuphan", sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.section:has(.card-metric) > h2 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
 
 @media (max-width: 650px) {
   p,
@@ -271,8 +288,11 @@ h4 { font-size: 28px; }
   .lede {
     font-size: 16px;
   }
+  .hero p { font-size: 1.08rem !important; }
   h1, .hero h1, .spec-intro h1 { font-size: 36px !important; }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem) !important; }
   h2, .section h2, .spec-entry h2 { font-size: 24px; }
+  .section:has(.card-metric) > h2 { font-size: 32px; }
   h3, .spec-entry h3 {
     font-size: 20px;
     line-height: 1.5;
