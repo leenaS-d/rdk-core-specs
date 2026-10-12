@@ -8,15 +8,8 @@ hero:
     - RDK-V
     - RDK8 for Video
   title: Core RDK Video Platform
-  badges:
-    - Development Preview
 sections:
-  - style: alt
-    classes: home-release
-    eyebrow: Current release
-    layout: prose
-    lede: true
-  - eyebrow: Components and interfaces
+  - eyebrow: COMPONENTS AND INTERFACES
     layout: metric-cards
     cards:
       - href: component-catalog.html
@@ -30,10 +23,6 @@ sections:
 Core RDK Video (RDK-V) defines the common platform foundation for RDK-based video solutions through governed capabilities, standardized interfaces, lifecycle policies, and conformance requirements. It enables ecosystem-wide interoperability and portability while preserving flexibility for innovation and differentiation.
 
 RDK8 advances application infrastructure through Firebolt Connect, enabling standardized and scalable delivery of video services, web applications, and native applications across RDK-powered devices.
-
-## RDK8 Release Overview
-
-Released as a Development Preview, RDK8 enables early validation of key capabilities, accelerates ecosystem readiness, and reduces integration risk. It also provides a clear signal of platform direction, helping operators and partners plan product roadmaps and investments with greater confidence.
 
 ## Explore the Core RDK platform
 
