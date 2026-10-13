@@ -546,7 +546,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
+      "url": "https://github.com/rdkcentral/meta-rdk/blob/develop/recipes-core/sysctl/rdksysctl.bb"
     },
     {
       "name": "rdkversion",
@@ -560,7 +560,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
+      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/develop/recipes-extended/rdkwpasupplicantconfig/rdkwpasupplicantconfig.bb"
     },
     {
       "name": "rdmagent",
@@ -735,14 +735,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
-    },
-    {
-      "name": "wpe-backend-rdk",
-      "category": "Thunder",
-      "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
+      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/develop/recipes-connectivity/wlan-p2p/wlan-p2p.bb"
     },
     {
       "name": "wpeframework-extensions",

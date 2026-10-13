@@ -143,7 +143,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/Dobby"
+        "https://github.com/rdkcentral/Dobby/tree/develop/rdkPlugins/Thunder"
       ]
     },
     {
