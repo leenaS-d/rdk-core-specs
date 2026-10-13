@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
-  "description": "RDK8 recipes NOT in the published RDKE Components Catalog, but reachable via DEPENDS/RDEPENDS/RRECOMMENDS/IMAGE_INSTALL/consumed-virtual in rtk-mw-rdk8/rtk-vendor-rdk8/bcm-mw-rdk8/bcm-vendor-rdk8",
+  "description": "RDK8 recipes NOT in the published RDKE Components Catalog, but reachable via DEPENDS/RDEPENDS/RRECOMMENDS/IMAGE_INSTALL/consumed-virtual",
   "components": [
     {
       "name": "aamp",
       "category": "VIDEO",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "3.3.0",
       "url": "https://github.com/rdkcentral/aamp"
     },
     {
@@ -15,13 +15,6 @@
       "layer": "RDK",
       "releaseTag": "1.0.0",
       "url": "https://github.com/rdkcentral/audiocapturemgr"
-    },
-    {
-      "name": "cobalt",
-      "category": "Containerization & Application Management",
-      "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://github.com/youtube/cobalt"
     },
     {
       "name": "cpeabs",
@@ -34,21 +27,22 @@
       "name": "cpuprocanalyzer",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "1.0.0",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/cpuprocanalyzer"
     },
     {
       "name": "dcmjsonparser",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-065da5cb",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/dcm"
+
     },
     {
       "name": "deepsleep-manager-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "1.0.5",
       "url": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager"
     },
     {
@@ -188,7 +182,7 @@
       "name": "entservices-rdkappmanagers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "0.3.0.3",
       "url": "https://github.com/rdkcentral/entservices-appmanagers"
     },
     {
@@ -265,7 +259,7 @@
       "name": "ermgr",
       "category": "Core Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-125b87e9",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/ermgr"
     },
     {
@@ -273,20 +267,20 @@
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "releaseTag": "0.5.3",
-      "url": null
+      "url": "https://github.com/rdkcentral/firebolt-cpp-client/releases/download/v${PV}/firebolt-cpp-client-0.5.3.tar.gz"
     },
     {
       "name": "firebolt-cpp-transport",
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "releaseTag": "1.1.5",
-      "url": null
+      "url": "https://github.com/rdkcentral/firebolt-cpp-transport/releases/download/v${PV}/firebolt-cpp-transport-1.1.5.tar.gz"
     },
     {
       "name": "generate-si-cache",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-c951c66e",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/rmf_tools/generate_si_cache"
     },
     {
@@ -307,7 +301,7 @@
       "name": "javascriptcore",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-fc1703ed",
       "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit"
     },
     {
@@ -321,21 +315,21 @@
       "name": "lxccpid",
       "category": "Containerization & Application Management",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-25ba689f",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/lxccpid"
     },
     {
       "name": "media-utils",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-bfb74817",
       "url": "https://github.com/rdkcentral/media_utils"
     },
     {
       "name": "media-utils-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "1.0.6",
       "url": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture"
     },
     {
@@ -350,21 +344,21 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.0",
-      "url": "https://github.com/rdkcentral/meta-rdk"
+      "url": "https://github.com/rdkcentral/meminsight"
     },
     {
       "name": "memstress",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "0.1",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/sys_mon_tools/mem_analyser_tools"
     },
     {
       "name": "network-hotplug",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://github.com/rdkcentral/meta-rdk"
+      "releaseTag": "1.0",
+      "url": "https://github.com/rdkcentral/meta-rdk/blob/1.17.0/recipes-support/network-hotplug/network-hotplug_1.0.bb"
     },
     {
       "name": "packager-headers",
@@ -384,7 +378,7 @@
       "name": "paroduscl",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-c6b1ee63",
       "url": "https://github.com/Comcast/paroduscl"
     },
     {
@@ -398,21 +392,21 @@
       "name": "power-manager-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "1.0.4",
       "url": "https://github.com/rdkcentral/rdk-halif-power_manager"
     },
     {
       "name": "ralf-utils",
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "1.2.0",
       "url": "https://github.com/rdkcentral/ralf-utils"
     },
     {
       "name": "rdk-gstreamer-utils-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "2.0.2",
       "url": "https://github.com/rdkcentral/gstreamer-netflix-platform"
     },
     {
@@ -447,8 +441,8 @@
       "name": "rdksysctl",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://github.com/rdkcentral/meta-rdk"
+      "releaseTag": "1.17.0",
+      "url": "https://github.com/rdkcentral/meta-rdk/blob/1.17.0/recipes-core/sysctl/rdksysctl.bb"
     },
     {
       "name": "rdkversion",
@@ -465,7 +459,7 @@
       "url": "https://github.com/rdkcentral/rdm-agent"
     },
     {
-      "name": "reboot-manager",
+      "name": "reboot-meminsight",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.0.0v1",
@@ -482,15 +476,15 @@
       "name": "rt-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
+      "releaseTag": "rev-baa62f69",
+      "url": "https://github.com/rdkcentral/pxCore;branch=rdk"
     },
     {
       "name": "rtcore",
       "category": "RPC",
       "layer": "RDK",
       "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/pxCore"
+      "url": "https://github.com/rdkcentral/pxCore;branch=rtcore"
     },
     {
       "name": "rtremote",
@@ -510,14 +504,14 @@
       "name": "streamfs",
       "category": "VIDEO",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-90914ec0",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs"
     },
     {
       "name": "streamfs-fcc",
       "category": "VIDEO",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-71af748f",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs_fcc"
     },
     {
@@ -538,14 +532,14 @@
       "name": "tdk",
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-b05d3991",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdkv/tools/tdkv"
     },
     {
       "name": "tenablehdcp",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-d44c7438",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/rmf_tools/tenableHDCP"
     },
     {
@@ -553,7 +547,7 @@
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
+      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/1.17.0-community/recipes-extended/wpe-framework/thunder-hang-recovery.bb"
     },
     {
       "name": "thunder-plugin-activator",
@@ -587,14 +581,14 @@
       "name": "tvsettings-hal-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "3.1.0",
       "url": "https://github.com/rdkcentral/rdkv-halif-tvsettings"
     },
     {
       "name": "uwebsockets",
       "category": "Core Utilities",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "rev-c7aa9847",
       "url": "https://github.com/uNetworking/uWebSockets"
     },
     {
@@ -608,8 +602,8 @@
       "name": "wpe-backend-rdk",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://github.com/rdkcentral/meta-rdk-video"
+      "releaseTag": "0.5",
+      "url": "https://github.com/rdkcentral/meta-rdk/blob/1.17.0/recipes-extended/wpe-backend-rdk/wpe-backend-rdk_0.5.bb"
     },
     {
       "name": "wpeframework-ocdm-clearkey",
@@ -657,7 +651,7 @@
       "name": "xr-voice-sdk",
       "category": "Core Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "N/A",
+      "releaseTag": "1.0.12",
       "url": "https://github.com/rdkcentral/xr-voice-sdk"
     }
   ]

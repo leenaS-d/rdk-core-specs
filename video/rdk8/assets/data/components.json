@@ -450,7 +450,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/meta-rdk-video/"
+      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/1.17.0-community/recipes-extended/rdkwpasupplicantconfig/rdkwpasupplicantconfig.bb"
     },
     {
       "name": "Remote Debugger",
