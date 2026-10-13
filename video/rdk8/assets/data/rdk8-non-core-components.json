@@ -267,14 +267,14 @@
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "releaseTag": "0.5.3",
-      "url": "https://github.com/rdkcentral/firebolt-cpp-client/releases/download/v${PV}/firebolt-cpp-client-0.5.3.tar.gz"
+      "url": "https://github.com/rdkcentral/firebolt-cpp-client/releases/download/v0.5.3/firebolt-cpp-client-0.5.3.tar.gz"
     },
     {
       "name": "firebolt-cpp-transport",
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "releaseTag": "1.1.5",
-      "url": "https://github.com/rdkcentral/firebolt-cpp-transport/releases/download/v${PV}/firebolt-cpp-transport-1.1.5.tar.gz"
+      "url": "https://github.com/rdkcentral/firebolt-cpp-transport/releases/download/v1.1.5/firebolt-cpp-transport-1.1.5.tar.gz"
     },
     {
       "name": "generate-si-cache",
@@ -477,14 +477,14 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "rev-baa62f69",
-      "url": "https://github.com/rdkcentral/pxCore;branch=rdk"
+      "url": "https://github.com/rdkcentral/pxCore/tree/rdk"
     },
     {
       "name": "rtcore",
       "category": "RPC",
       "layer": "RDK",
       "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/pxCore;branch=rtcore"
+      "url": "https://github.com/rdkcentral/pxCore/tree/rtcore"
     },
     {
       "name": "rtremote",
@@ -610,7 +610,7 @@
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "1.0.0",
-      "url": "https://git@github.com/rdkcentral/OCDM-Clearkey"
+      "url": "https://github.com/rdkcentral/OCDM-Clearkey"
     },
     {
       "name": "wpeframework-ocdm-playready-rdk",

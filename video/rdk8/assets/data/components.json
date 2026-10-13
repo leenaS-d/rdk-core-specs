@@ -202,7 +202,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "3.16.2",
-      "url": "https://github.com/rdkcentral/Dobby"
+      "url": "https://github.com/rdkcentral/Dobby/tree/v3.16.2/rdkPlugins/Thunder"
     },
     {
       "name": "DSM",

@@ -406,7 +406,7 @@
       "category": "Core Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/iarmbus"
+      "url": "https://github.com/rdkcentral/iarmbus/tree/develop/core/include"
     },
     {
       "name": "iarmmgrs",
