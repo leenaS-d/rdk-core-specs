@@ -51,6 +51,9 @@ nav:
   - key: southbound
     label: Southbound API Spec
     href: southbound-api-spec.html
+  - key: hardware
+    label: Hardware Compatibility Spec
+    href: hardware-compatibility-spec.html      
 
 status_legend:
   - term: Draft

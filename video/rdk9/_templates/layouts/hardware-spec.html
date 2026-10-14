@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "partials/hero.html" %}
+<section class="section spec-document hardware-spec">
+  {{ page.body_html }}
+</section>
+{% endblock %}
+{% block scripts %}
+<div class="spec-modal hardware-spec-modal" id="hardware-spec-modal" hidden>
+  <div class="spec-modal-backdrop" data-hardware-modal-close></div>
+  <div class="spec-modal-dialog" role="dialog" aria-modal="true" aria-label="Hardware requirement details">
+    <button class="spec-modal-close" type="button" data-hardware-modal-close aria-label="Close">&times;</button>
+    <div class="spec-modal-body" id="hardware-spec-modal-body"></div>
+  </div>
+</div>
+<script src="assets/js/hardware-spec.js" defer></script>
+{% endblock %}

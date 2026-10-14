@@ -18,6 +18,8 @@ sections:
         metric: count:firebolt
       - href: southbound-api-spec.html
         metric: count:southbound
+      - href: hardware-compatibility-spec.html
+        metric: 2 tiers
 ---
 
 Core RDK Video (RDK-V) defines the common platform foundation for RDK-based video solutions through governed capabilities, standardized interfaces, lifecycle policies, and conformance requirements. It enables ecosystem-wide interoperability and portability while preserving flexibility for innovation and differentiation.
@@ -35,3 +37,7 @@ Application-facing interfaces that give web and native apps consistent access to
 ### Southbound APIs
 
 Hardware abstraction interfaces that connect middleware with vendor implementations and platform hardware.
+
+### Hardware Compatibility
+
+Minimum device capabilities for FHD and 4K Premium Core RDK deployments.

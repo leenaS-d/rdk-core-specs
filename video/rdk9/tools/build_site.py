@@ -48,9 +48,10 @@ EXPECTED_PAGES = [
     "component-catalog.html",
     "firebolt-api-spec.html",
     "southbound-api-spec.html",
+    "hardware-compatibility-spec.html"
 ]
 
-MD = markdown.Markdown(extensions=["tables", "attr_list", "sane_lists"])
+MD = markdown.Markdown(extensions=["tables", "attr_list", "sane_lists", "admonition"])
 
 
 def render_markdown(text: str) -> str:
@@ -230,7 +231,12 @@ def build_page(env: Environment, site: dict[str, Any], path: Path) -> str:
     intro, sections = parse_sections(body)
 
     hero = meta.setdefault("hero", {})
-    hero["description"] = intro
+    if meta.get("layout") == "hardware-spec":
+        description = hero.get("description", [])
+        hero["description"] = [description] if isinstance(description, str) else description
+        meta["body_html"] = Markup(render_markdown(body))
+    else:
+        hero["description"] = intro
     # Every legacy page rendered the compact hero; keep that the default.
     hero.setdefault("compact", True)
 
@@ -270,7 +276,7 @@ def build_page(env: Environment, site: dict[str, Any], path: Path) -> str:
                 config["cards"] = cards
             merged.append(config)
         meta["sections"] = merged
-    else:
+    elif meta.get("layout") != "hardware-spec":
         meta["body_html"] = Markup("")
 
     if "table" in meta:
