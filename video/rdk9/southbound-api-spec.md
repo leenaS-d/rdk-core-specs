@@ -3,7 +3,7 @@ layout: data-table
 title: Southbound API Specifications | RDK9
 nav: southbound
 hero:
-  eyebrow: Interface catalog
+  eyebrow: INTERFACE CATALOG
   title: Southbound API Specifications
   status: Draft
 table:

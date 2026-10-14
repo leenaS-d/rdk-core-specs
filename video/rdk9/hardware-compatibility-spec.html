@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hardware Compatibility Specification | RDK9</title><link rel="stylesheet" href="assets/css/tokens.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/base.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/layout.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/components.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/tables.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/spec.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/overrides.css?v=rdk9-20261012-2"><link rel="stylesheet" href="assets/css/site.css?v=rdk9-20261012-2"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="accent"></div>
+<header class="nav">
+  <a class="brand" href="index.html"><img src="assets/img/RDK-logo.png" alt="RDK"></a>
+  <nav class="navlinks">    <a class="" href="index.html">Home</a>    <a class="" href="component-catalog.html">Components Catalog</a>    <details class="nav-dropdown">
+      <summary class="nav-dropdown-summary">Northbound API Spec</summary>
+      <div class="nav-dropdown-menu">        <a href="firebolt-api-spec.html">Firebolt Core API Specification</a>        <a href="firebolt-intents.html">Firebolt Intents Specification</a>        <a href="firebolt-key-codes.html">Firebolt Key Codes Specification</a>        <a href="firebolt-app-actions.html">Firebolt App Actions Specification</a>        <a href="firebolt-app-services.html">Firebolt App Services Specification</a>        <a href="firebolt-crypto.html">Firebolt Crypto Specification</a>      </div>
+    </details>    <a class="" href="southbound-api-spec.html">Southbound API Spec</a>    <a class="active" href="hardware-compatibility-spec.html">Hardware Compatibility Spec</a>  </nav>
+</header><main>
+<section class="hero hero--compact">
+  <div class="wrap">    <div class="eyebrow">PLATFORM REQUIREMENTS</div>    <h1>Hardware Compatibility Specification</h1>    <p>Specifications that outline the minimal hardware configurations to run Core RDK</p>    <div class="hero-catalog-status">
+      <span class="hero-status-badge"><span>Catalog status:</span> Draft</span>
+      <details class="status-legend">
+  <summary>Status legend</summary>
+  <dl>    <dt>Draft</dt>
+    <dd>Specifications drafted and undergoing internal reviews and RTAB Approval</dd>    <dt>Approved</dt>
+    <dd>All review feedback has been addressed; RTAB has voted and approved the spec</dd>    <dt>Published</dt>
+    <dd>Tagged and versioned against an official RDK release</dd>  </dl>
+</details>    </div>  </div>
+</section><section class="section spec-document hardware-spec">
+  <p>This Hardware Compatibility Specification defines the minimum hardware configuration required to build, deploy, and reliably operate Core RDK on IP-based RDK-V Set-Top Boxes (STBs). It establishes baseline requirements for SoC and CPU capability, graphics, video and audio decode, content protection, system memory, flash storage, connectivity, peripherals, and power.</p>
+<h3>Deployment Profiles</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Profile</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier1</td>
+<td>FHD</td>
+<td>Cost-optimized 1080p Core RDK device for standard OTT services</td>
+</tr>
+<tr>
+<td>Tier2</td>
+<td>4K Premium</td>
+<td>4K UHD device supporting HDR, premium video, and enhanced application workloads</td>
+</tr>
+</tbody>
+</table>
+<h3>System Overview</h3>
+<p>The STB is a media-streaming and application host device that connects to a television through HDMI and to the home network through Wi-Fi or Ethernet. All hardware compatibility requirements defined in this specification are aligned to the Tier 1 (FHD) and Tier 2 (4K Premium) deployment profiles.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requirements are expressed as capability and performance classes rather than specific vendor components. Any SoC and platform meeting the stated capabilities, driver support, and RDK HAL/API behavior qualifies. Named CPU cores, GPUs, and chipsets are provided as informative examples only.</p>
+</div>
+<hr />
+<h3>Hardware Compatibility Baseline Specification Matrix</h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The compatibility matrix is intended for quick platform assessment. Meeting numeric hardware minimums alone does not guarantee compatibility. A compatible platform must satisfy the required capabilities, peripherals, driver support, firmware, and RDK HAL/API behavior defined in the referenced sections.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tier 1 (FHD)</th>
+<th>Tier 2 (4K Premium)</th>
+<th>View Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processor</td>
+<td>ARMv8-A or newer 64-bit (AArch64) quad-core performance class or equivalent, ≥ 1.5 GHz sustained;   OpenGL ES 3.2 GPU; hardware TEE</td>
+<td>ARMv8-A or newer 64-bit (AArch64) quad-core performance class or equivalent, ≥ 1.5 GHz sustained; OpenGL ES 3.2 GPU with Vulkan 1.3/1.4 recommended; hardware TEE</td>
+<td><a href="#processor-soc--cpu">View Details</a></td>
+</tr>
+<tr>
+<td>Video Decode</td>
+<td>Video Decode    H.264 and HEVC up to 1080p60; VP9 and AV1 recommended; 1 × FHD stream</td>
+<td>H.264 up to 1080p60 and 4K30; HEVC Main10, VP9 Profile 2, and AV1 up to 4K60; 1 × 4K stream</td>
+<td><a href="#video-decoder-capability">View Details</a></td>
+</tr>
+<tr>
+<td>HDR &amp; Video Output</td>
+<td>1080p60; HDMI 1.4b or later; HDR optional</td>
+<td>4K60; HDMI 2.0b or later; HDR10 and HLG required</td>
+<td><a href="#video-decoder-capability">View Details</a></td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>AAC-LC/HE-AAC and PCM required; AC-3 and E-AC-3 require hardware or licensed software decode, plus HDMI passthrough where supported by the connected sink (Dolby license and certification cost applies, including on Tier 1); Atmos (DD+ JOC) passthrough and MPEG-H optional; 5.1 HDMI with stereo downmix; ± 40 ms A/V sync</td>
+<td>Same as Tier 1</td>
+<td><a href="#audio-decoder-capability">View Details</a></td>
+</tr>
+<tr>
+<td>Security &amp; Content Protection</td>
+<td>Secure boot with hardware root of trust, TEE, Widevine L1, PlayReady SL3000, anti-rollback, debug lockdown, per-device keys; HDCP 1.4 minimum (2.2 recommended)</td>
+<td>Same as Tier 1, with HDCP 2.2 minimum (2.3 recommended)</td>
+<td><a href="#content-protection-and-secure-boot">View Details</a></td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>≥ 1 GB provisional; DDR4, LPDDR4X, or newer at ≥ 1600 MT/s with ≥ 16-bit bus (≥ 3.2 GB/s peak); ≥ 0.6 GB for applications after reserves; optional 256 MB zRAM; RDK 9 FHD/1 GB validation required</td>
+<td>≥ 2 GB; LPDDR4X or newer at ≥ 3200 MT/s with ≥ 32-bit bus (≥ 12.8 GB/s peak); ≥ 1.2 GB for applications after reserves; optional 512 MB zRAM</td>
+<td><a href="#memory-ram">View Details</a></td>
+</tr>
+<tr>
+<td>Storage (Flash)</td>
+<td>4 GB eMMC minimum; recovery + OTA at 4 GB; ≥ 2 GB free-space target</td>
+<td>4 GB eMMC minimum, 8 GB recommended; A/B recommended with 8 GB; ≥ 2 GB free-space target</td>
+<td><a href="#storage-flash">View Details</a></td>
+</tr>
+<tr>
+<td>Network</td>
+<td>10/100 Ethernet; 802.11n 2.4 GHz Wi-Fi; ≥ 15 Mbps sustained application throughput; WPA2-PSK (AES)</td>
+<td>10/100 Ethernet (Gigabit recommended); dual-band 2.4/5 GHz Wi-Fi, ≥ 25 Mbps sustained; WPA2-PSK (AES), WPA3 where Wi-Fi 6/6E is implemented; Wi-Fi 6/6E recommended, Wi-Fi 7 future-ready</td>
+<td><a href="#network-connectivity">View Details</a></td>
+</tr>
+<tr>
+<td>Peripheral &amp; I/O</td>
+<td>USB 2.0; IR receiver and IR remote; voice remote required; BLE 4.2+ transport required; reset/recovery button; status LED</td>
+<td>USB 2.0; IR receiver and IR remote; BLE 5.0+ voice remote required; reset/recovery button; status LED</td>
+<td><a href="#peripheral-and-io-requirements">View Details</a></td>
+</tr>
+<tr>
+<td>Power</td>
+<td>5 V/2 A (10 W) minimum input; ≤ 5 W idle; ≤ 1 W standby</td>
+<td>5 V/2.4 A (12 W) minimum input; ≤ 5 W idle; ≤ 1 W standby</td>
+<td><a href="#power-requirements">View Details</a></td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>RDK, HDMI, DRM, regional regulatory, Wi-Fi, Bluetooth SIG, and OTT partner certifications</td>
+<td>Same as Tier 1</td>
+<td><a href="#regulatory-and-certification-requirements">View Details</a></td>
+</tr>
+<tr>
+<td>Application Platform</td>
+<td>Launcher UI, sandboxed applications, OTA application and firmware updates</td>
+<td>Same as Tier 1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Software &amp; Lifecycle</td>
+<td>Core RDK support; OTA with rollback (A/B) or recovery-based failsafe update; factory recovery</td>
+<td>Same as Tier 1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Driver / Kernel Support</td>
+<td>Production-supported drivers for CPU/GPU, FHD codecs, HDMI, and radios on the target kernel</td>
+<td>Production-supported drivers for CPU/GPU, 4K/HDR codecs, HDMI, and radios on the target kernel</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Firmware / Bootloader</td>
+<td>Minimum bootloader and kernel versions compatible with the target Core RDK release</td>
+<td>Same as Tier 1</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Processor (SoC / CPU)</h3>
+<p>The processor requirements establish the baseline computing and graphics capability required to support Core RDK software, multimedia processing, application execution, and platform services. The CPU instruction set is common to both tiers; tier differentiation is achieved through decode capability, HDR, memory, graphics features, and I/O.</p>
+<p><a id="processor-soc--cpu"></a></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1 (FHD)</th>
+<th>Tier 2 (4K Premium)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU performance class</td>
+<td>ARMv8-A or newer, 64-bit, quad-core performance class or equivalent</td>
+<td>ARMv8-A or newer, 64-bit, quad-core performance class or equivalent</td>
+<td>Examples only: Cortex-A55 (Tier 1 and Tier 2); Cortex-A73-class cores may be used for higher Tier 2 application performance. ARMv8-A (AArch64) is the required processor architecture for compatible RDK-V deployments</td>
+</tr>
+<tr>
+<td>Clock speed</td>
+<td>≥ 1.5 GHz sustained</td>
+<td>≥ 1.5 GHz sustained</td>
+<td>Sustained under thermal load, not burst</td>
+</tr>
+<tr>
+<td>Instruction set</td>
+<td>ARMv8-A or newer, 64-bit (AArch64)</td>
+<td>ARMv8-A or newer, 64-bit (AArch64)</td>
+<td>32-bit-only SoCs are not supported</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>OpenGL ES 3.2-capable GPU</td>
+<td>OpenGL ES 3.2-capable GPU; Vulkan 1.3/1.4 recommended</td>
+<td>OpenGL ES 3.2 is required on both tiers for UI and browser compositing (Westeros/WPE). Mali-G31 MP2 is an example only</td>
+</tr>
+<tr>
+<td>Video decode (hardware)</td>
+<td>H.264/AVC and HEVC up to 1080p60; VP9 and AV1 recommended</td>
+<td>H.264/AVC up to 1080p60 and 4K30; HEVC Main10, VP9 Profile 2, and AV1 Main Profile up to 4K60</td>
+<td></td>
+</tr>
+<tr>
+<td>HDR support</td>
+<td>Optional</td>
+<td>HDR10 and HLG required</td>
+<td>Tied to the display pipeline and HDMI output, not the CPU alone</td>
+</tr>
+<tr>
+<td>Security element</td>
+<td>TEE (Arm TrustZone or equivalent) with hardware-backed DRM</td>
+<td>TEE (Arm TrustZone or equivalent) with hardware-backed DRM</td>
+<td>Widevine L1 and PlayReady SL3000 are required for secure DRM operation and protected media playback</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Video Decoder Capability</h3>
+<p>The RDK-V STB shall provide hardware-accelerated decoding appropriate to its deployment tier. Tier 1 shall support FHD playback using H.264/AVC and HEVC up to 1080p60, with VP9 and AV1 recommended where required by the target application portfolio. Tier 2 shall support H.264/AVC, HEVC Main10, VP9 Profile 2, and AV1 Main Profile, with HEVC, VP9, and AV1 up to 4K60, together with secure playback and the HDR capabilities required by the target service certifications. AV1 is increasingly used by major streaming services for bandwidth-efficient premium delivery.</p>
+<p><a id="video-decoder-capability"></a></p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Tier 1 (FHD)</th>
+<th>Tier 2 (4K Premium)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H.264/AVC</td>
+<td>Required up to 1080p60</td>
+<td>Required up to 1080p60 and 4K30</td>
+<td></td>
+</tr>
+<tr>
+<td>HEVC/H.265</td>
+<td>Main profile required up to 1080p60; Main10 recommended</td>
+<td>Main10 required up to 4K60</td>
+<td>Main10 needed for HDR content</td>
+</tr>
+<tr>
+<td>VP9</td>
+<td>Recommended, up to 1080p60</td>
+<td>Profile 2 (10-bit) required up to 4K60</td>
+<td></td>
+</tr>
+<tr>
+<td>AV1 Main Profile (8/10-bit)</td>
+<td>Recommended, up to 1080p60</td>
+<td>Required up to 4K60</td>
+<td>Recommended for 2026+ streaming services; mandatory for the 4K Premium profile</td>
+</tr>
+<tr>
+<td>HDR10</td>
+<td>Optional</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>HDR10+</td>
+<td>Optional</td>
+<td>Optional</td>
+<td>Tied to the display pipeline</td>
+</tr>
+<tr>
+<td>HLG</td>
+<td>Optional</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>Dolby Vision</td>
+<td>Optional (platform/operator dependent)</td>
+<td>Optional (platform/operator dependent)</td>
+<td>Licensing and operator dependent</td>
+</tr>
+<tr>
+<td>Secure DRM Playback</td>
+<td>Widevine L1, PlayReady SL3000</td>
+<td>Widevine L1, PlayReady SL3000</td>
+<td>A secure video path is required for premium OTT certification programs</td>
+</tr>
+<tr>
+<td>Concurrent Decode</td>
+<td>1× FHD stream</td>
+<td>1× 4K stream</td>
+<td>Concurrent decode  1 × FHD stream  1 × 4K stream   Dual HD decode is optional and platform/operator dependent</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Audio Decoder Capability</h3>
+<p>The RDK-V STB shall provide audio decoding and passthrough capabilities sufficient to support Core RDK media services and certification requirements for major OTT applications. Decoder support shall enable stereo and multichannel audio, broadcast-standard codecs, and lip-sync accuracy consistent with the video decode baseline. Audio requirements are identical for both tiers unless stated otherwise.</p>
+<p><a id="audio-decoder-capability"></a></p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAC-LC / HE-AAC decode</td>
+<td>Required, stereo and multichannel</td>
+<td>Required, stereo and multichannel</td>
+<td>Standard OTT audio codec baseline</td>
+</tr>
+<tr>
+<td>Dolby Digital (AC-3)</td>
+<td>Required: hardware or licensed software decode, plus HDMI passthrough where supported by the connected sink</td>
+<td>Required: hardware or licensed software decode, plus HDMI passthrough where supported by the connected sink</td>
+<td>Decode is mandatory. HDMI passthrough is additionally required when supported by the connected sink and product output path. AC-3 and E-AC-3 decode (hardware or licensed software) typically carries Dolby license and certification cost, including on Tier 1 entry-level devices. Operators and SoC vendors should account for this cost in product planning</td>
+</tr>
+<tr>
+<td>Dolby Digital Plus (E-AC-3)</td>
+<td>Required: hardware or licensed software decode, plus HDMI passthrough where supported by the connected sink</td>
+<td>Required: hardware or licensed software decode, plus HDMI passthrough where supported by the connected sink</td>
+<td></td>
+</tr>
+<tr>
+<td>Dolby Atmos</td>
+<td>Optional (DD+ JOC passthrough)</td>
+<td>Optional (DD+ JOC passthrough)</td>
+<td>Premium content; eARC on the sink improves support</td>
+</tr>
+<tr>
+<td>MPEG-H 3D Audio (ISO/IEC 23008-3)</td>
+<td>Optional, LC Profile Level 3</td>
+<td>Optional, LC Profile Level 3</td>
+<td>LC Level 3 supports up to 12 loudspeaker channels (sufficient for 7.1.4)</td>
+</tr>
+<tr>
+<td>PCM</td>
+<td>Required</td>
+<td>Required</td>
+<td>Baseline uncompressed audio</td>
+</tr>
+<tr>
+<td>Multichannel output</td>
+<td>5.1 via HDMI; stereo downmix</td>
+<td>5.1 via HDMI; stereo downmix</td>
+<td>Downmix required when only a stereo sink is connected</td>
+</tr>
+<tr>
+<td>Audio/video sync</td>
+<td>± 40 ms</td>
+<td>± 40 ms</td>
+<td>Required for A/V sync certification</td>
+</tr>
+<tr>
+<td>Sample rates</td>
+<td>48 kHz required; 44.1 kHz supported</td>
+<td>48 kHz required; 44.1 kHz supported</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Content Protection and Secure Boot</h3>
+<p>This section defines the minimum content protection, secure boot, and key management capabilities required to support DRM-protected playback and to prevent unauthorized extraction of firmware, keys, or protected content, building on the TEE baseline.</p>
+<p><a id="content-protection-and-secure-boot"></a></p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secure boot / chain of trust</td>
+<td>Required, hardware root of trust</td>
+<td>Required, hardware root of trust</td>
+<td>Verifies bootloader, kernel, and rootfs signatures before execution</td>
+</tr>
+<tr>
+<td>Trusted Execution Environment</td>
+<td>Arm TrustZone or equivalent</td>
+<td>Arm TrustZone or equivalent</td>
+<td>Required for DRM key handling</td>
+</tr>
+<tr>
+<td>DRM</td>
+<td>Widevine L1, PlayReady SL3000</td>
+<td>Widevine L1, PlayReady SL3000</td>
+<td>Hardware-backed key and video path protection</td>
+</tr>
+<tr>
+<td>HDCP (HDMI output)</td>
+<td>HDCP 1.4 minimum; HDCP 2.2 recommended</td>
+<td>HDCP 2.2 minimum; HDCP 2.3 recommended</td>
+<td>HDCP 2.2 or later is required for protected 4K/UHD content</td>
+</tr>
+<tr>
+<td>Secure key provisioning</td>
+<td>Per-device unique keys, provisioned in a secure facility</td>
+<td>Per-device unique keys, provisioned in a secure facility</td>
+<td>Prevents key cloning across devices</td>
+</tr>
+<tr>
+<td>Rollback protection</td>
+<td>Anti-rollback for bootloader/firmware</td>
+<td>Anti-rollback for bootloader/firmware</td>
+<td>Prevents downgrade attacks that re-expose patched vulnerabilities</td>
+</tr>
+<tr>
+<td>Debug interface lockdown</td>
+<td>JTAG/UART disabled or authenticated in production</td>
+<td>JTAG/UART disabled or authenticated in production</td>
+<td>Prevents extraction of keys or firmware</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Memory (RAM)</h3>
+<p>This section defines the minimum RAM requirements necessary to support Core RDK operation on an IP-based STB. The requirements ensure adequate memory is available for the embedded Linux operating system, RDK services, media processing, applications, and background system functions under normal and peak operating conditions.</p>
+<p><a id="memory-ram"></a></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1 (FHD)</th>
+<th>Tier 2 (4K Premium)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System RAM</td>
+<td>≥1 GB*</td>
+<td>≥2 GB</td>
+<td>Tier 1 covers FHD-only devices; Tier 2 is required for any 4K/UHD-capable device</td>
+</tr>
+<tr>
+<td>RAM Technology / data rate</td>
+<td>DDR4, LPDDR4X, or newer; ≥ 1600 MT/s effective data rate</td>
+<td>LPDDR4X or newer; ≥ 3200 MT/s effective data rate</td>
+<td>LPDDR4X is the minimum LPDDR generation for new designs. The selected memory subsystem shall provide the declared capacity and sustain the tier workload under concurrent media, graphics, and application activity. New platform designs shall confirm the long-term availability and lifecycle support of the selected memory technology and supply chain for the intended product deployment and service life</td>
+</tr>
+<tr>
+<td>Memory bus width / bandwidth</td>
+<td>≥ 16-bit data bus; ≥ 3.2 GB/s theoretical peak bandwidth</td>
+<td>≥ 32-bit data bus; ≥ 12.8 GB/s theoretical peak bandwidth</td>
+<td>Theoretical peak bandwidth = effective data rate (MT/s) × bus width (bits) ÷ 8. The SoC vendor shall declare the implemented bus width and channel configuration</td>
+</tr>
+<tr>
+<td>Video / secure memory reserve</td>
+<td>Platform-declared (CMA/secure video path)</td>
+<td>Platform-declared (CMA/secure video path)</td>
+<td>Must be declared by the SoC vendor. It is excluded from, and reduces, the usable RAM figures below</td>
+</tr>
+<tr>
+<td>Usable RAM after OS and reserves</td>
+<td>≥ 0.6 GB free for applications</td>
+<td>≥ 1.2 GB free for applications</td>
+<td>Measured post-boot with the launcher idle</td>
+</tr>
+<tr>
+<td>Swap / zRAM</td>
+<td>Optional, 256 MB zRAM</td>
+<td>Optional, 512 MB zRAM</td>
+<td>Compressed RAM-backed swap; not persistent flash storage</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Tier 1 memory values are provisional and derived from historical FHD platform data. The 1 GB system RAM baseline and related application-memory targets must be validated on a 1 GB FHD device running the RDK 9 baseline. The next controlled revision will incorporate the resulting measurements and any necessary baseline adjustments.</em></p>
+</blockquote>
+<h3>Reference memory measurements</h3>
+<ul>
+<li><a href="#reference-memory-measurements-tier1-fhd-device">Tier 1 (FHD device)</a></li>
+<li><a href="#reference-memory-measurements-tier2-4k-premium-device">Tier 2 (4K Premium device)</a></li>
+</ul>
+<hr />
+<h3>Storage (Flash)</h3>
+<p>This section defines the minimum flash storage requirements necessary to support Core RDK operation on an IP-based STB. The requirements ensure adequate capacity for the operating system, RDK components, applications, persistent data, diagnostic information, and OTA updates while maintaining system reliability and upgradeability.</p>
+<p><a id="storage-flash"></a></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internal Flash capacity</td>
+<td>4 GB eMMC minimum</td>
+<td>4 GB minimum, 8 GB recommended</td>
+<td>8 GB is recommended where full A/B images and larger application footprints are required</td>
+</tr>
+<tr>
+<td>Partition/ Update Scheme</td>
+<td>Recovery + OTA partition at 4 GB; A/B (seamless) permitted where the verified budget allows</td>
+<td>A/B (seamless) recommended with 8 GB; recovery + OTA permitted at 4 GB</td>
+<td>Full A/B together with ≥ 2 GB free space is not achievable on 4 GB eMMC</td>
+</tr>
+<tr>
+<td>Free space for app installs</td>
+<td>≥ 2 GB target after OS and reserved partitions</td>
+<td>≥ 2 GB target after OS and reserved partitions</td>
+<td>Validate on the target device. Operators requiring ≥ 3 GB free space with full A/B should specify 8 GB or larger</td>
+</tr>
+<tr>
+<td>Removable storage</td>
+<td>microSD slot optional</td>
+<td>microSD slot Optional</td>
+<td>For media libraries or app expansion</td>
+</tr>
+<tr>
+<td>Write endurance</td>
+<td>Declared TBW sufficient for the target service life</td>
+<td>Declared TBW sufficient for the target service life</td>
+<td>Stated as total bytes written under the operator write-workload profile (OTA, apps, logs); ≥ 3,000 P/E-cycle-class eMMC is the reference</td>
+</tr>
+</tbody>
+</table>
+<h3>Reference</h3>
+<ul>
+<li><a href="#appendix-c-reference-flash-measurements">Reference Flash Measurements</a></li>
+<li><a href="#appendix-d-example-flash-layout">Example Flash layout</a></li>
+</ul>
+<hr />
+<h3>Network Connectivity</h3>
+<p>This section defines the minimum network connectivity requirements necessary to support Core RDK operation on an IP-based STB. These requirements ensure that the platform can reliably access broadband services, communicate with cloud-based management systems, support OTT video delivery, and maintain secure device operation throughout its lifecycle.</p>
+<p><a id="network-connectivity"></a></p>
+<h3>Wi‑Fi</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard</td>
+<td>802.11 b/g/n, 2.4 GHz minimum</td>
+<td>Dual-band 2.4/5 GHz (802.11n/ac) minimum</td>
+<td>Wi-Fi 6/6E is recommended for Tier 2 and Wi-Fi 7 is future-ready; neither is required for baseline compatibility</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>≥ 15 Mbps sustained application throughput</td>
+<td>≥ 25 Mbps sustained application throughput</td>
+<td>Validate sustained throughput in the target RF environment; do not rely on PHY rate alone</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>WPA2-PSK (AES) minimum</td>
+<td>WPA2-PSK (AES) minimum; WPA3-SAE required where Wi-Fi 6/6E is implemented</td>
+<td>WPA3 is mandatory for Wi-Fi Alliance Wi-Fi 6 certification</td>
+</tr>
+<tr>
+<td>Antenna / receiver sensitivity</td>
+<td>Internal antenna; ≤ -70 dBm while meeting the Tier 1 sustained-throughput requirement</td>
+<td>Internal antenna; ≤ -70 dBm per band while meeting the Tier 2 sustained-throughput requirement</td>
+<td>Sensitivity shall be reported with the test channel, bandwidth, data rate, and modulation/MCS. More negative is better</td>
+</tr>
+<tr>
+<td>Bluetooth / Voice Transport</td>
+<td>Required (BLE 4.2+)</td>
+<td>Required (BLE 5.0+)</td>
+<td>Required to support voice remote capability. Wi-Fi/Bluetooth combo devices are commonly used</td>
+</tr>
+</tbody>
+</table>
+<h3>Ethernet</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard</td>
+<td>10/100 Mbps Fast Ethernet minimum</td>
+<td>10/100 Mbps minimum; Gigabit recommended</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>RJ-45</td>
+<td>RJ-45</td>
+</tr>
+<tr>
+<td>Auto Negotiation</td>
+<td>Required</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>PHY</td>
+<td>IEEE 802.3 compliant; no PoE requirement</td>
+<td>IEEE 802.3 compliant; no PoE requirement</td>
+</tr>
+</tbody>
+</table>
+<h3>Interface Selection</h3>
+<ul>
+<li>Wi-Fi and Ethernet are not required to operate simultaneously.</li>
+<li>The device shall support automatic failover and preference logic, with Ethernet prioritized over Wi-Fi when both are connected, and shall allow the user to select the active interface through system settings.</li>
+</ul>
+<hr />
+<h3>Peripheral and I/O Requirements</h3>
+<p>This section defines the minimum peripheral and input/output interfaces required to support Core RDK functionality on an IP-based STB, ensuring interoperability with display devices, user input devices, external peripherals, and service-provider operational workflows.</p>
+<p><a id="peripheral-and-io-requirements"></a></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Video output</td>
+<td>HDMI 1.4b or later, 1080p60</td>
+<td>HDMI 2.0b or later, 4K60 with HDR10 and HLG</td>
+</tr>
+<tr>
+<td>Audio output</td>
+<td>HDMI embedded audio (stereo, 5.1 passthrough)</td>
+<td>HDMI embedded audio (stereo, 5.1 passthrough)</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>1 × USB 2.0</td>
+<td>1 × USB 2.0</td>
+</tr>
+<tr>
+<td>IR receiver</td>
+<td>Required (38 kHz)</td>
+<td>Required (38 kHz)</td>
+</tr>
+<tr>
+<td>Remote control</td>
+<td>IR remote required</td>
+<td>IR remote required</td>
+</tr>
+<tr>
+<td>Bluetooth / BLE remote</td>
+<td>Required (BLE 4.2+)</td>
+<td>Required (BLE 5.0+)</td>
+</tr>
+<tr>
+<td>Voice remote</td>
+<td>Required</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>Reset / recovery button</td>
+<td>Required (physical or button combination)</td>
+<td>Required (physical or button combination)</td>
+</tr>
+<tr>
+<td>Status indicator</td>
+<td>Single LED (power/network state)</td>
+<td>Single LED (power/network state)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Power Requirements</h3>
+<p>This section defines the minimum power requirements needed to support Core RDK operation, ensuring adequate and stable power delivery for system functionality, reliability, and long-term operation.</p>
+<p><a id="power-requirements"></a></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1</th>
+<th>Tier 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input supply</td>
+<td>5 V DC, 2 A (10 W) minimum</td>
+<td>5 V DC, 2.4 A (12 W) minimum</td>
+</tr>
+<tr>
+<td>Idle power</td>
+<td>≤ 5 W</td>
+<td>≤ 5 W</td>
+</tr>
+<tr>
+<td>Standby power</td>
+<td>≤ 1 W</td>
+<td>≤ 1 W</td>
+</tr>
+<tr>
+<td>Operating temperature</td>
+<td>0 °C to 40 °C ambient</td>
+<td>0 °C to 40 °C ambient</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Regulatory and Certification Requirements</h3>
+<p><a id="regulatory-and-certification-requirements"></a></p>
+<p>A compliant device is expected to obtain the following certifications:</p>
+<ul>
+<li>Wi-Fi Alliance certification for the implemented 802.11 standards.</li>
+<li>Bluetooth SIG qualification is mandatory for both tiers because BLE voice transport is required. </li>
+<li>FCC Part 15 (US), CE/RED (EU), or applicable regional EMC and radio certification.</li>
+<li>HDMI compliance testing (HDMI CTS) for the declared HDMI version.</li>
+<li>Widevine and PlayReady certification at the security levels defined.</li>
+<li>RDK compliance test suite (RDK-V L1/L2 test pass) for the target RDK release.</li>
+<li>OTT partner certifications for the target application portfolio.</li>
+</ul>
+<p>Hardware shall comply with applicable telecom, EMC/radio, safety, cybersecurity, and environmental requirements. Additional regional requirements may apply.</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Regulatory Bodies / Marks</th>
+<th>Radio &amp; EMC</th>
+<th>Safety, Environmental &amp; Cybersecurity</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North America (US, Canada, Mexico)</td>
+<td>FCC (US); ISED (Canada); IFT / NOM (Mexico)</td>
+<td>FCC Part 15 Subparts B and C; ISED RSS-Gen / RSS-247; IFT homologation</td>
+<td>UL 62368-1 or applicable UL/CSA standard; California Proposition 65 where applicable</td>
+<td>FCC ID and IC certification required before retail sale; certified module grants can often be leveraged</td>
+</tr>
+<tr>
+<td>South America (Brazil, Argentina, Chile, Colombia, etc.)</td>
+<td>ANATEL; ENACOM; SUBTEL; CRC / MinTIC</td>
+<td>ANATEL homologation for Wi-Fi/Bluetooth/RF modules; country type approval elsewhere</td>
+<td>INMETRO (Brazil); local safety marks elsewhere</td>
+<td>ANATEL certification is mandatory for retail sale in Brazil</td>
+</tr>
+<tr>
+<td>Europe (EU/EEA and UK)</td>
+<td>EU Notified Bodies (CE); UK Approved Bodies (UKCA)</td>
+<td>Radio Equipment Directive 2014/53/EU; CE marking; UKCA for the UK</td>
+<td>RoHS 2011/65/EU; WEEE 2012/19/EU; REACH; Ecodesign standby and networked-standby limits (Regulation (EU) 2023/826); RED cybersecurity delegated act (EU) 2022/30 with EN 18031 standards, applicable from 1 August 2025; Cyber Resilience Act (EU) 2024/2847, with reporting obligations from 11 September 2026</td>
+<td>Declaration of Conformity and technical file required. CRA full product requirements apply from December 2027</td>
+</tr>
+<tr>
+<td>Asia (Japan, China, South Korea, India, etc.)</td>
+<td>MIC; SRRC / CCC; RRA / KC; WPC / BIS</td>
+<td>Japan Giteki; China SRRC; Korea KC; India WPC ETA</td>
+<td>PSE (Japan), CCC (China), KC (Korea), BIS (India)</td>
+<td>Module certificates are not always transferable; end-product re-testing may be required</td>
+</tr>
+<tr>
+<td>Australia and New Zealand</td>
+<td>ACMA</td>
+<td>Regulatory Compliance Mark (RCM)</td>
+<td>Electrical safety approval per risk class; e-waste schemes</td>
+<td>Supplier self-declaration with a Declaration of Conformity and test reports on file</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Appendix A - Reference Memory Measurements – Tier 1 (FHD) device</h3>
+<p><a id="reference-memory-measurements-tier1-fhd-device"></a></p>
+<p>Tier 1 memory values are provisional and are based on historical FHD platform data. The proposed 1 GB system RAM baseline and associated application-memory targets have not yet been validated on an RDK 9 FHD configuration with 1 GB RAM and shall remain an open condition under RDKDEV-1741. This specification proceeds with the 1 GB baseline as a provisional target for planning purposes; however, it shall not be considered a final approved requirement until validation activities are completed and reviewed. The resulting measurements, together with any required baseline adjustments, shall be incorporated into a subsequent controlled revision of this specification</p>
+<hr />
+<h3>Appendix B - Reference Memory Measurements – Tier 2 (4K Premium) device</h3>
+<p><a id="reference-memory-measurements-tier2-4k-premium-device"></a></p>
+<p>The following values were measured on the RDK 4K reference device and are provided to support memory budgeting. </p>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Measured on 4K Reference</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RDK boot without home UI</td>
+<td>230 MB</td>
+<td>Kernel, init, and core RDK middleware/services, measured after boot and before the launcher starts</td>
+</tr>
+<tr>
+<td>RDK Core with home UI</td>
+<td>330 MB</td>
+<td>Launcher UI, RDK middleware services, WPEFramework/Thunder core</td>
+</tr>
+<tr>
+<td>RDK Home App with voice</td>
+<td>365 MB</td>
+<td>Total including the home UI baseline (approximately 35 MB voice increment)</td>
+</tr>
+<tr>
+<td>RDK Home App, browser 4K playback</td>
+<td>950 MB</td>
+<td>Total during 4K VOD playback, of which approximately 600 MB is attributable to playback workloads</td>
+</tr>
+<tr>
+<td>Netflix</td>
+<td>≤ 800 MB</td>
+<td>Idle 100 MB; 4K playback 800 MB; system total approximately 1.3 GB</td>
+</tr>
+<tr>
+<td>Amazon Prime Video</td>
+<td>≤ 705 MB</td>
+<td>Idle 212 MB; FHD playback 225 MB; 4K playback 705 MB; system total approximately 1.2 GB</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>≤ 300 MB</td>
+<td>Idle 125 MB; FHD playback 140 MB; 4K playback 214 MB; DRM 4K playback 280 MB</td>
+</tr>
+<tr>
+<td>Generic HTML5 / web app (WPE)</td>
+<td>≤ 300 MB</td>
+<td>Idle 216 MB; live playback window 267 MB; full-screen VOD playback 300 MB</td>
+</tr>
+</tbody>
+</table>
+<p>Reference platform used for the Memory Measurements – Tier 2 (4K Premium) device:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Reference platform detail</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reference device</td>
+<td>Broadcom 74116 Ref Board (ipstb-brcm974116sff)</td>
+<td>Board used for the Appendix B measurements</td>
+</tr>
+<tr>
+<td>SoC</td>
+<td>BCM974116SFF (B1)</td>
+<td>SoC variant</td>
+</tr>
+<tr>
+<td>SDK Version</td>
+<td>URSR 26.0</td>
+<td>Broadcom SDK release used for the measurements</td>
+</tr>
+<tr>
+<td>Build / image identifier</td>
+<td>lib32-rdk-fullstack-image-ipstb-brcm974116sff-20260903071955</td>
+<td>Image flashed on the measured device</td>
+</tr>
+<tr>
+<td>Kernel version</td>
+<td>ACK6.1.175</td>
+<td>Running kernel version</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Appendix C - Reference Flash Measurements</h3>
+<p><a id="appendix-c-reference-flash-measurements"></a></p>
+<p>The application flash requirement covers the launcher UI, sandboxed applications, application data, configuration files, caches, logs, and update packages, with sufficient headroom for reliable installation, operation, and over-the-air application updates without affecting the storage reserved for the RDK platform.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Measured on 4K Reference</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RDK Core with home UI</td>
+<td>540 MB</td>
+<td>Launcher UI, RDK middleware binaries/libraries, WPEFramework/Thunder plugins. RDK rootfs (without UI) 437.4 MB; RefUI (base + WPE runtime + UI) 95 MB</td>
+</tr>
+<tr>
+<td>Netflix</td>
+<td>75 MB</td>
+<td>App package plus persistent cache/cookies</td>
+</tr>
+<tr>
+<td>Amazon Prime Video</td>
+<td>40 MB</td>
+<td>App package plus persistent cache/cookies</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>36 MB</td>
+<td>App package plus persistent cache</td>
+</tr>
+<tr>
+<td>Generic HTML5 / web app (per app)</td>
+<td>1 MB</td>
+<td>Package plus local storage/cache</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Appendix D - Example Flash Layout</h3>
+<p><a id="appendix-d-example-flash-layout"></a></p>
+<p>This sample flash and mount-point layout was captured from a live RDK-V device with 4 GB on-board eMMC (filesystem table, df). It is provided for storage budgeting, device flashing, and mount-layout validation and is not a partitioning requirement.</p>
+<table>
+<thead>
+<tr>
+<th>Device Node</th>
+<th>Filesystem</th>
+<th>Size (Used / Available, Use %)</th>
+<th>Mount Point</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/root</td>
+<td>ext4</td>
+<td>965.9M (437.4M used / 462.5M avail, 49%)</td>
+<td>/</td>
+<td>On-board eMMC root filesystem</td>
+</tr>
+<tr>
+<td>/dev/root (bind mount)</td>
+<td>ext4</td>
+<td>Same filesystem as above</td>
+<td>/mnt/media/apps (+ /opt, /var/lib</td>
+<td>On-board eMMC partition</td>
+</tr>
+<tr>
+<td>/dev/mmcblk1p7</td>
+<td>ext4</td>
+<td>119.0K (21.0K used / 90.0K avail, 19%)</td>
+<td>/mnt/bp30</td>
+<td>On-board eMMC partition</td>
+</tr>
+<tr>
+<td>/dev/dm-0</td>
+<td>erofs</td>
+<td>8.2M (8.2M used / 0 avail, 100%)</td>
+<td>/tmp/mounts/com.rdkcentral.base_0.3.1/rootfs</td>
+<td>Read-only app runtime image (dm-verity/erofs)</td>
+</tr>
+<tr>
+<td>/dev/dm-1</td>
+<td>erofs</td>
+<td>81.1M (81.1M used / 0 avail, 100%)</td>
+<td>/tmp/mounts/com.rdkcentral.wpe_0.4.2/rootfs</td>
+<td>Read-only app runtime image (dm-verity/erofs)</td>
+</tr>
+<tr>
+<td>/dev/dm-2</td>
+<td>erofs</td>
+<td>4.9M (4.9M used / 0 avail, 100%)</td>
+<td>/tmp/mounts/com.rdkcentral.refui_6.0.34/rootfs</td>
+<td>Read-only app runtime image (dm-verity/erofs)</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>overlay</td>
+<td>3.7G (776.0K used / 3.7G avail, 0%)</td>
+<td>/tmp/ralf/<id>/rootfs</td>
+<td>tmpfs-backed overlay (RAM, not persistent flash)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section>
+</main><footer class="footer"><div class="wrap">Copyright © 2026 RDK Management, LLC</div></footer><script src="assets/js/nav-dropdown.js" defer></script>
+<div class="spec-modal hardware-spec-modal" id="hardware-spec-modal" hidden>
+  <div class="spec-modal-backdrop" data-hardware-modal-close></div>
+  <div class="spec-modal-dialog" role="dialog" aria-modal="true" aria-label="Hardware requirement details">
+    <button class="spec-modal-close" type="button" data-hardware-modal-close aria-label="Close">&times;</button>
+    <div class="spec-modal-body" id="hardware-spec-modal-body"></div>
+  </div>
+</div>
+<script src="assets/js/hardware-spec.js" defer></script>
+</body>
+</html>

@@ -3,7 +3,7 @@ layout: data-table
 title: Components Catalog | RDK9
 nav: components
 hero:
-  eyebrow: Core and non-core components
+  eyebrow: CORE AND NON CORE COMPONENTS
   title: Components Catalog
   status: Approved
 table:
