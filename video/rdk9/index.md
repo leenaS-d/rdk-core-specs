@@ -19,7 +19,7 @@ sections:
       - href: southbound-api-spec.html
         metric: count:southbound
       - href: hardware-compatibility-spec.html
-        metric: 2 tiers
+        metric: 2 Tiers
 ---
 
 Core RDK Video (RDK-V) defines the common platform foundation for RDK-based video solutions through governed capabilities, standardized interfaces, lifecycle policies, and conformance requirements. It enables ecosystem-wide interoperability and portability while preserving flexibility for innovation and differentiation.

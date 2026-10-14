@@ -53,8 +53,10 @@ limitations under the License.
   text-decoration: none;
 }
 .section .grid:has(.card-metric) {
+  width:100%;
   max-width: 1080px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  overflow-x:auto;
 }
 .grid .card--link {
   padding: 18px;
@@ -77,12 +79,6 @@ limitations under the License.
 }
 .grid--narrow {
   max-width: 980px;
-}
-
-@media (max-width: 760px) {
-  .section .grid:has(.card-metric) {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  }
 }
 
 /* ---- status legend --------------------------------------------------- */
