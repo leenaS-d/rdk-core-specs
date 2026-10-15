@@ -42,6 +42,32 @@
     });
   }
 
+  /* Find the heading that introduces a given anchor id (walks backwards to the
+     nearest preceding heading, same rule used when opening a modal). */
+  const findHeadingFor = (anchorId) => {
+    const anchor = document.getElementById(anchorId);
+    if (!anchor) return null;
+    let node = anchor.parentElement;
+    while (node && !isHeading(node)) node = node.previousElementSibling;
+    return node;
+  };
+
+  /* Each matrix row's "View Details" link marks the start of a real top-level
+     section. Some sections (e.g. Network Connectivity) contain their own
+     sub-headings (Wi-Fi, Ethernet, ...) at the same heading level, so the
+     modal must only stop at one of these known section-start headings -
+     not at every heading it happens to encounter. */
+  const sectionHeadings = new Set();
+  if (matrixStart >= 0 && matrixEnd >= 0) {
+    sourceSections.slice(matrixStart, matrixEnd).forEach((section) => {
+      section.querySelectorAll('a[href^="#"]').forEach((link) => {
+        if (link.textContent.trim().toLowerCase() !== 'view details') return;
+        const heading = findHeadingFor(decodeURIComponent(link.hash.slice(1)));
+        if (heading) sectionHeadings.add(heading);
+      });
+    });
+  }
+
   let lastFocused = null;
 
   const close = () => {
@@ -119,7 +145,7 @@
 
     body.innerHTML = '';
     let current = heading;
-    while ((current && !isHeading(current)) || current === heading) {
+    while (current && (current === heading || !sectionHeadings.has(current))) {
       const next = current.nextElementSibling;
       const clone = current.cloneNode(true);
       clone.classList.remove('hardware-hidden-source');
