@@ -17,6 +17,14 @@
       "heading": "Standard RCU keys",
       "blocks": [
         {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "standard-keys",
+          "search": {
+            "placeholder": "Search standard RCU keys"
+          }
+        },
+        {
           "type": "table",
           "classes": "key-codes-table",
           "columns": [
@@ -316,6 +324,14 @@
         {
           "type": "prose",
           "body": "These are buttons on some RCU that are labelled Netflix, YouTube, etc. The key codes for these buttons are artificially generated within the window manager, based on the RCU type and the physical button pressed."
+        },
+        {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "partner-keys",
+          "search": {
+            "placeholder": "Search partner buttons"
+          }
         },
         {
           "type": "table",

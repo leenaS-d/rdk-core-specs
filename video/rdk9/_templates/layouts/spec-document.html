@@ -5,9 +5,6 @@
   {% for block in page.doc.blocks %}
     {% include "partials/block.html" %}
   {% endfor %}
-  {%- if page.doc.source %}
-  <p class="spec-source">Source file: <a href="{{ page.doc.source.href }}" target="_blank" rel="noopener">{{ page.doc.source.label }}</a></p>
-  {%- endif %}
 </section>
 {%- for key, definition in (page.doc.definitions or {}).items() %}
 <template id="{{ key }}">

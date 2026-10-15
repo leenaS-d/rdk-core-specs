@@ -108,6 +108,17 @@ limitations under the License.
   background:#fff;
   font:inherit;
 }
+.toolbar.spec-toolbar {
+  width:100%;
+  box-sizing:border-box;
+}
+.toolbar.spec-toolbar input {
+  flex:1 1 auto;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+}
 .pill {
   display:inline-block;
   background:#eaf2ff;

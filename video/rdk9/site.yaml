@@ -1,7 +1,7 @@
 # Site-level configuration for the RDK8 Video specification site.
 # Content lives in the sibling .md files; styling lives in assets/css.
 
-title: RDKV. Core RDK Entertainment Platform
+title: RDK9 Core RDK Entertainment Platform
 footer: "Copyright \xA9 2026 RDK Management, LLC"
 
 brand:
@@ -21,6 +21,8 @@ stylesheets:
   - assets/css/spec.css
   - assets/css/overrides.css
   - assets/css/site.css
+  - assets/css/chatbox.css
+  - assets/css/contact.css
 
 asset_version: rdk9-20261014-1
 

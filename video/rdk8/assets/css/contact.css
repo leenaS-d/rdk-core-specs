@@ -1,0 +1,66 @@
+/*
+If not stated otherwise in this file or this component's LICENSE file the
+following copyright and licenses apply:
+
+Copyright 2026 RDK Management
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/* contact.css - floating site-wide "Contact us" widget (contact.js).
+   Rendered once in _templates/partials/contact.html and included on every
+   page via base.html, mirroring the RDK-B Core Broadband contact widget. */
+
+.contact-toggle {
+  position: fixed; bottom: 22px; left: 22px; z-index: 90;
+  width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #0aa66e, var(--blue)); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(14,159,110,0.4);
+}
+.contact-toggle svg { width: 22px; height: 22px; }
+.contact-panel {
+  position: fixed; bottom: 84px; left: 22px; z-index: 90;
+  width: 340px; max-width: calc(100vw - 44px);
+  background: var(--card); border-radius: 16px; box-shadow: var(--shadow), 0 12px 40px rgba(0,0,0,0.18);
+  display: none; flex-direction: column; overflow: hidden; border: 1px solid var(--border);
+}
+.contact-panel.open { display: flex; }
+.contact-header {
+  background: var(--nav); color: #fff; padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.contact-header .title { font-weight: 600; font-size: 0.9rem; }
+.contact-header .subtitle { font-size: 0.72rem; color: #9fb2cf; margin-top: 2px; }
+.contact-close { background: none; border: none; color: #9fb2cf; cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 4px; }
+.contact-body { padding: 16px; background: var(--card); }
+.contact-field { margin-bottom: 12px; }
+.contact-field label { display: block; font-size: 0.76rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.contact-field input, .contact-field textarea {
+  width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px;
+  font-size: 0.84rem; font-family: inherit; resize: vertical; background: var(--bg); color: var(--ink);
+}
+.contact-submit {
+  width: 100%; background: var(--green); color: #fff; border: none; border-radius: 8px;
+  padding: 10px; font-size: 0.86rem; font-weight: 600; cursor: pointer; margin-top: 4px;
+}
+.contact-submit:disabled { opacity: 0.6; cursor: default; }
+.contact-status { font-size: 0.78rem; margin-top: 10px; text-align: center; }
+.contact-status.ok { color: #0aa66e; }
+.contact-status.err { color: #b91c1c; }
+.contact-mailto { display: block; text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 10px; }
+
+@media (max-width: 480px) {
+  .contact-toggle { bottom: 16px; left: 16px; }
+  .contact-panel { bottom: 78px; left: 12px; }
+}
