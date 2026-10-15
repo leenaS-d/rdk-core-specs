@@ -31,7 +31,16 @@
       "classes": "intent-actions-section",
       "blocks": [
         {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "intent-params",
+          "search": {
+            "placeholder": "Search intent fields"
+          }
+        },
+        {
           "type": "table",
+          "id": "intent-params",
           "columns": [
             {
               "key": "part",

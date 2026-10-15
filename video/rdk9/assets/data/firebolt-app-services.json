@@ -21,6 +21,14 @@
           "body": "This app service offers functionality to play live IP native channels."
         },
         {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "app-services-1",
+          "search": {
+            "placeholder": "Search methods"
+          }
+        },
+        {
           "type": "table",
           "id": "app-services-1",
           "columns": [
@@ -96,6 +104,14 @@
         {
           "type": "prose",
           "body": "This app service offers PIN and parental control functionality."
+        },
+        {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "app-services-2",
+          "search": {
+            "placeholder": "Search methods"
+          }
         },
         {
           "type": "table",

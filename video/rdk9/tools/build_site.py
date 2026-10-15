@@ -160,6 +160,96 @@ def firebolt_method_count() -> int:
     return walk(doc.get("blocks", []))
 
 
+def _table_row_texts(blocks: list[dict[str, Any]]) -> list[str]:
+    """Flatten every table row under `blocks` into one search-friendly string per row."""
+    texts: list[str] = []
+    for block in blocks:
+        if block.get("type") == "table":
+            for row in block.get("rows", []):
+                parts = []
+                for value in row.values():
+                    if isinstance(value, dict):
+                        label = value.get("label")
+                        if label:
+                            parts.append(str(label))
+                        continue
+                    text = str(value or "").replace("\n", " ").strip()
+                    if text:
+                        parts.append(text)
+                if parts:
+                    texts.append(" · ".join(parts))
+        nested = block.get("blocks")
+        if isinstance(nested, list):
+            texts.extend(_table_row_texts(nested))
+    return texts
+
+
+def build_search_index() -> None:
+    """Writes assets/data/search-index.json, consumed by the floating search
+    chatbox (assets/js/site-search.js). Mirrors the pattern used by the
+    RDK-B Core Broadband site's build_search_index.py, but is folded into
+    this build so the index can never go stale relative to the content.
+    """
+    docs: list[dict[str, Any]] = []
+
+    for path in sorted(ROOT.glob("*.md")):
+        meta, _ = split_front_matter(path.read_text(encoding="utf-8"))
+        if not meta.get("layout"):
+            continue
+        url = f"{path.stem}.html"
+        hero = meta.get("hero") or {}
+        title = str(hero.get("title") or meta.get("title") or path.stem)
+        description = hero.get("description")
+        text = description if isinstance(description, str) else " ".join(description or [])
+        docs.append({
+            "title": title,
+            "text": text or f"{title} page.",
+            "category": "Page",
+            "url": url,
+        })
+
+        if meta.get("data"):
+            doc = load_json(meta["data"])
+            category = (doc.get("hero") or {}).get("title") or title
+            for row_text in _table_row_texts(doc.get("blocks", [])):
+                docs.append({
+                    "title": row_text.split(" · ", 1)[0],
+                    "text": row_text,
+                    "category": category,
+                    "url": url,
+                })
+
+    core = load_json("assets/data/components.json")
+    non_core_path = next(DATA.glob("*-non-core-components.json"), None)
+    non_core = load_json(non_core_path.relative_to(ROOT).as_posix()) if non_core_path else {}
+    for item in [*core.get("components", []), *non_core.get("components", [])]:
+        name = item.get("name")
+        if not name:
+            continue
+        docs.append({
+            "title": str(name),
+            "text": f'{item.get("category") or "Uncategorized"} · {item.get("layer") or ""} layer · release {item.get("releaseTag") or "n/a"}.',
+            "category": "Components",
+            "url": "component-catalog.html",
+        })
+
+    southbound = load_json("assets/data/southbound-apis.json")
+    for item in southbound.get("apis", []):
+        name = item.get("halInterface")
+        if not name:
+            continue
+        docs.append({
+            "title": str(name),
+            "text": f'{item.get("type") or "core"} HAL interface, release {item.get("releaseTag") or "n/a"}.',
+            "category": "Southbound APIs",
+            "url": "southbound-api-spec.html",
+        })
+
+    out_path = DATA / "search-index.json"
+    out_path.write_text(json.dumps({"docs": docs}, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"built {out_path.relative_to(ROOT)} ({len(docs)} searchable entries)")
+
+
 def metric_value(token: str) -> int:
     kind = token.split(":", 1)[1]
     if kind == "components":
@@ -338,6 +428,7 @@ def build() -> None:
         output = ROOT / f"{path.stem}.html"
         output.write_text(build_page(env, site, path), encoding="utf-8")
         print(f"built {output.name}")
+    build_search_index()
 
 
 # Hand-edited JSON is now the source of truth for most datasets, so validate

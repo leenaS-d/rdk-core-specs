@@ -16,10 +16,14 @@
 <main>
 {% block content %}{% endblock %}
 </main>
-{%- if page.footer %}
+{%- if page.footer and page.layout == 'home' %}
 <footer class="footer"><div class="wrap">{{ site.footer }}</div></footer>
 {%- endif %}
+{% include "partials/chatbox.html" %}
+{% include "partials/contact.html" %}
 <script src="assets/js/nav-dropdown.js" defer></script>
+<script src="assets/js/site-search.js" defer></script>
+<script src="assets/js/contact.js" defer></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

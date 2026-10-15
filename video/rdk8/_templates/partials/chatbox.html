@@ -1,0 +1,38 @@
+<!--
+ If not stated otherwise in this file or this component's LICENSE file the
+ following copyright and licenses apply:
+
+ Copyright 2026 RDK Management
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- Floating site-wide search chatbox, present on every page via base.html. -->
+<button class="chatbox-toggle" id="chatbox-toggle" aria-label="Search the site">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+</button>
+<div class="chatbox-panel" id="chatbox-panel">
+  <div class="chatbox-header">
+    <div>
+      <div class="title">Search RDK-V Core Video</div>
+      <div class="subtitle">Keyword search across this site — not an AI, just a fast index</div>
+    </div>
+    <button class="chatbox-close" id="chatbox-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="chatbox-body" id="chatbox-body">
+    <div class="chatbox-welcome">Try: "Accessibility", "Intent", "component", "southbound", "key code"...</div>
+  </div>
+  <form class="chatbox-form" id="chatbox-form">
+    <input class="chatbox-input" id="chatbox-input" type="text" placeholder="Ask a question…" autocomplete="off">
+    <button class="chatbox-submit" type="submit">Search</button>
+  </form>
+</div>

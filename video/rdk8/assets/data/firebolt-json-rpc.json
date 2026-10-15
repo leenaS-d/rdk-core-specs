@@ -50,7 +50,16 @@
       "type": "section",
       "blocks": [
         {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "json-rpc-method-calls",
+          "search": {
+            "placeholder": "Search method calls"
+          }
+        },
+        {
           "type": "table",
+          "id": "json-rpc-method-calls",
           "columns": [
             {
               "key": "message",
@@ -186,7 +195,16 @@
       "type": "section",
       "blocks": [
         {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "json-rpc-notifications",
+          "search": {
+            "placeholder": "Search notifications"
+          }
+        },
+        {
           "type": "table",
+          "id": "json-rpc-notifications",
           "columns": [
             {
               "key": "message",

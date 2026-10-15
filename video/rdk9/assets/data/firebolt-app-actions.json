@@ -16,7 +16,16 @@
       "classes": "app-actions-section",
       "blocks": [
         {
+          "type": "toolbar",
+          "classes": "spec-toolbar",
+          "target": "app-action-params",
+          "search": {
+            "placeholder": "Search app action fields"
+          }
+        },
+        {
           "type": "table",
+          "id": "app-action-params",
           "columns": [
             {
               "key": "part",
