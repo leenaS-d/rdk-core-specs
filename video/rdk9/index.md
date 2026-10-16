@@ -41,3 +41,4 @@ Hardware abstraction interfaces that connect middleware with vendor implementati
 ### Hardware Compatibility
 
 Minimum device capabilities for FHD and 4K Premium Core RDK deployments.
+

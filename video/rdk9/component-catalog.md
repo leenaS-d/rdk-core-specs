@@ -5,7 +5,7 @@ nav: components
 hero:
   eyebrow: CORE AND NON CORE COMPONENTS
   title: Components Catalog
-  status: Approved
+  status: Approved by RTAB for RDK9 2027
 table:
   id: catalog
   source: catalog
