@@ -143,13 +143,28 @@
     while (heading && !isHeading(heading)) heading = heading.previousElementSibling;
     if (!heading) return;
 
+    const isRegulatorySection = heading.textContent.trim() === 'Regulatory and Certification Requirements';
+    const referenceHeading = referenceSections[heading.textContent.trim()];
     body.innerHTML = '';
     let current = heading;
     while (current && (current === heading || !sectionHeadings.has(current))) {
+      if (isRegulatorySection && current !== heading && isHeading(current) &&
+        /^Appendix\b/i.test(current.textContent.trim())) {
+        break;
+      }
+
       const next = current.nextElementSibling;
-      const clone = current.cloneNode(true);
-      clone.classList.remove('hardware-hidden-source');
-      body.appendChild(clone);
+      const isReferenceHeading = referenceHeading && isHeading(current) &&
+        current.textContent.trim().toLowerCase() === referenceHeading.toLowerCase();
+      const isReferenceList = referenceHeading && current.tagName === 'UL' &&
+        current.previousElementSibling &&
+        isHeading(current.previousElementSibling) &&
+        current.previousElementSibling.textContent.trim().toLowerCase() === referenceHeading.toLowerCase();
+      if (!(isReferenceHeading || isReferenceList)) {
+        const clone = current.cloneNode(true);
+        clone.classList.remove('hardware-hidden-source');
+        body.appendChild(clone);
+      }
       current = next;
     }
     appendReferences(heading);
