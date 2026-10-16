@@ -564,7 +564,8 @@ limitations under the License.
   max-width:980px;
   border-radius:8px;
 }
-.hardware-spec-modal .spec-modal-body > h2 {
+.hardware-spec-modal .spec-modal-body > h2,
+.hardware-spec-modal .spec-modal-body > h3 {
   margin:0 0 16px;
   color:var(--ink);
   font:600 1.3rem/1.2 "Space Grotesk","Inter",sans-serif;
@@ -598,7 +599,7 @@ limitations under the License.
 .hardware-spec-modal .hardware-appendix-content > h3 {
   margin:18px 0 10px;
   color:var(--ink);
-  font:600 2rem/1.2 "Anuphan",sans-serif;
+  font:600 1.25rem/1.3 "Anuphan",sans-serif;
 }
 .hardware-spec-modal .hardware-appendix-content > p {
   color:var(--muted);

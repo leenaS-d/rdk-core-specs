@@ -318,3 +318,6 @@ h4 { font-size: 28px; }
   }
   h4 { font-size: 22px; }
 }
+
+.spec-entry h2 { font-size: 1.3rem; }
+.spec-entry h3 { font-size: 1rem; }
