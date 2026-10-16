@@ -52,8 +52,8 @@ nav:
 
 status_legend:
   - term: Draft
-    definition: Specifications drafted and undergoing internal reviews and RTAB Approval
+    definition: Work in progress in the working group and underdoing internal reviews
   - term: Approved
-    definition: All review feedback has been addressed; RTAB has voted and approved the spec
+    definition: Approved by RTAB with date and release
   - term: Published
-    definition: Tagged and versioned against an official RDK release
+    definition: Adopted through the PSC for an annual release
