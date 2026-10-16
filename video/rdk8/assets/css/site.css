@@ -56,6 +56,14 @@ limitations under the License.
   max-width: 1080px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.section--compact {
+  padding-top: 12px;
+}
+.section.section--compact > h2 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+}
 .grid .card--link {
   padding: 18px;
 }
@@ -273,7 +281,8 @@ h3, .spec-entry h3 { font-size: 32px; }
 h4 { font-size: 28px; }
 .hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
 .hero p { font-size: 1.08rem; }
-.section:has(.card-metric) > .eyebrow {
+.section:has(.card-metric) > .eyebrow,
+.section--compact > .eyebrow {
   margin-bottom: 9px;
   font-family: "Anuphan", sans-serif;
   font-size: .78rem;
@@ -321,3 +330,21 @@ h4 { font-size: 28px; }
 
 .spec-entry h2 { font-size: 1.3rem; }
 .spec-entry h3 { font-size: 1rem; }
+
+.work-status {
+  padding: 10px 5vw;
+  border-bottom: 1px solid var(--border);
+  border-top: 2px solid var(--amber);
+  background: #fff;
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.4;
+}
+
+.work-status strong {
+  margin-right: 8px;
+  color: var(--ink);
+  font-family: "Anuphan", sans-serif;
+  font-weight: 700;
+}
+
