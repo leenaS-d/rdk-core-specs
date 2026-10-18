@@ -7,7 +7,7 @@ hero:
     eyebrow: PLATFORM REQUIREMENTS
     title: Hardware Compatibility Specification
     description: Specifications that outline the minimal hardware configurations to run Core RDK
-    status: Submitted to RTAB, RDKDEV-1741 open
+    status: Draft - In RTAB Review
 ---
 
 This Hardware Compatibility Specification defines the minimum hardware configuration required to build, deploy, and reliably operate Core RDK on IP-based RDK-V Set-Top Boxes (STBs). It establishes baseline requirements for SoC and CPU capability, graphics, video and audio decode, content protection, system memory, flash storage, connectivity, peripherals, and power.

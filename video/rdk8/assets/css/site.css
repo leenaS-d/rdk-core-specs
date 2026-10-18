@@ -19,9 +19,6 @@ limitations under the License.
 
 /* site.css - hand-written. Holds the rules that replaced per-element style
    attributes, plus overrides. Loaded last, so it wins. */
-@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
-
 /* ---- hero ------------------------------------------------------------ */
 .hero h1 {
   font-size: clamp(1.9rem, 3.6vw, 3.5rem);
@@ -197,7 +194,7 @@ label,
 .status-legend > summary,
 .spec-entry-eyebrow,
 .api-detail-row dt {
-  font: 700 14px/1.5 "Roboto", sans-serif;
+  font: 700 14px/1.5 "Anuphan", sans-serif;
   letter-spacing: 0;
   text-decoration: none;
   text-transform: none;
@@ -208,7 +205,7 @@ p,
 .spec-entry-overview,
 .spec-intro p,
 .api-detail-row dd {
-  font-family: "Roboto", sans-serif;
+  font-family: "Anuphan", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -246,7 +243,7 @@ p.large,
 .page-numbers,
 .pagination a,
 .pagination span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Anuphan", sans-serif;
   font-weight: 600;
   font-size: 20px;
   line-height: 1.5;
@@ -346,5 +343,10 @@ h4 { font-size: 28px; }
   color: var(--ink);
   font-family: "Anuphan", sans-serif;
   font-weight: 700;
+}
+
+body,
+body * {
+  font-family: "Anuphan", sans-serif !important;
 }
 
