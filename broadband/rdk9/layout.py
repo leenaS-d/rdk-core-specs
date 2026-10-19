@@ -718,7 +718,7 @@ def render_topnav(active_id: str, path_prefix: str = "") -> str:
 
 CHATBOX_HTML = """
 <button class="chatbox-toggle" id="chatbox-toggle" aria-label="Search the site">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.9 7.8L3 21l1.7-6.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
 </button>
 <div class="chatbox-panel" id="chatbox-panel">
   <div class="chatbox-header">
@@ -830,7 +830,7 @@ def render_chatbox_script(path_prefix: str = "") -> str:
 # confirmation email asking you to click "Activate Form"; every submission
 # after that lands straight in the inbox. Sent via their /ajax/ endpoint so
 # the page never redirects away — the result renders in this same panel.
-CONTACT_EMAIL = "chandrakanth_pokuru2@comcast.com"
+CONTACT_EMAIL = "support@rdkcentral.com"
 
 CONTACT_HTML = f"""
 <button class="contact-toggle" id="contact-toggle" aria-label="Contact us">
