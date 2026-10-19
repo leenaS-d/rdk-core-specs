@@ -1207,8 +1207,8 @@
       "url": "component-catalog.html"
     },
     {
-      "title": "Rialto",
-      "text": "Video · RDK layer · release develop.",
+      "title": "Rialto Client",
+      "text": "Video · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1220,7 +1220,7 @@
     },
     {
       "title": "Rialto Server",
-      "text": "Video Services · RDK layer · release develop.",
+      "text": "Video Services · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1904,12 +1904,6 @@
     },
     {
       "title": "uwebsockets",
-      "text": "System Start, Platform Management and misc utilities · RDK layer · release develop.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
-      "title": "vdevice-noop",
       "text": "System Start, Platform Management and misc utilities · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"

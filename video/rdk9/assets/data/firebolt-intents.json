@@ -4,7 +4,7 @@
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Intents Specification",
     "description": "Intent definitions for applications to request device and content experiences through the RDK9 video platform",
-    "status": "Approved by RTAB for RDK9 2027"
+    "status": "Approved by RTAB for RDK9"
   },
   "source": {
     "label": "Firebolt 9 Intents Specification.pdf",

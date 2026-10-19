@@ -106,7 +106,7 @@ def _support_state(value: str) -> str:
     if value == "yes":
         return "supported" # renders as tick
     if value == "no":
-        return "not-supported" # renders as cross
+        return "unsupported" # renders as cross
     return "unknown"
 
 def _crypto_support_states(rows: list[list[Any]]) -> dict[int, tuple[str, str]]:

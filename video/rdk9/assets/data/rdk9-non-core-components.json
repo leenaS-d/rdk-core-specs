@@ -630,7 +630,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/systemtimemgr"
+      "url": "https://github.com/rdkcentral/systemtimemgr/tree/develop/systimerfactory"
     },
     {
       "name": "tdk",
@@ -694,13 +694,6 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/uNetworking/uWebSockets"
-    },
-    {
-      "name": "vdevice-noop",
-      "category": "System Start, Platform Management and misc utilities",
-      "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-hdmicecsource"
     },
     {
       "name": "waymetric",

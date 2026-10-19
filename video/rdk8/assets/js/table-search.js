@@ -35,7 +35,7 @@
       return `<td><span class="pill">${escapeHtml(value)}</span></td>`;
     }
     if (column.kind === 'pill-variant') {
-      const variant = String(value).toLowerCase() === 'non-core' ? 'non-core' : 'core';
+      const variant = String(value).toLowerCase() === 'optional' ? 'optional' : 'core';
       return `<td><span class="pill ${variant}">${escapeHtml(value)}</span></td>`;
     }
     return `<td>${escapeHtml(value)}</td>`;

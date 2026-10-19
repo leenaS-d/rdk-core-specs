@@ -3,6 +3,12 @@
 {% block content %}
 {% include "partials/hero.html" %}
 <section class="section">
+  {%- if table.source == 'catalog' %}
+  <dl class="component-type-legend" aria-label="Component types">
+    <div><dt><span class="pill core">Core</span></dt><dd>Components that make up the core RDK Video stack.</dd></div>
+    <div><dt><span class="pill optional">Optional</span></dt><dd>Non-core components available in the RDK Video stack.</dd></div>
+  </dl>
+  {%- endif %}
   <div class="api-controls{% if table.filters %} catalog-controls{% endif %}">
     {%- if not page.hero.status %}
     <div class="api-status">

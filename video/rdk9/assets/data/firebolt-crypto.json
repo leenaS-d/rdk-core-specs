@@ -4,7 +4,7 @@
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Crypto API Specification",
     "description": "Standardized Firebolt 9 Crypto APIs.",
-    "status": "Draft"
+    "status": "Approved by RTAB for RDK9"
   },
   "source": {
     "label": "Firebolt 9 Crypto API Specifications.pdf",
@@ -483,7 +483,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -548,7 +548,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -612,7 +612,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -661,7 +661,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -693,7 +693,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -731,7 +731,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -805,7 +805,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -837,7 +837,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -889,7 +889,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -939,7 +939,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -1004,7 +1004,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -1064,7 +1064,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -1125,7 +1125,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -1185,7 +1185,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [
@@ -1237,7 +1237,7 @@
         },
         {
           "label": "JS",
-          "state": "not-supported"
+          "state": "unsupported"
         }
       ],
       "fields": [

@@ -114,7 +114,7 @@ def catalog_rows() -> list[list[str]]:
             name,
             "video" if str(category).casefold() == "video" else category,
             item.get("layer", ""),
-            "core" if name.casefold() in core_names else "non-core",
+            "core" if name.casefold() in core_names else "optional",
             item.get("releaseTag") or "",
             source_url(item),
         ])

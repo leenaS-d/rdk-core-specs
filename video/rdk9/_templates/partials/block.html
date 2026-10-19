@@ -115,7 +115,9 @@
   </div>
   <div class="api-detail-method"><code>{{ block.method }}</code></div>
   <div class="api-detail-meta">
+     {%- if block.version %}
     <span{% if page.data != 'assets/data/firebolt-app-services.json' %} class="pill"{% endif %}>API version {{ block.version }}</span>
+     {%- endif %}
     {%- for item in block.support %}
     {%- set spoken = 'not supported' if item.state == 'unsupported' else item.state %}
     <span class="api-support"><span class="api-support-label">{{ item.label }}</span><span class="api-support-mark {{ item.state }}" role="img" aria-label="{{ item.label }} {{ spoken }}">{{ '\u2713' if item.state == 'supported' else '\u2717' }}</span></span>

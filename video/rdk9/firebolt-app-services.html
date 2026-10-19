@@ -50,27 +50,23 @@ onStatusChanged</td>          <td>1.0.0</td>          <td><div class="spec-actio
   <div class="spec-entry-head"><span class="spec-entry-eyebrow">App Service</span>    <h2>Native Player App Service - org.rdk.nativeplayer</h2>
   </div>
   <div class="api-detail-method"><code>playLive</code></div>
-  <div class="api-detail-meta">
-    <span>API version 1.0.0</span>  </div>
+  <div class="api-detail-meta">    <span>API version 1.0.0</span>  </div>
   <dl class="api-detail-fields">    <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">channelId - string</span></dd></div>    <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>    <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>  </dl>  <p class="spec-entry-overview">Play a live channel</p></section></template><template id="app-service-1"><section class="spec-entry">
   <div class="spec-entry-head"><span class="spec-entry-eyebrow">App Service</span>    <h2>Native Player App Service - org.rdk.nativeplayer</h2>
   </div>
   <div class="api-detail-method"><code>stop</code></div>
-  <div class="api-detail-meta">
-    <span>API version 1.0.0</span>  </div>
+  <div class="api-detail-meta">    <span>API version 1.0.0</span>  </div>
   <dl class="api-detail-fields">    <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>    <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">None</span></dd></div>    <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>  </dl></section></template><template id="app-service-2"><section class="spec-entry">
   <div class="spec-entry-head"><span class="spec-entry-eyebrow">App Service</span>    <h2>Native Player App Service - org.rdk.nativeplayer</h2>
   </div>
   <div class="api-detail-method"><code>status
 onStatusChanged</code></div>
-  <div class="api-detail-meta">
-    <span>API version 1.0.0</span>  </div>
+  <div class="api-detail-meta">    <span>API version 1.0.0</span>  </div>
   <dl class="api-detail-fields">    <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>    <div class="api-detail-row"><dt>Returns</dt><dd><ul class="api-detail-list">        <li>state - enum<ul class="api-detail-sublist">        <li>idle</li>        <li>pending</li>        <li>playing</li>        <li>blocked</li>        <li>failed</li></ul></li>        <li>blockedReason - enum<ul class="api-detail-sublist">        <li>parental</li>        <li>other</li></ul></li>        <li>channelId - string</li>        <li>currentPositionSeconds - unsigned</li>        <li>endPositionSeconds - unsigned</li>      </ul></dd></div>    <div class="api-detail-row"><dt>Specific errors</dt><dd><span class="api-detail-text">None</span></dd></div>  </dl></section></template><template id="app-service-3"><section class="spec-entry">
   <div class="spec-entry-head"><span class="spec-entry-eyebrow">App Service</span>    <h2>Parental App Service - org.rdk.parental</h2>
   </div>
   <div class="api-detail-method"><code>pinChallenge</code></div>
-  <div class="api-detail-meta">
-    <span>API version 1.0.0</span>  </div>
+  <div class="api-detail-meta">    <span>API version 1.0.0</span>  </div>
   <dl class="api-detail-fields">    <div class="api-detail-row"><dt>Parameters</dt><dd><span class="api-detail-text">None</span></dd></div>    <div class="api-detail-row"><dt>Returns</dt><dd><span class="api-detail-text">proceed - bool</span></dd></div>    <div class="api-detail-row"><dt>Specific errors</dt><dd><ul class="api-detail-list">        <li>no service service failed app not active</li>      </ul></dd></div>  </dl>  <p class="spec-entry-overview">Requests to raise a PIN prompt to the user, verify any PIN supplied by the user, and return whether to proceed or not</p></section></template></main><!--
  If not stated otherwise in this file or this component's LICENSE file the
  following copyright and licenses apply:

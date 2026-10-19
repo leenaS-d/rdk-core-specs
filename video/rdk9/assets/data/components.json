@@ -363,13 +363,13 @@
       "releaseTag": "develop"
     },
     {
-      "name": "Rialto",
+      "name": "Rialto Client",
       "category": "Video",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rialto"
+        "https://github.com/rdkcentral/rialto/tree/master/media/client"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "master"
     },
     {
       "name": "Rialto OCDM",
@@ -385,9 +385,9 @@
       "category": "Video Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rialto"
+        "https://github.com/rdkcentral/rialto/tree/master/media/server"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "master"
     },
     {
       "name": "RunTime",

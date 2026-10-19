@@ -100,6 +100,30 @@ limitations under the License.
   flex-wrap:wrap;
   margin:20px 0;
 }
+.component-type-legend {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 28px;
+  margin:0 0 20px;
+}
+.component-type-legend > div {
+  display:flex;
+  gap:8px;
+}
+.component-type-legend dt {
+  font-weight:700;
+  white-space:nowrap;
+}
+.component-type-legend dd {
+  margin:0;
+  color:var(--muted);
+}
+@media(max-width:650px) {
+  .component-type-legend {
+    display:grid;
+    gap:8px;
+  }
+}
 .toolbar input,
 .toolbar select {
   border:1px solid var(--border);
