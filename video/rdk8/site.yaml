@@ -52,7 +52,7 @@ nav:
 
 status_legend:
   - term: Draft
-    definition: Work in progress in the working group and underdoing internal reviews
+    definition: Work in progress in the working group and undergoing internal reviews
   - term: Approved
     definition: Approved by RTAB with date and release
   - term: Published
