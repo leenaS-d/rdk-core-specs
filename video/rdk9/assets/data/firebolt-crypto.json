@@ -2,8 +2,8 @@
   "schemaVersion": "1.0",
   "hero": {
     "eyebrow": "Firebolt 9",
-    "title": "Firebolt 9 Crypto API Specifications",
-    "description": "Standardized Firebolt 9 Crypto APIs",
+    "title": "Firebolt 9 Crypto API Specification",
+    "description": "Standardized Firebolt 9 Crypto APIs.",
     "status": "Draft"
   },
   "source": {
@@ -65,10 +65,6 @@
               "wrap": "preline"
             },
             {
-              "key": "firebolt-global",
-              "label": "Firebolt global"
-            },
-            {
               "key": "details",
               "label": "View Details"
             }
@@ -77,7 +73,6 @@
             {
               "module": "Crypto",
               "methods": "generateKey",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -92,7 +87,6 @@
             {
               "module": "Crypto",
               "methods": "generateKeyPair",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -107,7 +101,6 @@
             {
               "module": "Crypto",
               "methods": "loadKey",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -122,7 +115,6 @@
             {
               "module": "Crypto",
               "methods": "unloadKey",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -137,7 +129,6 @@
             {
               "module": "Crypto",
               "methods": "keyExists",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -152,7 +143,6 @@
             {
               "module": "Crypto",
               "methods": "getKeyInfo",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -167,7 +157,6 @@
             {
               "module": "Crypto",
               "methods": "flushKeys",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -182,7 +171,6 @@
             {
               "module": "Crypto",
               "methods": "importKey",
-              "firebolt-global": "",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -197,7 +185,6 @@
             {
               "module": "Crypto",
               "methods": "exportKey",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -212,7 +199,6 @@
             {
               "module": "Crypto",
               "methods": "sign",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -227,7 +213,6 @@
             {
               "module": "Crypto",
               "methods": "verify",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -242,7 +227,6 @@
             {
               "module": "Crypto",
               "methods": "encrypt",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -257,7 +241,6 @@
             {
               "module": "Crypto",
               "methods": "decrypt",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -272,7 +255,6 @@
             {
               "module": "Crypto",
               "methods": "deriveSessionKeys",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -287,7 +269,6 @@
             {
               "module": "Crypto",
               "methods": "generateRandom",
-              "firebolt-global": "Yes",
               "details": {
                 "type": "actions",
                 "plain": true,
@@ -409,7 +390,19 @@
           ],
           "rows": [
             {
-              "class": "Specific",
+              "class": "Generic",
+              "ID": "-xxxxh",
+              "Error": "Authentication Failed",
+              "Notes": "Operation not permitted for specific app credentials - example, when an app tries to use another apps credentials"
+            },
+            {
+              "class": "Generic",
+              "ID": "-xxxxg",
+              "Error": "Invalid Parameters",
+              "Notes": "Null or Invalid parameters"
+            },
+            {
+              "class": "Generic",
               "ID": "-xxxxa",
               "Error": "Operation failed",
               "Notes": "Includes any resourcing errors, operation not allowed / supported, any internal or hardware error"
@@ -430,7 +423,7 @@
               "class": "Specific",
               "ID": "-xxxxd",
               "Error": "Invalid key type",
-              "Notes": "xxx"
+              "Notes": ""
             },
             {
               "class": "Specific",
@@ -443,18 +436,6 @@
               "ID": "-xxxxf",
               "Error": "Session to be reinitialized",
               "Notes": "The vault session is invalidated. It needs to be reinitialized before next usage."
-            },
-            {
-              "class": "Specific",
-              "ID": "-xxxxg",
-              "Error": "Invalid Parameters",
-              "Notes": "Null or Invalid parameters"
-            },
-            {
-              "class": "Specific",
-              "ID": "-xxxxh",
-              "Error": "Authentication Failed",
-              "Notes": "Operation not permitted for specific app credentials - example, when an app tries to use another apps credentials"
             },
             {
               "class": "Specific",
@@ -495,7 +476,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "generateKey",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -513,7 +493,7 @@
             "type": "list",
             "items": [
               {
-                "text": "keyType - enum",
+                "text": "keyParam - enum",
                 "items": [
                   "AES128",
                   "AES256",
@@ -528,7 +508,9 @@
                   "ENCRYPT",
                   "DECRYPT",
                   "SIGN",
+                  "VERIFY",
                   "DERIVE",
+                  "WRAP",
                   "UNWRAP"
                 ]
               }
@@ -546,13 +528,12 @@
             "items": [
               "-xxxxa - Key Creation Error",
               "-xxxxe - Invalid File name",
-              "-xxxxh - Authentication failure",
               "-xxxxd - Invalid key type"
             ]
           }
         }
       ],
-      "overview": "Generate symmetric algorithm key file, load it into key store and provide handle for further access. Generated key this way shall be considered local to the application generating it - shall not be shared. Not persisted during this call. To use exportKey in case persistence is required.",
+      "overview": "Generate symmetric algorithm key file, load it into key store and provide handle for further access. Generated key this way shall be considered local to the application generating it - shall not be shared. Not persisted during this call. To use exportKey in case persistence is required. If keyUsage is omitted, the platform will assume all keyUsages corresponding to the keyParam.",
       "trailing": []
     },
     "api-1": {
@@ -560,7 +541,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "generateKeyPair",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -614,17 +594,10 @@
         },
         {
           "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-xxxxh - Authentication failure",
-              "-xxxxa - Operation failed",
-              "-xxxxz / Invalid Parameters"
-            ]
-          }
+          "value": "None"
         }
       ],
-      "overview": "Create authenticated DH session keys with algorithm \"AUTH_DH\" Authenticated Diffie-Hellman. Mapping from Netflix APIs: generatorG; // from base_buf primeP; // from modulus",
+      "overview": "Generates an ephemeral or application-scoped Diffie-Hellman public /private key pair for subsequent AUTH_DH derivation. Mapping from Netflix APIs: generatorG; // from base_buf primeP; // from modulus",
       "trailing": []
     },
     "api-2": {
@@ -632,7 +605,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "loadKey",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -649,7 +621,7 @@
           "value": {
             "type": "list",
             "items": [
-              "keyName - string, Locator that points to a key that is pre-provisioned",
+              "keyName - string, locator that points to a key that is pre-provisioned",
               {
                 "text": "provisionType - enum - optional",
                 "items": [
@@ -669,13 +641,12 @@
             "type": "list",
             "items": [
               "-xxxxb - Not available or corrupted",
-              "-xxxxc - Does not represent valid key",
-              "-xxxxh - Authentication failure"
+              "-xxxxc - Does not represent valid key"
             ]
           }
         }
       ],
-      "overview": "Load a pre provisioned key by locator",
+      "overview": "Load a pre-provisioned key by locator",
       "trailing": []
     },
     "api-3": {
@@ -683,7 +654,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "unloadKey",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -705,13 +675,7 @@
         },
         {
           "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-xxxxh - Authentication failure",
-              "-xxxxa - Operation failed"
-            ]
-          }
+          "value": "None"
         }
       ],
       "overview": "Delete key from key store (may mean unload key from TA if used).",
@@ -722,7 +686,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "keyExists",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -761,7 +724,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "getKeyInfo",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -785,20 +747,20 @@
               {
                 "text": "keyType - enum",
                 "items": [
-                  "AES128",
-                  "AES256",
-                  "HMAC128",
-                  "HMAC160",
-                  "HMAC256"
+                  "PUBLIC",
+                  "PRIVATE",
+                  "SYMMETRIC"
                 ]
               },
               {
-                "text": "keyUsage - enum",
+                "text": "keyUsage -list of enums, unordered",
                 "items": [
                   "ENCRYPT",
                   "DECRYPT",
                   "SIGN",
+                  "VERIFY",
                   "DERIVE",
+                  "WRAP",
                   "UNWRAP"
                 ]
               },
@@ -807,9 +769,11 @@
                 "items": [
                   "AES_CBC",
                   "AES_CTR",
-                  "DIGEST_SHA256",
-                  "DIGEST_SHA384",
-                  "DIGEST_SHA512"
+                  "SHA256",
+                  "SHA384",
+                  "SHA512",
+                  "AUTH_DH",
+                  "DH"
                 ]
               }
             ]
@@ -821,7 +785,7 @@
             "type": "list",
             "items": [
               "-xxxxe - Invalid key",
-              "-xxxxh - Authentication failure"
+              "C"
             ]
           }
         }
@@ -834,7 +798,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "flushKeys",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -856,7 +819,7 @@
         },
         {
           "label": "Specific errors",
-          "value": "-xxxxh - Authentication failure"
+          "value": "None"
         }
       ],
       "overview": "Unloads all the keys loaded until now. They cannot be used again. Returns INVALID_KEY error on further key usage.",
@@ -867,15 +830,14 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "importKey",
-      "firebolt-global": "",
       "support": [
         {
           "label": "C++",
-          "state": "unknown"
+          "state": "supported"
         },
         {
           "label": "JS",
-          "state": "unknown"
+          "state": "not-supported"
         }
       ],
       "fields": [
@@ -887,11 +849,9 @@
               {
                 "text": "keyType - enum",
                 "items": [
-                  "AES128",
-                  "AES256",
-                  "HMAC128",
-                  "HMAC160",
-                  "HMAC256"
+                  "PUBLIC",
+                  "PRIVATE",
+                  "SYMMETRIC"
                 ]
               },
               {
@@ -911,16 +871,10 @@
         },
         {
           "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-xxxxh - Authentication failure",
-              "-xxxxk - Key Provision Error"
-            ]
-          }
+          "value": "-xxxxk - Key Provision Error"
         }
       ],
-      "overview": "Clear import and export is not supported by Comcast / Sky implementation",
+      "overview": "Load the exported key material from the same device / platform into the key store. Verifies integrity and device binding before creating a key Rejects corrupted or foreign-device blobs Does not create a partially usable key on failure May return a different key ID from the original",
       "trailing": []
     },
     "api-8": {
@@ -928,7 +882,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "exportKey",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -965,14 +918,13 @@
           "value": {
             "type": "list",
             "items": [
-              "-xxxxh - Authentication failure",
               "-xxxxm - Sealed Key Cannot Export Error",
               "-xxxxe - Invalid key"
             ]
           }
         }
       ],
-      "overview": "Returns device-bound, integrity-protected, confidentiality-protected blob May have the metadata export based on the implementation.",
+      "overview": "Exports the key material for usage by the platform after an import. Protected export shall preserve key material and all platform key metadata required to restore equivalent key behavior. The returned blob shall be device-bound, integrity-protected, and confidentiality-protected.",
       "trailing": []
     },
     "api-9": {
@@ -980,7 +932,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "sign",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -1030,12 +981,9 @@
           "value": {
             "type": "list",
             "items": [
-              "xxxxc / Invalid key",
+              "-xxxxc / Invalid key",
               "-xxxxd / Invalid key type",
               "-xxxxf / Session to be reinitialized",
-              "-xxxxg / Invalid Parameters",
-              "-xxxxa / Operation failed",
-              "-xxxxh - Authentication failure",
               "-xxxxl - Output buffer too small"
             ]
           }
@@ -1049,7 +997,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "verify",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -1095,12 +1042,9 @@
           "value": {
             "type": "list",
             "items": [
-              "-xxxxh - Authentication failure",
               "-xxxxx / Invalid key",
               "-xxxxd / Invalid key type",
-              "-xxxxy / Session to be reinitialized",
-              "-xxxxz / Invalid Parameters",
-              "-xxxxa / Operation failed"
+              "-xxxxy / Session to be reinitialized"
             ]
           }
         }
@@ -1113,7 +1057,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "encrypt",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -1160,16 +1103,14 @@
             "type": "list",
             "items": [
               "-xxxxi - Invalid Init Data length",
-              "-xxxxh - Authentication failure",
-              "-xxxxj - Input data size exceeded the supported limits",
+              "-xxxxj - Input data size exceeded the supportedlimits",
               "-xxxxl - Output buffer too small",
-              "-xxxxe - Invalid key",
-              "-xxxxa - Operation failed"
+              "-xxxxe - Invalid key"
             ]
           }
         }
       ],
-      "overview": "Returns the data after encryption. Input data to encrypt shall not exceed 1 MB of size. Length of encrypted data is returned as 0 on any errors. For AES_CBC algorithm: Expects IV as initData of 16 bytes in length While IV reuse may be allowed, Zero or NULL IV is not allowed. Recommended to use generateRandom API to generate random number. inputData contains the buffer to be encrypted For other algorithms, in future: Nonce can be passed as initData as well.",
+      "overview": "Returns the data after encryption. Input data to encrypt shall not exceed 1 MB of size. Length of encrypted data is returned as 0 on any errors. For AES_CBC algorithm: Expects IV as initData of 16 bytes in length Null/missing IV: invalid All-zero 16-byte IV: syntactically valid, though generally discouraged inputData contains the buffer to be encrypted Performs no padding. Input length must be a multiple of 16 For other algorithms, in future: Nonce can be passed as initData as well.",
       "trailing": []
     },
     "api-12": {
@@ -1177,7 +1118,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "decrypt",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -1223,16 +1163,14 @@
           "value": {
             "type": "list",
             "items": [
-              "-xxxxh - Authentication failure",
-              "-xxxxj - Input data size exceeded the supported limits",
+              "-xxxxj - Input data size exceeded the supportedlimits",
               "-xxxxl - Output buffer too small",
-              "-xxxxe - Invalid key",
-              "-xxxxa - Operation failed"
+              "-xxxxe - Invalid key"
             ]
           }
         }
       ],
-      "overview": "Returns the decrypted clear data. Input data to decrypt shall not exceed 1.5 MB of data. length of output data is returned as 0 on any errors For AES_CBC algorithm: Expects IV as initData of 16 bytes in length While IV reuse may be allowed, Zero or NULL IV is not allowed. Recommended to use generateRandom API to generate random number. inputData contains the buffer to be encrypted",
+      "overview": "Returns the decrypted clear data. Input data to decrypt shall not exceed 1.5 MB of data. length of output data is returned as 0 on any errors For AES_CBC algorithm: Expects IV as initData of 16 bytes in length Null/missing IV: invalid All-zero 16-byte IV: syntactically valid, though generally discouraged inputData contains the buffer to be decrypted.",
       "trailing": []
     },
     "api-13": {
@@ -1240,7 +1178,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "deriveSessionKeys",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -1282,16 +1219,10 @@
         },
         {
           "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-xxxxh - Authentication failure",
-              "-xxxxa - Operation failed"
-            ]
-          }
+          "value": "None"
         }
       ],
-      "overview": "Performs authenticated DH key derivation",
+      "overview": "Performs authenticated DH key derivation (Authenticated Diffie-Hellman)",
       "trailing": []
     },
     "api-14": {
@@ -1299,7 +1230,6 @@
       "eyebrow": "Module",
       "module": "Crypto",
       "method": "generateRandom",
-      "firebolt-global": "Yes",
       "support": [
         {
           "label": "C++",
@@ -1339,9 +1269,9 @@
     "mode": "reference-or-new-candidate",
     "source": {
       "pdf": "Firebolt 9 Crypto API Specifications.pdf",
-      "sha256": "4efe47f0f5e46939ed6787c24adf824471b90dd4a4224ee6c25820d43578f9cf",
+      "sha256": "61af48c8f06c4ec153c55ad4ddcd3f0b87848c47d25d54dc2f60f4339e08acdd",
       "pageCount": 6,
-      "extractedAt": "2026-10-07T18:55:02.986023+00:00"
+      "extractedAt": "2026-10-19T16:29:06.861675+00:00"
     },
     "note": "Review PDF-derived content before replacing the curated file."
   }

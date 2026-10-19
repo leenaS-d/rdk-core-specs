@@ -2,17 +2,17 @@
   "schemaVersion": "pdf-extract-1.0",
   "document": "firebolt-crypto",
   "source": "Firebolt 9 Crypto API Specifications.pdf",
-  "sha256": "4efe47f0f5e46939ed6787c24adf824471b90dd4a4224ee6c25820d43578f9cf",
-  "extractedAt": "2026-10-07T18:55:02.986023+00:00",
+  "sha256": "61af48c8f06c4ec153c55ad4ddcd3f0b87848c47d25d54dc2f60f4339e08acdd",
+  "extractedAt": "2026-10-19T16:29:06.861675+00:00",
   "pages": [
     {
       "page": 1,
-      "text": "Firebolt 9 Crypto   API  Specification                                       \n                                                                                    \n                                                                                    \n                                                                                    \n        Document status DRAFT                                                       \n        Author    Thamarai Selvi N Muthusamy                                        \n                                                                                    \n                                                                                    \n       Note: this is a draft of the latest Firebolt spec                            \n                                                                                    \n                                                                                    \n        API version Link Summary                                                    \n                                                                                    \n       internal draft                                                               \n                                                                                    \n       Interpretation                                                               \n                                                                                    \n       This page is an abstract, language-independent definition of the Firebolt Core API. The following terms are used:\n                                                                                    \n           Term    Meaning                                                          \n       1  enum     an instance of a type that can have one of a pre-defined set of values. Typically represented by a string in JSON-RPC, but an\n                   integer in C++                                                   \n       2  list of  an ordered collection of values                                  \n                                                                                    \n       3  list of... an unordered collection of values                              \n          unordered                                                                 \n       4  one of   an instance of a primitive type, such as unsigned or string, that can have one of a pre-defined set of values. Not an enum\n       5  monotonic a numeric value that is greater than the last instance of that attribute\n       6  generic error an error that can be returned by any method call, documented in the Errors section\n                                                                                    \n       7  specific error an error that can be returned by specific methods, documented along with the method\n                                                                                    \n       Key                                                                          \n                                                                                    \n        Color Meaning                                                               \n                                                                                    \n       Green Approved - ready for development                                       \n       Red  Not approved - not ready for development                                \n                                                                                    \n       Types                                                                        \n                                                                                    \n                                                                                    \n           Type Definition                                                          \n       1  unsigned 32-bit unsigned integer                                          \n       2  double 64-bit double-precision floating point number                      \n                                                                                    \n                                                                                    \n       Errors                                                                       \n                                                                                    \n            ID Error                Notes                                           \n       Specifi - Operation failed  Includes any resourcing errors, operation not allowed / supported, any internal or hardware error\n       c   xxxxa",
+      "text": "Firebolt 9 Crypto   API  Specification                                       \n                                                                                    \n        Document status APPROVED                                                    \n                                                                                    \n        Author    Thamarai Selvi N Muthusamy                                        \n                                                                                    \n                                                                                    \n        API version Link Summary                                                    \n                                                                                    \n       0.1             First full approved version. Approved in Firebolt Crypto WG on 08 Okt 26\n                                                                                    \n       Interpretation                                                               \n                                                                                    \n       This page is an abstract, language-independent definition of the Firebolt Crypto API. The following terms are used:\n                                                                                    \n           Term    Meaning                                                          \n       1  enum     an instance of a type that can have one of a pre-defined set of values. Typically represented by a string in JSON-RPC, but an\n                   integer in C++                                                   \n       2  list of  an ordered collection of values                                  \n                                                                                    \n       3  list of... an unordered collection of values                              \n          unordered                                                                 \n       4  one of   an instance of a primitive type, such as unsigned or string, that can have one of a pre-defined set of values. Not an enum\n       5  monotonic a numeric value that is greater than the last instance of that attribute\n       6  generic error an error that can be returned by any method call, documented in the Errors section\n       7  specific error an error that can be returned by specific methods, documented along with the method\n                                                                                    \n                                                                                    \n       Key                                                                          \n                                                                                    \n        Color Meaning                                                               \n                                                                                    \n       Green Approved - ready for development                                       \n       Red  Not approved - not ready for development                                \n                                                                                    \n       Types                                                                        \n                                                                                    \n                                                                                    \n           Type Definition                                                          \n       1  unsigned 32-bit unsigned integer                                          \n       2  double 64-bit double-precision floating point number                      \n                                                                                    \n                                                                                    \n       Errors                                                                       \n                                                                                    \n           Class ID Error              Notes                                        \n       1  Generic - Authentication Failed Operation not permitted for specific app credentials - example, when an app tries to use\n               xxxxh                  another apps credentials                      \n       2       -  Invalid Parameters  Null or Invalid parameters                    \n               xxxxg                                                                \n       3       -  Operation failed    Includes any resourcing errors, operation not allowed / supported, any internal or hardware\n               xxxxa                  error                                         \n       4  Specific - File to be loaded is not available or                          \n               xxxxb corrupted",
       "tables": [
         [
           [
             "Document status",
-            "DRAFT"
+            "APPROVED"
           ],
           [
             "Author",
@@ -26,9 +26,9 @@
             "Summary"
           ],
           [
-            "internal draft",
+            "0.1",
             "",
-            ""
+            "First full approved version. Approved in Firebolt Crypto WG on 08 Okt 26"
           ]
         ],
         [
@@ -107,62 +107,22 @@
         [
           [
             "",
+            "Class",
             "ID",
             "Error",
             "",
             "Notes"
           ],
           [
-            "Specifi\nc",
-            "-\nxxxxa",
-            "Operation failed",
+            "1",
+            "Generic",
+            "-\nxxxxh",
+            "Authentication Failed",
             "",
-            "Includes any resourcing errors, operation not allowed / supported, any internal or hardware error"
-          ]
-        ]
-      ]
-    },
-    {
-      "page": 2,
-      "text": "-   File to be loaded is not available or                                \n           xxxxb corrupted                                                          \n           -   File name does not represent valid key                               \n           xxxxc name                                                               \n           -   Invalid key type xxx                                                 \n           xxxxd                                                                    \n           -   Invalid key                                                          \n           xxxxe                                                                    \n           -xxxxf Session to be reinitialized The vault session is invalidated. It needs to be reinitialized before next usage.\n           -   Invalid Parameters  Null or Invalid parameters                       \n           xxxxg                                                                    \n           -   Authentication Failed Operation not permitted for specific app credentials - example, when an app tries to use another\n           xxxxh                   apps credentials                                 \n           -xxxxi Invalid Init Data Length of IV or nonce supplied as parameter is not equal to the expected length\n           -xxxxj Data size exceeded                                                \n           -   Key Provision Error                                                  \n           xxxxk                                                                    \n           -xxxxl Too small output buffer                                           \n           -   Sealed Key Cannot Export Error                                       \n           xxxxm                                                                    \n                                                                                    \n       Methods                                                                      \n                                                                                    \n           Module Method Parameters Returns Specific Firebolt C++ JS Description    \n                                     errors  global                                 \n       1  Crypto generateKey               Yes   Yes No Generate symmetric algorithm key file, load it into key\n                      keyType - enum keyId - -xxxxa -   store and provide handle for further access. Generated\n                         AES128  unsigned Key           key this way shall be considered local to the application\n                         AES256        Creation         generating it - shall not be shared. Not persisted during\n                         HMAC128       Error            this call. To use exportKey in case persistence is required.\n                         HMAC160       -xxxxe -                                     \n                         HMAC256       Invalid                                      \n                      keyUsage - list of File                                       \n                      enums, unordered - name                                       \n                      optional         -xxxxh -                                     \n                         ENCRYPT       Authentic                                    \n                         DECRYPT       ation                                        \n                         SIGN          failure                                      \n                         DERIVE        -xxxxd -                                     \n                         UNWRAP        Invalid                                      \n                                       key type                                     \n       2  Crypto generateKe                Yes   Yes No Create authenticated DH session keys with algorithm\n               yPair  algorithm - enum privateK -xxxxh - \"AUTH_DH\" Authenticated Diffie-Hellman.\n                         AUTH_DH eyId - Authentic                                   \n                                 unsigned ation                                     \n                    Optional parameter for publicK failure                          \n                    AUTH_DH algo: eyId - -xxxxa -       Mapping from Netflix APIs:  \n                                 unsigned Operatio                                  \n                    {                  n failed         generatorG; // from base_buf\n                                       -xxxxz /                                     \n                      primePDataOffset - Invalid        primeP; // from modulus     \n                      unsigned         Paramet                                      \n                      primePDataLength ers                                          \n                      - unsigned                                                    \n                      generatorGDataOff                                             \n                      set - unsigned                                                \n                      generatorGDataLen                                             \n                      gth - unsigned                                                \n                    }                                                               \n                    Optional parameter for                                          \n                    RSA algo (not supported,                                        \n                    just for ex):                                                   \n                    {                                                               \n                      modulusBits -                                                 \n                      unsigned                                                      \n                      publicExponent                                                \n                      - unsigned                                                    \n                    }",
-      "tables": [
-        [
-          [
-            "",
-            "-\nxxxxb",
-            "File to be loaded is not available or\ncorrupted",
-            "",
-            ""
+            "Operation not permitted for specific app credentials - example, when an app tries to use\nanother apps credentials"
           ],
           [
-            "",
-            "-\nxxxxc",
-            "File name does not represent valid key\nname",
-            "",
-            ""
-          ],
-          [
-            "",
-            "-\nxxxxd",
-            "Invalid key type",
-            "xxx",
-            ""
-          ],
-          [
-            "",
-            "-\nxxxxe",
-            "Invalid key",
-            "",
-            ""
-          ],
-          [
-            "",
-            "-xxxxf",
-            "Session to be reinitialized",
-            "",
-            "The vault session is invalidated. It needs to be reinitialized before next usage."
-          ],
-          [
+            "2",
             "",
             "-\nxxxxg",
             "Invalid Parameters",
@@ -170,13 +130,63 @@
             "Null or Invalid parameters"
           ],
           [
+            "3",
             "",
-            "-\nxxxxh",
-            "Authentication Failed",
+            "-\nxxxxa",
+            "Operation failed",
             "",
-            "Operation not permitted for specific app credentials - example, when an app tries to use another\napps credentials"
+            "Includes any resourcing errors, operation not allowed / supported, any internal or hardware\nerror"
           ],
           [
+            "4",
+            "Specific",
+            "-\nxxxxb",
+            "File to be loaded is not available or\ncorrupted",
+            "",
+            ""
+          ]
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "text": "5       -  File name does not represent valid                                \n               xxxxc key name                                                       \n       6       -  Invalid key type xxx                                              \n               xxxxd                                                                \n       7       -  Invalid key                                                       \n               xxxxe                                                                \n       8       -  Session to be reinitialized The vault session is invalidated. It needs to be reinitialized before next usage.\n               xxxxf                                                                \n       9       -xxxxi Invalid Init Data Length of IV or nonce supplied as parameter is not equal to the expected length\n       10      -xxxxj Data size exceeded                                            \n       11      -  Key Provision Error                                               \n               xxxxk                                                                \n       12      -xxxxl Too small output buffer                                       \n       13      -  Sealed Key Cannot Export Error                                    \n               xxxxm                                                                \n                                                                                    \n       Methods                                                                      \n                                                                                    \n                                                                                    \n           Module Method Parameters Returns Specific C++17 JS Description           \n                                      errors                                        \n       1  Crypto generateKey                Yes  No Generate symmetric algorithm key file, load it into key store and\n                      keyParam - enum keyId - -xxxxa - provide handle for further access. Generated key this way shall be\n                         AES128  unsigned Key       considered local to the application generating it - shall not be\n                         AES256         Creation    shared. Not persisted during this call. To use exportKey in case\n                         HMAC128        Error       persistence is required.        \n                         HMAC160        -xxxxe -                                    \n                         HMAC256        Invalid     If keyUsage is omitted, the platform will assume all keyUsages\n                      keyUsage - list of File name  corresponding to the keyParam.  \n                      enums, unordered - -xxxxd -                                   \n                      optional          Invalid                                     \n                         ENCRYPT        key type                                    \n                         DECRYPT                                                    \n                         SIGN                                                       \n                         VERIFY                                                     \n                         DERIVE                                                     \n                         WRAP                                                       \n                         UNWRAP                                                     \n       2  Crypto generateKe          None   Yes  No Generates an ephemeral or application-scoped Diffie-Hellman public\n               yPair  algorithm - enum privateK     /private key pair for subsequent AUTH_DH derivation.\n                         AUTH_DH eyId -                                             \n                                 unsigned                                           \n                    Optional parameter for publicK                                  \n                    AUTH_DH algo: eyId -            Mapping from Netflix APIs:      \n                                 unsigned                                           \n                    {                               generatorG; // from base_buf    \n                      primePDataOffset -            primeP; // from modulus         \n                      unsigned                                                      \n                      primePDataLength -                                            \n                      unsigned                                                      \n                      generatorGDataOffs                                            \n                      et - unsigned                                                 \n                      generatorGDataLeng                                            \n                      th - unsigned                                                 \n                    }                                                               \n                    Optional parameter for                                          \n                    RSA algo (not supported,                                        \n                    just for ex):                                                   \n                    {                                                               \n                      modulusBits -                                                 \n                      unsigned                                                      \n                      publicExponent                                                \n                      - unsigned                                                    \n                    }",
+      "tables": [
+        [
+          [
+            "5",
+            "",
+            "-\nxxxxc",
+            "File name does not represent valid\nkey name",
+            "",
+            ""
+          ],
+          [
+            "6",
+            "",
+            "-\nxxxxd",
+            "Invalid key type",
+            "xxx",
+            ""
+          ],
+          [
+            "7",
+            "",
+            "-\nxxxxe",
+            "Invalid key",
+            "",
+            ""
+          ],
+          [
+            "8",
+            "",
+            "-\nxxxxf",
+            "Session to be reinitialized",
+            "",
+            "The vault session is invalidated. It needs to be reinitialized before next usage."
+          ],
+          [
+            "9",
             "",
             "-xxxxi",
             "Invalid Init Data",
@@ -184,6 +194,7 @@
             "Length of IV or nonce supplied as parameter is not equal to the expected length"
           ],
           [
+            "10",
             "",
             "-xxxxj",
             "Data size exceeded",
@@ -191,6 +202,7 @@
             ""
           ],
           [
+            "11",
             "",
             "-\nxxxxk",
             "Key Provision Error",
@@ -198,6 +210,7 @@
             ""
           ],
           [
+            "12",
             "",
             "-xxxxl",
             "Too small output buffer",
@@ -205,6 +218,7 @@
             ""
           ],
           [
+            "13",
             "",
             "-\nxxxxm",
             "Sealed Key Cannot Export Error",
@@ -220,8 +234,7 @@
             "Parameters",
             "Returns",
             "Specific\nerrors",
-            "Firebolt\nglobal",
-            "C++",
+            "C++17",
             "JS",
             "Description"
           ],
@@ -229,45 +242,42 @@
             "1",
             "Crypto",
             "generateKey",
-            "keyType - enum\nAES128\nAES256\nHMAC128\nHMAC160\nHMAC256\nkeyUsage - list of\nenums, unordered -\noptional\nENCRYPT\nDECRYPT\nSIGN\nDERIVE\nUNWRAP",
+            "keyParam - enum\nAES128\nAES256\nHMAC128\nHMAC160\nHMAC256\nkeyUsage - list of\nenums, unordered -\noptional\nENCRYPT\nDECRYPT\nSIGN\nVERIFY\nDERIVE\nWRAP\nUNWRAP",
             "keyId -\nunsigned",
-            "-xxxxa -\nKey\nCreation\nError\n-xxxxe -\nInvalid\nFile\nname\n-xxxxh -\nAuthentic\nation\nfailure\n-xxxxd -\nInvalid\nkey type",
-            "Yes",
+            "-xxxxa -\nKey\nCreation\nError\n-xxxxe -\nInvalid\nFile name\n-xxxxd -\nInvalid\nkey type",
             "Yes",
             "No",
-            "Generate symmetric algorithm key file, load it into key\nstore and provide handle for further access. Generated\nkey this way shall be considered local to the application\ngenerating it - shall not be shared. Not persisted during\nthis call. To use exportKey in case persistence is required."
+            "Generate symmetric algorithm key file, load it into key store and\nprovide handle for further access. Generated key this way shall be\nconsidered local to the application generating it - shall not be\nshared. Not persisted during this call. To use exportKey in case\npersistence is required.\nIf keyUsage is omitted, the platform will assume all keyUsages\ncorresponding to the keyParam."
           ],
           [
             "2",
             "Crypto",
             "generateKe\nyPair",
-            "algorithm - enum\nAUTH_DH\nOptional parameter for\nAUTH_DH algo:\n{\nprimePDataOffset -\nunsigned\nprimePDataLength\n- unsigned\ngeneratorGDataOff\nset - unsigned\ngeneratorGDataLen\ngth - unsigned\n}\nOptional parameter for\nRSA algo (not supported,\njust for ex):\n{\nmodulusBits -\nunsigned\npublicExponent\n- unsigned\n}",
+            "algorithm - enum\nAUTH_DH\nOptional parameter for\nAUTH_DH algo:\n{\nprimePDataOffset -\nunsigned\nprimePDataLength -\nunsigned\ngeneratorGDataOffs\net - unsigned\ngeneratorGDataLeng\nth - unsigned\n}\nOptional parameter for\nRSA algo (not supported,\njust for ex):\n{\nmodulusBits -\nunsigned\npublicExponent\n- unsigned\n}",
             "privateK\neyId -\nunsigned\npublicK\neyId -\nunsigned",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxa -\nOperatio\nn failed\n-xxxxz /\nInvalid\nParamet\ners",
-            "Yes",
+            "None",
             "Yes",
             "No",
-            "Create authenticated DH session keys with algorithm\n\"AUTH_DH\" Authenticated Diffie-Hellman.\nMapping from Netflix APIs:\ngeneratorG; // from base_buf\nprimeP; // from modulus"
+            "Generates an ephemeral or application-scoped Diffie-Hellman public\n/private key pair for subsequent AUTH_DH derivation.\nMapping from Netflix APIs:\ngeneratorG; // from base_buf\nprimeP; // from modulus"
           ]
         ]
       ]
     },
     {
       "page": 3,
-      "text": "3  Crypto loadKey                   Yes   Yes No Load a pre provisioned key by locator\n                      keyName -  unsigne -xxxxb -                                   \n                      string, Locator that d Not                                    \n                      points to a key that - keyId available                        \n                      is pre-provisioned (Refere or                                 \n                      provisionType - nce to corrupted                              \n                      enum - optional the -xxxxc -                                  \n                         pre-    loaded Does not                                    \n                         provisioned key) represent                                 \n                         (global)      valid key                                    \n                                       -xxxxh -                                     \n                                       Authentic                                    \n                                       ation                                        \n                                       failure                                      \n       4  Crypto unloadKey     None        Yes   Yes No Delete key from key store (may mean unload key from TA\n                      keyId - unsigned -xxxxh -         if used).                   \n                                       Authentic                                    \n                                       ation                                        \n                                       failure                                      \n                                       -xxxxa -                                     \n                                       Operatio                                     \n                                       n failed                                     \n       5  Crypto keyExists                 Yes   Yes No Returns true if a valid key exists (loaded to be used) with\n                      keyName - string bool -xxxxh -    the key name. Returns false otherwise.\n                                 unsigne Authentic                                  \n                                 d -   ation                                        \n                                 keyId failure                                      \n       6  Crypto getKeyInfo keyId - unsigned Yes Yes No Get key info / size from keystore\n                                 keyTyp -xxxxe -                                    \n                                 e -   Invalid                                      \n                                 enum  key                                          \n                                   A   -xxxxh -                                     \n                                   E   Authentic                                    \n                                   S   ation                                        \n                                   1   failure                                      \n                                   28                                               \n                                   A                                                \n                                   E                                                \n                                   S                                                \n                                   2                                                \n                                   56                                               \n                                   H                                                \n                                   M                                                \n                                   A                                                \n                                   C                                                \n                                   1                                                \n                                   28                                               \n                                   H                                                \n                                   M                                                \n                                   A                                                \n                                   C                                                \n                                   1                                                \n                                   60                                               \n                                   H                                                \n                                   M                                                \n                                   A                                                \n                                   C                                                \n                                   2                                                \n                                   56                                               \n                                 keyUsa                                             \n                                 ge -                                               \n                                 enum                                               \n                                   E                                                \n                                   N                                                \n                                   C                                                \n                                   R                                                \n                                   Y                                                \n                                   PT                                               \n                                   D                                                \n                                   E                                                \n                                   C                                                \n                                   R                                                \n                                   Y                                                \n                                   PT                                               \n                                   SI                                               \n                                   GN                                               \n                                   D                                                \n                                   E                                                \n                                   R                                                \n                                   IVE                                              \n                                   U                                                \n                                   N                                                \n                                   W                                                \n                                   R                                                \n                                   A                                                \n                                   P",
+      "text": "3  Crypto loadKey                    Yes  No Load a pre-provisioned key by locator\n                      keyName - string, unsigne -xxxxb -                            \n                      locator that points to d Not                                  \n                      a key that is pre- - keyId available                          \n                      provisioned (Refere or                                        \n                      provisionType - nce to corrupted                              \n                      enum - optional the -xxxxc -                                  \n                         pre-    loaded Does not                                    \n                         provisioned key) represent                                 \n                         (global)       valid key                                   \n       4  Crypto unloadKey     None  None   Yes  No Delete key from key store (may mean unload key from TA if used).\n                      keyId - unsigned                                              \n       5  Crypto keyExists                  Yes  No Returns true if a valid key exists (loaded to be used) with the key\n                      keyName - string bool -xxxxh - name. Returns false otherwise. \n                                 unsigne Authentic                                  \n                                 d -    ation                                       \n                                 keyId  failure",
       "tables": [
         [
           [
             "3",
             "Crypto",
             "loadKey",
-            "keyName -\nstring, Locator that\npoints to a key that\nis pre-provisioned\nprovisionType -\nenum - optional\npre-\nprovisioned\n(global)",
+            "keyName - string,\nlocator that points to\na key that is pre-\nprovisioned\nprovisionType -\nenum - optional\npre-\nprovisioned\n(global)",
             "unsigne\nd\n- keyId\n(Refere\nnce to\nthe\nloaded\nkey)",
-            "-xxxxb -\nNot\navailable\nor\ncorrupted\n-xxxxc -\nDoes not\nrepresent\nvalid key\n-xxxxh -\nAuthentic\nation\nfailure",
-            "Yes",
+            "-xxxxb -\nNot\navailable\nor\ncorrupted\n-xxxxc -\nDoes not\nrepresent\nvalid key",
             "Yes",
             "No",
-            "Load a pre provisioned key by locator"
+            "Load a pre-provisioned key by locator"
           ],
           [
             "4",
@@ -275,11 +285,10 @@
             "unloadKey",
             "keyId - unsigned",
             "None",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxa -\nOperatio\nn failed",
-            "Yes",
+            "None",
             "Yes",
             "No",
-            "Delete key from key store (may mean unload key from TA\nif used)."
+            "Delete key from key store (may mean unload key from TA if used)."
           ],
           [
             "5",
@@ -289,41 +298,27 @@
             "bool\nunsigne\nd -\nkeyId",
             "-xxxxh -\nAuthentic\nation\nfailure",
             "Yes",
-            "Yes",
             "No",
-            "Returns true if a valid key exists (loaded to be used) with\nthe key name. Returns false otherwise."
-          ],
-          [
-            "6",
-            "Crypto",
-            "getKeyInfo",
-            "keyId - unsigned",
-            "keyTyp\ne -\nenum\nA\nE\nS\n1\n28\nA\nE\nS\n2\n56\nH\nM\nA\nC\n1\n28\nH\nM\nA\nC\n1\n60\nH\nM\nA\nC\n2\n56\nkeyUsa\nge -\nenum\nE\nN\nC\nR\nY\nPT\nD\nE\nC\nR\nY\nPT\nSI\nGN\nD\nE\nR\nIVE\nU\nN\nW\nR\nA\nP",
-            "-xxxxe -\nInvalid\nkey\n-xxxxh -\nAuthentic\nation\nfailure",
-            "Yes",
-            "Yes",
-            "No",
-            "Get key info / size from keystore"
+            "Returns true if a valid key exists (loaded to be used) with the key\nname. Returns false otherwise."
           ]
         ]
       ]
     },
     {
       "page": 4,
-      "text": "keyAlgo                                            \n                                 - enum                                             \n                                   A                                                \n                                   E                                                \n                                   S                                                \n                                   _                                                \n                                   C                                                \n                                   BC                                               \n                                   A                                                \n                                   E                                                \n                                   S                                                \n                                   _                                                \n                                   C                                                \n                                   TR                                               \n                                   D                                                \n                                   I                                                \n                                   G                                                \n                                   E                                                \n                                   S                                                \n                                   T                                                \n                                   _                                                \n                                   S                                                \n                                   H                                                \n                                   A                                                \n                                   2                                                \n                                   56                                               \n                                   D                                                \n                                   I                                                \n                                   G                                                \n                                   E                                                \n                                   S                                                \n                                   T                                                \n                                   _                                                \n                                   S                                                \n                                   H                                                \n                                   A                                                \n                                   3                                                \n                                   84                                               \n                                   D                                                \n                                   I                                                \n                                   G                                                \n                                   E                                                \n                                   S                                                \n                                   T                                                \n                                   _                                                \n                                   S                                                \n                                   H                                                \n                                   A                                                \n                                   5                                                \n                                   12                                               \n       7  Crypto flushKeys None None       Yes   Yes No Unloads all the keys loaded until now. They cannot be\n                                       -xxxxh -         used again. Returns INVALID_KEY error on further key\n                                       Authentic        usage.                      \n                                       ation                                        \n                                       failure                                      \n       8  Crypto importKey                              Clear import and export is not supported by Comcast /\n                      keyType - enum keyId - -xxxxh -   Sky implementation          \n                         AES128  unsigne Authentic                                  \n                         AES256  d     ation                                        \n                         HMAC128 (Refere failure                                    \n                         HMAC160 nce to -xxxxk -                                    \n                         HMAC256 the   Key                                          \n                      Import/Export Type loaded Provision                           \n                         Protected key) Error                                       \n                         Clear                                                      \n                      Key blob to be                                                \n                      imported - device-                                            \n                      bound, integrity-                                             \n                      protected,                                                    \n                      confidentiality-                                              \n                      protected blob                                                \n       9  Crypto exportKey                 Yes   Yes No Returns device-bound, integrity-protected, confidentiality-\n                      keyId - unsigned keyBlob -xxxxh - protected blob              \n                      Import/Export Type - list of Authentic                        \n                      - enum     unsigne ation          May have the metadata export based on the\n                         Protected d,  failure          implementation.             \n                         Clear   ordered -xxxxm -                                   \n                                 .     Sealed                                       \n                                       Key                                          \n                                       Cannot                                       \n                                       Export                                       \n                                       Error                                        \n                                       -xxxxe -                                     \n                                       Invalid                                      \n                                       key",
+      "text": "6  Crypto getKeyInfo                 Yes  No Get key info / size from keystore\n                      keyId - unsigned keyType -xxxxe -                             \n                                 - enum Invalid                                     \n                                    P   key                                         \n                                    U                                               \n                                    B                                               \n                                    LIC                                             \n                                    P                                               \n                                    RI                                              \n                                    V                                               \n                                    A                                               \n                                    TE                                              \n                                    S                                               \n                                    Y                                               \n                                    M                                               \n                                    M                                               \n                                    E                                               \n                                    T                                               \n                                    RIC                                             \n                                 keyUsa                                             \n                                 ge -list                                           \n                                 of                                                 \n                                 enums,                                             \n                                 unorder                                            \n                                 ed                                                 \n                                    E                                               \n                                    N                                               \n                                    C                                               \n                                    R                                               \n                                    Y                                               \n                                    PT                                              \n                                    D                                               \n                                    E                                               \n                                    C                                               \n                                    R                                               \n                                    Y                                               \n                                    PT                                              \n                                    SI                                              \n                                    GN                                              \n                                    V                                               \n                                    E                                               \n                                    RI                                              \n                                    FY                                              \n                                    D                                               \n                                    E                                               \n                                    RI                                              \n                                    VE                                              \n                                    W                                               \n                                    R                                               \n                                    AP                                              \n                                    U                                               \n                                    N                                               \n                                    W                                               \n                                    R                                               \n                                    A                                               \n                                    P                                               \n                                 keyAlgo                                            \n                                 - enum                                             \n                                    A                                               \n                                    E                                               \n                                    S                                               \n                                    _                                               \n                                    C                                               \n                                    BC                                              \n                                    A                                               \n                                    E                                               \n                                    S                                               \n                                    _                                               \n                                    C                                               \n                                    TR                                              \n                                    S                                               \n                                    H                                               \n                                    A                                               \n                                    2                                               \n                                    56                                              \n                                    S                                               \n                                    H                                               \n                                    A                                               \n                                    3                                               \n                                    84                                              \n                                    S                                               \n                                    H                                               \n                                    A                                               \n                                    5                                               \n                                    12                                              \n                                    A                                               \n                                    U                                               \n                                    T                                               \n                                    H                                               \n                                    _                                               \n                                    DH                                              \n                                    DH                                              \n       7  Crypto flushKeys None None None   Yes  No Unloads all the keys loaded until now. They cannot be used again.\n                                                    Returns INVALID_KEY error on further key usage.",
       "tables": [
         [
           [
-            "",
-            "",
-            "",
-            "",
-            "keyAlgo\n- enum\nA\nE\nS\n_\nC\nBC\nA\nE\nS\n_\nC\nTR\nD\nI\nG\nE\nS\nT\n_\nS\nH\nA\n2\n56\nD\nI\nG\nE\nS\nT\n_\nS\nH\nA\n3\n84\nD\nI\nG\nE\nS\nT\n_\nS\nH\nA\n5\n12",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "6",
+            "Crypto",
+            "getKeyInfo",
+            "keyId - unsigned",
+            "keyType\n- enum\nP\nU\nB\nLIC\nP\nRI\nV\nA\nTE\nS\nY\nM\nM\nE\nT\nRIC\nkeyUsa\nge -list\nof\nenums,\nunorder\ned\nE\nN\nC\nR\nY\nPT\nD\nE\nC\nR\nY\nPT\nSI\nGN\nV\nE\nRI\nFY\nD\nE\nRI\nVE\nW\nR\nAP\nU\nN\nW\nR\nA\nP\nkeyAlgo\n- enum\nA\nE\nS\n_\nC\nBC\nA\nE\nS\n_\nC\nTR\nS\nH\nA\n2\n56\nS\nH\nA\n3\n84\nS\nH\nA\n5\n12\nA\nU\nT\nH\n_\nDH\nDH",
+            "-xxxxe -\nInvalid\nkey",
+            "Yes",
+            "No",
+            "Get key info / size from keystore"
           ],
           [
             "7",
@@ -331,123 +326,114 @@
             "flushKeys",
             "None",
             "None",
-            "-xxxxh -\nAuthentic\nation\nfailure",
-            "Yes",
-            "Yes",
-            "No",
-            "Unloads all the keys loaded until now. They cannot be\nused again. Returns INVALID_KEY error on further key\nusage."
-          ],
-          [
-            "8",
-            "Crypto",
-            "importKey",
-            "keyType - enum\nAES128\nAES256\nHMAC128\nHMAC160\nHMAC256\nImport/Export Type\nProtected\nClear\nKey blob to be\nimported - device-\nbound, integrity-\nprotected,\nconfidentiality-\nprotected blob",
-            "keyId -\nunsigne\nd\n(Refere\nnce to\nthe\nloaded\nkey)",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxk -\nKey\nProvision\nError",
-            "",
-            "",
-            "",
-            "Clear import and export is not supported by Comcast /\nSky implementation"
-          ],
-          [
-            "9",
-            "Crypto",
-            "exportKey",
-            "keyId - unsigned\nImport/Export Type\n- enum\nProtected\nClear",
-            "keyBlob\n- list of\nunsigne\nd,\nordered\n.",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxm -\nSealed\nKey\nCannot\nExport\nError\n-xxxxe -\nInvalid\nkey",
-            "Yes",
+            "None",
             "Yes",
             "No",
-            "Returns device-bound, integrity-protected, confidentiality-\nprotected blob\nMay have the metadata export based on the\nimplementation."
+            "Unloads all the keys loaded until now. They cannot be used again.\nReturns INVALID_KEY error on further key usage."
           ]
         ]
       ]
     },
     {
       "page": 5,
-      "text": "10 Crypto sign                      Yes   Yes No Calculate the MAC / signature value and returns.\n                      algorithm - enum outputD xxxxc /                              \n                         HMAC    ataOffs Invalid        keyId shall match with a loaded key compatible with the\n                      keyId - unsigned et - key         selected algorithm.         \n                      (Reference to the unsigned -xxxxd /                           \n                      loaded key) outputD Invalid       Examples:                   \n                      digestAlgorithm - ataLeng key type                            \n                      enum       th -  -xxxxf /         - HMAC: secret symmetric key\n                         SHA-256 unsigned Session                                   \n                      inputDataOffset - to be                                       \n                      unsigned         reinitializ                                  \n                      inputDataLength - ed                                          \n                      unsigned         -xxxxg /                                     \n                                       Invalid                                      \n                                       Paramet                                      \n                                       ers                                          \n                                       -xxxxa /                                     \n                                       Operatio                                     \n                                       n failed                                     \n                                       -xxxxh -                                     \n                                       Authentic                                    \n                                       ation                                        \n                                       failure                                      \n                                       -xxxxl -                                     \n                                       Output                                       \n                                       buffer                                       \n                                       too small                                    \n       11 Crypto verify                    Yes   Yes No Calculate the MAC / signature value and verifies if the\n                      algorithm - enum bool - -xxxxh -  expected signature matches. Returns true if verification is\n                         HMAC    verificati Authentic   successful or returns false.\n                      keyId - unsigned (R on ation                                  \n                      eference to the status failure    keyId shall match with a loaded key compatible with the\n                      loaded key)      -xxxxx /         selected algorithm.         \n                      digestAlgorithm - Invalid                                     \n                      enum             key              Examples:                   \n                         SHA256        -xxxxd /                                     \n                                       Invalid          - HMAC: secret symmetric key\n                      inputDataOffset - key type                                    \n                      unsigned         -xxxxy /                                     \n                      inputDataLength - Session                                     \n                      unsigned         to be                                        \n                      expectedSignature reinitializ                                 \n                      Offset - unsigned ed                                          \n                      expectedSignatureL -xxxxz /                                   \n                      ength - unsigned Invalid                                      \n                                       Paramet                                      \n                                       ers                                          \n                                       -xxxxa /                                     \n                                       Operatio                                     \n                                       n failed                                     \n       12 Crypto encrypt                   Yes   Yes No Returns the data after encryption. Input data to encrypt\n                      cipherAlgorithm - encrypt -xxxxi - shall not exceed 1 MB of size.\n                      enum       DataOff Invalid                                    \n                         AES_CBC set - Init Data        Length of encrypted data is returned as 0 on any errors.\n                      keyId - unsigned unsigned length                              \n                      (Reference to the encrypt -xxxxh - For AES_CBC algorithm:     \n                      loaded key) DataLe Authentic                                  \n                      initDataOffset - ngth - ation       Expects IV as initData of 16 bytes in length\n                      unsigned (optional) unsigned failure While IV reuse may be allowed, Zero or NULL IV is\n                      InitDataLength - -xxxxj -           not allowed. Recommended to use\n                      unsigned (optional) Input           generateRandom API to generate random number.\n                      inputDataOffset - data size         inputData contains the buffer to be encrypted\n                      unsigned         exceede                                      \n                      inputDataLength - d the           For other algorithms, in future:\n                      unsigned         supporte                                     \n                                       d limits         Nonce can be passed as initData as well.\n                                       -xxxxl -                                     \n                                       Output                                       \n                                       buffer                                       \n                                       too small                                    \n                                       -xxxxe -                                     \n                                       Invalid                                      \n                                       key                                          \n                                       -xxxxa -                                     \n                                       Operatio                                     \n                                       n failed",
+      "text": "8  Crypto importKey                  Yes  No Load the exported key material from the same device / platform into\n                      keyType - enum keyId - -xxxxk - the key store.                \n                         PUBLIC  unsigne Key                                        \n                         PRIVATE d      Provision     Verifies integrity and device binding before creating a key\n                         SYMMETRIC (Refere Error      Rejects corrupted or foreign-device blobs\n                      Import/Export Type nce to       Does not create a partially usable key on failure\n                         Protected the                May return a different key ID from the original\n                         Clear   loaded                                             \n                      Key blob to be key)                                           \n                      imported - device-                                            \n                      bound, integrity-                                             \n                      protected,                                                    \n                      confidentiality-                                              \n                      protected blob                                                \n       9  Crypto exportKey                  Yes  No Exports the key material for usage by the platform after an import.\n                      keyId - unsigned keyBlob -xxxxm -                             \n                      Import/Export Type - - list of Sealed Protected export shall preserve key material and all platform key\n                      enum       unsigne Key        metadata required to restore equivalent key behavior. The returned\n                         Protected d,   Cannot      blob shall be device-bound, integrity-protected, and confidentiality-\n                         Clear   ordered. Export    protected.                      \n                                        Error                                       \n                                        -xxxxe -                                    \n                                        Invalid                                     \n                                        key                                         \n       10 Crypto sign                       Yes  No Calculate the MAC / signature value and returns.\n                      algorithm - enum outputD -xxxxc /                             \n                         HMAC    ataOffse Invalid   keyId shall match with a loaded key compatible with the selected\n                      keyId - unsigned t - key      algorithm.                      \n                      (Reference to the unsigned -xxxxd /                           \n                      loaded key) outputD Invalid   Examples:                       \n                      digestAlgorithm - ataLeng key type                            \n                      enum       th -   -xxxxf /    - HMAC: secret symmetric key    \n                         SHA-256 unsigned Session                                   \n                      inputDataOffset - to be                                       \n                      unsigned          reinitialized                               \n                      inputDataLength - -xxxxl -                                    \n                      unsigned          Output                                      \n                                        buffer too                                  \n                                        small                                       \n       11 Crypto verify                     Yes  No Calculate the MAC / signature value and verifies if the expected\n                      algorithm - enum bool - -xxxxx / signature matches. Returns true if verification is successful or\n                         HMAC    verificati Invalid returns false.                  \n                      keyId - unsigned (Re on key                                   \n                      ference to the status -xxxxd / keyId shall match with a loaded key compatible with the selected\n                      loaded key)       Invalid     algorithm.                      \n                      digestAlgorithm - key type                                    \n                      enum              -xxxxy /    Examples:                       \n                         SHA256         Session                                     \n                      inputDataOffset - to be       - HMAC: secret symmetric key    \n                      unsigned          reinitialized                               \n                      inputDataLength -                                             \n                      unsigned                                                      \n                      expectedSignatureOf                                           \n                      fset - unsigned                                               \n                      expectedSignatureLe                                           \n                      ngth - unsigned                                               \n       12 Crypto encrypt                    Yes  No Returns the data after encryption. Input data to encrypt shall not\n                      cipherAlgorithm - encrypt -xxxxi - exceed 1 MB of size.       \n                      enum       DataOff Invalid                                    \n                         AES_CBC set -  Init Data   Length of encrypted data is returned as 0 on any errors.\n                      keyId - unsigned unsigned length                              \n                      (Reference to the encrypt -xxxxj - For AES_CBC algorithm:     \n                      loaded key) DataLen Input                                     \n                      initDataOffset - gth - data size Expects IV as initData of 16 bytes in length\n                      unsigned (optional) unsigned exceeded Null/missing IV: invalid\n                      InitDataLength -  the           All-zero 16-byte IV: syntactically valid, though generally\n                      unsigned (optional) supported   discouraged                   \n                      inputDataOffset - limits        inputData contains the buffer to be encrypted\n                      unsigned          -xxxxl -      Performs no padding. Input length must be a multiple of 16\n                      inputDataLength - Output                                      \n                      unsigned          buffer too  For other algorithms, in future:\n                                        small                                       \n                                        -xxxxe -    Nonce can be passed as initData as well.\n                                        Invalid                                     \n                                        key",
       "tables": [
         [
+          [
+            "8",
+            "Crypto",
+            "importKey",
+            "keyType - enum\nPUBLIC\nPRIVATE\nSYMMETRIC\nImport/Export Type\nProtected\nClear\nKey blob to be\nimported - device-\nbound, integrity-\nprotected,\nconfidentiality-\nprotected blob",
+            "keyId -\nunsigne\nd\n(Refere\nnce to\nthe\nloaded\nkey)",
+            "-xxxxk -\nKey\nProvision\nError",
+            "Yes",
+            "No",
+            "Load the exported key material from the same device / platform into\nthe key store.\nVerifies integrity and device binding before creating a key\nRejects corrupted or foreign-device blobs\nDoes not create a partially usable key on failure\nMay return a different key ID from the original"
+          ],
+          [
+            "9",
+            "Crypto",
+            "exportKey",
+            "keyId - unsigned\nImport/Export Type -\nenum\nProtected\nClear",
+            "keyBlob\n- list of\nunsigne\nd,\nordered.",
+            "-xxxxm -\nSealed\nKey\nCannot\nExport\nError\n-xxxxe -\nInvalid\nkey",
+            "Yes",
+            "No",
+            "Exports the key material for usage by the platform after an import.\nProtected export shall preserve key material and all platform key\nmetadata required to restore equivalent key behavior. The returned\nblob shall be device-bound, integrity-protected, and confidentiality-\nprotected."
+          ],
           [
             "10",
             "Crypto",
             "sign",
             "algorithm - enum\nHMAC\nkeyId - unsigned\n(Reference to the\nloaded key)\ndigestAlgorithm -\nenum\nSHA-256\ninputDataOffset -\nunsigned\ninputDataLength -\nunsigned",
-            "outputD\nataOffs\net -\nunsigned\noutputD\nataLeng\nth -\nunsigned",
-            "xxxxc /\nInvalid\nkey\n-xxxxd /\nInvalid\nkey type\n-xxxxf /\nSession\nto be\nreinitializ\ned\n-xxxxg /\nInvalid\nParamet\ners\n-xxxxa /\nOperatio\nn failed\n-xxxxh -\nAuthentic\nation\nfailure\n-xxxxl -\nOutput\nbuffer\ntoo small",
-            "Yes",
+            "outputD\nataOffse\nt -\nunsigned\noutputD\nataLeng\nth -\nunsigned",
+            "-xxxxc /\nInvalid\nkey\n-xxxxd /\nInvalid\nkey type\n-xxxxf /\nSession\nto be\nreinitialized\n-xxxxl -\nOutput\nbuffer too\nsmall",
             "Yes",
             "No",
-            "Calculate the MAC / signature value and returns.\nkeyId shall match with a loaded key compatible with the\nselected algorithm.\nExamples:\n- HMAC: secret symmetric key"
+            "Calculate the MAC / signature value and returns.\nkeyId shall match with a loaded key compatible with the selected\nalgorithm.\nExamples:\n- HMAC: secret symmetric key"
           ],
           [
             "11",
             "Crypto",
             "verify",
-            "algorithm - enum\nHMAC\nkeyId - unsigned (R\neference to the\nloaded key)\ndigestAlgorithm -\nenum\nSHA256\ninputDataOffset -\nunsigned\ninputDataLength -\nunsigned\nexpectedSignature\nOffset - unsigned\nexpectedSignatureL\nength - unsigned",
+            "algorithm - enum\nHMAC\nkeyId - unsigned (Re\nference to the\nloaded key)\ndigestAlgorithm -\nenum\nSHA256\ninputDataOffset -\nunsigned\ninputDataLength -\nunsigned\nexpectedSignatureOf\nfset - unsigned\nexpectedSignatureLe\nngth - unsigned",
             "bool -\nverificati\non\nstatus",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxx /\nInvalid\nkey\n-xxxxd /\nInvalid\nkey type\n-xxxxy /\nSession\nto be\nreinitializ\ned\n-xxxxz /\nInvalid\nParamet\ners\n-xxxxa /\nOperatio\nn failed",
-            "Yes",
+            "-xxxxx /\nInvalid\nkey\n-xxxxd /\nInvalid\nkey type\n-xxxxy /\nSession\nto be\nreinitialized",
             "Yes",
             "No",
-            "Calculate the MAC / signature value and verifies if the\nexpected signature matches. Returns true if verification is\nsuccessful or returns false.\nkeyId shall match with a loaded key compatible with the\nselected algorithm.\nExamples:\n- HMAC: secret symmetric key"
+            "Calculate the MAC / signature value and verifies if the expected\nsignature matches. Returns true if verification is successful or\nreturns false.\nkeyId shall match with a loaded key compatible with the selected\nalgorithm.\nExamples:\n- HMAC: secret symmetric key"
           ],
           [
             "12",
             "Crypto",
             "encrypt",
             "cipherAlgorithm -\nenum\nAES_CBC\nkeyId - unsigned\n(Reference to the\nloaded key)\ninitDataOffset -\nunsigned (optional)\nInitDataLength -\nunsigned (optional)\ninputDataOffset -\nunsigned\ninputDataLength -\nunsigned",
-            "encrypt\nDataOff\nset -\nunsigned\nencrypt\nDataLe\nngth -\nunsigned",
-            "-xxxxi -\nInvalid\nInit Data\nlength\n-xxxxh -\nAuthentic\nation\nfailure\n-xxxxj -\nInput\ndata size\nexceede\nd the\nsupporte\nd limits\n-xxxxl -\nOutput\nbuffer\ntoo small\n-xxxxe -\nInvalid\nkey\n-xxxxa -\nOperatio\nn failed",
-            "Yes",
+            "encrypt\nDataOff\nset -\nunsigned\nencrypt\nDataLen\ngth -\nunsigned",
+            "-xxxxi -\nInvalid\nInit Data\nlength\n-xxxxj -\nInput\ndata size\nexceeded\nthe\nsupported\nlimits\n-xxxxl -\nOutput\nbuffer too\nsmall\n-xxxxe -\nInvalid\nkey",
             "Yes",
             "No",
-            "Returns the data after encryption. Input data to encrypt\nshall not exceed 1 MB of size.\nLength of encrypted data is returned as 0 on any errors.\nFor AES_CBC algorithm:\nExpects IV as initData of 16 bytes in length\nWhile IV reuse may be allowed, Zero or NULL IV is\nnot allowed. Recommended to use\ngenerateRandom API to generate random number.\ninputData contains the buffer to be encrypted\nFor other algorithms, in future:\nNonce can be passed as initData as well."
+            "Returns the data after encryption. Input data to encrypt shall not\nexceed 1 MB of size.\nLength of encrypted data is returned as 0 on any errors.\nFor AES_CBC algorithm:\nExpects IV as initData of 16 bytes in length\nNull/missing IV: invalid\nAll-zero 16-byte IV: syntactically valid, though generally\ndiscouraged\ninputData contains the buffer to be encrypted\nPerforms no padding. Input length must be a multiple of 16\nFor other algorithms, in future:\nNonce can be passed as initData as well."
           ]
         ]
       ]
     },
     {
       "page": 6,
-      "text": "13 Crypto decrypt                   Yes   Yes No Returns the decrypted clear data. Input data to decrypt\n                      algorithm - enum outputD -xxxxh - shall not exceed 1.5 MB of data.\n                         AES_CBC ataOffs Authentic                                  \n                      keyId - unsigned et - ation       length of output data is returned as 0 on any errors\n                      (Reference to the unsigned failure                            \n                      loaded key) outputD -xxxxj -      For AES_CBC algorithm:      \n                      initVectorOffset - ataLeng Input                              \n                      unsigned   th -  data size          Expects IV as initData of 16 bytes in length\n                      initVectorLength - unsigned exceede While IV reuse may be allowed, Zero or NULL IV is\n                      unsigned         d the              not allowed. Recommended to use\n                      encryptDataOffset - supporte        generateRandom API to generate random number.\n                      unsigned         d limits           inputData contains the buffer to be encrypted\n                      encryptDataLength -xxxxl -                                    \n                      - unsigned       Output                                       \n                                       buffer                                       \n                                       too small                                    \n                                       -xxxxe -                                     \n                                       Invalid                                      \n                                       key                                          \n                                       -xxxxa -                                     \n                                       Operatio                                     \n                                       n failed                                     \n       14 Crypto deriveSessi               Yes   Yes No Performs authenticated DH key derivation\n               onKeys algorithm - enum encrypti -xxxxh -                            \n                         AUTH_DH onKeyId Authentic                                  \n                      privateKeyId - - ation                                        \n                      unsigned   unsigned failure                                   \n                      peerPublicKeyData hmacKe -xxxxa -                             \n                      - list of unsigned, yId - Operatio                            \n                      ordered.   unsigned n failed                                  \n                      derivationKeyId - wrappin                                     \n                      unsigned   gKeyId                                             \n                                 -                                                  \n                                 unsigned                                           \n       15 Crypto generateRa                Yes   Yes No Returns cryptographically random data of specified length.\n               ndom   Number of bytes random -xxxxh -   Random value encoded is of length passed in as\n                                 Value - Authentic      parameter                   \n                                 list of ation                                      \n                                 unsigne failure                                    \n                                 d,    -xxxxa -                                     \n                                 ordered Operatio                                   \n                                 .     n failed",
+      "text": "13 Crypto decrypt                    Yes  No Returns the decrypted clear data. Input data to decrypt shall not\n                      algorithm - enum outputD -xxxxj - exceed 1.5 MB of data.      \n                         AES_CBC ataOffse Input                                     \n                      keyId - unsigned t - data size length of output data is returned as 0 on any errors\n                      (Reference to the unsigned exceeded                           \n                      loaded key) outputD the       For AES_CBC algorithm:          \n                      initVectorOffset - ataLeng supported                          \n                      unsigned   th -   limits        Expects IV as initData of 16 bytes in length\n                      initVectorLength - unsigned -xxxxl - Null/missing IV: invalid \n                      unsigned          Output        All-zero 16-byte IV: syntactically valid, though generally\n                      encryptDataOffset - buffer too  discouraged                   \n                      unsigned          small         inputData contains the buffer to be decrypted.\n                      encryptDataLength - -xxxxe -                                  \n                      unsigned          Invalid                                     \n                                        key                                         \n       14 Crypto deriveSessi         None   Yes  No Performs authenticated DH key derivation (Authenticated Diffie-\n               onKeys algorithm - enum encrypti     Hellman)                        \n                         AUTH_DH onKeyId                                            \n                      privateKeyId - -                                              \n                      unsigned   unsigned                                           \n                      peerPublicKeyData - hmacKe                                    \n                      list of unsigned, yId -                                       \n                      ordered.   unsigned                                           \n                      derivationKeyId - wrappin                                     \n                      unsigned   gKeyId                                             \n                                 -                                                  \n                                 unsigned                                           \n       15 Crypto generateRa                 Yes  No Returns cryptographically random data of specified length. Random\n               ndom   Number of bytes random -xxxxh - value encoded is of length passed in as parameter\n                                 Value - Authentic                                  \n                                 list of ation                                      \n                                 unsigne failure                                    \n                                 d,     -xxxxa -                                    \n                                 ordered. Operation                                 \n                                        failed",
       "tables": [
         [
           [
             "13",
             "Crypto",
             "decrypt",
-            "algorithm - enum\nAES_CBC\nkeyId - unsigned\n(Reference to the\nloaded key)\ninitVectorOffset -\nunsigned\ninitVectorLength -\nunsigned\nencryptDataOffset -\nunsigned\nencryptDataLength\n- unsigned",
-            "outputD\nataOffs\net -\nunsigned\noutputD\nataLeng\nth -\nunsigned",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxj -\nInput\ndata size\nexceede\nd the\nsupporte\nd limits\n-xxxxl -\nOutput\nbuffer\ntoo small\n-xxxxe -\nInvalid\nkey\n-xxxxa -\nOperatio\nn failed",
-            "Yes",
+            "algorithm - enum\nAES_CBC\nkeyId - unsigned\n(Reference to the\nloaded key)\ninitVectorOffset -\nunsigned\ninitVectorLength -\nunsigned\nencryptDataOffset -\nunsigned\nencryptDataLength -\nunsigned",
+            "outputD\nataOffse\nt -\nunsigned\noutputD\nataLeng\nth -\nunsigned",
+            "-xxxxj -\nInput\ndata size\nexceeded\nthe\nsupported\nlimits\n-xxxxl -\nOutput\nbuffer too\nsmall\n-xxxxe -\nInvalid\nkey",
             "Yes",
             "No",
-            "Returns the decrypted clear data. Input data to decrypt\nshall not exceed 1.5 MB of data.\nlength of output data is returned as 0 on any errors\nFor AES_CBC algorithm:\nExpects IV as initData of 16 bytes in length\nWhile IV reuse may be allowed, Zero or NULL IV is\nnot allowed. Recommended to use\ngenerateRandom API to generate random number.\ninputData contains the buffer to be encrypted"
+            "Returns the decrypted clear data. Input data to decrypt shall not\nexceed 1.5 MB of data.\nlength of output data is returned as 0 on any errors\nFor AES_CBC algorithm:\nExpects IV as initData of 16 bytes in length\nNull/missing IV: invalid\nAll-zero 16-byte IV: syntactically valid, though generally\ndiscouraged\ninputData contains the buffer to be decrypted."
           ],
           [
             "14",
             "Crypto",
             "deriveSessi\nonKeys",
-            "algorithm - enum\nAUTH_DH\nprivateKeyId -\nunsigned\npeerPublicKeyData\n- list of unsigned,\nordered.\nderivationKeyId -\nunsigned",
+            "algorithm - enum\nAUTH_DH\nprivateKeyId -\nunsigned\npeerPublicKeyData -\nlist of unsigned,\nordered.\nderivationKeyId -\nunsigned",
             "encrypti\nonKeyId\n-\nunsigned\nhmacKe\nyId -\nunsigned\nwrappin\ngKeyId\n-\nunsigned",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxa -\nOperatio\nn failed",
-            "Yes",
+            "None",
             "Yes",
             "No",
-            "Performs authenticated DH key derivation"
+            "Performs authenticated DH key derivation (Authenticated Diffie-\nHellman)"
           ],
           [
             "15",
             "Crypto",
             "generateRa\nndom",
             "Number of bytes",
-            "random\nValue -\nlist of\nunsigne\nd,\nordered\n.",
-            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxa -\nOperatio\nn failed",
-            "Yes",
+            "random\nValue -\nlist of\nunsigne\nd,\nordered.",
+            "-xxxxh -\nAuthentic\nation\nfailure\n-xxxxa -\nOperation\nfailed",
             "Yes",
             "No",
-            "Returns cryptographically random data of specified length.\nRandom value encoded is of length passed in as\nparameter"
+            "Returns cryptographically random data of specified length. Random\nvalue encoded is of length passed in as parameter"
           ]
         ]
       ]

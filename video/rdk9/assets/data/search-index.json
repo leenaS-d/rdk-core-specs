@@ -655,99 +655,99 @@
       "url": "firebolt-app-services.html"
     },
     {
-      "title": "Firebolt 9 Crypto API Specifications | RDK9",
-      "text": "Firebolt 9 Crypto API Specifications | RDK9 page.",
+      "title": "Firebolt 9 Crypto API Specification | RDK9",
+      "text": "Firebolt 9 Crypto API Specification | RDK9 page.",
       "category": "Page",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · generateKey · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · generateKey",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · generateKeyPair · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · generateKeyPair",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · loadKey · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · loadKey",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · unloadKey · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · unloadKey",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · keyExists · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · keyExists",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · getKeyInfo · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · getKeyInfo",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · flushKeys · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · flushKeys",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
       "text": "Crypto · importKey",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · exportKey · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · exportKey",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · sign · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · sign",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · verify · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · verify",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · encrypt · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · encrypt",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · decrypt · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · decrypt",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · deriveSessionKeys · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · deriveSessionKeys",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {
       "title": "Crypto",
-      "text": "Crypto · generateRandom · Yes",
-      "category": "Firebolt 9 Crypto API Specifications",
+      "text": "Crypto · generateRandom",
+      "category": "Firebolt 9 Crypto API Specification",
       "url": "firebolt-crypto.html"
     },
     {

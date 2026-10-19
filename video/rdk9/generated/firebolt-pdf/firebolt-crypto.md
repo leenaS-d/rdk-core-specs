@@ -1,7 +1,7 @@
 # Extracted firebolt-crypto
 
 Source: `Firebolt 9 Crypto API Specifications.pdf`
-SHA-256: `4efe47f0f5e46939ed6787c24adf824471b90dd4a4224ee6c25820d43578f9cf`
+SHA-256: `61af48c8f06c4ec153c55ad4ddcd3f0b87848c47d25d54dc2f60f4339e08acdd`
 
 > This file is generated from the PDF for review. It is not a replacement for the curated JSON.
 
@@ -10,22 +10,18 @@ SHA-256: `4efe47f0f5e46939ed6787c24adf824471b90dd4a4224ee6c25820d43578f9cf`
 ```text
 Firebolt 9 Crypto   API  Specification                                       
                                                                                     
+        Document status APPROVED                                                    
                                                                                     
-                                                                                    
-        Document status DRAFT                                                       
         Author    Thamarai Selvi N Muthusamy                                        
-                                                                                    
-                                                                                    
-       Note: this is a draft of the latest Firebolt spec                            
                                                                                     
                                                                                     
         API version Link Summary                                                    
                                                                                     
-       internal draft                                                               
+       0.1             First full approved version. Approved in Firebolt Crypto WG on 08 Okt 26
                                                                                     
        Interpretation                                                               
                                                                                     
-       This page is an abstract, language-independent definition of the Firebolt Core API. The following terms are used:
+       This page is an abstract, language-independent definition of the Firebolt Crypto API. The following terms are used:
                                                                                     
            Term    Meaning                                                          
        1  enum     an instance of a type that can have one of a pre-defined set of values. Typically represented by a string in JSON-RPC, but an
@@ -37,8 +33,8 @@ Firebolt 9 Crypto   API  Specification
        4  one of   an instance of a primitive type, such as unsigned or string, that can have one of a pre-defined set of values. Not an enum
        5  monotonic a numeric value that is greater than the last instance of that attribute
        6  generic error an error that can be returned by any method call, documented in the Errors section
-                                                                                    
        7  specific error an error that can be returned by specific methods, documented along with the method
+                                                                                    
                                                                                     
        Key                                                                          
                                                                                     
@@ -57,15 +53,21 @@ Firebolt 9 Crypto   API  Specification
                                                                                     
        Errors                                                                       
                                                                                     
-            ID Error                Notes                                           
-       Specifi - Operation failed  Includes any resourcing errors, operation not allowed / supported, any internal or hardware error
-       c   xxxxa
+           Class ID Error              Notes                                        
+       1  Generic - Authentication Failed Operation not permitted for specific app credentials - example, when an app tries to use
+               xxxxh                  another apps credentials                      
+       2       -  Invalid Parameters  Null or Invalid parameters                    
+               xxxxg                                                                
+       3       -  Operation failed    Includes any resourcing errors, operation not allowed / supported, any internal or hardware
+               xxxxa                  error                                         
+       4  Specific - File to be loaded is not available or                          
+               xxxxb corrupted
 ```
 
 ### Table 1
 
 ```text
-Document status | DRAFT
+Document status | APPROVED
 Author | Thamarai Selvi N Muthusamy
 ```
 
@@ -73,7 +75,7 @@ Author | Thamarai Selvi N Muthusamy
 
 ```text
 API version | Link | Summary
-internal draft |  | 
+0.1 |  | First full approved version. Approved in Firebolt Crypto WG on 08 Okt 26
 ```
 
 ### Table 3
@@ -110,73 +112,77 @@ Red | Not approved - not ready for development
 ### Table 6
 
 ```text
- | ID | Error |  | Notes
-Specifi
-c | -
-xxxxa | Operation failed |  | Includes any resourcing errors, operation not allowed / supported, any internal or hardware error
+ | Class | ID | Error |  | Notes
+1 | Generic | -
+xxxxh | Authentication Failed |  | Operation not permitted for specific app credentials - example, when an app tries to use
+another apps credentials
+2 |  | -
+xxxxg | Invalid Parameters |  | Null or Invalid parameters
+3 |  | -
+xxxxa | Operation failed |  | Includes any resourcing errors, operation not allowed / supported, any internal or hardware
+error
+4 | Specific | -
+xxxxb | File to be loaded is not available or
+corrupted |  | 
 ```
 
 ## Page 2
 
 ```text
--   File to be loaded is not available or                                
-           xxxxb corrupted                                                          
-           -   File name does not represent valid key                               
-           xxxxc name                                                               
-           -   Invalid key type xxx                                                 
-           xxxxd                                                                    
-           -   Invalid key                                                          
-           xxxxe                                                                    
-           -xxxxf Session to be reinitialized The vault session is invalidated. It needs to be reinitialized before next usage.
-           -   Invalid Parameters  Null or Invalid parameters                       
-           xxxxg                                                                    
-           -   Authentication Failed Operation not permitted for specific app credentials - example, when an app tries to use another
-           xxxxh                   apps credentials                                 
-           -xxxxi Invalid Init Data Length of IV or nonce supplied as parameter is not equal to the expected length
-           -xxxxj Data size exceeded                                                
-           -   Key Provision Error                                                  
-           xxxxk                                                                    
-           -xxxxl Too small output buffer                                           
-           -   Sealed Key Cannot Export Error                                       
-           xxxxm                                                                    
+5       -  File name does not represent valid                                
+               xxxxc key name                                                       
+       6       -  Invalid key type xxx                                              
+               xxxxd                                                                
+       7       -  Invalid key                                                       
+               xxxxe                                                                
+       8       -  Session to be reinitialized The vault session is invalidated. It needs to be reinitialized before next usage.
+               xxxxf                                                                
+       9       -xxxxi Invalid Init Data Length of IV or nonce supplied as parameter is not equal to the expected length
+       10      -xxxxj Data size exceeded                                            
+       11      -  Key Provision Error                                               
+               xxxxk                                                                
+       12      -xxxxl Too small output buffer                                       
+       13      -  Sealed Key Cannot Export Error                                    
+               xxxxm                                                                
                                                                                     
        Methods                                                                      
                                                                                     
-           Module Method Parameters Returns Specific Firebolt C++ JS Description    
-                                     errors  global                                 
-       1  Crypto generateKey               Yes   Yes No Generate symmetric algorithm key file, load it into key
-                      keyType - enum keyId - -xxxxa -   store and provide handle for further access. Generated
-                         AES128  unsigned Key           key this way shall be considered local to the application
-                         AES256        Creation         generating it - shall not be shared. Not persisted during
-                         HMAC128       Error            this call. To use exportKey in case persistence is required.
-                         HMAC160       -xxxxe -                                     
-                         HMAC256       Invalid                                      
-                      keyUsage - list of File                                       
-                      enums, unordered - name                                       
-                      optional         -xxxxh -                                     
-                         ENCRYPT       Authentic                                    
-                         DECRYPT       ation                                        
-                         SIGN          failure                                      
-                         DERIVE        -xxxxd -                                     
-                         UNWRAP        Invalid                                      
-                                       key type                                     
-       2  Crypto generateKe                Yes   Yes No Create authenticated DH session keys with algorithm
-               yPair  algorithm - enum privateK -xxxxh - "AUTH_DH" Authenticated Diffie-Hellman.
-                         AUTH_DH eyId - Authentic                                   
-                                 unsigned ation                                     
-                    Optional parameter for publicK failure                          
-                    AUTH_DH algo: eyId - -xxxxa -       Mapping from Netflix APIs:  
-                                 unsigned Operatio                                  
-                    {                  n failed         generatorG; // from base_buf
-                                       -xxxxz /                                     
-                      primePDataOffset - Invalid        primeP; // from modulus     
-                      unsigned         Paramet                                      
-                      primePDataLength ers                                          
-                      - unsigned                                                    
-                      generatorGDataOff                                             
-                      set - unsigned                                                
-                      generatorGDataLen                                             
-                      gth - unsigned                                                
+                                                                                    
+           Module Method Parameters Returns Specific C++17 JS Description           
+                                      errors                                        
+       1  Crypto generateKey                Yes  No Generate symmetric algorithm key file, load it into key store and
+                      keyParam - enum keyId - -xxxxa - provide handle for further access. Generated key this way shall be
+                         AES128  unsigned Key       considered local to the application generating it - shall not be
+                         AES256         Creation    shared. Not persisted during this call. To use exportKey in case
+                         HMAC128        Error       persistence is required.        
+                         HMAC160        -xxxxe -                                    
+                         HMAC256        Invalid     If keyUsage is omitted, the platform will assume all keyUsages
+                      keyUsage - list of File name  corresponding to the keyParam.  
+                      enums, unordered - -xxxxd -                                   
+                      optional          Invalid                                     
+                         ENCRYPT        key type                                    
+                         DECRYPT                                                    
+                         SIGN                                                       
+                         VERIFY                                                     
+                         DERIVE                                                     
+                         WRAP                                                       
+                         UNWRAP                                                     
+       2  Crypto generateKe          None   Yes  No Generates an ephemeral or application-scoped Diffie-Hellman public
+               yPair  algorithm - enum privateK     /private key pair for subsequent AUTH_DH derivation.
+                         AUTH_DH eyId -                                             
+                                 unsigned                                           
+                    Optional parameter for publicK                                  
+                    AUTH_DH algo: eyId -            Mapping from Netflix APIs:      
+                                 unsigned                                           
+                    {                               generatorG; // from base_buf    
+                      primePDataOffset -            primeP; // from modulus         
+                      unsigned                                                      
+                      primePDataLength -                                            
+                      unsigned                                                      
+                      generatorGDataOffs                                            
+                      et - unsigned                                                 
+                      generatorGDataLeng                                            
+                      th - unsigned                                                 
                     }                                                               
                     Optional parameter for                                          
                     RSA algo (not supported,                                        
@@ -192,28 +198,21 @@ xxxxa | Operation failed |  | Includes any resourcing errors, operation not allo
 ### Table 1
 
 ```text
- | -
-xxxxb | File to be loaded is not available or
-corrupted |  | 
- | -
-xxxxc | File name does not represent valid key
-name |  | 
- | -
+5 |  | -
+xxxxc | File name does not represent valid
+key name |  | 
+6 |  | -
 xxxxd | Invalid key type | xxx | 
- | -
+7 |  | -
 xxxxe | Invalid key |  | 
- | -xxxxf | Session to be reinitialized |  | The vault session is invalidated. It needs to be reinitialized before next usage.
- | -
-xxxxg | Invalid Parameters |  | Null or Invalid parameters
- | -
-xxxxh | Authentication Failed |  | Operation not permitted for specific app credentials - example, when an app tries to use another
-apps credentials
- | -xxxxi | Invalid Init Data |  | Length of IV or nonce supplied as parameter is not equal to the expected length
- | -xxxxj | Data size exceeded |  | 
- | -
+8 |  | -
+xxxxf | Session to be reinitialized |  | The vault session is invalidated. It needs to be reinitialized before next usage.
+9 |  | -xxxxi | Invalid Init Data |  | Length of IV or nonce supplied as parameter is not equal to the expected length
+10 |  | -xxxxj | Data size exceeded |  | 
+11 |  | -
 xxxxk | Key Provision Error |  | 
- | -xxxxl | Too small output buffer |  | 
- | -
+12 |  | -xxxxl | Too small output buffer |  | 
+13 |  | -
 xxxxm | Sealed Key Cannot Export Error |  | 
 ```
 
@@ -221,9 +220,8 @@ xxxxm | Sealed Key Cannot Export Error |  |
 
 ```text
  | Module | Method | Parameters | Returns | Specific
-errors | Firebolt
-global | C++ | JS | Description
-1 | Crypto | generateKey | keyType - enum
+errors | C++17 | JS | Description
+1 | Crypto | generateKey | keyParam - enum
 AES128
 AES256
 HMAC128
@@ -235,7 +233,9 @@ optional
 ENCRYPT
 DECRYPT
 SIGN
+VERIFY
 DERIVE
+WRAP
 UNWRAP | keyId -
 unsigned | -xxxxa -
 Key
@@ -243,19 +243,16 @@ Creation
 Error
 -xxxxe -
 Invalid
-File
-name
--xxxxh -
-Authentic
-ation
-failure
+File name
 -xxxxd -
 Invalid
-key type | Yes | Yes | No | Generate symmetric algorithm key file, load it into key
-store and provide handle for further access. Generated
-key this way shall be considered local to the application
-generating it - shall not be shared. Not persisted during
-this call. To use exportKey in case persistence is required.
+key type | Yes | No | Generate symmetric algorithm key file, load it into key store and
+provide handle for further access. Generated key this way shall be
+considered local to the application generating it - shall not be
+shared. Not persisted during this call. To use exportKey in case
+persistence is required.
+If keyUsage is omitted, the platform will assume all keyUsages
+corresponding to the keyParam.
 2 | Crypto | generateKe
 yPair | algorithm - enum
 AUTH_DH
@@ -264,12 +261,12 @@ AUTH_DH algo:
 {
 primePDataOffset -
 unsigned
-primePDataLength
-- unsigned
-generatorGDataOff
-set - unsigned
-generatorGDataLen
-gth - unsigned
+primePDataLength -
+unsigned
+generatorGDataOffs
+et - unsigned
+generatorGDataLeng
+th - unsigned
 }
 Optional parameter for
 RSA algo (not supported,
@@ -284,18 +281,8 @@ eyId -
 unsigned
 publicK
 eyId -
-unsigned | -xxxxh -
-Authentic
-ation
-failure
--xxxxa -
-Operatio
-n failed
--xxxxz /
-Invalid
-Paramet
-ers | Yes | Yes | No | Create authenticated DH session keys with algorithm
-"AUTH_DH" Authenticated Diffie-Hellman.
+unsigned | None | Yes | No | Generates an ephemeral or application-scoped Diffie-Hellman public
+/private key pair for subsequent AUTH_DH derivation.
 Mapping from Netflix APIs:
 generatorG; // from base_buf
 primeP; // from modulus
@@ -304,101 +291,32 @@ primeP; // from modulus
 ## Page 3
 
 ```text
-3  Crypto loadKey                   Yes   Yes No Load a pre provisioned key by locator
-                      keyName -  unsigne -xxxxb -                                   
-                      string, Locator that d Not                                    
-                      points to a key that - keyId available                        
-                      is pre-provisioned (Refere or                                 
+3  Crypto loadKey                    Yes  No Load a pre-provisioned key by locator
+                      keyName - string, unsigne -xxxxb -                            
+                      locator that points to d Not                                  
+                      a key that is pre- - keyId available                          
+                      provisioned (Refere or                                        
                       provisionType - nce to corrupted                              
                       enum - optional the -xxxxc -                                  
                          pre-    loaded Does not                                    
                          provisioned key) represent                                 
-                         (global)      valid key                                    
-                                       -xxxxh -                                     
-                                       Authentic                                    
-                                       ation                                        
-                                       failure                                      
-       4  Crypto unloadKey     None        Yes   Yes No Delete key from key store (may mean unload key from TA
-                      keyId - unsigned -xxxxh -         if used).                   
-                                       Authentic                                    
-                                       ation                                        
-                                       failure                                      
-                                       -xxxxa -                                     
-                                       Operatio                                     
-                                       n failed                                     
-       5  Crypto keyExists                 Yes   Yes No Returns true if a valid key exists (loaded to be used) with
-                      keyName - string bool -xxxxh -    the key name. Returns false otherwise.
+                         (global)       valid key                                   
+       4  Crypto unloadKey     None  None   Yes  No Delete key from key store (may mean unload key from TA if used).
+                      keyId - unsigned                                              
+       5  Crypto keyExists                  Yes  No Returns true if a valid key exists (loaded to be used) with the key
+                      keyName - string bool -xxxxh - name. Returns false otherwise. 
                                  unsigne Authentic                                  
-                                 d -   ation                                        
-                                 keyId failure                                      
-       6  Crypto getKeyInfo keyId - unsigned Yes Yes No Get key info / size from keystore
-                                 keyTyp -xxxxe -                                    
-                                 e -   Invalid                                      
-                                 enum  key                                          
-                                   A   -xxxxh -                                     
-                                   E   Authentic                                    
-                                   S   ation                                        
-                                   1   failure                                      
-                                   28                                               
-                                   A                                                
-                                   E                                                
-                                   S                                                
-                                   2                                                
-                                   56                                               
-                                   H                                                
-                                   M                                                
-                                   A                                                
-                                   C                                                
-                                   1                                                
-                                   28                                               
-                                   H                                                
-                                   M                                                
-                                   A                                                
-                                   C                                                
-                                   1                                                
-                                   60                                               
-                                   H                                                
-                                   M                                                
-                                   A                                                
-                                   C                                                
-                                   2                                                
-                                   56                                               
-                                 keyUsa                                             
-                                 ge -                                               
-                                 enum                                               
-                                   E                                                
-                                   N                                                
-                                   C                                                
-                                   R                                                
-                                   Y                                                
-                                   PT                                               
-                                   D                                                
-                                   E                                                
-                                   C                                                
-                                   R                                                
-                                   Y                                                
-                                   PT                                               
-                                   SI                                               
-                                   GN                                               
-                                   D                                                
-                                   E                                                
-                                   R                                                
-                                   IVE                                              
-                                   U                                                
-                                   N                                                
-                                   W                                                
-                                   R                                                
-                                   A                                                
-                                   P
+                                 d -    ation                                       
+                                 keyId  failure
 ```
 
 ### Table 1
 
 ```text
-3 | Crypto | loadKey | keyName -
-string, Locator that
-points to a key that
-is pre-provisioned
+3 | Crypto | loadKey | keyName - string,
+locator that points to
+a key that is pre-
+provisioned
 provisionType -
 enum - optional
 pre-
@@ -418,61 +336,144 @@ corrupted
 -xxxxc -
 Does not
 represent
-valid key
--xxxxh -
-Authentic
-ation
-failure | Yes | Yes | No | Load a pre provisioned key by locator
-4 | Crypto | unloadKey | keyId - unsigned | None | -xxxxh -
-Authentic
-ation
-failure
--xxxxa -
-Operatio
-n failed | Yes | Yes | No | Delete key from key store (may mean unload key from TA
-if used).
+valid key | Yes | No | Load a pre-provisioned key by locator
+4 | Crypto | unloadKey | keyId - unsigned | None | None | Yes | No | Delete key from key store (may mean unload key from TA if used).
 5 | Crypto | keyExists | keyName - string | bool
 unsigne
 d -
 keyId | -xxxxh -
 Authentic
 ation
-failure | Yes | Yes | No | Returns true if a valid key exists (loaded to be used) with
-the key name. Returns false otherwise.
-6 | Crypto | getKeyInfo | keyId - unsigned | keyTyp
-e -
-enum
+failure | Yes | No | Returns true if a valid key exists (loaded to be used) with the key
+name. Returns false otherwise.
+```
+
+## Page 4
+
+```text
+6  Crypto getKeyInfo                 Yes  No Get key info / size from keystore
+                      keyId - unsigned keyType -xxxxe -                             
+                                 - enum Invalid                                     
+                                    P   key                                         
+                                    U                                               
+                                    B                                               
+                                    LIC                                             
+                                    P                                               
+                                    RI                                              
+                                    V                                               
+                                    A                                               
+                                    TE                                              
+                                    S                                               
+                                    Y                                               
+                                    M                                               
+                                    M                                               
+                                    E                                               
+                                    T                                               
+                                    RIC                                             
+                                 keyUsa                                             
+                                 ge -list                                           
+                                 of                                                 
+                                 enums,                                             
+                                 unorder                                            
+                                 ed                                                 
+                                    E                                               
+                                    N                                               
+                                    C                                               
+                                    R                                               
+                                    Y                                               
+                                    PT                                              
+                                    D                                               
+                                    E                                               
+                                    C                                               
+                                    R                                               
+                                    Y                                               
+                                    PT                                              
+                                    SI                                              
+                                    GN                                              
+                                    V                                               
+                                    E                                               
+                                    RI                                              
+                                    FY                                              
+                                    D                                               
+                                    E                                               
+                                    RI                                              
+                                    VE                                              
+                                    W                                               
+                                    R                                               
+                                    AP                                              
+                                    U                                               
+                                    N                                               
+                                    W                                               
+                                    R                                               
+                                    A                                               
+                                    P                                               
+                                 keyAlgo                                            
+                                 - enum                                             
+                                    A                                               
+                                    E                                               
+                                    S                                               
+                                    _                                               
+                                    C                                               
+                                    BC                                              
+                                    A                                               
+                                    E                                               
+                                    S                                               
+                                    _                                               
+                                    C                                               
+                                    TR                                              
+                                    S                                               
+                                    H                                               
+                                    A                                               
+                                    2                                               
+                                    56                                              
+                                    S                                               
+                                    H                                               
+                                    A                                               
+                                    3                                               
+                                    84                                              
+                                    S                                               
+                                    H                                               
+                                    A                                               
+                                    5                                               
+                                    12                                              
+                                    A                                               
+                                    U                                               
+                                    T                                               
+                                    H                                               
+                                    _                                               
+                                    DH                                              
+                                    DH                                              
+       7  Crypto flushKeys None None None   Yes  No Unloads all the keys loaded until now. They cannot be used again.
+                                                    Returns INVALID_KEY error on further key usage.
+```
+
+### Table 1
+
+```text
+6 | Crypto | getKeyInfo | keyId - unsigned | keyType
+- enum
+P
+U
+B
+LIC
+P
+RI
+V
 A
-E
+TE
 S
-1
-28
-A
+Y
+M
+M
 E
-S
-2
-56
-H
-M
-A
-C
-1
-28
-H
-M
-A
-C
-1
-60
-H
-M
-A
-C
-2
-56
+T
+RIC
 keyUsa
-ge -
-enum
+ge -list
+of
+enums,
+unorder
+ed
 E
 N
 C
@@ -487,118 +488,24 @@ Y
 PT
 SI
 GN
+V
+E
+RI
+FY
 D
 E
+RI
+VE
+W
 R
-IVE
+AP
 U
 N
 W
 R
 A
-P | -xxxxe -
-Invalid
-key
--xxxxh -
-Authentic
-ation
-failure | Yes | Yes | No | Get key info / size from keystore
-```
-
-## Page 4
-
-```text
-keyAlgo                                            
-                                 - enum                                             
-                                   A                                                
-                                   E                                                
-                                   S                                                
-                                   _                                                
-                                   C                                                
-                                   BC                                               
-                                   A                                                
-                                   E                                                
-                                   S                                                
-                                   _                                                
-                                   C                                                
-                                   TR                                               
-                                   D                                                
-                                   I                                                
-                                   G                                                
-                                   E                                                
-                                   S                                                
-                                   T                                                
-                                   _                                                
-                                   S                                                
-                                   H                                                
-                                   A                                                
-                                   2                                                
-                                   56                                               
-                                   D                                                
-                                   I                                                
-                                   G                                                
-                                   E                                                
-                                   S                                                
-                                   T                                                
-                                   _                                                
-                                   S                                                
-                                   H                                                
-                                   A                                                
-                                   3                                                
-                                   84                                               
-                                   D                                                
-                                   I                                                
-                                   G                                                
-                                   E                                                
-                                   S                                                
-                                   T                                                
-                                   _                                                
-                                   S                                                
-                                   H                                                
-                                   A                                                
-                                   5                                                
-                                   12                                               
-       7  Crypto flushKeys None None       Yes   Yes No Unloads all the keys loaded until now. They cannot be
-                                       -xxxxh -         used again. Returns INVALID_KEY error on further key
-                                       Authentic        usage.                      
-                                       ation                                        
-                                       failure                                      
-       8  Crypto importKey                              Clear import and export is not supported by Comcast /
-                      keyType - enum keyId - -xxxxh -   Sky implementation          
-                         AES128  unsigne Authentic                                  
-                         AES256  d     ation                                        
-                         HMAC128 (Refere failure                                    
-                         HMAC160 nce to -xxxxk -                                    
-                         HMAC256 the   Key                                          
-                      Import/Export Type loaded Provision                           
-                         Protected key) Error                                       
-                         Clear                                                      
-                      Key blob to be                                                
-                      imported - device-                                            
-                      bound, integrity-                                             
-                      protected,                                                    
-                      confidentiality-                                              
-                      protected blob                                                
-       9  Crypto exportKey                 Yes   Yes No Returns device-bound, integrity-protected, confidentiality-
-                      keyId - unsigned keyBlob -xxxxh - protected blob              
-                      Import/Export Type - list of Authentic                        
-                      - enum     unsigne ation          May have the metadata export based on the
-                         Protected d,  failure          implementation.             
-                         Clear   ordered -xxxxm -                                   
-                                 .     Sealed                                       
-                                       Key                                          
-                                       Cannot                                       
-                                       Export                                       
-                                       Error                                        
-                                       -xxxxe -                                     
-                                       Invalid                                      
-                                       key
-```
-
-### Table 1
-
-```text
- |  |  |  | keyAlgo
+P
+keyAlgo
 - enum
 A
 E
@@ -612,54 +519,121 @@ S
 _
 C
 TR
-D
-I
-G
-E
-S
-T
-_
 S
 H
 A
 2
 56
-D
-I
-G
-E
-S
-T
-_
 S
 H
 A
 3
 84
-D
-I
-G
-E
-S
-T
-_
 S
 H
 A
 5
-12 |  |  |  |  | 
-7 | Crypto | flushKeys | None | None | -xxxxh -
-Authentic
-ation
-failure | Yes | Yes | No | Unloads all the keys loaded until now. They cannot be
-used again. Returns INVALID_KEY error on further key
-usage.
+12
+A
+U
+T
+H
+_
+DH
+DH | -xxxxe -
+Invalid
+key | Yes | No | Get key info / size from keystore
+7 | Crypto | flushKeys | None | None | None | Yes | No | Unloads all the keys loaded until now. They cannot be used again.
+Returns INVALID_KEY error on further key usage.
+```
+
+## Page 5
+
+```text
+8  Crypto importKey                  Yes  No Load the exported key material from the same device / platform into
+                      keyType - enum keyId - -xxxxk - the key store.                
+                         PUBLIC  unsigne Key                                        
+                         PRIVATE d      Provision     Verifies integrity and device binding before creating a key
+                         SYMMETRIC (Refere Error      Rejects corrupted or foreign-device blobs
+                      Import/Export Type nce to       Does not create a partially usable key on failure
+                         Protected the                May return a different key ID from the original
+                         Clear   loaded                                             
+                      Key blob to be key)                                           
+                      imported - device-                                            
+                      bound, integrity-                                             
+                      protected,                                                    
+                      confidentiality-                                              
+                      protected blob                                                
+       9  Crypto exportKey                  Yes  No Exports the key material for usage by the platform after an import.
+                      keyId - unsigned keyBlob -xxxxm -                             
+                      Import/Export Type - - list of Sealed Protected export shall preserve key material and all platform key
+                      enum       unsigne Key        metadata required to restore equivalent key behavior. The returned
+                         Protected d,   Cannot      blob shall be device-bound, integrity-protected, and confidentiality-
+                         Clear   ordered. Export    protected.                      
+                                        Error                                       
+                                        -xxxxe -                                    
+                                        Invalid                                     
+                                        key                                         
+       10 Crypto sign                       Yes  No Calculate the MAC / signature value and returns.
+                      algorithm - enum outputD -xxxxc /                             
+                         HMAC    ataOffse Invalid   keyId shall match with a loaded key compatible with the selected
+                      keyId - unsigned t - key      algorithm.                      
+                      (Reference to the unsigned -xxxxd /                           
+                      loaded key) outputD Invalid   Examples:                       
+                      digestAlgorithm - ataLeng key type                            
+                      enum       th -   -xxxxf /    - HMAC: secret symmetric key    
+                         SHA-256 unsigned Session                                   
+                      inputDataOffset - to be                                       
+                      unsigned          reinitialized                               
+                      inputDataLength - -xxxxl -                                    
+                      unsigned          Output                                      
+                                        buffer too                                  
+                                        small                                       
+       11 Crypto verify                     Yes  No Calculate the MAC / signature value and verifies if the expected
+                      algorithm - enum bool - -xxxxx / signature matches. Returns true if verification is successful or
+                         HMAC    verificati Invalid returns false.                  
+                      keyId - unsigned (Re on key                                   
+                      ference to the status -xxxxd / keyId shall match with a loaded key compatible with the selected
+                      loaded key)       Invalid     algorithm.                      
+                      digestAlgorithm - key type                                    
+                      enum              -xxxxy /    Examples:                       
+                         SHA256         Session                                     
+                      inputDataOffset - to be       - HMAC: secret symmetric key    
+                      unsigned          reinitialized                               
+                      inputDataLength -                                             
+                      unsigned                                                      
+                      expectedSignatureOf                                           
+                      fset - unsigned                                               
+                      expectedSignatureLe                                           
+                      ngth - unsigned                                               
+       12 Crypto encrypt                    Yes  No Returns the data after encryption. Input data to encrypt shall not
+                      cipherAlgorithm - encrypt -xxxxi - exceed 1 MB of size.       
+                      enum       DataOff Invalid                                    
+                         AES_CBC set -  Init Data   Length of encrypted data is returned as 0 on any errors.
+                      keyId - unsigned unsigned length                              
+                      (Reference to the encrypt -xxxxj - For AES_CBC algorithm:     
+                      loaded key) DataLen Input                                     
+                      initDataOffset - gth - data size Expects IV as initData of 16 bytes in length
+                      unsigned (optional) unsigned exceeded Null/missing IV: invalid
+                      InitDataLength -  the           All-zero 16-byte IV: syntactically valid, though generally
+                      unsigned (optional) supported   discouraged                   
+                      inputDataOffset - limits        inputData contains the buffer to be encrypted
+                      unsigned          -xxxxl -      Performs no padding. Input length must be a multiple of 16
+                      inputDataLength - Output                                      
+                      unsigned          buffer too  For other algorithms, in future:
+                                        small                                       
+                                        -xxxxe -    Nonce can be passed as initData as well.
+                                        Invalid                                     
+                                        key
+```
+
+### Table 1
+
+```text
 8 | Crypto | importKey | keyType - enum
-AES128
-AES256
-HMAC128
-HMAC160
-HMAC256
+PUBLIC
+PRIVATE
+SYMMETRIC
 Import/Export Type
 Protected
 Clear
@@ -675,29 +649,24 @@ d
 nce to
 the
 loaded
-key) | -xxxxh -
-Authentic
-ation
-failure
--xxxxk -
+key) | -xxxxk -
 Key
 Provision
-Error |  |  |  | Clear import and export is not supported by Comcast /
-Sky implementation
+Error | Yes | No | Load the exported key material from the same device / platform into
+the key store.
+Verifies integrity and device binding before creating a key
+Rejects corrupted or foreign-device blobs
+Does not create a partially usable key on failure
+May return a different key ID from the original
 9 | Crypto | exportKey | keyId - unsigned
-Import/Export Type
-- enum
+Import/Export Type -
+enum
 Protected
 Clear | keyBlob
 - list of
 unsigne
 d,
-ordered
-. | -xxxxh -
-Authentic
-ation
-failure
--xxxxm -
+ordered. | -xxxxm -
 Sealed
 Key
 Cannot
@@ -705,96 +674,11 @@ Export
 Error
 -xxxxe -
 Invalid
-key | Yes | Yes | No | Returns device-bound, integrity-protected, confidentiality-
-protected blob
-May have the metadata export based on the
-implementation.
-```
-
-## Page 5
-
-```text
-10 Crypto sign                      Yes   Yes No Calculate the MAC / signature value and returns.
-                      algorithm - enum outputD xxxxc /                              
-                         HMAC    ataOffs Invalid        keyId shall match with a loaded key compatible with the
-                      keyId - unsigned et - key         selected algorithm.         
-                      (Reference to the unsigned -xxxxd /                           
-                      loaded key) outputD Invalid       Examples:                   
-                      digestAlgorithm - ataLeng key type                            
-                      enum       th -  -xxxxf /         - HMAC: secret symmetric key
-                         SHA-256 unsigned Session                                   
-                      inputDataOffset - to be                                       
-                      unsigned         reinitializ                                  
-                      inputDataLength - ed                                          
-                      unsigned         -xxxxg /                                     
-                                       Invalid                                      
-                                       Paramet                                      
-                                       ers                                          
-                                       -xxxxa /                                     
-                                       Operatio                                     
-                                       n failed                                     
-                                       -xxxxh -                                     
-                                       Authentic                                    
-                                       ation                                        
-                                       failure                                      
-                                       -xxxxl -                                     
-                                       Output                                       
-                                       buffer                                       
-                                       too small                                    
-       11 Crypto verify                    Yes   Yes No Calculate the MAC / signature value and verifies if the
-                      algorithm - enum bool - -xxxxh -  expected signature matches. Returns true if verification is
-                         HMAC    verificati Authentic   successful or returns false.
-                      keyId - unsigned (R on ation                                  
-                      eference to the status failure    keyId shall match with a loaded key compatible with the
-                      loaded key)      -xxxxx /         selected algorithm.         
-                      digestAlgorithm - Invalid                                     
-                      enum             key              Examples:                   
-                         SHA256        -xxxxd /                                     
-                                       Invalid          - HMAC: secret symmetric key
-                      inputDataOffset - key type                                    
-                      unsigned         -xxxxy /                                     
-                      inputDataLength - Session                                     
-                      unsigned         to be                                        
-                      expectedSignature reinitializ                                 
-                      Offset - unsigned ed                                          
-                      expectedSignatureL -xxxxz /                                   
-                      ength - unsigned Invalid                                      
-                                       Paramet                                      
-                                       ers                                          
-                                       -xxxxa /                                     
-                                       Operatio                                     
-                                       n failed                                     
-       12 Crypto encrypt                   Yes   Yes No Returns the data after encryption. Input data to encrypt
-                      cipherAlgorithm - encrypt -xxxxi - shall not exceed 1 MB of size.
-                      enum       DataOff Invalid                                    
-                         AES_CBC set - Init Data        Length of encrypted data is returned as 0 on any errors.
-                      keyId - unsigned unsigned length                              
-                      (Reference to the encrypt -xxxxh - For AES_CBC algorithm:     
-                      loaded key) DataLe Authentic                                  
-                      initDataOffset - ngth - ation       Expects IV as initData of 16 bytes in length
-                      unsigned (optional) unsigned failure While IV reuse may be allowed, Zero or NULL IV is
-                      InitDataLength - -xxxxj -           not allowed. Recommended to use
-                      unsigned (optional) Input           generateRandom API to generate random number.
-                      inputDataOffset - data size         inputData contains the buffer to be encrypted
-                      unsigned         exceede                                      
-                      inputDataLength - d the           For other algorithms, in future:
-                      unsigned         supporte                                     
-                                       d limits         Nonce can be passed as initData as well.
-                                       -xxxxl -                                     
-                                       Output                                       
-                                       buffer                                       
-                                       too small                                    
-                                       -xxxxe -                                     
-                                       Invalid                                      
-                                       key                                          
-                                       -xxxxa -                                     
-                                       Operatio                                     
-                                       n failed
-```
-
-### Table 1
-
-```text
+key | Yes | No | Exports the key material for usage by the platform after an import.
+Protected export shall preserve key material and all platform key
+metadata required to restore equivalent key behavior. The returned
+blob shall be device-bound, integrity-protected, and confidentiality-
+protected.
 10 | Crypto | sign | algorithm - enum
 HMAC
 keyId - unsigned
@@ -807,13 +691,13 @@ inputDataOffset -
 unsigned
 inputDataLength -
 unsigned | outputD
-ataOffs
-et -
+ataOffse
+t -
 unsigned
 outputD
 ataLeng
 th -
-unsigned | xxxxc /
+unsigned | -xxxxc /
 Invalid
 key
 -xxxxd /
@@ -822,31 +706,19 @@ key type
 -xxxxf /
 Session
 to be
-reinitializ
-ed
--xxxxg /
-Invalid
-Paramet
-ers
--xxxxa /
-Operatio
-n failed
--xxxxh -
-Authentic
-ation
-failure
+reinitialized
 -xxxxl -
 Output
-buffer
-too small | Yes | Yes | No | Calculate the MAC / signature value and returns.
-keyId shall match with a loaded key compatible with the
-selected algorithm.
+buffer too
+small | Yes | No | Calculate the MAC / signature value and returns.
+keyId shall match with a loaded key compatible with the selected
+algorithm.
 Examples:
 - HMAC: secret symmetric key
 11 | Crypto | verify | algorithm - enum
 HMAC
-keyId - unsigned (R
-eference to the
+keyId - unsigned (Re
+ference to the
 loaded key)
 digestAlgorithm -
 enum
@@ -855,17 +727,13 @@ inputDataOffset -
 unsigned
 inputDataLength -
 unsigned
-expectedSignature
-Offset - unsigned
-expectedSignatureL
-ength - unsigned | bool -
+expectedSignatureOf
+fset - unsigned
+expectedSignatureLe
+ngth - unsigned | bool -
 verificati
 on
-status | -xxxxh -
-Authentic
-ation
-failure
--xxxxx /
+status | -xxxxx /
 Invalid
 key
 -xxxxd /
@@ -874,19 +742,11 @@ key type
 -xxxxy /
 Session
 to be
-reinitializ
-ed
--xxxxz /
-Invalid
-Paramet
-ers
--xxxxa /
-Operatio
-n failed | Yes | Yes | No | Calculate the MAC / signature value and verifies if the
-expected signature matches. Returns true if verification is
-successful or returns false.
-keyId shall match with a loaded key compatible with the
-selected algorithm.
+reinitialized | Yes | No | Calculate the MAC / signature value and verifies if the expected
+signature matches. Returns true if verification is successful or
+returns false.
+keyId shall match with a loaded key compatible with the selected
+algorithm.
 Examples:
 - HMAC: secret symmetric key
 12 | Crypto | encrypt | cipherAlgorithm -
@@ -907,41 +767,35 @@ DataOff
 set -
 unsigned
 encrypt
-DataLe
-ngth -
+DataLen
+gth -
 unsigned | -xxxxi -
 Invalid
 Init Data
 length
--xxxxh -
-Authentic
-ation
-failure
 -xxxxj -
 Input
 data size
-exceede
-d the
-supporte
-d limits
+exceeded
+the
+supported
+limits
 -xxxxl -
 Output
-buffer
-too small
+buffer too
+small
 -xxxxe -
 Invalid
-key
--xxxxa -
-Operatio
-n failed | Yes | Yes | No | Returns the data after encryption. Input data to encrypt
-shall not exceed 1 MB of size.
+key | Yes | No | Returns the data after encryption. Input data to encrypt shall not
+exceed 1 MB of size.
 Length of encrypted data is returned as 0 on any errors.
 For AES_CBC algorithm:
 Expects IV as initData of 16 bytes in length
-While IV reuse may be allowed, Zero or NULL IV is
-not allowed. Recommended to use
-generateRandom API to generate random number.
+Null/missing IV: invalid
+All-zero 16-byte IV: syntactically valid, though generally
+discouraged
 inputData contains the buffer to be encrypted
+Performs no padding. Input length must be a multiple of 16
 For other algorithms, in future:
 Nonce can be passed as initData as well.
 ```
@@ -949,48 +803,41 @@ Nonce can be passed as initData as well.
 ## Page 6
 
 ```text
-13 Crypto decrypt                   Yes   Yes No Returns the decrypted clear data. Input data to decrypt
-                      algorithm - enum outputD -xxxxh - shall not exceed 1.5 MB of data.
-                         AES_CBC ataOffs Authentic                                  
-                      keyId - unsigned et - ation       length of output data is returned as 0 on any errors
-                      (Reference to the unsigned failure                            
-                      loaded key) outputD -xxxxj -      For AES_CBC algorithm:      
-                      initVectorOffset - ataLeng Input                              
-                      unsigned   th -  data size          Expects IV as initData of 16 bytes in length
-                      initVectorLength - unsigned exceede While IV reuse may be allowed, Zero or NULL IV is
-                      unsigned         d the              not allowed. Recommended to use
-                      encryptDataOffset - supporte        generateRandom API to generate random number.
-                      unsigned         d limits           inputData contains the buffer to be encrypted
-                      encryptDataLength -xxxxl -                                    
-                      - unsigned       Output                                       
-                                       buffer                                       
-                                       too small                                    
-                                       -xxxxe -                                     
-                                       Invalid                                      
-                                       key                                          
-                                       -xxxxa -                                     
-                                       Operatio                                     
-                                       n failed                                     
-       14 Crypto deriveSessi               Yes   Yes No Performs authenticated DH key derivation
-               onKeys algorithm - enum encrypti -xxxxh -                            
-                         AUTH_DH onKeyId Authentic                                  
-                      privateKeyId - - ation                                        
-                      unsigned   unsigned failure                                   
-                      peerPublicKeyData hmacKe -xxxxa -                             
-                      - list of unsigned, yId - Operatio                            
-                      ordered.   unsigned n failed                                  
+13 Crypto decrypt                    Yes  No Returns the decrypted clear data. Input data to decrypt shall not
+                      algorithm - enum outputD -xxxxj - exceed 1.5 MB of data.      
+                         AES_CBC ataOffse Input                                     
+                      keyId - unsigned t - data size length of output data is returned as 0 on any errors
+                      (Reference to the unsigned exceeded                           
+                      loaded key) outputD the       For AES_CBC algorithm:          
+                      initVectorOffset - ataLeng supported                          
+                      unsigned   th -   limits        Expects IV as initData of 16 bytes in length
+                      initVectorLength - unsigned -xxxxl - Null/missing IV: invalid 
+                      unsigned          Output        All-zero 16-byte IV: syntactically valid, though generally
+                      encryptDataOffset - buffer too  discouraged                   
+                      unsigned          small         inputData contains the buffer to be decrypted.
+                      encryptDataLength - -xxxxe -                                  
+                      unsigned          Invalid                                     
+                                        key                                         
+       14 Crypto deriveSessi         None   Yes  No Performs authenticated DH key derivation (Authenticated Diffie-
+               onKeys algorithm - enum encrypti     Hellman)                        
+                         AUTH_DH onKeyId                                            
+                      privateKeyId - -                                              
+                      unsigned   unsigned                                           
+                      peerPublicKeyData - hmacKe                                    
+                      list of unsigned, yId -                                       
+                      ordered.   unsigned                                           
                       derivationKeyId - wrappin                                     
                       unsigned   gKeyId                                             
                                  -                                                  
                                  unsigned                                           
-       15 Crypto generateRa                Yes   Yes No Returns cryptographically random data of specified length.
-               ndom   Number of bytes random -xxxxh -   Random value encoded is of length passed in as
-                                 Value - Authentic      parameter                   
+       15 Crypto generateRa                 Yes  No Returns cryptographically random data of specified length. Random
+               ndom   Number of bytes random -xxxxh - value encoded is of length passed in as parameter
+                                 Value - Authentic                                  
                                  list of ation                                      
                                  unsigne failure                                    
-                                 d,    -xxxxa -                                     
-                                 ordered Operatio                                   
-                                 .     n failed
+                                 d,     -xxxxa -                                    
+                                 ordered. Operation                                 
+                                        failed
 ```
 
 ### Table 1
@@ -1007,50 +854,43 @@ initVectorLength -
 unsigned
 encryptDataOffset -
 unsigned
-encryptDataLength
-- unsigned | outputD
-ataOffs
-et -
+encryptDataLength -
+unsigned | outputD
+ataOffse
+t -
 unsigned
 outputD
 ataLeng
 th -
-unsigned | -xxxxh -
-Authentic
-ation
-failure
--xxxxj -
+unsigned | -xxxxj -
 Input
 data size
-exceede
-d the
-supporte
-d limits
+exceeded
+the
+supported
+limits
 -xxxxl -
 Output
-buffer
-too small
+buffer too
+small
 -xxxxe -
 Invalid
-key
--xxxxa -
-Operatio
-n failed | Yes | Yes | No | Returns the decrypted clear data. Input data to decrypt
-shall not exceed 1.5 MB of data.
+key | Yes | No | Returns the decrypted clear data. Input data to decrypt shall not
+exceed 1.5 MB of data.
 length of output data is returned as 0 on any errors
 For AES_CBC algorithm:
 Expects IV as initData of 16 bytes in length
-While IV reuse may be allowed, Zero or NULL IV is
-not allowed. Recommended to use
-generateRandom API to generate random number.
-inputData contains the buffer to be encrypted
+Null/missing IV: invalid
+All-zero 16-byte IV: syntactically valid, though generally
+discouraged
+inputData contains the buffer to be decrypted.
 14 | Crypto | deriveSessi
 onKeys | algorithm - enum
 AUTH_DH
 privateKeyId -
 unsigned
-peerPublicKeyData
-- list of unsigned,
+peerPublicKeyData -
+list of unsigned,
 ordered.
 derivationKeyId -
 unsigned | encrypti
@@ -1063,27 +903,20 @@ unsigned
 wrappin
 gKeyId
 -
-unsigned | -xxxxh -
-Authentic
-ation
-failure
--xxxxa -
-Operatio
-n failed | Yes | Yes | No | Performs authenticated DH key derivation
+unsigned | None | Yes | No | Performs authenticated DH key derivation (Authenticated Diffie-
+Hellman)
 15 | Crypto | generateRa
 ndom | Number of bytes | random
 Value -
 list of
 unsigne
 d,
-ordered
-. | -xxxxh -
+ordered. | -xxxxh -
 Authentic
 ation
 failure
 -xxxxa -
-Operatio
-n failed | Yes | Yes | No | Returns cryptographically random data of specified length.
-Random value encoded is of length passed in as
-parameter
+Operation
+failed | Yes | No | Returns cryptographically random data of specified length. Random
+value encoded is of length passed in as parameter
 ```

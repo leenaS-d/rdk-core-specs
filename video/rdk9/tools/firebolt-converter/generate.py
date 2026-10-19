@@ -38,7 +38,7 @@ DOCUMENTS = {
     "key-codes": ("firebolt-key-codes", "Firebolt 9 Key Codes Specification"),
     "app-actions":("firebolt-app-actions", "Firebolt 9 App Actions Specification"),
     "app-services":("firebolt-app-services", "Firebolt 9 App Services Specification"),
-    "crypto":("firebolt-crypto","Firebolt 9 Crypto API Specifications.pdf")
+    "crypto":("firebolt-crypto","Firebolt 9 Crypto API Specification")
 }
 
 

@@ -479,12 +479,11 @@ def _api_reference_definitions(raw: dict[str, Any]) -> dict[str, Any]:
 # the middle of a word) and draws bullets as vector shapes, which a plain text extraction loses.
 # These cells are therefore rebuilt from the PDF geometry (bullets, indentation, line gaps).
 # --------------------------------------------------------------------------------------------------
-CRYPTO_METHOD_COLUMNS = 10
+CRYPTO_METHOD_COLUMNS = 9
 CRYPTO_FIELD_COLUMNS = {"parameters": 3, "returns": 4, "errors": 5}
-CRYPTO_GLOBAL_COLUMN = 6
-CRYPTO_CPP_COLUMN = 7
-CRYPTO_JS_COLUMN = 8
-CRYPTO_DESCRIPTION_COLUMN = 9
+CRYPTO_CPP_COLUMN = 6
+CRYPTO_JS_COLUMN = 7
+CRYPTO_DESCRIPTION_COLUMN = 8
 CRYPTO_BULLET_MIN_SIZE = 1.0
 CRYPTO_BULLET_MAX_SIZE = 4.5
 CRYPTO_BULLET_LINE_TOLERANCE = 3.0
@@ -764,24 +763,60 @@ def _crypto_reference_definitions(raw: dict[str, Any]) -> dict[str, Any]:
     type_rows = []
     error_rows = []
     current_class = ""
+    error_columns: dict[str, Any] | None = None
+    error_continuation = False
     for table in _tables(raw):
         headers = [_clean(value).casefold() for value in table[0]]
         if "term" in headers and "meaning" in headers:
+            error_continuation = False
             for row in table[1:]:
                 if len(row) > 2 and _clean(row[1]):
                     interpretation_rows.append({"term": _clean(row[1]), "meaning": _clean(row[2])})
         elif "type" in headers and "definition" in headers:
+            error_continuation = False
             for row in table[1:]:
                 if len(row) > 2 and _clean(row[1]):
                     type_rows.append({"type": _clean(row[1]), "definition": _clean(row[2])})
-        elif len(table[0]) == 5 and ("id" in headers or any(len(row) > 1 and _crypto_error_id(row[1]) for row in table)):
-            # Errors table. It starts on page 1 (with a header) and continues on page 2 (without one).
-            for row in table:
-                if len(row) < 5 or not _crypto_error_id(row[1]):
+        elif "id" in headers and "error" in headers:
+            error_columns = {
+                "class": headers.index("class") if "class" in headers else 0,
+                "id": headers.index("id"),
+                "error": headers.index("error"),
+                "notes": [index for index, header in enumerate(headers) if header == "notes"],
+            }
+            error_continuation = True
+            rows = table[1:]
+        elif error_columns and error_continuation:
+            rows = table
+            if not any(
+                len(row) > error_columns["id"] and _crypto_error_id(row[error_columns["id"]])
+                for row in rows
+            ):
+                error_continuation = False
+                continue
+        else:
+            error_continuation = False
+            continue
+
+        if error_columns and ("id" in headers and "error" in headers or error_continuation):
+            for row in rows:
+                id_index = error_columns["id"]
+                error_index = error_columns["error"]
+                if len(row) <= max(id_index, error_index) or not _crypto_error_id(row[id_index]):
                     continue
-                current_class = "".join(str(row[0] or "").split()) or current_class  # "Specifi\nc" -> "Specific"
-                notes = " ".join(part for part in (_clean(row[3]), _clean(row[4])) if part)
-                error_rows.append({"class": current_class, "ID": _crypto_error_id(row[1]), "Error": _clean(row[2]), "Notes": notes})
+                class_index = error_columns["class"]
+                if class_index is not None and class_index < len(row):
+                    current_class = "".join(str(row[class_index] or "").split()) or current_class
+                notes = " ".join(
+                    _clean(row[index]) for index in error_columns["notes"]
+                    if index < len(row) and _clean(row[index])
+                )
+                error_rows.append({
+                    "class": current_class,
+                    "ID": _crypto_error_id(row[id_index]),
+                    "Error": _clean(row[error_index]),
+                    "Notes": notes,
+                })
     definitions: dict[str, Any] = {}
     if interpretation_rows:
         definitions["reference-interpretation"] = {"type": "entry", "heading": "Interpretation", "blocks": [{"type": "table", "columns": [{"key": "term", "label": "Term"}, {"key": "meaning", "label": "Meaning"}], "rows": interpretation_rows}]}
@@ -861,13 +896,11 @@ def _crypto_document(name: str, title: str, raw: Any) -> dict[str, Any]:
         method_id = int(_clean(row[0]))
         module = _crypto_name(row[1])
         method = _crypto_name(row[2])
-        firebolt_global = _clean(row[CRYPTO_GLOBAL_COLUMN])
         reference = f"api-{index}"
         modules.add(module)
         rows.append({
             "module": module,
             "methods": method,
-            "firebolt-global": firebolt_global,
             "details": {"type": "actions", "plain": True, "items": [{"label": "View Details", "ref": reference}]},
         })
         cpp_state, js_state = support_states.get(method_id, ("unknown", "unknown"))
@@ -887,7 +920,6 @@ def _crypto_document(name: str, title: str, raw: Any) -> dict[str, Any]:
             "eyebrow": "Module",
             "module": module,
             "method": method,
-            "firebolt-global": firebolt_global,
             "support": [{"label": "C++", "state": cpp_state}, {"label": "JS", "state": js_state}],
             "fields": [
                 {"label": "Parameters", "value": parameters or "None"},
@@ -907,7 +939,7 @@ def _crypto_document(name: str, title: str, raw: Any) -> dict[str, Any]:
             "blocks": [
                 {"type": "toolbar", "target": "api-methods", "classes": "northbound-toolbar", "search": {"placeholder": "Search APIs"}, "filters": [{"key": "module", "column": 0, "allLabel": "All modules", "options": sorted(modules)}]},
                 {"type": "reference", "title": "References", "items": [{"label": "Interpretation", "ref": "reference-interpretation"}, {"label": "Types", "ref": "reference-types"}, {"label": "Error values", "ref": "reference-error-values"}]},
-                {"type": "table", "id": "api-methods", "columns": [{"key": "module", "label": "Module"}, {"key": "methods", "label": "Methods", "wrap": "preline"}, {"key": "firebolt-global", "label": "Firebolt global"}, {"key": "details", "label": "View Details"}], "rows": rows},
+                {"type": "table", "id": "api-methods", "columns": [{"key": "module", "label": "Module"}, {"key": "methods", "label": "Methods", "wrap": "preline"}, {"key": "details", "label": "View Details"}], "rows": rows},
             ],
         }],
         "definitions": definitions,
