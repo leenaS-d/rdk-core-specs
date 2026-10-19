@@ -1,9 +1,12 @@
 {
-  "_comment": "Maps a HAL interface's display name to where its per-repo HAL spec JSON lives, same convention as dml-repos.json. All available files consolidated in cpokuru/rdk9-corerdkbroadband-tools under llapis/<repo>/<file> on main branch. Entries not yet migrated remain pointing to their original cpokuru repos or marked TBD.",
+  "_comment": "Maps a HAL interface's display name to where its spec JSON lives under docs/llapis/<repo>/<file>. repo = the folder name under docs/llapis/; file = just the JSON filename. branch is ignored (local files have no branch). TBD entries are not yet available.",
   "Bridge Utility HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-bridge-util/bridge-util.json",
-    "branch": "main"
+    "repo": "rdkb-halif-bridge-util",
+    "file": "bridge-util.json"
+  },
+  "Cable Modem HAL": {
+    "repo": "rdkb-halif-cm",
+    "file": "cm.json"
   },
   "Cellular HAL": {
     "repo": "rdkb-halif-cellular",
@@ -11,44 +14,32 @@
     "branch": "develop"
   },
   "Cellular Modem HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-cellular-modem/cellular-modem.json",
-    "branch": "main"
-  },
-  "Cable Modem HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-cm/cm.json",
-    "branch": "main"
+    "repo": "rdkb-halif-cellular-modem",
+    "file": "cellular-modem.json"
   },
   "DHCP HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-dhcp/dhcp.json",
-    "branch": "main"
+    "repo": "rdkb-halif-dhcp",
+    "file": "dhcp.json"
   },
   "DHCPv6 Client HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-dhcp6c/dhcp6c.json",
-    "branch": "main"
+    "repo": "rdkb-halif-dhcp6c",
+    "file": "dhcp6c.json"
   },
   "eMMC HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-emmc/emmc.json",
-    "branch": "main"
+    "repo": "rdkb-halif-emmc",
+    "file": "emmc.json"
   },
   "EPON HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-epon/epon.json",
-    "branch": "main"
+    "repo": "rdkb-halif-epon",
+    "file": "epon.json"
   },
   "Ethernet Switch HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-ethsw/ethsw.json",
-    "branch": "main"
+    "repo": "rdkb-halif-ethsw",
+    "file": "ethsw.json"
   },
   "Firmware Upgrade HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-fwupgrade/fwupgrade.json",
-    "branch": "main"
+    "repo": "rdkb-halif-fwupgrade",
+    "file": "fwupgrade.json"
   },
   "GPON HAL": {
     "repo": "rdkb-halif-gpon",
@@ -56,34 +47,28 @@
     "branch": "develop"
   },
   "LPA (eSIM) HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-lpa/lpa.json",
-    "branch": "main"
+    "repo": "rdkb-halif-lpa",
+    "file": "lpa.json"
   },
   "MoCA HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-moca/moca.json",
-    "branch": "main"
+    "repo": "rdkb-halif-moca",
+    "file": "moca.json"
   },
   "MSO HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-mso/mso.json",
-    "branch": "main"
+    "repo": "rdkb-halif-mso",
+    "file": "mso.json"
   },
   "MTA (Voice Gateway) HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-mta/mta.json",
-    "branch": "main"
+    "repo": "rdkb-halif-mta",
+    "file": "mta.json"
   },
   "Platform HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-platform/platform.json",
-    "branch": "main"
+    "repo": "rdkb-halif-platform",
+    "file": "platform.json"
   },
   "VLAN HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-vlan/vlan.json",
-    "branch": "main"
+    "repo": "rdkb-halif-vlan",
+    "file": "vlan.json"
   },
   "Voice HAL": {
     "repo": "rdkb-halif-voice",
@@ -91,163 +76,17 @@
     "branch": "develop"
   },
   "WAN HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-wan/wan.json",
-    "branch": "main"
+    "repo": "rdkb-halif-wan",
+    "file": "wan.json"
   },
   "WiFi HAL": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "llapis/rdkb-halif-wifi/wifi.json",
+    "repo": "rdkb-halif-wifi",
+    "file": "wifi.json",
     "branch": "develop"
   },
   "xDSL HAL": {
     "repo": "rdkb-halif-xdsl",
     "file": "xdsl.json",
     "branch": "develop"
-  },
-  "Bluetooth": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Matter": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Thread": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Zigbee": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Container": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Firewall-Iptabes": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "PPPD": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "UPNP": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Dnsmasq": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "udhcpc": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "dibbler-client": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "dibbler-server": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "iproute2": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "procps": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Direct Kernel Access": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "net-tools": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "bridge-utils": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "libnetfilter_conntrack": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "ipset": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "ivictl": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "mocactl": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "mocacfg": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "zebra": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "wlancfg": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "wlancfg_tr": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "ti_udhcpc": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "libnl": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "libhostap": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "wireless-tools": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
   }
 }

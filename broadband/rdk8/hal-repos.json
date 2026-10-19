@@ -4,13 +4,13 @@
     "repo": "rdkb-halif-bridge-util",
     "file": "bridge-util.json"
   },
-  "Cellular Modem HAL": {
-    "repo": "rdkb-halif-cellular-modem",
-    "file": "cellular-modem.json"
-  },
   "Cable Modem HAL": {
     "repo": "rdkb-halif-cm",
     "file": "cm.json"
+  },
+  "Cellular Modem HAL": {
+    "repo": "rdkb-halif-cellular-modem",
+    "file": "cellular-modem.json"
   },
   "DHCP HAL": {
     "repo": "rdkb-halif-dhcp",
@@ -68,150 +68,5 @@
     "repo": "rdkb-halif-wifi",
     "file": "wifi.json",
     "branch": "develop"
-  },
-  "Bluetooth": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Matter": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Thread": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Zigbee": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Container": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Firewall-Iptabes": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "PPPD": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "UPNP": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Dnsmasq": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "udhcpc": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "dibbler-client": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "dibbler-server": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "iproute2": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "procps": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "Direct Kernel Access": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "net-tools": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "bridge-utils": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "libnetfilter_conntrack": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "ipset": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "ivictl": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "mocactl": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "mocacfg": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "zebra": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "wlancfg": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "wlancfg_tr": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "ti_udhcpc": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "libnl": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "libhostap": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
-  },
-  "wireless-tools": {
-    "repo": "TBD",
-    "file": "TBD",
-    "branch": "TBD"
   }
 }

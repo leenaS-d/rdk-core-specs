@@ -1,188 +1,151 @@
 {
-  "_comment": "Maps a component's display name (exactly as it appears in components/ethwan-router-components.json) to where its interface data lives. All files now consolidated in cpokuru/rdk9-corerdkbroadband-tools under hlapis/<repo>/<file> on main branch.",
+  "_comment": "Maps a component's display name to where its interface data lives under docs/hlapis/<repo>/<file>. repo = the folder name under docs/hlapis/; file = just the JSON filename. branch is ignored (local files have no branch).",
   "WAN Manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/RdkWanManager/wanmanager_interface.json",
-    "branch": "main"
+    "repo": "RdkWanManager",
+    "file": "wanmanager_interface.json"
   },
   "Ethernet Agent (used for WAN)": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/ethernet-agent/ethagent_interface.json",
-    "branch": "main"
+    "repo": "ethernet-agent",
+    "file": "ethagent_interface.json"
   },
   "Ethernet Agent (used for LAN)": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/ethernet-agent/ethagent_interface.json",
-    "branch": "main"
+    "repo": "ethernet-agent",
+    "file": "ethagent_interface.json"
   },
   "Test & Diagnostics": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/test-and-diagnostic/tad_interface.json",
-    "branch": "main"
+    "repo": "test-and-diagnostic",
+    "file": "tad_interface.json"
   },
   "P&M": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/provisioning-and-management/pandm_interface.json",
-    "branch": "main"
+    "repo": "provisioning-and-management",
+    "file": "pandm_interface.json"
   },
   "lan-manager-lite": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/lan-manager-lite/lmlite_interface.json",
-    "branch": "main"
+    "repo": "lan-manager-lite",
+    "file": "lmlite_interface.json"
   },
   "OneWiFi": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/OneWifi/onewifi_wifi_only.json",
-    "branch": "main"
+    "repo": "OneWifi",
+    "file": "onewifi_wifi_only.json"
   },
   "WebConfig": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/webcfg/webcfg_interface.json",
-    "branch": "main"
+    "repo": "webcfg",
+    "file": "webcfg_interface.json"
   },
   "dhcp-manager (recipe for DHCP client and Server)": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/dhcp-manager/dhcpmgr_interface.json",
-    "branch": "main"
+    "repo": "dhcp-manager",
+    "file": "dhcpmgr_interface.json"
   },
   "dhcp-manager (recipe for DHCP client only)": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/dhcp-manager/dhcpmgr_interface.json",
-    "branch": "main"
+    "repo": "dhcp-manager",
+    "file": "dhcpmgr_interface.json"
   },
   "Web PA\n\nincluding:\n- parodus\n- parodus2ccsp\n- start-parodus\n- wdmp-c": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/parodus2ccsp/parodus2ccsp_interface.json",
-    "branch": "main"
+    "repo": "parodus2ccsp",
+    "file": "parodus2ccsp_interface.json"
   },
   "tr069-protocol-agent": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/tr069-protocol-agent/tr69pa_interface.json",
-    "branch": "main"
+    "repo": "tr069-protocol-agent",
+    "file": "tr69pa_interface.json"
   },
   "T2 Telemetry": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/telemetry/t2_interface.json",
-    "branch": "main"
+    "repo": "telemetry",
+    "file": "t2_interface.json"
   },
   "DSM": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/DSM/dsm_interface.json",
-    "branch": "main"
+    "repo": "DSM",
+    "file": "dsm_interface.json"
   },
   "inter-device-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/inter-device-manager/idm_interface.json",
-    "branch": "main"
+    "repo": "inter-device-manager",
+    "file": "idm_interface.json"
   },
   "telco-voice-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/telco-voice-manager/telco_interface.json",
-    "branch": "main"
+    "repo": "telco-voice-manager",
+    "file": "telco_interface.json"
   },
   "ccsp-xdns": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/xdns/xdns_interface.json",
-    "branch": "main"
+    "repo": "xdns",
+    "file": "xdns_interface.json"
   },
   "advanced-security": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/advanced-security/advsec_interface.json",
-    "branch": "main"
+    "repo": "advanced-security",
+    "file": "advsec_interface.json"
   },
   "component-registry": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/component-registry/cr_interface.json",
-    "branch": "main"
+    "repo": "component-registry",
+    "file": "cr_interface.json"
   },
   "secure-upnp": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/secure-upnp/secureupnp_interface.json",
-    "branch": "main"
+    "repo": "secure-upnp",
+    "file": "secureupnp_interface.json"
   },
   "harvester": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/harvester/harvester_interface.json",
-    "branch": "main"
+    "repo": "harvester",
+    "file": "harvester_interface.json"
   },
   "platform-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/platform-manager/platmgr_interface.json",
-    "branch": "main"
+    "repo": "platform-manager",
+    "file": "platmgr_interface.json"
   },
   "led-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/led-manager/led_interface.json",
-    "branch": "main"
+    "repo": "led-manager",
+    "file": "led_interface.json"
   },
   "notify-component": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/notify-component/notify_interface.json",
-    "branch": "main"
+    "repo": "notify-component",
+    "file": "notify_interface.json"
   },
   "Cellular Modem Mgr": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/cellular-modem-manager/cell_interface.json",
-    "branch": "main"
+    "repo": "cellular-modem-manager",
+    "file": "cell_interface.json"
   },
   "cellular-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/cellular-manager/cellcom_interface.json",
-    "branch": "main"
+    "repo": "cellular-manager",
+    "file": "cellcom_interface.json"
   },
   "Mesh Agent\n(Integrates with OpenSync v2.4)": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/mesh-agent/mesh_interface.json",
-    "branch": "main"
+    "repo": "mesh-agent",
+    "file": "mesh_interface.json"
   },
   "Mesh Agent (Integrates with OpenSync v2.4)": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/mesh-agent/mesh_interface.json",
-    "branch": "main"
+    "repo": "mesh-agent",
+    "file": "mesh_interface.json"
   },
   "moca-agent": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/moca-agent/moca_interface.json",
-    "branch": "main"
+    "repo": "moca-agent",
+    "file": "moca_interface.json"
   },
   "MTA Agent": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/media-terminal-adapter-agent/mta_interface.json",
-    "branch": "main"
+    "repo": "media-terminal-adapter-agent",
+    "file": "mta_interface.json"
   },
   "cable-modem-agent": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/cable-modem-agent/cmagent_interface.json",
-    "branch": "main"
+    "repo": "cable-modem-agent",
+    "file": "cmagent_interface.json"
   },
   "xDSL Manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/xdsl-manager/xdsl_interface.json",
-    "branch": "main"
+    "repo": "xdsl-manager",
+    "file": "xdsl_interface.json"
   },
   "gpon-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/gpon-manager/gpon_interface.json",
-    "branch": "main"
+    "repo": "gpon-manager",
+    "file": "gpon_interface.json"
   },
   "epon-manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/epon-manager/epon_interface.json",
-    "branch": "main"
+    "repo": "epon-manager",
+    "file": "epon_interface.json"
   },
   "EPON Agent": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/chandraepon/eponagent_interface.json",
-    "branch": "main"
+    "repo": "chandraepon",
+    "file": "eponagent_interface.json"
   },
   "PPP Manager": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/ppp-manager/ppp_interface.json",
-    "branch": "main"
+    "repo": "ppp-manager",
+    "file": "ppp_interface.json"
   },
   "hotspot": {
-    "repo": "rdk9-corerdkbroadband-tools",
-    "file": "hlapis/hotspot/hotspot_interface.json",
-    "branch": "main"
+    "repo": "hotspot",
+    "file": "hotspot_interface.json"
   }
 }
