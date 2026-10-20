@@ -24,7 +24,7 @@ stylesheets:
   - assets/css/chatbox.css
   - assets/css/contact.css
 
-asset_version: rdk9-20261016-1
+asset_version: rdk9-20261020-1
 
 # The Northbound entry is a dropdown only; the Firebolt Core API Specification
 # is also reached from the home page cards.
