@@ -361,7 +361,7 @@
     },
     {
       "name": "ermgr",
-      "category": "Core Device Control Protocols",
+      "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/ermgr"
@@ -403,14 +403,14 @@
     },
     {
       "name": "iarmbus-headers",
-      "category": "Core Device Control Protocols",
+      "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/iarmbus/tree/develop/core/include"
     },
     {
       "name": "iarmmgrs",
-      "category": "Core Device Control Protocols",
+      "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/iarmmgrs"
@@ -438,7 +438,7 @@
     },
     {
       "name": "libparodus",
-      "category": "Core Device Control Protocols",
+      "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/Comcast/libparodus"
@@ -504,7 +504,7 @@
       "category": "Uncategorized",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/RDK-player-interface"
+      "url": "https://github.com/rdkcentral/middleware-player-interface"
     },
     {
       "name": "ralf-utils",
@@ -781,7 +781,7 @@
     },
     {
       "name": "xr-voice-sdk",
-      "category": "Core Device Control Protocols",
+      "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/xr-voice-sdk"
