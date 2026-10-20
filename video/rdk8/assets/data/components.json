@@ -10,7 +10,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "2.4.0",
-      "url": "https://github.com/rdkcentral/rdk-apparmor-profiles"
+      "url": "https://github.com/rdkcentral/rdk-apparmor-profiles/tree/2.4.0"
     },
     {
       "name": "AppGateway",
@@ -18,7 +18,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.1.3",
-      "url": "https://github.com/rdkcentral/entservices-appgateway"
+      "url": "https://github.com/rdkcentral/entservices-appgateway/tree/1.0.1.3"
     },
     {
       "name": "AvOutput",
@@ -26,7 +26,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.1.0",
-      "url": "https://github.com/rdkcentral/entservices-avoutput"
+      "url": "https://github.com/rdkcentral/entservices-avoutput/tree/1.1.0"
     },
     {
       "name": "Bluetooth Manager",
@@ -34,7 +34,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.9",
-      "url": "https://github.com/rdkcentral/bluetooth_mgr"
+      "url": "https://github.com/rdkcentral/bluetooth_mgr/tree/1.0.9"
     },
     {
       "name": "bluetooth-core",
@@ -42,7 +42,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.9",
-      "url": "https://github.com/rdkcentral/bluetooth"
+      "url": "https://github.com/rdkcentral/bluetooth/tree/1.0.9"
     },
     {
       "name": "BlueZ",
@@ -58,15 +58,15 @@
       "layer": "oss",
       "type": "core",
       "releaseTag": "1.0.0",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/breakpad_wrapper"
+      "url": "https://github.com/rdkcentral/breakpad_wrapper/releases/tag/1.0.0"
     },
     {
       "name": "BreakPad",
       "category": "Device Management & Diagnostics",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "1.0-r0",
-      "url": "https://github.com/google/breakpad"
+      "releaseTag": "rev-8b22bab",
+      "url": "https://github.com/google/breakpad/tree/8b22bab"
     },
     {
       "name": "Casting",
@@ -74,23 +74,23 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "2.0.2",
-      "url": "https://github.com/rdkcentral/entservices-casting"
+      "url": "https://github.com/rdkcentral/entservices-xcast/tree/2.0.2"
     },
     {
       "name": "cimplog",
       "category": "Core Utilities",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/xmidt-org/cimplog.git"
+      "releaseTag": "rev-4d96629",
+      "url": "https://github.com/xmidt-org/cimplog/tree/4d96629"
     },
     {
       "name": "CJWT",
       "category": "Core Utilities",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/xmidt-org/cjwt"
+      "releaseTag": "rev-2586a5e",
+      "url": "https://github.com/xmidt-org/cjwt/tree/2586a5e"
     },
     {
       "name": "Common Utilities",
@@ -98,7 +98,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.5.3",
-      "url": "https://github.com/rdkcentral/common_utilities"
+      "url": "https://github.com/rdkcentral/common_utilities/tree/1.5.3"
     },
     {
       "name": "Connectivity",
@@ -106,7 +106,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.5.1",
-      "url": "https://github.com/rdkcentral/entservices-connectivity"
+      "url": "https://github.com/rdkcentral/entservices-connectivity/tree/1.5.1"
     },
     {
       "name": "Control Manager (video)",
@@ -114,7 +114,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.1.11.1",
-      "url": "https://github.com/rdkcentral/control"
+      "url": "https://github.com/rdkcentral/control/tree/1.1.11.1"
     },
     {
       "name": "crashupload",
@@ -122,23 +122,23 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "2.0.1",
-      "url": "https://github.com/rdkcentral/crashupload"
+      "url": "https://github.com/rdkcentral/crashupload/tree/2.0.1"
     },
     {
       "name": "Data Collecting Agent for Telemetry",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/dca"
+      "releaseTag": "rev-94bab6e",
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/dca/+/94bab6e/"
     },
     {
       "name": "DBUS",
       "category": "RPC",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://www.freedesktop.org/wiki/Software/dbus/"
+      "releaseTag": "1.14.8",
+      "url": "https://dbus.freedesktop.org/releases/dbus/dbus-1.14.8.tar.xz"
     },
     {
       "name": "Device Configuration Management Agent",
@@ -146,7 +146,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "2.0.3",
-      "url": "https://github.com/rdkcentral/dcm-agent"
+      "url": "https://github.com/rdkcentral/dcm-agent/tree/2.0.3"
     },
     {
       "name": "Device Settings",
@@ -154,7 +154,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.31.3",
-      "url": "https://github.com/rdkcentral/devicesettings"
+      "url": "https://github.com/rdkcentral/devicesettings/tree/1.0.31.3"
     },
     {
       "name": "Device Settings HAL",
@@ -162,7 +162,7 @@
       "layer": "vendor",
       "type": "core",
       "releaseTag": "6.0.1",
-      "url": "https://github.com/rdkcentral/rdk-halif-device_settings"
+      "url": "https://github.com/rdkcentral/rdk-halif-device_settings/tree/6.0.1"
     },
     {
       "name": "DeviceInfo",
@@ -170,7 +170,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.1.0",
-      "url": "https://github.com/rdkcentral/entservices-deviceinfo"
+      "url": "https://github.com/rdkcentral/entservices-deviceinfo/tree/1.1.0"
     },
     {
       "name": "DisplayInfo",
@@ -178,7 +178,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.1.2",
-      "url": "https://github.com/rdkcentral/entservices-displayinfo"
+      "url": "https://github.com/rdkcentral/entservices-displayinfo/tree/1.1.2"
     },
     {
       "name": "DisplaySettings",
@@ -186,22 +186,22 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.1.0",
-      "url": "https://github.com/rdkcentral/entservices-displaysettings"
+      "url": "https://github.com/rdkcentral/entservices-displaysettings/tree/1.1.0"
     },
     {
       "name": "Dobby",
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "3.16.2",
-      "url": "https://github.com/rdkcentral/Dobby"
+      "releaseTag": "v3.16.2",
+      "url": "https://github.com/rdkcentral/Dobby/tree/v3.16.2"
     },
     {
       "name": "Dobby Thunder Plugin",
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "3.16.2",
+      "releaseTag": "v3.16.2",
       "url": "https://github.com/rdkcentral/Dobby/tree/v3.16.2/rdkPlugins/Thunder"
     },
     {
@@ -209,8 +209,8 @@
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/DSM"
+      "releaseTag": "rev-be204cb",
+      "url": "https://github.com/rdkcentral/DSM/tree/be204cb"
     },
     {
       "name": "Entservices APIs",
@@ -218,7 +218,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "3.4.2",
-      "url": "https://github.com/rdkcentral/entservices-apis"
+      "url": "https://github.com/rdkcentral/entservices-apis/tree/3.4.2"
     },
     {
       "name": "FirmwareDownload",
@@ -226,7 +226,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/entservices-firmwaredownload"
+      "url": "https://github.com/rdkcentral/entservices-firmwaredownload/tree/1.0.1"
     },
     {
       "name": "FirmwareUpdate",
@@ -234,7 +234,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.2.0",
-      "url": "https://github.com/rdkcentral/entservices-firmwareupdate"
+      "url": "https://github.com/rdkcentral/entservices-firmwareupdate/tree/1.2.0"
     },
     {
       "name": "GLIB2",
@@ -249,24 +249,24 @@
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://gn.googlesource.com/gn/"
+      "releaseTag": "rev-39a87c0",
+      "url": "https://gn.googlesource.com/gn.git/+/39a87c0/"
     },
     {
       "name": "GST RDK Plugin",
       "category": "VIDEO",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/gst-plugins-rdk"
+      "releaseTag": "rev-2a713a3",
+      "url": "https://github.com/rdkcentral/gst-plugins-rdk/tree/2a713a3"
     },
     {
       "name": "Gstreamer Rialto Plugin",
       "category": "VIDEO",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "0.17.0",
-      "url": "https://github.com/rdkcentral/rialto-gstreamer"
+      "releaseTag": "v0.17.0",
+      "url": "https://github.com/rdkcentral/rialto-gstreamer/tree/v0.17.0"
     },
     {
       "name": "HDMICec",
@@ -274,7 +274,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.10",
-      "url": "https://github.com/rdkcentral/hdmicec"
+      "url": "https://github.com/rdkcentral/hdmicec/tree/1.0.10"
     },
     {
       "name": "Infrastructure Services",
@@ -282,7 +282,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "3.23.0",
-      "url": "https://github.com/rdkcentral/entservices-infra"
+      "url": "https://github.com/rdkcentral/entservices-infra/tree/3.23.0"
     },
     {
       "name": "HDMI CEC Header",
@@ -290,7 +290,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.4.0",
-      "url": "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
+      "url": "https://github.com/rdkcentral/rdk-halif-hdmi_cec/tree/1.4.0"
     },
     {
       "name": "HDMICec Sink",
@@ -298,7 +298,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.5",
-      "url": "https://github.com/rdkcentral/entservices-hdmicecsink"
+      "url": "https://github.com/rdkcentral/entservices-hdmicecsink/tree/1.0.5"
     },
     {
       "name": "HDMICec source",
@@ -306,7 +306,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.5",
-      "url": "https://github.com/rdkcentral/entservices-hdmicecsource"
+      "url": "https://github.com/rdkcentral/entservices-hdmicecsource/tree/1.0.5"
     },
     {
       "name": "JSONCPP",
@@ -314,15 +314,15 @@
       "layer": "oss",
       "type": "core",
       "releaseTag": "1.8.4",
-      "url": "http://sourceforge.net/projects/jsoncpp/"
+      "url": "https://github.com/open-source-parsers/jsoncpp/tree/1.8.4"
     },
     {
       "name": "Lisa",
       "category": "Entertainment Services",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/LISA"
+      "releaseTag": "rev-ced7674",
+      "url": "https://github.com/rdkcentral/LISA/tree/ced7674"
     },
     {
       "name": "libSysCallWrapper",
@@ -330,7 +330,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.3.3",
-      "url": "https://github.com/rdkcentral/libSyscallWrapper"
+      "url": "https://github.com/rdkcentral/libSyscallWrapper/tree/69fab9a"
     },
     {
       "name": "MediaAndDrm",
@@ -338,7 +338,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.8.2",
-      "url": "https://github.com/rdkcentral/entservices-mediaanddrm"
+      "url": "https://github.com/rdkcentral/entservices-mediaanddrm/tree/1.8.2"
     },
     {
       "name": "memcr",
@@ -346,7 +346,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/LibertyGlobal/memcr"
+      "url": "https://github.com/LibertyGlobal/memcr/tree/e58cf09"
     },
     {
       "name": "networkmanager-plugin",
@@ -354,7 +354,7 @@
       "layer": "oss",
       "type": "core",
       "releaseTag": "v2.0.0",
-      "url": "https://github.com/rdkcentral/networkmanager"
+      "url": "https://github.com/rdkcentral/networkmanager/tree/v2.0.0"
     },
     {
       "name": "OpenSSL",
@@ -362,23 +362,23 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "3.0.15",
-      "url": "https://www.openssl.org/"
+      "url": "https://github.com/openssl/openssl/releases/download/openssl-3.0.15/openssl-3.0.15.tar.gz"
     },
     {
       "name": "PackageManager",
       "category": "Thunder",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "4.4.1",
-      "url": "https://github.com/rdkcentral/PackageManager"
+      "releaseTag": "R4.4.1",
+      "url": "https://github.com/rdkcentral/PackageManager/tree/R4.4.1"
     },
     {
       "name": "Parodus",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/Comcast/libparodus.git"
+      "releaseTag": "rev-8263bb0",
+      "url": "https://github.com/Comcast/libparodus/tree/8263bb0"
     },
     {
       "name": "Peripherals",
@@ -386,15 +386,15 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.4.0",
-      "url": "https://github.com/rdkcentral/entservices-peripherals"
+      "url": "https://github.com/rdkcentral/entservices-peripherals/tree/1.4.0"
     },
     {
       "name": "Protobuf",
       "category": "RPC",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "3.19.6",
-      "url": "https://github.com/protocolbuffers/protobuf"
+      "releaseTag": "v3.19.6",
+      "url": "https://github.com/protocolbuffers/protobuf/tree/c9297981"
     },
     {
       "name": "RDK GStreamer Utils",
@@ -402,31 +402,31 @@
       "layer": "vendor",
       "type": "core",
       "releaseTag": "1.2.0",
-      "url": "https://github.com/rdkcentral/rdk-gstreamer-utils-raspberrypi"
+      "url": "https://github.com/rdkcentral/rdk-gstreamer-utils-raspberrypi/tree/1.2.0"
     },
     {
       "name": "RBUS",
       "category": "RPC",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "2.12.0",
-      "url": "https://github.com/rdkcentral/rbus"
+      "releaseTag": "v2.12.0",
+      "url": "https://github.com/rdkcentral/rbus/tree/v2.12.0"
     },
     {
       "name": "RDK Logger",
       "category": "Core Utilities",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "3.1.0",
-      "url": "https://github.com/rdkcentral/rdk_logger"
+      "releaseTag": "v3.1.0",
+      "url": "https://github.com/rdkcentral/rdk_logger/tree/v3.1.0"
     },
     {
       "name": "RDK Perf",
       "category": "Core Utilities",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/rdkperf"
+      "releaseTag": "rev-d802d56",
+      "url": "https://github.com/rdkcentral/rdkperf/tree/d802d56"
     },
     {
       "name": "RDK V Firmware Upgrader",
@@ -434,15 +434,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.6.1",
-      "url": "https://github.com/rdkcentral/rdkfwupdater"
-    },
-    {
-      "name": "RDK Window Manager",
-      "category": "Utilities",
-      "layer": "RDK",
-      "type": "core",
-      "releaseTag": "0.3.0.0",
-      "url": "https://github.com/rdk-e/rdk-window-manager"
+      "url": "https://github.com/rdkcentral/rdkfwupdater/tree/1.6.1"
     },
     {
       "name": "RDK WPA Supplicant Config",
@@ -458,7 +450,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.2.9",
-      "url": "https://github.com/rdkcentral/remote_debugger"
+      "url": "https://github.com/rdkcentral/remote_debugger/tree/1.2.9"
     },
     {
       "name": "Remote Feature control",
@@ -466,14 +458,14 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.2.1",
-      "url": "https://github.com/rdkcentral/rfc"
+      "url": "https://github.com/rdkcentral/rfc/tree/1.2.1"
     },
     {
       "name": "Rialto Client",
       "category": "VIDEO",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "0.19.0",
+      "releaseTag": "v0.19.0",
       "url": "https://github.com/rdkcentral/rialto/tree/v0.19.0/media/client"
     },
     {
@@ -481,15 +473,15 @@
       "category": "VIDEO",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "0.10.0",
-      "url": "https://github.com/rdkcentral/rialto-ocdm"
+      "releaseTag": "v0.10.0",
+      "url": "https://github.com/rdkcentral/rialto-ocdm/tree/v0.10.0"
     },
     {
       "name": "Rialto Server",
       "category": "VIDEO Services",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "0.19.0",
+      "releaseTag": "v0.19.0",
       "url": "https://github.com/rdkcentral/rialto/tree/v0.19.0/media/server"
     },
     {
@@ -498,7 +490,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.19.0",
-      "url": "https://github.com/rdkcentral/Ripple"
+      "url": "https://github.com/rdkcentral/Ripple/tree/1.19.0"
     },
     {
       "name": "RunTime",
@@ -506,7 +498,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.2.3",
-      "url": "https://github.com/rdkcentral/entservices-runtime"
+      "url": "https://github.com/rdkcentral/entservices-runtime/tree/1.2.3"
     },
     {
       "name": "SoftwareUpdate",
@@ -514,7 +506,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.10.0",
-      "url": "https://github.com/rdkcentral/entservices-softwareupdate"
+      "url": "https://github.com/rdkcentral/entservices-softwareupdate/tree/1.10.0"
     },
     {
       "name": "SysMonTools",
@@ -522,7 +514,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.0.8",
-      "url": "https://github.com/rdkcentral/sys_mon_tools"
+      "url": "https://github.com/rdkcentral/sys_mon_tools/tree/1.0.8"
     },
     {
       "name": "System Time Manager",
@@ -530,7 +522,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.5.1",
-      "url": "https://github.com/rdkcentral/systemtimemgr"
+      "url": "https://github.com/rdkcentral/systemtimemgr/tree/1.5.1"
     },
     {
       "name": "Systemd",
@@ -538,7 +530,7 @@
       "layer": "oss",
       "type": "core",
       "releaseTag": "230",
-      "url": "https://systemd.io/"
+      "url": "https://github.com/systemd/systemd/tree/3a74d4f"
     },
     {
       "name": "telemetry",
@@ -546,31 +538,31 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "1.8.5",
-      "url": "https://github.com/rdkcentral/telemetry"
+      "url": "https://github.com/rdkcentral/telemetry/tree/1.8.5"
     },
     {
       "name": "ThunderJS",
       "category": "Thunder",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/ThunderJS"
+      "releaseTag": "rev-903f843",
+      "url": "https://github.com/rdkcentral/ThunderJS/tree/903f843"
     },
     {
       "name": "trower-base64",
       "category": "Core Utilities",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/Comcast/trower-base64.git"
+      "releaseTag": "rev-fbb9440",
+      "url": "https://github.com/Comcast/trower-base64/tree/fbb9440"
     },
     {
       "name": "ucresolv",
       "category": "Core Utilities",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/Comcast/libucresolv.git"
+      "releaseTag": "rev-996c377",
+      "url": "https://github.com/Comcast/libucresolv/tree/996c377"
     },
     {
       "name": "Wayland",
@@ -578,47 +570,47 @@
       "layer": "oss",
       "type": "core",
       "releaseTag": "1.20.0",
-      "url": "https://wayland.freedesktop.org/"
+      "url": "https://wayland.freedesktop.org/releases/wayland-1.20.0.tar.xz"
     },
     {
       "name": "WayMetric",
       "category": "Utilities",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://code.rdkcentral.com/r/components/opensource/waymetric"
+      "releaseTag": "rev-66b10fa",
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/waymetric/+/66b10fa/"
     },
     {
       "name": "wdmp-c (WebPA Data model parser)",
       "category": "Core Utilities",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/xmidt-org/wdmp-c"
+      "releaseTag": "rev-f9f687b",
+      "url": "https://github.com/xmidt-org/wdmp-c/tree/f9f687b"
     },
     {
       "name": "WebConfig",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.1.0",
-      "url": "https://github.com/xmidt-org/webcfg"
+      "releaseTag": "rev-2c91a00",
+      "url": "https://github.com/xmidt-org/webcfg/tree/2c91a00"
     },
     {
       "name": "Westeros",
       "category": "Display/Graphics",
       "layer": "vendor",
       "type": "core",
-      "releaseTag": "1.01.64",
-      "url": "https://code.rdkcentral.com/r/components/opensource/westeros"
+      "releaseTag": "westeros-1.01.64",
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/westeros/+/refs/tags/Westeros-1.01.64/"
     },
     {
       "name": "WPE Client Libraries",
       "category": "RPC",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "4.4.2",
-      "url": "https://github.com/WebPlatformForEmbedded/libwpe"
+      "releaseTag": "R4.4.2",
+      "url": "https://github.com/rdkcentral/ThunderClientLibraries/tree/R4.4.2"
     },
     {
       "name": "WPE WebKit",
@@ -626,31 +618,31 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "2.38.8",
-      "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit"
+      "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit/tree/680d0af"
     },
     {
       "name": "WPEFramework",
       "category": "VIDEO",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "4.4.3",
-      "url": "https://github.com/rdkcentral/Thunder"
+      "releaseTag": "R4.4.3",
+      "url": "https://github.com/rdkcentral/Thunder/tree/R4.4.3"
     },
     {
       "name": "WPEFramework UI",
       "category": "Thunder",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/ThunderUI"
+      "releaseTag": "rev-ae6d061",
+      "url": "https://github.com/rdkcentral/ThunderUI/tree/ae6d061"
     },
     {
       "name": "wrp-c (msgpack conversion)",
       "category": "Core Utilities",
       "layer": "RDK",
       "type": "core",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/xmidt-org/wrp-c"
+      "releaseTag": "rev-9587e8d",
+      "url": "https://github.com/xmidt-org/wrp-c/tree/9587e8d"
     }
   ]
 }

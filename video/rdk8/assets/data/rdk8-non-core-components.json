@@ -7,35 +7,35 @@
       "category": "VIDEO",
       "layer": "RDK",
       "releaseTag": "3.3.0",
-      "url": "https://github.com/rdkcentral/aamp"
+      "url": "https://github.com/rdkcentral/aamp/tree/3.3.0"
     },
     {
       "name": "audiocapturemgr",
       "category": "Uncategorized",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/audiocapturemgr"
+      "releaseTag": "rev-29f81aa",
+      "url": "https://github.com/rdkcentral/audiocapturemgr/tree/29f81aa"
     },
     {
       "name": "cpeabs",
       "category": "Core Utilities",
       "layer": "RDK",
       "releaseTag": "2.0.0",
-      "url": "https://github.com/xmidt-org/cpeabs"
+      "url": "https://github.com/xmidt-org/cpeabs/tree/c017d41"
     },
     {
       "name": "cpuprocanalyzer",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/cpuprocanalyzer"
+      "releaseTag": "rev-8fb410c",
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/cpuprocanalyzer/+/8fb410c/"
     },
     {
       "name": "dcmjsonparser",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "rev-065da5cb",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/dcm"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/dcm/+/065da5cb/"
 
     },
     {
@@ -43,224 +43,224 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.5",
-      "url": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager"
+      "url": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager/tree/1.0.5"
     },
     {
       "name": "entservices-account",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/entservices-account"
+      "url": "https://github.com/rdkcentral/entservices-account/tree/1.0.2"
     },
     {
       "name": "entservices-avinput",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/entservices-avinput"
+      "url": "https://github.com/rdkcentral/entservices-avinput/tree/1.0.4"
     },
     {
       "name": "entservices-backupmanager",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/entservices-backupmanager"
+      "url": "https://github.com/rdkcentral/entservices-backupmanager/tree/1.0.1"
     },
     {
       "name": "entservices-cloudstore",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-cloudstore"
+      "url": "https://github.com/rdkcentral/entservices-cloudstore/tree/1.0.3"
     },
     {
       "name": "entservices-cryptography",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/entservices-cryptography"
+      "url": "https://github.com/rdkcentral/entservices-cryptography/tree/1.0.2"
     },
     {
       "name": "entservices-devicediagnostics",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.2.2",
-      "url": "https://github.com/rdkcentral/entservices-devicediagnostics"
+      "url": "https://github.com/rdkcentral/entservices-devicediagnostics/tree/1.2.2"
     },
     {
       "name": "entservices-framerate",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.1.2",
-      "url": "https://github.com/rdkcentral/entservices-framerate"
+      "url": "https://github.com/rdkcentral/entservices-framerate/tree/1.1.2"
     },
     {
       "name": "entservices-frontpanel",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/entservices-frontpanel"
+      "url": "https://github.com/rdkcentral/entservices-frontpanel/tree/1.0.2"
     },
     {
       "name": "entservices-hdcpprofile",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.5",
-      "url": "https://github.com/rdkcentral/entservices-hdcpprofile"
+      "url": "https://github.com/rdkcentral/entservices-hdcpprofile/tree/1.0.5"
     },
     {
       "name": "entservices-ledcontrol",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/entservices-ledcontrol"
+      "url": "https://github.com/rdkcentral/entservices-ledcontrol/tree/1.0.1"
     },
     {
       "name": "entservices-messagecontrol",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-messagecontrol"
+      "url": "https://github.com/rdkcentral/entservices-messagecontrol/tree/1.0.3"
     },
     {
       "name": "entservices-migration",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/entservices-migration"
+      "url": "https://github.com/rdkcentral/entservices-migration/tree/1.0.4"
     },
     {
       "name": "entservices-miracast",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "2.0.2",
-      "url": "https://github.com/rdkcentral/entservices-miracast"
+      "url": "https://github.com/rdkcentral/entservices-miracast/tree/2.0.2"
     },
     {
       "name": "entservices-monitor",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-monitor"
+      "url": "https://github.com/rdkcentral/entservices-monitor/tree/1.0.3"
     },
     {
       "name": "entservices-ocicontainer",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-ocicontainer"
+      "url": "https://github.com/rdkcentral/entservices-ocicontainer/tree/1.0.3"
     },
     {
       "name": "entservices-opencdmi",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/entservices-opencdmi"
+      "url": "https://github.com/rdkcentral/entservices-opencdmi/tree/1.0.2"
     },
     {
       "name": "entservices-persistentstore",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-persistentstore"
+      "url": "https://github.com/rdkcentral/entservices-persistentstore/tree/1.0.3"
     },
     {
       "name": "entservices-playerinfo",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-playerinfo"
+      "url": "https://github.com/rdkcentral/entservices-playerinfo/tre/1.0.3"
     },
     {
       "name": "entservices-powermanager",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.1.4",
-      "url": "https://github.com/rdkcentral/entservices-powermanager"
+      "url": "https://github.com/rdkcentral/entservices-powermanager/tree/1.1.4"
     },
     {
       "name": "entservices-rdkappmanagers",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "0.3.0.3",
-      "url": "https://github.com/rdkcentral/entservices-appmanagers"
+      "url": "https://github.com/rdkcentral/entservices-appmanagers/tree/0.3.0.3"
     },
     {
       "name": "entservices-screencapture",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-screencapture"
+      "url": "https://github.com/rdkcentral/entservices-screencapture/tree/1.0.3"
     },
     {
       "name": "entservices-sharedstorage",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/entservices-sharedstorage"
+      "url": "https://github.com/rdkcentral/entservices-sharedstorage/tree/1.0.4"
     },
     {
       "name": "entservices-systemmode",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.1.0",
-      "url": "https://github.com/rdkcentral/entservices-systemmode"
+      "url": "https://github.com/rdkcentral/entservices-systemmode/tree/1.1.0"
     },
     {
       "name": "entservices-systemservices",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.1.3",
-      "url": "https://github.com/rdkcentral/entservices-systemservices"
+      "url": "https://github.com/rdkcentral/entservices-systemservices/tree/1.1.3"
     },
     {
       "name": "entservices-telemetry",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/entservices-telemetry"
+      "url": "https://github.com/rdkcentral/entservices-telemetry/tree/1.0.4"
     },
     {
       "name": "entservices-usbdevice",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/entservices-usbdevice"
+      "url": "https://github.com/rdkcentral/entservices-usbdevice/tree/1.0.3"
     },
     {
       "name": "entservices-usbmassstorage",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/entservices-usbmassstorage"
+      "url": "https://github.com/rdkcentral/entservices-usbmassstorage/tree/1.0.4"
     },
     {
       "name": "entservices-userpreferences",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.1.1",
-      "url": "https://github.com/rdkcentral/entservices-userpreferences"
+      "url": "https://github.com/rdkcentral/entservices-userpreferences/tree/1.1.1"
     },
     {
       "name": "entservices-usersettings",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.6",
-      "url": "https://github.com/rdkcentral/entservices-usersettings"
+      "url": "https://github.com/rdkcentral/entservices-usersettings/tree/1.0.6"
     },
     {
       "name": "entservices-warehouse",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/entservices-warehouse"
+      "url": "https://github.com/rdkcentral/entservices-warehouse/tree/1.0.4"
     },
     {
       "name": "ermgr",
       "category": "Core Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "rev-125b87e9",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/ermgr"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/ermgr/+/125b87e9/"
     },
     {
       "name": "firebolt-cpp-client",
@@ -281,76 +281,76 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "rev-c951c66e",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/rmf_tools/generate_si_cache"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/rmf_tools/generate_si_cache/+/c951c66e/"
     },
     {
       "name": "iarmbus",
       "category": "Core Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "1.0.3",
-      "url": "https://github.com/rdkcentral/iarmbus"
+      "url": "https://github.com/rdkcentral/iarmbus/tree/1.0.3"
     },
     {
       "name": "iarmmgrs",
       "category": "Core Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "1.1.13.1",
-      "url": "https://github.com/rdkcentral/iarmmgrs"
+      "url": "https://github.com/rdkcentral/iarmmgrs/tree/1.1.13.1"
     },
     {
       "name": "javascriptcore",
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "rev-fc1703ed",
-      "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit"
+      "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit/tree/fc1703ed"
     },
     {
       "name": "libunpriv",
       "category": "Core Utilities",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/rdk-libunpriv"
+      "url": "https://github.com/rdkcentral/rdk-libunpriv/tree/1.0.2"
     },
     {
       "name": "lxccpid",
       "category": "Containerization & Application Management",
       "layer": "RDK",
       "releaseTag": "rev-25ba689f",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/lxccpid"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/lxccpid/+/25ba689f/"
     },
     {
       "name": "media-utils",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "rev-bfb74817",
-      "url": "https://github.com/rdkcentral/media_utils"
+      "url": "https://github.com/rdkcentral/media_utils/tree/bfb74817"
     },
     {
       "name": "media-utils-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.6",
-      "url": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture"
+      "url": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture/tree/1.0.6"
     },
     {
       "name": "memcapture",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/RDKCentral/MemCapture"
+      "releaseTag": "rev-0cf90e0",
+      "url": "https://github.com/RDKCentral/MemCapture/tree/0cf90e0"
     },
     {
       "name": "meminsight",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "1.0",
-      "url": "https://github.com/rdkcentral/meminsight"
+      "releaseTag": "rev-f83f180",
+      "url": "https://github.com/rdkcentral/meminsight/tree/f83f180"
     },
     {
       "name": "memstress",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "0.1",
+      "releaseTag": "master",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/sys_mon_tools/mem_analyser_tools"
     },
     {
@@ -365,77 +365,77 @@
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
       "releaseTag": "1.3.0",
-      "url": "https://github.com/rdkcentral/eshelpers"
+      "url": "https://github.com/rdkcentral/eshelpers/tree/1.3.0"
     },
     {
       "name": "packager-lisa",
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
       "releaseTag": "1.2.4",
-      "url": "https://github.com/rdkcentral/libpackage"
+      "url": "https://github.com/rdkcentral/libpackage/tree/1.2.4"
     },
     {
       "name": "paroduscl",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "rev-c6b1ee63",
-      "url": "https://github.com/Comcast/paroduscl"
+      "url": "https://github.com/Comcast/paroduscl/tree/c6b1ee63"
     },
     {
       "name": "player-interface",
       "category": "Entertainment Services",
       "layer": "RDK",
-      "releaseTag": "0.1.0",
-      "url": "https://github.com/rdkcentral/RDK-player-interface"
+      "releaseTag": "rev-269f2b1",
+      "url": "https://github.com/rdkcentral/middleware-player-interface/tree/269f2b1"
     },
     {
       "name": "power-manager-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "1.0.4",
-      "url": "https://github.com/rdkcentral/rdk-halif-power_manager"
+      "url": "https://github.com/rdkcentral/rdk-halif-power_manager/tree/1.0.4"
     },
     {
       "name": "ralf-utils",
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
       "releaseTag": "1.2.0",
-      "url": "https://github.com/rdkcentral/ralf-utils"
+      "url": "https://github.com/rdkcentral/ralf-utils/tree/1.2.0"
     },
     {
       "name": "rdk-gstreamer-utils-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "2.0.2",
-      "url": "https://github.com/rdkcentral/gstreamer-netflix-platform"
+      "url": "https://github.com/rdkcentral/gstreamer-netflix-platform/tree/2.0.2"
     },
     {
       "name": "rdkat",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.1.0",
-      "url": "https://github.com/rdkcentral/rdkat"
+      "url": "https://github.com/rdkcentral/rdkat/tree/1.1.0"
     },
     {
       "name": "rdkcertconfig",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/rdk-cert-config"
+      "url": "https://github.com/rdkcentral/rdk-cert-config/tree/1.0.1"
     },
     {
       "name": "rdknativescript",
       "category": "Uncategorized",
       "layer": "RDK",
       "releaseTag": "2.0.4",
-      "url": "https://github.com/rdkcentral/rdkNativeScript"
+      "url": "https://github.com/rdkcentral/rdkNativeScript/tree/2.0.4"
     },
     {
       "name": "rdkshell",
       "category": "Containerization & Application Management",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/RDKShell"
+      "releaseTag": "rev-a0a88b8",
+      "url": "https://github.com/rdkcentral/RDKShell/tree/a0a88b8"
     },
     {
       "name": "rdksysctl",
@@ -448,29 +448,29 @@
       "name": "rdkversion",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/rdkversion"
+      "releaseTag": "rev-d461bbd",
+      "url": "https://github.com/rdkcentral/rdkversion/tree/d461bbd"
     },
     {
       "name": "rdmagent",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "2.1.3",
-      "url": "https://github.com/rdkcentral/rdm-agent"
+      "url": "https://github.com/rdkcentral/rdm-agent/tree/2.1.3"
     },
     {
       "name": "reboot-meminsight",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.0.0v1",
-      "url": "https://github.com/rdkcentral/reboot-manager"
+      "url": "https://github.com/rdkcentral/reboot-manager/tree/1.0.0v1"
     },
     {
       "name": "residentui",
       "category": "Containerization & Application Management",
       "layer": "RDK",
-      "releaseTag": "N/A",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/RDK_apps"
+      "releaseTag": "rev-e43f3cc",
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/RDK_apps/+/e43f3cc/"
     },
     {
       "name": "rt-headers",
@@ -483,64 +483,64 @@
       "name": "rtcore",
       "category": "RPC",
       "layer": "RDK",
-      "releaseTag": "1.0.1",
+      "releaseTag": "rev-c6ba095",
       "url": "https://github.com/rdkcentral/pxCore/tree/rtcore"
     },
     {
       "name": "rtremote",
       "category": "RPC",
       "layer": "RDK",
-      "releaseTag": "2.0.0",
-      "url": "https://github.com/rdkcentral/rtRemote"
+      "releaseTag": "rev-7e29a87",
+      "url": "https://github.com/rdkcentral/rtRemote/tree/7e29a87"
     },
     {
       "name": "sceneset",
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
       "releaseTag": "0.3.0",
-      "url": "https://github.com/rdkcentral/sceneset"
+      "url": "https://github.com/rdkcentral/sceneset/tree/0.3.0"
     },
     {
       "name": "streamfs",
       "category": "VIDEO",
       "layer": "RDK",
       "releaseTag": "rev-90914ec0",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs/+/90914ec0/"
     },
     {
       "name": "streamfs-fcc",
       "category": "VIDEO",
       "layer": "RDK",
       "releaseTag": "rev-71af748f",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs_fcc"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs_fcc/+/71af748f/"
     },
     {
       "name": "subtec",
       "category": "VIDEO",
       "layer": "RDK",
       "releaseTag": "1.6.0",
-      "url": "https://github.com/rdkcentral/subtec-app"
+      "url": "https://github.com/rdkcentral/subtec-app/tree/1.6.0"
     },
     {
       "name": "sysint",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "4.5.2v2",
-      "url": "https://github.com/rdkcentral/sysint"
+      "url": "https://github.com/rdkcentral/sysint/tree/4.5.2v2"
     },
     {
       "name": "tdk",
       "category": "Build System/OE extensions/Testing",
       "layer": "RDK",
       "releaseTag": "rev-b05d3991",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdkv/tools/tdkv"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdkv/tools/tdkv/+/b95d3991/"
     },
     {
       "name": "tenablehdcp",
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "rev-d44c7438",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/rmf_tools/tenableHDCP"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/rmf_tools/tenableHDCP/+/d44c7438/"
     },
     {
       "name": "thunder-hang-recovery",
@@ -554,49 +554,49 @@
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "1.2.0",
-      "url": "https://github.com/rdkcentral/ThunderPluginActivator"
+      "url": "https://github.com/rdkcentral/ThunderPluginActivator/tree/1.2.0"
     },
     {
       "name": "thunderstartupservices",
       "category": "Uncategorized",
       "layer": "RDK",
       "releaseTag": "1.3.1",
-      "url": "https://github.com/rdkcentral/thunder-startup-services"
+      "url": "https://github.com/rdkcentral/thunder-startup-services/tree/1.3.1"
     },
     {
       "name": "tr69hostif",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.3.7",
-      "url": "https://github.com/rdkcentral/tr69hostif"
+      "url": "https://github.com/rdkcentral/tr69hostif/tree/1.3.7"
     },
     {
       "name": "tts",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.0.5",
-      "url": "https://github.com/rdkcentral/ttsengine"
+      "url": "https://github.com/rdkcentral/ttsengine/tree/1.0.5"
     },
     {
       "name": "tvsettings-hal-headers",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "3.1.0",
-      "url": "https://github.com/rdkcentral/rdkv-halif-tvsettings"
+      "url": "https://github.com/rdkcentral/rdkv-halif-tvsettings/tree/3.1.0"
     },
     {
       "name": "uwebsockets",
       "category": "Core Utilities",
       "layer": "RDK",
       "releaseTag": "rev-c7aa9847",
-      "url": "https://github.com/uNetworking/uWebSockets"
+      "url": "https://github.com/uNetworking/uWebSockets/tree/c7aa9847"
     },
     {
       "name": "webkitbrowser-plugin",
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "1.1.30",
-      "url": "https://github.com/rdkcentral/rdkservices"
+      "url": "https://github.com/rdkcentral/rdkservices/tree/1.1.30"
     },
     {
       "name": "wpe-backend-rdk",
@@ -609,50 +609,50 @@
       "name": "wpeframework-ocdm-clearkey",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "1.0.0",
-      "url": "https://github.com/rdkcentral/OCDM-Clearkey"
+      "releaseTag": "rev-ddda855",
+      "url": "https://github.com/rdkcentral/OCDM-Clearkey/tree/ddda855"
     },
     {
       "name": "wpeframework-ocdm-playready-rdk",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "1.0.1",
-      "url": "https://github.com/rdkcentral/playready-rdk"
+      "releaseTag": "rev-20c6542",
+      "url": "https://github.com/rdkcentral/playready-rdk/tree/20c6542"
     },
     {
       "name": "wpeframework-ocdm-widevine",
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/widevine-rdk"
+      "url": "https://github.com/rdkcentral/widevine-rdk/tree/1.0.2"
     },
     {
       "name": "wpeframework-tools",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "4.4.3",
-      "url": "https://github.com/rdkcentral/ThunderTools"
+      "releaseTag": "R4.4.3",
+      "url": "https://github.com/rdkcentral/ThunderTools/tree/R4.4.3"
     },
     {
       "name": "xdial",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "1.0.2",
-      "url": "https://github.com/rdkcentral/xdialserver"
+      "url": "https://github.com/rdkcentral/xdialserver/tree/1.0.2"
     },
     {
       "name": "xmidt-agent",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
-      "releaseTag": "0.5.15",
-      "url": "https://github.com/xmidt-org/xmidt-agent"
+      "releaseTag": "v0.5.15",
+      "url": "https://github.com/xmidt-org/xmidt-agent/tree/v0.5.15"
     },
     {
       "name": "xr-voice-sdk",
       "category": "Core Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "1.0.12",
-      "url": "https://github.com/rdkcentral/xr-voice-sdk"
+      "url": "https://github.com/rdkcentral/xr-voice-sdk/tree/1.0.12"
     }
   ]
 }
