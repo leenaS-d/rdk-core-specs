@@ -483,12 +483,17 @@ limitations under the License.
 }
 .hardware-spec > table,
 .hardware-spec-modal .spec-modal-body table {
-  display:block;
   width:100%;
   max-width:100%;
   overflow-x:auto;
   border:1px solid var(--border);
   box-shadow:var(--shadow);
+}
+.hardware-spec > table {
+  display:block;
+}
+.hardware-spec-modal .spec-modal-body table {
+  display:table;
 }
 .hardware-spec > table th,
 .hardware-spec-modal .spec-modal-body table th {
