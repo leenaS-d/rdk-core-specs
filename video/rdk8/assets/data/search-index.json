@@ -656,7 +656,7 @@
     },
     {
       "title": "BreakPad",
-      "text": "Device Management & Diagnostics · oss layer · release 1.0-r0.",
+      "text": "Device Management & Diagnostics · oss layer · release rev-8b22bab.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -668,13 +668,13 @@
     },
     {
       "title": "cimplog",
-      "text": "Core Utilities · RDK layer · release 1.0.0.",
+      "text": "Core Utilities · RDK layer · release rev-4d96629.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "CJWT",
-      "text": "Core Utilities · RDK layer · release 1.0.0.",
+      "text": "Core Utilities · RDK layer · release rev-2586a5e.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -704,13 +704,13 @@
     },
     {
       "title": "Data Collecting Agent for Telemetry",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.0.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-94bab6e.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "DBUS",
-      "text": "RPC · oss layer · release 1.0.0.",
+      "text": "RPC · oss layer · release 1.14.8.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -752,19 +752,19 @@
     },
     {
       "title": "Dobby",
-      "text": "Containerization & Application Management · RDK layer · release 3.16.2.",
+      "text": "Containerization & Application Management · RDK layer · release v3.16.2.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Dobby Thunder Plugin",
-      "text": "Containerization & Application Management · RDK layer · release 3.16.2.",
+      "text": "Containerization & Application Management · RDK layer · release v3.16.2.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "DSM",
-      "text": "Containerization & Application Management · RDK layer · release 1.0.0.",
+      "text": "Containerization & Application Management · RDK layer · release rev-be204cb.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -794,19 +794,19 @@
     },
     {
       "title": "GN (Ninja) (native)",
-      "text": "Build System/OE extensions/Testing · RDK layer · release 1.0.0.",
+      "text": "Build System/OE extensions/Testing · RDK layer · release rev-39a87c0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "GST RDK Plugin",
-      "text": "VIDEO · RDK layer · release 1.0.0.",
+      "text": "VIDEO · RDK layer · release rev-2a713a3.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Gstreamer Rialto Plugin",
-      "text": "VIDEO · RDK layer · release 0.17.0.",
+      "text": "VIDEO · RDK layer · release v0.17.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -848,7 +848,7 @@
     },
     {
       "title": "Lisa",
-      "text": "Entertainment Services · RDK layer · release 1.0.0.",
+      "text": "Entertainment Services · RDK layer · release rev-ced7674.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -884,13 +884,13 @@
     },
     {
       "title": "PackageManager",
-      "text": "Thunder · RDK layer · release 4.4.1.",
+      "text": "Thunder · RDK layer · release R4.4.1.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Parodus",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.0.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-8263bb0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -902,7 +902,7 @@
     },
     {
       "title": "Protobuf",
-      "text": "RPC · oss layer · release 3.19.6.",
+      "text": "RPC · oss layer · release v3.19.6.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -914,31 +914,25 @@
     },
     {
       "title": "RBUS",
-      "text": "RPC · RDK layer · release 2.12.0.",
+      "text": "RPC · RDK layer · release v2.12.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "RDK Logger",
-      "text": "Core Utilities · oss layer · release 3.1.0.",
+      "text": "Core Utilities · oss layer · release v3.1.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "RDK Perf",
-      "text": "Core Utilities · oss layer · release 1.0.0.",
+      "text": "Core Utilities · oss layer · release rev-d802d56.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "RDK V Firmware Upgrader",
       "text": "Core Device Control Protocols · RDK layer · release 1.6.1.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
-      "title": "RDK Window Manager",
-      "text": "Utilities · RDK layer · release 0.3.0.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -962,19 +956,19 @@
     },
     {
       "title": "Rialto Client",
-      "text": "VIDEO · RDK layer · release 0.19.0.",
+      "text": "VIDEO · RDK layer · release v0.19.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Rialto OCDM",
-      "text": "VIDEO · RDK layer · release 0.10.0.",
+      "text": "VIDEO · RDK layer · release v0.10.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Rialto Server",
-      "text": "VIDEO Services · RDK layer · release 0.19.0.",
+      "text": "VIDEO Services · RDK layer · release v0.19.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1022,19 +1016,19 @@
     },
     {
       "title": "ThunderJS",
-      "text": "Thunder · RDK layer · release 1.0.0.",
+      "text": "Thunder · RDK layer · release rev-903f843.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "trower-base64",
-      "text": "Core Utilities · oss layer · release 1.0.0.",
+      "text": "Core Utilities · oss layer · release rev-fbb9440.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "ucresolv",
-      "text": "Core Utilities · RDK layer · release 1.0.0.",
+      "text": "Core Utilities · RDK layer · release rev-996c377.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1046,31 +1040,31 @@
     },
     {
       "title": "WayMetric",
-      "text": "Utilities · RDK layer · release 1.0.0.",
+      "text": "Utilities · RDK layer · release rev-66b10fa.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "wdmp-c (WebPA Data model parser)",
-      "text": "Core Utilities · RDK layer · release 1.0.0.",
+      "text": "Core Utilities · RDK layer · release rev-f9f687b.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "WebConfig",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.1.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-2c91a00.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Westeros",
-      "text": "Display/Graphics · vendor layer · release 1.01.64.",
+      "text": "Display/Graphics · vendor layer · release westeros-1.01.64.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "WPE Client Libraries",
-      "text": "RPC · RDK layer · release 4.4.2.",
+      "text": "RPC · RDK layer · release R4.4.2.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1082,19 +1076,19 @@
     },
     {
       "title": "WPEFramework",
-      "text": "VIDEO · RDK layer · release 4.4.3.",
+      "text": "VIDEO · RDK layer · release R4.4.3.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "WPEFramework UI",
-      "text": "Thunder · RDK layer · release 1.0.0.",
+      "text": "Thunder · RDK layer · release rev-ae6d061.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "wrp-c (msgpack conversion)",
-      "text": "Core Utilities · RDK layer · release 1.0.0.",
+      "text": "Core Utilities · RDK layer · release rev-9587e8d.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1106,7 +1100,7 @@
     },
     {
       "title": "audiocapturemgr",
-      "text": "Uncategorized · RDK layer · release 1.0.0.",
+      "text": "Uncategorized · RDK layer · release rev-29f81aa.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1118,7 +1112,7 @@
     },
     {
       "title": "cpuprocanalyzer",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.0.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-8fb410c.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1382,19 +1376,19 @@
     },
     {
       "title": "memcapture",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.0.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-0cf90e0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "meminsight",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-f83f180.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "memstress",
-      "text": "Device Management & Diagnostics · RDK layer · release 0.1.",
+      "text": "Device Management & Diagnostics · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1424,7 +1418,7 @@
     },
     {
       "title": "player-interface",
-      "text": "Entertainment Services · RDK layer · release 0.1.0.",
+      "text": "Entertainment Services · RDK layer · release rev-269f2b1.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1466,7 +1460,7 @@
     },
     {
       "title": "rdkshell",
-      "text": "Containerization & Application Management · RDK layer · release 1.0.0.",
+      "text": "Containerization & Application Management · RDK layer · release rev-a0a88b8.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1478,7 +1472,7 @@
     },
     {
       "title": "rdkversion",
-      "text": "Device Management & Diagnostics · RDK layer · release 1.0.0.",
+      "text": "Device Management & Diagnostics · RDK layer · release rev-d461bbd.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1496,7 +1490,7 @@
     },
     {
       "title": "residentui",
-      "text": "Containerization & Application Management · RDK layer · release N/A.",
+      "text": "Containerization & Application Management · RDK layer · release rev-e43f3cc.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1508,13 +1502,13 @@
     },
     {
       "title": "rtcore",
-      "text": "RPC · RDK layer · release 1.0.1.",
+      "text": "RPC · RDK layer · release rev-c6ba095.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "rtremote",
-      "text": "RPC · RDK layer · release 2.0.0.",
+      "text": "RPC · RDK layer · release rev-7e29a87.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1616,13 +1610,13 @@
     },
     {
       "title": "wpeframework-ocdm-clearkey",
-      "text": "Thunder · RDK layer · release 1.0.0.",
+      "text": "Thunder · RDK layer · release rev-ddda855.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "wpeframework-ocdm-playready-rdk",
-      "text": "Thunder · RDK layer · release 1.0.1.",
+      "text": "Thunder · RDK layer · release rev-20c6542.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1634,7 +1628,7 @@
     },
     {
       "title": "wpeframework-tools",
-      "text": "Thunder · RDK layer · release 4.4.3.",
+      "text": "Thunder · RDK layer · release R4.4.3.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1646,7 +1640,7 @@
     },
     {
       "title": "xmidt-agent",
-      "text": "Device Management & Diagnostics · RDK layer · release 0.5.15.",
+      "text": "Device Management & Diagnostics · RDK layer · release v0.5.15.",
       "category": "Components",
       "url": "component-catalog.html"
     },

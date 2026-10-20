@@ -45,7 +45,7 @@
     {
       "halInterface": "Bluetooth HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/bluetooth_vendor_document"
+      "source": "https://github.com/rdkcentral/rdk-halif-bluetooth"
     },
     {
       "halInterface": "Westeros Sink HAL",
