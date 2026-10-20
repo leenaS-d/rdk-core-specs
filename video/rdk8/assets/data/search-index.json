@@ -788,7 +788,7 @@
     },
     {
       "title": "GLIB2",
-      "text": "Core Utilities · oss layer · release 2.35.",
+      "text": "Core Utilities · oss layer · release 2.72.3.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1106,7 +1106,7 @@
     },
     {
       "title": "cpeabs",
-      "text": "Core Utilities · RDK layer · release 2.0.0.",
+      "text": "Utilities · RDK layer · release 2.0.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1310,7 +1310,7 @@
     },
     {
       "title": "ermgr",
-      "text": "Core Device Control Protocols · RDK layer · release rev-125b87e9.",
+      "text": "Device Control Protocols · RDK layer · release rev-125b87e9.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1334,13 +1334,13 @@
     },
     {
       "title": "iarmbus",
-      "text": "Core Device Control Protocols · RDK layer · release 1.0.3.",
+      "text": "Device Control Protocols · RDK layer · release 1.0.3.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "iarmmgrs",
-      "text": "Core Device Control Protocols · RDK layer · release 1.1.13.1.",
+      "text": "Device Control Protocols · RDK layer · release 1.1.13.1.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1352,7 +1352,7 @@
     },
     {
       "title": "libunpriv",
-      "text": "Core Utilities · RDK layer · release 1.0.2.",
+      "text": "Utilities · RDK layer · release 1.0.2.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1568,7 +1568,7 @@
     },
     {
       "title": "thunderstartupservices",
-      "text": "Uncategorized · RDK layer · release 1.3.1.",
+      "text": "Thunder · RDK layer · release 1.3.1.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1592,7 +1592,7 @@
     },
     {
       "title": "uwebsockets",
-      "text": "Core Utilities · RDK layer · release rev-c7aa9847.",
+      "text": "Utilities · RDK layer · release rev-c7aa9847.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1646,7 +1646,7 @@
     },
     {
       "title": "xr-voice-sdk",
-      "text": "Core Device Control Protocols · RDK layer · release 1.0.12.",
+      "text": "Device Control Protocols · RDK layer · release 1.0.12.",
       "category": "Components",
       "url": "component-catalog.html"
     },

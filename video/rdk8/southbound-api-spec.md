@@ -13,7 +13,6 @@ table:
   fields: [halInterface, releaseTag, source]
   sort_field: halInterface
   link_column: 2
-  strip_release_path: true
   search_placeholder: Search Southbound APIs
   empty_message: No southbound api specifications have been loaded.
   show_version: false

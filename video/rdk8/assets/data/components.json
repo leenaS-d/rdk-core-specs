@@ -50,7 +50,7 @@
       "layer": "RDK",
       "type": "core",
       "releaseTag": "5.48-r5",
-      "url": "https://www.bluez.org/"
+      "url": "https://cdn.kernel.org/pub/linux/bluetooth/bluez-5.48.tar.xz"
     },
     {
       "name": "Breakpad Wrapper",
@@ -241,8 +241,8 @@
       "category": "Core Utilities",
       "layer": "oss",
       "type": "core",
-      "releaseTag": "2.35",
-      "url": "https://gitlab.gnome.org/GNOME/glib"
+      "releaseTag": "2.72.3",
+      "url": "https://download.gnome.org/sources/glib/2.72/glib-2.72.3.tar.xz"
     },
     {
       "name": "GN (Ninja) (native)",

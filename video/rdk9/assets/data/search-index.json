@@ -1622,7 +1622,7 @@
     },
     {
       "title": "ermgr",
-      "text": "Core Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1658,13 +1658,13 @@
     },
     {
       "title": "iarmbus-headers",
-      "text": "Core Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "iarmmgrs",
-      "text": "Core Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1688,7 +1688,7 @@
     },
     {
       "title": "libparodus",
-      "text": "Core Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1982,7 +1982,7 @@
     },
     {
       "title": "xr-voice-sdk",
-      "text": "Core Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
