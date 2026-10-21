@@ -2,9 +2,9 @@
   "schemaVersion": "pdf-extract-manifest-1.0",
   "documents": [
     {
-      "document": "firebolt-crypto",
-      "source": "Firebolt 9 Crypto API Specifications.pdf",
-      "sha256": "61af48c8f06c4ec153c55ad4ddcd3f0b87848c47d25d54dc2f60f4339e08acdd"
+      "document": "firebolt-api-spec",
+      "source": "Firebolt 9 API Specifications.pdf",
+      "sha256": "4bf5823afb68e00b457d65ccde53c86a45234731e3bbf6c4f16db23cc26e44a5"
     }
   ]
 }

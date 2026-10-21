@@ -67,6 +67,12 @@
       "url": "firebolt-api-spec.html"
     },
     {
+      "title": "AudioOutput",
+      "text": "AudioOutput · connectedPorts onConnectedPortsChanged · 9.0.0 · -",
+      "category": "Firebolt 9 Core API Specification",
+      "url": "firebolt-api-spec.html"
+    },
+    {
       "title": "Device",
       "text": "Device · uid · 8.0.0 · -",
       "category": "Firebolt 9 Core API Specification",
@@ -356,49 +362,31 @@
     },
     {
       "title": "Network",
-      "text": "Network · interfaces · 9.0.0 · -",
+      "text": "Network · interfaces · 9.0.0 · - · pdf-red-row",
       "category": "Firebolt 9 Core API Specification",
       "url": "firebolt-api-spec.html"
     },
     {
       "title": "Network",
-      "text": "Network · interfaceStatus onInterfaceStatusChanged · 9.0.0 · -",
+      "text": "Network · interfaceStatus onInterfaceStatusChanged · 9.0.0 · - · pdf-red-row",
       "category": "Firebolt 9 Core API Specification",
       "url": "firebolt-api-spec.html"
     },
     {
       "title": "Network",
-      "text": "Network · interfaceConfig onInterfaceConfigChanged · 9.0.0 · -",
+      "text": "Network · interfaceConfig onInterfaceConfigChanged · 9.0.0 · - · pdf-red-row",
       "category": "Firebolt 9 Core API Specification",
       "url": "firebolt-api-spec.html"
     },
     {
       "title": "Network",
-      "text": "Network · interfaceStatistics · 9.0.0 · -",
+      "text": "Network · interfaceStatistics · 9.0.0 · - · pdf-red-row",
       "category": "Firebolt 9 Core API Specification",
       "url": "firebolt-api-spec.html"
     },
     {
       "title": "Network",
-      "text": "Network · interfaceDetails onInterfaceDetailsChanged · 9.0.0 · -",
-      "category": "Firebolt 9 Core API Specification",
-      "url": "firebolt-api-spec.html"
-    },
-    {
-      "title": "ParentalControl",
-      "text": "ParentalControl · pinControl · ??? · - · pdf-red-row",
-      "category": "Firebolt 9 Core API Specification",
-      "url": "firebolt-api-spec.html"
-    },
-    {
-      "title": "ParentalControl",
-      "text": "ParentalControl · blockNotRatedContent · ??? · - · pdf-red-row",
-      "category": "Firebolt 9 Core API Specification",
-      "url": "firebolt-api-spec.html"
-    },
-    {
-      "title": "ParentalControl",
-      "text": "ParentalControl · viewingRestrictions · ??? · - · pdf-red-row",
+      "text": "Network · interfaceDetails onInterfaceDetailsChanged · 9.0.0 · - · pdf-red-row",
       "category": "Firebolt 9 Core API Specification",
       "url": "firebolt-api-spec.html"
     },

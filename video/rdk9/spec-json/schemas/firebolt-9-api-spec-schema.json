@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RDK API Specification",
+  "type": "object",
+  "required": [
+    "module",
+    "method",
+    "description",
+    "apiVersion",
+    "support"
+  ],
+  "properties": {
+    "module": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/event"
+      }
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "deprecatedVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "support": {
+      "type": "object",
+      "required": [
+        "cpp17",
+        "javascript"
+      ],
+      "properties": {
+        "cpp17": {
+          "type": "boolean"
+        },
+        "javascript": {
+          "type": "boolean"
+        }
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dataType"
+      }
+    },
+    "returns": {
+      "$ref": "#/definitions/dataType"
+    },
+    "specificErrors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/error"
+      }
+    }
+  },
+  "definitions": {
+    "description": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "dataType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "enum": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enumDescriptions": {
+          "type": "object"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dataType"
+          }
+        },
+        "items": {
+          "$ref": "#/definitions/dataType"
+        }
+      }
+    }
+  }
+}
