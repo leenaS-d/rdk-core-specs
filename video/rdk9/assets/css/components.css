@@ -110,11 +110,16 @@ limitations under the License.
 }
 .component-type-legend > div {
   display:flex;
-  gap:8px;
+  gap:20px;
 }
 .component-type-legend dt {
   font-weight:700;
   white-space:nowrap;
+}
+.component-type-legend .pill {
+  box-sizing:border-box;
+  width:110px;
+  text-align:center;
 }
 .component-type-legend dd {
   margin:0;
