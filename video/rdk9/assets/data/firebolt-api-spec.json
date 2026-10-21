@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Firebolt 9",
     "title": "Firebolt 9 Core API Specification",
-    "description": "Standardized APIs the middleware exposes upward to the application layer, giving apps consistent access to device capabilities via Thunder and Firebolt",
+    "description": "Standardized Firebolt 9 APIs.",
     "status": "Draft"
   },
   "source": {
@@ -32,6 +32,7 @@
                 "Actions",
                 "Advertising",
                 "Audio",
+                "AudioOutput",
                 "Device",
                 "Discovery",
                 "Display",
@@ -39,7 +40,6 @@
                 "Localization",
                 "Metrics",
                 "Network",
-                "ParentalControl",
                 "Presentation",
                 "SpeechSynthesis",
                 "Stats",
@@ -240,6 +240,22 @@
               }
             },
             {
+              "module": "AudioOutput",
+              "methods": "connectedPorts\nonConnectedPortsChanged",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-9"
+                  }
+                ]
+              }
+            },
+            {
               "module": "Device",
               "methods": "uid",
               "version": "8.0.0",
@@ -250,7 +266,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-9"
+                    "ref": "api-10"
                   }
                 ]
               }
@@ -266,7 +282,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-10"
+                    "ref": "api-11"
                   }
                 ]
               }
@@ -282,7 +298,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-11"
+                    "ref": "api-12"
                   }
                 ]
               }
@@ -298,7 +314,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-12"
+                    "ref": "api-13"
                   }
                 ]
               }
@@ -314,7 +330,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-13"
+                    "ref": "api-14"
                   }
                 ]
               }
@@ -330,7 +346,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-14"
+                    "ref": "api-15"
                   }
                 ]
               }
@@ -346,7 +362,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-15"
+                    "ref": "api-16"
                   }
                 ]
               }
@@ -362,7 +378,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-16"
+                    "ref": "api-17"
                   }
                 ]
               }
@@ -378,7 +394,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-17"
+                    "ref": "api-18"
                   }
                 ]
               }
@@ -394,7 +410,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-18"
+                    "ref": "api-19"
                   }
                 ]
               }
@@ -410,7 +426,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-19"
+                    "ref": "api-20"
                   }
                 ]
               }
@@ -426,7 +442,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-20"
+                    "ref": "api-21"
                   }
                 ]
               }
@@ -442,7 +458,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-21"
+                    "ref": "api-22"
                   }
                 ]
               }
@@ -458,7 +474,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-22"
+                    "ref": "api-23"
                   }
                 ]
               }
@@ -474,7 +490,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-23"
+                    "ref": "api-24"
                   }
                 ]
               }
@@ -490,7 +506,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-24"
+                    "ref": "api-25"
                   }
                 ]
               }
@@ -506,7 +522,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-25"
+                    "ref": "api-26"
                   }
                 ]
               }
@@ -522,7 +538,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-26"
+                    "ref": "api-27"
                   }
                 ]
               }
@@ -538,7 +554,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-27"
+                    "ref": "api-28"
                   }
                 ]
               }
@@ -554,7 +570,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-28"
+                    "ref": "api-29"
                   }
                 ]
               }
@@ -570,7 +586,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-29"
+                    "ref": "api-30"
                   }
                 ]
               }
@@ -586,7 +602,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-30"
+                    "ref": "api-31"
                   }
                 ]
               }
@@ -602,7 +618,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-31"
+                    "ref": "api-32"
                   }
                 ]
               }
@@ -618,7 +634,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-32"
+                    "ref": "api-33"
                   }
                 ]
               }
@@ -634,7 +650,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-33"
+                    "ref": "api-34"
                   }
                 ]
               }
@@ -650,7 +666,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-34"
+                    "ref": "api-35"
                   }
                 ]
               }
@@ -666,7 +682,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-35"
+                    "ref": "api-36"
                   }
                 ]
               }
@@ -682,7 +698,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-36"
+                    "ref": "api-37"
                   }
                 ]
               }
@@ -698,7 +714,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-37"
+                    "ref": "api-38"
                   }
                 ]
               }
@@ -714,7 +730,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-38"
+                    "ref": "api-39"
                   }
                 ]
               }
@@ -730,7 +746,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-39"
+                    "ref": "api-40"
                   }
                 ]
               }
@@ -746,7 +762,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-40"
+                    "ref": "api-41"
                   }
                 ]
               }
@@ -762,7 +778,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-41"
+                    "ref": "api-42"
                   }
                 ]
               }
@@ -778,7 +794,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-42"
+                    "ref": "api-43"
                   }
                 ]
               }
@@ -794,7 +810,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-43"
+                    "ref": "api-44"
                   }
                 ]
               }
@@ -810,7 +826,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-44"
+                    "ref": "api-45"
                   }
                 ]
               }
@@ -826,7 +842,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-45"
+                    "ref": "api-46"
                   }
                 ]
               }
@@ -842,7 +858,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-46"
+                    "ref": "api-47"
                   }
                 ]
               }
@@ -858,7 +874,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-47"
+                    "ref": "api-48"
                   }
                 ]
               }
@@ -874,7 +890,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-48"
+                    "ref": "api-49"
                   }
                 ]
               }
@@ -890,7 +906,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-49"
+                    "ref": "api-50"
                   }
                 ]
               }
@@ -906,7 +922,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-50"
+                    "ref": "api-51"
                   }
                 ]
               }
@@ -922,7 +938,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-51"
+                    "ref": "api-52"
                   }
                 ]
               }
@@ -938,7 +954,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-52"
+                    "ref": "api-53"
                   }
                 ]
               }
@@ -954,7 +970,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-53"
+                    "ref": "api-54"
                   }
                 ]
               }
@@ -970,7 +986,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-54"
+                    "ref": "api-55"
                   }
                 ]
               }
@@ -986,7 +1002,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-55"
+                    "ref": "api-56"
                   }
                 ]
               }
@@ -1002,7 +1018,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-56"
+                    "ref": "api-57"
                   }
                 ]
               }
@@ -1018,10 +1034,11 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-57"
+                    "ref": "api-58"
                   }
                 ]
-              }
+              },
+              "classes": "pdf-red-row"
             },
             {
               "module": "Network",
@@ -1034,10 +1051,11 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-58"
+                    "ref": "api-59"
                   }
                 ]
-              }
+              },
+              "classes": "pdf-red-row"
             },
             {
               "module": "Network",
@@ -1050,10 +1068,11 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-59"
+                    "ref": "api-60"
                   }
                 ]
-              }
+              },
+              "classes": "pdf-red-row"
             },
             {
               "module": "Network",
@@ -1066,10 +1085,11 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-60"
+                    "ref": "api-61"
                   }
                 ]
-              }
+              },
+              "classes": "pdf-red-row"
             },
             {
               "module": "Network",
@@ -1082,57 +1102,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-61"
-                  }
-                ]
-              }
-            },
-            {
-              "module": "ParentalControl",
-              "methods": "pinControl",
-              "version": "???",
-              "deprecated": "-",
-              "details": {
-                "type": "actions",
-                "plain": true,
-                "items": [
-                  {
-                    "label": "View Details",
                     "ref": "api-62"
-                  }
-                ]
-              },
-              "classes": "pdf-red-row"
-            },
-            {
-              "module": "ParentalControl",
-              "methods": "blockNotRatedContent",
-              "version": "???",
-              "deprecated": "-",
-              "details": {
-                "type": "actions",
-                "plain": true,
-                "items": [
-                  {
-                    "label": "View Details",
-                    "ref": "api-63"
-                  }
-                ]
-              },
-              "classes": "pdf-red-row"
-            },
-            {
-              "module": "ParentalControl",
-              "methods": "viewingRestrictions",
-              "version": "???",
-              "deprecated": "-",
-              "details": {
-                "type": "actions",
-                "plain": true,
-                "items": [
-                  {
-                    "label": "View Details",
-                    "ref": "api-64"
                   }
                 ]
               },
@@ -1149,7 +1119,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-65"
+                    "ref": "api-63"
                   }
                 ]
               }
@@ -1165,7 +1135,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-66"
+                    "ref": "api-64"
                   }
                 ]
               }
@@ -1173,6 +1143,38 @@
             {
               "module": "SpeechSynthesis",
               "methods": "speak",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-65"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "cancel",
+              "version": "9.0.0",
+              "deprecated": "-",
+              "details": {
+                "type": "actions",
+                "plain": true,
+                "items": [
+                  {
+                    "label": "View Details",
+                    "ref": "api-66"
+                  }
+                ]
+              }
+            },
+            {
+              "module": "SpeechSynthesis",
+              "methods": "pause",
               "version": "9.0.0",
               "deprecated": "-",
               "details": {
@@ -1188,7 +1190,7 @@
             },
             {
               "module": "SpeechSynthesis",
-              "methods": "cancel",
+              "methods": "resume",
               "version": "9.0.0",
               "deprecated": "-",
               "details": {
@@ -1204,38 +1206,6 @@
             },
             {
               "module": "SpeechSynthesis",
-              "methods": "pause",
-              "version": "9.0.0",
-              "deprecated": "-",
-              "details": {
-                "type": "actions",
-                "plain": true,
-                "items": [
-                  {
-                    "label": "View Details",
-                    "ref": "api-69"
-                  }
-                ]
-              }
-            },
-            {
-              "module": "SpeechSynthesis",
-              "methods": "resume",
-              "version": "9.0.0",
-              "deprecated": "-",
-              "details": {
-                "type": "actions",
-                "plain": true,
-                "items": [
-                  {
-                    "label": "View Details",
-                    "ref": "api-70"
-                  }
-                ]
-              }
-            },
-            {
-              "module": "SpeechSynthesis",
               "methods": "onUtteranceEvent",
               "version": "9.0.0",
               "deprecated": "-",
@@ -1245,7 +1215,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-71"
+                    "ref": "api-69"
                   }
                 ]
               }
@@ -1261,7 +1231,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-72"
+                    "ref": "api-70"
                   }
                 ]
               }
@@ -1277,7 +1247,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-73"
+                    "ref": "api-71"
                   }
                 ]
               }
@@ -1293,7 +1263,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-74"
+                    "ref": "api-72"
                   }
                 ]
               }
@@ -1309,7 +1279,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-75"
+                    "ref": "api-73"
                   }
                 ]
               }
@@ -1325,7 +1295,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-76"
+                    "ref": "api-74"
                   }
                 ]
               }
@@ -1341,7 +1311,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-77"
+                    "ref": "api-75"
                   }
                 ]
               }
@@ -1357,7 +1327,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-78"
+                    "ref": "api-76"
                   }
                 ]
               }
@@ -1373,7 +1343,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-79"
+                    "ref": "api-77"
                   }
                 ]
               }
@@ -1389,7 +1359,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-80"
+                    "ref": "api-78"
                   }
                 ]
               }
@@ -1405,7 +1375,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-81"
+                    "ref": "api-79"
                   }
                 ]
               }
@@ -1421,7 +1391,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-82"
+                    "ref": "api-80"
                   }
                 ]
               }
@@ -1437,7 +1407,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-83"
+                    "ref": "api-81"
                   }
                 ]
               }
@@ -1453,7 +1423,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-84"
+                    "ref": "api-82"
                   }
                 ]
               }
@@ -1469,7 +1439,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-85"
+                    "ref": "api-83"
                   }
                 ]
               }
@@ -1485,7 +1455,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-86"
+                    "ref": "api-84"
                   }
                 ]
               }
@@ -1501,7 +1471,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-87"
+                    "ref": "api-85"
                   }
                 ]
               }
@@ -1517,7 +1487,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-88"
+                    "ref": "api-86"
                   }
                 ]
               }
@@ -1533,7 +1503,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-89"
+                    "ref": "api-87"
                   }
                 ]
               }
@@ -1549,7 +1519,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-90"
+                    "ref": "api-88"
                   }
                 ]
               }
@@ -1565,7 +1535,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-91"
+                    "ref": "api-89"
                   }
                 ]
               }
@@ -1581,7 +1551,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-92"
+                    "ref": "api-90"
                   }
                 ]
               }
@@ -1597,7 +1567,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-93"
+                    "ref": "api-91"
                   }
                 ]
               }
@@ -1613,7 +1583,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-94"
+                    "ref": "api-92"
                   }
                 ]
               }
@@ -1629,7 +1599,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-95"
+                    "ref": "api-93"
                   }
                 ]
               }
@@ -1645,7 +1615,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-96"
+                    "ref": "api-94"
                   }
                 ]
               }
@@ -1661,7 +1631,7 @@
                 "items": [
                   {
                     "label": "View Details",
-                    "ref": "api-97"
+                    "ref": "api-95"
                   }
                 ]
               }
@@ -2231,6 +2201,54 @@
     "api-9": {
       "type": "apiMethod",
       "eyebrow": "Module",
+      "module": "AudioOutput",
+      "method": "connectedPorts\nonConnectedPortsChanged",
+      "version": "9.0.0",
+      "deprecated": "",
+      "support": [
+        {
+          "label": "C++17",
+          "state": "supported"
+        },
+        {
+          "label": "JS",
+          "state": "unsupported"
+        }
+      ],
+      "fields": [
+        {
+          "label": "Parameters",
+          "value": "None"
+        },
+        {
+          "label": "Returns",
+          "value": {
+            "type": "list",
+            "items": [
+              {
+                "text": "list of enum, unordered",
+                "items": [
+                  "speakers",
+                  "spdif",
+                  "analog",
+                  "hdmi",
+                  "bluetooth"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Specific errors",
+          "value": "None"
+        }
+      ],
+      "overview": "Returns the ports into which audio output devices are connected Type spdif represents coax and/or optical. On a TV device, hdmi represents ARC and eARC",
+      "trailing": []
+    },
+    "api-10": {
+      "type": "apiMethod",
+      "eyebrow": "Module",
       "module": "Device",
       "method": "uid",
       "version": "8.0.0",
@@ -2262,7 +2280,7 @@
       "overview": "Returns a persistent unique UUID for the current app and device. The UUID is reset when the app or device is reset",
       "trailing": []
     },
-    "api-10": {
+    "api-11": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2308,7 +2326,7 @@
       "overview": "Returns the class of the device",
       "trailing": []
     },
-    "api-11": {
+    "api-12": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2342,7 +2360,7 @@
       "overview": "Returns the number of seconds since most recent device boot, including any time spent during deep sleep",
       "trailing": []
     },
-    "api-12": {
+    "api-13": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2381,7 +2399,7 @@
       "overview": "Returns the number of seconds since the device transitioned to the ON power state",
       "trailing": []
     },
-    "api-13": {
+    "api-14": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2415,7 +2433,7 @@
       "overview": "Returns chipset ID as a printable string, e.g. \"BCM72180\"",
       "trailing": []
     },
-    "api-14": {
+    "api-15": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2456,7 +2474,7 @@
       "overview": "Returns the HDR standards that are suported by the attached TV or the integral display OTT/STB device: supported by the device and indicated by the EDID of the attached TV TV: supported by the device",
       "trailing": []
     },
-    "api-15": {
+    "api-16": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2490,7 +2508,7 @@
       "overview": "Returns whether the user would get a Dolby Atmos experience if a Dolby Atmos track were to be played at this time",
       "trailing": []
     },
-    "api-16": {
+    "api-17": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2524,7 +2542,7 @@
       "overview": "Returns the manufacturer responsible for building the hardware",
       "trailing": []
     },
-    "api-17": {
+    "api-18": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2569,7 +2587,7 @@
       "overview": "Returns the brand name under which the device was marketed to consumers. Typically also shown on the TV bezel, device label or remote",
       "trailing": []
     },
-    "api-18": {
+    "api-19": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2603,7 +2621,7 @@
       "overview": "Returns the model identifier assigned to the device hardware. Typically also shown on the device label or UI",
       "trailing": []
     },
-    "api-19": {
+    "api-20": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2637,7 +2655,7 @@
       "overview": "Returns the operating system name as defined by the operator",
       "trailing": []
     },
-    "api-20": {
+    "api-21": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2671,7 +2689,7 @@
       "overview": "Returns the operating system version as defined by the operator",
       "trailing": []
     },
-    "api-21": {
+    "api-22": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2705,7 +2723,7 @@
       "overview": "Returns a string that identifies the firmware image of the device",
       "trailing": []
     },
-    "api-22": {
+    "api-23": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Device",
@@ -2739,7 +2757,7 @@
       "overview": "Returns the device friendly name. Used by network services (DIAL, Miracast, AirPlay) so that other devices can more easily identify this device during device discovery",
       "trailing": []
     },
-    "api-23": {
+    "api-24": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Discovery",
@@ -2782,7 +2800,7 @@
       "overview": "Notify the platform that content has been partially or completely watched progress: VOD: 0 to 0.99, live: number of seconds watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\" agePolicy: app:adult, app:child, app:teen",
       "trailing": []
     },
-    "api-24": {
+    "api-25": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Display",
@@ -2822,7 +2840,7 @@
       "overview": "Returns the physical dimensions of the connected or integral display, in centimeters Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI Typical values 43\" - 97, 56 55\" - 123, 71 65\" - 145, 83",
       "trailing": []
     },
-    "api-25": {
+    "api-26": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Display",
@@ -2862,7 +2880,7 @@
       "overview": "Returns the physical/native resolution of the connected or integral display, in pixels Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI Typical values HD Ready - 1280, 720 Full HD - 1920, 1080 UHD - 3840, 2160",
       "trailing": []
     },
-    "api-26": {
+    "api-27": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Display",
@@ -2896,7 +2914,7 @@
       "overview": "Returns the EDID (and extensions) of the connected or integral display, as a Base64 encoded string Returns an empty string, \"\", on a OTT/STB device when a display is not connected over HDMI",
       "trailing": []
     },
-    "api-27": {
+    "api-28": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Display",
@@ -2941,7 +2959,7 @@
       "overview": "Returns an unordered list of colorimetry values supported by the attached TV or integral display. Returns an empty list if no TV is attached",
       "trailing": []
     },
-    "api-28": {
+    "api-29": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Display",
@@ -2990,7 +3008,7 @@
       "overview": "Returns an unordered list of HD video resolutions and frame rates supported by the attached TV or integral display. Returns an empty list if no TV is attached",
       "trailing": []
     },
-    "api-29": {
+    "api-30": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Display",
@@ -3024,7 +3042,7 @@
       "overview": "Returns whether the device is currently connected to an external or integrated display Most apps should instead use VideoOutput.hdcp for display connectivity OTT/STB device: returns true if a TV is connected over HDMI (by hot plug detect pin 19), otherwise returns false TV device: returns true",
       "trailing": []
     },
-    "api-30": {
+    "api-31": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Lifecycle2",
@@ -3071,7 +3089,7 @@
       "overview": "Request the platform to deactivate the app, and possibly take further action type deactivate - app is deactivated (if active) - typically a user closing an app unload - app is deactivated (if active) and terminated - typically an app has detected an error killReload - app is killed, then reloaded to paused or suspended (by policy) killReactivate - app is killed, reloaded, then activated window.close() maps to unload window.minimize() maps to deactivate Module is named Lifecycle in C++ Client Library",
       "trailing": []
     },
-    "api-31": {
+    "api-32": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Lifecycle2",
@@ -3120,7 +3138,7 @@
       "overview": "Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state Apps/runtimes should ordinarily use state change notifications rather than this method",
       "trailing": []
     },
-    "api-32": {
+    "api-33": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Lifecycle2",
@@ -3161,7 +3179,7 @@
       "overview": "Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform Notification of lifecycle state change, raised after the platform has transitioned the app/runtime to the new lifecycle state Note: the list always carries exactly one lifecycle state change Valid transitions 1. initializing to paused 2. initializing to suspended 3. paused to active 4. active to paused 5. paused to suspended 6. suspended to paused 7. suspended to hibernated 8. hibernated to suspended 9. any to terminating",
       "trailing": []
     },
-    "api-33": {
+    "api-34": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Localization",
@@ -3206,7 +3224,7 @@
       "overview": "Return the country, e.g. US, CA, GB, BE",
       "trailing": []
     },
-    "api-34": {
+    "api-35": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Localization",
@@ -3251,7 +3269,7 @@
       "overview": "A list of zero or more languages in order of decreasing preference. Typically two languages are present. A language may be repeated in the list",
       "trailing": []
     },
-    "api-35": {
+    "api-36": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Localization",
@@ -3296,7 +3314,7 @@
       "overview": "The presentation language of the device, e.g. en-US",
       "trailing": []
     },
-    "api-36": {
+    "api-37": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Localization",
@@ -3330,7 +3348,7 @@
       "overview": "Returns the current time zone in IANA format, e.g. America /New_York",
       "trailing": []
     },
-    "api-37": {
+    "api-38": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3364,7 +3382,7 @@
       "overview": "Inform the platform that the app is minimally usable",
       "trailing": []
     },
-    "api-38": {
+    "api-39": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3398,7 +3416,7 @@
       "overview": "Log a sign in event",
       "trailing": []
     },
-    "api-39": {
+    "api-40": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3432,7 +3450,7 @@
       "overview": "Log a sign out event",
       "trailing": []
     },
-    "api-40": {
+    "api-41": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3472,7 +3490,7 @@
       "overview": "Inform the platform that your user has started content",
       "trailing": []
     },
-    "api-41": {
+    "api-42": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3512,7 +3530,7 @@
       "overview": "Inform the platform that your user has stopped content",
       "trailing": []
     },
-    "api-42": {
+    "api-43": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3552,7 +3570,7 @@
       "overview": "Inform the platform that your user has navigated to a page or view",
       "trailing": []
     },
-    "api-43": {
+    "api-44": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3619,7 +3637,7 @@
       "overview": "Inform the platform of an error that has occurred in your app",
       "trailing": []
     },
-    "api-44": {
+    "api-45": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3659,7 +3677,7 @@
       "overview": "Called when setting the URL of a media asset to play, in order to infer load time",
       "trailing": []
     },
-    "api-45": {
+    "api-46": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3699,7 +3717,7 @@
       "overview": "Called when media playback should start due to autoplay, user-initiated play, or unpausing",
       "trailing": []
     },
-    "api-46": {
+    "api-47": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3739,7 +3757,7 @@
       "overview": "Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interruption",
       "trailing": []
     },
-    "api-47": {
+    "api-48": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3779,7 +3797,7 @@
       "overview": "Called when media playback will pause due to an intentional pause operation",
       "trailing": []
     },
-    "api-48": {
+    "api-49": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3819,7 +3837,7 @@
       "overview": "Called when media playback will halt due to a network, buffer, or other unintentional constraint",
       "trailing": []
     },
-    "api-49": {
+    "api-50": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3860,7 +3878,7 @@
       "overview": "Called when a seek is initiated during media playback",
       "trailing": []
     },
-    "api-50": {
+    "api-51": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3901,7 +3919,7 @@
       "overview": "Called when a seek is completed during media playback",
       "trailing": []
     },
-    "api-51": {
+    "api-52": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3942,7 +3960,7 @@
       "overview": "Called when the playback rate of media is changed",
       "trailing": []
     },
-    "api-52": {
+    "api-53": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -3986,7 +4004,7 @@
       "overview": "Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed",
       "trailing": []
     },
-    "api-53": {
+    "api-54": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -4026,7 +4044,7 @@
       "overview": "Called when playback has stopped because the end of the media was reached",
       "trailing": []
     },
-    "api-54": {
+    "api-55": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -4066,7 +4084,7 @@
       "overview": "Inform the platform of 1st party distributor metrics data parameter is a JSON document",
       "trailing": []
     },
-    "api-55": {
+    "api-56": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Metrics",
@@ -4100,7 +4118,7 @@
       "overview": "Inform the platform about an app's build info",
       "trailing": []
     },
-    "api-56": {
+    "api-57": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Network",
@@ -4134,7 +4152,7 @@
       "overview": "Returns whether the device has a usable network connection",
       "trailing": []
     },
-    "api-57": {
+    "api-58": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Network",
@@ -4199,7 +4217,7 @@
       "overview": "Returns information about all physical network interfaces of the device name - e.g. wlan0 protocol - physical layer protocol supported by the interface, set to unknown by default connected - the link link layer status preferred - true if the interface is used for network traffic",
       "trailing": []
     },
-    "api-58": {
+    "api-59": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Network",
@@ -4246,7 +4264,7 @@
       "overview": "Returns basic information about a network interface",
       "trailing": []
     },
-    "api-59": {
+    "api-60": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Network",
@@ -4308,7 +4326,7 @@
       "overview": "Returns the IP configuration of an interface",
       "trailing": []
     },
-    "api-60": {
+    "api-61": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Network",
@@ -4387,7 +4405,7 @@
       "overview": "Returns statistics for a network interface interfaceStats - present when an interface is connected. Attributes are set to null if not available wirelessStats - present when an interface of type wifi is connected. Attributes are set to null if not available wirelessFrequency - MHz wirelessSignal - dBm, -96 (weakest) to 0 (strongest) inclusive wirelessQuality - current SNR in dB, 0 to 96 inclusive wirelessTxBitrate - Tx rate in Mbps wirelessRxBitrate - Rx rate in Mbps wirelessInactiveTime - time in milliseconds since last activity",
       "trailing": []
     },
-    "api-61": {
+    "api-62": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Network",
@@ -4433,124 +4451,7 @@
       "overview": "Returns detailed information of a network interface Used to convey information which may be sensitive e.g perso nally identifiable information ssid - the SSID of the access point, provided for wifi interface type if connected bssid - the BSSID of the access point, provided for wifi interface type if connected",
       "trailing": []
     },
-    "api-62": {
-      "type": "apiMethod",
-      "eyebrow": "Module",
-      "module": "ParentalControl",
-      "method": "pinControl",
-      "version": "???",
-      "deprecated": "",
-      "support": [
-        {
-          "label": "C++17",
-          "state": "supported"
-        },
-        {
-          "label": "JS",
-          "state": "supported"
-        }
-      ],
-      "fields": [
-        {
-          "label": "Parameters",
-          "value": "None"
-        },
-        {
-          "label": "Returns",
-          "value": "bool"
-        },
-        {
-          "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-50100 / Not supported"
-            ]
-          }
-        }
-      ],
-      "overview": "Returns whether PIN blocking is enabled, or an error if this setting is not exposed to apps",
-      "trailing": []
-    },
     "api-63": {
-      "type": "apiMethod",
-      "eyebrow": "Module",
-      "module": "ParentalControl",
-      "method": "blockNotRatedContent",
-      "version": "???",
-      "deprecated": "",
-      "support": [
-        {
-          "label": "C++17",
-          "state": "supported"
-        },
-        {
-          "label": "JS",
-          "state": "supported"
-        }
-      ],
-      "fields": [
-        {
-          "label": "Parameters",
-          "value": "None"
-        },
-        {
-          "label": "Returns",
-          "value": "bool"
-        },
-        {
-          "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-50100 / Not supported"
-            ]
-          }
-        }
-      ],
-      "overview": "Returns whether content that is not rated should be blocked, or an error if this setting is not exposed to apps",
-      "trailing": []
-    },
-    "api-64": {
-      "type": "apiMethod",
-      "eyebrow": "Module",
-      "module": "ParentalControl",
-      "method": "viewingRestrictions",
-      "version": "???",
-      "deprecated": "",
-      "support": [
-        {
-          "label": "C++17",
-          "state": "supported"
-        },
-        {
-          "label": "JS",
-          "state": "supported"
-        }
-      ],
-      "fields": [
-        {
-          "label": "Parameters",
-          "value": "None"
-        },
-        {
-          "label": "Returns",
-          "value": "string"
-        },
-        {
-          "label": "Specific errors",
-          "value": {
-            "type": "list",
-            "items": [
-              "-50100 / Not supported"
-            ]
-          }
-        }
-      ],
-      "overview": "Returns a JSON document describing the ratings schemes configured for the device and any ratings that are blocked for that scheme, or an error if this setting is not exposed to apps",
-      "trailing": []
-    },
-    "api-65": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Presentation",
@@ -4584,7 +4485,7 @@
       "overview": "Whether the app is in focus, i.e. receiving key presses. Provided for those apps/runtimes that cannot use Wayland",
       "trailing": []
     },
-    "api-66": {
+    "api-64": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "SpeechSynthesis",
@@ -4630,7 +4531,7 @@
       "overview": "Returns a list of available voices name - name of the voice as a human-readable string lang - the language of the voice in BCP 47 default - true if the voice is the default for the language An empty list is returned if a speech synthesis engine is not available, or the engine rejected the request A particular voice can be repeated in the list, and a language can be repeated in the list At most one voice is the default for each language",
       "trailing": []
     },
-    "api-67": {
+    "api-65": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "SpeechSynthesis",
@@ -4680,7 +4581,7 @@
       "overview": "Requests the system to speak an utterance. Returns an utteranceId if the request is accepted, otherwise an error is returned. A successful new request is processed asynchronously: any utterance that is currently being spoken is interrupted and notified by onUtteranceEvent( interrupted ), and events for the new request are raised using onUtteranceEvent text - plain text or a well-formed SSML document lang - the language of the text in BCP 47 voice - as returned by the voices method volume - the speaking volume, 0 (lowest) to 1 (highest) inclusive rate - the speaking rate, 0.1 (slowest) to 10 (fastest) inclusive pitch - the speaking pitch, 0 (lowest) to 2 (highest) inclusive pii - true if the text contains personally identifiable information, indicating that functionality such as logging and telemetry should be restricted, false if not set For Voice Guidance, the app SHOULD either supply the text parameter as plain text and the lang parameter, or supply text as a well-formed SSML document. If text is plain text and lang is not supplied then the default speech synthesis language is used - this is not recommended usage",
       "trailing": []
     },
-    "api-68": {
+    "api-66": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "SpeechSynthesis",
@@ -4719,7 +4620,7 @@
       "overview": "Stop the utterance. If playing, audio is stopped. If synthesizing or paused, the utterance will not be played Raises onUtteranceEvent( interrupted ) if the utterance was s ynthesizing, playing or paused Returns without error in all utterance states, or if the utterance has finished",
       "trailing": []
     },
-    "api-69": {
+    "api-67": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "SpeechSynthesis",
@@ -4758,7 +4659,7 @@
       "overview": "Pause the utterance. If playing, audio is stopped. If the utterance was synthesizing, playback will be prevented Raises onUtteranceEvent( paused ) if the utterance was synthesizing or playing Returns without error in all utterance states, or if the utterance has finished",
       "trailing": []
     },
-    "api-70": {
+    "api-68": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "SpeechSynthesis",
@@ -4797,7 +4698,7 @@
       "overview": "Resume an utterance. If paused, audio is resumed. If synthesizing the utterance will be played. If playing no action is taken Raises onUtteranceEvent( resumed ) if the utterance had previously been paused while playing Returns without error in all utterance states, or if the utterance has finished",
       "trailing": []
     },
-    "api-71": {
+    "api-69": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "SpeechSynthesis",
@@ -4850,7 +4751,7 @@
       "overview": "Notifies events related to an utterance Progress events synthesisStarting - text to audio conversion is being started playbackStarting - audio playback is being started paused - utterance has been paused while playing resumed - an utterance that had previously been paused while playing has resumed playing completed - the utterance has completed successfully interrupted - the utterance has been stopped due to a call to either the speak or cancel methods Failure events networkFailed - the system was unable to contact the voice synthesis backend synthesisFailed - the system was unable to synthesize some or all of the utterance playbackFailed - the system was unable to play some or all of the utterance",
       "trailing": []
     },
-    "api-72": {
+    "api-70": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Stats",
@@ -4893,7 +4794,7 @@
       "overview": "Returns information about container memory usage, in bytes",
       "trailing": []
     },
-    "api-73": {
+    "api-71": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -4934,7 +4835,7 @@
       "overview": "Speak the utterance immediately. Any ongoing speech is interrupted Text argument is either plain text or a well-formed SSML document TTS_Status, not success attribute, to be used by caller to indicate success of call 0 OK, 1 Fail, 2 not enabled, 3 invalid configuration Raises onSpeechInterrupted if speaking is interrupted",
       "trailing": []
     },
-    "api-74": {
+    "api-72": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -4974,7 +4875,7 @@
       "overview": "Pauses the utterance Raises onSpeechPause if ongoing speech is paused Does nothing if utterance is already paused",
       "trailing": []
     },
-    "api-75": {
+    "api-73": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5014,7 +4915,7 @@
       "overview": "Continue the paused utterance Raises onSpeechResume if paused speech is resumed Does nothing if the utterance is not paused",
       "trailing": []
     },
-    "api-76": {
+    "api-74": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5054,7 +4955,7 @@
       "overview": "Stop speaking if utterance is currently being spoken Raises onSpeechInterrupted if speaking was interrupted",
       "trailing": []
     },
-    "api-77": {
+    "api-75": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5109,7 +5010,7 @@
       "overview": "Returns the state of the utterance",
       "trailing": []
     },
-    "api-78": {
+    "api-76": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5143,7 +5044,7 @@
       "overview": "Text to speech conversion is about to start",
       "trailing": []
     },
-    "api-79": {
+    "api-77": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5177,7 +5078,7 @@
       "overview": "Utterance is about to be spoken",
       "trailing": []
     },
-    "api-80": {
+    "api-78": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5211,7 +5112,7 @@
       "overview": "Ongoing speech was paused",
       "trailing": []
     },
-    "api-81": {
+    "api-79": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5245,7 +5146,7 @@
       "overview": "Paused speech was resumed",
       "trailing": []
     },
-    "api-82": {
+    "api-80": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5279,7 +5180,7 @@
       "overview": "Speech completed successfully",
       "trailing": []
     },
-    "api-83": {
+    "api-81": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5313,7 +5214,7 @@
       "overview": "Speech was stopped, due to another call to speak or cancel",
       "trailing": []
     },
-    "api-84": {
+    "api-82": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5347,7 +5248,7 @@
       "overview": "Utterance failed due to network",
       "trailing": []
     },
-    "api-85": {
+    "api-83": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5381,7 +5282,7 @@
       "overview": "Utterance failed during playback",
       "trailing": []
     },
-    "api-86": {
+    "api-84": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "TextToSpeech",
@@ -5421,7 +5322,7 @@
       "overview": "Returns the list of available voices as human-readable strings, e.g. \"ava\", \"amelie\", \"angelica\"",
       "trailing": []
     },
-    "api-87": {
+    "api-85": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5470,7 +5371,7 @@
       "overview": "Returns the width and height of the video signal on the video output, in pixels. Typically used by a streaming app to determine the highest resolution of video to select OTT/STB device: returns the video resolution over HDMI TV device: returns the resolution of the panel",
       "trailing": []
     },
-    "api-88": {
+    "api-86": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5517,7 +5418,7 @@
       "overview": "Returns the current state of output protection on the video output OTT/STB device: returns the negotiated HDCP version on the video output, or none if an encrypted connection has not been made between the OTT/STB device and any attached TV TV device: returns direct",
       "trailing": []
     },
-    "api-89": {
+    "api-87": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5568,7 +5469,7 @@
       "overview": "Returns whether the output of the OTT/STB device is actively being displayed on the TV OTT/STB device: returns the current state of the HDMI CEC connection active - the TV is on and the OTT/STB device is the active source inactive - the TV is off or the OTT/STB device is not the active source unsupported - CEC is not enabled on the TV TV device: returns Wrong device class error",
       "trailing": []
     },
-    "api-90": {
+    "api-88": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5620,7 +5521,7 @@
       "overview": "Returns the refresh rate of the video signal on the video output, in Hz OTT/STB device: returns the refresh rate, or 0 if no TV is attached TV device: returns the compositor refresh rate currently used to output content to the integrated display",
       "trailing": []
     },
-    "api-91": {
+    "api-89": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5667,7 +5568,7 @@
       "overview": "Returns the video color depth being used on the video output, in bits OTT/STB device: in addition, returns 0 when a display is not connected over HDMI TV device: does not return 0",
       "trailing": []
     },
-    "api-92": {
+    "api-90": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5715,7 +5616,7 @@
       "overview": "Returns the current color format of the video signal on the active video output port or integrated display OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
       "trailing": []
     },
-    "api-93": {
+    "api-91": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5763,7 +5664,7 @@
       "overview": "Returns the current colorimetry value of the video signal on the active video output port or integrated display OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
       "trailing": []
     },
-    "api-94": {
+    "api-92": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5812,7 +5713,7 @@
       "overview": "Returns the current dynamic range format of the video signal on the video output OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
       "trailing": []
     },
-    "api-95": {
+    "api-93": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "VideoOutput",
@@ -5858,7 +5759,7 @@
       "overview": "Returns the quantization range used on the video output OTT/STB device: in addition, returns none when a display is not connected over HDMI TV device: does not return none",
       "trailing": []
     },
-    "api-96": {
+    "api-94": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Window",
@@ -5897,7 +5798,7 @@
       "overview": "Adds the supplied list of keys to the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification",
       "trailing": []
     },
-    "api-97": {
+    "api-95": {
       "type": "apiMethod",
       "eyebrow": "Module",
       "module": "Window",
@@ -5942,9 +5843,9 @@
     "mode": "reference-or-new-candidate",
     "source": {
       "pdf": "Firebolt 9 API Specifications.pdf",
-      "sha256": "8fde64f796a393013fe4bed659b8cf74d3b746e9b693b55071db078cd164990e",
+      "sha256": "4bf5823afb68e00b457d65ccde53c86a45234731e3bbf6c4f16db23cc26e44a5",
       "pageCount": 11,
-      "extractedAt": "2026-10-07T15:15:16.771367+00:00"
+      "extractedAt": "2026-10-21T18:29:35.038892+00:00"
     },
     "note": "Review PDF-derived content before replacing the curated file."
   }
