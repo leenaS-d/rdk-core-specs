@@ -1,0 +1,3372 @@
+{
+  "metadata": {
+    "sourceFile": "Firebolt 9 API Specifications.pdf",
+    "sourceFileSize": 1436953,
+    "sourceSha256": "4bf5823afb68e00b457d65ccde53c86a45234731e3bbf6c4f16db23cc26e44a5",
+    "sourceModified": "2026-10-21T20:12:58Z",
+    "pdfVersion": "1.5",
+    "generatedAt": "2026-10-21T20:14:54Z",
+    "generator": {
+      "script": "pdftojson.py",
+      "version": "2.0"
+    },
+    "apiCount": 96,
+    "pageCount": 11,
+    "pdfInfo": {},
+    "document": {
+      "title": "Firebolt 9 Core API Specification",
+      "specVersion": "9",
+      "status": "DRAFT",
+      "author": "Andrew Bennett",
+      "note": "this is a draft of the latest Firebolt spec"
+    }
+  },
+  "apis": [
+    {
+      "module": "Accessibility",
+      "method": "audioDescription",
+      "events": [
+        {
+          "name": "onAudioDescriptionChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the audio description setting of the device",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Accessibility",
+      "method": "closedCaptionsSettings",
+      "events": [
+        {
+          "name": "onClosedCaptionsSettingsChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns captions settings: enabled, and a list of zero or more languages in order of decreasing preference",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "enabled",
+            "type": "bool"
+          },
+          {
+            "name": "preferredLanguages",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "[] (if not initialized); list of one or more ISO 639-2/B"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Accessibility",
+      "method": "highContrastUI",
+      "events": [
+        {
+          "name": "onHighContrastUIChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the high contrast UI device setting",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Accessibility",
+      "method": "voiceGuidanceSettings",
+      "events": [
+        {
+          "name": "onVoiceGuidanceSettingsChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns voice guidance settings: enabled, rate, and verbosity",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "enabled",
+            "type": "bool"
+          },
+          {
+            "name": "rate",
+            "type": "double",
+            "description": "1 (normal rate); 0.1 to 10 inclusive"
+          },
+          {
+            "name": "navigationHints",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Actions",
+      "method": "start",
+      "events": [],
+      "description": {
+        "summary": "Send an intent to the platform",
+        "details": [
+          "Argument is a JSON document"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "intent",
+          "type": "json",
+          "required": true
+        },
+        {
+          "name": "handlerAppId",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Actions",
+      "method": "intent",
+      "events": [
+        {
+          "name": "onIntent"
+        }
+      ],
+      "description": {
+        "summary": "Returns the intent that was most recently received from the platform, as a JSON document. Getter is typically called by an app after transitioning to the active lifecycle state",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "intentId",
+            "type": "unsigned",
+            "description": "monotonic"
+          },
+          {
+            "name": "intent",
+            "type": "json"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Advertising",
+      "method": "advertisingId",
+      "events": [],
+      "description": {
+        "summary": "Returns the IFA",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "ifa",
+            "type": "string",
+            "description": "a UUID"
+          },
+          {
+            "name": "ifa_type",
+            "type": "string",
+            "enum": [
+              "dpid",
+              "sspid",
+              "sessionid"
+            ],
+            "enumDescriptions": {
+              "dpid": "device provided ID",
+              "sspid": "SSP provided ID",
+              "sessionid": "session/synthetic ID"
+            }
+          },
+          {
+            "name": "lmt",
+            "type": "string",
+            "enum": [
+              "0",
+              "1"
+            ]
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Audio",
+      "method": "volume",
+      "events": [
+        {
+          "name": "onVolumeChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the current volume level of the device or HDMI-connected audio output device. Range is 0 to 100 inclusive",
+        "details": [
+          "OTT/STB device: returns Wrong device class error"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "unsigned"
+      },
+      "specificErrors": [
+        {
+          "name": "Wrong device class",
+          "code": "-xxxxx",
+          "description": "The method is not appropriate for this class of device"
+        }
+      ]
+    },
+    {
+      "module": "Audio",
+      "method": "mute",
+      "events": [
+        {
+          "name": "onMuteChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the current mute state of the device or HDMI-connected audio output device. Mute is independent of current volume",
+        "details": [
+          "OTT/STB device: returns Wrong device class error"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": [
+        {
+          "name": "Wrong device class",
+          "code": "-xxxxx",
+          "description": "The method is not appropriate for this class of device"
+        }
+      ]
+    },
+    {
+      "module": "AudioOutput",
+      "method": "connectedPorts",
+      "events": [
+        {
+          "name": "onConnectedPortsChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the ports into which audio output devices are connected",
+        "details": [
+          "Type spdif represents coax and/or optical. On a TV device, hdmi represents ARC and eARC"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "speakers",
+            "spdif",
+            "analog",
+            "hdmi",
+            "bluetooth"
+          ]
+        }
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "uid",
+      "events": [],
+      "description": {
+        "summary": "Returns a persistent unique UUID for the current app and device. The UUID is reset when the app or device is reset",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "a UUID"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "deviceClass",
+      "events": [],
+      "description": {
+        "summary": "Returns the class of the device",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "ott",
+          "stb",
+          "tv"
+        ],
+        "enumDescriptions": {
+          "ott": "no tuner/demod, no integrated display",
+          "stb": "with tuner/demod, no integrated display",
+          "tv": "possibly tuner/demod, with integrated display"
+        }
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "uptime",
+      "events": [],
+      "description": {
+        "summary": "Returns the number of seconds since most recent device boot, including any time spent during deep sleep",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "unsigned"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "timeInActiveState",
+      "events": [],
+      "description": {
+        "summary": "Returns the number of seconds since the device transitioned to the ON power state",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "unsigned"
+      },
+      "specificErrors": [
+        {
+          "name": "App state invalid",
+          "description": "The app is not in an appropriate lifecycle state to call this method"
+        }
+      ]
+    },
+    {
+      "module": "Device",
+      "method": "chipsetId",
+      "events": [],
+      "description": {
+        "summary": "Returns chipset ID as a printable string, e.g. \"BCM72180\"",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "(see Chipset Id in Devices table)"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "hdr",
+      "events": [
+        {
+          "name": "onHdrChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the HDR standards that are suported by the attached TV or the integral display",
+        "details": [
+          "OTT/STB device: supported by the device and indicated by the EDID of the attached TV",
+          "TV: supported by the device"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "hdr10",
+            "type": "bool"
+          },
+          {
+            "name": "hdr10Plus",
+            "type": "bool"
+          },
+          {
+            "name": "dolbyVision",
+            "type": "bool"
+          },
+          {
+            "name": "hlg",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "dolbyAtmosExperienceAvailable",
+      "events": [
+        {
+          "name": "onDolbyAtmosExperienceAvailableChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns whether the user would get a Dolby Atmos experience if a Dolby Atmos track were to be played at this time",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "manufacturer",
+      "events": [],
+      "description": {
+        "summary": "Returns the manufacturer responsible for building the hardware",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "brandName",
+      "events": [],
+      "description": {
+        "summary": "Returns the brand name under which the device was marketed to consumers. Typically also shown on the TV bezel, device label or remote",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "\"\" (if not initialized); 1 or more characters"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "modelId",
+      "events": [],
+      "description": {
+        "summary": "Returns the model identifier assigned to the device hardware. Typically also shown on the device label or UI",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "osName",
+      "events": [],
+      "description": {
+        "summary": "Returns the operating system name as defined by the operator",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "osVersion",
+      "events": [],
+      "description": {
+        "summary": "Returns the operating system version as defined by the operator",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "firmware",
+      "events": [],
+      "description": {
+        "summary": "Returns a string that identifies the firmware image of the device",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Device",
+      "method": "name",
+      "events": [
+        {
+          "name": "onNameChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the device friendly name. Used by network services (DIAL, Miracast, AirPlay) so that other devices can more easily identify this device during device discovery",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Discovery",
+      "method": "watched",
+      "events": [],
+      "description": {
+        "summary": "Notify the platform that content has been partially or completely watched",
+        "details": [
+          "progress: VOD: 0 to 0.99, live: number of seconds",
+          "watchedOn: \"YYYY-MM-DDThh:mm:ss.sssZ\"",
+          "agePolicy: app:adult, app:child, app:teen"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "progress",
+          "type": "double",
+          "required": false
+        },
+        {
+          "name": "completed",
+          "type": "bool",
+          "required": false
+        },
+        {
+          "name": "watchedOn",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Display",
+      "method": "size",
+      "events": [],
+      "description": {
+        "summary": "Returns the physical dimensions of the connected or integral display, in centimeters",
+        "details": [
+          "Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI",
+          "Typical values",
+          "43\" - 97, 56",
+          "55\" - 123, 71",
+          "65\" - 145, 83"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "width",
+            "type": "unsigned"
+          },
+          {
+            "name": "height",
+            "type": "unsigned"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Display",
+      "method": "maxResolution",
+      "events": [],
+      "description": {
+        "summary": "Returns the physical/native resolution of the connected or integral display, in pixels",
+        "details": [
+          "Returns 0, 0 on a OTT/STB device when a display is not connected over HDMI",
+          "Typical values",
+          "HD Ready - 1280, 720",
+          "Full HD - 1920, 1080",
+          "UHD - 3840, 2160"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "width",
+            "type": "unsigned"
+          },
+          {
+            "name": "height",
+            "type": "unsigned"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Display",
+      "method": "edid",
+      "events": [],
+      "description": {
+        "summary": "Returns the EDID (and extensions) of the connected or integral display, as a Base64 encoded string",
+        "details": [
+          "Returns an empty string, \"\", on a OTT/STB device when a display is not connected over HDMI"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "Base64"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Display",
+      "method": "colorimetry",
+      "events": [],
+      "description": {
+        "summary": "Returns an unordered list of colorimetry values supported by the attached TV or integral display. Returns an empty list if no TV is attached",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": false,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "bt709",
+            "bt2020"
+          ]
+        }
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Display",
+      "method": "videoResolutions",
+      "events": [],
+      "description": {
+        "summary": "Returns an unordered list of HD video resolutions and frame rates supported by the attached TV or integral display. Returns an empty list if no TV is attached",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": false,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "720p50",
+            "720p60",
+            "1080p50",
+            "1080p60",
+            "2160p50",
+            "2160p60"
+          ]
+        }
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Display",
+      "method": "connected",
+      "events": [
+        {
+          "name": "onConnectedChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns whether the device is currently connected to an external or integrated display",
+        "details": [
+          "Most apps should instead use VideoOutput.hdcp for display connectivity",
+          "OTT/STB device: returns true if a TV is connected over HDMI (by hot plug detect pin 19), otherwise returns false",
+          "TV device: returns true"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Lifecycle2",
+      "method": "close",
+      "events": [],
+      "description": {
+        "summary": "Request the platform to deactivate the app, and possibly take further action",
+        "details": [
+          "type",
+          "deactivate - app is deactivated (if active) - typically a user closing an app",
+          "unload - app is deactivated (if active) and terminated - typically an app has detected an error",
+          "killReload - app is killed, then reloaded to paused or suspended (by policy)",
+          "killReactivate - app is killed, reloaded, then activated",
+          "window.close() maps to unload",
+          "window.minimize() maps to deactivate",
+          "Module is named Lifecycle in C++ Client Library"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "deactivate",
+          "required": true
+        },
+        {
+          "name": "unload",
+          "required": true
+        },
+        {
+          "name": "killReload",
+          "required": true
+        },
+        {
+          "name": "killReactivate",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Lifecycle2",
+      "method": "state",
+      "events": [],
+      "description": {
+        "summary": "Returns the current lifecycle state of the app. The first lifecycle state that can be observed by an app/runtime is the initializing state",
+        "details": [
+          "Apps/runtimes should ordinarily use state change notifications rather than this method"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "initializing",
+          "active",
+          "paused",
+          "suspended",
+          "hibernated",
+          "terminating"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Lifecycle2",
+      "method": "onStateChanged",
+      "events": [],
+      "description": {
+        "summary": "Subscribe to/unsubscribe from lifecycle state changes. The app/runtime remains in the initializing state until the subscribe call is made to the platform",
+        "details": [
+          "Notification of lifecycle state change, raised after the platform has transitioned the app/runtime to the new lifecycle state",
+          "Note: the list always carries exactly one lifecycle state change",
+          "Valid transitions",
+          "1. initializing to paused",
+          "2. initializing to suspended",
+          "3. paused to active",
+          "4. active to paused",
+          "5. paused to suspended",
+          "6. suspended to paused",
+          "7. suspended to hibernated",
+          "8. hibernated to suspended",
+          "9. any to terminating"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": [
+              {
+                "name": "oldState",
+                "type": "string"
+              },
+              {
+                "name": "newState",
+                "type": "string"
+              }
+            ]
+          },
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Localization",
+      "method": "country",
+      "events": [
+        {
+          "name": "onCountryChanged"
+        }
+      ],
+      "description": {
+        "summary": "Return the country, e.g. US, CA, GB, BE",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "\"\" (if not initialized); ISO 3166-1 alpha-2 (see Country in Devices table)"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Localization",
+      "method": "preferredAudioLanguages",
+      "events": [
+        {
+          "name": "onPreferredAudioLanguagesChanged"
+        }
+      ],
+      "description": {
+        "summary": "A list of zero or more languages in order of decreasing preference. Typically two languages are present. A language may be repeated in the list",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "[] (if not initialized); list of one or more ISO 639-2/B (see Secondary Audio Language in Devices table)"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Localization",
+      "method": "presentationLanguage",
+      "events": [
+        {
+          "name": "onPresentationLanguageChanged"
+        }
+      ],
+      "description": {
+        "summary": "The presentation language of the device, e.g. en-US",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "\"\" (if not initialized); BCP 47 (see Presentation Languages in Devices table)"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Localization",
+      "method": "timeZone",
+      "events": [
+        {
+          "name": "onTimeZoneChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the current time zone in IANA format, e.g. America /New_York",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "ready",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform that the app is minimally usable",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "signIn",
+      "events": [],
+      "description": {
+        "summary": "Log a sign in event",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "signOut",
+      "events": [],
+      "description": {
+        "summary": "Log a sign out event",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "startContent",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform that your user has started content",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "stopContent",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform that your user has stopped content",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "page",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform that your user has navigated to a page or view",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "pageId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "error",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform of an error that has occurred in your app",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "type",
+          "type": "string",
+          "enum": [
+            "network",
+            "media",
+            "restriction",
+            "entitlement",
+            "other"
+          ],
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "parameters",
+          "type": "arg list",
+          "required": false
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaLoadStart",
+      "events": [],
+      "description": {
+        "summary": "Called when setting the URL of a media asset to play, in order to infer load time",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaPlay",
+      "events": [],
+      "description": {
+        "summary": "Called when media playback should start due to autoplay, user-initiated play, or unpausing",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaPlaying",
+      "events": [],
+      "description": {
+        "summary": "Called when media playback actually starts due to autoplay, user-initiated play, unpausing, or recovering from a buffering interruption",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaPause",
+      "events": [],
+      "description": {
+        "summary": "Called when media playback will pause due to an intentional pause operation",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaWaiting",
+      "events": [],
+      "description": {
+        "summary": "Called when media playback will halt due to a network, buffer, or other unintentional constraint",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaSeeking",
+      "events": [],
+      "description": {
+        "summary": "Called when a seek is initiated during media playback",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target",
+          "type": "double",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaSeeked",
+      "events": [],
+      "description": {
+        "summary": "Called when a seek is completed during media playback",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "double",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaRateChanged",
+      "events": [],
+      "description": {
+        "summary": "Called when the playback rate of media is changed",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "rate",
+          "type": "double",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaRenditionChanged",
+      "events": [],
+      "description": {
+        "summary": "Called when the playback rendition (e.g. bitrate, dimensions, profile, etc) is changed",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "bitrate",
+          "type": "unsigned",
+          "required": true
+        },
+        {
+          "name": "width",
+          "type": "unsigned",
+          "required": true
+        },
+        {
+          "name": "height",
+          "type": "unsigned",
+          "required": true
+        },
+        {
+          "name": "profile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "mediaEnded",
+      "events": [],
+      "description": {
+        "summary": "Called when playback has stopped because the end of the media was reached",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "entityId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "event",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform of 1st party distributor metrics",
+        "details": [
+          "data parameter is a JSON document"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "schema",
+          "type": "uri",
+          "required": true
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "agePolicy",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Metrics",
+      "method": "appInfo",
+      "events": [],
+      "description": {
+        "summary": "Inform the platform about an app's build info",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "build",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Network",
+      "method": "connected",
+      "events": [
+        {
+          "name": "onConnectedChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns whether the device has a usable network connection",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Network",
+      "method": "interfaces",
+      "events": [],
+      "description": {
+        "summary": "Returns information about all physical network interfaces of the device",
+        "details": [
+          "name - e.g. wlan0",
+          "protocol - physical layer protocol supported by the interface, set to unknown by default",
+          "connected - the link link layer status",
+          "preferred - true if the interface is used for network traffic"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "type",
+              "type": "string",
+              "enum": [
+                "wired",
+                "wifi"
+              ]
+            },
+            {
+              "name": "protocol",
+              "type": "string",
+              "enum": [
+                "unknown",
+                "100base_tx",
+                "1000base_t",
+                "802_11ac",
+                "802_11ax",
+                "802_11be"
+              ]
+            },
+            {
+              "name": "enabled",
+              "type": "bool"
+            },
+            {
+              "name": "connected",
+              "type": "bool"
+            },
+            {
+              "name": "preferred",
+              "type": "bool"
+            }
+          ]
+        }
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Network",
+      "method": "interfaceStatus",
+      "events": [
+        {
+          "name": "onInterfaceStatusChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns basic information about a network interface",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "interfaceName",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "enabled",
+            "type": "bool"
+          },
+          {
+            "name": "connected",
+            "type": "bool"
+          },
+          {
+            "name": "preferred",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": [
+        {
+          "name": "Not found",
+          "code": "-xxxxx"
+        }
+      ]
+    },
+    {
+      "module": "Network",
+      "method": "interfaceConfig",
+      "events": [
+        {
+          "name": "onInterfaceConfigChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the IP configuration of an interface",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "interfaceName",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": [
+            {
+              "name": "ipv4Address",
+              "type": "string"
+            },
+            {
+              "name": "ipv4DNSAddresses",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "ipv6Addresses",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "ipv6DNSAddresses",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "specificErrors": [
+        {
+          "name": "Not found",
+          "code": "-xxxxx"
+        }
+      ]
+    },
+    {
+      "module": "Network",
+      "method": "interfaceStatistics",
+      "events": [],
+      "description": {
+        "summary": "Returns statistics for a network interface",
+        "details": [
+          "interfaceStats - present when an interface is connected. Attributes are set to null if not available",
+          "wirelessStats - present when an interface of type wifi is connected. Attributes are set to null if not available",
+          "wirelessFrequency - MHz",
+          "wirelessSignal - dBm, -96 (weakest) to 0 (strongest) inclusive",
+          "wirelessQuality - current SNR in dB, 0 to 96 inclusive",
+          "wirelessTxBitrate - Tx rate in Mbps",
+          "wirelessRxBitrate - Rx rate in Mbps",
+          "wirelessInactiveTime - time in milliseconds since last activity"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "interfaceName",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "interfaceStats",
+            "type": "object",
+            "properties": [
+              {
+                "name": "txPackets",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "txError",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "txDropped",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "txFifoErrors",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "txCarrierErrors",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "rxPackets",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "rxError",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "rxDropped",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "rxFifoErrors",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "rxFrameErrors",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "linkTxBitRate",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "linkRxBitRate",
+                "type": "unsigned | null"
+              }
+            ],
+            "required": false
+          },
+          {
+            "name": "wirelessStats",
+            "type": "object",
+            "properties": [
+              {
+                "name": "wirelessFrequency",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessQuality",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessSignal",
+                "type": "int | null"
+              },
+              {
+                "name": "wirelessTxBitrate",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessRxBitrate",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessInactiveTime",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessRxBytes",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessRxPackets",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessRxDropped",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessTxBytes",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessTxPackets",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessTxRetries",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessTxFailed",
+                "type": "unsigned | null"
+              },
+              {
+                "name": "wirelessExpectedThroughput",
+                "type": "unsigned | null"
+              }
+            ],
+            "required": false
+          }
+        ]
+      },
+      "specificErrors": [
+        {
+          "name": "Not found",
+          "code": "-xxxxx"
+        }
+      ]
+    },
+    {
+      "module": "Network",
+      "method": "interfaceDetails",
+      "events": [
+        {
+          "name": "onInterfaceDetailsChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns detailed information of a network interface",
+        "details": [
+          "Used to convey information which may be sensitive e.g perso nally identifiable information",
+          "ssid - the SSID of the access point, provided for wifi interface type if connected",
+          "bssid - the BSSID of the access point, provided for wifi interface type if connected"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "interfaceName",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "ssid",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "bssid",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      "specificErrors": [
+        {
+          "name": "Not found",
+          "code": "-xxxxx"
+        }
+      ]
+    },
+    {
+      "module": "Presentation",
+      "method": "focused",
+      "events": [
+        {
+          "name": "onFocusedChanged"
+        }
+      ],
+      "description": {
+        "summary": "Whether the app is in focus, i.e. receiving key presses. Provided for those apps/runtimes that cannot use Wayland",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "bool"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "SpeechSynthesis",
+      "method": "voices",
+      "events": [
+        {
+          "name": "onVoicesChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns a list of available voices",
+        "details": [
+          "name - name of the voice as a human-readable string",
+          "lang - the language of the voice in BCP 47",
+          "default - true if the voice is the default for the language",
+          "An empty list is returned if a speech synthesis engine is not available, or the engine rejected the request",
+          "A particular voice can be repeated in the list, and a language can be repeated in the list",
+          "At most one voice is the default for each language"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "lang",
+              "type": "string",
+              "description": "BCP 47"
+            },
+            {
+              "name": "default",
+              "type": "bool"
+            }
+          ]
+        }
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "SpeechSynthesis",
+      "method": "speak",
+      "events": [],
+      "description": {
+        "summary": "Requests the system to speak an utterance. Returns an utteranceId if the request is accepted, otherwise an error is returned. A successful new request is processed asynchronously: any utterance that is currently being spoken is interrupted and notified by onUtteranceEvent( interrupted ), and events for the new request are raised using onUtteranceEvent",
+        "details": [
+          "text - plain text or a well-formed SSML document",
+          "lang - the language of the text in BCP 47",
+          "voice - as returned by the voices method",
+          "volume - the speaking volume, 0 (lowest) to 1 (highest) inclusive",
+          "rate - the speaking rate, 0.1 (slowest) to 10 (fastest) inclusive",
+          "pitch - the speaking pitch, 0 (lowest) to 2 (highest) inclusive",
+          "pii - true if the text contains personally identifiable information, indicating that functionality such as logging and telemetry should be restricted, false if not set",
+          "For Voice Guidance, the app SHOULD either supply the text parameter as plain text and the lang parameter, or supply text as a well-formed SSML document. If text is plain text and lang is not supplied then the default speech synthesis language is used - this is not recommended usage"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "description": "BCP 47",
+          "required": false
+        },
+        {
+          "name": "voice",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "volume",
+          "type": "double",
+          "required": false
+        },
+        {
+          "name": "rate",
+          "type": "double",
+          "required": false
+        },
+        {
+          "name": "pitch",
+          "type": "double",
+          "required": false
+        },
+        {
+          "name": "pii",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "returns": {
+        "type": "unsigned"
+      },
+      "specificErrors": [
+        {
+          "name": "Speech synthesis engine error",
+          "code": "-xxxxx",
+          "description": "No speech synthesis engine is available or the engine rejected the request"
+        }
+      ]
+    },
+    {
+      "module": "SpeechSynthesis",
+      "method": "cancel",
+      "events": [],
+      "description": {
+        "summary": "Stop the utterance. If playing, audio is stopped. If synthesizing or paused, the utterance will not be played",
+        "details": [
+          "Raises onUtteranceEvent( interrupted ) if the utterance was s ynthesizing, playing or paused",
+          "Returns without error in all utterance states, or if the utterance has finished"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "utteranceId",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": [
+        {
+          "name": "Speech synthesis engine error",
+          "code": "-xxxxx",
+          "description": "No speech synthesis engine is available or the engine rejected the request"
+        }
+      ]
+    },
+    {
+      "module": "SpeechSynthesis",
+      "method": "pause",
+      "events": [],
+      "description": {
+        "summary": "Pause the utterance. If playing, audio is stopped. If the utterance was synthesizing, playback will be prevented",
+        "details": [
+          "Raises onUtteranceEvent( paused ) if the utterance was synthesizing or playing",
+          "Returns without error in all utterance states, or if the utterance has finished"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "utteranceId",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": [
+        {
+          "name": "Speech synthesis engine error",
+          "code": "-xxxxx",
+          "description": "No speech synthesis engine is available or the engine rejected the request"
+        }
+      ]
+    },
+    {
+      "module": "SpeechSynthesis",
+      "method": "resume",
+      "events": [],
+      "description": {
+        "summary": "Resume an utterance. If paused, audio is resumed. If synthesizing the utterance will be played. If playing no action is taken",
+        "details": [
+          "Raises onUtteranceEvent( resumed ) if the utterance had previously been paused while playing",
+          "Returns without error in all utterance states, or if the utterance has finished"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "utteranceId",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": [
+        {
+          "name": "Speech synthesis engine error",
+          "code": "-xxxxx",
+          "description": "No speech synthesis engine is available or the engine rejected the request"
+        }
+      ]
+    },
+    {
+      "module": "SpeechSynthesis",
+      "method": "onUtteranceEvent",
+      "events": [],
+      "description": {
+        "summary": "Notifies events related to an utterance",
+        "details": [
+          "Progress events",
+          "synthesisStarting - text to audio conversion is being started",
+          "playbackStarting - audio playback is being started",
+          "paused - utterance has been paused while playing",
+          "resumed - an utterance that had previously been paused while playing has resumed playing",
+          "completed - the utterance has completed successfully",
+          "interrupted - the utterance has been stopped due to a call to either the speak or cancel methods",
+          "Failure events",
+          "networkFailed - the system was unable to contact the voice synthesis backend",
+          "synthesisFailed - the system was unable to synthesize some or all of the utterance",
+          "playbackFailed - the system was unable to play some or all of the utterance"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "utteranceId",
+          "type": "unsigned",
+          "required": true
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "enum": [
+            "synthesisStarting",
+            "playbackStarting",
+            "paused",
+            "resumed",
+            "completed",
+            "interrupted",
+            "networkFailed",
+            "synthesisFailed",
+            "playbackFailed"
+          ],
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Stats",
+      "method": "memoryUsage",
+      "events": [],
+      "description": {
+        "summary": "Returns information about container memory usage, in bytes",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "userMemoryUsed",
+            "type": "unsigned"
+          },
+          {
+            "name": "userMemoryLimit",
+            "type": "unsigned"
+          },
+          {
+            "name": "gpuMemoryUsed",
+            "type": "unsigned"
+          },
+          {
+            "name": "gpuMemoryLimit",
+            "type": "unsigned"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "speak",
+      "events": [],
+      "description": {
+        "summary": "Speak the utterance immediately. Any ongoing speech is interrupted",
+        "details": [
+          "Text argument is either plain text or a well-formed SSML document",
+          "TTS_Status, not success attribute, to be used by caller to indicate success of call",
+          "0 OK, 1 Fail, 2 not enabled, 3 invalid configuration",
+          "Raises onSpeechInterrupted if speaking is interrupted"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "speechid",
+            "type": "unsigned"
+          },
+          {
+            "name": "TTS_Status",
+            "type": "unsigned",
+            "description": "range 0...3"
+          },
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "pause",
+      "events": [],
+      "description": {
+        "summary": "Pauses the utterance",
+        "details": [
+          "Raises onSpeechPause if ongoing speech is paused",
+          "Does nothing if utterance is already paused"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "TTS_Status",
+            "type": "unsigned",
+            "description": "range 0...3"
+          },
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "resume",
+      "events": [],
+      "description": {
+        "summary": "Continue the paused utterance",
+        "details": [
+          "Raises onSpeechResume if paused speech is resumed",
+          "Does nothing if the utterance is not paused"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "TTS_Status",
+            "type": "unsigned",
+            "description": "range 0...3"
+          },
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "cancel",
+      "events": [],
+      "description": {
+        "summary": "Stop speaking if utterance is currently being spoken",
+        "details": [
+          "Raises onSpeechInterrupted if speaking was interrupted"
+        ]
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "TTS_Status",
+            "type": "unsigned",
+            "description": "range 0...3"
+          },
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "getSpeechState",
+      "events": [],
+      "description": {
+        "summary": "Returns the state of the utterance",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "speechstate",
+            "type": "string",
+            "enum": [
+              "SPEECH_PENDING",
+              "SPEECH_IN_PROGRESS",
+              "SPEECH_PAUSED",
+              "SPEECH_NOT_FOUND"
+            ]
+          },
+          {
+            "name": "TTS_Status",
+            "type": "unsigned",
+            "description": "range 0...3"
+          },
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onWillSpeak",
+      "events": [],
+      "description": {
+        "summary": "Text to speech conversion is about to start",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onSpeechStart",
+      "events": [],
+      "description": {
+        "summary": "Utterance is about to be spoken",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onSpeechPause",
+      "events": [],
+      "description": {
+        "summary": "Ongoing speech was paused",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onSpeechResume",
+      "events": [],
+      "description": {
+        "summary": "Paused speech was resumed",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onSpeechComplete",
+      "events": [],
+      "description": {
+        "summary": "Speech completed successfully",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onSpeechInterrupted",
+      "events": [],
+      "description": {
+        "summary": "Speech was stopped, due to another call to speak or cancel",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onNetworkError",
+      "events": [],
+      "description": {
+        "summary": "Utterance failed due to network",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "onPlaybackError",
+      "events": [],
+      "description": {
+        "summary": "Utterance failed during playback",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "speechid",
+          "type": "unsigned",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "TextToSpeech",
+      "method": "listVoices",
+      "events": [],
+      "description": {
+        "summary": "Returns the list of available voices as human-readable strings, e.g. \"ava\", \"amelie\", \"angelica\"",
+        "details": []
+      },
+      "apiVersion": "8.0.0",
+      "deprecatedVersion": "9.0.0",
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [
+        {
+          "name": "language",
+          "type": "string",
+          "description": "BCP 47",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "TTS_Status",
+            "type": "unsigned",
+            "description": "range 0...3"
+          },
+          {
+            "name": "voices",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "resolution",
+      "events": [
+        {
+          "name": "onResolutionChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the width and height of the video signal on the video output, in pixels. Typically used by a streaming app to determine the highest resolution of video to select",
+        "details": [
+          "OTT/STB device: returns the video resolution over HDMI",
+          "TV device: returns the resolution of the panel"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "width",
+            "type": "unsigned"
+          },
+          {
+            "name": "height",
+            "type": "unsigned"
+          }
+        ],
+        "enum": [
+          "720, 480",
+          "720, 576",
+          "1280, 720",
+          "1920, 1080",
+          "3840, 2160"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "hdcp",
+      "events": [
+        {
+          "name": "onHdcpChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the current state of output protection on the video output",
+        "details": [
+          "OTT/STB device: returns the negotiated HDCP version on the video output, or none if an encrypted connection has not been made between the OTT/STB device and any attached TV",
+          "TV device: returns direct"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": true
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "hdcp1.4",
+          "hdcp2.2",
+          "none",
+          "direct"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "cecState",
+      "events": [
+        {
+          "name": "onCecStateChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns whether the output of the OTT/STB device is actively being displayed on the TV",
+        "details": [
+          "OTT/STB device: returns the current state of the HDMI CEC connection",
+          "active - the TV is on and the OTT/STB device is the active source",
+          "inactive - the TV is off or the OTT/STB device is not the active source",
+          "unsupported - CEC is not enabled on the TV",
+          "TV device: returns Wrong device class error"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "active",
+          "inactive",
+          "unsupported"
+        ]
+      },
+      "specificErrors": [
+        {
+          "name": "Wrong device class",
+          "code": "-xxxxx",
+          "description": "The method is not appropriate for this class of device"
+        }
+      ]
+    },
+    {
+      "module": "VideoOutput",
+      "method": "refreshRate",
+      "events": [
+        {
+          "name": "onRefreshRateChanged"
+        }
+      ],
+      "description": {
+        "summary": "Returns the refresh rate of the video signal on the video output, in Hz",
+        "details": [
+          "OTT/STB device: returns the refresh rate, or 0 if no TV is attached",
+          "TV device: returns the compositor refresh rate currently used to output content to the integrated display"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "0",
+          "23.976",
+          "24",
+          "25",
+          "29.97",
+          "30",
+          "50",
+          "59.94",
+          "60"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "colorDepth",
+      "events": [],
+      "description": {
+        "summary": "Returns the video color depth being used on the video output, in bits",
+        "details": [
+          "OTT/STB device: in addition, returns 0 when a display is not connected over HDMI",
+          "TV device: does not return 0"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "0",
+          "8",
+          "10",
+          "12"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "colorFormat",
+      "events": [],
+      "description": {
+        "summary": "Returns the current color format of the video signal on the active video output port or integrated display",
+        "details": [
+          "OTT/STB device: in addition, returns none when a display is not connected over HDMI",
+          "TV device: does not return none"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "ycbcr420",
+          "ycbcr422",
+          "ycbcr444",
+          "rgb444",
+          "none"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "colorimetry",
+      "events": [],
+      "description": {
+        "summary": "Returns the current colorimetry value of the video signal on the active video output port or integrated display",
+        "details": [
+          "OTT/STB device: in addition, returns none when a display is not connected over HDMI",
+          "TV device: does not return none"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "bt2020rgb",
+          "bt2020ycc",
+          "bt709",
+          "oprgb",
+          "none"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "dynamicRange",
+      "events": [],
+      "description": {
+        "summary": "Returns the current dynamic range format of the video signal on the video output",
+        "details": [
+          "OTT/STB device: in addition, returns none when a display is not connected over HDMI",
+          "TV device: does not return none"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "hdr10",
+          "hdr10plus",
+          "dolbyVision",
+          "hlg",
+          "sdr",
+          "none"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "VideoOutput",
+      "method": "quantizationRange",
+      "events": [],
+      "description": {
+        "summary": "Returns the quantization range used on the video output",
+        "details": [
+          "OTT/STB device: in addition, returns none when a display is not connected over HDMI",
+          "TV device: does not return none"
+        ]
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": true,
+        "javascript": false
+      },
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "enum": [
+          "limited",
+          "full",
+          "none"
+        ]
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Window",
+      "method": "addKeyIntercepts",
+      "events": [],
+      "description": {
+        "summary": "Adds the supplied list of keys to the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": false,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "keys",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    },
+    {
+      "module": "Window",
+      "method": "removeKeyIntercepts",
+      "events": [],
+      "description": {
+        "summary": "Removes the supplied list of keys from the set of keys that are received by this app when it is in the Active lifecycle state but not in focus. The key is represented by the JS event.key attribute defined in the Firebolt Key Codes Specification",
+        "details": []
+      },
+      "apiVersion": "9.0.0",
+      "deprecatedVersion": null,
+      "support": {
+        "cpp17": false,
+        "javascript": true
+      },
+      "parameters": [
+        {
+          "name": "keys",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "null"
+      },
+      "specificErrors": []
+    }
+  ]
+}
