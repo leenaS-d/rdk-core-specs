@@ -8,7 +8,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-appgateway"
+        "https://github.com/rdkcentral/entservices-appgateway/tree/develop"
       ]
     },
     {
@@ -17,7 +17,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-avoutput"
+        "https://github.com/rdkcentral/entservices-avoutput/tree/develop"
       ]
     },
     {
@@ -26,7 +26,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/bluetooth_mgr"
+        "https://github.com/rdkcentral/bluetooth_mgr/tree/develop"
       ]
     },
     {
@@ -35,14 +35,14 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/bluetooth"
+        "https://github.com/rdkcentral/bluetooth/tree/develop"
       ]
     },
     {
       "name": "BlueZ",
       "category": "Device Control Protocols",
       "layer": "RDK",
-      "releaseTag": "develop",
+      "releaseTag": "5.48",
       "url": [
         "https://www.bluez.org"
       ]
@@ -51,9 +51,9 @@
       "name": "BreakPad",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "oss",
-      "releaseTag": "develop",
+      "releaseTag": "main",
       "url": [
-        "https://github.com/google/breakpad"
+        "https://github.com/google/breakpad/tree/main"
       ]
     },
     {
@@ -62,16 +62,16 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-casting"
+        "https://github.com/rdkcentral/entservices-casting/tree/develop"
       ]
     },
     {
       "name": "cimplog",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
-      "releaseTag": "develop",
+      "releaseTag": "master",
       "url": [
-        "https://github.com/xmidt-org/cimplog"
+        "https://github.com/xmidt-org/cimplog/tree/master"
       ]
     },
     {
@@ -80,7 +80,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/common_utilities"
+        "https://github.com/rdkcentral/common_utilities/tree/develop"
       ]
     },
     {
@@ -89,7 +89,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-connectivity"
+        "https://github.com/rdkcentral/entservices-connectivity/tree/develop"
       ]
     },
     {
@@ -98,7 +98,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/control"
+        "https://github.com/rdkcentral/control/tree/develop"
       ]
     },
     {
@@ -116,7 +116,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/devicesettings"
+        "https://github.com/rdkcentral/devicesettings/tree/develop"
       ]
     },
     {
@@ -125,7 +125,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-deviceanddisplay"
+        "https://github.com/rdkcentral/entservices-deviceanddisplay/tree/develop"
       ]
     },
     {
@@ -134,7 +134,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/Dobby"
+        "https://github.com/rdkcentral/Dobby/tree/develop"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-apis"
+        "https://github.com/rdkcentral/entservices-apis/tree/develop"
       ]
     },
     {
@@ -161,7 +161,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-firmwaredownload"
+        "https://github.com/rdkcentral/entservices-firmwaredownload/tree/develop"
       ]
     },
     {
@@ -170,7 +170,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/entservices-firmwareupdate"
+        "https://github.com/rdkcentral/entservices-firmwareupdate/tree/develop"
       ]
     },
     {
@@ -179,7 +179,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/rialto-gstreamer"
+        "https://github.com/rdkcentral/rialto-gstreamer/tree/develop"
       ]
     },
     {
@@ -188,7 +188,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
+        "https://github.com/rdkcentral/rdk-halif-hdmi_cec/tree/develop"
       ]
     },
     {
@@ -197,7 +197,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/hdmicec"
+        "https://github.com/rdkcentral/hdmicec/tree/develop"
       ]
     },
     {
@@ -206,7 +206,7 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": [
-        "https://github.com/rdkcentral/iarmbus"
+        "https://github.com/rdkcentral/iarmbus/tree/develop"
       ]
     },
     {
@@ -214,7 +214,7 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-infra"
+        "https://github.com/rdkcentral/entservices-infra/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -223,7 +223,7 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-inputoutput"
+        "https://github.com/rdkcentral/entservices-inputoutput/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -232,7 +232,7 @@
       "category": "Security",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/libSyscallWrapper"
+        "https://github.com/rdkcentral/libSyscallWrapper/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -241,7 +241,7 @@
       "category": "Security",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rdk-libunpriv"
+        "https://github.com/rdkcentral/rdk-libunpriv/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -250,7 +250,7 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-mediaanddrm"
+        "https://github.com/rdkcentral/entservices-mediaanddrm/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -259,7 +259,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "url": [
-        "https://github.com/LibertyGlobal/memcr"
+        "https://github.com/LibertyGlobal/memcr/tree/main"
       ],
       "releaseTag": "develop"
     },
@@ -268,7 +268,7 @@
       "category": "App Framework",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-appmanagers"
+        "https://github.com/rdkcentral/entservices-appmanagers/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -277,16 +277,16 @@
       "category": "Security",
       "layer": "RDK",
       "url": [
-        "https://www.openssl.org"
+        "https://github.com/openssl/openssl/releases/download/openssl-3.0.15/openssl-3.0.15.tar.gz"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "3.0.15"
     },
     {
       "name": "PackageManager",
       "category": "Thunder",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/PackageManager"
+        "https://github.com/rdkcentral/PackageManager/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -295,7 +295,7 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-peripherals"
+        "https://github.com/rdkcentral/entservices-peripherals/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -304,16 +304,16 @@
       "category": "InterProcess Communications",
       "layer": "oss",
       "url": [
-        "https://github.com/protocolbuffers/protobuf"
+        "https://github.com/protocolbuffers/protobuf/tree/main"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "main"
     },
     {
       "name": "RBUS",
       "category": "InterProcess Communications",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rbus"
+        "https://github.com/rdkcentral/rbus/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -322,7 +322,7 @@
       "category": "Data Collection, Test and Diagnostic",
       "layer": "oss",
       "url": [
-        "https://github.com/rdkcentral/rdk_logger"
+        "https://github.com/rdkcentral/rdk_logger/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -331,7 +331,7 @@
       "category": "Device Control Protocols",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rdkfwupdater"
+        "https://github.com/rdkcentral/rdkfwupdater/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -340,7 +340,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rdk-window-manager"
+        "https://github.com/rdkcentral/rdk-window-manager/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -349,7 +349,7 @@
       "category": "Security",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rdk-cert-config"
+        "https://github.com/rdkcentral/rdk-cert-config/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -358,7 +358,7 @@
       "category": "Remote Device Management",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rfc"
+        "https://github.com/rdkcentral/rfc/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -376,7 +376,7 @@
       "category": "Video",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rialto-ocdm"
+        "https://github.com/rdkcentral/rialto-ocdm/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -394,7 +394,7 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-runtime"
+        "https://github.com/rdkcentral/entservices-runtime/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -403,7 +403,7 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/entservices-maintenancemanager"
+        "https://github.com/rdkcentral/entservices-maintenancemanager/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -412,7 +412,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/sysint"
+        "https://github.com/rdkcentral/sysint/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -421,7 +421,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/systemtimemgr"
+        "https://github.com/rdkcentral/systemtimemgr/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -430,16 +430,16 @@
       "category": "App Framework",
       "layer": "oss",
       "url": [
-        "https://systemd.io"
+        "https://github.com/systemd/systemd/tree/3a74d4f"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "230"
     },
     {
       "name": "telemetry",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/telemetry"
+        "https://github.com/rdkcentral/telemetry/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -448,34 +448,34 @@
       "category": "Thunder",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/ThunderJS"
+        "https://github.com/rdkcentral/ThunderJS/tree/master"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "master"
     },
     {
       "name": "trower-base64",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "oss",
       "url": [
-        "https://github.com/Comcast/trower-base64"
+        "https://github.com/Comcast/trower-base64/tree/main"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "main"
     },
     {
       "name": "Wayland",
       "category": "Display/Graphics",
       "layer": "oss",
       "url": [
-        "https://wayland.freedesktop.org"
+        "https://wayland.freedesktop.org/releases/wayland-1.20.0.tar.xz"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "1.20.0"
     },
     {
       "name": "wdmp-c (WebPA Data model parser)",
       "category": "Remote Device Management",
       "layer": "RDK",
       "url": [
-        "https://github.com/xmidt-org/wdmp-c"
+        "https://github.com/xmidt-org/wdmp-c/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -484,7 +484,7 @@
       "category": "Display/Graphics",
       "layer": "vendor",
       "url": [
-        "https://github.com/rdkcentral/westeros"
+        "https://github.com/rdkcentral/westeros/tree/develop"
       ],
       "releaseTag": "develop"
     },
@@ -493,36 +493,36 @@
       "category": "WPEFramework",
       "layer": "RDK",
       "url": [
-        "https://github.com/WebPlatformForEmbedded/libwpe"
+        "https://github.com/rdkcentral/ThunderClientLibraries.git/tree/master"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "master"
     },
     {
       "name": "WPE WebKit",
       "category": "WPEFramework",
       "layer": "RDK",
       "url": [
-        "https://github.com/WebPlatformForEmbedded/WPEWebKit"
+        "https://github.com/WebPlatformForEmbedded/WPEWebKit/tree/wpe-2.46"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "wpe-2.46"
     },
     {
       "name": "WPEFramework",
       "category": "Video",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/Thunder"
+        "https://github.com/rdkcentral/Thunder/tree/R4_4-RDK"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "R4_4-RDK"
     },
     {
       "name": "WPEFramework UI",
       "category": "WPEFramework",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/ThunderUI"
+        "https://github.com/rdkcentral/ThunderUI/tree/master"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "master"
     }
   ]
 }

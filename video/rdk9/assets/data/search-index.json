@@ -980,13 +980,13 @@
     },
     {
       "title": "BlueZ",
-      "text": "Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release 5.48.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "BreakPad",
-      "text": "Data Collection, Test and Diagnostic · oss layer · release develop.",
+      "text": "Data Collection, Test and Diagnostic · oss layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -998,7 +998,7 @@
     },
     {
       "title": "cimplog",
-      "text": "Data Collection, Test and Diagnostic · RDK layer · release develop.",
+      "text": "Data Collection, Test and Diagnostic · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1136,7 +1136,7 @@
     },
     {
       "title": "OpenSSL",
-      "text": "Security · RDK layer · release develop.",
+      "text": "Security · RDK layer · release 3.0.15.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1154,7 +1154,7 @@
     },
     {
       "title": "Protobuf",
-      "text": "InterProcess Communications · oss layer · release develop.",
+      "text": "InterProcess Communications · oss layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1238,7 +1238,7 @@
     },
     {
       "title": "Systemd",
-      "text": "App Framework · oss layer · release develop.",
+      "text": "App Framework · oss layer · release 230.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1250,19 +1250,19 @@
     },
     {
       "title": "ThunderJS",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "trower-base64",
-      "text": "System Start, Platform Management and misc utilities · oss layer · release develop.",
+      "text": "System Start, Platform Management and misc utilities · oss layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "Wayland",
-      "text": "Display/Graphics · oss layer · release develop.",
+      "text": "Display/Graphics · oss layer · release 1.20.0.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1280,31 +1280,31 @@
     },
     {
       "title": "WPE Client Libraries",
-      "text": "WPEFramework · RDK layer · release develop.",
+      "text": "WPEFramework · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "WPE WebKit",
-      "text": "WPEFramework · RDK layer · release develop.",
+      "text": "WPEFramework · RDK layer · release wpe-2.46.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "WPEFramework",
-      "text": "Video · RDK layer · release develop.",
+      "text": "Video · RDK layer · release R4_4-RDK.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "WPEFramework UI",
-      "text": "WPEFramework · RDK layer · release develop.",
+      "text": "WPEFramework · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "aamp",
-      "text": "VIDEO · RDK layer · release develop.",
+      "text": "Video · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1328,25 +1328,25 @@
     },
     {
       "title": "cjwt",
-      "text": "Remote Device Management · RDK layer · release develop.",
+      "text": "Remote Device Management · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "cobalt",
-      "text": "App Framework · RDK layer · release develop.",
+      "text": "App Framework · RDK layer · release 27.lts.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "cpeabs",
-      "text": "System Start, Platform Management and misc utilities · RDK layer · release develop.",
+      "text": "System Start, Platform Management and misc utilities · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "cpuprocanalyzer",
-      "text": "Device Management & Diagnostics · RDK layer · release develop.",
+      "text": "Device Management & Diagnostics · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1358,7 +1358,7 @@
     },
     {
       "title": "dca",
-      "text": "Device Management & Diagnostics · RDK layer · release develop.",
+      "text": "Device Management & Diagnostics · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1370,7 +1370,7 @@
     },
     {
       "title": "dcmjsonparser",
-      "text": "Device Management & Diagnostics · RDK layer · release develop.",
+      "text": "Device Management & Diagnostics · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1388,7 +1388,7 @@
     },
     {
       "title": "dvbsubdecoder",
-      "text": "VIDEO · RDK layer · release develop.",
+      "text": "Video · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1610,7 +1610,7 @@
     },
     {
       "title": "ermgr",
-      "text": "Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1628,7 +1628,7 @@
     },
     {
       "title": "gn-native",
-      "text": "Data Collection, Test and Diagnostic · RDK layer · release develop.",
+      "text": "Data Collection, Test and Diagnostic · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1658,7 +1658,7 @@
     },
     {
       "title": "javascriptcore",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release wpe-2.38.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1676,13 +1676,13 @@
     },
     {
       "title": "libparodus",
-      "text": "Device Control Protocols · RDK layer · release develop.",
+      "text": "Device Control Protocols · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "lxccpid",
-      "text": "App Framework · RDK layer · release develop.",
+      "text": "App Framework · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1724,7 +1724,7 @@
     },
     {
       "title": "parodus",
-      "text": "System Start, Platform Management and misc utilities · RDK layer · release develop.",
+      "text": "System Start, Platform Management and misc utilities · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1760,7 +1760,7 @@
     },
     {
       "title": "rdkshell",
-      "text": "App Framework · RDK layer · release develop.",
+      "text": "App Framework · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1802,19 +1802,19 @@
     },
     {
       "title": "residentui",
-      "text": "App Framework · RDK layer · release develop.",
+      "text": "App Framework · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "rtcore",
-      "text": "InterProcess Communications · RDK layer · release develop.",
+      "text": "InterProcess Communications · RDK layer · release rtcore.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "rtremote",
-      "text": "InterProcess Communications · RDK layer · release develop.",
+      "text": "InterProcess Communications · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1826,13 +1826,13 @@
     },
     {
       "title": "streamfs",
-      "text": "VIDEO · RDK layer · release develop.",
+      "text": "Video · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "subtec",
-      "text": "VIDEO · RDK layer · release develop.",
+      "text": "Video · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1844,19 +1844,19 @@
     },
     {
       "title": "tdk",
-      "text": "Data Collection, Test and Diagnostic · RDK layer · release develop.",
+      "text": "Data Collection, Test and Diagnostic · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "tenablehdcp",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release rdk-next.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "thunder-plugin-activator",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release Thunder_44_PIS.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1886,25 +1886,25 @@
     },
     {
       "title": "ucresolv",
-      "text": "System Start, Platform Management and misc utilities · RDK layer · release develop.",
+      "text": "System Start, Platform Management and misc utilities · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "uwebsockets",
-      "text": "System Start, Platform Management and misc utilities · RDK layer · release develop.",
+      "text": "System Start, Platform Management and misc utilities · RDK layer · release v0.14.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "waymetric",
-      "text": "Video · RDK layer · release develop.",
+      "text": "Video · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "webcfg",
-      "text": "Remote Device Management · RDK layer · release develop.",
+      "text": "Remote Device Management · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1916,7 +1916,7 @@
     },
     {
       "title": "webkitbrowser-plugin",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1928,13 +1928,13 @@
     },
     {
       "title": "wpeframework-extensions",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release R4_4.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "wpeframework-ocdm-clearkey",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release R2.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1952,13 +1952,13 @@
     },
     {
       "title": "wpeframework-tools",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release R4_4-RDK.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
       "title": "wrp-c",
-      "text": "Remote Device Management · RDK layer · release develop.",
+      "text": "Remote Device Management · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
