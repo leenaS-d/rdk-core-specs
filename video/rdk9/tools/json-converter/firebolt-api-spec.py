@@ -1,23 +1,17 @@
-# If not stated otherwise in this file or this component's LICENSE file the
-# following copyright and licenses apply:
-#
-# Copyright 2026 RDK Management
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-
 #!/usr/bin/env python3
 """
+Convert the Firebolt API specification PDF (methods table) to JSON.
+
+Why the previous version failed
+-------------------------------
+* extract_tables() returns plain text: bullets are *drawn shapes* (not text), so
+  all list structure was lost, and column text was hard-wrapped mid-word.
+* The PDF's cells are not HTML, so the BeautifulSoup <ul> parsing never saw lists.
+* The check / cross marks are images, so "support" was always false.
+* A table row can continue on the next page (Network.interfaceStatistics); those
+  continuation rows were dropped / treated as separate rows.
+* The Errors table was never consulted, specificErrors stayed empty.
+
 Approach
 --------
 Work with the PDF geometry (pdfplumber chars / curves / images) instead of text:
@@ -49,81 +43,155 @@ except ImportError:  # keep the tool usable without jsonschema
 # JSON SCHEMA
 ##############################################################################
 
-API_SCHEMA = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "RDK API Specification",
-    "type": "object",
-    "required": ["module", "method", "description", "apiVersion", "approved", "support"],
-    "properties": {
-        "module": {"type": "string"},
-        "method": {"type": "string"},
-        "events": {"type": "array", "items": {"$ref": "#/definitions/event"}},
-        "description": {"$ref": "#/definitions/description"},
-        "apiVersion": {"type": "string"},
-        "deprecatedVersion": {"type": ["string", "null"]},
-        "approved": {"type": "boolean"},
-        "support": {
-            "type": "object",
-            "required": ["cpp17", "javascript"],
-            "properties": {
-                "cpp17": {"type": "boolean"},
-                "javascript": {"type": "boolean"},
+# Type names that can appear in a dataType "type" (taken from the PDF's Types table
+# and the primitive types used in its Parameters / Returns columns).
+ALLOWED_TYPES = [
+    "bool", "string", "unsigned", "double", "int", "json", "uri", "datetime",
+    "arg list", "enum", "array", "object", "null",
+]
+
+_STR = {"type": "string"}
+_BOOL = {"type": "boolean"}
+_INT = {"type": "integer"}
+_REF = lambda name: {"$ref": f"#/definitions/{name}"}  # noqa: E731
+
+DEFINITIONS = {
+    "api": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["module", "method", "description", "apiVersion", "approved", "support"],
+        "properties": {
+            "module": _STR,
+            "method": _STR,
+            "events": {"type": "array", "items": _REF("event")},
+            "description": _REF("description"),
+            "apiVersion": _STR,
+            "deprecatedVersion": {"type": ["string", "null"]},
+            "approved": _BOOL,        # green row = true, red row = false (PDF Key table)
+            "support": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["cpp17", "javascript"],
+                "properties": {"cpp17": _BOOL, "javascript": _BOOL},
             },
+            "parameters": {"type": "array", "items": _REF("dataType")},
+            # omitted when the PDF says "N/A" (notifications); {"type": "null"} for "None"
+            "returns": _REF("dataType"),
+            "specificErrors": {"type": "array", "items": _REF("error")},
         },
-        "parameters": {"type": "array", "items": {"$ref": "#/definitions/dataType"}},
-        "returns": {"$ref": "#/definitions/dataType"},
-        "specificErrors": {"type": "array", "items": {"$ref": "#/definitions/error"}},
     },
-    "definitions": {
-        "description": {
-            "type": "object",
-            "properties": {
-                "summary": {"type": "string"},
-                "details": {"type": "array", "items": {"type": "string"}},
-            },
+    "description": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {"summary": _STR, "details": {"type": "array", "items": _STR}},
+    },
+    "event": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["name"],
+        "properties": {"name": _STR, "description": _STR},
+    },
+    "error": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["name"],
+        "properties": {
+            "name": _STR, "code": _STR, "description": _STR,
+            "examples": _STR, "openIssues": _STR,
         },
-        "event": {
-            "type": "object",
-            "required": ["name"],
-            "properties": {"name": {"type": "string"}, "description": {"type": "string"}},
-        },
-        "error": {
-            "type": "object",
-            "properties": {
-                "name": {"type": "string"},
-                "code": {"type": "string"},
-                "description": {"type": "string"},
-                "examples": {"type": "string"},
-                "openIssues": {"type": "string"},
+    },
+    "dataType": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "name": _STR,
+            "type": {"type": "string", "enum": ALLOWED_TYPES},
+            "required": _BOOL,
+            "nullable": _BOOL,        # value may also be null (PDF: "unsigned | null")
+            "description": _STR,
+            "format": _STR,
+            # enum: string in JSON-RPC, integer in C++ (Interpretation table)
+            "enum": {"type": "array", "items": _STR},
+            "enumDescriptions": {"type": "object"},
+            "representation": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {"jsonrpc": _STR, "cpp17": _STR},
             },
-        },
-        "dataType": {
-            "type": "object",
-            "properties": {
-                "name": {"type": "string"},
-                "type": {"type": "string"},
-                "required": {"type": "boolean"},
-                "description": {"type": "string"},
-                "format": {"type": "string"},
-                "enum": {"type": "array", "items": {"type": "string"}},
-                "enumDescriptions": {"type": "object"},
-                "representation": {
-                    "type": "object",
-                    "properties": {"jsonrpc": {"type": "string"}, "cpp17": {"type": "string"}},
-                },
-                "oneOf": {"type": "array", "items": {"type": "string"}},
-                "ordered": {"type": "boolean"},
-                "monotonic": {"type": "boolean"},
-                "properties": {"type": "array", "items": {"$ref": "#/definitions/dataType"}},
-                "items": {"$ref": "#/definitions/dataType"},
-            },
+            # "one of": primitive with predefined values, NOT an enum
+            "oneOf": {"type": "array", "items": _STR},
+            # "list of" = ordered, "list of... unordered" = unordered
+            "ordered": _BOOL,
+            # "monotonic": greater than the last instance of the attribute
+            "monotonic": _BOOL,
+            "properties": {"type": "array", "items": _REF("dataType")},
+            "items": _REF("dataType"),
         },
     },
 }
 
+# Schema of ONE api entry (used to report which method failed)
+API_SCHEMA = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/api",
+    "definitions": DEFINITIONS,
+}
+
+# Schema of the whole generated file
+DOCUMENT_SCHEMA = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Firebolt API Specification (converted from PDF)",
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["metadata", "apis"],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["sourceFile", "sourceSha256", "generatedAt", "apiCount"],
+            "properties": {
+                "sourceFile": _STR,
+                "sourceFileSize": _INT,
+                "sourceSha256": _STR,
+                "sourceModified": _STR,
+                "pdfVersion": {"type": ["string", "null"]},
+                "pageCount": _INT,
+                "pdfInfo": {"type": "object"},
+                "document": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "properties": {k: _STR for k in
+                                   ("title", "specVersion", "status", "author", "note")},
+                },
+                "generatedAt": _STR,
+                "generator": {"type": "object"},
+                "apiCount": _INT,
+                "approvedCount": _INT,
+                "unapprovedCount": _INT,
+            },
+        },
+        "interpretation": {
+            "type": "array",
+            "items": {"type": "object", "additionalProperties": False,
+                      "required": ["term", "meaning"],
+                      "properties": {"term": _STR, "meaning": _STR}},
+        },
+        "types": {
+            "type": "array",
+            "items": {"type": "object", "additionalProperties": False,
+                      "required": ["name", "definition"],
+                      "properties": {"name": _STR, "definition": _STR}},
+        },
+        "genericErrors": {"type": "array", "items": _REF("error")},
+        "specificErrors": {"type": "array", "items": _REF("error")},
+        "apis": {"type": "array", "items": _REF("api")},
+    },
+    "definitions": DEFINITIONS,
+}
+
 
 def _fallback_errors(value, schema, root, path=()):
-    """Tiny validator for the subset of JSON-schema used above."""
+    """Tiny validator for the subset of JSON-schema used above (used if jsonschema is missing)."""
     errs = []
     if "$ref" in schema:
         node = root
@@ -133,15 +201,24 @@ def _fallback_errors(value, schema, root, path=()):
     types = schema.get("type")
     if types:
         types = types if isinstance(types, list) else [types]
-        pytypes = {"string": str, "boolean": bool, "object": dict,
-                   "array": list, "null": type(None)}
-        if not any(isinstance(value, pytypes[t]) for t in types):
+        pytypes = {"string": str, "boolean": bool, "object": dict, "array": list,
+                   "null": type(None), "integer": int}
+        ok = any(isinstance(value, pytypes[t]) and not (t == "integer" and isinstance(value, bool))
+                 for t in types)
+        if not ok:
             return [(path, f"{value!r} is not of type {types}")]
+    if "enum" in schema and value not in schema["enum"]:
+        errs.append((path, f"{value!r} is not one of {schema['enum']}"))
     if isinstance(value, dict):
         for r in schema.get("required", []):
             if r not in value:
                 errs.append((path, f"'{r}' is a required property"))
-        for k, sub in schema.get("properties", {}).items():
+        props = schema.get("properties", {})
+        if schema.get("additionalProperties") is False:
+            for k in value:
+                if k not in props:
+                    errs.append((path, f"Additional properties are not allowed ('{k}' was unexpected)"))
+        for k, sub in props.items():
             if k in value:
                 errs += _fallback_errors(value[k], sub, root, path + (k,))
     if isinstance(value, list) and "items" in schema:
@@ -150,16 +227,24 @@ def _fallback_errors(value, schema, root, path=()):
     return errs
 
 
-def validate_api(api):
+def _validate(instance, schema, label):
     if Draft7Validator is not None:
-        errors = [(list(e.path), e.message) for e in Draft7Validator(API_SCHEMA).iter_errors(api)]
+        errors = [(list(e.path), e.message) for e in Draft7Validator(schema).iter_errors(instance)]
     else:
-        errors = [(list(p), m) for p, m in _fallback_errors(api, API_SCHEMA, API_SCHEMA)]
+        errors = [(list(p), m) for p, m in _fallback_errors(instance, schema, schema)]
     if errors:
-        print(f"\nValidation failed for {api.get('method')}", file=sys.stderr)
+        print(f"\nValidation failed for {label}", file=sys.stderr)
         for path, msg in errors:
             print(f"  Path={path} Error={msg}", file=sys.stderr)
         raise ValueError("Schema validation failed")
+
+
+def validate_api(api):
+    _validate(api, API_SCHEMA, f"method {api.get('module')}.{api.get('method')}")
+
+
+def validate_document(document):
+    _validate(document, DOCUMENT_SCHEMA, "output document")
 
 
 ##############################################################################
@@ -379,6 +464,14 @@ def split_parts(text):
     return [p.strip() for p in re.split(r"\s+-\s+", text) if p.strip()]
 
 
+MAX_NESTING_DEPTH = 20      # real spec nests 3-4 levels; the limit bounds recursion on odd input
+
+
+def _check_depth(depth):
+    if depth > MAX_NESTING_DEPTH:
+        raise ValueError(f"Parameter/return nesting deeper than {MAX_NESTING_DEPTH} levels")
+
+
 def make_enum(values, descs):
     """Interpretation table: enum = string in JSON-RPC, integer in C++."""
     out = {"type": "enum", "representation": dict(ENUM_REPRESENTATION)}
@@ -402,8 +495,9 @@ def _enum_from_children(children):
     return values, descs
 
 
-def build_type(type_text, children=(), extra=()):
+def build_type(type_text, children=(), extra=(), depth=0):
     """Build a dataType dict (no name) from the 'type' text and nested bullets."""
+    _check_depth(depth)
     raw = clean_text(type_text)
     low = raw.lower()
     either = bool(re.search(r",?\s*either\b", low))
@@ -434,7 +528,7 @@ def build_type(type_text, children=(), extra=()):
         else:                                        # list of objects
             items = {"type": "object"}
             if children:
-                items["properties"] = [parse_item(c) for c in children]
+                items["properties"] = [parse_item(c, depth + 1) for c in children]
         out["items"] = items
 
     elif base_low == "enum":
@@ -453,10 +547,14 @@ def build_type(type_text, children=(), extra=()):
     elif base_low == "object":
         out["type"] = "object"
         if children:
-            out["properties"] = [parse_item(c) for c in children]
+            out["properties"] = [parse_item(c, depth + 1) for c in children]
 
     else:
-        out["type"] = normalize_type(base)
+        tokens = [t.strip() for t in base.split("|")]
+        if len(tokens) > 1 and "null" in [t.lower() for t in tokens]:
+            out["nullable"] = True                    # "unsigned | null"
+            tokens = [t for t in tokens if t.lower() != "null"]
+        out["type"] = normalize_type(" | ".join(tokens))
         if children:                                  # 'string, either' -> alternatives
             desc.append("; ".join(c["text"] for c in children))
 
@@ -467,8 +565,9 @@ def build_type(type_text, children=(), extra=()):
     return out
 
 
-def parse_item(node):
+def parse_item(node, depth=0):
     """'name - type - extra...' bullet -> dataType with name."""
+    _check_depth(depth)
     parts = split_parts(node["text"])
     if not parts:
         return {"name": node["text"]}
@@ -476,14 +575,14 @@ def parse_item(node):
     if len(parts) == 1:
         if node["children"]:
             item["type"] = "object"
-            item["properties"] = [parse_item(c) for c in node["children"]]
+            item["properties"] = [parse_item(c, depth + 1) for c in node["children"]]
         return item
     extra = parts[2:]
     required = None
     if extra and extra[-1].lower() == "optional":
         required = False
         extra = extra[:-1]
-    item.update(build_type(parts[1], node["children"], extra))
+    item.update(build_type(parts[1], node["children"], extra, depth + 1))
     if required is False:
         item["required"] = False
     return item
@@ -744,7 +843,7 @@ def build_api(rec, error_lookup):
 # SOURCE METADATA / OUTPUT NAME
 ##############################################################################
 
-GENERATOR = {"script": "pdftojson.py", "version": "2.2"}
+GENERATOR = {"script": "pdftojson.py", "version": "2.3"}
 
 
 def _iso(ts):
@@ -842,6 +941,8 @@ def convert_pdf_to_json(pdf_path, output_file=None):
         "apis": apis,
     }
 
+    validate_document(document)
+
     out_dir = os.path.dirname(os.path.abspath(output_file))
     os.makedirs(out_dir, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as fp:
@@ -854,12 +955,23 @@ def convert_pdf_to_json(pdf_path, output_file=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Convert Firebolt/RDK API PDF to JSON")
-    parser.add_argument("pdf", help="Input PDF file")
+    parser.add_argument("pdf", nargs="?", help="Input PDF file")
+    parser.add_argument("--dump-schema", metavar="FILE",
+                        help="Write the JSON schema of the output file and exit "
+                             "(when no PDF is given)")
     parser.add_argument("-o", "--output", default=None,
                         help="Output JSON file or directory "
                              "(default: <pdf name>.json next to the PDF)")
     args = parser.parse_args()
-    convert_pdf_to_json(args.pdf, args.output)
+    if args.dump_schema:
+        with open(args.dump_schema, "w", encoding="utf-8") as fp:
+            json.dump(DOCUMENT_SCHEMA, fp, indent=2)
+            fp.write("\n")
+        print(f"Wrote schema {args.dump_schema}")
+    if args.pdf:
+        convert_pdf_to_json(args.pdf, args.output)
+    elif not args.dump_schema:
+        parser.error("the PDF argument is required")
 
 
 if __name__ == "__main__":
