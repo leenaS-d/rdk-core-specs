@@ -1,73 +1,218 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "RDK API Specification",
+  "title": "Firebolt Core API Specifications",
   "type": "object",
+  "additionalProperties": false,
   "required": [
-    "module",
-    "method",
-    "description",
-    "apiVersion",
-    "support"
+    "metadata",
+    "apis"
   ],
   "properties": {
-    "module": {
-      "type": "string"
-    },
-    "method": {
-      "type": "string"
-    },
-    "events": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/event"
-      }
-    },
-    "description": {
-      "$ref": "#/definitions/description"
-    },
-    "apiVersion": {
-      "type": "string"
-    },
-    "deprecatedVersion": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "support": {
+    "metadata": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
-        "cpp17",
-        "javascript"
+        "sourceFile",
+        "sourceSha256",
+        "generatedAt",
+        "apiCount"
       ],
       "properties": {
-        "cpp17": {
-          "type": "boolean"
+        "sourceFile": {
+          "type": "string"
         },
-        "javascript": {
-          "type": "boolean"
+        "sourceFileSize": {
+          "type": "integer"
+        },
+        "sourceSha256": {
+          "type": "string"
+        },
+        "sourceModified": {
+          "type": "string"
+        },
+        "pdfVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pageCount": {
+          "type": "integer"
+        },
+        "pdfInfo": {
+          "type": "object"
+        },
+        "document": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "specVersion": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "author": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
+        "generatedAt": {
+          "type": "string"
+        },
+        "generator": {
+          "type": "object"
+        },
+        "apiCount": {
+          "type": "integer"
+        },
+        "approvedCount": {
+          "type": "integer"
+        },
+        "unapprovedCount": {
+          "type": "integer"
         }
       }
     },
-    "parameters": {
+    "interpretation": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/dataType"
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "term",
+          "meaning"
+        ],
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          }
+        }
       }
     },
-    "returns": {
-      "$ref": "#/definitions/dataType"
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "definition"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "genericErrors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/error"
+      }
     },
     "specificErrors": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/error"
       }
+    },
+    "apis": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/api"
+      }
     }
   },
   "definitions": {
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "method",
+        "description",
+        "apiVersion",
+        "approved",
+        "support"
+      ],
+      "properties": {
+        "module": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/event"
+          }
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "apiVersion": {
+          "type": "string"
+        },
+        "deprecatedVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "support": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cpp17",
+            "javascript"
+          ],
+          "properties": {
+            "cpp17": {
+              "type": "boolean"
+            },
+            "javascript": {
+              "type": "boolean"
+            }
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dataType"
+          }
+        },
+        "returns": {
+          "$ref": "#/definitions/dataType"
+        },
+        "specificErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/error"
+          }
+        }
+      }
+    },
     "description": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "summary": {
           "type": "string"
@@ -82,6 +227,7 @@
     },
     "event": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "name"
       ],
@@ -96,6 +242,10 @@
     },
     "error": {
       "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
       "properties": {
         "name": {
           "type": "string"
@@ -105,19 +255,44 @@
         },
         "description": {
           "type": "string"
+        },
+        "examples": {
+          "type": "string"
+        },
+        "openIssues": {
+          "type": "string"
         }
       }
     },
     "dataType": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "bool",
+            "string",
+            "unsigned",
+            "double",
+            "int",
+            "json",
+            "uri",
+            "datetime",
+            "arg list",
+            "enum",
+            "array",
+            "object",
+            "null"
+          ]
         },
         "required": {
+          "type": "boolean"
+        },
+        "nullable": {
           "type": "boolean"
         },
         "description": {
@@ -134,6 +309,30 @@
         },
         "enumDescriptions": {
           "type": "object"
+        },
+        "representation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "jsonrpc": {
+              "type": "string"
+            },
+            "cpp17": {
+              "type": "string"
+            }
+          }
+        },
+        "oneOf": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ordered": {
+          "type": "boolean"
+        },
+        "monotonic": {
+          "type": "boolean"
         },
         "properties": {
           "type": "array",
