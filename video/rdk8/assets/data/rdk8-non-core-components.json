@@ -595,8 +595,8 @@
       "name": "webkitbrowser-plugin",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "1.1.30",
-      "url": "https://github.com/rdkcentral/rdkservices/tree/1.1.30"
+      "releaseTag": "rev-857eff8",
+      "url": "https://github.com/rdkcentral/rdkservices/tree/857eff8"
     },
     {
       "name": "wpe-backend-rdk",
