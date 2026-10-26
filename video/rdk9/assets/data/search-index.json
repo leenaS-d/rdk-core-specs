@@ -1375,18 +1375,6 @@
       "url": "component-catalog.html"
     },
     {
-      "title": "deepsleep-manager-headers",
-      "text": "Entertainment Services · RDK layer · release develop.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
-      "title": "devicesettings-hal-headers",
-      "text": "Entertainment Services · RDK layer · release develop.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
       "title": "dvbsubdecoder",
       "text": "Video · RDK layer · release develop.",
       "category": "Components",
@@ -1693,14 +1681,14 @@
       "url": "component-catalog.html"
     },
     {
-      "title": "media-utils-headers",
-      "text": "Entertainment Services · RDK layer · release develop.",
+      "title": "memcapture",
+      "text": "Device Management & Diagnostics · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
     {
-      "title": "memcapture",
-      "text": "Device Management & Diagnostics · RDK layer · release develop.",
+      "title": "Messagecontrol",
+      "text": "Entertainment Services · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1843,12 +1831,6 @@
       "url": "component-catalog.html"
     },
     {
-      "title": "tdk",
-      "text": "Data Collection, Test and Diagnostic · RDK layer · release rdk-next.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
       "title": "tenablehdcp",
       "text": "Thunder · RDK layer · release rdk-next.",
       "category": "Components",
@@ -1875,12 +1857,6 @@
     {
       "title": "tts",
       "text": "Device Management & Diagnostics · RDK layer · release develop.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
-      "title": "tvsettings-hal-headers",
-      "text": "Entertainment Services · RDK layer · release develop.",
       "category": "Components",
       "url": "component-catalog.html"
     },

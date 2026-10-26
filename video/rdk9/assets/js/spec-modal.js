@@ -21,7 +21,8 @@
 (function () {
   const modal = document.getElementById('spec-modal');
   const body = document.getElementById('spec-modal-body');
-  if (!modal || !body) return;
+  const dialog = modal && modal.querySelector('.spec-modal-dialog');
+  if (!modal || !body || !dialog) return;
 
   let lastFocused = null;
 
@@ -35,6 +36,15 @@
   const open = (template) => {
     body.innerHTML = '';
     body.appendChild(template.content.cloneNode(true));
+    const heading = body.querySelector('h1, h2, h3');
+    if (heading) {
+      heading.id = 'spec-modal-title';
+      dialog.setAttribute('aria-labelledby', heading.id);
+      dialog.removeAttribute('aria-label');
+    } else {
+      dialog.removeAttribute('aria-labelledby');
+      dialog.setAttribute('aria-label', 'Specification details');
+    }
     modal.hidden = false;
     modal.classList.add('open');
     modal.querySelector('.spec-modal-close').focus();
@@ -54,6 +64,25 @@
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modal.hidden) close();
+    if (modal.hidden) return;
+    if (event.key === 'Escape') {
+      close();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+
+    const focusable = Array.from(dialog.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+      .filter((element) => element.getClientRects().length);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+
+    if (event.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) {
+      event.preventDefault();
+      first.focus();
+    }
   });
 })();

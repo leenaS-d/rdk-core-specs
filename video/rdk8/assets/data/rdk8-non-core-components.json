@@ -529,13 +529,6 @@
       "url": "https://github.com/rdkcentral/sysint/tree/4.5.2v2"
     },
     {
-      "name": "tdk",
-      "category": "Build System/OE extensions/Testing",
-      "layer": "RDK",
-      "releaseTag": "rev-b05d3991",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdkv/tools/tdkv/+/b95d3991/"
-    },
-    {
       "name": "tenablehdcp",
       "category": "Thunder",
       "layer": "RDK",

@@ -14,14 +14,16 @@
       "category": "Security",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdk-apparmor-profiles/tree/develop"
+      "url": "https://github.com/rdkcentral/rdk-apparmor-profiles/tree/develop",
+      "View Details": "https://github.com/rdkcentral/rdk-apparmor-profiles/blob/develop/README.md"
     },
     {
       "name": "audiocapturemgr",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/audiocapturemgr/tree/develop"
+      "url": "https://github.com/rdkcentral/audiocapturemgr/tree/develop",
+      "View Details": "https://github.com/rdkcentral/audiocapturemgr/blob/develop/README.md"
     },
     {
       "name": "breakpad-wrapper",
@@ -85,20 +87,6 @@
       "layer": "RDK",
       "releaseTag": "rdk-next",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/dcm/+/rdk-next/"
-    },
-    {
-      "name": "deepsleep-manager-headers",
-      "category": "Entertainment Services",
-      "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager/tree/develop"
-    },
-    {
-      "name": "devicesettings-hal-headers",
-      "category": "Entertainment Services",
-      "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdk-halif-device_settings/tree/develop"
     },
     {
       "name": "dvbsubdecoder",
@@ -371,14 +359,16 @@
       "category": "App Framework",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/firebolt-cpp-client/tree/develop"
+      "url": "https://github.com/rdkcentral/firebolt-cpp-client/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "firebolt-cpp-transport",
       "category": "App Framework",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/firebolt-cpp-transport/tree/develop"
+      "url": "https://github.com/rdkcentral/firebolt-cpp-transport/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "gn-native",
@@ -392,28 +382,32 @@
       "category": "Video",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/gst-plugins-rdk/tree/develop"
+      "url": "https://github.com/rdkcentral/gst-plugins-rdk/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "sys_mon_tools",
       "category": "InterProcess Communications",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/sys_mon_tools/tree/develop"
+      "url": "https://github.com/rdkcentral/sys_mon_tools/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "iarmbus-headers",
       "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/iarmbus/tree/develop/core/include"
+      "url": "https://github.com/rdkcentral/iarmbus/tree/develop/core/include",
+      "View Details": "https://github.com/rdkcentral/iarmbus/blob/develop/README.md"
     },
     {
       "name": "iarmmgrs",
       "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/iarmmgrs/tree/develop"
+      "url": "https://github.com/rdkcentral/iarmmgrs/tree/develop",
+      "View Details": "https://github.com/rdkcentral/iarmmgrs/blob/develop/README.md"
     },
     {
       "name": "javascriptcore",
@@ -455,14 +449,8 @@
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/media_utils/tree/develop"
-    },
-    {
-      "name": "media-utils-headers",
-      "category": "Entertainment Services",
-      "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture/tree/develop"
+      "url": "https://github.com/rdkcentral/media_utils/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "memcapture",
@@ -470,6 +458,15 @@
       "layer": "RDK",
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/MemCapture/tree/develop"
+    },
+    {
+      "name": "Messagecontrol",
+      "category": "Entertainment Services",
+      "layer": "RDK",
+     "url": [
+        "https://github.com/rdkcentral/entservices-messagecontrol/tree/develop"
+      ],
+      "releaseTag": "develop"
     },
     {
       "name": "networkmanager-plugin",
@@ -490,7 +487,8 @@
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/libpackage/tree/develop"
+      "url": "https://github.com/rdkcentral/libpackage/tree/develop",
+      "View Details": "https://github.com/rdkcentral/libpackage/blob/develop/docs/README.md"
     },
     {
       "name": "parodus",
@@ -504,7 +502,8 @@
       "category": "Uncategorized",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/middleware-player-interface/tree/develop"
+      "url": "https://github.com/rdkcentral/middleware-player-interface/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "ralf-utils",
@@ -518,21 +517,24 @@
       "category": "Video",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/gstreamer-netflix-platform/tree/develop"
+      "url": "https://github.com/rdkcentral/gstreamer-netflix-platform/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "rdkat",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdkat/tree/develop"
+      "url": "https://github.com/rdkcentral/rdkat/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "rdknativescript",
       "category": "App Framework",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdkNativeScript/tree/develop"
+      "url": "https://github.com/rdkcentral/rdkNativeScript/tree/develop",
+      "View Details": "https://github.com/rdkcentral/rdkNativeScript/blob/develop/docs/README.md"
     },
     {
       "name": "rdkshell",
@@ -602,14 +604,16 @@
       "category": "InterProcess Communications",
       "layer": "RDK",
       "releaseTag": "master",
-      "url": "https://github.com/rdkcentral/rtRemote/tree/master"
+      "url": "https://github.com/rdkcentral/rtRemote/tree/master",
+      "View Details": "Document Under Review"
     },
     {
       "name": "sceneset",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/sceneset/tree/develop"
+      "url": "https://github.com/rdkcentral/sceneset/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "streamfs",
@@ -633,13 +637,6 @@
       "url": "https://github.com/rdkcentral/systemtimemgr/tree/develop/systimerfactory"
     },
     {
-      "name": "tdk",
-      "category": "Data Collection, Test and Diagnostic",
-      "layer": "RDK",
-      "releaseTag": "rdk-next",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdkv/tools/tdkv/+/rdk-next/"
-    },
-    {
       "name": "tenablehdcp",
       "category": "Thunder",
       "layer": "RDK",
@@ -651,7 +648,8 @@
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "Thunder_44_PIS",
-      "url": "https://github.com/rdkcentral/ThunderPluginActivator/tree/Thunder_44_PIS"
+      "url": "https://github.com/rdkcentral/ThunderPluginActivator/tree/Thunder_44_PIS",
+      "View Details": "https://github.com/rdkcentral/ThunderPluginActivator/blob/main/docs/README.md"
     },
     {
       "name": "thunderstartupservices",
@@ -672,14 +670,8 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/ttsengine/tree/develop"
-    },
-    {
-      "name": "tvsettings-hal-headers",
-      "category": "Entertainment Services",
-      "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdkv-halif-tvsettings/tree/develop"
+      "url": "https://github.com/rdkcentral/ttsengine/tree/develop",
+      "View Details": "Document Under Review"
     },
     {
       "name": "ucresolv",
@@ -714,7 +706,8 @@
       "category": "Remote Device Management",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/WebconfigFramework/tree/develop"
+      "url": "https://github.com/rdkcentral/WebconfigFramework/tree/develop",
+      "View Details": "https://github.com/rdkcentral/WebconfigFramework/blob/develop/docs/README.md"
     },
     {
       "name": "webkitbrowser-plugin",
@@ -749,21 +742,24 @@
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/playready-rdk/tree/develop"
+      "url": "https://github.com/rdkcentral/playready-rdk/tree/develop",
+      "View Details": "https://github.com/rdkcentral/playready-rdk/blob/develop/docs/README.md"
     },
     {
       "name": "wpeframework-ocdm-widevine",
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/widevine-rdk/tree/develop"
+      "url": "https://github.com/rdkcentral/widevine-rdk/tree/develop",
+      "View Details": "https://github.com/rdkcentral/widevine-rdk/blob/develop/docs/README.md"
     },
     {
       "name": "wpeframework-tools",
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "R4_4-RDK",
-      "url": "https://github.com/rdkcentral/ThunderTools/tree/R4_4-RDK"
+      "url": "https://github.com/rdkcentral/ThunderTools/tree/R4_4-RDK",
+      "View Details": "https://github.com/rdkcentral/ThunderTools/blob/master/docs/README.md"
     },
     {
       "name": "wrp-c",
@@ -784,7 +780,8 @@
       "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/xr-voice-sdk/tree/develop"
+      "url": "https://github.com/rdkcentral/xr-voice-sdk/tree/develop",
+      "View Details": "Document Under Review"
     }  
   ]
 }

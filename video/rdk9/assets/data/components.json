@@ -27,7 +27,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/bluetooth_mgr/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/bluetooth_mgr/blob/develop/docs/README.md"
     },
     {
       "name": "bluetooth-core",
@@ -36,7 +37,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/bluetooth/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/bluetooth/blob/develop/docs/README.md"
     },
     {
       "name": "BlueZ",
@@ -81,7 +83,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/common_utilities/tree/develop"
-      ]
+      ],
+      "View Details": "Document Under Review"
     },
     {
       "name": "Connectivity",
@@ -99,7 +102,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/control/tree/develop"
-      ]
+      ],
+      "View Details": "Document Under Review"
     },
     {
       "name": "DBUS",
@@ -117,16 +121,16 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/devicesettings/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/devicesettings/blob/develop/README.md"
     },
     {
       "name": "DeviceAndDisplay",
       "category": "Entertainment Services",
       "layer": "RDK",
+      "type": "core",
       "releaseTag": "develop",
-      "url": [
-        "https://github.com/rdkcentral/entservices-deviceanddisplay/tree/develop"
-      ]
+      "url": "https://github.com/rdkcentral/entservices-deviceanddisplay/tree/develop"
     },
     {
       "name": "Dobby",
@@ -180,7 +184,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/rialto-gstreamer/tree/develop"
-      ]
+      ],
+      "View Details": "Document Under Review"
     },
     {
       "name": "HDMI CEC Header",
@@ -198,7 +203,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/hdmicec/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/hdmicec/blob/develop/README.md"
     },
     {
       "name": "iarmbus",
@@ -207,7 +213,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/iarmbus/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/iarmbus/blob/develop/README.md"
     },
     {
       "name": "Infrastructure Services",
@@ -234,6 +241,7 @@
       "url": [
         "https://github.com/rdkcentral/libSyscallWrapper/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/libSyscallWrapper/blob/develop/docs/README.md",
       "releaseTag": "develop"
     },
     {
@@ -333,6 +341,7 @@
       "url": [
         "https://github.com/rdkcentral/rdkfwupdater/tree/develop"
       ],
+      "View Details": "Document Under Review",
       "releaseTag": "develop"
     },
     {
@@ -342,6 +351,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk-window-manager/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/rdk-window-manager/blob/develop/docs/README.md",
       "releaseTag": "develop"
     },
     {
@@ -369,6 +379,7 @@
       "url": [
         "https://github.com/rdkcentral/rialto/tree/master/media/client"
       ],
+      "View Details": "Document Under Review",
       "releaseTag": "master"
     },
     {
@@ -378,6 +389,7 @@
       "url": [
         "https://github.com/rdkcentral/rialto-ocdm/tree/develop"
       ],
+      "View Details": "Document Under Review",
       "releaseTag": "develop"
     },
     {
@@ -387,6 +399,7 @@
       "url": [
         "https://github.com/rdkcentral/rialto/tree/master/media/server"
       ],
+      "View Details": "Document Under Review",
       "releaseTag": "master"
     },
     {
@@ -414,6 +427,7 @@
       "url": [
         "https://github.com/rdkcentral/sysint/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/sysint/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -450,6 +464,7 @@
       "url": [
         "https://github.com/rdkcentral/ThunderJS/tree/master"
       ],
+      "View Details": "Document Under Review",
       "releaseTag": "master"
     },
     {
@@ -486,6 +501,7 @@
       "url": [
         "https://github.com/rdkcentral/westeros/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/westeros/blob/develop/docs/README.md",
       "releaseTag": "develop"
     },
     {
@@ -495,6 +511,7 @@
       "url": [
         "https://github.com/rdkcentral/ThunderClientLibraries.git/tree/master"
       ],
+      "View Details": "https://github.com/rdkcentral/ThunderClientLibraries/blob/master/docs/README.md",
       "releaseTag": "master"
     },
     {
@@ -522,6 +539,7 @@
       "url": [
         "https://github.com/rdkcentral/ThunderUI/tree/master"
       ],
+      "View Details": "https://github.com/rdkcentral/ThunderUI/blob/master/docs/README.md",
       "releaseTag": "master"
     }
   ]

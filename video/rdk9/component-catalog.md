@@ -10,10 +10,11 @@ table:
   id: catalog
   source: catalog
   classes: component-catalog-table
-  columns: [Component, Category, Layer, Type, Version, Source]
+  columns: [Component, Category, Layer, Type, Version, Source, View Details]
   search_placeholder: Search components
   empty_message: No components match the current filters.
   link_column: 5
+  detail_column: 6
   pill_columns: [1]
   pill_variant_columns: [3]
   filters:

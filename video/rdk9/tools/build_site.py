@@ -121,6 +121,7 @@ def catalog_rows() -> list[list[str]]:
             "core" if name.casefold() in core_names else "optional",
             item.get("releaseTag") or "",
             source_url(item),
+            item.get("View Details") or "",
         ])
     rows.sort(key=lambda row: str(row[0]).casefold())
     return rows
@@ -378,12 +379,15 @@ def build_page(env: Environment, site: dict[str, Any], path: Path) -> str:
             meta["table"].setdefault("version", state["version"])
         config = meta["table"]
         link_column = config.get("link_column")
+        detail_column = config.get("detail_column")
         pill_columns = set(config.get("pill_columns", []))
         variant_columns = set(config.get("pill_variant_columns", []))
         columns = []
         for index in range(len(config["columns"])):
             if index == link_column:
                 columns.append({"kind": "link", "strip": False})
+            elif index == detail_column:
+                columns.append({"kind": "detail"})
             elif index in variant_columns:
                 columns.append({"kind": "pill-variant"})
             elif index in pill_columns:
