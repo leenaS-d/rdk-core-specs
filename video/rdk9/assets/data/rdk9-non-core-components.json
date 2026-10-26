@@ -720,8 +720,8 @@
       "name": "webkitbrowser-plugin",
       "category": "Thunder",
       "layer": "RDK",
-      "releaseTag": "main",
-      "url": "https://github.com/rdkcentral/rdkservices/tree/main"
+      "releaseTag": "rev-857eff8",
+      "url": "https://github.com/rdkcentral/rdkservices/tree/857eff8"
     },
     {
       "name": "wlan-p2p",

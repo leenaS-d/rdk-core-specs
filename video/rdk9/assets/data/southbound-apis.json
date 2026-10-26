@@ -5,32 +5,32 @@
     {
       "halInterface": "DeepSleep Manager HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager"
+      "source": "https://github.com/rdkcentral/rdk-halif-deepsleep_manager/tree/develop"
     },
     {
       "halInterface": "Power Manager HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-power_manager"
+      "source": "https://github.com/rdkcentral/rdk-halif-power_manager/tree/develop"
     },
     {
       "halInterface": "Device Settings HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-device_settings"
+      "source": "https://github.com/rdkcentral/rdk-halif-device_settings/tree/develop"
     },
     {
       "halInterface": "HDMI CEC HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-hdmi_cec"
+      "source": "https://github.com/rdkcentral/rdk-halif-hdmi_cec/tree/develop"
     },
     {
       "halInterface": "RMF Audio Capture HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture"
+      "source": "https://github.com/rdkcentral/rdk-halif-rmf_audio_capture/tree/develop"
     },
     {
       "halInterface": "Control Manager HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-irdb"
+      "source": "https://github.com/rdkcentral/rdk-halif-irdb/tree/develop"
     },
     {
       "halInterface": "MFRLib HAL",
@@ -40,27 +40,27 @@
     {
       "halInterface": "systemaudioplatform HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-systemaudioplatform"
+      "source": "https://github.com/rdkcentral/rdk-halif-systemaudioplatform/tree/develop"
     },
     {
       "halInterface": "Bluetooth HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-bluetooth"
+      "source": "https://github.com/rdkcentral/rdk-halif-bluetooth/tree/develop"
     },
     {
       "halInterface": "Westeros Sink HAL",
-      "version": "develop",
+      "version": "",
       "source": ""
     },
     {
       "halInterface": "Westeros Graphics HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-halif-westeros-gl"
+      "source": "https://github.com/rdkcentral/rdk-halif-westeros-gl/blob/develop/Westeros_Graphics_Layer_Southbound_Interface.md"
     },
     {
       "halInterface": "Graphics & Matrix HAL",
       "version": "develop",
-      "source": "https://github.com/rdkcentral/rdk-hpk-documentation/doc/Media_Pipeline"
+      "source": "https://github.com/rdkcentral/rdk-hpk-documentation/tree/develop/doc/Media_Pipeline"
     }
   ]
 }
