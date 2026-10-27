@@ -509,8 +509,8 @@
       "name": "ralf-utils",
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
-      "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/ralf-utils/tree/develop"
+      "releaseTag": "main",
+      "url": "https://github.com/rdkcentral/ralf-utils/tree/main"
     },
     {
       "name": "rdk-gstreamer-utils",

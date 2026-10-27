@@ -1142,7 +1142,7 @@
     },
     {
       "title": "PackageManager",
-      "text": "Thunder · RDK layer · release develop.",
+      "text": "Thunder · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1268,7 +1268,7 @@
     },
     {
       "title": "wdmp-c (WebPA Data model parser)",
-      "text": "Remote Device Management · RDK layer · release develop.",
+      "text": "Remote Device Management · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1724,7 +1724,7 @@
     },
     {
       "title": "ralf-utils",
-      "text": "Data Collection, Test and Diagnostic · RDK layer · release develop.",
+      "text": "Data Collection, Test and Diagnostic · RDK layer · release main.",
       "category": "Components",
       "url": "component-catalog.html"
     },

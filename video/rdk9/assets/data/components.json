@@ -294,9 +294,9 @@
       "category": "Thunder",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/PackageManager/tree/develop"
+        "https://github.com/rdkcentral/PackageManager/tree/main"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "main"
     },
     {
       "name": "Peripherals",
@@ -490,9 +490,9 @@
       "category": "Remote Device Management",
       "layer": "RDK",
       "url": [
-        "https://github.com/xmidt-org/wdmp-c/tree/develop"
+        "https://github.com/xmidt-org/wdmp-c/tree/master"
       ],
-      "releaseTag": "develop"
+      "releaseTag": "master"
     },
     {
       "name": "Westeros",
