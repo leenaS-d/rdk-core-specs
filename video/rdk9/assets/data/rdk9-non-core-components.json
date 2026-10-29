@@ -57,13 +57,6 @@
       "View Details": "https://github.com/xmidt-org/cpeabs/blob/main/README.md"
     },
     {
-      "name": "cpuprocanalyzer",
-      "category": "Device Management & Diagnostics",
-      "layer": "RDK",
-      "releaseTag": "rdk-next",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/cpuprocanalyzer/+/rdk-next/"
-    },
-    {
       "name": "crashupload",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
@@ -754,13 +747,6 @@
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/WebconfigFramework/tree/develop",
       "View Details": "https://github.com/rdkcentral/WebconfigFramework/blob/develop/docs/README.md"
-    },
-    {
-      "name": "webkitbrowser-plugin",
-      "category": "Thunder",
-      "layer": "RDK",
-      "releaseTag": "rev-857eff8",
-      "url": "https://github.com/rdkcentral/rdkservices/tree/857eff8"
     },
     {
       "name": "wlan-p2p",

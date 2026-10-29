@@ -1339,12 +1339,6 @@
       "url": "component-catalog.html"
     },
     {
-      "title": "cpuprocanalyzer",
-      "text": "Device Management & Diagnostics · RDK layer · release rdk-next.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
       "title": "crashupload",
       "text": "Device Management & Diagnostics · RDK layer · release develop.",
       "category": "Components",
@@ -1875,12 +1869,6 @@
     {
       "title": "webconfig-framework",
       "text": "Remote Device Management · RDK layer · release develop.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
-      "title": "webkitbrowser-plugin",
-      "text": "Thunder · RDK layer · release rev-857eff8.",
       "category": "Components",
       "url": "component-catalog.html"
     },
