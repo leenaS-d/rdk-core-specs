@@ -1070,7 +1070,7 @@
     },
     {
       "title": "Gstreamer Rialto Plugin",
-      "text": "Video · RDK layer · release develop.",
+      "text": "Video · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1202,7 +1202,7 @@
     },
     {
       "title": "Rialto OCDM",
-      "text": "Video · RDK layer · release develop.",
+      "text": "Video · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },
@@ -1743,12 +1743,6 @@
     {
       "title": "rdknativescript",
       "text": "App Framework · RDK layer · release develop.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
-      "title": "rdkshell",
-      "text": "App Framework · RDK layer · release master.",
       "category": "Components",
       "url": "component-catalog.html"
     },

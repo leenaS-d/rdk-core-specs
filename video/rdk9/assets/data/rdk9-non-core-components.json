@@ -7,7 +7,8 @@
       "category": "Video",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/aamp/tree/develop"
+      "url": "https://github.com/rdkcentral/aamp/tree/develop",
+      "View Details": "https://github.com/rdkcentral/aamp/blob/develop/README.md"
     },
     {
       "name": "apparmor-generic",
@@ -37,7 +38,8 @@
       "category": "Remote Device Management",
       "layer": "RDK",
       "releaseTag": "main",
-      "url": "https://github.com/xmidt-org/cjwt/tree/main"
+      "url": "https://github.com/xmidt-org/cjwt/tree/main",
+      "View Details": "https://github.com/xmidt-org/cjwt/blob/main/README.md"
     },
     {
       "name": "cobalt",
@@ -51,7 +53,8 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "main",
-      "url": "https://github.com/xmidt-org/cpeabs/tree/main"
+      "url": "https://github.com/xmidt-org/cpeabs/tree/main",
+      "View Details": "https://github.com/xmidt-org/cpeabs/blob/main/README.md"
     },
     {
       "name": "cpuprocanalyzer",
@@ -65,7 +68,8 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/crashupload/tree/develop"
+      "url": "https://github.com/rdkcentral/crashupload/tree/develop",
+      "View Details": "https://github.com/rdkcentral/crashupload/blob/develop/README.md"
     },
     {
       "name": "dca",
@@ -79,7 +83,8 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/dcm-agent/tree/develop"
+      "url": "https://github.com/rdkcentral/dcm-agent/tree/develop",
+      "View Details": "https://github.com/rdkcentral/dcm-agent/blob/develop/README.md"
     },
     {
       "name": "dcmjsonparser",
@@ -107,7 +112,8 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-audiooutput/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-audiooutput/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-audiooutput/blob/develop/openspec/specs/audiooutput-plugin/spec.md"
     },
     {
       "name": "entservices-backupmanager",
@@ -121,63 +127,72 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-cloudstore/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-cloudstore/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-cloudstore/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-cryptography",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-cryptography/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-cryptography/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-cryptography/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-devicediagnostics",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-devicediagnostics/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-devicediagnostics/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-devicediagnostics/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-devicesettings",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-devicesettings/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-devicesettings/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-devicesettings/blob/develop/README.md"
     },
     {
       "name": "entservices-framerate",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-framerate/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-framerate/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-framerate/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-frontpanel",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-frontpanel/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-frontpanel/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-frontpanel/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-hdcpprofile",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-hdcpprofile/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-hdcpprofile/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-hdcpprofile/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-hdmicecsink",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-hdmicecsink/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-hdmicecsink/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-hdmicecsink/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-hdmicecsource",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-hdmicecsource/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-hdmicecsource/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-hdmicecsource/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-helpers",
@@ -191,98 +206,112 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-ledcontrol/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-ledcontrol/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-ledcontrol/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-migration",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-migration/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-migration/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-migration/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-miracast",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-miracast/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-miracast/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-miracast/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-monitor",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-monitor/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-monitor/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-monitor/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-ocicontainer",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-ocicontainer/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-ocicontainer/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-ocicontainer/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-opencdmi",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-opencdmi/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-opencdmi/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-opencdmi/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-persistentstore",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-persistentstore/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-persistentstore/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-persistentstore/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-playerinfo",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-playerinfo/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-playerinfo/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-playerinfo/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-powermanager",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-powermanager/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-powermanager/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-powermanager/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-remotecontrol",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-remotecontrol/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-remotecontrol/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-remotecontrol/blob/develop/README.md"
     },
     {
       "name": "entservices-resourcemanager",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-resourcemanager/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-resourcemanager/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-resourcemanager/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-screencapture",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-screencapture/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-screencapture/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-screencapture/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-sharedstorage",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-sharedstorage/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-sharedstorage/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-sharedstorage/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-systemmode",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-systemmode/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-systemmode/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-systemmode/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-systemservices",
@@ -296,49 +325,56 @@
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-telemetry/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-telemetry/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-telemetry/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-tools",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-tools/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-tools/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-tools/blob/develop/README.md"
     },
     {
       "name": "entservices-usbdevice",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-usbdevice/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-usbdevice/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-usbdevice/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-usbmassstorage",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-usbmassstorage/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-usbmassstorage/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-usbmassstorage/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-userpreferences",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-userpreferences/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-userpreferences/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-userpreferences/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-usersettings",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-usersettings/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-usersettings/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-usersettings/blob/develop/ARCHITECTURE.md"
     },
     {
       "name": "entservices-voicecontrol",
       "category": "Entertainment Services",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/entservices-voicecontrol/tree/develop"
+      "url": "https://github.com/rdkcentral/entservices-voicecontrol/tree/develop",
+      "View Details": "https://github.com/rdkcentral/entservices-voicecontrol/blob/develop/README.md"
     },
     {
       "name": "entservices-warehouse",
@@ -414,28 +450,31 @@
       "category": "Thunder",
       "layer": "RDK",
       "releaseTag": "wpe-2.38",
-      "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit/tree/wpe-2.38"
+      "url": "https://github.com/WebPlatformForEmbedded/WPEWebKit/tree/wpe-2.38",
+      "View Details": "https://github.com/WebPlatformForEmbedded/WPEWebKit/blob/wpe-2.38/ReadMe.md"
     },
     {
       "name": "libbinderrdk",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/linux_binder_idl/tree/develop"
+      "url": "https://github.com/rdkcentral/linux_binder_idl/tree/develop",
+      "View Details": "https://github.com/rdkcentral/linux_binder_idl/blob/develop/README.md"
     },
     {
       "name": "libchronyctl",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/time-utils/tree/develop"
+      "url": "https://github.com/rdkcentral/time-utils/tree/develop",
+      "View Details": "https://github.com/rdkcentral/time-utils/blob/develop/README.md"
     },
     {
       "name": "libparodus",
       "category": "Device Control Protocols",
       "layer": "RDK",
       "releaseTag": "master",
-      "url": "https://github.com/Comcast/libparodus/tree/master"
+      "url": "https://github.com/xmidt-org/libparodus/tree/master"
     },
     {
       "name": "lxccpid",
@@ -457,13 +496,14 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/MemCapture/tree/develop"
+      "url": "https://github.com/rdkcentral/MemCapture/tree/develop",
+      "View Details": "https://github.com/rdkcentral/MemCapture/blob/develop/README.md"
     },
     {
       "name": "Messagecontrol",
       "category": "Entertainment Services",
       "layer": "RDK",
-     "url": [
+      "url": [
         "https://github.com/rdkcentral/entservices-messagecontrol/tree/develop"
       ],
       "releaseTag": "develop"
@@ -473,7 +513,8 @@
       "category": "InterProcess Communications",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/networkmanager/tree/develop"
+      "url": "https://github.com/rdkcentral/networkmanager/tree/develop",
+      "View Details": "https://github.com/rdkcentral/networkmanager/blob/develop/README.md"
     },
     {
       "name": "packager-headers",
@@ -495,7 +536,8 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "main",
-      "url": "https://github.com/xmidt-org/parodus/tree/main"
+      "url": "https://github.com/xmidt-org/parodus/tree/main",
+      "View Details": "https://github.com/xmidt-org/parodus/blob/main/README.md"
     },
     {
       "name": "player-interface",
@@ -510,7 +552,8 @@
       "category": "Data Collection, Test and Diagnostic",
       "layer": "RDK",
       "releaseTag": "main",
-      "url": "https://github.com/rdkcentral/ralf-utils/tree/main"
+      "url": "https://github.com/rdkcentral/ralf-utils/tree/main",
+      "View Details": "https://github.com/rdkcentral/ralf-utils/blob/main/README.md"
     },
     {
       "name": "rdk-gstreamer-utils",
@@ -537,18 +580,11 @@
       "View Details": "https://github.com/rdkcentral/rdkNativeScript/blob/develop/docs/README.md"
     },
     {
-      "name": "rdkshell",
-      "category": "App Framework",
-      "layer": "RDK",
-      "releaseTag": "master",
-      "url": "https://github.com/rdkcentral/RDKShell/tree/master"
-    },
-    {
       "name": "rdksysctl",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk/blob/develop/recipes-core/sysctl/rdksysctl.bb"
+      "url": "https://github.com/rdkcentral/meta-rdk/blob/develop/recipes-core/sysctl"
     },
     {
       "name": "rdkversion",
@@ -562,28 +598,31 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/develop/recipes-extended/rdkwpasupplicantconfig/rdkwpasupplicantconfig.bb"
+      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/develop/recipes-extended/rdkwpasupplicantconfig"
     },
     {
       "name": "rdmagent",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/rdm-agent/tree/develop"
+      "url": "https://github.com/rdkcentral/rdm-agent/tree/develop",
+      "View Details": "https://github.com/rdkcentral/rdm-agent/blob/develop/openspec/README.md"
     },
     {
       "name": "reboot-manager",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/reboot-manager/tree/develop"
+      "url": "https://github.com/rdkcentral/reboot-manager/tree/develop",
+      "View Details": "https://github.com/rdkcentral/reboot-manager/blob/develop/README.md"
     },
     {
       "name": "remotedebugger",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/remote_debugger/tree/develop"
+      "url": "https://github.com/rdkcentral/remote_debugger/tree/develop",
+      "View Details": "https://github.com/rdkcentral/remote_debugger/blob/develop/README.md"
     },
     {
       "name": "residentui",
@@ -620,7 +659,8 @@
       "category": "Video",
       "layer": "RDK",
       "releaseTag": "rdk-next",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs/+/rdk-next/"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs/+/rdk-next/",
+      "View Details": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/streamfs/+/rdk-next/README.md"
     },
     {
       "name": "subtec",
@@ -634,7 +674,8 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/systemtimemgr/tree/develop/systimerfactory"
+      "url": "https://github.com/rdkcentral/systemtimemgr/tree/develop/systimerfactory",
+      "View Details": "https://github.com/rdkcentral/systemtimemgr/blob/develop/Readme.md"
     },
     {
       "name": "tenablehdcp",
@@ -656,14 +697,16 @@
       "category": "Uncategorized",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/thunder-startup-services/tree/develop"
+      "url": "https://github.com/rdkcentral/thunder-startup-services/tree/develop",
+      "View Details": "https://github.com/rdkcentral/thunder-startup-services/blob/develop/README.md"
     },
     {
       "name": "tr69hostif",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/tr69hostif/tree/develop"
+      "url": "https://github.com/rdkcentral/tr69hostif/tree/develop",
+      "View Details": "https://github.com/rdkcentral/tr69hostif/blob/develop/docs/README.md"
     },
     {
       "name": "tts",
@@ -678,28 +721,31 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "master",
-      "url": "https://github.com/Comcast/libucresolv/tree/master"
+      "url": "https://github.com/xmidt-org/libucresolv/tree/master"
     },
     {
       "name": "uwebsockets",
       "category": "System Start, Platform Management and misc utilities",
       "layer": "RDK",
       "releaseTag": "v0.14",
-      "url": "https://github.com/uNetworking/uWebSockets/tree/v0.14"
+      "url": "https://github.com/uNetworking/uWebSockets/tree/v0.14",
+      "View Details": "https://github.com/uNetworking/uWebSockets/blob/v0.14/README.md"
     },
     {
       "name": "waymetric",
       "category": "Video",
       "layer": "RDK",
       "releaseTag": "master",
-      "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/waymetric/+/master/"
+      "url": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/waymetric/+/master/",
+      "View Details": "https://code.rdkcentral.com/r/plugins/gitiles/components/opensource/waymetric/+/master/README.md"
     },
     {
       "name": "webcfg",
       "category": "Remote Device Management",
       "layer": "RDK",
       "releaseTag": "master",
-      "url": "https://github.com/xmidt-org/webcfg/tree/master"
+      "url": "https://github.com/xmidt-org/webcfg/tree/master",
+      "View Details": "https://github.com/xmidt-org/webcfg/blob/master/README.md"
     },
     {
       "name": "webconfig-framework",
@@ -721,7 +767,7 @@
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/develop/recipes-connectivity/wlan-p2p/wlan-p2p.bb"
+      "url": "https://github.com/rdkcentral/meta-rdk-video/blob/develop/recipes-connectivity/wlan-p2p"
     },
     {
       "name": "wpeframework-extensions",
@@ -766,14 +812,16 @@
       "category": "Remote Device Management",
       "layer": "RDK",
       "releaseTag": "main",
-      "url": "https://github.com/xmidt-org/wrp-c/tree/main"
+      "url": "https://github.com/xmidt-org/wrp-c/tree/main",
+      "View Details": "https://github.com/xmidt-org/wrp-c/blob/main/README.md"
     },
     {
       "name": "xdial",
       "category": "Device Management & Diagnostics",
       "layer": "RDK",
       "releaseTag": "develop",
-      "url": "https://github.com/rdkcentral/xdialserver/tree/develop"
+      "url": "https://github.com/rdkcentral/xdialserver/tree/develop",
+      "View Details": "https://github.com/rdkcentral/xdialserver/blob/develop/README.md"
     },
     {
       "name": "xr-voice-sdk",
@@ -782,6 +830,6 @@
       "releaseTag": "develop",
       "url": "https://github.com/rdkcentral/xr-voice-sdk/tree/develop",
       "View Details": "Document Under Review"
-    }  
+    }
   ]
 }

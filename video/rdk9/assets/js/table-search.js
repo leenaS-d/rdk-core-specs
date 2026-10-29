@@ -28,14 +28,16 @@
 
   const renderCell = (value, column) => {
     if (column.kind === 'detail') {
-      if (/^https?:\/\//i.test(String(value))) {
+      const detail = String(value === null || value === undefined ? '' : value).trim();
+      if (!detail) return '<td>Work in progress</td>';
+      if (/^https?:\/\//i.test(detail)) {
         return `<td><a href="${escapeHtml(value)}" target="_blank" rel="noopener">View Details</a></td>`;
       }
       return `<td>${escapeHtml(value)}</td>`;
     }
     if (column.kind === 'link') {
       const source = String(value === null || value === undefined ? '' : value).trim();
-      if (!source) return '<td>Not available</td>';
+      if (!source) return '<td>Work in progress</td>';
       const url = column.strip ? stripReleasePath(source) : source;
       return `<td><a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a></td>`;
     }

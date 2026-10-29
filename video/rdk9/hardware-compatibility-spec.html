@@ -22,7 +22,7 @@
 <main>
 <section class="hero hero--compact">
   <div class="wrap">    <div class="eyebrow">PLATFORM REQUIREMENTS</div>    <h1>Hardware Compatibility Specification</h1>    <p>Specifications that outline the minimal hardware configurations to run Core RDK</p>    <div class="hero-catalog-status">
-      <span class="hero-status-badge"><span>Catalog status:</span> Draft - In RTAB Review</span>
+      <span class="hero-status-badge"><span>Catalog status:</span> Approved by RTAB for RDK9</span>
       <details class="status-legend">
   <summary>Status legend</summary>
   <dl>    <dt>Draft</dt>
@@ -60,7 +60,6 @@
 <p class="admonition-title">Note</p>
 <p>Requirements are expressed as capability and performance classes rather than specific vendor components. Any SoC and platform meeting the stated capabilities, driver support, and RDK HAL/API behavior qualifies. Named CPU cores, GPUs, and chipsets are provided as informative examples only.</p>
 </div>
-<hr />
 <h3>Hardware Compatibility Baseline Specification Matrix</h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -108,7 +107,7 @@
 </tr>
 <tr>
 <td>Memory</td>
-<td>≥ 1 GB provisional; DDR4, LPDDR4X, or newer at ≥ 1600 MT/s with ≥ 16-bit bus (≥ 3.2 GB/s peak); ≥ 0.6 GB for applications after reserves; optional 256 MB zRAM; RDK 9 FHD/1 GB validation required</td>
+<td>≥ 1 GB provisional; DDR4, LPDDR4X, or newer at ≥ 1600 MT/s with ≥ 16-bit bus; application-memory target subject to platform reserves and validation; optional 256 MB zRAM; RDK 9 FHD/1 GB validation required (RDKDEV-1741); OEMs and SoC vendors are responsible for final product memory sizing</td>
 <td>≥ 2 GB; LPDDR4X or newer at ≥ 3200 MT/s with ≥ 32-bit bus (≥ 12.8 GB/s peak); ≥ 1.2 GB for applications after reserves; optional 512 MB zRAM</td>
 <td><a href="#memory-ram">View Details</a></td>
 </tr>
@@ -298,7 +297,7 @@
 <td>Concurrent Decode</td>
 <td>1× FHD stream</td>
 <td>1× 4K stream</td>
-<td>Concurrent decode  1 × FHD stream  1 × 4K stream   Dual HD decode is optional and platform/operator dependent</td>
+<td>Dual HD decode is optional and platform/operator dependent</td>
 </tr>
 </tbody>
 </table>
@@ -469,8 +468,8 @@
 <td>Must be declared by the SoC vendor. It is excluded from, and reduces, the usable RAM figures below</td>
 </tr>
 <tr>
-<td>Usable RAM after OS and reserves</td>
-<td>≥ 0.6 GB free for applications</td>
+<td>Target usable RAM after Core RDK and platform reserves</td>
+<td>≥ 0.6 GB target, subject to RDKDEV-1741 validation</td>
 <td>≥ 1.2 GB free for applications</td>
 <td>Measured post-boot with the launcher idle</td>
 </tr>
@@ -483,7 +482,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><em>Tier 1 memory values are provisional and derived from historical FHD platform data. The 1 GB system RAM baseline and related application-memory targets must be validated on a 1 GB FHD device running the RDK 9 baseline. The next controlled revision will incorporate the resulting measurements and any necessary baseline adjustments.</em></p>
+<p><em>The Tier 1 (FHD) 1 GB system RAM baseline is provisional until it is validated on an RDK 9 FHD configuration under RDKDEV-1741. Deployed FHD products typically carry 1.5 GB or more. OEMs and SoC vendors remain responsible for sizing memory for their products. The next controlled revision will incorporate the resulting measurements and any necessary baseline adjustments.</em></p>
 </blockquote>
 <h3>Reference memory measurements</h3>
 <ul>
@@ -595,6 +594,7 @@
 <th>Parameter</th>
 <th>Tier 1</th>
 <th>Tier 2</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -602,21 +602,25 @@
 <td>Standard</td>
 <td>10/100 Mbps Fast Ethernet minimum</td>
 <td>10/100 Mbps minimum; Gigabit recommended</td>
+<td>Gigabit is recommended for Tier 2 multi-stream or application-heavy use cases</td>
 </tr>
 <tr>
 <td>Connector</td>
 <td>RJ-45</td>
 <td>RJ-45</td>
+<td></td>
 </tr>
 <tr>
-<td>Auto Negotiation</td>
+<td>Auto-negotiation / Auto-MDIX</td>
 <td>Required</td>
 <td>Required</td>
+<td>Avoids crossover-cable issues</td>
 </tr>
 <tr>
 <td>PHY</td>
 <td>IEEE 802.3 compliant; no PoE requirement</td>
 <td>IEEE 802.3 compliant; no PoE requirement</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -635,6 +639,7 @@
 <th>Parameter</th>
 <th>Tier 1</th>
 <th>Tier 2</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -642,46 +647,55 @@
 <td>Video output</td>
 <td>HDMI 1.4b or later, 1080p60</td>
 <td>HDMI 2.0b or later, 4K60 with HDR10 and HLG</td>
+<td>HDMI 2.0a adds HDR10 static metadata and 2.0b adds HLG signaling. CEC recommended on both tiers</td>
 </tr>
 <tr>
 <td>Audio output</td>
 <td>HDMI embedded audio (stereo, 5.1 passthrough)</td>
 <td>HDMI embedded audio (stereo, 5.1 passthrough)</td>
+<td></td>
 </tr>
 <tr>
 <td>USB</td>
 <td>1 × USB 2.0</td>
 <td>1 × USB 2.0</td>
+<td>Storage, keyboard, debugging</td>
 </tr>
 <tr>
 <td>IR receiver</td>
 <td>Required (38 kHz)</td>
 <td>Required (38 kHz)</td>
+<td></td>
 </tr>
 <tr>
 <td>Remote control</td>
 <td>IR remote required</td>
 <td>IR remote required</td>
+<td></td>
 </tr>
 <tr>
 <td>Bluetooth / BLE remote</td>
 <td>Required (BLE 4.2+)</td>
 <td>Required (BLE 5.0+)</td>
+<td>Provides the transport path required for voice remote functionality and non-line-of-sight operation</td>
 </tr>
 <tr>
 <td>Voice remote</td>
 <td>Required</td>
 <td>Required</td>
+<td>Voice capability is mandatory for both tiers</td>
 </tr>
 <tr>
 <td>Reset / recovery button</td>
 <td>Required (physical or button combination)</td>
 <td>Required (physical or button combination)</td>
+<td>For factory reset and recovery-mode entry</td>
 </tr>
 <tr>
 <td>Status indicator</td>
 <td>Single LED (power/network state)</td>
 <td>Single LED (power/network state)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -695,6 +709,7 @@
 <th>Parameter</th>
 <th>Tier 1</th>
 <th>Tier 2</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -702,28 +717,32 @@
 <td>Input supply</td>
 <td>5 V DC, 2 A (10 W) minimum</td>
 <td>5 V DC, 2.4 A (12 W) minimum</td>
+<td>Tier 2 shall be measured with Wi-Fi active, 4K decode running, and the USB port under rated load</td>
 </tr>
 <tr>
 <td>Idle power</td>
 <td>≤ 5 W</td>
 <td>≤ 5 W</td>
+<td>Measured with the network connected, HDMI output active, and the launcher idle</td>
 </tr>
 <tr>
 <td>Standby power</td>
 <td>≤ 1 W</td>
 <td>≤ 1 W</td>
+<td>Network standby or quick-resume mode; regional regulations may impose lower limits</td>
 </tr>
 <tr>
 <td>Operating temperature</td>
 <td>0 °C to 40 °C ambient</td>
 <td>0 °C to 40 °C ambient</td>
+<td>No active fan required</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h3>Regulatory and Certification Requirements</h3>
 <p><a id="regulatory-and-certification-requirements"></a></p>
-<p>A compliant device is expected to obtain the following certifications:</p>
+<p>A compliant device is expected to obtain the following certifications. Performing these certifications is outside the scope of this document.</p>
 <ul>
 <li>Wi-Fi Alliance certification for the implemented 802.11 standards.</li>
 <li>Bluetooth SIG qualification is mandatory for both tiers because BLE voice transport is required. </li>
@@ -733,7 +752,7 @@
 <li>RDK compliance test suite (RDK-V L1/L2 test pass) for the target RDK release.</li>
 <li>OTT partner certifications for the target application portfolio.</li>
 </ul>
-<p>Hardware shall comply with applicable telecom, EMC/radio, safety, cybersecurity, and environmental requirements. Additional regional requirements may apply.</p>
+<p>Hardware distributed into a given market shall also meet that region’s telecom, EMC/radio, safety, cybersecurity, and environmental requirements. The table below summarizes representative requirements; individual countries may add local certification or registration steps.</p>
 <table>
 <thead>
 <tr>
@@ -785,7 +804,7 @@
 <hr />
 <h3>Appendix A - Reference Memory Measurements – Tier 1 (FHD) device</h3>
 <p><a id="reference-memory-measurements-tier1-fhd-device"></a></p>
-<p>Tier 1 memory values are provisional and are based on historical FHD platform data. The proposed 1 GB system RAM baseline and associated application-memory targets have not yet been validated on an RDK 9 FHD configuration with 1 GB RAM and shall remain an open condition under RDKDEV-1741. This specification proceeds with the 1 GB baseline as a provisional target for planning purposes; however, it shall not be considered a final approved requirement until validation activities are completed and reviewed. The resulting measurements, together with any required baseline adjustments, shall be incorporated into a subsequent controlled revision of this specification</p>
+<p>Tier 1 memory values are informative and based on historical FHD platform data. The proposed 1 GB system RAM baseline and associated application-memory targets have not yet been validated on an RDK 9 FHD configuration and therefore remain provisional under RDKDEV-1741. These values describe the expected Core RDK footprint and are provided as a starting point for OEM memory budgeting; they do not represent the complete memory requirement of a deployed operator product. OEMs and SoC vendors remain responsible for validating memory capacity, reserved-memory allocation, bandwidth, and performance on their target platforms. Validation results and any required baseline adjustments will be incorporated into a subsequent controlled revision of this specification.</p>
 <hr />
 <h3>Appendix B - Reference Memory Measurements – Tier 2 (4K Premium) device</h3>
 <p><a id="reference-memory-measurements-tier2-4k-premium-device"></a></p>
@@ -841,7 +860,7 @@
 </tr>
 </tbody>
 </table>
-<p>Reference platform used for the Memory Measurements – Tier 2 (4K Premium) device:</p>
+<p>Reference platform used for the Appendix B measurements:</p>
 <table>
 <thead>
 <tr>
@@ -944,7 +963,7 @@
 <td>/dev/root (bind mount)</td>
 <td>ext4</td>
 <td>Same filesystem as above</td>
-<td>/mnt/media/apps (+ /opt, /var/lib</td>
+<td>/mnt/media/apps (+ /opt, /var/lib)</td>
 <td>On-board eMMC partition</td>
 </tr>
 <tr>

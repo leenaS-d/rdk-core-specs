@@ -7,7 +7,7 @@ hero:
     eyebrow: PLATFORM REQUIREMENTS
     title: Hardware Compatibility Specification
     description: Specifications that outline the minimal hardware configurations to run Core RDK
-    status: Draft - In RTAB Review
+    status: Approved by RTAB for RDK9
 ---
 
 This Hardware Compatibility Specification defines the minimum hardware configuration required to build, deploy, and reliably operate Core RDK on IP-based RDK-V Set-Top Boxes (STBs). It establishes baseline requirements for SoC and CPU capability, graphics, video and audio decode, content protection, system memory, flash storage, connectivity, peripherals, and power.
@@ -26,8 +26,6 @@ The STB is a media-streaming and application host device that connects to a tele
 !!! note "Note"
     Requirements are expressed as capability and performance classes rather than specific vendor components. Any SoC and platform meeting the stated capabilities, driver support, and RDK HAL/API behavior qualifies. Named CPU cores, GPUs, and chipsets are provided as informative examples only.
 
----
-
 ### Hardware Compatibility Baseline Specification Matrix
 
 !!! info "Info"
@@ -40,7 +38,7 @@ The STB is a media-streaming and application host device that connects to a tele
 | HDR & Video Output | 1080p60; HDMI 1.4b or later; HDR optional |4K60; HDMI 2.0b or later; HDR10 and HLG required | [View Details](#video-decoder-capability) |
 | Audio | AAC-LC/HE-AAC and PCM required; AC-3 and E-AC-3 require hardware or licensed software decode, plus HDMI passthrough where supported by the connected sink (Dolby license and certification cost applies, including on Tier 1); Atmos (DD+ JOC) passthrough and MPEG-H optional; 5.1 HDMI with stereo downmix; ± 40 ms A/V sync | Same as Tier 1 | [View Details](#audio-decoder-capability) |
 | Security & Content Protection | Secure boot with hardware root of trust, TEE, Widevine L1, PlayReady SL3000, anti-rollback, debug lockdown, per-device keys; HDCP 1.4 minimum (2.2 recommended) | Same as Tier 1, with HDCP 2.2 minimum (2.3 recommended) | [View Details](#content-protection-and-secure-boot) |
-| Memory | ≥ 1 GB provisional; DDR4, LPDDR4X, or newer at ≥ 1600 MT/s with ≥ 16-bit bus (≥ 3.2 GB/s peak); ≥ 0.6 GB for applications after reserves; optional 256 MB zRAM; RDK 9 FHD/1 GB validation required | ≥ 2 GB; LPDDR4X or newer at ≥ 3200 MT/s with ≥ 32-bit bus (≥ 12.8 GB/s peak); ≥ 1.2 GB for applications after reserves; optional 512 MB zRAM | [View Details](#memory-ram) |
+| Memory | ≥ 1 GB provisional; DDR4, LPDDR4X, or newer at ≥ 1600 MT/s with ≥ 16-bit bus; application-memory target subject to platform reserves and validation; optional 256 MB zRAM; RDK 9 FHD/1 GB validation required (RDKDEV-1741); OEMs and SoC vendors are responsible for final product memory sizing | ≥ 2 GB; LPDDR4X or newer at ≥ 3200 MT/s with ≥ 32-bit bus (≥ 12.8 GB/s peak); ≥ 1.2 GB for applications after reserves; optional 512 MB zRAM | [View Details](#memory-ram) |
 | Storage (Flash) | 4 GB eMMC minimum; recovery + OTA at 4 GB; ≥ 2 GB free-space target| 4 GB eMMC minimum, 8 GB recommended; A/B recommended with 8 GB; ≥ 2 GB free-space target | [View Details](#storage-flash) |
 | Network | 10/100 Ethernet; 802.11n 2.4 GHz Wi-Fi; ≥ 15 Mbps sustained application throughput; WPA2-PSK (AES) | 10/100 Ethernet (Gigabit recommended); dual-band 2.4/5 GHz Wi-Fi, ≥ 25 Mbps sustained; WPA2-PSK (AES), WPA3 where Wi-Fi 6/6E is implemented; Wi-Fi 6/6E recommended, Wi-Fi 7 future-ready | [View Details](#network-connectivity) |
 | Peripheral & I/O | USB 2.0; IR receiver and IR remote; voice remote required; BLE 4.2+ transport required; reset/recovery button; status LED  | USB 2.0; IR receiver and IR remote; BLE 5.0+ voice remote required; reset/recovery button; status LED | [View Details](#peripheral-and-io-requirements) |
@@ -88,7 +86,7 @@ The RDK-V STB shall provide hardware-accelerated decoding appropriate to its dep
 | HLG | Optional | Required | |
 | Dolby Vision | Optional (platform/operator dependent) | Optional (platform/operator dependent) | Licensing and operator dependent |
 | Secure DRM Playback | Widevine L1, PlayReady SL3000 | Widevine L1, PlayReady SL3000 | A secure video path is required for premium OTT certification programs |
-| Concurrent Decode | 1× FHD stream | 1× 4K stream | Concurrent decode	1 × FHD stream	1 × 4K stream	Dual HD decode is optional and platform/operator dependent |
+| Concurrent Decode | 1× FHD stream | 1× 4K stream | Dual HD decode is optional and platform/operator dependent |
 
 ---
 
@@ -142,11 +140,11 @@ This section defines the minimum RAM requirements necessary to support Core RDK 
 | RAM Technology / data rate | DDR4, LPDDR4X, or newer; ≥ 1600 MT/s effective data rate | LPDDR4X or newer; ≥ 3200 MT/s effective data rate | LPDDR4X is the minimum LPDDR generation for new designs. The selected memory subsystem shall provide the declared capacity and sustain the tier workload under concurrent media, graphics, and application activity. New platform designs shall confirm the long-term availability and lifecycle support of the selected memory technology and supply chain for the intended product deployment and service life |
 | Memory bus width / bandwidth | ≥ 16-bit data bus; ≥ 3.2 GB/s theoretical peak bandwidth |	≥ 32-bit data bus; ≥ 12.8 GB/s theoretical peak bandwidth |	Theoretical peak bandwidth = effective data rate (MT/s) × bus width (bits) ÷ 8. The SoC vendor shall declare the implemented bus width and channel configuration |
 | Video / secure memory reserve	| Platform-declared (CMA/secure video path) | Platform-declared (CMA/secure video path) | Must be declared by the SoC vendor. It is excluded from, and reduces, the usable RAM figures below |
-| Usable RAM after OS and reserves | ≥ 0.6 GB free for applications | ≥ 1.2 GB free for applications |	Measured post-boot with the launcher idle |
+| Target usable RAM after Core RDK and platform reserves | ≥ 0.6 GB target, subject to RDKDEV-1741 validation | ≥ 1.2 GB free for applications |	Measured post-boot with the launcher idle |
 | Swap / zRAM |	Optional, 256 MB zRAM |	Optional, 512 MB zRAM | Compressed RAM-backed swap; not persistent flash storage |
 
 
-> *Tier 1 memory values are provisional and derived from historical FHD platform data. The 1 GB system RAM baseline and related application-memory targets must be validated on a 1 GB FHD device running the RDK 9 baseline. The next controlled revision will incorporate the resulting measurements and any necessary baseline adjustments.*
+> *The Tier 1 (FHD) 1 GB system RAM baseline is provisional until it is validated on an RDK 9 FHD configuration under RDKDEV-1741. Deployed FHD products typically carry 1.5 GB or more. OEMs and SoC vendors remain responsible for sizing memory for their products. The next controlled revision will incorporate the resulting measurements and any necessary baseline adjustments.*
 
 ### Reference memory measurements
 
@@ -194,11 +192,11 @@ This section defines the minimum network connectivity requirements necessary to 
 
 ### Ethernet
 
-| Parameter | Tier 1 | Tier 2 |
-|-----------|---------|---------|
+| Parameter | Tier 1 | Tier 2 | Notes |
+|-----------|---------|---------|-------|
 | Standard | 10/100 Mbps Fast Ethernet minimum | 10/100 Mbps minimum; Gigabit recommended |	Gigabit is recommended for Tier 2 multi-stream or application-heavy use cases|
 | Connector | RJ-45 | RJ-45 | |
-| Auto Negotiation | Required | Required | Avoids crossover-cable issues |
+| Auto-negotiation / Auto-MDIX | Required | Required | Avoids crossover-cable issues |
 | PHY | IEEE 802.3 compliant; no PoE requirement | IEEE 802.3 compliant; no PoE requirement | |
 
 ### Interface Selection
@@ -214,8 +212,8 @@ This section defines the minimum peripheral and input/output interfaces required
 
 <a id="peripheral-and-io-requirements"></a>
 
-| Parameter | Tier 1 | Tier 2 |
-|------------|---------|---------|
+| Parameter | Tier 1 | Tier 2 | Notes |
+|------------|---------|---------|-------|
 | Video output	| HDMI 1.4b or later, 1080p60 |	HDMI 2.0b or later, 4K60 with HDR10 and HLG | HDMI 2.0a adds HDR10 static metadata and 2.0b adds HLG signaling. CEC recommended on both tiers |
 | Audio output | HDMI embedded audio (stereo, 5.1 passthrough) | HDMI embedded audio (stereo, 5.1 passthrough) | |
 | USB |	1 × USB 2.0	| 1 × USB 2.0 |	Storage, keyboard, debugging |
@@ -234,8 +232,8 @@ This section defines the minimum power requirements needed to support Core RDK o
 
 <a id="power-requirements"></a>
 
-| Parameter | Tier 1 | Tier 2 |
-|------------|---------|---------|
+| Parameter | Tier 1 | Tier 2 | Notes |
+|------------|---------|---------|-------|
 |Input supply | 5 V DC, 2 A (10 W) minimum | 5 V DC, 2.4 A (12 W) minimum |	Tier 2 shall be measured with Wi-Fi active, 4K decode running, and the USB port under rated load |
 |Idle power	| ≤ 5 W | ≤ 5 W | Measured with the network connected, HDMI output active, and the launcher idle |
 | Standby power | ≤ 1 W	| ≤ 1 W | Network standby or quick-resume mode; regional regulations may impose lower limits |
@@ -247,7 +245,7 @@ This section defines the minimum power requirements needed to support Core RDK o
 
 <a id="regulatory-and-certification-requirements"></a>
 
-A compliant device is expected to obtain the following certifications:
+A compliant device is expected to obtain the following certifications. Performing these certifications is outside the scope of this document.
 
 - Wi-Fi Alliance certification for the implemented 802.11 standards.
 - Bluetooth SIG qualification is mandatory for both tiers because BLE voice transport is required. 
@@ -257,7 +255,7 @@ A compliant device is expected to obtain the following certifications:
 - RDK compliance test suite (RDK-V L1/L2 test pass) for the target RDK release.
 - OTT partner certifications for the target application portfolio.
 
-Hardware shall comply with applicable telecom, EMC/radio, safety, cybersecurity, and environmental requirements. Additional regional requirements may apply.
+Hardware distributed into a given market shall also meet that region’s telecom, EMC/radio, safety, cybersecurity, and environmental requirements. The table below summarizes representative requirements; individual countries may add local certification or registration steps.
 
 | Region | Regulatory Bodies / Marks | Radio & EMC | Safety, Environmental & Cybersecurity | Notes | 
 | ------ | ------------------------- | ---- | ---- | ---- |
@@ -273,7 +271,7 @@ Hardware shall comply with applicable telecom, EMC/radio, safety, cybersecurity,
 
 <a id="reference-memory-measurements-tier1-fhd-device"></a>
 
-Tier 1 memory values are provisional and are based on historical FHD platform data. The proposed 1 GB system RAM baseline and associated application-memory targets have not yet been validated on an RDK 9 FHD configuration with 1 GB RAM and shall remain an open condition under RDKDEV-1741. This specification proceeds with the 1 GB baseline as a provisional target for planning purposes; however, it shall not be considered a final approved requirement until validation activities are completed and reviewed. The resulting measurements, together with any required baseline adjustments, shall be incorporated into a subsequent controlled revision of this specification
+Tier 1 memory values are informative and based on historical FHD platform data. The proposed 1 GB system RAM baseline and associated application-memory targets have not yet been validated on an RDK 9 FHD configuration and therefore remain provisional under RDKDEV-1741. These values describe the expected Core RDK footprint and are provided as a starting point for OEM memory budgeting; they do not represent the complete memory requirement of a deployed operator product. OEMs and SoC vendors remain responsible for validating memory capacity, reserved-memory allocation, bandwidth, and performance on their target platforms. Validation results and any required baseline adjustments will be incorporated into a subsequent controlled revision of this specification.
 
 ---
 
@@ -294,7 +292,7 @@ The following values were measured on the RDK 4K reference device and are provid
 | YouTube | ≤ 300 MB | Idle 125 MB; FHD playback 140 MB; 4K playback 214 MB; DRM 4K playback 280 MB |
 | Generic HTML5 / web app (WPE) | ≤ 300 MB | Idle 216 MB; live playback window 267 MB; full-screen VOD playback 300 MB |
 
-Reference platform used for the Memory Measurements – Tier 2 (4K Premium) device:
+Reference platform used for the Appendix B measurements:
 
 | Parameter | Reference platform detail | Notes |
 | --------- | ------- | ----- |
@@ -331,7 +329,7 @@ This sample flash and mount-point layout was captured from a live RDK-V device w
 | Device Node |	Filesystem | Size (Used / Available, Use %) | Mount Point | Purpose |
 | ----------- | ---------- | ------------------------------ | ----------- | ------- |
 | /dev/root | ext4 | 965.9M (437.4M used / 462.5M avail, 49%) |	/ | On-board eMMC root filesystem |
-| /dev/root (bind mount) | ext4 | Same filesystem as above | /mnt/media/apps (+ /opt, /var/lib | On-board eMMC partition |
+| /dev/root (bind mount) | ext4 | Same filesystem as above | /mnt/media/apps (+ /opt, /var/lib) | On-board eMMC partition |
 | /dev/mmcblk1p7 | ext4 | 119.0K (21.0K used / 90.0K avail, 19%) | /mnt/bp30 | On-board eMMC partition |
 | /dev/dm-0 | erofs | 8.2M (8.2M used / 0 avail, 100%) | /tmp/mounts/com.rdkcentral.base_0.3.1/rootfs |	Read-only app runtime image (dm-verity/erofs) |
 | /dev/dm-1 | erofs | 81.1M (81.1M used / 0 avail, 100%) | /tmp/mounts/com.rdkcentral.wpe_0.4.2/rootfs | Read-only app runtime image (dm-verity/erofs) |

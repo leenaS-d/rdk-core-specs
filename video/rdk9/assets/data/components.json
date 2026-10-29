@@ -9,7 +9,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-appgateway/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/entservices-appgateway/blob/develop/README.md"
     },
     {
       "name": "AvOutput",
@@ -18,7 +19,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-avoutput/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/entservices-avoutput/blob/develop/README.md"
     },
     {
       "name": "Bluetooth Manager",
@@ -74,7 +76,8 @@
       "releaseTag": "master",
       "url": [
         "https://github.com/xmidt-org/cimplog/tree/master"
-      ]
+      ],
+      "View Details": "https://github.com/xmidt-org/cimplog/blob/master/README.md"
     },
     {
       "name": "Common Utilities",
@@ -93,7 +96,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-connectivity/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/entservices-connectivity/blob/develop/README.md"
     },
     {
       "name": "Control Manager (video)",
@@ -139,7 +143,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/Dobby/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/Dobby/blob/develop/README.md"
     },
     {
       "name": "Dobby Thunder Plugin",
@@ -148,7 +153,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/Dobby/tree/develop/rdkPlugins/Thunder"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/Dobby/blob/develop/rdkPlugins/Thunder/README.md"
     },
     {
       "name": "Entservices APIs",
@@ -157,7 +163,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-apis/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/entservices-apis/blob/develop/README.md"
     },
     {
       "name": "FirmwareDownload",
@@ -175,15 +182,16 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/entservices-firmwareupdate/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/entservices-firmwareupdate/blob/develop/README.md"
     },
     {
       "name": "Gstreamer Rialto Plugin",
       "category": "Video",
       "layer": "RDK",
-      "releaseTag": "develop",
+      "releaseTag": "master",
       "url": [
-        "https://github.com/rdkcentral/rialto-gstreamer/tree/develop"
+        "https://github.com/rdkcentral/rialto-gstreamer/tree/master"
       ],
       "View Details": "Document Under Review"
     },
@@ -194,7 +202,8 @@
       "releaseTag": "develop",
       "url": [
         "https://github.com/rdkcentral/rdk-halif-hdmi_cec/tree/develop"
-      ]
+      ],
+      "View Details": "https://github.com/rdkcentral/rdk-halif-hdmi_cec/blob/develop/docs/pages/hdmi-cec_halSpec.md"
     },
     {
       "name": "HDMICec",
@@ -251,6 +260,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk-libunpriv/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/rdk-libunpriv/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -269,6 +279,7 @@
       "url": [
         "https://github.com/LibertyGlobal/memcr/tree/main"
       ],
+      "View Details": "https://github.com/LibertyGlobal/memcr/blob/main/README.md",
       "releaseTag": "develop"
     },
     {
@@ -278,6 +289,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-appmanagers/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/entservices-appmanagers/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -296,6 +308,7 @@
       "url": [
         "https://github.com/rdkcentral/PackageManager/tree/main"
       ],
+      "View Details": "https://github.com/rdkcentral/PackageManager/blob/main/README.md",
       "releaseTag": "main"
     },
     {
@@ -323,6 +336,7 @@
       "url": [
         "https://github.com/rdkcentral/rbus/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/rbus/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -361,6 +375,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk-cert-config/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/rdk-cert-config/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -370,6 +385,7 @@
       "url": [
         "https://github.com/rdkcentral/rfc/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/rfc/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -387,10 +403,10 @@
       "category": "Video",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/rialto-ocdm/tree/develop"
+        "https://github.com/rdkcentral/rialto-ocdm/tree/master"
       ],
       "View Details": "Document Under Review",
-      "releaseTag": "develop"
+      "releaseTag": "master"
     },
     {
       "name": "Rialto Server",
@@ -418,6 +434,7 @@
       "url": [
         "https://github.com/rdkcentral/entservices-maintenancemanager/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/entservices-maintenancemanager/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -437,6 +454,7 @@
       "url": [
         "https://github.com/rdkcentral/systemtimemgr/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/systemtimemgr/blob/develop/Readme.md",
       "releaseTag": "develop"
     },
     {
@@ -455,6 +473,7 @@
       "url": [
         "https://github.com/rdkcentral/telemetry/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/telemetry/blob/develop/docs/README.md",
       "releaseTag": "develop"
     },
     {
@@ -472,7 +491,7 @@
       "category": "System Start, Platform Management and misc utilities",
       "layer": "oss",
       "url": [
-        "https://github.com/Comcast/trower-base64/tree/main"
+        "https://github.com/xmidt-org/trower-base64/tree/main"
       ],
       "releaseTag": "main"
     },
@@ -509,7 +528,7 @@
       "category": "WPEFramework",
       "layer": "RDK",
       "url": [
-        "https://github.com/rdkcentral/ThunderClientLibraries.git/tree/master"
+        "https://github.com/rdkcentral/ThunderClientLibraries/tree/master"
       ],
       "View Details": "https://github.com/rdkcentral/ThunderClientLibraries/blob/master/docs/README.md",
       "releaseTag": "master"
@@ -521,6 +540,7 @@
       "url": [
         "https://github.com/WebPlatformForEmbedded/WPEWebKit/tree/wpe-2.46"
       ],
+      "View Details": "https://github.com/WebPlatformForEmbedded/WPEWebKit/blob/wpe-2.46/ReadMe.md",
       "releaseTag": "wpe-2.46"
     },
     {
@@ -530,6 +550,7 @@
       "url": [
         "https://github.com/rdkcentral/Thunder/tree/R4_4-RDK"
       ],
+      "View Details": "https://github.com/rdkcentral/Thunder/blob/R4_4-RDK/README.md",
       "releaseTag": "R4_4-RDK"
     },
     {
