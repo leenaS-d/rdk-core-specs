@@ -1141,12 +1141,6 @@
       "url": "component-catalog.html"
     },
     {
-      "title": "PackageManager",
-      "text": "Thunder · RDK layer · release main.",
-      "category": "Components",
-      "url": "component-catalog.html"
-    },
-    {
       "title": "Peripherals",
       "text": "Entertainment Services · RDK layer · release develop.",
       "category": "Components",

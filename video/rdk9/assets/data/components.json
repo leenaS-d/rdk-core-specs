@@ -302,16 +302,6 @@
       "releaseTag": "3.0.15"
     },
     {
-      "name": "PackageManager",
-      "category": "Thunder",
-      "layer": "RDK",
-      "url": [
-        "https://github.com/rdkcentral/PackageManager/tree/main"
-      ],
-      "View Details": "https://github.com/rdkcentral/PackageManager/blob/main/README.md",
-      "releaseTag": "main"
-    },
-    {
       "name": "Peripherals",
       "category": "Entertainment Services",
       "layer": "RDK",

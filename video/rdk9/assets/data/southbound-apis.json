@@ -49,8 +49,8 @@
     },
     {
       "halInterface": "Westeros Sink HAL",
-      "version": "",
-      "source": ""
+      "version": "develop",
+      "source": "https://github.com/rdkcentral/rdk-halif-westeros-sink/tree/develop"
     },
     {
       "halInterface": "Westeros Graphics HAL",
