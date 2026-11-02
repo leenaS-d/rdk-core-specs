@@ -58,7 +58,8 @@
       "releaseTag": "main",
       "url": [
         "https://github.com/google/breakpad/tree/main"
-      ]
+      ],
+      "View Details": "https://github.com/google/breakpad/blob/main/README.md"
     },
     {
       "name": "Casting",
@@ -115,8 +116,9 @@
       "layer": "oss",
       "releaseTag": "develop",
       "url": [
-        "https://www.freedesktop.org/wiki/Software/dbus"
-      ]
+        "https://dbus.freedesktop.org/releases/dbus/dbus-1.14.8.tar.xz"
+      ],
+      "View Details": "https://www.freedesktop.org/wiki/Software/dbus"
     },
     {
       "name": "Device Settings",
@@ -299,6 +301,7 @@
       "url": [
         "https://github.com/openssl/openssl/releases/download/openssl-3.0.15/openssl-3.0.15.tar.gz"
       ],
+      "View Details": "https://github.com/openssl/openssl/blob/openssl-3.0.15/README.md",
       "releaseTag": "3.0.15"
     },
     {
@@ -317,6 +320,7 @@
       "url": [
         "https://github.com/protocolbuffers/protobuf/tree/main"
       ],
+      "View Details": "https://github.com/protocolbuffers/protobuf/blob/main/README.md",
       "releaseTag": "main"
     },
     {
@@ -336,6 +340,7 @@
       "url": [
         "https://github.com/rdkcentral/rdk_logger/tree/develop"
       ],
+      "View Details": "https://github.com/rdkcentral/rdk_logger/blob/develop/README.md",
       "releaseTag": "develop"
     },
     {
@@ -454,6 +459,7 @@
       "url": [
         "https://github.com/systemd/systemd/tree/3a74d4f"
       ],
+      "View Details": "https://github.com/systemd/systemd/blob/3a74d4fc90cb322a4784a3515bef7118c8f8c5ba/README.md",
       "releaseTag": "230"
     },
     {
@@ -483,6 +489,7 @@
       "url": [
         "https://github.com/xmidt-org/trower-base64/tree/main"
       ],
+      "View Details": "https://github.com/xmidt-org/trower-base64/blob/main/README.md",
       "releaseTag": "main"
     },
     {
@@ -492,6 +499,7 @@
       "url": [
         "https://wayland.freedesktop.org/releases/wayland-1.20.0.tar.xz"
       ],
+      "View Details": "https://wayland.freedesktop.org/",
       "releaseTag": "1.20.0"
     },
     {
