@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-19T15:08:26Z",
+  "generatedAt": "2026-10-28T20:06:19Z",
   "title": "RDK-B EXT EasyMesh Components",
   "subtitle": "Components for the EXT EasyMesh device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -36,6 +36,13 @@
       "supportingUrls": []
     },
     {
+      "name": "RFC",
+      "category": "Remote Device Management",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/rfc",
+      "supportingUrls": []
+    },
+    {
       "name": "OneWiFi",
       "category": "LAN Interface Components",
       "tier": "required",
@@ -43,6 +50,13 @@
       "supportingUrls": [
         "https://github.com/rdkcentral/broadband-utils/tree/main/rdk-wps-monitor"
       ]
+    },
+    {
+      "name": "unified-wifi-mesh\n(EasyMesh)",
+      "category": "LAN Interface Components",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/unified-wifi-mesh",
+      "supportingUrls": []
     },
     {
       "name": "ieee1905-rs",
@@ -214,6 +228,13 @@
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/data-model-cli",
+      "supportingUrls": []
+    },
+    {
+      "name": "PSM",
+      "category": "Non-Vol Storage",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/persistent-storage-manager",
       "supportingUrls": []
     },
     {

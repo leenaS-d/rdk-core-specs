@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-19T15:08:13Z",
+  "generatedAt": "2026-10-28T20:06:11Z",
   "title": "RDK-B EXT EasyMesh Components",
   "subtitle": "Components for the EXT EasyMesh device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -26,14 +26,24 @@
       "category": "Remote Device Management",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/dcm-agent",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop"
     },
     {
       "name": "xConf client",
       "category": "Remote Device Management",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/xconf-client",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:50e24d11"
+    },
+    {
+      "name": "RFC",
+      "category": "Remote Device Management",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/rfc",
+      "supportingUrls": [],
+      "version": "1.2.2"
     },
     {
       "name": "OneWiFi",
@@ -42,105 +52,128 @@
       "url": "https://github.com/rdkcentral/OneWifi",
       "supportingUrls": [
         "https://github.com/rdkcentral/broadband-utils/tree/main/rdk-wps-monitor"
-      ]
+      ],
+      "version": "develop / rev:4bc32193 (rdk-wps-monitor: 1.0.0 / rev:10bae357)"
+    },
+    {
+      "name": "unified-wifi-mesh\n(EasyMesh)",
+      "category": "LAN Interface Components",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/unified-wifi-mesh",
+      "supportingUrls": [],
+      "version": "v0.2.1"
     },
     {
       "name": "ieee1905-rs",
       "category": "LAN Interface Components",
       "tier": "required",
       "url": "https://github.com/rdkcentral/ieee1905-rs",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "v0.5.0"
     },
     {
       "name": "hotspot",
       "category": "WAN Interface Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/hotspot",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:a8bc9d66"
     },
     {
       "name": "core-net-library",
       "category": "Routing, parental control and WAN Management Components",
       "tier": "required",
       "url": "https://github.com/rdkcentral/core-net-library",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:d1570227"
     },
     {
       "name": "Utopia",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/utopia",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:e54b40ff"
     },
     {
       "name": "miscellaneous-broadband",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "required",
       "url": "https://github.com/rdkcentral/miscellaneous-broadband",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:75bc528e"
     },
     {
       "name": "led-manager",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/led-manager",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "v2.0.0"
     },
     {
       "name": "platform-manager",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/platform-manager",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "v2.0.3"
     },
     {
       "name": "rdkb-halif-fwupgrade",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/rdkb-halif-fwupgrade",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "main / rev:3c5dea46"
     },
     {
       "name": "json-hal-lib",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/json-hal-library",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:e723b0c8"
     },
     {
       "name": "sysint-broadband",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/sysint-broadband",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:061ed28e"
     },
     {
       "name": "common utilities",
       "category": "System Start, Platform Management and misc utilities",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/common_utilities/",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "1.4.3"
     },
     {
       "name": "rdk_logger",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/rdk_logger",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "2.4.0"
     },
     {
       "name": "syslog_helper",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://code.rdkcentral.com/r/plugins/gitiles/rdk/components/generic/syslog_helper/+/refs/heads/rdk-next",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:75bc528e"
     },
     {
       "name": "crashupload",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/crashupload",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "1.0.7"
     },
     {
       "name": "remote_debugger",
@@ -149,14 +182,16 @@
       "url": "https://github.com/rdkcentral/remote_debugger",
       "supportingUrls": [
         "https://github.com/rdkcentral/rdm-agent"
-      ]
+      ],
+      "version": "1.2.9 (rdm-agent: develop / rev:d5e73722)"
     },
     {
       "name": "T2 Telemetry",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/telemetry",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "1.8.3"
     },
     {
       "name": "Test & Diagnostics",
@@ -165,91 +200,112 @@
       "url": "https://github.com/rdkcentral/test-and-diagnostic",
       "supportingUrls": [
         "https://github.com/rdkcentral/rdk-speedtest-cli"
-      ]
+      ],
+      "version": "develop / rev:5658ca54 (rdk-speedtest-cli: 1.0.0 / rev:f6a90630)"
     },
     {
       "name": "cpuprocanalyzer",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/cpuprocanalyzer",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop"
     },
     {
       "name": "Break pad",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/breakpad_wrapper",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "1.0.0"
     },
     {
       "name": "sys_mon_tools",
       "category": "Data Collection, Test and Diagnostic Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/sys_mon_tools",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:75bc528e"
     },
     {
       "name": "RBUS",
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/rbus",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "2.11.0"
     },
     {
       "name": "inter-device-manager",
       "category": "InterProcess Communications Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/inter-device-manager",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "v2.0.3"
     },
     {
       "name": "common-library",
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/common-library",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "support/2026q1 / rev:740a897d"
     },
     {
       "name": "DMCLI",
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/data-model-cli",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:f203bb73"
+    },
+    {
+      "name": "PSM",
+      "category": "Non-Vol Storage",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/persistent-storage-manager",
+      "supportingUrls": [],
+      "version": "develop / rev:00859265"
     },
     {
       "name": "DSM",
       "category": "App Framework Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/DSM",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:75bc528e"
     },
     {
       "name": "Dobby",
       "category": "App Framework Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/Dobby",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "release/v3.16 / rev:4c2accd3"
     },
     {
       "name": "Barton Core, Barton Common",
       "category": "Matter / IoT Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/BartonCore",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "main / rev:31f8d0fe"
     },
     {
       "name": "home-security",
       "category": "Matter / IoT Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/home-security",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:17e08b71"
     },
     {
       "name": "libsyscallwrapper",
       "category": "Code Security Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/libSyscallWrapper",
-      "supportingUrls": []
+      "supportingUrls": [],
+      "version": "develop / rev:69fab9ab"
     }
   ]
 }

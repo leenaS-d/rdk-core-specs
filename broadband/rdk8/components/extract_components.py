@@ -157,6 +157,18 @@ CURATED_ALIASES: dict[str, str] = {
 }
 
 
+def _load_versions(xlsx_path: Path) -> dict[str, str]:
+    """Return {norm_key: version_string} from component-versions.json located
+    in the same directory as the xlsx, or {} if the file is absent.
+    Keys are normalised with _norm_key() so matching is case- and
+    punctuation-insensitive against the Components-sheet repo names."""
+    vfile = Path(xlsx_path).parent / "component-versions.json"
+    if not vfile.exists():
+        return {}
+    raw: dict = json.loads(vfile.read_text(encoding="utf-8"))
+    return {_norm_key(k): v for k, v in raw.items()}
+
+
 def _all_profiles_classification(wb) -> dict[str, dict[str, str]]:
     """Aggregate the 'All Profiles' sheet into {normalized_repo_name:
     {profile: status}}, one status per (repo, profile) -- the best (most
@@ -210,7 +222,7 @@ def _split_urls(cell) -> list[str]:
     return [p.strip() for p in parts if p.strip().lower().startswith("http")]
 
 
-def _rows(wb):
+def _rows(wb, versions: dict | None = None):
     """Yield one record per repo from the 'Components' sheet (clean, one row
     per repo -- see module docstring for why repo identity stays anchored
     here rather than to 'All Profiles'). Required/Optional/n/a values come
@@ -219,6 +231,8 @@ def _rows(wb):
     'Components' classification unchanged."""
     ws = wb["Components"]
     corrections = _all_profiles_classification(wb)
+    if versions is None:
+        versions = {}
 
     headers = [c.value for c in ws[1]]
     name_idx = headers.index("Component Repo")
@@ -260,7 +274,7 @@ def _rows(wb):
 
         profile_values = {}
         for i, profile in enumerate(PROFILE_COLUMNS):
-            orig = row[profile_idxs[i]]
+            orig = raw[profile_idxs[i]]
             lookup_key = CURATED_ALIASES.get(name, _norm_key(name))
             corrected = corrections.get(lookup_key, {}).get(profile)
             # All Profiles' classification wins outright whenever the repo
@@ -270,6 +284,10 @@ def _rows(wb):
             # (Components: Optional, All Profiles: Required for GW OpenSync).
             profile_values[profile] = corrected if corrected is not None else orig
 
+        # Version lookup uses the raw name (not curated alias) since
+        # component-versions.json is keyed by Components-sheet names.
+        version = versions.get(_norm_key(name))
+
         yield {
             "subsystem": cur_subsys,
             "name": name,
@@ -277,10 +295,11 @@ def _rows(wb):
             "supporting_urls": supporting_urls,
             "is_core": raw[core_idx] == "CORE",
             "profile_values": profile_values,
+            "version": version,
         }
 
 
-def extract_all(wb) -> list[dict]:
+def extract_all(wb, versions: dict | None = None) -> list[dict]:
     """Every component in 'Components' with any real classification anywhere
     (Required, Optional, or CORE for at least one profile) -- the full
     RDK-B component universe, not scoped to one device profile. Fits pages
@@ -296,7 +315,7 @@ def extract_all(wb) -> list[dict]:
     that's ever needed instead.
     """
     out = []
-    for r in _rows(wb):
+    for r in _rows(wb, versions):
         vals = [v for v in r["profile_values"].values() if v not in (None, "n/a")]
         if r["is_core"]:
             tier = "common-core"
@@ -306,33 +325,39 @@ def extract_all(wb) -> list[dict]:
             tier = "optional"
         else:
             continue  # n/a everywhere -- not part of the RDK-B component universe
-        out.append({
+        entry = {
             "name": r["name"],
             "category": r["subsystem"],
             "tier": tier,
             "url": r["url"],
             "supportingUrls": r["supporting_urls"],
-        })
+        }
+        if r.get("version"):
+            entry["version"] = r["version"]
+        out.append(entry)
     return out
 
 
-def extract_core(wb) -> list[dict]:
+def extract_core(wb, versions: dict | None = None) -> list[dict]:
     out = []
-    for r in _rows(wb):
+    for r in _rows(wb, versions):
         vals = [v for v in r["profile_values"].values() if v not in (None, "n/a")]
         required_everywhere = bool(vals) and all(v == "Required" for v in vals)
         if r["is_core"] or required_everywhere:
-            out.append({
+            entry = {
                 "name": r["name"],
                 "category": r["subsystem"],
                 "tier": "common-core" if r["is_core"] else "required",
                 "url": r["url"],
                 "supportingUrls": r["supporting_urls"],
-            })
+            }
+            if r.get("version"):
+                entry["version"] = r["version"]
+            out.append(entry)
     return out
 
 
-def extract_profile(wb, profile: str, required_only: bool = False, show_core: bool = False) -> list[dict]:
+def extract_profile(wb, profile: str, required_only: bool = False, show_core: bool = False, versions: dict | None = None) -> list[dict]:
     """All components that apply to a single device profile column.
 
     show_core=False (default): tiers are 'required' / 'optional' only, matching
@@ -347,18 +372,21 @@ def extract_profile(wb, profile: str, required_only: bool = False, show_core: bo
         raise SystemExit(f"Unknown profile {profile!r}. Choose from: {PROFILE_COLUMNS}")
     wanted = ("Required",) if required_only else ("Required", "Optional")
     out = []
-    for r in _rows(wb):
+    for r in _rows(wb, versions):
         v = r["profile_values"][profile]
         if v not in wanted:
             continue
         tier = "common-core" if (show_core and not required_only and r["is_core"]) else v.lower()
-        out.append({
+        entry = {
             "name": r["name"],
             "category": r["subsystem"],
             "tier": tier,
             "url": r["url"],
             "supportingUrls": r["supporting_urls"],
-        })
+        }
+        if r.get("version"):
+            entry["version"] = r["version"]
+        out.append(entry)
     return out
 
 
@@ -373,10 +401,10 @@ def build_payload(components: list[dict], title: str, subtitle: str, tier_ids: l
     }
 
 
-def build_profile_payload(wb, profile: str, required_only: bool = False, show_core: bool = False) -> tuple[list[dict], dict]:
+def build_profile_payload(wb, profile: str, required_only: bool = False, show_core: bool = False, versions: dict | None = None) -> tuple[list[dict], dict]:
     """Extract + build the payload for one profile column. Shared by the
     'profile' and 'all-profiles' CLI modes so their output is identical."""
-    components = extract_profile(wb, profile, required_only=required_only, show_core=show_core)
+    components = extract_profile(wb, profile, required_only=required_only, show_core=show_core, versions=versions)
     if required_only:
         tier_ids = ["required"]
     elif show_core:
@@ -426,10 +454,12 @@ def main() -> None:
     allc_p.add_argument("--out", default="all-components.json")
 
     args = p.parse_args()
-    wb = openpyxl.load_workbook(Path(args.xlsx), data_only=True)
+    xlsx_path = Path(args.xlsx)
+    wb = openpyxl.load_workbook(xlsx_path, data_only=True)
+    versions = _load_versions(xlsx_path)
 
     if args.mode == "core":
-        components = extract_core(wb)
+        components = extract_core(wb, versions)
         payload = build_payload(
             components,
             title="Core RDK-B Components",
@@ -440,7 +470,7 @@ def main() -> None:
         print(f"Wrote {args.out} ({len(components)} components)")
 
     elif args.mode == "all-components":
-        components = extract_all(wb)
+        components = extract_all(wb, versions)
         payload = build_payload(
             components,
             title="RDK-B Core Broadband Components",
@@ -451,14 +481,14 @@ def main() -> None:
         print(f"Wrote {args.out} ({len(components)} components)")
 
     elif args.mode == "profile":
-        components, payload = build_profile_payload(wb, args.profile, required_only=args.required_only, show_core=args.show_core)
+        components, payload = build_profile_payload(wb, args.profile, required_only=args.required_only, show_core=args.show_core, versions=versions)
         Path(args.out).write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"Wrote {args.out} ({len(components)} components)")
 
     else:  # all-profiles
         for profile in PROFILE_COLUMNS:
             out_name = PROFILE_FILENAMES[profile]
-            components, payload = build_profile_payload(wb, profile, required_only=args.required_only, show_core=args.show_core)
+            components, payload = build_profile_payload(wb, profile, required_only=args.required_only, show_core=args.show_core, versions=versions)
             Path(out_name).write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
             print(f"  {out_name:35} {len(components):3} components  ({' '.join(profile.split())})")
         print(f"Wrote {len(PROFILE_COLUMNS)} profile component files.")

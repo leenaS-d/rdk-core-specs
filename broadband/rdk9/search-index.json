@@ -661,6 +661,12 @@
       "url": "components/"
     },
     {
+      "title": "RFC",
+      "text": "Remote Device Management · optional tier for the EthWAN WiFi Router profile.",
+      "category": "Components",
+      "url": "components/"
+    },
+    {
       "title": "Ethernet Agent (used for LAN)",
       "text": "LAN Interface Components · optional tier for the EthWAN WiFi Router profile.",
       "category": "Components",
@@ -674,6 +680,12 @@
     },
     {
       "title": "Mesh Agent\n(Integrates with OpenSync v2.4)",
+      "text": "LAN Interface Components · optional tier for the EthWAN WiFi Router profile.",
+      "category": "Components",
+      "url": "components/"
+    },
+    {
+      "title": "unified-wifi-mesh\n(EasyMesh)",
       "text": "LAN Interface Components · optional tier for the EthWAN WiFi Router profile.",
       "category": "Components",
       "url": "components/"
@@ -715,6 +727,18 @@
       "url": "components/"
     },
     {
+      "title": "dhcp-manager (recipe for DHCP client and Server)",
+      "text": "DHCP · required tier for the EthWAN WiFi Router profile.",
+      "category": "Components",
+      "url": "components/"
+    },
+    {
+      "title": "P&M",
+      "text": "Routing, parental control and WAN Management Components · required tier for the EthWAN WiFi Router profile.",
+      "category": "Components",
+      "url": "components/"
+    },
+    {
       "title": "WAN Manager",
       "text": "Routing, parental control and WAN Management Components · required tier for the EthWAN WiFi Router profile.",
       "category": "Components",
@@ -728,6 +752,12 @@
     },
     {
       "title": "secure-upnp",
+      "text": "Routing, parental control and WAN Management Components · optional tier for the EthWAN WiFi Router profile.",
+      "category": "Components",
+      "url": "components/"
+    },
+    {
+      "title": "ccsp-xdns",
       "text": "Routing, parental control and WAN Management Components · optional tier for the EthWAN WiFi Router profile.",
       "category": "Components",
       "url": "components/"
@@ -897,6 +927,12 @@
     {
       "title": "notify-component",
       "text": "InterProcess Communications Components · optional tier for the EthWAN WiFi Router profile.",
+      "category": "Components",
+      "url": "components/"
+    },
+    {
+      "title": "PSM",
+      "text": "Non-Vol Storage · required tier for the EthWAN WiFi Router profile.",
       "category": "Components",
       "url": "components/"
     },

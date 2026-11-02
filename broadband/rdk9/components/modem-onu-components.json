@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-19T15:08:26Z",
+  "generatedAt": "2026-10-28T20:06:19Z",
   "title": "RDK-B Modem /ONU Components",
   "subtitle": "Components for the Modem /ONU device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -76,6 +76,13 @@
       "supportingUrls": []
     },
     {
+      "name": "RFC",
+      "category": "Remote Device Management",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/rfc",
+      "supportingUrls": []
+    },
+    {
       "name": "Ethernet Agent (used for WAN)",
       "category": "WAN Interface Components",
       "tier": "optional",
@@ -125,6 +132,13 @@
       "category": "WAN Interface Components",
       "tier": "optional",
       "url": "https://github.com/rdkcentral/cellular-modem-manager",
+      "supportingUrls": []
+    },
+    {
+      "name": "P&M",
+      "category": "Routing, parental control and WAN Management Components",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/provisioning-and-management",
       "supportingUrls": []
     },
     {
@@ -182,6 +196,15 @@
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/common_utilities/",
       "supportingUrls": []
+    },
+    {
+      "name": "MTA Agent",
+      "category": "Voice Related Components",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/media-terminal-adapter-agent",
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdkb-halif-test-mta"
+      ]
     },
     {
       "name": "rdkb-halif-mta",
@@ -277,6 +300,13 @@
       "category": "InterProcess Communications Components",
       "tier": "common-core",
       "url": "https://github.com/rdkcentral/data-model-cli",
+      "supportingUrls": []
+    },
+    {
+      "name": "PSM",
+      "category": "Non-Vol Storage",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/persistent-storage-manager",
       "supportingUrls": []
     },
     {
